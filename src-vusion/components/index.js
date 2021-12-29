@@ -46,11 +46,10 @@ export { default as VanImagePreview } from '../../src/image-preview';
 export { default as VanIndexAnchor } from '../../src/index-anchor';
 export { default as VanIndexBar } from '../../src/index-bar';
 export { default as VanInfo } from '../../src/info';
-export { default as VanLazyload } from '../../src/lazyload';
+// export { default as VanLazyload } from '../../src/lazyload';
 export { default as VanLinearLayout } from '../../src/linear-layout';
 export { default as VanList } from '../../src/list';
 export { default as VanLoading } from '../../src/loading';
-
 
 export { default as VanNavBar } from '../../src/nav-bar';
 export { default as VanNoticeBar } from '../../src/notice-bar';
@@ -96,7 +95,7 @@ export { default as VanTabbarItem } from '../../src/tabbar-item';
 export { default as VanTabs } from '../../src/tabs';
 export { default as VanTag } from '../../src/tag';
 export { default as VanText } from '../../src/text';
-export { default as VanToast } from '../../src/toast';
+// export { default as VanToast } from '../../src/toast';
 export { default as VanTreeSelect } from '../../src/tree-select';
 export { default as VanUploader } from '../../src/uploader';
 

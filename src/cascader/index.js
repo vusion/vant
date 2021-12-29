@@ -8,7 +8,7 @@ import Field from '../field';
 // Mixins
 import { FieldMixin } from '../mixins/field';
 
-const _ = require('lodash');
+const _get = require('lodash/get');
 
 const [createComponent, bem, t] = createNamespace('cascader');
 
@@ -19,10 +19,10 @@ export default createComponent({
     title: String,
     value: [Number, String],
     fieldNamesp: [Object, String],
-    placeholder: {type: String, default: '请选择'},
+    placeholder: { type: String, default: '请选择' },
     activeColor: String,
     dataSource: {
-      type: Array,
+      type: [Array, Function],
       default: () => [],
     },
     closeable: {
@@ -31,7 +31,7 @@ export default createComponent({
     },
     converter: {
       type: String,
-      default: 'json'
+      default: 'json',
     },
     labelField: {
       type: String,
@@ -54,18 +54,20 @@ export default createComponent({
       activeTab: 0,
       options: [],
       valuepopup: false,
-      curValue: this.value || ''
+      curValue: this.value || '',
     };
   },
 
   computed: {
     fieldNames() {
-      if (this.fieldNamesp === null || this.fieldNamesp === undefined) return {};
-      if(typeof this.fieldNamesp === 'string') return JSON.parse(this.fieldNamesp || '{}');
-      if(typeof this.fieldNamesp === 'object') return this.fieldNamesp;
+      if (this.fieldNamesp === null || this.fieldNamesp === undefined)
+        return {};
+      if (typeof this.fieldNamesp === 'string')
+        return JSON.parse(this.fieldNamesp || '{}');
+      if (typeof this.fieldNamesp === 'object') return this.fieldNamesp;
     },
     textKey() {
-      return this.fieldNames?.text || this.textField ||  'text';
+      return this.fieldNames?.text || this.textField || 'text';
     },
     valueKey() {
       return this.fieldNames?.value || this.valueField || 'value';
@@ -85,15 +87,13 @@ export default createComponent({
     },
     curValue(value) {
       if (value || value === 0) {
-        const values = this.tabs.map(
-          (tab) => {
-            if (tab.selectedOption) {
-              // return tab.selectedOption?.[this.valueKey];
-              return _.get(tab.selectedOption, this.valueKey);
-            }
-            return tab.selectedOption;
+        const values = this.tabs.map((tab) => {
+          if (tab.selectedOption) {
+            // return tab.selectedOption?.[this.valueKey];
+            return _get(tab.selectedOption, this.valueKey);
           }
-        );
+          return tab.selectedOption;
+        });
         if (values.indexOf(value) !== -1) {
           return;
         }
@@ -108,20 +108,19 @@ export default createComponent({
 
   methods: {
     getTitle() {
-      const selectedOptions = this.getSelectedOptionsByValue(
-        this.options,
-        this.curValue
-      ) || [];
+      const selectedOptions =
+        this.getSelectedOptionsByValue(this.options, this.curValue) || [];
       const result = selectedOptions
-        .map((option) => _.get(option, this.textKey))
+        .map((option) => _get(option, this.textKey))
         .join('/');
+      console.log(selectedOptions, result, 'result');
       return result;
     },
     getSelectedOptionsByValue(options, value) {
       for (let i = 0; i < options.length; i++) {
         const option = options[i];
 
-        if (_.get(option, this.valueKey) === value) {
+        if (_get(option, this.valueKey) === value) {
           return [option];
         }
 
@@ -138,22 +137,21 @@ export default createComponent({
     },
     fromValue(value) {
       if (this.converter === 'json')
-          try {
-            if (value === null || value === undefined) return [];
-            if(typeof value === 'string') return JSON.parse(value || '[]');
-            if(typeof value === 'object') return value;
-          } catch (err) {
-              return [];
-          }
-        else
-            return value || [];
+        try {
+          if (value === null || value === undefined) return [];
+          if (typeof value === 'string') return JSON.parse(value || '[]');
+          if (typeof value === 'object') return value;
+        } catch (err) {
+          return [];
+        }
+      else return value || [];
     },
     async updateTabs() {
       if (isFunction(this.dataSource)) {
         try {
           const res = await this.dataSource({
             page: 1,
-            size: 1000
+            size: 1000,
           });
           console.log(res);
           this.options = res.content;
@@ -179,7 +177,8 @@ export default createComponent({
             };
 
             const next = optionsCursor.filter(
-              (item) => _.get(item, this.valueKey) === _.get(option, this.valueKey)
+              (item) =>
+                _get(item, this.valueKey) === _get(option, this.valueKey)
             );
             if (next.length) {
               optionsCursor = next[0][this.childrenKey];
@@ -240,13 +239,13 @@ export default createComponent({
         .filter((item) => !!item);
 
       const eventParams = {
-        value: _.get(option, this.valueKey),
+        value: _get(option, this.valueKey),
         tabIndex,
         selectedOptions,
       };
-      this.curValue = _.get(option, this.valueKey);
-      this.$emit('input', _.get(option, this.valueKey));
-      this.$emit('update:value', _.get(option, this.valueKey));
+      this.curValue = _get(option, this.valueKey);
+      this.$emit('input', _get(option, this.valueKey));
+      this.$emit('update:value', _get(option, this.valueKey));
       this.$emit('change', eventParams);
 
       if (!option[this.childrenKey]) {
@@ -285,11 +284,12 @@ export default createComponent({
     renderOptions(options, selectedOption, tabIndex) {
       const renderOption = (option) => {
         const isSelected =
-          selectedOption && (_.get(option, this.valueKey) === _.get(selectedOption, this.valueKey))
-          // option[this.valueKey] === selectedOption[this.valueKey];
-          // console.log(option);
+          selectedOption &&
+          _get(option, this.valueKey) === _get(selectedOption, this.valueKey);
+        // option[this.valueKey] === selectedOption[this.valueKey];
+        // console.log(option);
         const Text = this.slots('option', { option, selected: isSelected }) || (
-          <span>{_.get(option, this.textKey)}</span>
+          <span>{_get(option, this.textKey)}</span>
         );
 
         return (
@@ -314,7 +314,7 @@ export default createComponent({
     renderTab(item, tabIndex) {
       const { options, selectedOption } = item;
       const title = selectedOption
-        ? _.get(selectedOption, this.textKey)
+        ? _get(selectedOption, this.textKey)
         : this.placeholder || t('select');
 
       return (

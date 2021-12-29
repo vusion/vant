@@ -15,6 +15,7 @@
     "types/**/*",
     "src/**/*",
   ],
+  "allowSyntheticDefaultImports": true,
   "exclude": [
     "**/*.spec.ts",
     "**/*.spec.js",

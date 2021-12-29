@@ -23,7 +23,11 @@ import VanFieldinput from '../fieldinput/index';
 import VusionValidator from '@vusion/validator';
 
 const [createComponent, bem] = createNamespace('field');
-const comSet = new Set(['van-fieldinput','van-fieldtextarea','van-fieldnumber']);
+const comSet = new Set([
+  'van-fieldinput',
+  'van-fieldtextarea',
+  'van-fieldnumber',
+]);
 
 export default createComponent({
   inheritAttrs: false,
@@ -41,7 +45,7 @@ export default createComponent({
   },
   components: {
     VanEmptyCol,
-    VanFieldinput
+    VanFieldinput,
   },
   props: {
     ...cellProps,
@@ -101,7 +105,7 @@ export default createComponent({
       type: Boolean,
       default: false,
     },
-    drole: String
+    drole: String,
   },
 
   data() {
@@ -113,7 +117,7 @@ export default createComponent({
   },
 
   watch: {
-    value() {
+    value(ndata, olddata) {
       this.updateValue(this.value);
       this.resetValidation();
       // this.validateWithTrigger('onChange');
@@ -122,18 +126,20 @@ export default createComponent({
     },
   },
   created() {
+    console.log(this.value);
     try {
       this.validatorVuF = new VusionValidator(
         this.$options.validators,
         this.$options.rules,
         this.rules || [],
-        this,
+        this
       );
     } catch (e) {
-      console.log(e);
+      console.log(e, 'error');
     }
   },
   mounted() {
+    console.log(this.value, 'this.value');
     this.updateValue(this.value, this.formatTrigger);
     this.$nextTick(this.adjustSize);
 
@@ -186,14 +192,16 @@ export default createComponent({
       if (this.children && (this.$scopedSlots.input || this.$slots.input)) {
         return this.children.value;
       }
-      return (this.type === 'number' || this.type === 'digit') ? Number(this.value) : this.value;
+      return this.type === 'number' || this.type === 'digit'
+        ? Number(this.value)
+        : this.value;
     },
   },
 
   methods: {
     showClear() {
       const readonly = this.getProp('readonly');
-      if ((this.clearable && !readonly)) {
+      if (this.clearable && !readonly) {
         const hasValue = isDef(this.value) && this.value !== '';
         const trigger =
           this.clearTrigger === 'always' ||
@@ -257,18 +265,25 @@ export default createComponent({
 
       return message;
     },
-    runRulesVusion(rules, trigger='') {
+    runRulesVusion(rules, trigger = '') {
       let value = this.formValue;
       let validatorVuF = this.validatorVuF;
-      return validatorVuF.validate(value, trigger, Object.assign({
-        label: this.label || '字段',
-      })).then(() => {
-        console.log('tongguo');
-      }).catch((error) => {
-        console.log(error)
-        this.validateFailed = true;
-        this.validateMessage = error;
-      });
+      return validatorVuF
+        .validate(
+          value,
+          trigger,
+          Object.assign({
+            label: this.label || '字段',
+          })
+        )
+        .then(() => {
+          console.log('tongguo');
+        })
+        .catch((error) => {
+          console.log(error);
+          this.validateFailed = true;
+          this.validateMessage = error;
+        });
     },
     runRules(rules) {
       return rules.reduce(
@@ -410,11 +425,22 @@ export default createComponent({
       if (input && value !== input.value) {
         input.value = value;
       }
-
+      console.log(value, 'value1234', this.value);
       if (value !== this.value) {
-        this.$emit('input', (this.type === 'number' || this.type === 'digit') ? Number(value) : value);
-        this.$emit('update:value', (this.type === 'number' || this.type === 'digit') ? Number(value) : value);
+        this.$emit(
+          'input',
+          this.type === 'number' || this.type === 'digit'
+            ? Number(value)
+            : value
+        );
+        this.$emit(
+          'update:value',
+          this.type === 'number' || this.type === 'digit'
+            ? Number(value)
+            : value
+        );
       }
+      console.log(value, 'value1234', this.value);
     },
 
     onInput(event) {
@@ -535,10 +561,12 @@ export default createComponent({
       const inputSlot = this.slots('input');
       const inputAlign = this.getProp('inputAlign');
       // const hasInputSlot = this.$slots.hasOwnProperty('input');
-      const ifDesigner = (this.$env && this.$env.VUE_APP_DESIGNER);
+      const ifDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
       if (inputSlot) {
         const ifInput = comSet.has(inputSlot[0].componentOptions.tag);
-        return ifInput ? (inputSlot) : (
+        return ifInput ? (
+          inputSlot
+        ) : (
           <div
             class={bem(!ifInput ? 'control' : '', [inputAlign, 'custom'])}
             onClick={this.onClickInput}
@@ -547,7 +575,7 @@ export default createComponent({
           </div>
         );
       }
-      if ((!inputSlot && drole && ifDesigner)) {
+      if (!inputSlot && drole && ifDesigner) {
         return (
           <div
             class={bem('control', [inputAlign, 'custom'])}
@@ -624,12 +652,19 @@ export default createComponent({
       const { slots } = this;
       const showRightIcon = slots('right-icon') || this.rightIcon;
 
-      if(ifEye) {
+      if (ifEye) {
         return (
           <div class={bem('right-icon')} onClick={this.onClickRightIcon}>
-            {(
-              <Icon name={!ifPwd ? '//static-vusion.nos-eastchina1.126.net/h5-template/eye-open-icon.png' : '//static-vusion.nos-eastchina1.126.net/h5-template/eye-close-icon.png'} classPrefix={this.iconPrefix} />
-            )}
+            {
+              <Icon
+                name={
+                  !ifPwd
+                    ? '//static-vusion.nos-eastchina1.126.net/h5-template/eye-open-icon.png'
+                    : '//static-vusion.nos-eastchina1.126.net/h5-template/eye-close-icon.png'
+                }
+                classPrefix={this.iconPrefix}
+              />
+            }
           </div>
         );
       }
@@ -646,7 +681,7 @@ export default createComponent({
     },
 
     genWordLimit() {
-      if ((this.showWordLimit && this.maxlength)) {
+      if (this.showWordLimit && this.maxlength) {
         const count = (this.value || '').length;
 
         return (
@@ -738,7 +773,11 @@ export default createComponent({
           error: this.showError,
           disabled,
           [`label-${labelAlign}`]: labelAlign,
-          'min-height': ((this.type === 'textarea' && !this.autosize) || (this.children && this.children.type === 'textarea' && !this.children.autosize)),
+          'min-height':
+            (this.type === 'textarea' && !this.autosize) ||
+            (this.children &&
+              this.children.type === 'textarea' &&
+              !this.children.autosize),
         })}
         onClick={this.onClick}
         vusionCut={vusionCut}
