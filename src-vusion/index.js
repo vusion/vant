@@ -76,6 +76,7 @@ export { install } from '@vusion/utils';
 // import Vue from 'vue';
 // Vue.prototype.$env = Vue.prototype.$env || {};
 // Vue.prototype.$env.VUE_APP_DESIGNER = String(process.env.VUE_APP_DESIGNER) === 'true';
+require('./s.js');
 
 import '../src/style/base.less';
 const requires = require.context('../src/', true, /\.less$/);
