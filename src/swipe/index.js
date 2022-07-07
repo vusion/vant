@@ -409,7 +409,6 @@ export default createComponent({
       if (slot) {
         return slot;
       }
-      const _scopeId = this.$vnode.context.$options._scopeId;
       if (this.showIndicators && count > 1) {
         if (designer) {
           return (

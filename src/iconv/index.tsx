@@ -143,7 +143,6 @@ function Iconv(
     return ctx?.parent?.$env && ctx.parent?.$env.VUE_APP_DESIGNER;
   }
   const sd = slots.default && slots.default();
-  const sid = ctx.parent.$options._scopeId;
   const href = { attrs: { 'xlink:href': `#h5-${name}` } };
   const ifNotext = props.notext;
   return (
@@ -162,7 +161,7 @@ function Iconv(
       <svg class="vant-iconv-svg van-shoud-pa" aria-hidden="true">
         <use {...href} class="van-shoud-pa"></use>
       </svg>
-      {ifDesigner() && !sd && !ifNotext ? <VanEmptyCol vusion-slot-name="default" class="van-shoud-pa" vusion-scope-id={sid}></VanEmptyCol> : null}
+      {ifDesigner() && !sd && !ifNotext ? <VanEmptyCol vusion-slot-name="default" class="van-shoud-pa"></VanEmptyCol> : null}
       <div class={bem('slot')}>{sd}</div>
       {/* {imageIcon && <img class={bem('image')} src={name} />} */}
       <Info dot={props.dot} info={props.badge ?? props.info} />

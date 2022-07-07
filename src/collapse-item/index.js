@@ -169,7 +169,6 @@ export default createComponent({
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
     genContent() {
-      const _scopeId = this.$vnode.context.$options._scopeId;
       if (this.inited) {
         return (
           <div
@@ -178,7 +177,7 @@ export default createComponent({
             class={bem('wrapper')}
             onTransitionend={this.onTransitionEnd}
           >
-            <div ref="content" class={bem('content')} vusion-slot-name="default" vusion-scope-id={_scopeId}>
+            <div ref="content" class={bem('content')} vusion-slot-name="default">
               {this.slots()}
               {!this.slots() && this.ifDesigner() ? <van-empty-col></van-empty-col> : null}
             </div>
