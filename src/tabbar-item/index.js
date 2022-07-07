@@ -183,7 +183,7 @@ export default createComponent({
           {this.genIcon(active)}
           <Info dot={this.dot} info={this.showbaget && comBaget} />
         </div>
-        <div class={bem('text')} vusion-slot-name="text">{this.text || this.slots('default', { active })}</div>
+        <div class={bem('text')} vusion-slot-name-edit="text">{this.text || this.slots('default', { active })}</div>
       </div>
     );
   },
