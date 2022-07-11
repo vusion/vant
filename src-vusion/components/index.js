@@ -104,3 +104,5 @@ export { default as VanForComponents } from '../../src/for-components';
 export { default as VanGallery } from '../../src/gallery';
 
 export * from './list-view';
+export * from './link';
+
