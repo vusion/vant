@@ -150,13 +150,16 @@ export default createComponent({
     }
   },
   watch: {
-    value: {
-      handler: function (val, oldVal) {
-        if (isDef(val) && !equal(val, this.currentValue)) {
-          this.currentValue = val;
-        }
-      },
-      immediate: true
+    // value: {
+    //   handler: function (val, oldVal) {console.log(value, oldVal, 777)
+    //     if (isDef(val) && !equal(val, this.currentValue)) {
+    //       this.currentValue = val;
+    //     }
+    //   },
+    //   immediate: true
+    // },
+    value(val) {
+      this.updateValue(val);
     },
     currentValue(val) {
       this.$emit('input', val);
