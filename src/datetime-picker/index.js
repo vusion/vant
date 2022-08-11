@@ -17,7 +17,7 @@ export default createComponent({
     ...DatePicker.props,
     labelField: {
       type: String,
-      default: '左侧标题'
+      default: ''
     },
     closeOnClickOverlay: Boolean
   },
