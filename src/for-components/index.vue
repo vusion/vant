@@ -4,7 +4,7 @@
       <div v-for="(item, index) in options" :key="index" class="van-for-com-frag">
         <van-for-components-item v-for="(item2, index2) in item" :key="index2" :item="item2">
           <template v-slot="item2">
-            <slot :item="item2.item"></slot>
+            <slot :item="item2.item" :index="index"></slot>
           </template>
         </van-for-components-item>
       </div>
