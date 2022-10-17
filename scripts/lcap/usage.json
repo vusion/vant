@@ -6512,7 +6512,7 @@
     },
     {
         "symbol": "van-area",
-        "name": "地区选择器选择器",
+        "name": "地区选择器",
         "icon": "region-select",
         "depDescription": {},
         "description": "省市区三级联动选择",
@@ -6523,7 +6523,7 @@
         "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-area\\n  title=\\\"标题\\\"\\n  converter=\\\"json\\\"\\n  labelField=\\\"地区选择\\\"\\n  input-align=\\\"left\\\"\\n></van-area>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-area",
-            "title": "地区选择器选择器",
+            "title": "地区选择器",
             "description": "省市区三级联动选择",
             "category": "Selector",
             "screenShot": "",
