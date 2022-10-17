@@ -1583,7 +1583,7 @@
                             "name": "badge",
                             "title": "徽章值",
                             "type": "string, number",
-                            "default": "",
+                            "default": 2,
                             "description": "徽章值"
                         },
                         {

@@ -15,7 +15,7 @@ export default {
   text-align: center;
   color: #999;
   min-height: 32px;
-  min-width: 80px;
+  min-width: 32px;
   width: 100%;
   align-items: center;
   display: inline-flex;
