@@ -13,7 +13,7 @@
     - name: dot
       title: 是否展示为小红点
       type: boolean
-      default: false
+      default: true
       description: 是否展示为小红点
     - name: max
       title: 徽章最大值
