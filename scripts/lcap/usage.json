@@ -1677,7 +1677,7 @@
             "Navigation"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-tabbar>\\n  <van-tabbar-item icon=\\\"frontpage\\\" text=\\\"标签\\\"></van-tabbar-item>\\n  <van-tabbar-item icon=\\\"contact\\\" text=\\\"标签\\\"></van-tabbar-item>\\n  <van-tabbar-item icon=\\\"location\\\" text=\\\"标签\\\"></van-tabbar-item>\\n  <van-tabbar-item icon=\\\"avatar\\\" text=\\\"标签\\\"></van-tabbar-item>\\n</van-tabbar>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-tabbar>\\n  <van-tabbar-item icon=\\\"frontpage\\\" style=\\\"font-size:24px\\\" >\\n      <van-text text=\\\"标签\\\"></van-text>\\n    </van-tabbar-item>\\n  <van-tabbar-item icon=\\\"contact\\\" style=\\\"font-size:24px\\\" ><van-text text=\\\"标签\\\"></van-text></van-tabbar-item>\\n  <van-tabbar-item icon=\\\"location\\\" style=\\\"font-size:24px\\\" ><van-text text=\\\"标签\\\"></van-text></van-tabbar-item>\\n  <van-tabbar-item icon=\\\"avatar\\\" style=\\\"font-size:24px\\\" ><van-text text=\\\"标签\\\"></van-text></van-tabbar-item>\\n</van-tabbar>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-tabbar",
             "title": "标签栏",
@@ -1689,7 +1689,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-tabbar>\n  <van-tabbar-item icon=\"frontpage\" text=\"标签\"></van-tabbar-item>\n  <van-tabbar-item icon=\"contact\" text=\"标签\"></van-tabbar-item>\n  <van-tabbar-item icon=\"location\" text=\"标签\"></van-tabbar-item>\n  <van-tabbar-item icon=\"avatar\" text=\"标签\"></van-tabbar-item>\n</van-tabbar>\n</template>\n"
+                    "code": "<template>\n<van-tabbar>\n  <van-tabbar-item icon=\"frontpage\" style=\"font-size:24px\" >\n      <van-text text=\"标签\"></van-text>\n    </van-tabbar-item>\n  <van-tabbar-item icon=\"contact\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n  <van-tabbar-item icon=\"location\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n  <van-tabbar-item icon=\"avatar\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n</van-tabbar>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -2963,7 +2963,7 @@
                     "name": "dot",
                     "title": "是否展示为小红点",
                     "type": "boolean",
-                    "default": false,
+                    "default": true,
                     "description": "是否展示为小红点"
                 },
                 {
