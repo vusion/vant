@@ -1677,7 +1677,7 @@
             "Navigation"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-tabbar>\\n  <van-tabbar-item icon=\\\"frontpage\\\" style=\\\"font-size:24px\\\" >\\n      <van-text text=\\\"标签\\\"></van-text>\\n    </van-tabbar-item>\\n  <van-tabbar-item icon=\\\"contact\\\" style=\\\"font-size:24px\\\" ><van-text text=\\\"标签\\\"></van-text></van-tabbar-item>\\n  <van-tabbar-item icon=\\\"location\\\" style=\\\"font-size:24px\\\" ><van-text text=\\\"标签\\\"></van-text></van-tabbar-item>\\n  <van-tabbar-item icon=\\\"avatar\\\" style=\\\"font-size:24px\\\" ><van-text text=\\\"标签\\\"></van-text></van-tabbar-item>\\n</van-tabbar>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-tabbar>\\n  <van-tabbar-item icon=\\\"frontpage\\\" style=\\\"font-size:24px\\\" ><van-text text=\\\"标签\\\"></van-text></van-tabbar-item>\\n  <van-tabbar-item icon=\\\"contact\\\" style=\\\"font-size:24px\\\" ><van-text text=\\\"标签\\\"></van-text></van-tabbar-item>\\n  <van-tabbar-item icon=\\\"location\\\" style=\\\"font-size:24px\\\" ><van-text text=\\\"标签\\\"></van-text></van-tabbar-item>\\n  <van-tabbar-item icon=\\\"avatar\\\" style=\\\"font-size:24px\\\" ><van-text text=\\\"标签\\\"></van-text></van-tabbar-item>\\n</van-tabbar>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-tabbar",
             "title": "标签栏",
@@ -1689,7 +1689,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-tabbar>\n  <van-tabbar-item icon=\"frontpage\" style=\"font-size:24px\" >\n      <van-text text=\"标签\"></van-text>\n    </van-tabbar-item>\n  <van-tabbar-item icon=\"contact\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n  <van-tabbar-item icon=\"location\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n  <van-tabbar-item icon=\"avatar\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n</van-tabbar>\n</template>\n"
+                    "code": "<template>\n<van-tabbar>\n  <van-tabbar-item icon=\"frontpage\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n  <van-tabbar-item icon=\"contact\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n  <van-tabbar-item icon=\"location\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n  <van-tabbar-item icon=\"avatar\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n</van-tabbar>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -1868,7 +1868,7 @@
             "Display"
         ],
         "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/1.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/2.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/3.png",
-        "blocks": "[{\"title\":\"主要按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button type=\\\"primary\\\" text=\\\"主要按钮\\\"></van-button>\\n</template>\\n\"},{\"title\":\"信息按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button type=\\\"info\\\" text=\\\"信息按钮\\\"></van-button>\\n</template>\\n\"},{\"title\":\"默认按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button type=\\\"default\\\" text=\\\"默认按钮\\\"></van-button>\\n</template>\\n\"},{\"title\":\"细边框\",\"description\":\"\",\"code\":\"<template>\\n<van-button plain hairline type=\\\"primary\\\" text=\\\"细边框按钮\\\"></van-button>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"主要按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button type=\\\"info\\\" size=\\\"middle\\\" text=\\\"确定\\\" squareroud=\\\"round\\\"></van-button>\\n</template>\\n\"},{\"title\":\"次要按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button type=\\\"info_secondary\\\" size=\\\"middle\\\" text=\\\"确定\\\" squareroud=\\\"round\\\"></van-button>\\n</template>\\n\"},{\"title\":\"普通按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button type=\\\"default\\\" size=\\\"middle\\\" text=\\\"确定\\\" squareroud=\\\"round\\\"></van-button>\\n</template>\\n\"},{\"title\":\"图标按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button  type=\\\"info\\\" size=\\\"middle\\\" text=\\\"确定\\\" icon=\\\"sure\\\" squareroud=\\\"round\\\"></van-button>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-button",
             "title": "按钮",
@@ -1880,22 +1880,22 @@
                 {
                     "title": "主要按钮",
                     "description": "",
-                    "code": "<template>\n<van-button type=\"primary\" text=\"主要按钮\"></van-button>\n</template>\n"
+                    "code": "<template>\n<van-button type=\"info\" size=\"middle\" text=\"确定\" squareroud=\"round\"></van-button>\n</template>\n"
                 },
                 {
-                    "title": "信息按钮",
+                    "title": "次要按钮",
                     "description": "",
-                    "code": "<template>\n<van-button type=\"info\" text=\"信息按钮\"></van-button>\n</template>\n"
+                    "code": "<template>\n<van-button type=\"info_secondary\" size=\"middle\" text=\"确定\" squareroud=\"round\"></van-button>\n</template>\n"
                 },
                 {
-                    "title": "默认按钮",
+                    "title": "普通按钮",
                     "description": "",
-                    "code": "<template>\n<van-button type=\"default\" text=\"默认按钮\"></van-button>\n</template>\n"
+                    "code": "<template>\n<van-button type=\"default\" size=\"middle\" text=\"确定\" squareroud=\"round\"></van-button>\n</template>\n"
                 },
                 {
-                    "title": "细边框",
+                    "title": "图标按钮",
                     "description": "",
-                    "code": "<template>\n<van-button plain hairline type=\"primary\" text=\"细边框按钮\"></van-button>\n</template>\n"
+                    "code": "<template>\n<van-button  type=\"info\" size=\"middle\" text=\"确定\" icon=\"sure\" squareroud=\"round\"></van-button>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -1911,27 +1911,35 @@
                     "type": "string",
                     "options": [
                         {
-                            "value": "primary",
+                            "value": "info",
                             "title": "主要按钮"
                         },
                         {
-                            "value": "info",
-                            "title": "信息按钮"
+                            "value": "info_secondary",
+                            "title": "次要按钮"
                         },
                         {
                             "value": "default",
-                            "title": "默认按钮"
+                            "title": "普通按钮"
                         },
                         {
                             "value": "warning",
-                            "title": "警告按钮"
+                            "title": "警告操作按钮"
+                        },
+                        {
+                            "value": "warning_secondary",
+                            "title": "警告操作按钮"
                         },
                         {
                             "value": "danger",
-                            "title": "危险按钮"
+                            "title": "危险操作按钮"
+                        },
+                        {
+                            "value": "danger_secondary",
+                            "title": "危险操作按钮"
                         }
                     ],
-                    "default": "primary",
+                    "default": "info",
                     "description": "设置按钮颜色类型"
                 },
                 {
@@ -1951,6 +1959,10 @@
                             "title": "大"
                         },
                         {
+                            "value": "middle",
+                            "title": "中型"
+                        },
+                        {
                             "value": "normal",
                             "title": "正常"
                         },
@@ -1963,7 +1975,7 @@
                             "title": "迷你"
                         }
                     ],
-                    "default": "normal",
+                    "default": "middle",
                     "description": "设置尺寸"
                 },
                 {
@@ -1980,7 +1992,7 @@
                             "title": "圆形"
                         }
                     ],
-                    "default": "square",
+                    "default": "round",
                     "description": "设置方形形状"
                 },
                 {

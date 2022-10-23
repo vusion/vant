@@ -10,7 +10,7 @@
           >{{ t('info') }}</van-button
         >
         <van-button
-          size="normal"
+          size="middle"
           type="info"
           :disabled="true"
           class="u-code-example_demo_"
@@ -168,7 +168,7 @@
           >{{ t('info') }}</van-button
         >
         <van-button
-          size="normal"
+          size="middle"
           icon="sure"
           type="default"
           class="u-code-example_demo_"
