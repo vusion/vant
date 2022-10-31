@@ -1323,6 +1323,13 @@
                             "type": "boolean",
                             "default": false,
                             "description": "禁用"
+                        },
+                        {
+                            "name": "shutself",
+                            "title": "是否通过点击菜单子项关闭",
+                            "type": "boolean",
+                            "default": true,
+                            "description": "是否通过点击菜单子项关闭"
                         }
                     ],
                     "slots": [
@@ -1765,7 +1772,7 @@
                     "support": [
                         {
                             "name": "van-tabbar-item",
-                            "title": "菜单项",
+                            "title": "标签项",
                             "snippet": "<van-tabbar-item icon=\"默认\" text=\"标签\"></van-tabbar-item>"
                         }
                     ]
@@ -1781,7 +1788,7 @@
             "children": [
                 {
                     "name": "van-tabbar-item",
-                    "title": "菜单项",
+                    "title": "标签项",
                     "attrs": [
                         {
                             "name": "name",
@@ -1876,7 +1883,7 @@
                     "events": [
                         {
                             "name": "click",
-                            "title": "点击菜单项",
+                            "title": "点击标签项",
                             "description": "点击选项导致 value 变化时触发"
                         }
                     ]
@@ -1893,14 +1900,14 @@
         "labels": [
             "Display"
         ],
-        "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/1.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/2.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/3.png",
+        "screenShot": "",
         "blocks": "[{\"title\":\"主要按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button type=\\\"info\\\" size=\\\"middle\\\" text=\\\"确定\\\" squareroud=\\\"round\\\"></van-button>\\n</template>\\n\"},{\"title\":\"次要按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button type=\\\"info_secondary\\\" size=\\\"middle\\\" text=\\\"确定\\\" squareroud=\\\"round\\\"></van-button>\\n</template>\\n\"},{\"title\":\"普通按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button type=\\\"default\\\" size=\\\"middle\\\" text=\\\"确定\\\" squareroud=\\\"round\\\"></van-button>\\n</template>\\n\"},{\"title\":\"图标按钮\",\"description\":\"\",\"code\":\"<template>\\n<van-button  type=\\\"info\\\" size=\\\"middle\\\" text=\\\"确定\\\" icon=\\\"sure\\\" squareroud=\\\"round\\\"></van-button>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-button",
             "title": "按钮",
             "description": "按钮用于触发一个操作，如提交表单。",
             "category": "Display",
-            "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/1.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/2.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.18/src/button/screenshots/3.png",
+            "screenShot": "",
             "drawings": "",
             "blocks": [
                 {
