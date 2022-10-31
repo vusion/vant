@@ -148,7 +148,6 @@ export default createComponent({
         this,
       );
     } catch (e) {
-      console.log(e);
     }
   },
   mounted() {
@@ -204,6 +203,8 @@ export default createComponent({
       if (this.children && (this.$scopedSlots.input || this.$slots.input)) {
         if (this.children?.$options?._componentTag === 'van-calendar') {
           return this.children.defaultDate;
+        } if (this.children?.$options?._componentTag === 'van-uploader') {
+          return this.children.fileListProp;
         }
         return this.children.value;
       }
@@ -288,9 +289,7 @@ export default createComponent({
       return validatorVuF.validate(value, trigger, Object.assign({
         label: this.label || '字段',
       })).then(() => {
-        console.log('tongguo');
       }).catch((error) => {
-        console.log(error)
         this.validateFailed = true;
         this.validateMessage = error;
       });
@@ -528,7 +527,7 @@ export default createComponent({
       let input = this.$refs.input;
       let inputn = this.children;
       if (inputn && comSet.has(inputn.$options._componentTag)) {
-        if (inputn.type !== 'textarea') {
+        if (inputn.type === 'textarea') {
           return;
         } else {
           input = inputn.$refs.input;

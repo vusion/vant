@@ -60,7 +60,6 @@ export default createComponent({
 
   },
   mounted() {
-    console.log(this)
   },
   methods: {
     getProp(key) {
@@ -149,7 +148,7 @@ export default createComponent({
       this.$emit('clear', event);
     },
     afterValueChange() {
-      console.log(666);
+      // console.log(666);
       this.currentValue = this.value;
     },
   },
@@ -166,7 +165,6 @@ export default createComponent({
       this.updateValue(val);
     },
     currentValue(val) {
-      this.$emit('input', val);
       this.$emit('update:value', val);
       this.$emit('change', val, this);
     },

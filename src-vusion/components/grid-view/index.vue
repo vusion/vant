@@ -136,6 +136,12 @@
           </div>
           <div
             :class="$style.status"
+            v-else-if="currentData && !currentData.length"
+          >
+            <slot name="empty">{{ emptyText }}</slot>
+          </div>
+          <div
+            :class="$style.status"
             v-else-if="
               (pageable === 'auto-more' || pageable === 'load-more') &&
               currentDataSource &&
@@ -144,12 +150,6 @@
             "
           >
             {{ $t('noMore') }}
-          </div>
-          <div
-            :class="$style.status"
-            v-else-if="currentData && !currentData.length"
-          >
-            <slot name="empty">{{ emptyText }}</slot>
           </div>
         </div>
       </van-pull-refresh>
@@ -346,7 +346,6 @@ export default {
         oldNumber: this.currentDataSource.paging.number,
       };
       // eslint-disable-next-line no-console
-      console.log(JSON.stringify(paging));
       try {
         this.currentDataSource.page(paging);
         await this.load();
@@ -357,7 +356,6 @@ export default {
         }
       } catch (error) {
         // eslint-disable-next-line no-console
-        console.log(error);
       }
       this.refreshing = false;
     },
@@ -395,7 +393,6 @@ export default {
     initFloat() {
       this.mainW = this.getWidth();
       this.calcCol();
-      console.log(this.colW, 888);
       let list = [...this.virtualList];
       list.forEach((e, i) => {
         let _i = i;
@@ -658,6 +655,8 @@ export default {
   height: var(--list-view-height);
   min-width: var(--list-view-width);
   max-width: 100%;
+
+  box-sizing: border-box;
 }
 
 .root:focus {

@@ -1,9 +1,11 @@
 import {
   isDef,
+  isObject,
   createNamespace,
 } from '../utils';
 import { resetScroll } from '../utils/dom/reset-scroll';
 import { preventDefault } from '../utils/dom/event';
+import { getRootScrollTop, setRootScrollTop } from '../utils/dom/scroll';
 
 
 import { FieldMixin } from '../mixins/field';
@@ -53,7 +55,7 @@ export default createComponent({
       default: 'focus',
     },
   },
-  data() {console.log(this.value)
+  data() {
     const defaultValue = this.value ?? this.defaultValue;
 
     return {
@@ -64,7 +66,7 @@ export default createComponent({
 
   },
   mounted() {
-    console.log(this)
+    this.$nextTick(this.adjustSize);
   },
   methods: {
     getProp(key) {
@@ -128,6 +130,7 @@ export default createComponent({
       this.focused = true;
       this.$emit('focus', event);
       this.vanField && this.vanField.onFocus();
+      this.$nextTick(this.adjustSize);
       // readonly not work in legacy mobile safari
       /* istanbul ignore if */
       const readonly = this.getProp('readonly');
@@ -142,6 +145,7 @@ export default createComponent({
       this.$emit('blur', event);
       // this.validateWithTrigger('onBlur');
       // this.validateWithTriggerVusion('blur');
+      this.$nextTick(this.adjustSize);
       resetScroll();
       this.vanField && this.vanField.onBlur();
     },
@@ -175,8 +179,34 @@ export default createComponent({
       }
     },
     afterValueChange() {
-      console.log(666);
+      // console.log(666);
       this.currentValue = this.value;
+    },
+    adjustSize() {
+      let input = this.$refs.input;
+
+      const scrollTop = getRootScrollTop();
+      input.style.height = 'auto';
+
+      let height = input.scrollHeight;
+      const wrap = this.$refs.wrap;
+      // eslint-disable-next-line radix
+      const wrapHeight = parseInt(window.getComputedStyle(wrap).height);
+      if (isObject(this.autosize || input.autosize)) {
+        const { maxHeight, minHeight } = this.autosize || input.autosize;
+        if (maxHeight) {
+          height = Math.min(height, maxHeight);
+        }
+        if (minHeight) {
+          height = Math.max(height, minHeight);
+        }
+      }
+
+      if (height) {
+        input.style.height = (wrapHeight > height ? wrapHeight : height) + 'px';
+        // https://github.com/youzan/vant/issues/9178
+        setRootScrollTop(scrollTop);
+      }
     },
   },
   watch: {
@@ -196,13 +226,15 @@ export default createComponent({
       this.$emit('update:value', val);
       this.$emit('change', val, this);
 
+      this.$nextTick(this.adjustSize);
+
     },
   },
   render() {
     const ifLimit = (this.showWordLimit && this.maxlength);
     const inputAlign = this.vanField?.getProp('inputAlign');
     return (
-      <div class={bem('newwrap', {'clearwrap': this.clearable, 'limit': ifLimit})}>
+      <div class={bem('newwrap', {'clearwrap': this.clearable, 'limit': ifLimit})} ref="wrap">
         <textarea
         // vShow={this.showInput}
         ref="input"
