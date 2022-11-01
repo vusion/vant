@@ -56,6 +56,10 @@ export default createComponent({
       default: false,
     },
     inputAlign: String,
+    border: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   data() {
@@ -373,6 +377,7 @@ export default createComponent({
           notitleblock={this.notitleblock}
           novalue={this.novalue}
           insel={true}
+          border={this.border}
         />
         <Popup
           safe-area-inset-bottom

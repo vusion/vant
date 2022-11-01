@@ -20,7 +20,11 @@ export default createComponent({
       default: ''
     },
     inputAlign: String,
-    closeOnClickOverlay: Boolean
+    closeOnClickOverlay: Boolean,
+    border: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -63,6 +67,7 @@ export default createComponent({
           onClick={this.togglePopup}
           notitle={true}
           insel={true}
+          border={this.border}
         />
         <Popup
           safe-area-inset-bottom

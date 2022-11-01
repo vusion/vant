@@ -25,6 +25,7 @@ import Header from './components/Header';
 import Field from '../field';
 
 import { FieldMixin } from '../mixins/field';
+import { times } from 'lodash';
 
 
 export default createComponent({
@@ -124,6 +125,10 @@ export default createComponent({
       validator: (val) => val >= 0 && val <= 6,
     },
     inputAlign: String,
+    border: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   data() {
@@ -609,6 +614,7 @@ export default createComponent({
           onClick={this.togglePopup}
           notitle={true}
           insel={true}
+          border={this.border}
         />
         <Popup
           safe-area-inset-bottom
