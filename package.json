@@ -25,7 +25,7 @@
     "dev2": "vant-cli dev",
     "lint": "vant-cli lint",
     "test": "vant-cli test",
-    "build:vusion": "npm run genThemeConfig && vue-cli-service library-build --dest dist-theme",
+    "build:vusion": "vue-cli-service library-build --dest dist-theme",
     "build2": "vant-cli build",
     "build": "cross-env scene=desktop vant-cli build",
     "release": "vant-cli release",
