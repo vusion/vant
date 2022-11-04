@@ -3,31 +3,31 @@
 @white: #fff;
 @gray-1: #f7f8fa; //背景色1
 @gray-2: #f2f3f5; //背景色2
-@gray-3: #E5E5E5; //边框色
+@gray-3: #e5e5e5; //边框色
 @gray-4: #dcdee0;
 @gray-5: #c8c9cc;
 @gray-6: #969799;
 @gray-7: #646566;
 @gray-8: #333333;
-@red: #F24957;
-@blue: #337EFF;
-@orange: #FFB21A;
+@red: var(--brand-error);
+@blue: var(--brand-primary);
+@orange: var(--brand-problem);
 @orange-dark: #ed6a0c;
 @orange-light: #fffbe8;
-@green: #26BD71;
+@green: var(--brand-disabled);
 
 // Gradient Colors
 @gradient-red: linear-gradient(to right, #ff6034, #ee0a24);
 @gradient-orange: linear-gradient(to right, #ffd01e, #ff8917);
 
 // Component Colors
-@text-color: @gray-8;
-@active-color: @gray-2;
-@active-opacity: 0.7;
-@disabled-opacity: 0.5;
-@background-color: @gray-1;
-@background-color-light: #fafafa;
-@text-link-color: #576b95;
+@text-color: var(--component-text-color);
+@active-color: var(--component-active-color);
+@active-opacity: var(--component-active-opacity);
+@disabled-opacity: var(--component-disabled-opacity);
+@background-color: var(--component-background-color);
+@background-color-light: var(--component-background-color-light);
+@text-link-color: var(--text-link-color);
 
 // Padding
 @padding-base: 6px;
@@ -38,20 +38,17 @@
 @padding-xl: @padding-base * 8;
 
 // Font
-@font-size-xs: 10px;
-@font-size-sm: 12px;
-@font-size-md: 14px;
-@font-size-lg: 16px;
-@font-weight-bold: 500;
-@line-height-xs: 14px;
-@line-height-sm: 18px;
-@line-height-md: 20px;
-@line-height-lg: 22px;
-@base-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
-  Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB',
-  'Microsoft Yahei', sans-serif;
-@price-integer-font-family: Avenir-Heavy, PingFang SC, Helvetica Neue, Arial,
-  sans-serif;
+@font-size-xs: var(--font-size-xs);
+@font-size-sm: var(--font-size-sm);
+@font-size-md: var(--font-size-md);
+@font-size-lg: var(--font-size-lg);
+@font-weight-bold: var(font-weight-bold);
+@line-height-xs: var(--line-height-xs);
+@line-height-sm: var(--line-height-sm);
+@line-height-md: var(--line-height-md);
+@line-height-lg: var(--line-height-lg);
+@base-font-family: var(--base-font-family);
+@price-integer-font-family: var(--price-integer-font-family);
 
 // Animation
 @animation-duration-base: 0.3s;
@@ -554,7 +551,7 @@
 @pagination-disabled-opacity: @disabled-opacity;
 
 // Panel
-@panel-background-color: @white;
+@panel-background-color: var(--panel-background-color);
 @panel-header-value-color: @red;
 @panel-footer-padding: @padding-xs @padding-md;
 
