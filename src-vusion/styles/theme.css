@@ -39,6 +39,22 @@
   --price-integer-font-family: avenir-heavy, pingfang sc, helvetica neue, arial,
     sans-serif;
 
+  /* Border Color */
+  --border-color: #e5e5e5;
+  --border-width-base: 1px;
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+  --border-radius-max: 999px;
+
+  /* Padding */
+  --padding-base: 6px;
+  --padding-xs: calc(var(--padding-base) * 2);
+  --padding-sm: calc(var(--padding-base) * 3);
+  --padding-md: calc(var(--padding-base) * 4);
+  --padding-lg: calc(var(--padding-base) * 6);
+  --padding-xl: calc(var(--padding-base) * 8);
+
   /* @component van-linear-layout */
   --linear-layout-background: rgba(255,255,255,0.5);
 
@@ -48,7 +64,7 @@
   --panel-footer-padding: 12px 24px; /* @desc panel底部内边距 */
 
   /* @component van-collapse */
-  --collapse-item-content-padding: @padding-sm @padding-md;
+  --collapse-item-content-padding: var(--padding-sm) var(--padding-md);
   --collapse-item-content-font-size: 14px;
   --collapse-item-content-line-height: 1.5;
   --collapse-item-content-text-color: #969799; /* @type color */ /* @desc 字体颜色 */
@@ -83,4 +99,47 @@
   --link-color-light: #6eadff; /* @hidden */
   --link-color-white: white; /* @hidden */
 
+  /* @component van-button */
+  --button-mini-height: 24px; /* @desc mini button 高度 */
+  --button-mini-font-size: var(--font-size-xs); /* @desc mini button字体大小 */
+  --button-small-height: 28px; /* @desc small button  高度 */
+  --button-small-font-size: var(--font-size-sm); /* @desc small button字体大小 */
+  --button-normal-font-size: var(--font-size-md); /* @desc normal button字体大小 */
+  --button-large-height: 50px;
+  --button-default-height: 44px;
+  --button-default-line-height: 1.2;
+  --button-default-font-size: var(--font-size-lg);
+  --button-default-color: var(--component-text-color);
+  --button-default-background-color: #fff;
+  --button-default-border-color: var(--border-color);
+  --button-primary-color: #fff; /* @type color */ /* @desc 错误文本字体颜色,如：#223325 */
+  --button-primary-background-color: var(--brand-success);
+  --button-primary-border-color: var(--brand-success);
+  --button-info-color: #fff;
+  --button-info-background-color: var(--brand-primary);
+  --button-info-border-color: var(--brand-primary);
+  --button-danger-color: #fff;
+  --button-danger-background-color: var(--brand-error);
+  --button-danger-border-color: var(--brand-error);
+  --button-warning-color: #fff;
+  --button-warning-background-color: var(--brand-problem);
+  --button-warning-border-color: var(--brand-problem);
+  --button-border-width: var(--border-width-base);
+  --button-border-radius: var(--border-radius-md);
+  --button-border-radius2: var(--border-radius-md);
+  --button-round-border-radius: var(--border-radius-max);
+  --button-plain-background-color: #fff;
+  --button-disabled-opacity: var(--component-disabled-opacity);
+
+  /* @component van-button */
+  --badge-size: 16px;
+  --badge-color: #fff; /* @type color */
+  --badge-padding: 0 3px;
+  --badge-font-size: var(--font-size-sm);
+  --badge-font-weight: var(--font-weight-bold);
+  --badge-border-width: var(--border-width-base);
+  --badge-background-color: var(--brand-error); /* @type color */
+  --badge-dot-color: var(--brand-error); /* @type color */
+  --badge-dot-size: 8px;
+  --badge-font-family: -apple-system-font, helvetica neue, arial, sans-serif;
 }

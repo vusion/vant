@@ -48,7 +48,7 @@
         "toPosition": "highLevelSetting",
         "items": [
             {
-                "id": "d4a20c63-6fd2-4ce8-ac0e-4090b644c405",
+                "id": "3ea42709-72f2-4913-be12-dd26b4fef431",
                 "name": "van-collapse",
                 "title": "折叠面板",
                 "toPosition": "collapse",
@@ -80,7 +80,7 @@
                 }
             },
             {
-                "id": "09765390-0762-4370-92cd-2494d231a4b3",
+                "id": "16f34d60-e9e5-4fa3-9da9-dc320262001c",
                 "name": "van-linear-layout",
                 "title": "线性布局",
                 "toPosition": "linear-layout",
@@ -95,7 +95,115 @@
                 }
             },
             {
-                "id": "ba9129e3-bc75-45f4-a7ba-e83f31ca9d22",
+                "id": "69f8edcb-e07d-432f-9e82-b4827b6e56ad",
+                "name": "van-button",
+                "title": "按钮",
+                "toPosition": "button",
+                "type": [],
+                "cssProperty": {
+                    "--button-mini-height": {
+                        "type": "input",
+                        "desc": "mini button 高度"
+                    },
+                    "--button-mini-font-size": {
+                        "type": "input",
+                        "desc": "mini button字体大小"
+                    },
+                    "--button-small-height": {
+                        "type": "input",
+                        "desc": "small button  高度"
+                    },
+                    "--button-small-font-size": {
+                        "type": "input",
+                        "desc": "small button字体大小"
+                    },
+                    "--button-normal-font-size": {
+                        "type": "input",
+                        "desc": "normal button字体大小"
+                    },
+                    "--button-large-height": {
+                        "type": "input"
+                    },
+                    "--button-default-height": {
+                        "type": "input"
+                    },
+                    "--button-default-line-height": {
+                        "type": "input"
+                    },
+                    "--button-default-font-size": {
+                        "type": "input"
+                    },
+                    "--button-default-color": {
+                        "type": "input"
+                    },
+                    "--button-default-background-color": {
+                        "type": "input"
+                    },
+                    "--button-default-border-color": {
+                        "type": "input"
+                    },
+                    "--button-primary-color": {
+                        "type": "color",
+                        "desc": "错误文本字体颜色,如：#223325"
+                    },
+                    "--button-primary-background-color": {
+                        "type": "input"
+                    },
+                    "--button-primary-border-color": {
+                        "type": "input"
+                    },
+                    "--button-info-color": {
+                        "type": "input"
+                    },
+                    "--button-info-background-color": {
+                        "type": "input"
+                    },
+                    "--button-info-border-color": {
+                        "type": "input"
+                    },
+                    "--button-danger-color": {
+                        "type": "input"
+                    },
+                    "--button-danger-background-color": {
+                        "type": "input"
+                    },
+                    "--button-danger-border-color": {
+                        "type": "input"
+                    },
+                    "--button-warning-color": {
+                        "type": "input"
+                    },
+                    "--button-warning-background-color": {
+                        "type": "input"
+                    },
+                    "--button-warning-border-color": {
+                        "type": "input"
+                    },
+                    "--button-border-width": {
+                        "type": "input"
+                    },
+                    "--button-border-radius": {
+                        "type": "input"
+                    },
+                    "--button-border-radius2": {
+                        "type": "input"
+                    },
+                    "--button-round-border-radius": {
+                        "type": "input"
+                    },
+                    "--button-plain-background-color": {
+                        "type": "input"
+                    },
+                    "--button-disabled-opacity": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-button type=\"info\" size=\"middle\" text=\"确定\" squareroud=\"round\"></van-button>\n\n"
+                }
+            },
+            {
+                "id": "4cecd9cc-bf7a-4e0e-ac59-f483ab7ead55",
                 "name": "van-text",
                 "title": "文本",
                 "toPosition": "text",
@@ -143,7 +251,7 @@
                 }
             },
             {
-                "id": "38196e8d-dda1-4a50-ac8e-39c83a34d6d9",
+                "id": "b44aeeba-1570-492e-8696-209e294bbbed",
                 "name": "van-link",
                 "title": "链接",
                 "toPosition": "link",
