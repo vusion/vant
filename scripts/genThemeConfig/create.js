@@ -2,6 +2,8 @@ const { components } = require('../../vusion.config').docs;
 
 const defaultJson = require('./defaultResult');
 
+const defaultDefault = require('./defaultDefault');
+
 const { v4: uuidv4 } = require('uuid');
 
 const fs = require('fs-extra');
@@ -63,6 +65,7 @@ _root.nodes.forEach((node) => {
       }
     }
   } else if (node.type === 'decl') {
+    defaultDefault[node.prop] = node.value;
     if (!lastComponent) return;
     lastComponent.cssProperty[node.prop] = {
       type: 'input',
@@ -76,6 +79,7 @@ if (lastComponent) {
 }
 
 const resultPath = path.join(__dirname, './result.json');
+const defaultPath = path.join(__dirname, './default.json');
 
 components.forEach((comItem) => {
   if (themeComponentsMap[`van-${comItem.name}`] && comItem.show) {
@@ -110,5 +114,8 @@ components.forEach((comItem) => {
 });
 
 fs.writeJsonSync(resultPath, defaultJson, {
+  spaces: 4,
+});
+fs.writeJSONSync(defaultPath, defaultDefault, {
   spaces: 4,
 });
