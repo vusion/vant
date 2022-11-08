@@ -153,31 +153,37 @@
 @button-disabled-opacity: var(--button-disabled-opacity);
 
 // Calendar
-@calendar-background-color: @white;
-@calendar-popup-height: 60%;
-@calendar-header-box-shadow: 0 2px 10px rgba(125, 126, 128, 0.16);
-@calendar-header-title-height: 44px;
-@calendar-header-title-font-size: @font-size-lg;
-@calendar-header-subtitle-font-size: @font-size-md;
-@calendar-weekdays-height: 30px;
-@calendar-weekdays-font-size: @font-size-sm;
-@calendar-month-title-font-size: @font-size-md;
-@calendar-month-mark-color: fade(@gray-2, 80%);
-@calendar-month-mark-font-size: 160px;
-@calendar-day-height: 64px;
-@calendar-day-font-size: @font-size-lg;
-@calendar-range-edge-color: @white;
-@calendar-range-edge-background-color: @blue;
-@calendar-range-middle-color: @blue;
-@calendar-range-middle-background-opacity: 0.1;
-@calendar-selected-day-size: 54px;
-@calendar-selected-day-color: @white;
-@calendar-info-font-size: @font-size-xs;
-@calendar-info-line-height: @line-height-xs;
-@calendar-selected-day-background-color: @blue;
-@calendar-day-disabled-color: @gray-5;
-@calendar-confirm-button-height: 36px;
-@calendar-confirm-button-margin: 7px 0;
+@calendar-background-color: var(--calendar-background-color);
+@calendar-popup-height: var(--calendar-popup-height);
+@calendar-header-box-shadow: var(--calendar-header-box-shadow);
+@calendar-header-title-height: var(--calendar-header-title-height);
+@calendar-header-title-font-size: var(--calendar-header-title-font-size);
+@calendar-header-subtitle-font-size: var(--calendar-header-subtitle-font-size);
+@calendar-weekdays-height: var(--calendar-weekdays-height);
+@calendar-weekdays-font-size: var(--calendar-weekdays-font-size);
+@calendar-month-title-font-size: var(--calendar-month-title-font-size);
+@calendar-month-mark-color: var(--calendar-month-mark-color);
+@calendar-month-mark-font-size: var(--calendar-month-mark-font-size);
+@calendar-day-height: var(--calendar-day-height);
+@calendar-day-font-size: var(--calendar-day-font-size);
+@calendar-range-edge-color: var(--calendar-range-edge-color);
+@calendar-range-edge-background-color: var(
+  --calendar-range-edge-background-color
+);
+@calendar-range-middle-color: var(--calendar-range-edge-background-color);
+@calendar-range-middle-background-opacity: var(
+  --calendar-range-middle-background-opacity
+);
+@calendar-selected-day-size: var(--calendar-selected-day-size);
+@calendar-selected-day-color: var(--calendar-selected-day-color);
+@calendar-info-font-size: var(--calendar-info-font-size);
+@calendar-info-line-height: var(--calendar-info-line-height);
+@calendar-selected-day-background-color: var(
+  --calendar-selected-day-background-color
+);
+@calendar-day-disabled-color: var(--calendar-day-disabled-color);
+@calendar-confirm-button-height: var(--calendar-confirm-button-height);
+@calendar-confirm-button-margin: var(--calendar-confirm-button-margin);
 
 // Card
 @card-padding: @padding-xs @padding-md;
@@ -198,18 +204,18 @@
 @card-price-font-family: @price-integer-font-family;
 
 // Cascader
-@cascader-header-height: 48px;
-@cascader-title-font-size: @font-size-lg;
-@cascader-title-line-height: 20px;
-@cascader-close-icon-size: 22px;
-@cascader-close-icon-color: @gray-5;
-@cascader-close-icon-active-color: @gray-6;
-@cascader-selected-icon-size: 18px;
-@cascader-tabs-height: 48px;
-@cascader-active-color: @red;
-@cascader-options-height: 384px;
-@cascader-tab-color: @text-color;
-@cascader-unselected-tab-color: @gray-6;
+@cascader-header-height: var(--cascader-header-height);
+@cascader-title-font-size: var(--cascader-title-font-size);
+@cascader-title-line-height: var(--cascader-title-line-height);
+@cascader-close-icon-size: var(--cascader-close-icon-size);
+@cascader-close-icon-color: var(--cascader-close-icon-color);
+@cascader-close-icon-active-color: var(--cascader-close-icon-active-color);
+@cascader-selected-icon-size: var(--cascader-selected-icon-size);
+@cascader-tabs-height: var(--cascader-tabs-height);
+@cascader-active-color: var(--cascader-active-color);
+@cascader-options-height: var(--cascader-options-height);
+@cascader-tab-color: var(--cascader-tab-color);
+@cascader-unselected-tab-color: var(--cascader-unselected-tab-color);
 
 // Cell
 @cell-font-size: @font-size-md;

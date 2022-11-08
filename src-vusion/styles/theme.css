@@ -131,7 +131,7 @@
   --button-plain-background-color: #fff;
   --button-disabled-opacity: var(--component-disabled-opacity);
 
-  /* @component van-button */
+  /* @component van-badge */
   --badge-size: 16px;
   --badge-color: #fff; /* @type color */
   --badge-padding: 0 3px;
@@ -142,4 +142,47 @@
   --badge-dot-color: var(--brand-error); /* @type color */
   --badge-dot-size: 8px;
   --badge-font-family: -apple-system-font, helvetica neue, arial, sans-serif;
+
+  /* @component van-calendar */
+  --calendar-background-color: #fff; /* @type color */
+  --calendar-popup-height: 60%;
+  --calendar-header-box-shadow: 0 2px 10px rgba(125, 126, 128, 0.16);
+  --calendar-header-title-height: 44px;
+  --calendar-header-title-font-size: var(--font-size-lg);
+  --calendar-header-subtitle-font-size: var(--font-size-md);
+  --calendar-weekdays-height: 30px;
+  --calendar-weekdays-font-size: var(--font-size-sm);
+  --calendar-month-title-font-size: var(--font-size-md);
+  --calendar-month-mark-color: rgba(242, 243, 245, 0.8);
+  --calendar-month-mark-font-size: 160px;
+  --calendar-day-height: 64px;
+  --calendar-day-font-size: var(--font-size-lg);
+  --calendar-range-edge-color: #fff;  /* @type color */
+  --calendar-range-edge-background-color: var(--brand-primary); /* @type color */
+  --calendar-range-middle-color: var(--brand-primary); /* @type color */
+  --calendar-range-middle-background-opacity: 0.1;
+  --calendar-selected-day-size: 54px;
+  --calendar-selected-day-color: #fff; /* @type color */
+  --calendar-info-font-size: var(--font-size-xs);
+  --calendar-info-line-height: var(--line-height-xs);
+  --calendar-selected-day-background-color: var(--brand-primary); /* @type color */
+  --calendar-day-disabled-color: #c8c9cc; /* @type color */
+  --calendar-confirm-button-height: 36px;
+  --calendar-confirm-button-margin: 7px 0;
+
+  /* @component van-cascader */
+  --cascader-header-height: 48px;
+  --cascader-title-font-size: var(--font-size-lg);
+  --cascader-title-line-height: 20px;
+  --cascader-close-icon-size: 22px;
+  --cascader-close-icon-color: #c8c9cc; /* @type color */
+  --cascader-close-icon-active-color: #969799; /* @type color */
+  --cascader-selected-icon-size: 18px;
+  --cascader-tabs-height: 48px;
+  --cascader-active-color: var(--brand-primary); /* @type color */
+  --cascader-options-height: 384px;
+  --cascader-tab-color: var(--component-text-color); /* @type color */
+  --cascader-unselected-tab-color: #969799; /* @type color */
+
+
 }

@@ -48,7 +48,7 @@
         "toPosition": "highLevelSetting",
         "items": [
             {
-                "id": "02678726-7135-4efc-9023-22b87fb8f78e",
+                "id": "7b313651-0533-4c67-960a-596014e2537e",
                 "name": "van-collapse",
                 "title": "折叠面板",
                 "toPosition": "collapse",
@@ -80,7 +80,7 @@
                 }
             },
             {
-                "id": "8b0e3c0d-47c8-4ace-9362-431d48fd97fe",
+                "id": "208ac617-4b8a-4c02-a9c0-df54b501c916",
                 "name": "van-linear-layout",
                 "title": "线性布局",
                 "toPosition": "linear-layout",
@@ -95,7 +95,7 @@
                 }
             },
             {
-                "id": "b503de9b-efeb-4b17-8706-befebde7acc3",
+                "id": "36de32f0-b99b-49e5-a0d3-89a8e7eee7c5",
                 "name": "van-button",
                 "title": "按钮",
                 "toPosition": "button",
@@ -196,36 +196,6 @@
                     },
                     "--button-disabled-opacity": {
                         "type": "input"
-                    },
-                    "--badge-size": {
-                        "type": "input"
-                    },
-                    "--badge-color": {
-                        "type": "color"
-                    },
-                    "--badge-padding": {
-                        "type": "input"
-                    },
-                    "--badge-font-size": {
-                        "type": "input"
-                    },
-                    "--badge-font-weight": {
-                        "type": "input"
-                    },
-                    "--badge-border-width": {
-                        "type": "input"
-                    },
-                    "--badge-background-color": {
-                        "type": "color"
-                    },
-                    "--badge-dot-color": {
-                        "type": "color"
-                    },
-                    "--badge-dot-size": {
-                        "type": "input"
-                    },
-                    "--badge-font-family": {
-                        "type": "input"
                     }
                 },
                 "preview": {
@@ -233,7 +203,7 @@
                 }
             },
             {
-                "id": "c3e1379f-135a-41d2-8d40-71217f9bef0c",
+                "id": "b49004f6-80bb-42a1-b2c3-8882a5d49232",
                 "name": "van-text",
                 "title": "文本",
                 "toPosition": "text",
@@ -281,7 +251,7 @@
                 }
             },
             {
-                "id": "3ff5dde9-c9a4-466d-aaa2-b25c41b7aa85",
+                "id": "52cac054-0f42-4282-919f-0f47e4a6cc14",
                 "name": "van-link",
                 "title": "链接",
                 "toPosition": "link",
@@ -326,6 +296,146 @@
                 },
                 "preview": {
                     "template": "\n<van-link text=\"普通链接\"></van-link>\n\n"
+                }
+            },
+            {
+                "id": "01d17cde-03e8-4023-9c6c-1ccc8f9f30a6",
+                "name": "van-badge",
+                "title": "徽标",
+                "toPosition": "badge",
+                "type": [],
+                "cssProperty": {
+                    "--badge-size": {
+                        "type": "input"
+                    },
+                    "--badge-color": {
+                        "type": "color"
+                    },
+                    "--badge-padding": {
+                        "type": "input"
+                    },
+                    "--badge-font-size": {
+                        "type": "input"
+                    },
+                    "--badge-font-weight": {
+                        "type": "input"
+                    },
+                    "--badge-border-width": {
+                        "type": "input"
+                    },
+                    "--badge-background-color": {
+                        "type": "color"
+                    },
+                    "--badge-dot-color": {
+                        "type": "color"
+                    },
+                    "--badge-dot-size": {
+                        "type": "input"
+                    },
+                    "--badge-font-family": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-badge content=\"2\">\n</van-badge>\n\n"
+                }
+            },
+            {
+                "id": "f85430d5-a656-42d8-b632-ef8ce118c1af",
+                "name": "van-cascader",
+                "title": "级联选择器",
+                "toPosition": "cascader",
+                "type": [],
+                "cssProperty": {},
+                "preview": {
+                    "template": "\n<van-cascader\n  title=\"请选择\"\n  converter=\"json\"\n  labelField=\"级联选择\"\n  input-align=\"left\"\n></van-cascader>\n\n"
+                }
+            },
+            {
+                "id": "4eaa27b1-e058-45d6-b32a-08d9f1d5e2fe",
+                "name": "van-calendar",
+                "title": "日期选择器",
+                "toPosition": "calendar",
+                "type": [],
+                "cssProperty": {
+                    "--calendar-background-color": {
+                        "type": "color"
+                    },
+                    "--calendar-popup-height": {
+                        "type": "input"
+                    },
+                    "--calendar-header-box-shadow": {
+                        "type": "input"
+                    },
+                    "--calendar-header-title-height": {
+                        "type": "input"
+                    },
+                    "--calendar-header-title-font-size": {
+                        "type": "input"
+                    },
+                    "--calendar-header-subtitle-font-size": {
+                        "type": "input"
+                    },
+                    "--calendar-weekdays-height": {
+                        "type": "input"
+                    },
+                    "--calendar-weekdays-font-size": {
+                        "type": "input"
+                    },
+                    "--calendar-month-title-font-size": {
+                        "type": "input"
+                    },
+                    "--calendar-month-mark-color": {
+                        "type": "input"
+                    },
+                    "--calendar-month-mark-font-size": {
+                        "type": "input"
+                    },
+                    "--calendar-day-height": {
+                        "type": "input"
+                    },
+                    "--calendar-day-font-size": {
+                        "type": "input"
+                    },
+                    "--calendar-range-edge-color": {
+                        "type": "color"
+                    },
+                    "--calendar-range-edge-background-color": {
+                        "type": "color"
+                    },
+                    "--calendar-range-middle-color": {
+                        "type": "color"
+                    },
+                    "--calendar-range-middle-background-opacity": {
+                        "type": "input"
+                    },
+                    "--calendar-selected-day-size": {
+                        "type": "input"
+                    },
+                    "--calendar-selected-day-color": {
+                        "type": "color"
+                    },
+                    "--calendar-info-font-size": {
+                        "type": "input"
+                    },
+                    "--calendar-info-line-height": {
+                        "type": "input"
+                    },
+                    "--calendar-selected-day-background-color": {
+                        "type": "color"
+                    },
+                    "--calendar-day-disabled-color": {
+                        "type": "color"
+                    },
+                    "--calendar-confirm-button-height": {
+                        "type": "input"
+                    },
+                    "--calendar-confirm-button-margin": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-calendar\n  title=\"选择日期\"\n  labelField=\"选择日期\"\n  input-align=\"left\"\n></van-calendar>\n\n"
                 }
             }
         ]
