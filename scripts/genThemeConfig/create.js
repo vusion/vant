@@ -14,6 +14,8 @@ const postcss = require('postcss');
 
 const mk = require('./markdown');
 
+const trans = require('./trans');
+
 const themeComponentsMap = {};
 
 const cssContent = fs.readFileSync(
@@ -65,7 +67,7 @@ _root.nodes.forEach((node) => {
       }
     }
   } else if (node.type === 'decl') {
-    defaultDefault[node.prop] = node.value;
+    defaultDefault[node.prop] = trans(node.value);
     if (!lastComponent) return;
     lastComponent.cssProperty[node.prop] = {
       type: 'input',

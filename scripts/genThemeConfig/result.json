@@ -48,7 +48,7 @@
         "toPosition": "highLevelSetting",
         "items": [
             {
-                "id": "3ea42709-72f2-4913-be12-dd26b4fef431",
+                "id": "02678726-7135-4efc-9023-22b87fb8f78e",
                 "name": "van-collapse",
                 "title": "折叠面板",
                 "toPosition": "collapse",
@@ -80,7 +80,7 @@
                 }
             },
             {
-                "id": "16f34d60-e9e5-4fa3-9da9-dc320262001c",
+                "id": "8b0e3c0d-47c8-4ace-9362-431d48fd97fe",
                 "name": "van-linear-layout",
                 "title": "线性布局",
                 "toPosition": "linear-layout",
@@ -95,7 +95,7 @@
                 }
             },
             {
-                "id": "69f8edcb-e07d-432f-9e82-b4827b6e56ad",
+                "id": "b503de9b-efeb-4b17-8706-befebde7acc3",
                 "name": "van-button",
                 "title": "按钮",
                 "toPosition": "button",
@@ -196,6 +196,36 @@
                     },
                     "--button-disabled-opacity": {
                         "type": "input"
+                    },
+                    "--badge-size": {
+                        "type": "input"
+                    },
+                    "--badge-color": {
+                        "type": "color"
+                    },
+                    "--badge-padding": {
+                        "type": "input"
+                    },
+                    "--badge-font-size": {
+                        "type": "input"
+                    },
+                    "--badge-font-weight": {
+                        "type": "input"
+                    },
+                    "--badge-border-width": {
+                        "type": "input"
+                    },
+                    "--badge-background-color": {
+                        "type": "color"
+                    },
+                    "--badge-dot-color": {
+                        "type": "color"
+                    },
+                    "--badge-dot-size": {
+                        "type": "input"
+                    },
+                    "--badge-font-family": {
+                        "type": "input"
                     }
                 },
                 "preview": {
@@ -203,7 +233,7 @@
                 }
             },
             {
-                "id": "4cecd9cc-bf7a-4e0e-ac59-f483ab7ead55",
+                "id": "c3e1379f-135a-41d2-8d40-71217f9bef0c",
                 "name": "van-text",
                 "title": "文本",
                 "toPosition": "text",
@@ -251,7 +281,7 @@
                 }
             },
             {
-                "id": "b44aeeba-1570-492e-8696-209e294bbbed",
+                "id": "3ff5dde9-c9a4-466d-aaa2-b25c41b7aa85",
                 "name": "van-link",
                 "title": "链接",
                 "toPosition": "link",
