@@ -637,15 +637,15 @@
 @pull-refresh-head-text-color: @gray-6;
 
 // Radio
-@radio-size: 20px;
-@radio-border-color: @gray-5;
-@radio-transition-duration: @animation-duration-fast;
-@radio-label-margin: @padding-xs;
-@radio-label-color: @text-color;
-@radio-checked-icon-color: @blue;
-@radio-disabled-icon-color: @gray-5;
-@radio-disabled-label-color: @gray-5;
-@radio-disabled-background-color: @border-color;
+@radio-size: var(--radio-size);
+@radio-border-color: var(--radio-border-color);
+@radio-transition-duration: var(--radio-transition-duration);
+@radio-label-margin: var(--radio-label-margin);
+@radio-label-color: var(--radio-label-color);
+@radio-checked-icon-color: var(--radio-checked-icon-color);
+@radio-disabled-icon-color: var(--radio-disabled-icon-color);
+@radio-disabled-label-color: var(--radio-disabled-label-color);
+@radio-disabled-background-color: var(--radio-disabled-background-color);
 
 // Rate
 @rate-icon-size: 20px;
@@ -672,33 +672,33 @@
 @share-sheet-cancel-button-background: @white;
 
 // Search
-@search-padding: 10px @padding-sm;
-@search-background-color: @white;
-@search-content-background-color: @gray-1;
-@search-input-height: 34px;
-@search-label-padding: 0 5px;
-@search-label-color: @text-color;
-@search-label-font-size: @font-size-md;
-@search-left-icon-color: @gray-6;
-@search-action-padding: 0 @padding-xs;
-@search-action-text-color: @text-color;
-@search-action-font-size: @font-size-md;
+@search-padding: var(--search-padding);
+@search-background-color: var(--search-background-color);
+@search-content-background-color: var(--search-content-background-color);
+@search-input-height: var(--search-input-height);
+@search-label-padding: var(--search-label-padding);
+@search-label-color: var(--search-label-color);
+@search-label-font-size: var(--search-label-font-size);
+@search-left-icon-color: var(--search-left-icon-color);
+@search-action-padding: var(--search-action-padding);
+@search-action-text-color: var(--search-action-text-color);
+@search-action-font-size: var(--search-action-font-size);
 
 // Sidebar
-@sidebar-width: 80px;
-@sidebar-font-size: @font-size-md;
-@sidebar-line-height: @line-height-md;
-@sidebar-text-color: @text-color;
-@sidebar-disabled-text-color: @gray-5;
-@sidebar-padding: 20px @padding-sm;
-@sidebar-active-color: @active-color;
-@sidebar-background-color: @background-color;
-@sidebar-selected-font-weight: @font-weight-bold;
-@sidebar-selected-text-color: @text-color;
-@sidebar-selected-border-width: 4px;
-@sidebar-selected-border-height: 16px;
-@sidebar-selected-border-color: @red;
-@sidebar-selected-background-color: @white;
+@sidebar-width: var(--sidebar-width);
+@sidebar-font-size: var(--sidebar-font-size);
+@sidebar-line-height: var(--sidebar-line-height);
+@sidebar-text-color: var(--sidebar-text-color);
+@sidebar-disabled-text-color: var(--sidebar-disabled-text-color);
+@sidebar-padding: var(--sidebar-padding);
+@sidebar-active-color: var(--sidebar-active-color);
+@sidebar-background-color: var(--sidebar-background-color);
+@sidebar-selected-font-weight: var(--sidebar-selected-font-weight);
+@sidebar-selected-text-color: var(--sidebar-selected-text-color);
+@sidebar-selected-border-width: var(--sidebar-selected-border-width);
+@sidebar-selected-border-height: var(--sidebar-selected-border-height);
+@sidebar-selected-border-color: var(--sidebar-selected-border-color);
+@sidebar-selected-background-color: var(--sidebar-selected-background-color);
 
 // Skeleton
 @skeleton-row-height: 16px;
@@ -721,39 +721,41 @@
 @slider-button-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 
 // Step
-@step-text-color: @gray-6;
-@step-active-color: @green;
-@step-process-text-color: @text-color;
-@step-font-size: @font-size-md;
-@step-line-color: @border-color;
-@step-finish-line-color: @green;
-@step-finish-text-color: @text-color;
-@step-icon-size: 12px;
-@step-circle-size: 5px;
-@step-circle-color: @gray-6;
-@step-horizontal-title-font-size: @font-size-sm;
+@step-text-color: var(--step-text-color);
+@step-active-color: var(--step-active-color);
+@step-process-text-color: var(--step-process-text-color);
+@step-font-size: var(--step-font-size);
+@step-line-color: var(--step-line-color);
+@step-finish-line-color: var(--step-finish-line-color);
+@step-finish-text-color: var(--step-finish-text-color);
+@step-icon-size: var(--step-icon-size);
+@step-circle-size: var(--step-circle-size);
+@step-circle-color: var(--step-circle-color);
+@step-horizontal-title-font-size: var(--step-horizontal-title-font-size);
 
 // Steps
-@steps-background-color: @white;
+@steps-background-color: var(--steps-background-color);
 
 // Sticky
 @sticky-z-index: 99;
 
 // Stepper
-@stepper-active-color: #e8e8e8;
-@stepper-background-color: @active-color;
-@stepper-button-icon-color: @text-color;
-@stepper-button-disabled-color: @background-color;
-@stepper-button-disabled-icon-color: @gray-5;
-@stepper-button-round-theme-color: @blue;
-@stepper-input-width: 32px;
-@stepper-input-height: 28px;
-@stepper-input-font-size: @font-size-md;
-@stepper-input-line-height: normal;
-@stepper-input-text-color: @text-color;
-@stepper-input-disabled-text-color: @gray-5;
-@stepper-input-disabled-background-color: @active-color;
-@stepper-border-radius: @border-radius-md;
+@stepper-active-color: var(--stepper-active-color);
+@stepper-background-color: var(--stepper-background-color);
+@stepper-button-icon-color: var(--stepper-button-icon-color);
+@stepper-button-disabled-color: var(--stepper-button-disabled-color);
+@stepper-button-disabled-icon-color: var(--stepper-button-disabled-icon-color);
+@stepper-button-round-theme-color: var(--stepper-button-round-theme-color);
+@stepper-input-width: var(--stepper-input-width);
+@stepper-input-height: var(--stepper-input-height);
+@stepper-input-font-size: var(--stepper-input-font-size);
+@stepper-input-line-height: var(--stepper-input-line-height);
+@stepper-input-text-color: var(--stepper-input-text-color);
+@stepper-input-disabled-text-color: var(--stepper-input-disabled-text-color);
+@stepper-input-disabled-background-color: var(
+  --stepper-input-disabled-background-color
+);
+@stepper-border-radius: var(--stepper-border-radius);
 
 // SubmitBar
 @submit-bar-height: 50px;
@@ -777,26 +779,30 @@
 @submit-bar-price-font-family: @price-integer-font-family;
 
 // Swipe
-@swipe-indicator-size: 6px;
-@swipe-indicator-size-new: 12px;
-@swipe-indicator-margin: @padding-sm;
-@swipe-indicator-active-opacity: 1;
-@swipe-indicator-inactive-opacity: 0.3;
-@swipe-indicator-active-background-color: @blue;
-@swipe-indicator-inactive-background-color: @border-color;
+@swipe-indicator-size: var(--swipe-indicator-size);
+@swipe-indicator-size-new: var(--swipe-indicator-size-new);
+@swipe-indicator-margin: var(--swipe-indicator-margin);
+@swipe-indicator-active-opacity: var(--swipe-indicator-active-opacity);
+@swipe-indicator-inactive-opacity: var(--swipe-indicator-inactive-opacity);
+@swipe-indicator-active-background-color: var(
+  --swipe-indicator-active-background-color
+);
+@swipe-indicator-inactive-background-color: var(
+  --swipe-indicator-inactive-background-color
+);
 
 // Switch
-@switch-size: 27px;
-@switch-width: 1.75em;
-@switch-height: 1em;
-@switch-node-size: 1em;
-@switch-node-background-color: @white;
+@switch-size: var(--switch-size);
+@switch-width: var(--switch-width);
+@switch-height: var(--switch-height);
+@switch-node-size: var(--switch-node-size);
+@switch-node-background-color: var(--switch-node-background-color);
 @switch-node-box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05),
   0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
-@switch-background-color: @gray-2;
-@switch-on-background-color: @blue;
-@switch-transition-duration: @animation-duration-base;
-@switch-disabled-opacity: @disabled-opacity;
+@switch-background-color: var(--switch-background-color);
+@switch-on-background-color: var(--switch-on-background-color);
+@switch-transition-duration: var(--switch-transition-duration);
+@switch-disabled-opacity: var(--switch-disabled-opacity);
 
 // SwitchCell
 @switch-cell-padding-top: calc(@cell-vertical-padding - 1px);

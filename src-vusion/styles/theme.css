@@ -313,4 +313,97 @@
   --popup-close-icon-active-color: #969799; /* @type color */
   --popup-close-icon-margin: 16px;
   --popup-close-icon-z-index: 1;
+
+  /* @component van-radio */
+  --radio-size: 20px;
+  --radio-border-color: #c8c9cc; /* @type color */
+  --radio-transition-duration: 0.2s;
+  --radio-label-margin: var(--padding-xs);
+  --radio-label-color: var(--component-text-color); /* @type color */
+  --radio-checked-icon-color: var(--brand-primary); /* @type color */
+  --radio-disabled-icon-color: #c8c9cc; /* @type color */
+  --radio-disabled-label-color: #c8c9cc; /* @type color */
+  --radio-disabled-background-color: var(--border-color); /* @type color */
+
+  /* @component van-search */
+  --search-padding: 10px var(--padding-sm);
+  --search-background-color: #fff; /* @type color */
+  --search-content-background-color: #f7f8fa; /* @type color */
+  --search-input-height: 34px;
+  --search-label-padding: 0 5px;
+  --search-label-color: var(--component-text-color); /* @type color */
+  --search-label-font-size: var(--font-size-md);
+  --search-left-icon-color: #969799; /* @type color */
+  --search-action-padding: 0 var(--padding-xs);
+  --search-action-text-color: var(--component-text-color); /* @type color */
+  --search-action-font-size: var(-font-size-md);
+
+  /* @component van-sidebar */
+  --sidebar-width: 80px;
+  --sidebar-font-size: var(--font-size-md);
+  --sidebar-line-height: var(--line-height-md);
+  --sidebar-text-color: var(--component-text-color); /* @type color */
+  --sidebar-disabled-text-color: #c8c9cc; /* @type color */
+  --sidebar-padding: 20px var(--padding-sm);
+  --sidebar-active-color: var(--component-active-color); /* @type color */
+  --sidebar-background-color: var(--component-background-color); /* @type color */
+  --sidebar-selected-font-weight: var(--font-weight-bold);
+  --sidebar-selected-text-color: var(--component-text-color); /* @type color */
+  --sidebar-selected-border-width: 4px;
+  --sidebar-selected-border-height: 16px;
+  --sidebar-selected-border-color: var(--brand-primary); /* @type color */
+  --sidebar-selected-background-color: #fff; /* @type color */
+
+  /* @component van-steps */
+  --steps-background-color: #fff; /* @type color */
+  --step-text-color: #969799; /* @type color */
+  --step-active-color: var(--brand-success); /* @type color */
+  --step-process-text-color: var(--component-text-color); /* @type color */
+  --step-font-size: var(--font-size-md);
+  --step-line-color: var(--border-color); /* @type color */
+  --step-finish-line-color: var(--brand-success); /* @type color */
+  --step-finish-text-color: var(--component-text-color); /* @type color */
+  --step-icon-size: 12px;
+  --step-circle-size: 5px;
+  --step-circle-color: #969799; /* @type color */
+  --step-horizontal-title-font-size: var(--font-size-sm);
+
+  /* @component van-stepper-new */
+  --stepper-active-color: #e8e8e8; /* @type color */
+  --stepper-background-color: var(--component-active-color); /* @type color */
+  --stepper-button-icon-color: var(--component-text-color);  /* @type color */
+  --stepper-button-disabled-color: var(--component-background-color); /* @type color */
+  --stepper-button-disabled-icon-color: #c8c9cc; /* @type color */
+  --stepper-button-round-theme-color: var(--brand-primary); /* @type color */
+  --stepper-input-width: 32px;
+  --stepper-input-height: 28px;
+  --stepper-input-font-size: var(--font-size-md);
+  --stepper-input-line-height: normal;
+  --stepper-input-text-color: var(--component-text-color); /* @type color */
+  --stepper-input-disabled-text-color: #c8c9cc; /* @type color */
+  --stepper-input-disabled-background-color: var(--component-active-color); /* @type color */
+  --stepper-border-radius: var(--border-radius-md);
+
+  /* @component van-swipe */
+  --swipe-indicator-size: 6px;
+  --swipe-indicator-size-new: 12px;
+  --swipe-indicator-margin: var(--padding-sm);
+  --swipe-indicator-active-opacity: 1;
+  --swipe-indicator-inactive-opacity: 0.3;
+  --swipe-indicator-active-background-color: var(--brand-primary); /* @type color */
+  --swipe-indicator-inactive-background-color: var(--border-color); /* @type color */
+
+  /* @component van-switch */
+  --switch-size: 27px;
+  --switch-width: 1.75em;
+  --switch-height: 1em;
+  --switch-node-size: 1em;
+  --switch-node-background-color: #fff; /* @type color */
+  --switch-node-box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05),
+    0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+  --switch-background-color: #f2f3f5; /* @type color */
+  --switch-on-background-color: var(--brand-primary); /* @type color */
+  --switch-transition-duration: 0.3s;
+  --switch-disabled-opacity: var(--component-disabled-opacity);
+
 }
