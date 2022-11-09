@@ -358,7 +358,7 @@
 
 // Divider
 @divider-margin: var(--divider-margin);
-@divider-text-color:var (--divider-text-color);
+@divider-text-color: var(--divider-text-color);
 @divider-font-size: var(--divider-font-size);
 @divider-line-height: var(--divider-line-height);
 @divider-border-color: var(--divider-border-color);
@@ -813,16 +813,18 @@
 // Tabbar
 @tabbar-height: 50px;
 @tabbar-z-index: 1;
-@tabbar-background-color: @white;
+@tabbar-background-color: var(--tabbar-background-color);
 
 // TabbarItem
-@tabbar-item-font-size: @font-size-sm;
-@tabbar-item-text-color: @gray-7;
-@tabbar-item-active-color: @blue;
-@tabbar-item-active-background-color: @tabbar-background-color;
-@tabbar-item-line-height: 1;
-@tabbar-item-icon-size: 22px;
-@tabbar-item-margin-bottom: 4px;
+@tabbar-item-font-size: var(--tabbar-item-font-size);
+@tabbar-item-text-color: var(--tabbar-item-text-color);
+@tabbar-item-active-color: var(--tabbar-item-active-color);
+@tabbar-item-active-background-color: var(
+  --tabbar-item-active-background-color
+);
+@tabbar-item-line-height: var(--tabbar-item-line-height);
+@tabbar-item-icon-size: var(--tabbar-item-icon-size);
+@tabbar-item-margin-bottom: var(--tabbar-item-margin-bottom);
 
 // Tab
 @tab-text-color: @gray-7;

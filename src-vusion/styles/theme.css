@@ -406,4 +406,16 @@
   --switch-transition-duration: 0.3s;
   --switch-disabled-opacity: var(--component-disabled-opacity);
 
+  /* @component van-tabbar */
+  --tabbar-height: 50px;
+  --tabbar-z-index: 1;
+  --tabbar-background-color: #fff; /* @type color */
+  --tabbar-item-font-size: var(--font-size-sm);
+  --tabbar-item-text-color: #646566; /* @type color */
+  --tabbar-item-active-color: var(--brand-primary); /* @type color */
+  --tabbar-item-active-background-color: var(--tabbar-background-color); /* @type color */
+  --tabbar-item-line-height: 1;
+  --tabbar-item-icon-size: 22px;
+  --tabbar-item-margin-bottom: 4px;
+
 }
