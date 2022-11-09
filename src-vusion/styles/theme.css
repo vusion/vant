@@ -184,5 +184,34 @@
   --cascader-tab-color: var(--component-text-color); /* @type color */
   --cascader-unselected-tab-color: #969799; /* @type color */
 
+  /* @component van-cell */
+  --cell-font-size: var(--font-size-md);
+  --cell-line-height: 24px;
+  --cell-vertical-padding: 16px;
+  --cell-horizontal-padding: 16px;
+  --cell-text-color: var(--component-text-color); /* @type color */
+  --cell-background-color: #fff; /* @type color */
+  --cell-border-color: var(--border-color); /* @type color */
+  --cell-active-color: var(--component-active-color); /* @type color */
+  --cell-required-color: var(--brand-primary); /* @type color */
+  --cell-label-color: #969799; /* @type color */
+  --cell-label-font-size: var(--font-size-sm);
+  --cell-label-line-height: var(--line-height-sm);
+  --cell-label-margin-top: var(--padding-base);
+  --cell-value-color: #969799; /* @type color */
+  --cell-icon-size: 16px;
+  --cell-right-icon-color: #969799; /* @type color */
+  --cell-large-vertical-padding: var(--padding-sm);
+  --cell-large-title-font-size: var(--font-size-lg);
+  --cell-large-label-font-size: var(--font-size-md);
 
+  /* @component van-cell-group */
+  --cell-group-background-color: #fff; /* @type color */
+  --cell-group-title-color: #969799; /* @type color */
+  --cell-group-title-padding: var(--padding-md) var(var(--padding-md)) var(--padding-xs);
+  --cell-group-title-font-size: var(--font-size-md);
+  --cell-group-title-line-height: 16px;
+  --cell-group-inset-padding: 0 var(--padding-md);
+  --cell-group-inset-border-radius: var(--border-radius-lg);
+  --cell-group-inset-title-padding: var(--padding-md) var(--padding-md) var(--padding-xs) var(--padding-xl);
 }
