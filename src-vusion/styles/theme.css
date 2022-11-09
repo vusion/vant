@@ -214,4 +214,103 @@
   --cell-group-inset-padding: 0 var(--padding-md);
   --cell-group-inset-border-radius: var(--border-radius-lg);
   --cell-group-inset-title-padding: var(--padding-md) var(--padding-md) var(--padding-xs) var(--padding-xl);
+
+  /* @component van-checkbox */
+  --checkbox-size: 20px;
+  --checkbox-border-color: #c8c9cc; /* @type color */
+  --checkbox-transition-duration: 0.2s;
+  --checkbox-label-margin: var(--padding-xs);
+  --checkbox-label-color: var(--component-text-color);
+  --checkbox-checked-icon-color: var(--brand-primary);
+  --checkbox-disabled-icon-color: #c8c9cc;
+  --checkbox-disabled-label-color: #c8c9cc;
+  --checkbox-disabled-background-color: var(--border-color);
+
+  /* @component van-collapse */
+  --collapse-item-transition-duration: 0.3s;
+  --collapse-item-content-padding: var(--padding-sm) var(--@padding-md);
+  --collapse-item-content-font-size: var(--font-size-md);
+  --collapse-item-content-line-height: 1.5;
+  --collapse-item-content-text-color: #969799;  /* @type color */
+  --collapse-item-content-background-color: #fff; /* @type color */
+  --collapse-item-title-disabled-color: #c8c9cc;  /* @type color */
+
+  /* @component van-dialog */
+  --dialog-width: 320px;
+  --dialog-small-screen-width: 90%;
+  --dialog-font-size: var(--font-size-lg);
+  --dialog-transition: 0.3s;
+  --dialog-border-radius: 16px;
+  --dialog-background-color: #fff; /* @type color */
+  --dialog-header-font-weight: var(--font-weight-bold);
+  --dialog-header-line-height: 24px;
+  --dialog-header-padding-top: 26px;
+  --dialog-header-isolated-padding: var(--padding-lg) 0;
+  --dialog-message-padding: var(--padding-lg);
+  --dialog-message-font-size: var(--font-size-md);
+  --dialog-message-line-height: var(--line-height-md);
+  --dialog-message-max-height: 60vh;
+  --dialog-has-title-message-text-color: #646566; /* @type color */
+  --dialog-has-title-message-padding-top: var(--padding-xs);
+  --dialog-button-height: 48px;
+  --dialog-round-button-height: 36px;
+  --dialog-confirm-button-text-color: var(--brand-primary); /* @type color */
+
+  /* @component van-divider */
+  --divider-margin: var(--padding-md) 0;
+  --divider-text-color: #969799; /* @type color */
+  --divider-font-size: var(--font-size-md);
+  --divider-line-height: 24px;
+  --divider-border-color: var(--border-color); /* @type color */
+  --divider-content-padding: var(--padding-md);
+  --divider-content-left-width: 10%;
+  --divider-content-right-width: 10%;
+
+  /* @component van-dropdown-menu */
+  --dropdown-menu-height: 48px;
+  --dropdown-menu-background-color: #fff; /* @type color */
+  --dropdown-menu-box-shadow: 0 2px 12px rgba(100,101,102,.12);
+  --dropdown-menu-title-font-size: 15px;
+  --dropdown-menu-title-text-color: var(--component-text-color); /* @type color */
+  --dropdown-menu-title-active-text-color: var(--brand-primary); /* @type color */
+  --dropdown-menu-title-disabled-text-color: #969799; /* @type color */
+  --dropdown-menu-title-padding: 0 var(--padding-xs);
+  --dropdown-menu-title-line-height: var(--line-height-lg);
+  --dropdown-menu-option-active-color: var(--brand-primary); /* @type color */
+  --dropdown-menu-content-max-height: 80%;
+  --dropdown-item-z-index: 10;
+
+  /* @component van-image */
+  --image-placeholder-text-color: #969799; /* @type color */
+  --image-placeholder-font-size: var(--font-size-md);
+  --image-placeholder-background-color: var(--component-background-color); /* @type color */
+  --image-loading-icon-size: 32px;
+  --image-loading-icon-color: #dcdee0;  /* @type color */
+  --image-error-icon-size: 32px;
+  --image-error-icon-color: #dcdee0; /* @type color */
+
+  /* @component van-picker */
+  --picker-background-color: #fff; /* @type color */
+  --picker-toolbar-height: 44px;
+  --picker-title-font-size: var(--font-size-lg);
+  --picker-title-line-height: var(--line-height-md);
+  --picker-action-padding: 0 var(--padding-md);
+  --picker-action-font-size: var(--font-size-md);
+  --picker-confirm-action-color: var(--component-text-link-color); /* @type color */
+  --picker-cancel-action-color: #969799; /* @type color */
+  --picker-option-font-size: var(--font-size-lg);
+  --picker-option-text-color: #000; /* @type color */
+  --picker-option-disabled-opacity: 0.3;
+  --picker-loading-icon-color: var(--brand-primary); /* @type color */
+  --picker-loading-mask-color: rgba(255, 255, 255, 0.9);
+
+  /* @component van-popup */
+  --popup-background-color: #fff; /* @type color */
+  --popup-transition: transform 0.3s;
+  --popup-round-border-radius: 16px;
+  --popup-close-icon-size: 22px;
+  --popup-close-icon-color: #c8c9cc; /* @type color */
+  --popup-close-icon-active-color: #969799; /* @type color */
+  --popup-close-icon-margin: 16px;
+  --popup-close-icon-z-index: 1;
 }

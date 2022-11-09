@@ -249,15 +249,15 @@
 @cell-group-inset-title-padding: var(--cell-group-inset-title-padding);
 
 // Checkbox
-@checkbox-size: 20px;
-@checkbox-border-color: @gray-5;
-@checkbox-transition-duration: @animation-duration-fast;
-@checkbox-label-margin: @padding-xs;
-@checkbox-label-color: @text-color;
-@checkbox-checked-icon-color: @blue;
-@checkbox-disabled-icon-color: @gray-5;
-@checkbox-disabled-label-color: @gray-5;
-@checkbox-disabled-background-color: @border-color;
+@checkbox-size: var(--checkbox-size);
+@checkbox-border-color: var(--checkbox-border-color);
+@checkbox-transition-duration: var(--checkbox-transition-duration);
+@checkbox-label-margin: var(--checkbox-label-margin);
+@checkbox-label-color: var(--checkbox-label-color);
+@checkbox-checked-icon-color: var(--checkbox-checked-icon--color);
+@checkbox-disabled-icon-color: var(--checkbox-disabled-icon-color);
+@checkbox-disabled-label-color: var(--checkbox-disabled-label-color);
+@checkbox-disabled-background-color: var(--checkbox-disabled-background-color);
 
 // Circle
 @circle-size: 100px;
@@ -332,49 +332,57 @@
 @coupon-list-empty-tip-line-height: @line-height-md;
 
 // Dialog
-@dialog-width: 320px;
-@dialog-small-screen-width: 90%;
-@dialog-font-size: @font-size-lg;
-@dialog-transition: @animation-duration-base;
-@dialog-border-radius: 16px;
-@dialog-background-color: @white;
-@dialog-header-font-weight: @font-weight-bold;
-@dialog-header-line-height: 24px;
-@dialog-header-padding-top: 26px;
-@dialog-header-isolated-padding: @padding-lg 0;
-@dialog-message-padding: @padding-lg;
-@dialog-message-font-size: @font-size-md;
-@dialog-message-line-height: @line-height-md;
-@dialog-message-max-height: 60vh;
-@dialog-has-title-message-text-color: @gray-7;
-@dialog-has-title-message-padding-top: @padding-xs;
-@dialog-button-height: 48px;
-@dialog-round-button-height: 36px;
-@dialog-confirm-button-text-color: @blue;
+@dialog-width: var(--dialog-width);
+@dialog-small-screen-width: var(--dialog-small-screen-width);
+@dialog-font-size: var(--dialog-font-size);
+@dialog-transition: var(--dialog-transition);
+@dialog-border-radius: var(--dialog-border-radius);
+@dialog-background-color: var(--dialog-background-color);
+@dialog-header-font-weight: var(--dialog-header-font-weight);
+@dialog-header-line-height: var(--dialog-header-line-height);
+@dialog-header-padding-top: var(--dialog-header-padding-top);
+@dialog-header-isolated-padding: var(--dialog-header-isolated-padding);
+@dialog-message-padding: var(--dialog-message-padding);
+@dialog-message-font-size: var(--dialog-message-font-size);
+@dialog-message-line-height: var(--dialog-message-line-height);
+@dialog-message-max-height: var(--dialog-message-max-height);
+@dialog-has-title-message-text-color: var(
+  --dialog-has-title-message-text-color
+);
+@dialog-has-title-message-padding-top: var(
+  --dialog-has-title-message-padding-top
+);
+@dialog-button-height: var(--dialog-button-height);
+@dialog-round-button-height: var(--dialog-round-button-height);
+@dialog-confirm-button-text-color: var(--dialog-confirm-button-text-color);
 
 // Divider
-@divider-margin: @padding-md 0;
-@divider-text-color: @gray-6;
-@divider-font-size: @font-size-md;
-@divider-line-height: 24px;
-@divider-border-color: @border-color;
-@divider-content-padding: @padding-md;
-@divider-content-left-width: 10%;
-@divider-content-right-width: 10%;
+@divider-margin: var(--divider-margin);
+@divider-text-color:var (--divider-text-color);
+@divider-font-size: var(--divider-font-size);
+@divider-line-height: var(--divider-line-height);
+@divider-border-color: var(--divider-border-color);
+@divider-content-padding: var(--divider-content-padding);
+@divider-content-left-width: var(--divider-content-left-width);
+@divider-content-right-width: var(--divider-content-right-width);
 
 // DropdownMenu
-@dropdown-menu-height: 48px;
-@dropdown-menu-background-color: @white;
-@dropdown-menu-box-shadow: 0 2px 12px fade(@gray-7, 12);
-@dropdown-menu-title-font-size: 15px;
-@dropdown-menu-title-text-color: @text-color;
-@dropdown-menu-title-active-text-color: @blue;
-@dropdown-menu-title-disabled-text-color: @gray-6;
-@dropdown-menu-title-padding: 0 @padding-xs;
-@dropdown-menu-title-line-height: @line-height-lg;
-@dropdown-menu-option-active-color: @blue;
-@dropdown-menu-content-max-height: 80%;
-@dropdown-item-z-index: 10;
+@dropdown-menu-height: var(--dropdown-menu-height);
+@dropdown-menu-background-color: var(--dropdown-menu-background-color);
+@dropdown-menu-box-shadow: var(--dropdown-menu-box-shadow);
+@dropdown-menu-title-font-size: var(--dropdown-menu-title-font-size);
+@dropdown-menu-title-text-color: var(--dropdown-menu-title-text-color);
+@dropdown-menu-title-active-text-color: var(
+  --dropdown-menu-title-active-text-color
+);
+@dropdown-menu-title-disabled-text-color: var(
+  --dropdown-menu-title-disabled-text-color
+);
+@dropdown-menu-title-padding: var(--dropdown-menu-title-padding);
+@dropdown-menu-title-line-height: var(--dropdown-menu-title-line-height);
+@dropdown-menu-option-active-color: var(--dropdown-menu-option-active-color);
+@dropdown-menu-content-max-height: var(--dropdown-menu-content-max-height);
+@dropdown-item-z-index: var(--dropdown-item-z-index);
 
 // Empty
 @empty-padding: @padding-xl 0;
@@ -458,13 +466,13 @@
 @info-font-family: -apple-system-font, Helvetica Neue, Arial, sans-serif;
 
 // Image
-@image-placeholder-text-color: @gray-6;
-@image-placeholder-font-size: @font-size-md;
-@image-placeholder-background-color: @background-color;
-@image-loading-icon-size: 32px;
-@image-loading-icon-color: @gray-4;
-@image-error-icon-size: 32px;
-@image-error-icon-color: @gray-4;
+@image-placeholder-text-color: var(--image-placeholder-text-color);
+@image-placeholder-font-size: var(--image-placeholder-font-size);
+@image-placeholder-background-color: var(--image-placeholder-background-color);
+@image-loading-icon-size: var(--image-loading-icon-size);
+@image-loading-icon-color: var(--image-loading-icon-color);
+@image-error-icon-size: var(--image-error-icon-size);
+@image-error-icon-color: var(--image-error-icon-color);
 
 // ImagePreview
 @image-preview-index-text-color: @white;
@@ -574,19 +582,19 @@
 @password-input-dot-color: @black;
 
 // Picker
-@picker-background-color: @white;
-@picker-toolbar-height: 44px;
-@picker-title-font-size: @font-size-lg;
-@picker-title-line-height: @line-height-md;
-@picker-action-padding: 0 @padding-md;
-@picker-action-font-size: @font-size-md;
-@picker-confirm-action-color: @text-link-color;
-@picker-cancel-action-color: @gray-6;
-@picker-option-font-size: @font-size-lg;
-@picker-option-text-color: @black;
-@picker-option-disabled-opacity: 0.3;
-@picker-loading-icon-color: @blue;
-@picker-loading-mask-color: rgba(255, 255, 255, 0.9);
+@picker-background-color: var(--picker-background-color);
+@picker-toolbar-height: var(--picker-toolbar-height);
+@picker-title-font-size: var(--picker-title-font-size);
+@picker-title-line-height: var(--picker-title-line-height);
+@picker-action-padding: var(--picker-action-padding);
+@picker-action-font-size: var(--picker-action-font-size);
+@picker-confirm-action-color: var(--picker-confirm-action-color);
+@picker-cancel-action-color: var(--picker-cancel-action-color);
+@picker-option-font-size: var(--picker-option-font-size);
+@picker-option-text-color: var(--picker-option-text-color);
+@picker-option-disabled-opacity: var(--picker-option-disabled-opacity);
+@picker-loading-icon-color: var(--picker-loading-icon-color);
+@picker-loading-mask-color: var(--picker-loading-mask-color);
 
 // Popover
 @popover-arrow-size: 6px;
@@ -604,14 +612,14 @@
 @popover-dark-action-disabled-text-color: @gray-6;
 
 // Popup
-@popup-background-color: @white;
-@popup-transition: transform @animation-duration-base;
-@popup-round-border-radius: 16px;
-@popup-close-icon-size: 22px;
-@popup-close-icon-color: @gray-5;
-@popup-close-icon-active-color: @gray-6;
-@popup-close-icon-margin: 16px;
-@popup-close-icon-z-index: 1;
+@popup-background-color: var(--popup-background-color);
+@popup-transition: var(--popup-transition);
+@popup-round-border-radius: var(--popup-round-border-radius);
+@popup-close-icon-size: var(--popup-close-icon-size);
+@popup-close-icon-color: var(--popup-close-icon-color);
+@popup-close-icon-active-color: var(--popup-close-icon-active-color);
+@popup-close-icon-margin: var(--popup-close-icon-margin);
+@popup-close-icon-z-index: var(--popup-close-icon-z-index);
 
 // Progress
 @progress-height: 4px;
@@ -791,10 +799,10 @@
 @switch-disabled-opacity: @disabled-opacity;
 
 // SwitchCell
-@switch-cell-padding-top: @cell-vertical-padding - 1px;
-@switch-cell-padding-bottom: @cell-vertical-padding - 1px;
-@switch-cell-large-padding-top: @cell-large-vertical-padding - 1px;
-@switch-cell-large-padding-bottom: @cell-large-vertical-padding - 1px;
+@switch-cell-padding-top: calc(@cell-vertical-padding - 1px);
+@switch-cell-padding-bottom: calc(@cell-vertical-padding - 1px);
+@switch-cell-large-padding-top: calc(@cell-large-vertical-padding - 1px);
+@switch-cell-large-padding-bottom: calc(@cell-large-vertical-padding - 1px);
 
 // Tabbar
 @tabbar-height: 50px;
