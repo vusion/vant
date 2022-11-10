@@ -184,7 +184,15 @@
   --cascader-tab-color: var(--component-text-color); /* @type color */
   --cascader-unselected-tab-color: #969799; /* @type color */
 
-  /* @component van-cell */
+  /* @component van-cell-group */
+  --cell-group-background-color: #fff; /* @type color */
+  --cell-group-title-color: #969799; /* @type color */
+  --cell-group-title-padding: var(--padding-md) var(var(--padding-md)) var(--padding-xs);
+  --cell-group-title-font-size: var(--font-size-md);
+  --cell-group-title-line-height: 16px;
+  --cell-group-inset-padding: 0 var(--padding-md);
+  --cell-group-inset-border-radius: var(--border-radius-lg);
+  --cell-group-inset-title-padding: var(--padding-md) var(--padding-md) var(--padding-xs) var(--padding-xl);
   --cell-font-size: var(--font-size-md);
   --cell-line-height: 24px;
   --cell-vertical-padding: 16px;
@@ -204,16 +212,6 @@
   --cell-large-vertical-padding: var(--padding-sm);
   --cell-large-title-font-size: var(--font-size-lg);
   --cell-large-label-font-size: var(--font-size-md);
-
-  /* @component van-cell-group */
-  --cell-group-background-color: #fff; /* @type color */
-  --cell-group-title-color: #969799; /* @type color */
-  --cell-group-title-padding: var(--padding-md) var(var(--padding-md)) var(--padding-xs);
-  --cell-group-title-font-size: var(--font-size-md);
-  --cell-group-title-line-height: 16px;
-  --cell-group-inset-padding: 0 var(--padding-md);
-  --cell-group-inset-border-radius: var(--border-radius-lg);
-  --cell-group-inset-title-padding: var(--padding-md) var(--padding-md) var(--padding-xs) var(--padding-xl);
 
   /* @component van-checkbox */
   --checkbox-size: 20px;
@@ -417,5 +415,45 @@
   --tabbar-item-line-height: 1;
   --tabbar-item-icon-size: 22px;
   --tabbar-item-margin-bottom: 4px;
+
+  /* @component van-tabs */
+  --tab-text-color: #646566; /* @type color */
+  --tab-active-text-color: var(--component-text-color);  /* @type color */
+  --tab-disabled-text-color: #c8c9cc; /* @type color */
+  --tab-font-size: var(--font-size-md);
+  --tab-line-height: var(--line-height-md);
+  --tabs-default-color: var(--brand-primary); /* @type color */
+  --tabs-line-height: 44px;
+  --tabs-card-height: 30px;
+  --tabs-nav-background-color: #fff; /* @type color */
+  --tabs-bottom-bar-width: 40px;
+  --tabs-bottom-bar-height: 3px;
+  --tabs-bottom-bar-color: var(--tabs-default-color); /* @type color */
+
+  /* @component van-uploader */
+  --uploader-size: 80px;
+  --uploader-icon-size: 24px;
+  --uploader-icon-color: #dcdee0; /* @type color */
+  --uploader-text-color: #969799; /* @type color */
+  --uploader-text-font-size: var(--font-size-sm);
+  --uploader-upload-background-color: #f7f8fa; /* @type color */
+  --uploader-upload-active-color: var(--component-active-color); /* @type color */
+  --uploader-delete-color: #fff; /* @type color */
+  --uploader-delete-icon-size: 14px;
+  --uploader-delete-background-color: rgba(0, 0, 0, 0.7); /* @type color */
+  --uploader-file-background-color: var(--component-background-color); /* @type color */
+  --uploader-file-icon-size: 20px;
+  --uploader-file-icon-color: #646566; /* @type color */
+  --uploader-file-name-padding: 0 var(--padding-base);
+  --uploader-file-name-margin-top: var(--padding-xs);
+  --uploader-file-name-font-size: var(--font-size-sm);
+  --uploader-file-name-text-color: #646566; /* @type color */
+  --uploader-mask-background-color: rgba(51, 51, 51, 0.88);
+  --uploader-mask-icon-size: 22px;
+  --uploader-mask-message-font-size: var(--font-size-sm);
+  --uploader-mask-message-line-height: var(--line-height-xs);
+  --uploader-loading-icon-size: 22px;
+  --uploader-loading-icon-color: #fff; /* @type color */
+  --uploader-disabled-opacity: var(--component-disabled-opacity);
 
 }
