@@ -13,9 +13,7 @@ module.exports = [
         cssProperty: {},
         preview: {
           template:
-            '<div style="height:100%;background: #F7F8FA;">\n        <u-text :class="[$style.areaTitle, $style.base]">主题颜色预览</u-text><br>\n        <div :class="[$style.sectionTitle, $style.base]" style="margin: 16px 0;">以按钮组件为例</div>\n        <u-button :class="$style.btn" style="background: var(--brand-primary);">主色</u-button>\n        <u-button :class="$style.btn" style="background: var(--brand-success);">成功</u-button>\n        <u-button :class="$style.btn" style="background: var(--brand-warning);">告警</u-button>\n        <u-button :class="$style.btn" style="background: var(--brand-error);">错误</u-button>\n        <u-button :class="$style.btn" style="background: var(--brand-disabled);color:#999999;">禁用</u-button>\n    </div>',
-          style:
-            '.base {\n    font-family: PingFang SC;\n    font-style: normal;\n    font-weight: normal;\n}\n\n.areaTitle {\n    width: 108px;\n    height: 18px;\n    font-size: 18px;\n    line-height: 18px;\n    color: #333333;\n}\n\n.sectionTitle {\n    width: 320px;\n    height: 24px;\n    font-size: 14px;\n    line-height: 24px;\n    color: #666666;\n}\n\n.btn {\n    width: 100px;\n    height: 32px;\n    margin-right: 10px;\n    margin-bottom: 12px;\n    mix-blend-mode: normal;\n    border-radius: 4px;\n    color: white;\n    font-family: PingFang SC;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 14px;\n    border: 0;\n    box-shadow: none;\n}',
+            '<div style="height:100%;background: #F7F8FA;">\n<u-text :class="[$style.areaTitle, $style.base]">主题颜色预览</u-text><br>\n        <div :class="[$style.sectionTitle, $style.base]" style="margin: 16px 0;">以按钮组件为例</div>\n<van-button style="margin: 10px;" type="info">确定</van-button><van-button style="margin: 10px;" type="primary">确定</van-button><van-button style="margin: 10px;" type="danger">确定</van-button><van-button type="warning" style="margin: 10px;">确定</van-button><van-button disabled type="default" style="background-color: var(--brand-disabled);margin: 10px;">确定</van-button>\n',
         },
       },
       {

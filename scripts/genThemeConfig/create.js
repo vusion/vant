@@ -115,6 +115,8 @@ components.forEach((comItem) => {
   }
 });
 
+defaultDefault['--base-font-family'] = 'sans-serif';
+
 fs.writeJsonSync(resultPath, defaultJson, {
   spaces: 4,
 });

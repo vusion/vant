@@ -12,8 +12,7 @@
                 "type": [],
                 "cssProperty": {},
                 "preview": {
-                    "template": "<div style=\"height:100%;background: #F7F8FA;\">\n        <u-text :class=\"[$style.areaTitle, $style.base]\">主题颜色预览</u-text><br>\n        <div :class=\"[$style.sectionTitle, $style.base]\" style=\"margin: 16px 0;\">以按钮组件为例</div>\n        <u-button :class=\"$style.btn\" style=\"background: var(--brand-primary);\">主色</u-button>\n        <u-button :class=\"$style.btn\" style=\"background: var(--brand-success);\">成功</u-button>\n        <u-button :class=\"$style.btn\" style=\"background: var(--brand-warning);\">告警</u-button>\n        <u-button :class=\"$style.btn\" style=\"background: var(--brand-error);\">错误</u-button>\n        <u-button :class=\"$style.btn\" style=\"background: var(--brand-disabled);color:#999999;\">禁用</u-button>\n    </div>",
-                    "style": ".base {\n    font-family: PingFang SC;\n    font-style: normal;\n    font-weight: normal;\n}\n\n.areaTitle {\n    width: 108px;\n    height: 18px;\n    font-size: 18px;\n    line-height: 18px;\n    color: #333333;\n}\n\n.sectionTitle {\n    width: 320px;\n    height: 24px;\n    font-size: 14px;\n    line-height: 24px;\n    color: #666666;\n}\n\n.btn {\n    width: 100px;\n    height: 32px;\n    margin-right: 10px;\n    margin-bottom: 12px;\n    mix-blend-mode: normal;\n    border-radius: 4px;\n    color: white;\n    font-family: PingFang SC;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 14px;\n    border: 0;\n    box-shadow: none;\n}"
+                    "template": "<div style=\"height:100%;background: #F7F8FA;\">\n<u-text :class=\"[$style.areaTitle, $style.base]\">主题颜色预览</u-text><br>\n        <div :class=\"[$style.sectionTitle, $style.base]\" style=\"margin: 16px 0;\">以按钮组件为例</div>\n<van-button style=\"margin: 10px;\" type=\"info\">确定</van-button><van-button style=\"margin: 10px;\" type=\"primary\">确定</van-button><van-button style=\"margin: 10px;\" type=\"danger\">确定</van-button><van-button type=\"warning\" style=\"margin: 10px;\">确定</van-button><van-button disabled type=\"default\" style=\"background-color: var(--brand-disabled);margin: 10px;\">确定</van-button>\n"
                 }
             },
             {
@@ -48,12 +47,51 @@
         "toPosition": "highLevelSetting",
         "items": [
             {
-                "id": "7b313651-0533-4c67-960a-596014e2537e",
+                "id": "9e0279b7-264f-4a83-bd5f-fb3c668f80b6",
+                "name": "van-popup",
+                "title": "弹出层",
+                "toPosition": "popup",
+                "type": [],
+                "cssProperty": {
+                    "--popup-background-color": {
+                        "type": "color"
+                    },
+                    "--popup-transition": {
+                        "type": "input"
+                    },
+                    "--popup-round-border-radius": {
+                        "type": "input"
+                    },
+                    "--popup-close-icon-size": {
+                        "type": "input"
+                    },
+                    "--popup-close-icon-color": {
+                        "type": "color"
+                    },
+                    "--popup-close-icon-active-color": {
+                        "type": "color"
+                    },
+                    "--popup-close-icon-margin": {
+                        "type": "input"
+                    },
+                    "--popup-close-icon-z-index": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-popup position=\"bottom\" safe-area-inset-bottom evn=\"picker\"><div vusion-slot-name=\"default\" style=\"min-height: 200px;width: 100vw;\" :vusion-disabled-cut=\"true\"></div></van-popup>\n\n"
+                }
+            },
+            {
+                "id": "173af916-f8fb-4d35-aefb-0abbbc0d4e0e",
                 "name": "van-collapse",
                 "title": "折叠面板",
                 "toPosition": "collapse",
                 "type": [],
                 "cssProperty": {
+                    "--collapse-item-transition-duration": {
+                        "type": "input"
+                    },
                     "--collapse-item-content-padding": {
                         "type": "input"
                     },
@@ -64,15 +102,13 @@
                         "type": "input"
                     },
                     "--collapse-item-content-text-color": {
-                        "type": "color",
-                        "desc": "字体颜色"
+                        "type": "color"
                     },
                     "--collapse-item-content-background-color": {
                         "type": "color"
                     },
                     "--collapse-item-title-disabled-color": {
-                        "type": "color",
-                        "desc": "标题禁用颜色"
+                        "type": "color"
                     }
                 },
                 "preview": {
@@ -80,7 +116,7 @@
                 }
             },
             {
-                "id": "208ac617-4b8a-4c02-a9c0-df54b501c916",
+                "id": "e21d7404-7419-413e-88f4-0d5b4eea6039",
                 "name": "van-linear-layout",
                 "title": "线性布局",
                 "toPosition": "linear-layout",
@@ -95,7 +131,280 @@
                 }
             },
             {
-                "id": "36de32f0-b99b-49e5-a0d3-89a8e7eee7c5",
+                "id": "452d1cff-91d4-423a-b0bc-1075bb66d3b7",
+                "name": "van-divider",
+                "title": "分割线",
+                "toPosition": "divider",
+                "type": [],
+                "cssProperty": {
+                    "--divider-margin": {
+                        "type": "input"
+                    },
+                    "--divider-text-color": {
+                        "type": "color"
+                    },
+                    "--divider-font-size": {
+                        "type": "input"
+                    },
+                    "--divider-line-height": {
+                        "type": "input"
+                    },
+                    "--divider-border-color": {
+                        "type": "color"
+                    },
+                    "--divider-content-padding": {
+                        "type": "input"
+                    },
+                    "--divider-content-left-width": {
+                        "type": "input"
+                    },
+                    "--divider-content-right-width": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-divider title=\"文本\" dashed=\"a\"></van-divider>\n\n"
+                }
+            },
+            {
+                "id": "7e37d495-c406-42a1-b51a-5036a67050d6",
+                "name": "van-cell-group",
+                "title": "单元格",
+                "toPosition": "cell-group",
+                "type": [],
+                "cssProperty": {
+                    "--cell-group-background-color": {
+                        "type": "color"
+                    },
+                    "--cell-group-title-color": {
+                        "type": "color"
+                    },
+                    "--cell-group-title-padding": {
+                        "type": "input"
+                    },
+                    "--cell-group-title-font-size": {
+                        "type": "input"
+                    },
+                    "--cell-group-title-line-height": {
+                        "type": "input"
+                    },
+                    "--cell-group-inset-padding": {
+                        "type": "input"
+                    },
+                    "--cell-group-inset-border-radius": {
+                        "type": "input"
+                    },
+                    "--cell-group-inset-title-padding": {
+                        "type": "input"
+                    },
+                    "--cell-font-size": {
+                        "type": "input"
+                    },
+                    "--cell-line-height": {
+                        "type": "input"
+                    },
+                    "--cell-vertical-padding": {
+                        "type": "input"
+                    },
+                    "--cell-horizontal-padding": {
+                        "type": "input"
+                    },
+                    "--cell-text-color": {
+                        "type": "color"
+                    },
+                    "--cell-background-color": {
+                        "type": "color"
+                    },
+                    "--cell-border-color": {
+                        "type": "color"
+                    },
+                    "--cell-active-color": {
+                        "type": "color"
+                    },
+                    "--cell-required-color": {
+                        "type": "color"
+                    },
+                    "--cell-label-color": {
+                        "type": "color"
+                    },
+                    "--cell-label-font-size": {
+                        "type": "input"
+                    },
+                    "--cell-label-line-height": {
+                        "type": "input"
+                    },
+                    "--cell-label-margin-top": {
+                        "type": "input"
+                    },
+                    "--cell-value-color": {
+                        "type": "color"
+                    },
+                    "--cell-icon-size": {
+                        "type": "input"
+                    },
+                    "--cell-right-icon-color": {
+                        "type": "color"
+                    },
+                    "--cell-large-vertical-padding": {
+                        "type": "input"
+                    },
+                    "--cell-large-title-font-size": {
+                        "type": "input"
+                    },
+                    "--cell-large-label-font-size": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-cell-group>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    <template>\n      右侧文本\n    </template>\n  </van-cell>\n</van-cell-group>\n\n"
+                }
+            },
+            {
+                "id": "61c80ea2-46a9-4031-b78c-a3ed9d70f27f",
+                "name": "van-dropdown-menu",
+                "title": "下拉菜单",
+                "toPosition": "dropdown-menu",
+                "type": [],
+                "cssProperty": {
+                    "--dropdown-menu-height": {
+                        "type": "input"
+                    },
+                    "--dropdown-menu-background-color": {
+                        "type": "color"
+                    },
+                    "--dropdown-menu-box-shadow": {
+                        "type": "input"
+                    },
+                    "--dropdown-menu-title-font-size": {
+                        "type": "input"
+                    },
+                    "--dropdown-menu-title-text-color": {
+                        "type": "color"
+                    },
+                    "--dropdown-menu-title-active-text-color": {
+                        "type": "color"
+                    },
+                    "--dropdown-menu-title-disabled-text-color": {
+                        "type": "color"
+                    },
+                    "--dropdown-menu-title-padding": {
+                        "type": "input"
+                    },
+                    "--dropdown-menu-title-line-height": {
+                        "type": "input"
+                    },
+                    "--dropdown-menu-option-active-color": {
+                        "type": "color"
+                    },
+                    "--dropdown-menu-content-max-height": {
+                        "type": "input"
+                    },
+                    "--dropdown-item-z-index": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-dropdown-menu>\n  <van-dropdown-item title=\"标题\">\n    <van-dropdown-item-son clickable :isLink=\"false\" notitle title=\"标题1\"></van-dropdown-item-son>\n    <van-dropdown-item-son clickable :isLink=\"false\" notitle title=\"标题2\"></van-dropdown-item-son>\n    <van-dropdown-item-son clickable :isLink=\"false\" notitle title=\"标题3\"></van-dropdown-item-son>\n  </van-dropdown-item>\n  <van-dropdown-item title=\"标题\">\n    <van-dropdown-item-son clickable :isLink=\"false\" notitle title=\"标题1\"></van-dropdown-item-son>\n    <van-dropdown-item-son clickable :isLink=\"false\" notitle title=\"标题2\"></van-dropdown-item-son>\n    <van-dropdown-item-son clickable :isLink=\"false\" notitle title=\"标题3\"></van-dropdown-item-son>\n  </van-dropdown-item>\n</van-dropdown-menu>\n\n"
+                }
+            },
+            {
+                "id": "68a3e4e9-73bb-45b6-b30d-00a83c20b59e",
+                "name": "van-sidebar",
+                "title": "侧边导航",
+                "toPosition": "sidebar",
+                "type": [],
+                "cssProperty": {
+                    "--sidebar-width": {
+                        "type": "input"
+                    },
+                    "--sidebar-font-size": {
+                        "type": "input"
+                    },
+                    "--sidebar-line-height": {
+                        "type": "input"
+                    },
+                    "--sidebar-text-color": {
+                        "type": "color"
+                    },
+                    "--sidebar-disabled-text-color": {
+                        "type": "color"
+                    },
+                    "--sidebar-padding": {
+                        "type": "input"
+                    },
+                    "--sidebar-active-color": {
+                        "type": "color"
+                    },
+                    "--sidebar-background-color": {
+                        "type": "color"
+                    },
+                    "--sidebar-selected-font-weight": {
+                        "type": "input"
+                    },
+                    "--sidebar-selected-text-color": {
+                        "type": "color"
+                    },
+                    "--sidebar-selected-border-width": {
+                        "type": "input"
+                    },
+                    "--sidebar-selected-border-height": {
+                        "type": "input"
+                    },
+                    "--sidebar-selected-border-color": {
+                        "type": "color"
+                    },
+                    "--sidebar-selected-background-color": {
+                        "type": "color"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-sidebar>\n  <van-sidebar-item title=\"标签名称1\"></van-sidebar-item>\n  <van-sidebar-item title=\"标签名称2\"></van-sidebar-item>\n  <van-sidebar-item title=\"标签名称3\"></van-sidebar-item>\n</van-sidebar>\n\n"
+                }
+            },
+            {
+                "id": "d862733c-58a0-48b1-bade-e3fe00f96d68",
+                "name": "van-tabbar",
+                "title": "标签栏",
+                "toPosition": "tabbar",
+                "type": [],
+                "cssProperty": {
+                    "--tabbar-height": {
+                        "type": "input"
+                    },
+                    "--tabbar-z-index": {
+                        "type": "input"
+                    },
+                    "--tabbar-background-color": {
+                        "type": "color"
+                    },
+                    "--tabbar-item-font-size": {
+                        "type": "input"
+                    },
+                    "--tabbar-item-text-color": {
+                        "type": "color"
+                    },
+                    "--tabbar-item-active-color": {
+                        "type": "color"
+                    },
+                    "--tabbar-item-active-background-color": {
+                        "type": "color"
+                    },
+                    "--tabbar-item-line-height": {
+                        "type": "input"
+                    },
+                    "--tabbar-item-icon-size": {
+                        "type": "input"
+                    },
+                    "--tabbar-item-margin-bottom": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-tabbar>\n  <van-tabbar-item icon=\"frontpage\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n  <van-tabbar-item icon=\"contact\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n  <van-tabbar-item icon=\"location\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n  <van-tabbar-item icon=\"avatar\" style=\"font-size:24px\" ><van-text text=\"标签\"></van-text></van-tabbar-item>\n</van-tabbar>\n\n"
+                }
+            },
+            {
+                "id": "be7926ac-86b3-44af-af09-f61f2a6b29fb",
                 "name": "van-button",
                 "title": "按钮",
                 "toPosition": "button",
@@ -203,7 +512,121 @@
                 }
             },
             {
-                "id": "b49004f6-80bb-42a1-b2c3-8882a5d49232",
+                "id": "f46a9801-0489-4da5-8dd9-3261a3aac60c",
+                "name": "van-image",
+                "title": "图片",
+                "toPosition": "image",
+                "type": [],
+                "cssProperty": {
+                    "--image-placeholder-text-color": {
+                        "type": "color"
+                    },
+                    "--image-placeholder-font-size": {
+                        "type": "input"
+                    },
+                    "--image-placeholder-background-color": {
+                        "type": "color"
+                    },
+                    "--image-loading-icon-size": {
+                        "type": "input"
+                    },
+                    "--image-loading-icon-color": {
+                        "type": "color"
+                    },
+                    "--image-error-icon-size": {
+                        "type": "input"
+                    },
+                    "--image-error-icon-color": {
+                        "type": "color"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-image src=\"http://ceph.lcap.hatest.163yun.com/lcap-test-static/icon/1.png\" fit=\"contain\"></van-image>\n\n"
+                }
+            },
+            {
+                "id": "7acbbdc8-b0b6-4b77-9130-938519f4fac3",
+                "name": "van-swipe",
+                "title": "轮播",
+                "toPosition": "swipe",
+                "type": [],
+                "cssProperty": {
+                    "--swipe-indicator-size": {
+                        "type": "input"
+                    },
+                    "--swipe-indicator-size-new": {
+                        "type": "input"
+                    },
+                    "--swipe-indicator-margin": {
+                        "type": "input"
+                    },
+                    "--swipe-indicator-active-opacity": {
+                        "type": "input"
+                    },
+                    "--swipe-indicator-inactive-opacity": {
+                        "type": "input"
+                    },
+                    "--swipe-indicator-active-background-color": {
+                        "type": "color"
+                    },
+                    "--swipe-indicator-inactive-background-color": {
+                        "type": "color"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-swipe class=\"my-swipe\" :autoplay=\"3000\" indicator-color=\"white\" style=\"height:200px;\">\n  <van-swipe-item vusion-slot-name=\"default\"><van-image style=\"width:100%;height:100%\" src=\"https://static-vusion.163yun.com/assets/cloud-ui/1.jpg\"></van-image></van-swipe-item>\n  <van-swipe-item vusion-slot-name=\"default\"><van-image style=\"width:100%;height:100%\" src=\"https://static-vusion.163yun.com/assets/cloud-ui/2.jpg\"></van-image></van-swipe-item>\n  <van-swipe-item vusion-slot-name=\"default\"><van-image style=\"width:100%;height:100%\" src=\"https://static-vusion.163yun.com/assets/cloud-ui/3.jpg\"></van-image></van-swipe-item>\n  <van-swipe-item vusion-slot-name=\"default\"><van-image style=\"width:100%;height:100%\" src=\"https://static-vusion.163yun.com/assets/cloud-ui/4.jpg\"></van-image></van-swipe-item>\n</van-swipe>\n\n"
+                }
+            },
+            {
+                "id": "d9827f08-09c6-486e-855f-66b1e10389eb",
+                "name": "van-tabs",
+                "title": "选项卡",
+                "toPosition": "tabs",
+                "type": [],
+                "cssProperty": {
+                    "--tab-text-color": {
+                        "type": "color"
+                    },
+                    "--tab-active-text-color": {
+                        "type": "color"
+                    },
+                    "--tab-disabled-text-color": {
+                        "type": "color"
+                    },
+                    "--tab-font-size": {
+                        "type": "input"
+                    },
+                    "--tab-line-height": {
+                        "type": "input"
+                    },
+                    "--tabs-default-color": {
+                        "type": "color"
+                    },
+                    "--tabs-line-height": {
+                        "type": "input"
+                    },
+                    "--tabs-card-height": {
+                        "type": "input"
+                    },
+                    "--tabs-nav-background-color": {
+                        "type": "color"
+                    },
+                    "--tabs-bottom-bar-width": {
+                        "type": "input"
+                    },
+                    "--tabs-bottom-bar-height": {
+                        "type": "input"
+                    },
+                    "--tabs-bottom-bar-color": {
+                        "type": "color"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-tabs type=\"line\">\n  <van-tab title=\"标签 1\">内容 1</van-tab>\n  <van-tab title=\"标签 2\">内容 2</van-tab>\n  <van-tab title=\"标签 3\">内容 3</van-tab>\n</van-tabs>\n\n"
+                }
+            },
+            {
+                "id": "bb640d0b-aa82-4337-a176-40103d1eb553",
                 "name": "van-text",
                 "title": "文本",
                 "toPosition": "text",
@@ -251,7 +674,7 @@
                 }
             },
             {
-                "id": "52cac054-0f42-4282-919f-0f47e4a6cc14",
+                "id": "e429f750-7d1f-4f73-8943-9eb9a037da58",
                 "name": "van-link",
                 "title": "链接",
                 "toPosition": "link",
@@ -299,7 +722,7 @@
                 }
             },
             {
-                "id": "01d17cde-03e8-4023-9c6c-1ccc8f9f30a6",
+                "id": "25e7722a-3d3f-4dfd-80e7-73356e187eec",
                 "name": "van-badge",
                 "title": "徽标",
                 "toPosition": "badge",
@@ -341,18 +764,328 @@
                 }
             },
             {
-                "id": "f85430d5-a656-42d8-b632-ef8ce118c1af",
+                "id": "208fd1b1-8580-4475-b7a3-7c6663beaca1",
+                "name": "van-steps",
+                "title": "步骤条",
+                "toPosition": "steps",
+                "type": [],
+                "cssProperty": {
+                    "--steps-background-color": {
+                        "type": "color"
+                    },
+                    "--step-text-color": {
+                        "type": "color"
+                    },
+                    "--step-active-color": {
+                        "type": "color"
+                    },
+                    "--step-process-text-color": {
+                        "type": "color"
+                    },
+                    "--step-font-size": {
+                        "type": "input"
+                    },
+                    "--step-line-color": {
+                        "type": "color"
+                    },
+                    "--step-finish-line-color": {
+                        "type": "color"
+                    },
+                    "--step-finish-text-color": {
+                        "type": "color"
+                    },
+                    "--step-icon-size": {
+                        "type": "input"
+                    },
+                    "--step-circle-size": {
+                        "type": "input"
+                    },
+                    "--step-circle-color": {
+                        "type": "color"
+                    },
+                    "--step-horizontal-title-font-size": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-steps>\n  <van-step>买家下单</van-step>\n  <van-step>商家接单</van-step>\n  <van-step>买家提货</van-step>\n  <van-step>交易完成</van-step>\n</van-steps>\n\n"
+                }
+            },
+            {
+                "id": "ae9ae3c4-57e3-4244-9232-f525f0802a69",
+                "name": "van-search",
+                "title": "搜索框",
+                "toPosition": "search",
+                "type": [],
+                "cssProperty": {
+                    "--search-padding": {
+                        "type": "input"
+                    },
+                    "--search-background-color": {
+                        "type": "color"
+                    },
+                    "--search-content-background-color": {
+                        "type": "color"
+                    },
+                    "--search-input-height": {
+                        "type": "input"
+                    },
+                    "--search-label-padding": {
+                        "type": "input"
+                    },
+                    "--search-label-color": {
+                        "type": "color"
+                    },
+                    "--search-label-font-size": {
+                        "type": "input"
+                    },
+                    "--search-left-icon-color": {
+                        "type": "color"
+                    },
+                    "--search-action-padding": {
+                        "type": "input"
+                    },
+                    "--search-action-text-color": {
+                        "type": "color"
+                    },
+                    "--search-action-font-size": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-search placeholder=\"请输入搜索关键词\" clearable show-action actiontext=\"搜索\" cleartrigger=\"focus\" iconalign=\"left\" input-align=\"left\"/>\n\n"
+                }
+            },
+            {
+                "id": "e6ad6d42-ae00-4619-b538-ad4679d23082",
+                "name": "van-switch",
+                "title": "开关",
+                "toPosition": "switch",
+                "type": [],
+                "cssProperty": {
+                    "--switch-size": {
+                        "type": "input"
+                    },
+                    "--switch-width": {
+                        "type": "input"
+                    },
+                    "--switch-height": {
+                        "type": "input"
+                    },
+                    "--switch-node-size": {
+                        "type": "input"
+                    },
+                    "--switch-node-background-color": {
+                        "type": "color"
+                    },
+                    "--switch-node-box-shadow": {
+                        "type": "input"
+                    },
+                    "--switch-background-color": {
+                        "type": "color"
+                    },
+                    "--switch-on-background-color": {
+                        "type": "color"
+                    },
+                    "--switch-transition-duration": {
+                        "type": "input"
+                    },
+                    "--switch-disabled-opacity": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-switch :value=\"false\"></van-switch>\n\n"
+                }
+            },
+            {
+                "id": "f2123bde-1ad8-459d-84cf-6a4e0bab12ce",
+                "name": "van-stepper-new",
+                "title": "数字输入",
+                "toPosition": "stepper-new",
+                "type": [],
+                "cssProperty": {
+                    "--stepper-active-color": {
+                        "type": "color"
+                    },
+                    "--stepper-background-color": {
+                        "type": "color"
+                    },
+                    "--stepper-button-icon-color": {
+                        "type": "color"
+                    },
+                    "--stepper-button-disabled-color": {
+                        "type": "color"
+                    },
+                    "--stepper-button-disabled-icon-color": {
+                        "type": "color"
+                    },
+                    "--stepper-button-round-theme-color": {
+                        "type": "color"
+                    },
+                    "--stepper-input-width": {
+                        "type": "input"
+                    },
+                    "--stepper-input-height": {
+                        "type": "input"
+                    },
+                    "--stepper-input-font-size": {
+                        "type": "input"
+                    },
+                    "--stepper-input-line-height": {
+                        "type": "input"
+                    },
+                    "--stepper-input-text-color": {
+                        "type": "color"
+                    },
+                    "--stepper-input-disabled-text-color": {
+                        "type": "color"
+                    },
+                    "--stepper-input-disabled-background-color": {
+                        "type": "color"
+                    },
+                    "--stepper-border-radius": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-stepper-new :showPlus=\"false\" :showMinus=\"false\" placeholder=\"请输入\" align=\"left\"></van-stepper-new>\n\n"
+                }
+            },
+            {
+                "id": "5d195caa-5392-4627-8a26-d1e6fb020536",
+                "name": "van-uploader",
+                "title": "文件上传",
+                "toPosition": "uploader",
+                "type": [],
+                "cssProperty": {
+                    "--uploader-size": {
+                        "type": "input"
+                    },
+                    "--uploader-icon-size": {
+                        "type": "input"
+                    },
+                    "--uploader-icon-color": {
+                        "type": "color"
+                    },
+                    "--uploader-text-color": {
+                        "type": "color"
+                    },
+                    "--uploader-text-font-size": {
+                        "type": "input"
+                    },
+                    "--uploader-upload-background-color": {
+                        "type": "color"
+                    },
+                    "--uploader-upload-active-color": {
+                        "type": "color"
+                    },
+                    "--uploader-delete-color": {
+                        "type": "color"
+                    },
+                    "--uploader-delete-icon-size": {
+                        "type": "input"
+                    },
+                    "--uploader-delete-background-color": {
+                        "type": "color"
+                    },
+                    "--uploader-file-background-color": {
+                        "type": "color"
+                    },
+                    "--uploader-file-icon-size": {
+                        "type": "input"
+                    },
+                    "--uploader-file-icon-color": {
+                        "type": "color"
+                    },
+                    "--uploader-file-name-padding": {
+                        "type": "input"
+                    },
+                    "--uploader-file-name-margin-top": {
+                        "type": "input"
+                    },
+                    "--uploader-file-name-font-size": {
+                        "type": "input"
+                    },
+                    "--uploader-file-name-text-color": {
+                        "type": "color"
+                    },
+                    "--uploader-mask-background-color": {
+                        "type": "input"
+                    },
+                    "--uploader-mask-icon-size": {
+                        "type": "input"
+                    },
+                    "--uploader-mask-message-font-size": {
+                        "type": "input"
+                    },
+                    "--uploader-mask-message-line-height": {
+                        "type": "input"
+                    },
+                    "--uploader-loading-icon-size": {
+                        "type": "input"
+                    },
+                    "--uploader-loading-icon-color": {
+                        "type": "color"
+                    },
+                    "--uploader-disabled-opacity": {
+                        "type": "input"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-uploader converter=\"json\" url=\"/upload\"></van-uploader>\n\n"
+                }
+            },
+            {
+                "id": "f90885a1-60dd-4a1f-82ef-d1361283982b",
                 "name": "van-cascader",
                 "title": "级联选择器",
                 "toPosition": "cascader",
                 "type": [],
-                "cssProperty": {},
+                "cssProperty": {
+                    "--cascader-header-height": {
+                        "type": "input"
+                    },
+                    "--cascader-title-font-size": {
+                        "type": "input"
+                    },
+                    "--cascader-title-line-height": {
+                        "type": "input"
+                    },
+                    "--cascader-close-icon-size": {
+                        "type": "input"
+                    },
+                    "--cascader-close-icon-color": {
+                        "type": "color"
+                    },
+                    "--cascader-close-icon-active-color": {
+                        "type": "color"
+                    },
+                    "--cascader-selected-icon-size": {
+                        "type": "input"
+                    },
+                    "--cascader-tabs-height": {
+                        "type": "input"
+                    },
+                    "--cascader-active-color": {
+                        "type": "color"
+                    },
+                    "--cascader-options-height": {
+                        "type": "input"
+                    },
+                    "--cascader-tab-color": {
+                        "type": "color"
+                    },
+                    "--cascader-unselected-tab-color": {
+                        "type": "color"
+                    }
+                },
                 "preview": {
                     "template": "\n<van-cascader\n  title=\"请选择\"\n  converter=\"json\"\n  labelField=\"级联选择\"\n  input-align=\"left\"\n></van-cascader>\n\n"
                 }
             },
             {
-                "id": "4eaa27b1-e058-45d6-b32a-08d9f1d5e2fe",
+                "id": "e0e782db-1ebd-4fe6-9969-e80e32647ab8",
                 "name": "van-calendar",
                 "title": "日期选择器",
                 "toPosition": "calendar",
@@ -436,6 +1169,75 @@
                 },
                 "preview": {
                     "template": "\n<van-calendar\n  title=\"选择日期\"\n  labelField=\"选择日期\"\n  input-align=\"left\"\n></van-calendar>\n\n"
+                }
+            },
+            {
+                "id": "3ee11f89-804a-437e-8354-fe6de13634f2",
+                "name": "van-dialog",
+                "title": "弹出框",
+                "toPosition": "dialog",
+                "type": [],
+                "cssProperty": {
+                    "--dialog-width": {
+                        "type": "input"
+                    },
+                    "--dialog-small-screen-width": {
+                        "type": "input"
+                    },
+                    "--dialog-font-size": {
+                        "type": "input"
+                    },
+                    "--dialog-transition": {
+                        "type": "input"
+                    },
+                    "--dialog-border-radius": {
+                        "type": "input"
+                    },
+                    "--dialog-background-color": {
+                        "type": "color"
+                    },
+                    "--dialog-header-font-weight": {
+                        "type": "input"
+                    },
+                    "--dialog-header-line-height": {
+                        "type": "input"
+                    },
+                    "--dialog-header-padding-top": {
+                        "type": "input"
+                    },
+                    "--dialog-header-isolated-padding": {
+                        "type": "input"
+                    },
+                    "--dialog-message-padding": {
+                        "type": "input"
+                    },
+                    "--dialog-message-font-size": {
+                        "type": "input"
+                    },
+                    "--dialog-message-line-height": {
+                        "type": "input"
+                    },
+                    "--dialog-message-max-height": {
+                        "type": "input"
+                    },
+                    "--dialog-has-title-message-text-color": {
+                        "type": "color"
+                    },
+                    "--dialog-has-title-message-padding-top": {
+                        "type": "input"
+                    },
+                    "--dialog-button-height": {
+                        "type": "input"
+                    },
+                    "--dialog-round-button-height": {
+                        "type": "input"
+                    },
+                    "--dialog-confirm-button-text-color": {
+                        "type": "color"
+                    }
+                },
+                "preview": {
+                    "template": "\n<van-dialog safe-area-inset-bottom>\n  <div vusion-slot-name=\"default\" vusion-disabled-copy style=\"min-height: 100px;\" :vusion-disabled-cut=\"true\" env=\"alone\">内容</div>\n  <template #footer>\n    <van-button\n      :vusion-disabled-cut=\"true\"\n      size=\"large\"\n      class=\"van-button van-button--default van-button--large van-dialog__cancel\"\n      text=\"取消\"\n    ></van-button>\n    <van-button\n      :vusion-disabled-cut=\"true\"\n      size=\"large\"\n      class=\"van-button van-button--default van-button--large van-dialog__confirm van-hairline--left\"\n      text=\"确认\"\n    ></van-button>\n  </template>\n</van-dialog>\n\n"
                 }
             }
         ]
