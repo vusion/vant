@@ -160,7 +160,7 @@ module.exports = {
           // eslint-disable-next-line global-require
           require('postcss-px-to-viewport')({
             viewportWidth: 375,
-            propList: ['*', '!font-size', '!line-height'],
+            propList: ['*'],
             // propList: ["*"],
             selectorBlackList: ['nov', /^m401$/, /^m404$/],
           }),

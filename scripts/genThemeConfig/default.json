@@ -1,4 +1,5 @@
 {
+    "--space-base": "0.04267vw",
     "--brand-primary": "#337EFF",
     "--brand-success": "#26BD71",
     "--brand-problem": "#FFB21A",

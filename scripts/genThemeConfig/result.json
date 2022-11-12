@@ -79,7 +79,8 @@
                     }
                 },
                 "preview": {
-                    "template": "\n<van-popup position=\"bottom\" safe-area-inset-bottom evn=\"picker\"><div vusion-slot-name=\"default\" style=\"min-height: 200px;width: 100vw;\" :vusion-disabled-cut=\"true\"></div></van-popup>\n\n"
+                    "template": "\n<div><van-button @click=\"onOpen\">Popup</van-button>\n\n<van-popup :value.sync=\"showpopup\" :close-on-click-overlay=\"true\" position=\"bottom\" safe-area-inset-bottom evn=\"picker\"><div vusion-slot-name=\"default\" style=\"min-height: 200px;width: 100vw;\" :vusion-disabled-cut=\"true\"></div></van-popup></div>\n",
+                    "script":"export default {\n    data() {\n        return {\n            showpopup: false,\n        };\n    },\n    methods: {\n        onOpen() {\n            this.showpopup = true;\n        },\n    },\n};"
                 }
             },
             {
@@ -122,12 +123,14 @@
                 "toPosition": "linear-layout",
                 "type": [],
                 "cssProperty": {
-                    "--linear-layout-background": {
-                        "type": "input"
-                    }
+                  "--space-base": {
+                    "type": "input",
+                    "desc": "布局内各元素之间的外间距, 如：1px"
+                  }
                 },
                 "preview": {
-                    "template": "\n<van-linear-layout direction=\"horizontal\">\n</van-linear-layout>\n\n"
+                    "template": "<div>\n        <van-linear-layout direction=\"vertical\" :class=\"$style.linearLayout\"\n            style=\"margin-bottom:16px;line-height: 0;\">\n            <u-block style=\"width: 100%;\"></u-block>\n            <div style=\"width: 100%;\"></div>\n        </van-linear-layout>\n        <van-linear-layout direction=\"horizontal\" :class=\"$style.linearLayout\"\n            style=\"margin-bottom:16px;line-height: 0;\">\n            <u-block style=\"display:inline-block;width: 104px;\"></u-block>\n            <u-block style=\"display:inline-block;width: 104px;\"></u-block>\n            <u-block style=\"display:inline-block;width: 104px;\"></u-block>\n        </van-linear-layout>\n        <van-linear-layout direction=\"horizontal\" :class=\"$style.linearLayout\"\n            justify=\"space-between\"\n            style=\"margin-bottom:8px;\">\n            <u-block style=\"display:inline-block;width: 104px;\"></u-block>\n            <u-block style=\"display:inline-block;width: 104px;\"></u-block>\n        </van-linear-layout>\n    </div>",
+                    "style": ".linearLayout [class^=\"u-block\"] {\n    height: 48px;\n    background: #337EFF !important;\n    opacity: 0.5;\n}"
                 }
             },
             {
@@ -446,47 +449,47 @@
                         "type": "input"
                     },
                     "--button-default-background-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-default-border-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-primary-color": {
                         "type": "color",
                         "desc": "错误文本字体颜色,如：#223325"
                     },
                     "--button-primary-background-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-primary-border-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-info-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-info-background-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-info-border-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-danger-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-danger-background-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-danger-border-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-warning-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-warning-background-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-warning-border-color": {
-                        "type": "input"
+                        "type": "color"
                     },
                     "--button-border-width": {
                         "type": "input"
