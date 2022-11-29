@@ -1,17 +1,23 @@
-import VConsole from 'vconsole';
+// import VConsole from 'vconsole';
 // const axios = require('axios');
 
-const vconsole = async () => {
-  if (window && /defaulttenant\.dev\.qa-ci\.lcap\.group|vconsolee/.test(window.location.href)) {
-    window.vconsolee = new VConsole();
-  }
-}
+// const vconsole = async () => {
+//   if (window && /defaulttenant\.dev\.qa-ci\.lcap\.group|vconsolee/.test(window.location.href)) {
+//     window.vconsolee = new VConsole();
+//   }
+// }
+
+import * as utils from 'cloud-ui.vusion/src/utils';
+
+import Vue from 'vue';
+
+import '../src/style/base.less';
 
 const addCloudUI = async () => {
   if (!(/h5/.test(location.href) && /designer/.test(location.href))) {
     return null
   }
-  const STATIC_URL = window.top.appInfo.STATIC_URL;
+  const {STATIC_URL} = window.top.appInfo;
 
   function loadScript(parentEl, src) {
     return new Promise((resolve) => {
@@ -45,7 +51,7 @@ const addCloudUI = async () => {
     }
   });
   if (res.data && res.data.code === 200) {
-    const result = res.data.result;
+    const {result} = res.data;
     const cloudui = result.rows.find((item) => item.symbol === 'cloud-ui.vusion');
     const cloudUiVersion = `${cloudui.curMajorVersion}.${cloudui.curMinorVersion}`;
     const ui = {
@@ -67,17 +73,12 @@ const addCloudUI = async () => {
 
 
 export * from './components';
-
-import * as utils from 'cloud-ui.vusion/src/utils';
 export { utils };
 
 export { install } from '@vusion/utils';
-
-import Vue from 'vue';
 Vue.prototype.$env = Vue.prototype.$env || {};
 Vue.prototype.$env.VUE_APP_DESIGNER = String(process.env.VUE_APP_DESIGNER) === 'true';
 
-import '../src/style/base.less';
 const requires = require.context('../src/', true, /\.less$/);
 requires.keys().map((key) => requires(key));
 // requires.keys().forEach((key) => {
