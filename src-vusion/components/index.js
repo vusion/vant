@@ -26,7 +26,7 @@ export { default as VanCol } from '../../src/col';
 // export { default as VanDialog } from '../../src/dialog';
 // export { default as VanNotify } from '../../src/notify';
 
-// export { default as VanDivider } from '../../src/divider';
+export { default as VanDivider } from '../../src/divider';
 // export { default as VanDropdownItem } from '../../src/dropdown-item';
 // export { default as VanDropdownMenu } from '../../src/dropdown-menu';
 // export { default as VanEmpty } from '../../src/empty';
@@ -42,7 +42,7 @@ export { default as VanForm } from '../../src/form';
 // export { default as VanGridItem } from '../../src/grid-item';
 export { default as VanIcon } from '../../src/icon';
 export { default as VanImage } from '../../src/image';
-// export { default as VanImagePreview } from '../../src/image-preview';
+export { default as VanImagePreview } from '../../src/image-preview';
 // export { default as VanIndexAnchor } from '../../src/index-anchor';
 // export { default as VanIndexBar } from '../../src/index-bar';
 // export { default as VanInfo } from '../../src/info';

@@ -3,18 +3,25 @@ import { createNamespace } from '../utils';
 import { emit, inherit } from '../utils/functional';
 import { BORDER_SURROUND } from '../utils/constant';
 import { routeProps, RouteProps, functionalRoute } from '../utils/router';
-
+import encodeUrl from '../utils/encodeUrl';
 // Components
-import Icon from '../icon';
+import Iconv from '../icon';
 import Loading, { LoadingType } from '../loading';
 
 // Types
 import { CreateElement, RenderContext } from 'vue/types';
 import { ScopedSlot, DefaultSlots } from '../utils/types';
 
-export type ButtonType = 'default' | 'primary' | 'info' | 'warning' | 'danger';
+export type ButtonType =
+  | 'primary'
+  | 'primary_secondary'
+  | 'default'
+  | 'danger'
+  | 'primary_secondary'
+  | 'warning'
+  | 'primary_secondary';
 
-export type ButtonSize = 'large' | 'normal' | 'small' | 'mini';
+export type ButtonSize = 'large' | 'middle' | 'normal' | 'small' | 'mini';
 
 export type ButtonProps = RouteProps & {
   tag: keyof HTMLElementTagNameMap | string;
@@ -36,15 +43,15 @@ export type ButtonProps = RouteProps & {
   loadingType?: LoadingType;
   loadingText?: string;
   iconPosition: 'left' | 'right';
-  href: String,
-  target: { type: String, default: '_self' },
-  to: [String, Object],
-  replace: { type: Boolean, default: false },
-  append: { type: Boolean, default: false },
-  decoration: { type: Boolean, default: true },
-  download: { type: Boolean, default: false },
-  destination: String,
-  squareroud?: String
+  href: string;
+  target: { type: string; default: '_self' };
+  to: [string, Object];
+  replace: { type: boolean; default: false };
+  append: { type: boolean; default: false };
+  decoration: { type: boolean; default: true };
+  download: { type: boolean; default: false };
+  destination: string;
+  squareroud?: string;
 };
 
 export type ButtonEvents = {
@@ -76,7 +83,7 @@ function Button(
     iconPosition,
   } = props;
 
-  let {tag} = props;
+  let { tag } = props;
 
   const style: Record<string, string | number> = {};
 
@@ -106,7 +113,7 @@ function Button(
       // console.log(ctx.parent.$route);
       emit(ctx, 'click', event);
       const hrefR = currentHref();
-      console.log(hrefR, ctx.props)
+      // console.log(hrefR, ctx.props)
       if (!ctx.props.nativeType && !hrefR && !ctx.listeners.click) {
         event.preventDefault();
       }
@@ -117,44 +124,42 @@ function Button(
       if (hrefR === undefined) {
         let to;
         if (props.destination) {
-            // 只处理/a/b形式的链接
-            const origin = window.location.origin;
-            const path = window.location.href.replace(origin, '').split('/');
-            const destination = props.destination.replace(origin, '').split('/');
-            if (path[1] === destination[1]) {
-                to = '/' + destination.slice(2).join('/');
-            } else {
-                return;
-            }
+          if (props.destination.startsWith('http')) {
+            location.href = encodeUrl(props.destination);
+            return;
+          }
+          to = props.destination;
         }
 
         const currentTo = to || props.to;
-        if (currentTo === undefined)
-            return;
+        if (currentTo === undefined) return;
         let cancel = false;
-        emit(ctx, 'before-navigate',  {
+        emit(ctx, 'before-navigate', {
           to: currentTo,
           replace: props.replace,
           append: props.append,
           preventDefault: () => (cancel = true),
         });
-      if (cancel)
-          return;
-      const $router = ctx.parent?.$router;
-      const $route = ctx.parent?.$route;
-      const { location } = $router.resolve(
+        if (cancel) return;
+        const $router = ctx.parent?.$router;
+        const $route = ctx.parent?.$route;
+        const { location } = $router.resolve(
           currentTo,
           $route,
           // @ts-ignore：没办法
-          props.append,
-      );
-      props.replace ? $router.replace(location) : $router.push(location);
+          props.append
+        );
+        props.replace ? $router.replace(location) : $router.push(location);
 
-      emit(ctx, 'navigate',  { to: currentTo, replace: props.replace, append: props.append });
-      }  else {
+        emit(ctx, 'navigate', {
+          to: currentTo,
+          replace: props.replace,
+          append: props.append,
+        });
+      } else {
         function downloadClick() {
-          const a = document.createElement("a");
-          a.setAttribute("href", hrefR as string);
+          const a = document.createElement('a');
+          a.setAttribute('href', hrefR as string);
           document.body.appendChild(a);
           a.click();
           setTimeout(() => {
@@ -164,7 +169,7 @@ function Button(
         downloadClick();
       }
 
-    // functionalRoute(ctx);
+      // functionalRoute(ctx);
     }
   }
 
@@ -184,8 +189,8 @@ function Button(
         block: props.block === 'blockb',
         // round: props.round,
         // square: props.square,
-        round: props.squareroud && props.squareroud === 'round' ? true : false,
-        square: props.squareroud && props.squareroud === 'square' ? true : false,
+        round: !!(props.squareroud && props.squareroud === 'round'),
+        square: !!(props.squareroud && props.squareroud === 'square'),
       },
     ]),
     { [BORDER_SURROUND]: hairline },
@@ -211,21 +216,25 @@ function Button(
 
     if (icon) {
       return (
-        <Icon name={icon} class={bem('icon')} classPrefix={props.iconPrefix} />
+        <Iconv
+          name={icon}
+          class={[bem('icon'), { 'van-shoud-pa': true }]}
+          notext
+          classPrefix={props.iconPrefix}
+        />
       );
     }
   }
 
   function currentHref() {
-    if (props.href !== undefined)
-        return props.href;
-    if (props.destination !== undefined && props.destination !== "")
-        return props.destination;
-    else if (ctx.parent?.$router && props.to !== undefined)
-    // @ts-ignore：没办法
-        return ctx.parent?.$router.resolve(props.to, ctx.parent?.$route, props.append).href;
-    else
-        return undefined;
+    if (props.href !== undefined) return encodeUrl(props.href);
+    if (ctx.parent?.$router && props.to !== undefined)
+      // @ts-ignore：没办法
+      return encodeUrl(
+        ctx.parent?.$router.resolve(props.to, ctx.parent?.$route, props.append)
+          .href
+      );
+    return undefined;
   }
 
   function renderContent() {
@@ -276,12 +285,15 @@ Button.props = {
   color: String,
   block: {
     type: String,
-    default: 'spanb'
+    default: 'spanb',
   },
   plain: Boolean,
   // round: Boolean,
   // square: Boolean,
-  squareroud: String,
+  squareroud: {
+    type: String,
+    default: 'square',
+  },
   loading: Boolean,
   hairline: Boolean,
   disabled: Boolean,
