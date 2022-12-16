@@ -103,7 +103,7 @@ function Search(
   return (
     <div
       class={bem({ 'show-action': props.showAction })}
-      style={{ background: props.background }}
+      // style={{ background: props.background }}
       {...inheritData}
     >
       {slots.left?.()}
