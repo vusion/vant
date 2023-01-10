@@ -6256,7 +6256,7 @@
             "Selector"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-pickerson\\n  title=\\\"标题\\\"\\n  show-toolbar\\n  labelField=\\\"左侧标题\\\"\\n  input-align=\\\"left\\\"\\n></van-pickerson>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-pickerson\\n  title=\\\"标题\\\"\\n  :show-toolbar=\\\"true\\\"\\n  labelField=\\\"左侧标题\\\"\\n  input-align=\\\"left\\\"\\n></van-pickerson>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-pickerson",
             "title": "选择器",
@@ -6268,7 +6268,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-pickerson\n  title=\"标题\"\n  show-toolbar\n  labelField=\"左侧标题\"\n  input-align=\"left\"\n></van-pickerson>\n</template>\n"
+                    "code": "<template>\n<van-pickerson\n  title=\"标题\"\n  :show-toolbar=\"true\"\n  labelField=\"左侧标题\"\n  input-align=\"left\"\n></van-pickerson>\n</template>\n"
                 }
             ],
             "attrs": [
