@@ -1,9 +1,15 @@
-import { createNamespace , isFunction } from '../utils';
+import { createNamespace, isFunction } from '../utils';
 import { formatResult } from '../utils/format/data-source';
+import swipe from '../swipe';
+import swipeItem from '../swipe-item';
 
-const [createComponent] = createNamespace('gallery')
+const [createComponent] = createNamespace('gallery');
 
 export default createComponent({
+  components: {
+    swipe,
+    'swipe-item': swipeItem,
+  },
   props: {
     dataSource: {
       type: [Array, Object, Function, String],
@@ -40,7 +46,7 @@ export default createComponent({
       return item;
     },
     fromValue(value) {
-      const reg = /^([^\[\]]+)(\,([^\[\]]+)){0,}$/g;
+      const reg = /^([^[\]]+)(,([^[\]]+)){0,}$/g;
       if (typeof value === 'string' && reg.test(value)) {
         return value.split(',');
       }
@@ -62,17 +68,17 @@ export default createComponent({
       }
     },
     onSwipeChange(index) {
-      this.index = index
+      this.index = index;
     },
   },
   render() {
     return (
       <div class="van-gallery">
-        <van-swipe class="swiper" onChange={this.onSwipeChange}>
+        <swipe class="swiper" onChange={this.onSwipeChange}>
           {this.options.map((item) => (
-            <van-swipe-item class="swiper-slide">
+            <swipe-item class="swiper-slide">
               <img src={this.getUrl(item)} />
-            </van-swipe-item>
+            </swipe-item>
           ))}
           <template slot="indicator">
             {this.total > 0 && (
@@ -81,7 +87,7 @@ export default createComponent({
               </div>
             )}
           </template>
-        </van-swipe>
+        </swipe>
       </div>
     );
   },
