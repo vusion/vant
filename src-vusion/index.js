@@ -1,6 +1,6 @@
 import 'themeCSS';
 import * as utils from 'cloud-ui.vusion/src/utils';
-// import '../src/style/base.less';
+// import '../src/style/base.less'; // 下方有对src目录里所有less文件的引用
 
 // import Vue from 'vue';
 // Vue.prototype.$env = Vue.prototype.$env || {};
