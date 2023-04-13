@@ -128,12 +128,6 @@ export default createComponent({
         this.options = formatResult(this.dataSource);
       }
     },
-    watchValue(value) {
-      if (value) {
-        if (this.converter) value = this.currentConverter.set(value);
-        this.currentValue = value;
-      }
-    },
   },
 
   render() {
