@@ -728,7 +728,7 @@
         "labels": [
             "Display"
         ],
-        "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.20/src/divider/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.20/src/divider/screenshots/1.png",
+        "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.21/src/divider/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.12.21/src/divider/screenshots/1.png",
         "blocks": "[{\"title\":\"实线\",\"description\":\"\",\"code\":\"<template>\\n<van-divider dashed=\\\"a\\\"> 文本 </van-divider>\\n</template>\\n\"},{\"title\":\"虚线\",\"description\":\"\",\"code\":\"<template>\\n<van-divider dashed=\\\"b\\\"> 文本 </van-divider>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-divider",
@@ -7842,7 +7842,7 @@
             "Feedback"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-popup-combination title=\\\"标题\\\">\\n  <template #reference>\\n    <van-button type=\\\"primary\\\" text=\\\"触发弹出框组件，可删除替换\\\"></van-button>\\n  </template>\\n  <van-text text=\\\"内容\\\"></van-text>\\n</van-popup-combination>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-popup-combination>\\n  <template #reference>\\n    <van-button type=\\\"primary\\\" text=\\\"触发弹出框组件，可删除替换\\\"></van-button>\\n  </template>\\n  <van-text text=\\\"内容\\\"></van-text>\\n</van-popup-combination>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-popup-combination",
             "title": "气泡弹出框",
@@ -7854,7 +7854,7 @@
                 {
                     "title": "基本用法",
                     "description": "",
-                    "code": "<template>\n<van-popup-combination title=\"标题\">\n  <template #reference>\n    <van-button type=\"primary\" text=\"触发弹出框组件，可删除替换\"></van-button>\n  </template>\n  <van-text text=\"内容\"></van-text>\n</van-popup-combination>\n</template>\n"
+                    "code": "<template>\n<van-popup-combination>\n  <template #reference>\n    <van-button type=\"primary\" text=\"触发弹出框组件，可删除替换\"></van-button>\n  </template>\n  <van-text text=\"内容\"></van-text>\n</van-popup-combination>\n</template>\n"
                 }
             ],
             "attrs": [
