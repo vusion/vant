@@ -107,6 +107,8 @@
           title: 滚动加载更多
         - value: load-more
           title: 点击加载更多
+        - value: pagination
+          title: 翻页器
       description: 是否需要分页
     - name: page-size
       title: 分页大小
