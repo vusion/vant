@@ -55,19 +55,27 @@
       </van-pull-refresh>
     </div>
 
-    <van-linear-layout
-        v-if="(pageable === 'pagination' && currentDataSource.total > currentDataSource.paging.size) && !notext" :class="$style.foot">
-        <van-pagination
-          :value="currentDataSource.paging.number"
-          :total-items="currentDataSource.total"
-          :items-per-page="currentDataSource.paging.size"
-          mode="simple"
-          @change="page($event)"
-        >
-            <van-text slot="prev-text" text="上一页"></van-text>
-            <van-text slot="next-text" text="下一页"></van-text>
-        </van-pagination>
-    </van-linear-layout>
+    <div
+        v-show="(pageable === 'pagination')" :class="$style.foot">
+            <van-pagination
+                :value="currentDataSource && currentDataSource.paging.number"
+                :total-items="currentDataSource && currentDataSource.total"
+                :items-per-page="currentDataSource && currentDataSource.paging.size"
+                mode="simple"
+                @change="page($event)"
+            >
+                <div slot="prev-text" vusion-slot-name="prev" style="width: 100%; display: flex; justify-content: center; align-items: center;">
+                    <slot name="prev">
+                        <van-empty-col v-if="$env.VUE_APP_DESIGNER"></van-empty-col>
+                    </slot>
+                </div>
+                <div slot="next-text" vusion-slot-name="next" style="width: 100%; display: flex; justify-content: center; align-items: center;">
+                    <slot name="next">
+                        <van-empty-col v-if="$env.VUE_APP_DESIGNER"></van-empty-col>
+                    </slot>
+                </div>
+            </van-pagination>
+    </div>
 </div>
 </template>
 

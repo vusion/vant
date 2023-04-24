@@ -225,6 +225,12 @@
           - concept: TypeAnnotation
             typeKind: typeParam
             typeName: T
+    - concept: Slot
+      name: prev
+      description: 自定义上一页
+    - concept: Slot
+      name: next
+      description: 自定义下一页
   events:
     - name: before-select
       description: 选择某一项前触发

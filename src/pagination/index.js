@@ -14,7 +14,7 @@ export default createComponent({
     forceEllipses: Boolean,
     mode: {
       type: String,
-      default: 'multi',
+      default: 'simple',
     },
     value: {
       type: Number,
@@ -108,6 +108,10 @@ export default createComponent({
 
   methods: {
     select(page, emitChange) {
+      if (this.ifDesigner()) {
+        return;
+      }
+
       page = Math.min(this.count, Math.max(1, page));
       if (this.value !== page) {
         this.$emit('input', page);
@@ -135,12 +139,12 @@ export default createComponent({
         <li
           class={[bem('item', { disabled: value === 1 }), bem('prev')]}
           onClick={onSelect(value - 1)}
-          vusion-slot-name="prev-text"
+          // vusion-slot-name="prev-text"
         >
           {this.slots('prev-text')}
-          {!this.slots('prev-text') && this.ifDesigner() ? (
+          {/* {!this.slots('prev-text') && this.ifDesigner() ? (
             <van-empty-col></van-empty-col>
-          ) : null}
+          ) : null} */}
         </li>
         {this.pages.map((page) => (
           <li
@@ -156,17 +160,14 @@ export default createComponent({
           </li>
         )}
         <li
-          class={[
-            bem('item', { disabled: value === this.count }),
-            bem('next'),
-          ]}
+          class={[bem('item', { disabled: value === this.count }), bem('next')]}
           onClick={onSelect(value + 1)}
-          vusion-slot-name="next-text"
+          // vusion-slot-name="next-text"
         >
           {this.slots('next-text')}
-          {!this.slots('next-text') && this.ifDesigner() ? (
+          {/* {!this.slots('next-text') && this.ifDesigner() ? (
             <van-empty-col></van-empty-col>
-          ) : null}
+          ) : null} */}
         </li>
       </ul>
     );
