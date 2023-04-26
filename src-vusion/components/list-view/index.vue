@@ -93,8 +93,8 @@ export default {
     name: 'van-list-view',
     groupName: 'van-list-view-group',
     childName: 'van-list-view-item',
-    extends: UListView,
     components: { VanPullRefresh, VanEmptyCol, VanPagination, UCheckbox, UInput, USpinner, ULink },
+    extends: UListView,
     props: {
         border: { type: Boolean, default: false },
         readonly: { type: Boolean, default: true },
