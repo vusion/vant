@@ -1,3 +1,6 @@
+/* 引入cloud-ui theme */
+@import 'cloud-ui.vusion/src/styles/theme.css';
+
 :root {
   /**
    * ========================
