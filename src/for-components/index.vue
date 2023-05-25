@@ -1,13 +1,37 @@
 <template>
   <div class="van-for-com">
     <template v-if="options.length > 0">
-      <div v-for="(item, index) in options" :key="index" class="van-for-com-frag">
-        <van-for-components-item v-for="(item2, index2) in item" :key="index2" :item="item2" :equalWidth="equalWidth" :colnum="colnum" :index="comIndex(index, index2)">
-          <template v-slot="item2">
-            <slot :item="item2.item" :index="comIndex(index, index2)"></slot>
-          </template>
-        </van-for-components-item>
-      </div>
+      <template v-if="colnum > 0">
+        <div v-for="(item, index) in options" :key="index" class="van-for-com-frag">
+          <van-for-components-item
+            v-for="(item2, index2) in item"
+            :key="index2"
+            :item="item2"
+            :equal-width="equalWidth"
+            :colnum="colnum"
+            :index="comIndex(index, index2)">
+            <template v-slot="item2">
+              <slot :item="item2.item" :index="comIndex(index, index2)"></slot>
+            </template>
+          </van-for-components-item>
+        </div>
+      </template>
+      <template v-else>
+        <div :class="{ 'van-for-com-frag': true, 'nowrap': !wrap }">
+            <van-for-components-item
+              v-for="(item, index) in options"
+              :key="index"
+              :item="item"
+              :equal-width="equalWidth"
+              :colnum="colnum"
+              :index="index">
+              <template v-slot="item2">
+                <slot :item="item2.item" :index="item2.index"></slot>
+              </template>
+            </van-for-components-item>
+        </div>
+
+      </template>
     </template>
     <template v-else>
       <slot></slot>
@@ -30,6 +54,7 @@ export default {
         type: [Array, Object, Function, String],
         default: () => [],
       },
+      // FIXME: typo column
       colnum: {
         type: Number,
         default: 5
@@ -38,6 +63,10 @@ export default {
         type: Boolean,
         default: true,
       },
+      wrap: {
+        type: Boolean,
+        default: true
+      }
     },
     data() {
       return {
@@ -57,8 +86,6 @@ export default {
       //   }
       // }
     },
-    mounted() {
-    },
     watch: {
       dataSource: {
         deep: true,
@@ -66,12 +93,15 @@ export default {
         immediate: true
       },
     },
+    mounted() {
+    },
     methods: {
       ifDesigner() {
         return this.$env && this.$env.VUE_APP_DESIGNER;
       },
       divide(arr) {
         if (!this.colnum) return [...arr];
+
         const num = this.colnum;
         const result = [];
         const arre = [...arr];
@@ -95,6 +125,8 @@ export default {
         } else {
           this.options = this.divide(formatResult(this.dataSource));
         }
+
+        console.log(this.options);
       },
       comIndex(index1, index2) {
         return index1 * this.colnum + index2;
