@@ -2,7 +2,11 @@
   <demo-section>
     <van-for-components :data-source="[1,2,3,4,5,6,7,8,9,0]" :colnum="3" :wrap="false">
       <template #default="scope">
-        <div style="width: 100px;">{{ scope.item }}</div>
+          <van-row gutter="0"  vusion-disabled-copy vusion-disabled-addslot vusion-disabled-cut>
+            <van-col span="24" vusion-disabled-copy vusion-disabled-cut>
+              <div style="width: 100px;">{{ scope.item }}</div>
+            </van-col>
+          </van-row>
       </template>
     </van-for-components>
   </demo-section>

@@ -30,7 +30,6 @@
               </template>
             </van-for-components-item>
         </div>
-
       </template>
     </template>
     <template v-else>
@@ -44,11 +43,17 @@ import { isFunction } from '../utils';
 import { formatResult } from '../utils/format/data-source';
 import VanForComponentsItem from './item.vue'
 
+import DataSourceMixin from '../mixins/support.datasource'
+
+
 export default {
     name: 'van-for-components',
     components: {
       VanForComponentsItem,
     },
+    mixins: [
+      DataSourceMixin,
+    ],
     props: {
       dataSource: {
         type: [Array, Object, Function, String],
@@ -70,7 +75,7 @@ export default {
     },
     data() {
       return {
-        options: []
+        // options: []
       }
     },
     computed: {
@@ -84,14 +89,17 @@ export default {
       //   return {
       //     'grid-template-columns': `repeat(${this.colnum ? this.colnum : 'auto-fill'}, minmax(300px, 1fr))`
       //   }
-      // }
+      // },
+      options() {
+        return this.divide(this.currentDataSource.data) || [];
+      }
     },
     watch: {
-      dataSource: {
-        deep: true,
-        handler: 'update',
-        immediate: true
-      },
+      // dataSource: {
+      //   deep: true,
+      //   handler: 'update',
+      //   immediate: true
+      // },
     },
     mounted() {
     },
@@ -100,6 +108,10 @@ export default {
         return this.$env && this.$env.VUE_APP_DESIGNER;
       },
       divide(arr) {
+        if (this.ifDesigner()) {
+          arr = Array.from({ length: 10 }, (v, k) => k + 1)
+        }
+
         if (!this.colnum) return [...arr];
 
         const num = this.colnum;
