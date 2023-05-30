@@ -789,6 +789,7 @@
   --van-fieldinput-placeholder-color: #c8c9cc; /* @type color */ /* @desc 输入框占位提示文字颜色 */
   --van-fieldinput-disabled-color: #c8c9cc; /* @type color */ /* @desc 输入框禁用态文字颜色 */
   --van-fieldinput-line-height: 24px; /* @desc 输入框最小高度 */
+  --van-number-keyboard-finish-button-background-color: var(--van-brand-primary); /* @desc 完成按钮背景颜色 */ /* @prefix van-number-keyboard */
 
   /* @component van-fieldtextarea */
   --van-fieldtextarea-text-color: #333; /* @type color */ /* @desc 输入框文字颜色 */
@@ -805,5 +806,3 @@
   --popup-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* @desc 弹出层的阴影效果,如 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */ /* @prefix popup */
   --popup-border-color: var(--border-color-base); /* @type color */ /* @desc 弹出层的边框颜色,如 #223325 */ /* @prefix popup */
 }
-
-

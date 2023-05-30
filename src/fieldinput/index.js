@@ -76,6 +76,7 @@ export default createComponent({
     return {
       currentValue: defaultValue,
       shownumber: false,
+      staticStyleVar: '',
     };
   },
   computed: {
@@ -92,6 +93,10 @@ export default createComponent({
     },
   },
   mounted() {
+    this.staticStyleVar = this.getStaticStyleVar(this.$vnode.data.staticStyle);
+  },
+  updated() {
+    this.staticStyleVar = this.getStaticStyleVar(this.$vnode.data.staticStyle);
   },
   methods: {
     getProp(key) {
@@ -195,13 +200,15 @@ export default createComponent({
       if (this.readonly || this.disabled) {
         return;
       }
-      if (this.$env.VUE_APP_DESIGNER) {
+      if (this.$env?.VUE_APP_DESIGNER) {
         this.$nextTick(() => {
-          document.getElementsByClassName('van-number-keyboard')?.forEach(item => item.style.display = 'none');
+          document
+            .getElementsByClassName('van-number-keyboard')
+            ?.forEach((item) => (item.style.display = 'none'));
           if (this.$refs.numberKeyboard) {
             this.$refs.numberKeyboard.$el.style.display = 'block';
           }
-        })
+        });
       }
       !this.shownumber && (this.shownumber = true);
     },
@@ -221,6 +228,18 @@ export default createComponent({
       this.currentValue = value;
       this.$emit('input', value);
     },
+    getStaticStyleVar(staticStyle) {
+      let style = '';
+      for (const key in staticStyle) {
+        if (Object.prototype.hasOwnProperty.call(staticStyle, key)) {
+          if (/^--/.test(key)) {
+            const value = staticStyle[key];
+            style += `${key}: ${value};`;
+          }
+        }
+      }
+      return style;
+    },
   },
   watch: {
     // value: {
@@ -237,8 +256,8 @@ export default createComponent({
     currentValue(val) {
       this.$emit('update:value', val);
       this.$emit('change', val, this);
-      if (this.maxlength && this.maxlength===val?.length) {
-        this.$emit('enoughkey', val)
+      if (this.maxlength && this.maxlength === val?.length) {
+        this.$emit('enoughkey', val);
       }
     },
     type() {
@@ -254,7 +273,7 @@ export default createComponent({
           this.shownumber = false;
         }
       }
-    }
+    },
   },
   render() {
     const inputAlign = this.vanField?.getProp('inputAlign');
@@ -289,13 +308,13 @@ export default createComponent({
         {this.showClear() && (
           <Icon name="clear" class={bem('clear')} onTouchstart={this.onClear} />
         )}
-        {(this.inputstyle === 'password') ? (
+        {this.inputstyle === 'password' ? (
           <PasswordInput
             value={this.currentValue}
             length={this.maxlength}
             onFocus={() => {
               if (this.readonly || this.disabled) {
-                return
+                return;
               }
               this.shownumber = true;
             }}
@@ -308,6 +327,7 @@ export default createComponent({
         ) : null}
         {this.shownumbertype ? (
           <NumberKeyboard
+            style={this.staticStyleVar}
             vusionnp={this.$attrs['vusion-node-path']}
             ref="numberKeyboard"
             vModel={this.currentValue}
