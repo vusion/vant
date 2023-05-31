@@ -77,7 +77,7 @@ export default {
       } else {
         const min = String(Math.floor((totalSecond - second) / 60)).padStart(2, "0");
         const sec = String((totalSecond - second) % 60).padStart(2, "0");
-        return this.hideMinute ? `${second}` : `${min}:${sec}`;
+        return this.hideMinute ? `${totalSecond - second}` : `${min}:${sec}`;
       }
 
     },
