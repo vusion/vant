@@ -1922,6 +1922,19 @@
                         "type": "input",
                         "desc": "完成按钮背景颜色",
                         "prefix": "van-number-keyboard"
+                    },
+                    "--van-password-input-cell-gap": {
+                        "type": "input",
+                        "desc": "格子输入框间距",
+                        "prefix": "van-password-input"
+                    },
+                    "--van-fieldinput-focused-border-color": {
+                        "type": "color",
+                        "desc": "输入框聚焦时边框颜色"
+                    },
+                    "--van-fieldinput-focused-border-width": {
+                        "type": "input",
+                        "desc": "输入框聚焦时边框宽度"
                     }
                 },
                 "preview": {

@@ -74,6 +74,7 @@ export default createComponent({
     const defaultValue = this.value ?? this.defaultValue;
 
     return {
+      focused: false,
       currentValue: defaultValue,
       shownumber: false,
       staticStyleVar: '',
@@ -166,7 +167,11 @@ export default createComponent({
     },
 
     onBlur(event) {
-      this.focused = false;
+      // 自定义键盘由closeNumber改变
+      if (!this.shownumbertype) {
+        this.focused = false;
+      }
+
       this.updateValue(this.currentValue, 'onBlur');
       this.$emit('blur', event);
       // this.validateWithTrigger('onBlur');
@@ -219,6 +224,7 @@ export default createComponent({
       return document.querySelector('body');
     },
     closeNumber() {
+      this.focused = false;
       this.shownumber = false;
     },
     handleConfirm() {
@@ -278,7 +284,12 @@ export default createComponent({
   render() {
     const inputAlign = this.vanField?.getProp('inputAlign');
     return (
-      <div class={bem('newwrap', { clearwrap: this.clearable })}>
+      <div
+        class={bem('newwrap', {
+          clearwrap: this.clearable,
+          focused: this.focused,
+        })}
+      >
         {this.inputstyle === 'input' ? (
           <input
             // vShow={this.showInput}
