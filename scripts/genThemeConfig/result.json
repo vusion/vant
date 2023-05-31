@@ -1919,7 +1919,7 @@
                         "desc": "输入框最小高度"
                     },
                     "--van-number-keyboard-finish-button-background-color": {
-                        "type": "input",
+                        "type": "color",
                         "desc": "完成按钮背景颜色",
                         "prefix": "van-number-keyboard"
                     },
