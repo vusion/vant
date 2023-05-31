@@ -59,6 +59,7 @@ export default {
       },
       getStaticStyleVar(staticStyle) {
         let style = '';
+        // eslint-disable-next-line no-restricted-syntax
         for (const key in staticStyle) {
           if (Object.prototype.hasOwnProperty.call(staticStyle, key)) {
             if (/^--/.test(key)) {
