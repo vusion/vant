@@ -1,4 +1,5 @@
 import 'themeCSS';
+import 'baseCSS';
 import * as utils from 'cloud-ui.vusion/src/utils';
 // import '../src/style/base.less'; // 下方有对src目录里所有less文件的引用
 

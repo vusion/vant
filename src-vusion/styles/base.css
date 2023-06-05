@@ -1,0 +1,21 @@
+/* 引入cloud-ui typography */
+@import 'cloud-ui.vusion/src/styles/typography.css';
+/* 引入cloud-ui animation */
+@import 'cloud-ui.vusion/src/styles/animation.css';
+
+ul[class],
+ol[class] {
+  list-style: none;
+  padding-left: 0;
+}
+
+input::-ms-clear,
+input::-ms-reveal {
+  display: none;
+}
+
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  display: none;
+}
