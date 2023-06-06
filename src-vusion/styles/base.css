@@ -1,7 +1,3 @@
-/* 引入cloud-ui typography */
-@import 'cloud-ui.vusion/src/styles/typography.css';
-/* 引入cloud-ui animation */
-@import 'cloud-ui.vusion/src/styles/animation.css';
 
 ul[class],
 ol[class] {
