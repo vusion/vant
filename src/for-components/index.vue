@@ -148,11 +148,5 @@ export default {
 </script>
 
 <style lang="less">
-@import './for.less';
-.for-com {
-}
-// .van-for-com-frag {
-//   display: flex;
-//   overflow-x: auto;
-// }
+
 </style>
