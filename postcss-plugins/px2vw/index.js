@@ -1,4 +1,4 @@
-
+/* eslint-disable @typescript-eslint/no-use-before-define */
 
 const postcss = require('postcss');
 const objectAssign = require('object-assign');
@@ -54,7 +54,7 @@ module.exports = postcss.plugin('postcss-px-to-viewport', function (options) {
       if (blacklistedSelector(opts.selectorBlackList, rule.selector)) return;
 
       // 生成横屏媒体查询rule
-      if (opts.landscape && !rule.parent.params && /number-keyboard/.test(file)) {
+      if (opts.landscape && !rule.parent.params) {
         const landscapeRule = rule.clone().removeAll();
 
         rule.walkDecls(function (decl) {
@@ -111,8 +111,14 @@ module.exports = postcss.plugin('postcss-px-to-viewport', function (options) {
 
     // 插入横屏媒体查询rule
     if (landscapeRules.length > 0) {
+      // issue: https://github.com/evrone/postcss-px-to-viewport/issues/100
+      // const landscapeRoot = new postcss.atRule({
+      //   params: '(orientation: landscape)',
+      //   name: 'media',
+      // });
+
       const landscapeRoot = new postcss.atRule({
-        params: '(orientation: landscape)',
+        params: '(min-aspect-ratio: 13 / 9)',
         name: 'media',
       });
 
