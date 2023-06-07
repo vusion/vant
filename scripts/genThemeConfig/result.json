@@ -1979,6 +1979,9 @@
                 "title": "气泡弹出框",
                 "toPosition": "popup-combination",
                 "type": [],
+                "preview": {
+                    "template": "<van-popup-combination><template #reference><van-button type=\"primary\" text=\"触发弹出框组件，可删除替换\"></van-button></template><van-text text=\"内容\"></van-text></van-popup-combination>"
+                },
                 "cssProperty": {
                     "--popup-padding": {
                         "type": "input",
@@ -2018,9 +2021,6 @@
                         "desc": "弹出层的边框颜色,如 #223325",
                         "prefix": "popup"
                     }
-                },
-                "preview": {
-                    "template": "<van-popup-combination><template #reference><van-button type=\"primary\" text=\"触发弹出框组件，可删除替换\"></van-button></template><van-text text=\"内容\"></van-text></van-popup-combination>"
                 }
             }
         ]
