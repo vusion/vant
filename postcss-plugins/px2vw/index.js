@@ -113,13 +113,10 @@ module.exports = postcss.plugin('postcss-px-to-viewport', function (options) {
     // 插入横屏媒体查询rule
     if (landscapeRules.length > 0) {
       // issue: https://github.com/evrone/postcss-px-to-viewport/issues/100
-      // const landscapeRoot = new postcss.atRule({
-      //   params: '(orientation: landscape)',
-      //   name: 'media',
-      // });
-
+      // MDN解释: https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/orientation
       const landscapeRoot = new postcss.atRule({
-        params: '(min-aspect-ratio: 13 / 9)',
+        // 当宽度大于480px时的横屏才生效，以目前市面上最小的智能机iPhone4尺寸320 * 480为基准
+        params: '(min-width: 480px) and (orientation: landscape)',
         name: 'media',
       });
 
