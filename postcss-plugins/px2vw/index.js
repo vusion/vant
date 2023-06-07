@@ -86,7 +86,8 @@ module.exports = postcss.plugin('postcss-px-to-viewport', function (options) {
         let size;
         const { params } = rule.parent;
 
-        if (opts.landscape && params && params.indexOf('landscape') !== -1) {
+        const isLandscape = file?.includes('number-keyboard');
+        if (opts.landscape && params && params.indexOf('landscape') !== -1 && isLandscape) {
           unit = opts.landscapeUnit;
           size = opts.landscapeWidth;
         } else {
