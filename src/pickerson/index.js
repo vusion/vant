@@ -55,7 +55,7 @@ export default createComponent({
       title: () => this.slots('title')
     }
     return (
-      <div class={bem('wrappppickerson')}>
+      <div class={bem('wrap')}>
         <Field
           label={this.labelField}
           value={this.getTitle()}
@@ -78,10 +78,17 @@ export default createComponent({
           // onClickOverlay={this.togglePopup}
         >
           <Picker
-            {...{attrs: {...this.$attrs}}}
-            {...{ on: { ...this.$listeners, 'update:pvalue': val => {
-              this.psonvalue = val
-            }}}}
+            {...{
+              attrs: {...this.$attrs}
+            }}
+            {...{
+              on: { 
+                ...this.$listeners,
+                'update:pvalue': val => {
+                  this.psonvalue = val
+                }
+              }
+            }}
             pvalue={this.psonvalue}
             showToolbar={this.$attrs['show-toolbar']}
           />
