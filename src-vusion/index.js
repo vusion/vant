@@ -1,12 +1,12 @@
-/* 引入cloud-ui theme */
-import 'cloud-ui.vusion/src/styles/theme.css';
-/* 引入cloud-ui typography */
-import 'cloud-ui.vusion/src/styles/typography.css';
-/* 引入cloud-ui animation */
-import 'cloud-ui.vusion/src/styles/animation.css';
+// /* 引入cloud-ui theme */
+// import 'cloud-ui.vusion/src/styles/theme.css';
+// /* 引入cloud-ui typography */
+// import 'cloud-ui.vusion/src/styles/typography.css';
+// /* 引入cloud-ui animation */
+// import 'cloud-ui.vusion/src/styles/animation.css';
 
 import 'themeCSS';
-import 'baseCSS';
+// import 'baseCSS';
 import * as utils from 'cloud-ui.vusion/src/utils';
 // import '../src/style/base.less'; // 下方有对src目录里所有less文件的引用
 
