@@ -239,6 +239,7 @@
         - name: van-cell
           title: 单元格
           snippet: '<template #item="current"><van-cell isLink><template #title>文本</template></van-cell></template>'
+      advanced: true
     - concept: Slot
       name: item
       description: 自定义选项的结构和样式
