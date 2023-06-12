@@ -102,10 +102,13 @@ export default createComponent({
   },
 
   watch: {
-    value(val) {
-      this.code = val;
-      this.setValues();
-      this.setTitle();
+    value: {
+      handler(val) {
+        this.code = this.convertName(val);
+        this.setValues();
+        this.setTitle();
+      },
+      immediate: true
     },
 
     areaListprop: {
@@ -135,7 +138,8 @@ export default createComponent({
         return
       }
       if (!this.value && !this.code) return '';
-      const tcode = this.value || this.code;
+      // 有转换器的时候，需要用 code
+      const tcode = this.value && this.converter !== 'name' ? this.value : this.code;
       const provincet = this.getListTempNew('province', tcode.slice(0, 2) + '0000');
       const cityt = this.getListTempNew('city', tcode.slice(0, 4) + '00');
       const countyt = this.getListTempNew('county', tcode.slice(0, 6));
@@ -253,11 +257,14 @@ export default createComponent({
     onConfirm(values, index) {
       values = this.parseOutputValues(values);
       this.setValues();
-      if (!this.value) {
+      // 有 name 转换器的时候这里需要重置一下 code
+      if (!this.value || this.converter === 'name') {
         this.code = values[2].code;
       }
-      this.$emit('update:value', values[2].code);
-      this.$emit('confirm', values, index, values[2].code);
+      // 最后一位选择的值
+      const lastValue = this.convertCode(values[2].code);
+      this.$emit('update:value', lastValue);
+      this.$emit('confirm', values, index, lastValue);
       this.togglePopup();
       this.setTitle();
     },
@@ -365,6 +372,33 @@ export default createComponent({
     },
     getListTempNew(type, code) {
       return (this.areaList[`${type}_list`][code]);
+    },
+    convertName(names) {
+      if (this.converter === 'name' && names) {
+        const nameArr = names.split('/').map(item => item.trim())
+        const levelMap = ['province', 'city', 'county']
+
+        function search(level, prefixCode) {
+          if (level >= nameArr.length) return prefixCode
+          for (const [code, name] of Object.entries(areaList[`${levelMap[level]}_list`])) {
+            if (code.startsWith(prefixCode) && name === nameArr[level]) {
+              return level === nameArr.length - 1 ?
+                code : search(level + 1, code.substring(0, (level +  1) * 2))
+            }
+          }
+        }
+
+        const res = search(0, '')
+        return res
+      }
+      return names
+    },
+    convertCode(code) {
+      if (this.converter === 'name') {
+        this.setTitle()
+        return this.getTitle
+      }
+      return code
     },
   },
 
