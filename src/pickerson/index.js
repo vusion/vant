@@ -50,9 +50,9 @@ export default createComponent({
     onChange(vm, val, index) {
       this.$emit('change', vm, val, index);
     },
-    onConfirm(val) {
+    onConfirm(val, index) {
       this.psonvalue = val;
-      this.$emit('confirm', val);
+      this.$emit('confirm', val, index);
     },
     onCancel() {
       this.$emit('cancel');
