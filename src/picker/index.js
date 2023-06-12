@@ -138,11 +138,8 @@ export default createComponent({
 
     emit(event) {
       if (this.dataType === 'text') {
-        event === 'confirm' && this.$emit('update:pvalue', this.getColumnValue(0));
 
-        this.$nextTick(() => {
-          this.$emit(event, this.getColumnValue(0), this.getColumnIndex(0));
-        })
+        this.$emit(event, this.getColumnValue(0), this.getColumnIndex(0));
       } else {
         let values = this.getValues();
 
@@ -153,11 +150,7 @@ export default createComponent({
           values = values.map((item) => item[this.valueKey]);
         }
 
-        event === 'confirm' && this.$emit('update:pvalue', values);
-
-        this.$nextTick(() => {
-          this.$emit(event, values, this.getIndexes());
-        })
+        this.$emit(event, values, this.getIndexes());
       }
     },
 
