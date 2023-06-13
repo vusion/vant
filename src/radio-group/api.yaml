@@ -41,6 +41,12 @@
           title: 垂直
       default: horizontal
       description: 排列方向
+    - name: column
+      title: 每行排列项数
+      type: number
+      description: 为空时自适应宽度，可能存在不对齐
+      dependency:
+        - direction: horizontal
   slots:
     - concept: Slot
       name: default

@@ -28,6 +28,9 @@ export default createComponent({
       type: String,
       default: 'json',
     },
+    column: {
+      type: Number,
+    },
   },
   data() {
     return {
@@ -133,10 +136,21 @@ export default createComponent({
   },
 
   render() {
+    // 水平排列时
+    let itemWidth = 'auto';
+    if (this.column > 0) {
+      itemWidth = (100 / this.column) + '%';
+    }
+
     return (
       <div class={bem([this.direction])}>
         {this.options?.map((item, index) => (
-          <div style="position:relative">
+          <div
+            style={{
+              position: 'relative',
+              width: itemWidth,
+            }}
+          >
             {this.slots('item', { item })}
             {this.inDesigner && index > 0 && <div class="mantle"></div>}
           </div>

@@ -5,6 +5,16 @@
     - Display
   description: 用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。
   attrs:
+    - name: data-source
+      title: 数据源
+      type: Array<Item> | Function
+      description: 集合类型变量或者输出参数为集合类型的逻辑
+      designer-value: '[{}, {}, {}]'
+    - name: data-schema
+      title: 数据类型
+      type: schema
+      description: 集合类型每一元素的数据类型
+      compType: dataTypeSelect
     - name: active
       title: 值
       type: number,string
@@ -31,6 +41,21 @@
         - name: van-step
           title: 步骤条项
           snippet: '<van-step>stepn</van-step>'
+    - concept: Slot
+      name: item
+      description: 自定义选项的结构和样式
+      slotProps:
+        concept: Param
+        name: current
+        typeAnnotation:
+          concept: TypeAnnotation
+          typeKind: generic
+          typeNamespace: nasl.ui
+          typeName: Current
+          typeArguments:
+            - concept: TypeAnnotation
+              typeKind: typeParam
+              typeName: T
   events:
     - name: changestep
       title: 切换步骤时

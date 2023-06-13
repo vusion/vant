@@ -16,32 +16,35 @@ export default createComponent({
     direction: String,
     checkedColor: String,
     iconSize: [Number, String],
+    column: {
+      type: Number,
+    },
   },
   data() {
     return {
-      datatemp: (this.value) || null,
+      datatemp: this.value || null,
       options: [],
-    }
+    };
   },
   watch: {
     value(value) {
       this.datatemp = value;
     },
     datatemp(val) {
-      this.$emit('input', (val));
-      this.$emit('update:value', (val));
+      this.$emit('input', val);
+      this.$emit('update:value', val);
       this.$emit('change', val);
     },
     dataSource: {
       deep: true,
       handler: 'update',
-      immediate: true
+      immediate: true,
     },
   },
   computed: {
     inDesigner() {
       return this.$env && this.$env.VUE_APP_DESIGNER;
-    }
+    },
   },
   methods: {
     ifDesigner() {
@@ -49,30 +52,53 @@ export default createComponent({
     },
     async update() {
       if (this.ifDesigner() && this.dataSource) {
-        this.options = this.dataSource.map(item => { item.disabled = true;return item })
+        this.options = this.dataSource.map((item) => {
+          item.disabled = true;
+          return item;
+        });
       } else if (isFunction(this.dataSource)) {
-          try {
-            const res = await this.dataSource({
-              page: 1,
-              size: 1000
-            });
-            this.options = formatResult(res);
-          } catch (error) {
-            console.error(error);
-          }
-        } else {
-          this.options = formatResult(this.dataSource);
+        try {
+          const res = await this.dataSource({
+            page: 1,
+            size: 1000,
+          });
+          this.options = formatResult(res);
+        } catch (error) {
+          console.error(error);
         }
-    }
+      } else {
+        this.options = formatResult(this.dataSource);
+      }
+    },
   },
   render() {
-    return <div class={bem([this.direction])}>
-      {this.options?.map((item, index) => <div style="position:relative">{this.slots('item', { item,index })}
-        {(this.inDesigner && index>0) && <div class="mantle"></div>}
-      </div>)}
-      {(!this.slots()&& this.options?.length===0 &&this.inDesigner ) && <div style="text-align: center;width:100%">请绑定数据源或插入子节点</div>}
-      {this.slots()}
-  </div>
+    // 水平排列时
+    let itemWidth = 'auto';
+    if (this.column > 0) {
+      itemWidth = 100 / this.column + '%';
+    }
+
+    return (
+      <div class={bem([this.direction])}>
+        {this.options?.map((item, index) => (
+          <div
+            style={{
+              position: 'relative',
+              width: itemWidth,
+            }}
+          >
+            {this.slots('item', { item, index })}
+            {this.inDesigner && index > 0 && <div class="mantle"></div>}
+          </div>
+        ))}
+        {!this.slots() && this.options?.length === 0 && this.inDesigner && (
+          <div style="text-align: center;width:100%">
+            请绑定数据源或插入子节点
+          </div>
+        )}
+        {this.slots()}
+      </div>
+    );
     // if (this.dataSource && this.options?.length >= 0) {
     //   return <div class={bem([this.direction])}>
     //     {/* <van-linear-layout direction="horizontal" layout="inline"> */}

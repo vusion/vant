@@ -1,25 +1,33 @@
 <template>
   <demo-section>
     <demo-block :title="t('basicUsage')">
-      <van-steps>
+      <van-steps
+        style="text-align:center;"
+        :data-source="[{ name: 1, value: 1 }, { name: 2, value: 2 }, { name: 3, value: 3 }]">
+        <template #item="current">
+          <van-step>{{current.item.name}}</van-step>
+        </template>
+      </van-steps>
+
+      <!-- <van-steps>
         <van-step>{{ t('step1') }}</van-step>
         <van-step>{{ t('step2') }}</van-step>
         <van-step>{{ t('step3') }}</van-step>
         <van-step>{{ t('step4') }}</van-step>
         <van-step>{{ t('step4') }}</van-step>
-      </van-steps>
+      </van-steps> -->
 
-      <van-steps :active.sync="active">
+      <!-- <van-steps :active.sync="active">
         <van-step>{{ t('step1') }}</van-step>
         <van-step>{{ t('step2') }}</van-step>
         <van-step>{{ t('step3') }}</van-step>
         <van-step>{{ t('step4') }}</van-step>
       </van-steps>
 
-      <van-button @click="nextStep">{{ t('nextStep') }}</van-button>
+      <van-button @click="nextStep">{{ t('nextStep') }}</van-button> -->
     </demo-block>
 
-    <demo-block :title="t('customStyle')">
+    <!-- <demo-block :title="t('customStyle')">
       <van-steps
         :active="active"
         active-icon="success"
@@ -31,9 +39,9 @@
         <van-step>{{ t('step3') }}</van-step>
         <van-step>{{ t('step4') }}</van-step>
       </van-steps>
-    </demo-block>
+    </demo-block> -->
 
-    <demo-block :title="t('title3')">
+    <!-- <demo-block :title="t('title3')">
       <van-steps :active="0" direction="vertical">
         <van-step>
           <h3>{{ t('status1') }}</h3>
@@ -48,7 +56,7 @@
           <p>2016-07-10 09:30</p>
         </van-step>
       </van-steps>
-    </demo-block>
+    </demo-block> -->
   </demo-section>
 </template>
 

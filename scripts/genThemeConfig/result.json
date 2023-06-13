@@ -767,6 +767,13 @@
                         "excludeTags": [
                             "van-tab"
                         ]
+                    },
+                    "--van-tabs-bottom-bar-border-radius": {
+                        "type": "input",
+                        "desc": "滑动条圆角",
+                        "excludeTags": [
+                            "van-tab"
+                        ]
                     }
                 },
                 "preview": {
@@ -1990,19 +1997,16 @@
                     },
                     "--popup-arrow-size": {
                         "type": "input",
-                        "group": "箭头",
                         "desc": "弹出层的内层三角箭头大小,如 1px",
                         "prefix": "popup"
                     },
                     "--popup-arrow-offset": {
                         "type": "input",
-                        "group": "箭头",
                         "desc": "弹出层的三角箭头平移位置,如 1px",
                         "prefix": "popup"
                     },
                     "--popup-outer-arrow-size": {
                         "type": "input",
-                        "group": "箭头",
                         "desc": "弹出层的外层三角箭头大小,如 1px",
                         "prefix": "popup"
                     },

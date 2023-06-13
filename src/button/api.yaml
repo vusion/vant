@@ -82,6 +82,16 @@
       type: icon
       default: ''
       description: 图标
+    - name: icon-position
+      title: 图标位置
+      type: string
+      options:
+        - value: left
+          title: 左
+        - value: right
+          title: 右
+      default: left
+      description: 图标位置
     - name: loading
       title: 加载中
       type: boolean
