@@ -92,6 +92,7 @@ export default createComponent({
           class={bem('popup')}
           position={'bottom'}
           closeOnClickOverlay={this.closeOnClickOverlay}
+          get-container="body" // 放body下不易出现异常情况
           // onClickOverlay={this.togglePopup}
         >
           <Picker

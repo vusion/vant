@@ -92,6 +92,7 @@ export default createComponent({
           safe-area-inset-bottom
           round
           ref="popforCalendarHead"
+          get-container="body" // 放body下不易出现异常情况
         >
           <MonthPicker
             default-year={this.currentYear}
