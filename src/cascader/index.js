@@ -358,7 +358,7 @@ export default createComponent({
           scopedSlots={tempSlot}
           readonly
           isLink={false}
-          input-align={this.inputAlign || "right"}
+          input-align={this.inputAlign || 'right'}
           onClick={this.togglePopup}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
@@ -375,6 +375,7 @@ export default createComponent({
           position={'bottom'}
           closeOnClickOverlay={this.closeOnClickOverlay}
           // onClickOverlay={this.togglePopup}
+          get-container="body" // 放body下不易出现异常情况
         >
           <div class={bem()}>
             {this.renderHeader()}
