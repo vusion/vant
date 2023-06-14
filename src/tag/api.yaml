@@ -31,6 +31,7 @@
         - value: small
           title: 小型
       default: medium
+      group: 样式属性
     - name: plain
       title: 空心
       type: boolean
@@ -39,6 +40,7 @@
       title: 圆角
       type: boolean
       default: false
+      group: 样式属性
     - name: mark
       title: 标记样式
       type: boolean
@@ -47,6 +49,7 @@
       title: 可关闭
       type: boolean
       default: false
+      group: 交互属性
   slots: false
   events:
     - name: click

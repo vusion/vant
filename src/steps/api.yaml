@@ -8,22 +8,25 @@
     - name: data-source
       title: 数据源
       type: Array<Item> | Function
-      description: 集合类型变量或者输出参数为集合类型的逻辑
+      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑
       designer-value: '[{}, {}, {}]'
+      group: 数据属性
     - name: data-schema
       title: 数据类型
       type: schema
       description: 集合类型每一元素的数据类型
       compType: dataTypeSelect
+      group: 数据属性
     - name: active
-      title: 值
+      title: 当前步骤
       type: number,string
       sync: true
       model: true
       default: 0
-      description: 值
+      description: 设置当前处于选中状态的步骤
+      group: 数据属性
     - name: direction
-      title: 显示方向
+      title: 步骤条方向
       type: string
       options:
         - value: horizontal
@@ -31,7 +34,7 @@
         - value: vertical
           title: 垂直
       default: horizontal
-      description: 通知栏模式
+    - name: readonly
   slots:
     - concept: Slot
       name: default
@@ -68,7 +71,6 @@
       type: number,string
       sync: true
       model: true
-      description: 值
   events:
     - name: clicktitle
       title: 点击标题

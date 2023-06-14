@@ -46,9 +46,9 @@
       default: horizontal
       description: 是否禁用
     - name: column
-      title: 每行排列项数
+      title: 每行排列数
       type: number
-      description: 为空时自适应宽度，可能存在不对齐
+      description: 水平排列时每行展示的选项数量
       dependency:
         - direction: horizontal
     - name: converter
