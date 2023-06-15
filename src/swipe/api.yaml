@@ -4,7 +4,6 @@
   description: 用于循环播放一组图片或内容
   labels:
     - Display
-  nexted: false
   attrs:
     - name: duration
       title: 动画时间

@@ -72,7 +72,6 @@
       params: []
 - name: van-tab
   title: 标签页
-  is-sub: true
   attrs:
     - name: name
       title: 值
