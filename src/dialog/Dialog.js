@@ -63,10 +63,6 @@ export default createComponent({
       type: Boolean,
       default: false,
     },
-    getContainer: {
-      type: String,
-      default: 'body'
-    },
   },
   components: {
     VanEmptyCol,
