@@ -28,7 +28,7 @@ export default createComponent({
     },
     closeable: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     converter: {
       type: String,
