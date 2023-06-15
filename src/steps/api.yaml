@@ -30,7 +30,7 @@
       support:
         - name: van-step
           title: 步骤条项
-          snippet: '<van-step>stepn</van-step>'
+          snippet: <van-step>stepn</van-step>
   events:
     - name: changestep
       title: 切换步骤时

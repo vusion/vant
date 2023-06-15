@@ -4,8 +4,6 @@
   labels:
     - Display
   description: 用于标记关键词和概括主要内容。
-  next: true
-  nested: false
   attrs:
     - name: type
       title: 类型

@@ -9,7 +9,7 @@
       title: 数据源
       type: Array<Item> | Function
       description: 集合类型变量或者输出参数为集合类型的逻辑
-      designer-value: '[{}, {}, {}]'
+      designer-value: "[{}, {}, {}]"
     - name: data-schema
       title: 数据类型
       type: schema
@@ -70,7 +70,8 @@
       support:
         - name: van-checkbox
           title: 复选项
-          snippet: <van-checkbox name="n" shape="square"><van-text text="节点"></van-text></van-checkbox>
+          snippet: <van-checkbox name="n" shape="square"><van-text
+            text="节点"></van-text></van-checkbox>
     - concept: Slot
       name: item
       description: 自定义选项的结构和样式

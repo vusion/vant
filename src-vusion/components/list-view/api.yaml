@@ -4,13 +4,11 @@
   labels:
     - Table
   description: 用于列举大量数据的列表框，支持单选、多选、过滤（搜索）、分页等功能。
-  next: true
-  nested: false
   attrs:
     - name: data-source
       title: 数据源
       type: Array<Item> | Function | object | DataSource
-      designer-value: '[{}, {}, {}]'
+      designer-value: "[{}, {}, {}]"
       description: 列表的数据源。数组方式表示直接的数据，函数需要返回一个 Promise。
     - name: data-schema
       title: 数据类型
@@ -116,56 +114,56 @@
       default: false
       description: 是否使用后端分页
       dependency:
-        - '!pageable': ""
+        - "!pageable": ""
     - name: page-size
       title: 分页大小
       type: number
       default: 20
       description: 分页过小可能会导致滚动加载更多失效
       dependency:
-        - '!pageable': ""
+        - "!pageable": ""
     - name: pull-refresh
       title: 下拉刷新
       type: boolean
       default: true
       description: 是否开启下拉刷新
       dependency:
-        - '!pageable': pagination
+        - "!pageable": pagination
     - name: pulling-text
       title: 下拉过程中提示文字
       type: string
       default: 下拉刷新
       dependency:
         - pull-refresh: true
-          '!pageable': pagination
+          "!pageable": pagination
     - name: loosing-text
       title: 释放过程中提示文字
       type: string
       default: 释放刷新
       dependency:
         - pull-refresh: true
-          '!pageable': pagination
+          "!pageable": pagination
     - name: success-text
       title: 刷新成功提示文字
       type: string
       default: 已刷新
       dependency:
         - pull-refresh: true
-          '!pageable': pagination
+          "!pageable": pagination
     - name: success-duration
       title: 刷新成功提示展示时长(ms)
       type: number
       default: 500
       dependency:
         - pull-refresh: true
-          '!pageable': pagination
+          "!pageable": pagination
     - name: pull-distance
       title: 触发下拉刷新的距离
       type: number
       default: 50
       dependency:
         - pull-refresh: true
-          '!pageable': pagination
+          "!pageable": pagination
     - name: filterable
       title: 可筛选
       type: boolean
@@ -238,7 +236,8 @@
       support:
         - name: van-cell
           title: 单元格
-          snippet: '<template #item="current"><van-cell isLink><template #title>文本</template></van-cell></template>'
+          snippet: '<template #item="current"><van-cell isLink><template
+            #title>文本</template></van-cell></template>'
     - concept: Slot
       name: item
       description: 自定义选项的结构和样式
@@ -251,9 +250,9 @@
           typeNamespace: nasl.ui
           typeName: Current
           typeArguments:
-          - concept: TypeAnnotation
-            typeKind: typeParam
-            typeName: T
+            - concept: TypeAnnotation
+              typeKind: typeParam
+              typeName: T
     - concept: Slot
       name: prev
       description: 自定义上一页

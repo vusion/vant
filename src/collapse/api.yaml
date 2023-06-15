@@ -24,7 +24,8 @@
       support:
         - name: van-collapse-item
           title: 菜单项
-          snippet: '<van-collapse-item><template #title>标签名称n</template></van-collapse-item>'
+          snippet: "<van-collapse-item><template
+            #title>标签名称n</template></van-collapse-item>"
   events:
     - name: change
       title: 切换时

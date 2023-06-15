@@ -39,11 +39,11 @@
     - name: scrollspystr
       title: 导航模式
       type: string
-      default: 'no'
+      default: no
       options:
-        - value: 'no'
+        - value: no
           title: 切换导航
-        - value: 'scrollspy'
+        - value: scrollspy
           title: 滚动导航
       description: 导航模式
     - name: animated
@@ -72,7 +72,6 @@
       params: []
 - name: van-tab
   title: 标签页
-  control: button
   is-sub: true
   attrs:
     - name: name

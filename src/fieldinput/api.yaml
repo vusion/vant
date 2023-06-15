@@ -87,7 +87,7 @@
         - value: native
           title: 默认键盘
           dependency:
-            - '!inputstyle': password
+            - "!inputstyle": password
         - value: custom
           title: 定制键盘
       default: native
@@ -117,7 +117,7 @@
       description: 设置完成按钮文字内容
       dependency:
         - keytheme: custom
-    - name : confirmSize
+    - name: confirmSize
       title: 完成按钮尺寸
       type: string
       options:

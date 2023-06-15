@@ -4,8 +4,6 @@
   labels:
     - Display
   description: 用于展示操作的当前进度。
-  next: true
-  nested: false
   attrs:
     - name: percentage
       title: 进度百分比
@@ -52,4 +50,4 @@
       title: 默认
       description: 显示的文本
       advanced: true
-  events:
+  events: null
