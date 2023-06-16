@@ -13,17 +13,14 @@
     - name: max
       title: 最大值
       type: number
-      sync: true
       default: 100
     - name: min
       title: 最小值
       type: number
-      sync: true
       default: 0
     - name: step
       title: 步长
       type: number | string
-      sync: true
       default: 0
     - name: bar-height
       title: 进度条高度(px)
