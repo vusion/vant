@@ -50,6 +50,11 @@
     }
   }
 
+  &__filter {
+    height: 432px;
+    overflow-y: scroll;
+  }
+
   &__tab {
     color: @cascader-tab-color;
     font-weight: @font-weight-bold;
@@ -67,6 +72,25 @@
     padding: 10px @padding-md;
     font-size: @font-size-md;
     line-height: @line-height-md;
+
+    &:active {
+      background-color: @active-color;
+    }
+
+    &--selected {
+      color: @cascader-active-color;
+      font-weight: @font-weight-bold;
+    }
+  }
+
+  &__filter-option {
+    display: flex;
+    align-items: center;
+    padding: 10px @padding-md;
+    font-size: @font-size-md;
+    line-height: @line-height-md;
+
+    gap: 5px;
 
     &:active {
       background-color: @active-color;
