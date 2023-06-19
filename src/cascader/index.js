@@ -307,7 +307,7 @@ export default createComponent({
 
       function traverse(node, parents = []) {
         const children = _get(node, _this.childrenKey);
-        if (children) {
+        if (children?.length) {
           for (let i = 0; i < children.length; i++) {
             traverse(children[i], [...parents, node]);
           }
