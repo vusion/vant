@@ -84,12 +84,15 @@
   }
 
   &__filter-option {
+    position: relative;
     display: flex;
     align-items: center;
     padding: 10px @padding-md;
     font-size: @font-size-md;
     line-height: @line-height-md;
 
+    flex-wrap: wrap;
+    border-bottom: 1px solid #E6E7EB;
     gap: 5px;
 
     &:active {
@@ -99,6 +102,13 @@
     &--selected {
       color: @cascader-active-color;
       font-weight: @font-weight-bold;
+    }
+
+    .icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 
