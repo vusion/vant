@@ -8,6 +8,5 @@
   input-align="left"
   
   :tree-display="true"
-  parent-field="parentId"
 ><template #title>标题</template></van-cascader>
 ```
