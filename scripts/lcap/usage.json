@@ -8190,7 +8190,7 @@
             "Selector"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-cascader\\n  title=\\\"请选择\\\"\\n  converter=\\\"json\\\"\\n  labelField=\\\"级联选择\\\"\\n  input-align=\\\"left\\\"\\n><template #title>标题</template></van-cascader>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-cascader\\n  title=\\\"请选择\\\"\\n  converter=\\\"json\\\"\\n  labelField=\\\"级联选择\\\"\\n  input-align=\\\"left\\\"\\n  \\n  :tree-display=\\\"true\\\"\\n  parent-field=\\\"parentId\\\"\\n><template #title>标题</template></van-cascader>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-cascader",
             "title": "级联选择器",
@@ -8202,7 +8202,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-cascader\n  title=\"请选择\"\n  converter=\"json\"\n  labelField=\"级联选择\"\n  input-align=\"left\"\n><template #title>标题</template></van-cascader>\n</template>\n"
+                    "code": "<template>\n<van-cascader\n  title=\"请选择\"\n  converter=\"json\"\n  labelField=\"级联选择\"\n  input-align=\"left\"\n  \n  :tree-display=\"true\"\n  parent-field=\"parentId\"\n><template #title>标题</template></van-cascader>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -8257,11 +8257,32 @@
                     "description": "值字段"
                 },
                 {
+                    "name": "tree-display",
+                    "title": "树形模式",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "将平铺数据转为树形结构数据"
+                },
+                {
+                    "name": "parent-field",
+                    "title": "父级字段",
+                    "type": "string",
+                    "default": "parentId",
+                    "description": "父级字段"
+                },
+                {
                     "name": "children-field",
                     "title": "子级字段",
                     "type": "string",
                     "default": "children",
                     "description": "子级字段"
+                },
+                {
+                    "name": "filterable",
+                    "title": "可筛选",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "是否可以过滤（搜索），开启将会显示搜索框。"
                 },
                 {
                     "name": "field-namesp",
