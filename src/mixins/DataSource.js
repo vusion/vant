@@ -212,7 +212,14 @@ export default {
       this.currentDataSource.clearLocalData();
       this.load();
     },
+    sort(field, order, compare) {
+      const sorting = { field, order, compare };
 
+      this.currentDataSource.sort(sorting);
+      this.load();
+
+      this.$emit('update:sorting', sorting, this);
+    },
     filter(filtering) {
       const mergedFiltering =
         (this.currentDataSource && this.currentDataSource.filtering) || {};
