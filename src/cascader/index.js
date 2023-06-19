@@ -398,6 +398,10 @@ export default createComponent({
                   <span>{_get(p, this.textKey)}</span>
                 ))}
                 <span>{_get(item, this.textKey)}</span>
+
+                <div class='icon'>
+                  <van-icon name="arrow" color="#999" />
+                </div>
               </li>
             ))}
           </div>
