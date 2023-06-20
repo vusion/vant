@@ -41,11 +41,26 @@
       type: string
       default: value
       description: 值字段
+    - name: tree-display
+      title: 树形模式
+      type: boolean
+      default: false
+      description: 将平铺数据转为树形结构数据
+    - name: parent-field
+      title: 父级字段
+      type: string
+      default: parentId
+      description: 父级字段
     - name: children-field
       title: 子级字段
       type: string
       default: children
       description: 子级字段
+    - name: filterable
+      title: 可筛选
+      type: boolean
+      default: false
+      description: 是否可以过滤（搜索），开启将会显示搜索框。
     - name: field-namesp
       title: 自定义 options 结构中的字段
       type: string, object
