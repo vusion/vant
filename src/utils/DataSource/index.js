@@ -1,5 +1,7 @@
 import Vue from 'vue';
-import get from 'lodash/get';
+import _get from 'lodash/get';
+import _set from 'lodash/set';
+import _cloneDeep from 'lodash/cloneDeep';
 
 const isOperator = (value) => {
     const operators = [
@@ -36,7 +38,7 @@ export const solveCondition = (condition, obj) => {
             if (Array.isArray(expression)) {
                 if (!isOperator(expression[0])) {
                     // 多选项过滤，暂时简单处理
-                    const sourceValue = getType(obj) === 'String' ? obj : get(obj, key);
+                    const sourceValue = getType(obj) === 'String' ? obj : _get(obj, key);
                     const targetValue = expression;
                     return targetValue.includes(sourceValue);
                 }
@@ -46,7 +48,7 @@ export const solveCondition = (condition, obj) => {
                 };
             }
 
-            let sourceValue = getType(obj) === 'String' ? obj : get(obj, key);
+            let sourceValue = getType(obj) === 'String' ? obj : _get(obj, key);
             let targetValue = expression.value;
             if (expression.caseInsensitive) {
                 sourceValue
@@ -108,7 +110,7 @@ const VueDataSource = Vue.extend({
         return {
             data: [],
             cache: true,
-            viewMode: 'page',
+            viewMode: 'more',
             paging: undefined, // @TODO
             sorting: undefined, // @readonly
             filtering: undefined, // @readonly
@@ -176,32 +178,49 @@ const VueDataSource = Vue.extend({
     },
     methods: {
         arrange(data = this.data) {
-            let arrangedData = Array.from(data);
+          // 树形展示处理一下
+          if (this.treeDisplay) {
+            data = this.listToTree(data, {
+              valueField: this.treeDisplay.valueField,
+              parentField: this.treeDisplay.parentField,
+              childrenField: this.treeDisplay.childrenField,
+            });
 
-            const {filtering} = this;
-            if (!this.remoteFiltering && filtering && Object.keys(filtering).length) {
-                arrangedData = arrangedData.filter((item) => solveCondition(filtering, item));
-                // 前端筛选， 且无后端分页 时重置originTotal
-                !this.remotePaging && (this.originTotal = arrangedData.length);
+            this.originTotal = data.length;
+          }
+
+          let arrangedData = Array.from(data);
+
+          const { filtering } = this;
+          if (
+            !this.remoteFiltering &&
+            filtering &&
+            Object.keys(filtering).length
+          ) {
+            arrangedData = arrangedData.filter((item) =>
+              solveCondition(filtering, item)
+            );
+            // 前端筛选， 且无后端分页 时重置originTotal
+            !this.remotePaging && (this.originTotal = arrangedData.length);
+          }
+
+          const { sorting } = this;
+          if (!this.remoteSorting && sorting && sorting.field) {
+            const { field } = sorting;
+            const orderSign = sorting.order === 'asc' ? 1 : -1;
+            if (sorting.compare) {
+              arrangedData.sort((item1, item2) =>
+                sorting.compare(item1[field], item2[field], orderSign)
+              );
+            } else {
+              arrangedData.sort((item1, item2) =>
+                this.defaultCompare(item1[field], item2[field], orderSign)
+              );
             }
+          }
 
-            const {sorting} = this;
-            if (!this.remoteSorting && sorting && sorting.field) {
-                const {field} = sorting;
-                const orderSign = sorting.order === 'asc' ? 1 : -1;
-                if (sorting.compare) {
-                    arrangedData.sort((item1, item2) =>
-                        sorting.compare(item1[field], item2[field], orderSign),
-                    );
-                } else {
-                    arrangedData.sort((item1, item2) =>
-                        this.defaultCompare(item1[field], item2[field], orderSign),
-                    );
-                }
-            }
-
-            this.arrangedData = arrangedData;
-            return arrangedData;
+          this.arrangedData = arrangedData;
+          return arrangedData;
         },
         _process(data) {
             return data;
@@ -382,17 +401,6 @@ const VueDataSource = Vue.extend({
               this.originTotal = finalResult.total;
             }
 
-            // 树形展示处理一下
-            if (this.treeDisplay) {
-              this.data = this.listToTree(this.data, {
-                valueField: this.treeDisplay.valueField,
-                parentField: this.treeDisplay.parentField,
-                childrenField: this.treeDisplay.childrenField,
-              });
-
-              this.originTotal = this.data.length;
-            }
-
             return this.arrange(this.data);
           });
         },
@@ -428,28 +436,31 @@ const VueDataSource = Vue.extend({
         listToTree(data, options) {
             const { valueField, parentField, childrenField } = options;
 
+            data = _cloneDeep(data);
+
             // Map记录一下
             const nodes = {}; // Record<id, { entity }>
             data.forEach((item) => {
-                const id = this.$at(item, valueField);
+                const id = _get(item, valueField);
                 if (id) {
                     nodes[id] = item;
                 }
             });
 
             const tree = [];
+
             data.forEach((item) => {
-                const parentId = this.$at(item, parentField);
+                const parentId = _get(item, parentField);
                 const parent = nodes[parentId];
                 // 没有parentId 或者 parent不存在的不处理
                 if (!parentId || !parent) {
                     tree.push(item);
                 } else {
-                    if (!this.$at(parent, childrenField)) {
-                        this.$setAt(parent, childrenField, []);
+                    if (!_get(parent, childrenField)) {
+                      _set(parent, childrenField, []);
                     }
 
-                    this.$at(parent, childrenField).push(item);
+                    _get(parent, childrenField).push(item);
                 }
             });
 
