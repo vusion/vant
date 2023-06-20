@@ -6,5 +6,7 @@
   converter="json"
   labelField="级联选择"
   input-align="left"
+  
+  :tree-display="true"
 ><template #title>标题</template></van-cascader>
 ```
