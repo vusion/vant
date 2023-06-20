@@ -8190,7 +8190,7 @@
             "Selector"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-cascader\\n  title=\\\"请选择\\\"\\n  converter=\\\"json\\\"\\n  labelField=\\\"级联选择\\\"\\n  input-align=\\\"left\\\"\\n  \\n  :tree-display=\\\"true\\\"\\n  parent-field=\\\"parentId\\\"\\n><template #title>标题</template></van-cascader>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-cascader\\n  title=\\\"请选择\\\"\\n  converter=\\\"json\\\"\\n  labelField=\\\"级联选择\\\"\\n  input-align=\\\"left\\\"\\n  \\n  :tree-display=\\\"true\\\"\\n><template #title>标题</template></van-cascader>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-cascader",
             "title": "级联选择器",
@@ -8202,7 +8202,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-cascader\n  title=\"请选择\"\n  converter=\"json\"\n  labelField=\"级联选择\"\n  input-align=\"left\"\n  \n  :tree-display=\"true\"\n  parent-field=\"parentId\"\n><template #title>标题</template></van-cascader>\n</template>\n"
+                    "code": "<template>\n<van-cascader\n  title=\"请选择\"\n  converter=\"json\"\n  labelField=\"级联选择\"\n  input-align=\"left\"\n  \n  :tree-display=\"true\"\n><template #title>标题</template></van-cascader>\n</template>\n"
                 }
             ],
             "attrs": [

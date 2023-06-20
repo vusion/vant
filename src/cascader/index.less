@@ -38,6 +38,14 @@
     .van-tab {
       flex: none;
       padding: 0 10px;
+      max-width: 112px;
+
+      > span {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
 
     &.van-tabs--line .van-tabs__wrap {
