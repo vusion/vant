@@ -172,7 +172,7 @@ export default {
 
         options.remotePaging = this.treeDisplay ? false : this.pageable;
         options.remoteSorting = !!options.remotePaging;
-        options.remoteSorting = !!options.remotePaging;
+        options.remoteFiltering = !!options.remotePaging;
 
         return new DataSource(options);
       }
