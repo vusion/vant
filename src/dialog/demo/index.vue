@@ -32,13 +32,15 @@
       <van-cell is-link :title="t('componentCall')" @click="onxxx" />
 
       <van-dialog
-        v-model="show2"
+        ref="xxx"
         :title="'退下2' || t('title')"
         show-cancel-button
-        :lazy-render="false"
       >
-        <div vusion-slot-name="default">内容</div>
-        <template #footer>
+        <div>
+            <van-calendar></van-calendar>
+        </div>
+
+        <!-- <template #footer>
           <van-button
             size="large"
             class="van-button van-button--default van-button--large van-dialog__cancel"
@@ -51,7 +53,7 @@
             text="确认"
             @click="show2 = false"
           ></van-button>
-        </template>
+        </template> -->
       </van-dialog>
     </demo-block>
   </demo-section>
@@ -83,7 +85,7 @@ export default {
     return {
       wagover: false,
       show: false,
-      show2: false,
+      show2: true,
       currentRate: 0,
       image: 'https://img01.yzcdn.cn/vant/apple-3.jpg',
     };
@@ -91,7 +93,9 @@ export default {
   mounted() {
     setTimeout(() => {
       this.wagover = true;
-    }, 10000);
+
+      this.$refs.xxx.openModal()
+    }, 2000);
   },
   methods: {
     onxxx() {

@@ -605,41 +605,43 @@ export default createComponent({
     }
     if (this.poppable) {
       const createListener = (name) => () => this.$emit(name);
-      return <div class={bem('wrapppcalendar')}>
-        <Field
-          label={this.labelField}
-          value={this.ifDesigner() ? this.defaultDate : this.getTitle}
-          scopedSlots={tempSlot}
-          readonly
-          isLink
-          input-align={this.inputAlign || "right"}
-          onClick={this.togglePopup}
-          // eslint-disable-next-line no-prototype-builtins
-          notitle={!this.$slots.hasOwnProperty('title')}
-          insel={true}
-          nofi={true}
-        />
-        <Popup
-          safe-area-inset-bottom
-          round
-          class={bem('popup')}
-          round={this.round}
-          position={this.position}
-          ref="popforcas"
-          // onClickOverlay={this.togglePopup}
-          // closeable={this.showTitle || this.showSubtitle}
-          // getContainer={this.getContainer}
-          // closeOnPopstate={this.closeOnPopstate}
-          closeOnClickOverlay={this.closeOnClickOverlay}
-          // onInput={this.togglePopup}
-          // onOpen={createListener('open')}
-          // onOpened={createListener('opened')}
-          // onClose={createListener('close')}
-          // onClosed={createListener('closed')}
-        >
-          {this.genCalendar()}
-        </Popup>
-      </div>
+      return (
+        <div class={bem('wrapppcalendar')}>
+          <Field
+            label={this.labelField}
+            value={this.ifDesigner() ? this.defaultDate : this.getTitle}
+            scopedSlots={tempSlot}
+            readonly
+            isLink
+            input-align={this.inputAlign || 'right'}
+            onClick={this.togglePopup}
+            // eslint-disable-next-line no-prototype-builtins
+            notitle={!this.$slots.hasOwnProperty('title')}
+            insel={true}
+            nofi={true}
+          />
+          <Popup
+            safe-area-inset-bottom
+            round
+            class={bem('popup')}
+            round={this.round}
+            position={this.position}
+            ref="popforcas"
+            // onClickOverlay={this.togglePopup}
+            // closeable={this.showTitle || this.showSubtitle}
+            get-container="body" // 放body下不易出现异常情况
+            // closeOnPopstate={this.closeOnPopstate}
+            closeOnClickOverlay={this.closeOnClickOverlay}
+            // onInput={this.togglePopup}
+            // onOpen={createListener('open')}
+            // onOpened={createListener('opened')}
+            // onClose={createListener('close')}
+            // onClosed={createListener('closed')}
+          >
+            {this.genCalendar()}
+          </Popup>
+        </div>
+      );
     }
 
     return this.genCalendar();

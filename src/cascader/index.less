@@ -38,6 +38,14 @@
     .van-tab {
       flex: none;
       padding: 0 10px;
+      max-width: 112px;
+
+      > span {
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
 
     &.van-tabs--line .van-tabs__wrap {
@@ -48,6 +56,11 @@
       padding-right: 6px;
       padding-left: 6px;
     }
+  }
+
+  &__filter {
+    height: 432px;
+    overflow-y: scroll;
   }
 
   &__tab {
@@ -75,6 +88,35 @@
     &--selected {
       color: @cascader-active-color;
       font-weight: @font-weight-bold;
+    }
+  }
+
+  &__filter-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px @padding-md;
+    font-size: @font-size-md;
+    line-height: @line-height-md;
+
+    flex-wrap: wrap;
+    border-bottom: 1px solid #E6E7EB;
+    gap: 5px;
+
+    &:active {
+      background-color: @active-color;
+    }
+
+    &--selected {
+      color: @cascader-active-color;
+      font-weight: @font-weight-bold;
+    }
+
+    .icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 

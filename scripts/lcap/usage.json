@@ -8140,7 +8140,7 @@
             "Selector"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-area\\n  title=\\\"标题\\\"\\n  converter=\\\"json\\\"\\n  labelField=\\\"地区选择\\\"\\n  input-align=\\\"left\\\"\\n><template #title>标题</template></van-area>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-area\\n  title=\\\"标题\\\"\\n  labelField=\\\"地区选择\\\"\\n  input-align=\\\"left\\\"\\n  converter=\\\"name\\\"\\n><template #title>标题</template></van-area>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-area",
             "title": "地区选择器",
@@ -8152,7 +8152,7 @@
                 {
                     "title": "基本用法",
                     "description": "",
-                    "code": "<template>\n<van-area\n  title=\"标题\"\n  converter=\"json\"\n  labelField=\"地区选择\"\n  input-align=\"left\"\n><template #title>标题</template></van-area>\n</template>\n"
+                    "code": "<template>\n<van-area\n  title=\"标题\"\n  labelField=\"地区选择\"\n  input-align=\"left\"\n  converter=\"name\"\n><template #title>标题</template></van-area>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -8236,6 +8236,26 @@
                     "description": "右侧内容对齐方式"
                 },
                 {
+                    "name": "converter",
+                    "title": "转换器",
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "name",
+                            "title": "地区名称"
+                        },
+                        {
+                            "value": "code",
+                            "title": "地区码"
+                        },
+                        {
+                            "value": "json",
+                            "title": "JSON"
+                        }
+                    ],
+                    "description": "选择地区名称，返回：浙江省/杭州市/滨江区（不加空格）；选择地区码，返回：330108"
+                },
+                {
                     "name": "close-on-click-overlay",
                     "title": "点击遮罩层后关闭",
                     "type": "boolean",
@@ -8274,7 +8294,7 @@
             "Selector"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-cascader\\n  title=\\\"请选择\\\"\\n  converter=\\\"json\\\"\\n  labelField=\\\"级联选择\\\"\\n  input-align=\\\"left\\\"\\n><template #title>标题</template></van-cascader>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-cascader\\n  title=\\\"请选择\\\"\\n  converter=\\\"json\\\"\\n  labelField=\\\"级联选择\\\"\\n  input-align=\\\"left\\\"\\n  \\n  :tree-display=\\\"true\\\"\\n><template #title>标题</template></van-cascader>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-cascader",
             "title": "级联选择器",
@@ -8286,7 +8306,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-cascader\n  title=\"请选择\"\n  converter=\"json\"\n  labelField=\"级联选择\"\n  input-align=\"left\"\n><template #title>标题</template></van-cascader>\n</template>\n"
+                    "code": "<template>\n<van-cascader\n  title=\"请选择\"\n  converter=\"json\"\n  labelField=\"级联选择\"\n  input-align=\"left\"\n  \n  :tree-display=\"true\"\n><template #title>标题</template></van-cascader>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -8342,11 +8362,32 @@
                     "description": "值字段"
                 },
                 {
+                    "name": "tree-display",
+                    "title": "树形模式",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "将平铺数据转为树形结构数据"
+                },
+                {
+                    "name": "parent-field",
+                    "title": "父级字段",
+                    "type": "string",
+                    "default": "parentId",
+                    "description": "父级字段"
+                },
+                {
                     "name": "children-field",
                     "title": "子级字段",
                     "type": "string",
                     "default": "children",
                     "description": "子级字段"
+                },
+                {
+                    "name": "filterable",
+                    "title": "可筛选",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "是否可以过滤（搜索），开启将会显示搜索框。"
                 },
                 {
                     "name": "field-namesp",

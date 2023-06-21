@@ -8,6 +8,9 @@
        <van-area :title="t('title')" :area-list="t('areaList')" converter="json" label-field="地区选择" :value.sync="sarea2"/>
        <van-area :title="t('title')" :area-list="t('areaList')" converter="json" label-field="地区选择" :value.sync="sarea"/>
     </demo-block>
+    <demo-block card :title="t('advancedUsage')">
+        <van-area converter="name" label-field="地区名称" :value.sync="sareaName" @change="onChange"/>
+    </demo-block>
     <!-- <demo-block card :title="t('basicUsage')">
       <van-area :title="t('title')" />
     </demo-block>
@@ -62,7 +65,13 @@ export default {
       ara1111: '310113',
       sarea: '',
       sarea2: "140303",
+      sareaName: '浙江省/杭州市/西湖区'
     };
   },
+  methods: {
+    onChange(...event) {
+      console.log('onChange', ...event)
+    }
+  }
 };
 </script>
