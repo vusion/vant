@@ -1,5 +1,5 @@
 - name: van-calendar
-  title: 日期选择器
+  title: 日期选择
   labels:
     - Selector
   icon: date-time-picker
