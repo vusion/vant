@@ -22,6 +22,7 @@ export default {
     pageNumber: { type: Number, default: 1 },
 
     // 筛选相关
+    filterable: { type: Boolean, default: false },
     matchMethod: { type: [String, Function], default: 'includes' },
     caseSensitive: { type: Boolean, default: false },
 
@@ -90,14 +91,14 @@ export default {
         this.sort(sorting.field, sorting.order, sorting.compare);
       },
     },
-    'currentDataSource.sorting': function (sorting) {
-      this.currentSorting = sorting;
-    },
     filtering: {
       deep: true,
       handler(filtering) {
         this.filter(filtering);
       },
+    },
+    'currentDataSource.sorting': function (sorting) {
+      this.currentSorting = sorting;
     },
   },
   created() {
@@ -210,6 +211,16 @@ export default {
     },
     reload() {
       this.currentDataSource.clearLocalData();
+      this.load();
+    },
+    page(number, size = this.currentDataSource.paging.size) {
+      const paging = {
+        size,
+        oldSize: this.currentDataSource.paging.size,
+        number,
+        oldNumber: this.currentDataSource.paging.number,
+      };
+      this.currentDataSource.page(paging);
       this.load();
     },
     sort(field, order, compare) {
