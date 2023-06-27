@@ -1900,6 +1900,16 @@
                     "--van-list-view-striped-background": {
                         "type": "color",
                         "desc": "斑马纹颜色"
+                    },
+                    "--van-list-view-item-unselected-backgroud": {
+                        "type": "input",
+                        "desc": "列表项未选中背景",
+                        "prefix": "van-list-view-item"
+                    },
+                    "--van-list-view-item-selected-backgroud": {
+                        "type": "input",
+                        "desc": "列表项选中背景",
+                        "prefix": "van-list-view-item"
                     }
                 },
                 "preview": {

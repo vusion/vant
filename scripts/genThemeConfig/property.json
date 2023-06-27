@@ -440,6 +440,8 @@
     "--van-list-view-input-color": "#333",
     "--van-list-view-placeholder-color": "#c8c9cc",
     "--van-list-view-striped-background": "#f4f6f9",
+    "--van-list-view-item-unselected-backgroud": "transparent",
+    "--van-list-view-item-selected-backgroud": "transparent",
     "--van-fieldinput-text-color": "#333",
     "--van-fieldinput-placeholder-color": "#c8c9cc",
     "--van-fieldinput-disabled-color": "#c8c9cc",
