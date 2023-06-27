@@ -1,5 +1,5 @@
 
 /* 为了斑马纹能生效 */
-.list-view .van-cell {
+.list-view-item > .van-cell {
   background: transparent;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.root"
+  <div :class="[$style.root, 'list-view-item']"
       :selected="parentVM.multiple ? currentSelected : isSelected"
       :readonly="parentVM.readonly" :readonly-mode="parentVM.readonlyMode"
       :disabled="disabled || parentVM.disabled"
