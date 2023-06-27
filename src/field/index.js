@@ -207,6 +207,8 @@ export default createComponent({
           return this.children.defaultDate;
         } if (this.children?.$options?._componentTag === 'van-uploader') {
           return this.children.fileListProp;
+        } if (this.children?.$options?._componentTag === 'van-radio') {
+          return this.children.currentValue;
         }
         return this.children.value;
       }

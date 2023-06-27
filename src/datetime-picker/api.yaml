@@ -1,5 +1,5 @@
 - name: van-datetime-picker
-  title: 时间选择器
+  title: 时间选择
   labels:
     - Selector
   icon: time-picker
@@ -14,13 +14,13 @@
       type: string
       options:
         - value: time
-          title: 时间选择器
+          title: 时间选择
         - value: date
-          title: 日期选择器
+          title: 日期选择
         - value: year-month
           title: 年月选择器
         - value: datetime
-          title: 日期时间选择器
+          title: 日期时间选择
       default: datetime
     - name: converter
       title: 转换器
@@ -54,31 +54,31 @@
     - name: min-date
       title: 最小日期
       type: Date
-      description: 当时间选择器类型为datetime时可选的最小时间，精确到分钟, 默认为十年前
+      description: 当时间选择类型为datetime时可选的最小时间，精确到分钟, 默认为十年前
     - name: max-date
       title: 最大日期
       type: Date
-      description: 当时间选择器类型为datetime时可选的最大时间，精确到分钟, 默认为十年后
+      description: 当时间选择类型为datetime时可选的最大时间，精确到分钟, 默认为十年后
     - name: max-hour
       title: 最大小时
       type: string, number
       default: 23
-      description: 当时间选择器类型为 time 时
+      description: 当时间选择类型为 time 时
     - name: min-hour
       title: 最小小时
       type: string, number
       default: 0
-      description: 当时间选择器类型为 time 时
+      description: 当时间选择类型为 time 时
     - name: max-minute
       title: 最大分钟
       type: string, number
       default: 59
-      description: 当时间选择器类型为 time 时
+      description: 当时间选择类型为 time 时
     - name: min-minute
       title: 最小分钟
       type: string, number
       default: 0
-      description: 当时间选择器类型为 time 时
+      description: 当时间选择类型为 time 时
     - name: displayFormat
       title: 自定义展示格式
       type: string
@@ -121,7 +121,7 @@
       title: 确认
       description: 点击完成按钮时触发的事件
       params: []
-  description: 时间选择器，支持日期、年月、时分等维度
+  description: 时间选择，支持日期、年月、时分等维度
   methods:
     - name: open
       description: 打开

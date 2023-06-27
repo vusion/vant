@@ -1,5 +1,5 @@
 - name: van-cascader
-  title: 级联选择器
+  title: 级联选择
   icon: cascade-select
   labels:
     - Selector
