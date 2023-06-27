@@ -633,7 +633,7 @@ export default createComponent({
           this.$emit(
             'progress',
             {
-              e,
+              ...e,
               file,
               xhr,
             },

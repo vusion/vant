@@ -2,15 +2,6 @@
 <div :class="$style.root" :readonly="readonly" :readonly-mode="readonlyMode" :disabled="disabled"
     :tabindex="readonly || disabled ? '' : 0"
     :vusion-designer="$env.VUE_APP_DESIGNER">
-    <div v-show="showHead" :class="$style.head">
-        <slot name="head">
-            <u-checkbox v-if="multiple" :value="allChecked" @check="checkAll($event.value)"></u-checkbox>
-            <span :class="$style.title" vusion-slot-name-edit="title">{{ title }}</span>
-            <div :class="$style.extra">
-                <span v-if="multiple">{{ selectedVMs.length }}{{ currentDataSource && currentDataSource.originTotal !== Infinity ? ' / ' + currentDataSource.originTotal : '' }}</span>
-            </div>
-        </slot>
-    </div>
     <u-input
       v-if="filterable"
       :class="$style.filter"
@@ -22,6 +13,7 @@
       :value="filterText"
       @input="onInput">
     </u-input>
+
     <div :class="$style.scrollwrap" @scroll="onScroll">
       <van-pull-refresh :value="$env.VUE_APP_DESIGNER ? false : refreshing" :disabled="!pullRefresh || pageable === 'pagination'"
         :pulling-text="pullingText" :loosing-text="loosingText" :loading-text="loadingText" :success-text="successText" :success-duration="successDuration" :pull-distance="pullDistance"
@@ -101,12 +93,13 @@ import DataSource from '../../../src/utils/DataSource';
 import VanPullRefresh from '../../../src/pull-refresh';
 import VanEmptyCol from '../../../src/emptycol';
 import VanPagination from '../../../src/pagination';
+import Iconv from '../../../src/iconv';
 
 export default {
     name: 'van-list-view',
     groupName: 'van-list-view-group',
     childName: 'van-list-view-item',
-    components: { VanPullRefresh, VanEmptyCol, VanPagination, UCheckbox, UInput, USpinner, ULink },
+    components: { VanPullRefresh, VanEmptyCol, VanPagination, UCheckbox, UInput, USpinner, ULink, Iconv },
     extends: UListView,
     props: {
         border: { type: Boolean, default: false },
@@ -123,6 +116,13 @@ export default {
         hiddenempty: { type: Boolean, default: false },
         striped: { type: Boolean, default: false },
         dataSource: [DataSource, Function, Object, Array],
+
+        selectable: {
+          type: String,
+          default: '',
+        },
+        selectedIcon: String,
+        unselectedIcon: String,
     },
     data() {
       return {

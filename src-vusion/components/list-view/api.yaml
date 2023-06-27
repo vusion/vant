@@ -59,6 +59,26 @@
       default: false
       advanced: true
       description: 是否可以取消选择
+    - name: selectable
+      title: 可选择
+      type: string
+      default: ""
+      options:
+        - value: ""
+          title: 关闭
+        - value: single
+          title: 单选
+        - value: multiple
+          title: 多选
+      description: 是否可以选择
+    - name: selected-icon
+      title: 已选图标
+      type: icon
+      default: ''
+    - name: unselected-icon
+      title: 未选图标
+      type: icon
+      default: ''
     - name: multiple
       title: 可多选
       type: boolean
@@ -115,10 +135,11 @@
       type: boolean
       default: false
       description: 是否使用后端分页
+      advanced: true
       dependency:
         - '!pageable': ""
     - name: page-size
-      title: 分页大小
+      title: 默认分页大小
       type: number
       default: 20
       description: 分页过小可能会导致滚动加载更多失效
@@ -183,28 +204,38 @@
       type: boolean
       default: false
       description: 是否隐藏表格末尾“没有更多了”文案
+      dependency:
+        - filterable: true
     - name: placeholder
       title: 筛选输入框的占位符
       type: string
       default: 请输入
       description: 搜索框的占位符
+      dependency:
+        - filterable: true
     - name: clearable
       title: 筛选清除按钮
       type: boolean
       default: false
       description: 搜索框是否有清除按钮
+      dependency:
+        - filterable: true
     - name: match-method
       title: 匹配方法
       type: string, Function
       default: includes
       advanced: true
       description: 过滤时的匹配方法
+      dependency:
+        - filterable: true
     - name: case-sensitive
       title: 大小写敏感
       type: boolean
       default: false
       advanced: true
       description: 过滤时大小写是否敏感
+      dependency:
+        - filterable: true
     - name: size
       title: 尺寸
       type: string
