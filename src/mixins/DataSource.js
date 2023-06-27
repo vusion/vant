@@ -17,20 +17,20 @@ export default {
     descriptionField: { type: String, default: 'description' },
 
     // 分页相关
-    pageable: { type: [Boolean, String], default: false },
+    // pageable: { type: [Boolean, String], default: false }, // 由组件自己定义
     pageSize: { type: Number, default: 50 },
     pageNumber: { type: Number, default: 1 },
 
     // 筛选相关
-    filterable: { type: Boolean, default: false },
+    // filterable: { type: Boolean, default: false }, // 由组件自己定义
     matchMethod: { type: [String, Function], default: 'includes' },
     caseSensitive: { type: Boolean, default: false },
 
     // 排序相关
-    sorting: Object,
+    // sorting: Object, // 由组件自己定义
 
     // 树形组件相关
-    treeDisplay: { type: Boolean, default: false },
+    // treeDisplay: { type: Boolean, default: false }, // 由组件自己定义
     parentField: { type: String, default: 'parentId' },
     childrenField: { type: String, default: 'children' },
   },
