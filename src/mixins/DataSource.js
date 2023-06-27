@@ -17,19 +17,20 @@ export default {
     descriptionField: { type: String, default: 'description' },
 
     // 分页相关
-    pageable: { type: [Boolean, String], default: false },
+    // pageable: { type: [Boolean, String], default: false }, // 由组件自己定义
     pageSize: { type: Number, default: 50 },
     pageNumber: { type: Number, default: 1 },
 
     // 筛选相关
+    // filterable: { type: Boolean, default: false }, // 由组件自己定义
     matchMethod: { type: [String, Function], default: 'includes' },
     caseSensitive: { type: Boolean, default: false },
 
     // 排序相关
-    sorting: Object,
+    // sorting: Object, // 由组件自己定义
 
     // 树形组件相关
-    treeDisplay: { type: Boolean, default: false },
+    // treeDisplay: { type: Boolean, default: false }, // 由组件自己定义
     parentField: { type: String, default: 'parentId' },
     childrenField: { type: String, default: 'children' },
   },
@@ -90,14 +91,14 @@ export default {
         this.sort(sorting.field, sorting.order, sorting.compare);
       },
     },
-    'currentDataSource.sorting': function (sorting) {
-      this.currentSorting = sorting;
-    },
     filtering: {
       deep: true,
       handler(filtering) {
         this.filter(filtering);
       },
+    },
+    'currentDataSource.sorting': function (sorting) {
+      this.currentSorting = sorting;
     },
   },
   created() {
@@ -172,7 +173,7 @@ export default {
 
         options.remotePaging = this.treeDisplay ? false : this.pageable;
         options.remoteSorting = !!options.remotePaging;
-        options.remoteSorting = !!options.remotePaging;
+        options.remoteFiltering = !!options.remotePaging;
 
         return new DataSource(options);
       }
@@ -210,6 +211,16 @@ export default {
     },
     reload() {
       this.currentDataSource.clearLocalData();
+      this.load();
+    },
+    page(number, size = this.currentDataSource.paging.size) {
+      const paging = {
+        size,
+        oldSize: this.currentDataSource.paging.size,
+        number,
+        oldNumber: this.currentDataSource.paging.number,
+      };
+      this.currentDataSource.page(paging);
       this.load();
     },
     sort(field, order, compare) {

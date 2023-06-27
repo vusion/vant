@@ -25,10 +25,6 @@ export default createComponent({
     fieldNamesp: [Object, String],
     placeholder: { type: String, default: '请选择' },
     activeColor: String,
-    filterable: {
-      type: Boolean,
-      default: false,
-    },
     converter: {
       type: String,
       default: 'json',
@@ -54,6 +50,11 @@ export default createComponent({
       default: false,
     },
     inputAlign: String,
+    // 筛选
+    filterable: {
+      type: Boolean,
+      default: false,
+    },
     treeDisplay: { type: Boolean, default: false }, // 组件内部默认不开启树，兼容老版本
   },
 
@@ -399,7 +400,7 @@ export default createComponent({
                 ))}
                 <span>{_get(item, this.textKey)}</span>
 
-                <div class='icon'>
+                <div class="icon">
                   <van-icon name="arrow" color="#999" />
                 </div>
               </li>
