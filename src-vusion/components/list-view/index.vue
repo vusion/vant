@@ -1,5 +1,5 @@
 <template>
-<div :class="$style.root" :readonly="readonly" :readonly-mode="readonlyMode" :disabled="disabled"
+<div :class="[$style.root, 'list-view']" :readonly="readonly" :readonly-mode="readonlyMode" :disabled="disabled"
     :tabindex="readonly || disabled ? '' : 0"
     :vusion-designer="$env.VUE_APP_DESIGNER">
     <u-input
@@ -60,11 +60,11 @@
     </div>
 
     <div
-        v-show="(pageable === 'pagination')" :class="$style.foot">
+        v-if="(pageable === 'pagination')" :class="$style.foot">
             <van-pagination
-                :value="currentDataSource && currentDataSource.paging.number"
+                :value="currentDataSource && currentDataSource.paging && currentDataSource.paging.number"
                 :total-items="currentDataSource && currentDataSource.total"
-                :items-per-page="currentDataSource && currentDataSource.paging.size"
+                :items-per-page="currentDataSource && currentDataSource.paging && currentDataSource.paging.size"
                 mode="simple"
                 @change="page($event)"
             >
@@ -95,6 +95,8 @@ import VanEmptyCol from '../../../src/emptycol';
 import VanPagination from '../../../src/pagination';
 import Iconv from '../../../src/iconv';
 
+import './index.css';
+
 export default {
     name: 'van-list-view',
     groupName: 'van-list-view-group',
@@ -103,7 +105,7 @@ export default {
     extends: UListView,
     props: {
         border: { type: Boolean, default: false },
-        readonly: { type: Boolean, default: true },
+        readonly: { type: Boolean, default: false },
         readonlyMode: { type: String, default: 'initial' },
         pageSize: { type: Number, default: 20 },
         pullRefresh: { type: Boolean, default: true },
@@ -116,6 +118,9 @@ export default {
         hiddenempty: { type: Boolean, default: false },
         striped: { type: Boolean, default: false },
         dataSource: [DataSource, Function, Object, Array],
+
+        // override
+        cancelable: { type: Boolean, default: true },
 
         selectable: {
           type: String,
@@ -257,9 +262,12 @@ export default {
   background: var(--van-list-view-striped-background);
 }
 
-/* 为了斑马纹能生效， 如果出现非div的 在这边加 */
-.body .list[striped] > div:nth-of-type(odd) > div {
-  background: transparent;
+.root .body .list > div {
+  background: var(--van-list-view-item-unselected-backgroud);
+}
+
+.root .body .list > div[selected] {
+  background: var(--van-list-view-item-selected-backgroud);
 }
 
 .root[readonly-mode="initial"] .body {

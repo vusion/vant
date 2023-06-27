@@ -13,9 +13,15 @@
 ``` vue
 <template>
     <div style="height: 600px;">
-        <van-list-view :data-source="load">
+        <van-list-view 
+          :data-source="load" 
+          :multiple="false" 
+          selected-icon="sure" 
+          unselected-icon="countdown" 
+          :striped="true"
+          style="--van-list-view-item-selected-backgroud: #f10;">
             <template #item="scope">
-                <van-cell :title="scope.item.text" isLink></van-cell>
+                <van-cell style="backgroud: transparent;"  :title="scope.item.text" :isLink="false"></van-cell>
             </template>
         </van-list-view>
     </div>

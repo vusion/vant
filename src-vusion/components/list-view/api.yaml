@@ -71,6 +71,7 @@
         - value: multiple
           title: 多选
       description: 是否可以选择
+      advanced: true
     - name: selected-icon
       title: 已选图标
       type: icon
@@ -80,11 +81,9 @@
       type: icon
       default: ''
     - name: multiple
-      title: 可多选
+      title: 单选/多选
       type: boolean
       default: false
-      advanced: true
-      description: 是否可以多选
     - name: show-head
       title: 显示头部
       type: boolean
@@ -293,37 +292,9 @@
       name: next
       description: 自定义下一页
   events:
-    - name: before-select
-      description: 选择某一项前触发
-      advanced: true
-      params:
-        - name: $event
-          type: object
-          description: 自定义事件对象
-          schema:
-            $ref: "#/systemTypes/ChangeItemEvent"
-        - name: $event.value
-          type: any
-          description: 选择项的值
-        - name: $event.oldValue
-          type: any
-          description: 旧的值
-        - name: $event.item
-          type: object
-          description: 选择项相关对象
-        - name: $event.itemVM
-          type: UListViewItem
-          description: 选择项子组件
-        - name: $event.preventDefault
-          type: Function
-          description: 阻止选择流程
-        - name: senderVM
-          type: UListView
-          description: 发送事件实例
     - name: input
       title: 选择时
       description: 选择某一项时触发
-      advanced: true
       params:
         - name: $event
           type: any
@@ -335,8 +306,7 @@
           description: 发送事件实例
     - name: select
       title: 选择后
-      description: 选择某一项时触发。单选模式中：
-      advanced: true
+      description: 选择某一项时触发
       params:
         - name: $event
           type: object
@@ -397,7 +367,6 @@
     - name: before-load
       title: 加载前
       description: 加载前触发
-      advanced: true
       params:
         - name: $event
           type: object

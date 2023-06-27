@@ -3,27 +3,35 @@
       :selected="parentVM.multiple ? currentSelected : isSelected"
       :readonly="parentVM.readonly" :readonly-mode="parentVM.readonlyMode"
       :disabled="disabled || parentVM.disabled"
-      :checkbox="parentVM.multiple && parentVM.checkbox"
       @click="select"
       v-ellipsis-title="ellipsisTitle"
       :designer="$env.VUE_APP_DESIGNER"
       vusion-slot-name="item">
-      <u-checkbox v-if="parentVM.multiple && parentVM.checkbox"
-          :readonly="parentVM.readonly"
-          :disabled="disabled || parentVM.disabled"
-          :value="currentSelected"
-      ></u-checkbox>
+
+      <div :class="$style.icon">
+        <iconv
+          v-if="parentVM.multiple ? currentSelected : isSelected"
+          :name="parentVM.selectedIcon" />
+        <iconv
+          v-else
+          :name="parentVM.unselectedIcon" />
+      </div>
+
       <slot>{{ text }}</slot>
   </div>
 </template>
 
 <script>
 import UListViewItem from 'cloud-ui.vusion/src/components/u-list-view.vue/item.vue';
+import Iconv from '../../../src/iconv';
 
 export default {
     name: 'van-list-view-item',
     parentName: 'van-list-view',
     groupName: 'van-list-view-group',
+    components: {
+      Iconv
+    },
     extends: UListViewItem,
 }
 </script>
@@ -31,7 +39,19 @@ export default {
 <style module>
 /* @import 'cloud-ui.vusion/src/components/u-list-view.vue/item.css'; */
 
+.root {
+  position: relative;
+}
+
 .root:hover {
-    background: none;;
+    /* background: none; */
+}
+
+.root .icon {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
 }
 </style>
