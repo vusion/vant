@@ -23,6 +23,10 @@ export default createComponent({
     },
     inputAlign: String,
     closeOnClickOverlay: Boolean,
+
+    pageable: { type: [Boolean, String], default: false },
+    filterable: { type: Boolean, default: false },
+    sorting: Object,
   },
 
   data() {
@@ -154,11 +158,13 @@ export default createComponent({
             showToolbar={this.$attrs['show-toolbar']}
             {...{ on }}
           >
-              {this.filterable ? <Search
+            {this.filterable ? (
+              <Search
                 slot="columns-top"
                 shape="round"
                 vModel={this.filterText}
-              /> : null}
+              />
+            ) : null}
           </Picker>
         </Popup>
       </div>
