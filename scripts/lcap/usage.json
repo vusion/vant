@@ -3831,7 +3831,7 @@
                     "title": "数据源",
                     "type": "Array<Item> | Function",
                     "description": "展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑",
-                    "designer-value": "[{}, {}, {}]",
+                    "designer-value": "[{}]",
                     "group": "数据属性"
                 },
                 {
@@ -3849,7 +3849,7 @@
                     "sync": true,
                     "model": true,
                     "default": 0,
-                    "description": "设置当前处于选中状态的步骤",
+                    "description": "指定当前步骤，从 0 开始记数。",
                     "group": "数据属性"
                 },
                 {
@@ -3869,7 +3869,10 @@
                     "default": "horizontal"
                 },
                 {
-                    "name": "readonly"
+                    "name": "readonly",
+                    "title": "只读",
+                    "type": "boolean",
+                    "default": false
                 }
             ],
             "slots": [
@@ -3922,11 +3925,36 @@
                     "title": "步骤条项",
                     "attrs": [
                         {
-                            "name": "value",
-                            "title": "值",
-                            "type": "number,string",
-                            "sync": true,
-                            "model": true
+                            "name": "icon",
+                            "title": "图标",
+                            "type": "icon",
+                            "description": "步骤自定义图标"
+                        },
+                        {
+                            "name": "status",
+                            "title": "状态",
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "wait",
+                                    "title": "等待"
+                                },
+                                {
+                                    "value": "finish",
+                                    "title": "完成"
+                                },
+                                {
+                                    "value": "error",
+                                    "title": "错误"
+                                }
+                            ],
+                            "description": "指定状态。当不配置该属性时，会使用 步骤条 的 当前步骤 来自动指定状态；如果该属性与 当前步骤 指定的状态不匹配会覆盖自动匹配的状态。"
+                        },
+                        {
+                            "name": "readonly",
+                            "title": "只读",
+                            "type": "boolean",
+                            "default": false
                         }
                     ],
                     "events": [
@@ -4790,12 +4818,44 @@
                     "description": "是否可以取消选择"
                 },
                 {
+                    "name": "selectable",
+                    "title": "可选择",
+                    "type": "string",
+                    "default": "",
+                    "options": [
+                        {
+                            "value": "",
+                            "title": "关闭"
+                        },
+                        {
+                            "value": "single",
+                            "title": "单选"
+                        },
+                        {
+                            "value": "multiple",
+                            "title": "多选"
+                        }
+                    ],
+                    "description": "是否可以选择",
+                    "advanced": true
+                },
+                {
+                    "name": "selected-icon",
+                    "title": "已选图标",
+                    "type": "icon",
+                    "default": ""
+                },
+                {
+                    "name": "unselected-icon",
+                    "title": "未选图标",
+                    "type": "icon",
+                    "default": ""
+                },
+                {
                     "name": "multiple",
-                    "title": "可多选",
+                    "title": "单选/多选",
                     "type": "boolean",
-                    "default": false,
-                    "advanced": true,
-                    "description": "是否可以多选"
+                    "default": false
                 },
                 {
                     "name": "show-head",
@@ -5141,55 +5201,9 @@
             ],
             "events": [
                 {
-                    "name": "before-select",
-                    "description": "选择某一项前触发",
-                    "advanced": true,
-                    "params": [
-                        {
-                            "name": "$event",
-                            "type": "object",
-                            "description": "自定义事件对象",
-                            "schema": {
-                                "$ref": "#/systemTypes/ChangeItemEvent"
-                            }
-                        },
-                        {
-                            "name": "$event.value",
-                            "type": "any",
-                            "description": "选择项的值"
-                        },
-                        {
-                            "name": "$event.oldValue",
-                            "type": "any",
-                            "description": "旧的值"
-                        },
-                        {
-                            "name": "$event.item",
-                            "type": "object",
-                            "description": "选择项相关对象"
-                        },
-                        {
-                            "name": "$event.itemVM",
-                            "type": "UListViewItem",
-                            "description": "选择项子组件"
-                        },
-                        {
-                            "name": "$event.preventDefault",
-                            "type": "Function",
-                            "description": "阻止选择流程"
-                        },
-                        {
-                            "name": "senderVM",
-                            "type": "UListView",
-                            "description": "发送事件实例"
-                        }
-                    ]
-                },
-                {
                     "name": "input",
                     "title": "选择时",
                     "description": "选择某一项时触发",
-                    "advanced": true,
                     "params": [
                         {
                             "name": "$event",
@@ -5209,8 +5223,7 @@
                 {
                     "name": "select",
                     "title": "选择后",
-                    "description": "选择某一项时触发。单选模式中：",
-                    "advanced": true,
+                    "description": "选择某一项时触发",
                     "params": [
                         {
                             "name": "$event",
@@ -5311,7 +5324,6 @@
                     "name": "before-load",
                     "title": "加载前",
                     "description": "加载前触发",
-                    "advanced": true,
                     "params": [
                         {
                             "name": "$event",
@@ -8344,7 +8356,7 @@
     },
     {
         "symbol": "van-area",
-        "name": "地区选择器",
+        "name": "地区选择",
         "icon": "region-select",
         "depDescription": {},
         "description": "省市区三级联动选择",
@@ -8355,7 +8367,7 @@
         "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-area\\n  title=\\\"标题\\\"\\n  labelField=\\\"地区选择\\\"\\n  input-align=\\\"left\\\"\\n  converter=\\\"name\\\"\\n><template #title>标题</template></van-area>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-area",
-            "title": "地区选择器",
+            "title": "地区选择",
             "description": "省市区三级联动选择",
             "category": "Selector",
             "screenShot": "",
@@ -8498,7 +8510,7 @@
     },
     {
         "symbol": "van-cascader",
-        "name": "级联选择器",
+        "name": "级联选择",
         "icon": "cascade-select",
         "depDescription": {},
         "description": "级联选择框，用于多层级数据的选择，典型场景为省市区选择",
@@ -8509,7 +8521,7 @@
         "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-cascader\\n  title=\\\"请选择\\\"\\n  converter=\\\"json\\\"\\n  labelField=\\\"级联选择\\\"\\n  input-align=\\\"left\\\"\\n  \\n  :tree-display=\\\"true\\\"\\n><template #title>标题</template></van-cascader>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-cascader",
-            "title": "级联选择器",
+            "title": "级联选择",
             "description": "级联选择框，用于多层级数据的选择，典型场景为省市区选择",
             "category": "Selector",
             "screenShot": "",
@@ -8656,10 +8668,10 @@
     },
     {
         "symbol": "van-datetime-picker",
-        "name": "时间选择器",
+        "name": "时间选择",
         "icon": "time-picker",
         "depDescription": {},
-        "description": "时间选择器，支持日期、年月、时分等维度",
+        "description": "时间选择，支持日期、年月、时分等维度",
         "labels": [
             "Selector"
         ],
@@ -8667,8 +8679,8 @@
         "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-datetime-picker\\n  type=\\\"datetime\\\"\\n  title=\\\"选择完整时间\\\"\\n  labelField=\\\"选择时间\\\"\\n  input-align=\\\"left\\\"\\n><template #title>标题</template></van-datetime-picker>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-datetime-picker",
-            "title": "时间选择器",
-            "description": "时间选择器，支持日期、年月、时分等维度",
+            "title": "时间选择",
+            "description": "时间选择，支持日期、年月、时分等维度",
             "category": "Selector",
             "screenShot": "",
             "drawings": "",
@@ -8694,11 +8706,11 @@
                     "options": [
                         {
                             "value": "time",
-                            "title": "时间选择器"
+                            "title": "时间选择"
                         },
                         {
                             "value": "date",
-                            "title": "日期选择器"
+                            "title": "日期选择"
                         },
                         {
                             "value": "year-month",
@@ -8706,7 +8718,7 @@
                         },
                         {
                             "value": "datetime",
-                            "title": "日期时间选择器"
+                            "title": "日期时间选择"
                         }
                     ],
                     "default": "datetime"
@@ -8763,41 +8775,41 @@
                     "name": "min-date",
                     "title": "最小日期",
                     "type": "Date",
-                    "description": "当时间选择器类型为datetime时可选的最小时间，精确到分钟, 默认为十年前"
+                    "description": "当时间选择类型为datetime时可选的最小时间，精确到分钟, 默认为十年前"
                 },
                 {
                     "name": "max-date",
                     "title": "最大日期",
                     "type": "Date",
-                    "description": "当时间选择器类型为datetime时可选的最大时间，精确到分钟, 默认为十年后"
+                    "description": "当时间选择类型为datetime时可选的最大时间，精确到分钟, 默认为十年后"
                 },
                 {
                     "name": "max-hour",
                     "title": "最大小时",
                     "type": "string, number",
                     "default": 23,
-                    "description": "当时间选择器类型为 time 时"
+                    "description": "当时间选择类型为 time 时"
                 },
                 {
                     "name": "min-hour",
                     "title": "最小小时",
                     "type": "string, number",
                     "default": 0,
-                    "description": "当时间选择器类型为 time 时"
+                    "description": "当时间选择类型为 time 时"
                 },
                 {
                     "name": "max-minute",
                     "title": "最大分钟",
                     "type": "string, number",
                     "default": 59,
-                    "description": "当时间选择器类型为 time 时"
+                    "description": "当时间选择类型为 time 时"
                 },
                 {
                     "name": "min-minute",
                     "title": "最小分钟",
                     "type": "string, number",
                     "default": 0,
-                    "description": "当时间选择器类型为 time 时"
+                    "description": "当时间选择类型为 time 时"
                 },
                 {
                     "name": "displayFormat",
@@ -8879,7 +8891,7 @@
     },
     {
         "symbol": "van-calendar",
-        "name": "日期选择器",
+        "name": "日期选择",
         "icon": "date-time-picker",
         "depDescription": {},
         "description": "日历组件用于选择日期或日期区间",
@@ -8890,7 +8902,7 @@
         "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-calendar\\n  title=\\\"选择日期\\\"\\n  labelField=\\\"选择日期\\\"\\n  input-align=\\\"left\\\"\\n><template #title>标题</template></van-calendar>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-calendar",
-            "title": "日期选择器",
+            "title": "日期选择",
             "description": "日历组件用于选择日期或日期区间",
             "category": "Selector",
             "screenShot": "",

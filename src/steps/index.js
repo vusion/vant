@@ -48,8 +48,8 @@ export default createComponent({
   methods: {
     // 有数据源
     renderDataSource() {
-      return this.currentDataSource?.data?.map((item, idx) => {
-        return this.slots('item', { item, mantle: this.inDesigner && idx > 0 });
+      return this.currentDataSource?.data?.map((item) => {
+        return this.slots('item', { item });
       });
     },
 
