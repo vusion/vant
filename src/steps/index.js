@@ -45,24 +45,34 @@ export default createComponent({
     },
   },
 
+  methods: {
+    // 有数据源
+    renderDataSource() {
+      return this.currentDataSource?.data?.map((item, idx) => {
+        return this.slots('item', { item, mantle: this.inDesigner && idx > 0 });
+      });
+    },
+
+    renderNormal() {
+      return this.slots();
+    },
+  },
+
   render() {
     return (
       <div class={bem([this.direction])}>
         <div class={bem('items')}>
-          {this.currentDataSource?.data?.map((item) => {
-            return this.slots('item', { item });
-          })}
+          {this.dataSource !== undefined
+            ? this.renderDataSource()
+            : this.renderNormal()}
 
-          {/* {this.currentDataSource?.data?.map((item, index) => {
-            return (this.inDesigner && index > 0) ? <div class="mantle"></div> : null;
-          })} */}
-
-          {!this.slots() && this.options?.length === 0 && this.inDesigner && (
-            <div style="text-align: center;width:100%">
-              请绑定数据源或插入子节点
-            </div>
-          )}
-          {this.slots()}
+          {!this.slots() &&
+            this.dataSource === undefined &&
+            this.inDesigner && (
+              <div style="text-align: center;width:100%">
+                请绑定数据源或插入子节点
+              </div>
+            )}
         </div>
       </div>
     );

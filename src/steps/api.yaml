@@ -9,7 +9,7 @@
       title: 数据源
       type: Array<Item> | Function
       description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑
-      designer-value: '[{}, {}, {}]'
+      designer-value: '[{}]'
       group: 数据属性
     - name: data-schema
       title: 数据类型
@@ -23,7 +23,7 @@
       sync: true
       model: true
       default: 0
-      description: 设置当前处于选中状态的步骤
+      description: 指定当前步骤，从 0 开始记数。
       group: 数据属性
     - name: direction
       title: 步骤条方向
@@ -35,6 +35,9 @@
           title: 垂直
       default: horizontal
     - name: readonly
+      title: 只读
+      type: boolean
+      default: false
   slots:
     - concept: Slot
       name: default
@@ -66,11 +69,30 @@
 - name: van-step
   title: 步骤条项
   attrs:
-    - name: value
-      title: 值
-      type: number,string
-      sync: true
-      model: true
+    # - name: value
+    #   title: 值
+    #   type: number,string
+    #   sync: true
+    #   model: true
+    - name: icon
+      title: 图标
+      type: icon
+      description: 步骤自定义图标
+    - name: status
+      title: 状态
+      type: string
+      options:
+        - value: wait
+          title: 等待
+        - value: finish
+          title: 完成
+        - value: error
+          title: 错误
+      description: 指定状态。当不配置该属性时，会使用 步骤条 的 当前步骤 来自动指定状态；如果该属性与 当前步骤 指定的状态不匹配会覆盖自动匹配的状态。
+    - name: readonly
+      title: 只读
+      type: boolean
+      default: false
   events:
     - name: clicktitle
       title: 点击标题

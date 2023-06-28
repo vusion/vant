@@ -2,6 +2,7 @@ import { createNamespace } from '../utils';
 import { BORDER } from '../utils/constant';
 import { ChildrenMixin } from '../mixins/relation';
 import Icon from '../icon';
+import Iconv from '../iconv';
 import VanEmptyCol from '../emptycol';
 
 const [createComponent, bem] = createNamespace('step');
@@ -12,26 +13,37 @@ export default createComponent({
     VanEmptyCol,
   },
   props: {
-    value: [Number, String]
+    value: [Number, String],
+    icon: String,
+    status: String,
+    readonly: { type: Boolean, default: false },
   },
   computed: {
-    status() {
+    currentStatus() {
+      // 指定状态优先
+      if (this.status) {
+        return this.status;
+      }
+
       if ((this.value ?? this.index) < this.parent.value) {
         return 'finish';
       }
       if ((this.value ?? this.index) === +this.parent.value) {
         return 'process';
       }
+
+      return 'wait';
     },
 
     active() {
-      return this.status === 'process';
+      return this.currentStatus === 'process';
     },
 
     lineStyle() {
-      if (this.status === 'finish') {
+      if (this.currentStatus === 'finish') {
         return { background: this.parent.activeColor };
       }
+
       return { background: this.parent.inactiveColor };
     },
 
@@ -39,7 +51,8 @@ export default createComponent({
       if (this.active) {
         return { color: this.parent.activeColor };
       }
-      if (!this.status) {
+
+      if (this.currentStatus === 'wait') {
         return { color: this.parent.inactiveColor };
       }
     },
@@ -50,81 +63,83 @@ export default createComponent({
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
     genCircle() {
-      const {
-        activeIcon,
-        iconPrefix,
-        activeColor,
-        finishIcon,
-        inactiveIcon,
-      } = this.parent;
+      // 指定图标优先
+      if (this.icon) {
+        return (
+          <Iconv
+            class={bem('icon', this.currentStatus)}
+            name={this.icon}
+          ></Iconv>
+        );
+      }
 
-      if (this.active) {
+      // 进行中（当前步骤）
+      if (this.currentStatus === 'process') {
+        // 最后一个展示完成状态
+        if (this.index === this.parent.children.length - 1) {
+          return (
+            this.slots('finish-icon') || (
+              <Iconv class={bem('icon', 'finish')} name="steps-finish" />
+            )
+          );
+        }
+
         return (
           this.slots('active-icon') || (
-            <Icon
+            <Iconv
               class={bem('icon', 'active')}
-              name={activeIcon}
-              color={activeColor}
-              classPrefix={iconPrefix}
-            />
+              name="steps-process" />
           )
         );
       }
 
-      const finishIconSlot = this.slots('finish-icon');
-      if (this.status === 'finish' && (finishIcon || finishIconSlot)) {
+      // 完成
+      if (this.currentStatus === 'finish') {
         return (
-          finishIconSlot || (
-            <Icon
-              class={bem('icon', 'finish')}
-              name={finishIcon}
-              color={activeColor}
-              classPrefix={iconPrefix}
-            />
+          this.slots('finish-icon') || (
+            <Iconv class={bem('icon', 'finish')} name="steps-finish" />
           )
         );
       }
 
+      if (this.currentStatus === 'error') {
+        return <Iconv class={bem('icon', 'error')} name="steps-error" />;
+      }
+
+      // 等待
       const inactiveIconSlot = this.slots('inactive-icon');
-
-      if (inactiveIcon || inactiveIconSlot) {
-        return (
-          inactiveIconSlot || (
-            <Icon
-              class={bem('icon')}
-              name={inactiveIcon}
-              classPrefix={iconPrefix}
-            />
-          )
-        );
-      }
-
-      return <i class={bem('circle')} style={this.lineStyle} />;
+      return inactiveIconSlot || <Iconv class={bem('icon')} name="steps-wait" />;
     },
 
     onClickStep() {
+      if (this.readonly || this.parent.readonly) return;
+
       this.parent.$emit('click-step', this.index);
       this.$emit('clicktitle', this.index);
       this.parent.value = this.value ?? this.index;
       this.parent.$emit('update:active', this.value ?? this.index);
     },
     onClickStepIcon() {
+      if (this.readonly || this.parent.readonly) return;
+
       this.$emit('clickicon', this.index);
       this.parent.value = this.value ?? this.index;
       this.parent.$emit('update:active', this.value ?? this.index);
     },
     designerControl() {
+      if (this.readonly || this.parent.readonly) return;
+
       this.parent.value = this.value ?? this.index;
       this.parent.$emit('update:active', this.value ?? this.index);
-    }
+    },
   },
 
   render() {
-    const { status, active } = this;
+    const { currentStatus, active, mantle } = this;
     const { direction } = this.parent;
 
     return (
-      <div class={[BORDER, bem([direction, { [status]: status }])]}>
+      <div class={[BORDER, bem([direction, { [currentStatus]: currentStatus, mantle }])]}>
         <div
           class={bem('title', { active })}
           style={this.titleStyle}
@@ -132,7 +147,9 @@ export default createComponent({
           vusion-slot-name="default"
         >
           {this.slots()}
-          {!this.slots() && this.ifDesigner() ? <van-empty-col></van-empty-col> : null}
+          {!this.slots() && this.ifDesigner() ? (
+            <van-empty-col></van-empty-col>
+          ) : null}
         </div>
         <div class={bem('circle-container')} onClick={this.onClickStepIcon}>
           {this.genCircle()}

@@ -105,10 +105,16 @@
     }
 
     .van-step__line {
-      top: 16px;
+      top: 28px;
+      // bottom: 30px;
       left: -15px;
       width: 1px;
-      height: 100%;
+      height: calc(100% - 18px);
+    }
+
+    .van-step__icon {
+      display: block;
+      font-size: @step-icon-size;
     }
   }
 
@@ -116,6 +122,10 @@
     .van-step__line {
       width: 0;
     }
+  }
+
+  &--process {
+    color: @step-finish-text-color;
   }
 
   &--finish {
@@ -127,13 +137,31 @@
     }
   }
 
-  &__icon,
-  &__title {
+  &__icon {
     transition: color @animation-duration-base;
 
     &--active,
+    &--process,
     &--finish {
       color: @step-active-color;
     }
+
+    &--error {
+      color: #F24957;
+    }
   }
+
+  // &__title {
+  //   transition: color @animation-duration-base;
+
+  //   &--active,
+  //   &--process,
+  //   &--finish {
+  //     color: @step-active-color;
+  //   }
+
+  //   &--error {
+  //     color: #F24957;
+  //   }
+  // }
 }
