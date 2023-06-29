@@ -108,26 +108,27 @@ function getType(o) {
 const VueDataSource = Vue.extend({
     data() {
         return {
-            data: [],
-            cache: true,
-            viewMode: 'more',
-            paging: undefined, // @TODO
-            sorting: undefined, // @readonly
-            filtering: undefined, // @readonly
-            // grouping: undefined,
-            remote: false,
-            remotePaging: false,
-            remoteSorting: false,
-            remoteFiltering: false,
-            // remoteGrouping: false,
-            // ------
-            arrangedData: [], // 整理过的数据，用于缓存过滤和排序行为。比如多次获取分页的话，没有必要重新整理
-            originTotal: Infinity, // @readonly - originTotal 作为很重要的判断有没有加载完所有数据的依据
-            initialLoaded: false,
+          data: [],
+          cache: true,
+          viewMode: 'more',
+          paging: undefined, // @TODO
+          sorting: undefined, // @readonly
+          filtering: undefined, // @readonly
+          // grouping: undefined,
+          remote: false,
+          remotePaging: false,
+          remoteSorting: false,
+          remoteFiltering: false,
+          // remoteGrouping: false,
+          // ------
+          arrangedData: [], // 整理过的数据，用于缓存过滤和排序行为。比如多次获取分页的话，没有必要重新整理
+          originTotal: Infinity, // @readonly - originTotal 作为很重要的判断有没有加载完所有数据的依据
+          initialLoaded: false,
 
-            queryChanged: false,
+          cleared: false, // 标志是否触发了清除本地数据 通常组件reload会触发
+          queryChanged: false,
 
-            treeDisplay: false,
+          treeDisplay: false,
         };
     },
     computed: {
@@ -219,6 +220,15 @@ const VueDataSource = Vue.extend({
             }
           }
 
+          // 重置清除标志
+          if (this.cleared) {
+            this.cleared = false;
+          }
+
+          if (this.queryChanged) {
+            this.queryChanged = false;
+          }
+
           this.arrangedData = arrangedData;
           return arrangedData;
         },
@@ -231,11 +241,13 @@ const VueDataSource = Vue.extend({
             this.originTotal = Infinity; // originTotal 必须清空，否则空列表不会更新
             this.arranged = false;
             this.initialLoaded = false;
+
+            this.cleared = true;
         },
         mustRemote() {
             return (
-                !this.hasAllRemoteData() // 没有全部的后端数据
-                || (this.queryChanged && (this.remoteFiltering || this.remoteSorting)) // query有变化
+              !this.hasAllRemoteData() || // 后端数据 且 还有未获取的后端数据
+              (this.remote && (this.queryChanged || this.cleared)) // 后端数据 query有变化、reload
             );
         },
         /**
@@ -289,26 +301,21 @@ const VueDataSource = Vue.extend({
           if (limit === undefined) limit = this.limit;
 
           // reload 或 query变化
-          if (!this.initialLoaded || this.queryChanged) {
+          if (this.cleared || this.queryChanged) {
             if (this.paging) {
               this.paging.number = 1;
             }
             offset = 0;
           }
 
-          // 首次加载完
-          if (this.initialLoaded) {
-            // 后端数据已经全部获取，调用前端缓存数据
-            if (!this.remote || !this.mustRemote()) {
-              this.queryChanged && (this.queryChanged = false);
-              return Promise.resolve(this.arrange(this.data));
-            }
+          // 不需要走后端
+          if (!this.mustRemote()) {
+            return Promise.resolve(this.arrange(this.data));
           }
 
           // 调用后端数据
           if (!this.initialLoaded || this.queryChanged) {
             this.clearLocalData();
-            this.queryChanged && (this.queryChanged = false);
           }
 
           const paging = {
