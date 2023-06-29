@@ -3810,7 +3810,7 @@
             "Display"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-steps>\\n  <template #item=\\\"current\\\">\\n    <van-step>步骤名</van-step>\\n  </template>\\n</van-steps>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-steps>\\n  <van-step>买家下单</van-step>\\n  <van-step>商家接单</van-step>\\n  <van-step>买家提货</van-step>\\n  <van-step>交易完成</van-step>\\n\\n  <template #item=\\\"current\\\">\\n    <van-step>步骤名</van-step>\\n  </template>\\n</van-steps>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-steps",
             "title": "步骤条",
@@ -3822,7 +3822,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-steps>\n  <template #item=\"current\">\n    <van-step>步骤名</van-step>\n  </template>\n</van-steps>\n</template>\n"
+                    "code": "<template>\n<van-steps>\n  <van-step>买家下单</van-step>\n  <van-step>商家接单</van-step>\n  <van-step>买家提货</van-step>\n  <van-step>交易完成</van-step>\n\n  <template #item=\"current\">\n    <van-step>步骤名</van-step>\n  </template>\n</van-steps>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -3831,7 +3831,7 @@
                     "title": "数据源",
                     "type": "Array<Item> | Function",
                     "description": "展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑",
-                    "designer-value": "[{}]",
+                    "designer-value": "[{}, {}, {}]",
                     "group": "数据属性"
                 },
                 {
@@ -3938,6 +3938,10 @@
                                 {
                                     "value": "wait",
                                     "title": "等待"
+                                },
+                                {
+                                    "value": "process",
+                                    "title": "进行中"
                                 },
                                 {
                                     "value": "finish",

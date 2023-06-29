@@ -15,6 +15,13 @@
         <van-step>3</van-step>
       </van-steps>
 
+      <van-steps
+        direction="vertical">
+      </van-steps>
+      <van-steps
+        >
+      </van-steps>
+
       <!-- <van-steps>
         <van-step>{{ t('step1') }}</van-step>
         <van-step>{{ t('step2') }}</van-step>

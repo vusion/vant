@@ -9,7 +9,7 @@
       title: 数据源
       type: Array<Item> | Function
       description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑
-      designer-value: '[{}]'
+      designer-value: '[{}, {}, {}]'
       group: 数据属性
     - name: data-schema
       title: 数据类型
@@ -84,6 +84,8 @@
       options:
         - value: wait
           title: 等待
+        - value: process
+          title: 进行中
         - value: finish
           title: 完成
         - value: error

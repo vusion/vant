@@ -1,7 +1,6 @@
 import { createNamespace } from '../utils';
 import { BORDER } from '../utils/constant';
 import { ChildrenMixin } from '../mixins/relation';
-import Icon from '../icon';
 import Iconv from '../iconv';
 import VanEmptyCol from '../emptycol';
 
@@ -67,6 +66,7 @@ export default createComponent({
       if (this.icon) {
         return (
           <Iconv
+            icotype="only"
             class={bem('icon', this.currentStatus)}
             name={this.icon}
           ></Iconv>
@@ -79,7 +79,11 @@ export default createComponent({
         if (this.index === this.parent.children.length - 1) {
           return (
             this.slots('finish-icon') || (
-              <Iconv class={bem('icon', 'finish')} name="steps-finish" />
+              <Iconv
+                icotype="only"
+                class={bem('icon', 'finish')}
+                name="steps-finish"
+              />
             )
           );
         }
@@ -87,8 +91,10 @@ export default createComponent({
         return (
           this.slots('active-icon') || (
             <Iconv
+              icotype="only"
               class={bem('icon', 'active')}
-              name="steps-process" />
+              name="steps-process"
+            />
           )
         );
       }
@@ -97,18 +103,32 @@ export default createComponent({
       if (this.currentStatus === 'finish') {
         return (
           this.slots('finish-icon') || (
-            <Iconv class={bem('icon', 'finish')} name="steps-finish" />
+            <Iconv
+              icotype="only"
+              class={bem('icon', 'finish')}
+              name="steps-finish"
+            />
           )
         );
       }
 
       if (this.currentStatus === 'error') {
-        return <Iconv class={bem('icon', 'error')} name="steps-error" />;
+        return (
+          <Iconv
+            icotype="only"
+            class={bem('icon', 'error')}
+            name="steps-error"
+          />
+        );
       }
 
       // 等待
       const inactiveIconSlot = this.slots('inactive-icon');
-      return inactiveIconSlot || <Iconv class={bem('icon')} name="steps-wait" />;
+      return (
+        inactiveIconSlot || (
+          <Iconv icotype="only" class={bem('icon')} name="steps-wait" />
+        )
+      );
     },
 
     onClickStep() {

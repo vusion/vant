@@ -8,10 +8,7 @@ export default createComponent({
   mixins: [ParentMixin('vanSteps'), DataSourceMixin],
 
   props: {
-    iconPrefix: String,
-    finishIcon: String,
     activeColor: String,
-    inactiveIcon: String,
     inactiveColor: String,
     active: {
       type: [Number, String],
@@ -20,10 +17,6 @@ export default createComponent({
     direction: {
       type: String,
       default: 'horizontal',
-    },
-    activeIcon: {
-      type: String,
-      default: 'checked',
     },
   },
 
