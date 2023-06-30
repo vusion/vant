@@ -218,8 +218,8 @@ module.exports = {
                 title: 'Slider 滑块',
               },
               {
-                path: 'stepper',
-                title: 'Stepper 步进器',
+                path: 'stepper-new',
+                title: 'StepperNew 步进器',
               },
               {
                 path: 'switch',
@@ -641,8 +641,8 @@ module.exports = {
                 title: 'Slider',
               },
               {
-                path: 'stepper',
-                title: 'Stepper',
+                path: 'stepper-new',
+                title: 'StepperNew',
               },
               {
                 path: 'switch',
