@@ -12,21 +12,20 @@ export default createComponent({
     pvalue: [String, Object],
     labelField: {
       type: String,
-      default: ''
+      default: '',
     },
     inputAlign: String,
-    closeOnClickOverlay: Boolean
+    closeOnClickOverlay: Boolean,
   },
 
   data() {
     return {
       valuepopup: false,
-      psonvalue: this.pvalue || ''
+      psonvalue: this.pvalue || '',
     };
   },
 
-  computed: {
-  },
+  computed: {},
 
   watch: {
     psonvalue(val, old) {
@@ -42,27 +41,45 @@ export default createComponent({
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
     getTitle() {
-      if(this.ifDesigner()) return this.pvalue;
+      if (this.ifDesigner()) return this.pvalue;
       return this.psonvalue;
     },
     togglePopup() {
       this.$refs.popforpison.togglePModal();
     },
+    onChange(vm, val, index) {
+      this.$emit('change', vm, val, index);
+    },
+    onConfirm(val, index) {
+      this.psonvalue = val;
+      this.$emit('confirm', val, index);
+    },
+    onCancel() {
+      this.$emit('cancel');
+    }
   },
 
   render(h) {
     const tempSlot = {
-      title: () => this.slots('title')
-    }
+      title: () => this.slots('title'),
+    };
+
+    const on = {
+      ...this.$listeners,
+      change: this.onChange,
+      confirm: this.onConfirm,
+      cancel: this.onCancel,
+    };
+
     return (
-      <div class={bem('wrappppickerson')}>
+      <div class={bem('wrap')}>
         <Field
           label={this.labelField}
           value={this.getTitle()}
           scopedSlots={tempSlot}
           readonly
           isLink
-          input-align={this.inputAlign || "right"}
+          input-align={this.inputAlign || 'right'}
           onClick={this.togglePopup}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
@@ -75,15 +92,16 @@ export default createComponent({
           class={bem('popup')}
           position={'bottom'}
           closeOnClickOverlay={this.closeOnClickOverlay}
+          get-container="body" // 放body下不易出现异常情况
           // onClickOverlay={this.togglePopup}
         >
           <Picker
-            {...{attrs: {...this.$attrs}}}
-            {...{ on: { ...this.$listeners, 'update:pvalue': val => {
-              this.psonvalue = val
-            }}}}
+            {...{
+              attrs: { ...this.$attrs },
+            }}
             pvalue={this.psonvalue}
             showToolbar={this.$attrs['show-toolbar']}
+            {...{ on }}
           />
         </Popup>
       </div>

@@ -5,41 +5,34 @@ import Tabs from '../tabs';
 import Icon from '../icon';
 import Popup from '../popup';
 import Field from '../field';
+import Search from '../search';
 
 // Mixins
 import { FieldMixin } from '../mixins/field';
+import DataSourceMixin from '../mixins/DataSource';
+
 
 const _get = require('lodash/get');
 
 const [createComponent, bem, t] = createNamespace('cascader');
 
 export default createComponent({
-  mixins: [FieldMixin],
+  mixins: [FieldMixin, DataSourceMixin],
 
   props: {
     title: String,
     value: [Number, String],
     fieldNamesp: [Object, String],
-    placeholder: {type: String, default: '请选择'},
+    placeholder: { type: String, default: '请选择' },
     activeColor: String,
-    dataSource: {
-      type: [Array, Object, Function, String],
-      default: () => [],
-    },
-    closeable: {
-      type: Boolean,
-      default: true,
-    },
     converter: {
       type: String,
-      default: 'json'
+      default: 'json',
     },
     labelField: {
       type: String,
     },
-    textField: String,
-    valueField: String,
-    childrenField: String,
+
     closeOnPopstate: {
       type: Boolean,
       default: true,
@@ -57,6 +50,12 @@ export default createComponent({
       default: false,
     },
     inputAlign: String,
+    // 筛选
+    filterable: {
+      type: Boolean,
+      default: false,
+    },
+    treeDisplay: { type: Boolean, default: false }, // 组件内部默认不开启树，兼容老版本
   },
 
   data() {
@@ -65,29 +64,39 @@ export default createComponent({
       activeTab: 0,
       options: [],
       valuepopup: false,
-      curValue: this.value || ''
+      curValue: this.value || '',
+
+      filterData: [],
     };
   },
 
   computed: {
     fieldNames() {
-      if (this.fieldNamesp === null || this.fieldNamesp === undefined) return {};
-      if(typeof this.fieldNamesp === 'string') return JSON.parse(this.fieldNamesp || '{}');
-      if(typeof this.fieldNamesp === 'object') return this.fieldNamesp;
+      if (this.fieldNamesp === null || this.fieldNamesp === undefined)
+        return {};
+      if (typeof this.fieldNamesp === 'string')
+        return JSON.parse(this.fieldNamesp || '{}');
+      if (typeof this.fieldNamesp === 'object') return this.fieldNamesp;
     },
     textKey() {
-      return this.textField || this.fieldNames?.text ||  'text';
+      return this.textField || this.fieldNames?.text || 'text';
     },
     valueKey() {
-      return this.valueField || this.fieldNames?.value ||  'value';
+      return this.valueField || this.fieldNames?.value || 'value';
+    },
+    parentKey() {
+      return this.parentField || this.fieldNames?.parentId || 'parentId';
     },
     childrenKey() {
       return this.childrenField || this.fieldNames?.children || 'children';
     },
+    flattenData() {
+      return this.flattenTree(this.currentData);
+    },
   },
 
   watch: {
-    dataSource: {
+    currentData: {
       deep: true,
       handler: 'updateTabs',
     },
@@ -96,15 +105,13 @@ export default createComponent({
     },
     curValue(value) {
       if (value || value === 0) {
-        const values = this.tabs.map(
-          (tab) => {
-            if (tab.selectedOption) {
-              // return tab.selectedOption?.[this.valueKey];
-              return _get(tab.selectedOption, this.valueKey);
-            }
-            return tab.selectedOption;
+        const values = this.tabs.map((tab) => {
+          if (tab.selectedOption) {
+            // return tab.selectedOption?.[this.valueKey];
+            return _get(tab.selectedOption, this.valueKey);
           }
-        );
+          return tab.selectedOption;
+        });
         if (values.indexOf(value) !== -1) {
           return;
         }
@@ -113,20 +120,14 @@ export default createComponent({
     },
   },
 
-  created() {
-    this.updateTabs();
-  },
-
   methods: {
     getTitle() {
-      const ifDesigner = (this.$env && this.$env.VUE_APP_DESIGNER);
+      const ifDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
       if (ifDesigner) {
         return this.value;
       }
-      const selectedOptions = this.getSelectedOptionsByValue(
-        this.options,
-        this.curValue
-      ) || [];
+      const selectedOptions =
+        this.getSelectedOptionsByValue(this.options, this.curValue) || [];
       const result = selectedOptions
         .map((option) => _get(option, this.textKey))
         .join('/');
@@ -152,19 +153,8 @@ export default createComponent({
       }
     },
     async updateTabs() {
-      if (isFunction(this.dataSource)) {
-        try {
-          const res = await this.dataSource({
-            page: 1,
-            size: 1000
-          });
-          this.options = formatResult(res);
-        } catch (error) {
-          console.error(error);
-        }
-      } else {
-        this.options = formatResult(this.dataSource);
-      }
+      this.options = formatResult(this.currentData);
+
       if (this.curValue || this.curValue === 0) {
         const selectedOptions = this.getSelectedOptionsByValue(
           this.options,
@@ -181,7 +171,8 @@ export default createComponent({
             };
 
             const next = optionsCursor.filter(
-              (item) => _get(item, this.valueKey) === _get(option, this.valueKey)
+              (item) =>
+                _get(item, this.valueKey) === _get(option, this.valueKey)
             );
             if (next.length) {
               optionsCursor = next[0][this.childrenKey];
@@ -249,10 +240,10 @@ export default createComponent({
       this.curValue = _get(option, this.valueKey);
       this.$emit('input', _get(option, this.valueKey));
       this.$emit('update:value', _get(option, this.valueKey));
-      this.$emit('change', eventParams);
+      this.$emit('change', eventParams); // expose
 
       if (!option[this.childrenKey]) {
-        this.$emit('finish', eventParams);
+        this.$emit('finish', eventParams); // expose
         // if (this.$parent) {
         //   this.$parent.realValue = false;
         // }
@@ -260,12 +251,76 @@ export default createComponent({
       }
     },
 
+    onSelectFilterItem(option) {
+      const eventParams = {
+        value: _get(option, this.valueKey),
+        tabIndex: option.parents.length,
+        selectedOptions: [...option.parents, option],
+      };
+
+      this.curValue = _get(option, this.valueKey);
+      this.$emit('update:value', _get(option, this.valueKey));
+      this.$emit('change', eventParams); // expose
+      this.$emit('finish', eventParams); // expose
+
+      this.togglePopup();
+
+      this.filterText = '';
+    },
+
     onClose() {
       this.$emit('close');
     },
+
     togglePopup() {
       this.valuepopup = !this.valuepopup;
       this.$refs.popforcas.togglePModal();
+    },
+
+    // 覆盖mixin
+    filter() {},
+    onInput(value) {
+      this.filterText = value;
+
+      // 设置filterData
+      this.filterData = this.flattenData.filter((item) => {
+        if (_get(item, this.textKey).indexOf(value) !== -1) {
+          return true;
+        }
+
+        let isMatch = false;
+
+        for (let i = 0; i < item.parents.length; i++) {
+          const parent = item.parents[i];
+          if (_get(parent, this.textKey).indexOf(value) !== -1) {
+            isMatch = true;
+            break;
+          }
+        }
+
+        return isMatch;
+      });
+    },
+
+    flattenTree(tree) {
+      const result = [];
+      const _this = this;
+
+      function traverse(node, parents = []) {
+        const children = _get(node, _this.childrenKey);
+        if (children?.length) {
+          for (let i = 0; i < children.length; i++) {
+            traverse(children[i], [...parents, node]);
+          }
+        } else {
+          result.push({ ...node, parents });
+        }
+      }
+
+      for (let i = 0; i < tree.length; i++) {
+        traverse(tree[i]);
+      }
+      return result;
     },
 
     renderHeader() {
@@ -286,9 +341,10 @@ export default createComponent({
     renderOptions(options, selectedOption, tabIndex) {
       const renderOption = (option) => {
         const isSelected =
-          selectedOption && (_get(option, this.valueKey) === _get(selectedOption, this.valueKey))
-          // option[this.valueKey] === selectedOption[this.valueKey];
-          // console.log(option);
+          selectedOption &&
+          _get(option, this.valueKey) === _get(selectedOption, this.valueKey);
+        // option[this.valueKey] === selectedOption[this.valueKey];
+        // console.log(option);
         const Text = this.slots('option', { option, selected: isSelected }) || (
           <span>{_get(option, this.textKey)}</span>
         );
@@ -331,6 +387,28 @@ export default createComponent({
     },
 
     renderTabs() {
+      if (this.filterText) {
+        return (
+          <div class={bem('filter')}>
+            {this.filterData?.map((item) => (
+              <li
+                class={bem('filter-option')}
+                onClick={() => this.onSelectFilterItem(item)}
+              >
+                {item.parents.map((p) => (
+                  <span>{_get(p, this.textKey)}</span>
+                ))}
+                <span>{_get(item, this.textKey)}</span>
+
+                <div class="icon">
+                  <van-icon name="arrow" color="#999" />
+                </div>
+              </li>
+            ))}
+          </div>
+        );
+      }
+
       return (
         <Tabs
           vModel={this.activeTab}
@@ -344,12 +422,20 @@ export default createComponent({
         </Tabs>
       );
     },
+
+    renderSearch() {
+      if (!this.filterable) return null;
+
+      return (
+        <Search shape="round" value={this.filterText} onInput={this.onInput} />
+      );
+    },
   },
 
   render() {
     const tempSlot = {
-      title: () => this.slots('title')
-    }
+      title: () => this.slots('title'),
+    };
     return (
       <div class={bem('wrapppcascader')}>
         <Field
@@ -358,7 +444,7 @@ export default createComponent({
           scopedSlots={tempSlot}
           readonly
           isLink={false}
-          input-align={this.inputAlign || "right"}
+          input-align={this.inputAlign || 'right'}
           onClick={this.togglePopup}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
@@ -375,9 +461,11 @@ export default createComponent({
           position={'bottom'}
           closeOnClickOverlay={this.closeOnClickOverlay}
           // onClickOverlay={this.togglePopup}
+          get-container="body" // 放body下不易出现异常情况
         >
           <div class={bem()}>
             {this.renderHeader()}
+            {this.renderSearch()}
             {this.renderTabs()}
           </div>
         </Popup>

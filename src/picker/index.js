@@ -138,9 +138,8 @@ export default createComponent({
 
     emit(event) {
       if (this.dataType === 'text') {
+
         this.$emit(event, this.getColumnValue(0), this.getColumnIndex(0));
-        event === 'confirm' &&
-          this.$emit('update:pvalue', this.getColumnValue(0));
       } else {
         let values = this.getValues();
 
@@ -152,7 +151,6 @@ export default createComponent({
         }
 
         this.$emit(event, values, this.getIndexes());
-        event === 'confirm' && this.$emit('update:pvalue', values);
       }
     },
 

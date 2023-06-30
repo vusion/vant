@@ -1,4 +1,10 @@
 import { on } from '../utils/dom/event';
+import touchEmulator from '../utils/touch-emulator';
+
+const mobilePattern = /mobile|mobi|wap|simulator|iphone|android/gi;
+if (navigator.userAgent.match(mobilePattern) === null) {
+  touchEmulator()
+}
 
 const MIN_DISTANCE = 10;
 

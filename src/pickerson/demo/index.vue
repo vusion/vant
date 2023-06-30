@@ -1,7 +1,23 @@
 <template>
   <demo-section>
     <demo-block card :title="t('basicUsage')">
+      <div>pickerValue: {{ pickerValue }}</div>
       <van-pickerson
+        ref="pickerson1"
+        title="标题"
+        :show-toolbar="true"
+        labelField="左侧标题"
+        input-align="left"
+        :pvalue.sync="pickerValue"
+        :columnsprop="[1, 2, 3, 4]"
+        @confirm="confirm111"
+        @change="change111">
+        <template #title ref="template24">
+            <van-text ref="text19" text="标题"></van-text>
+        </template>
+      </van-pickerson>
+
+      <!-- <van-pickerson
         :pvalue.sync="son"
         show-toolbar
         :title="t('title')"
@@ -14,9 +30,9 @@
         :title="t('title')"
         :columnsprop="t('textColumns')"
         @change="onChange1"
-      />
+      /> -->
     </demo-block>
-    <demo-block card :title="t('defaultIndex')">
+    <!-- <demo-block card :title="t('defaultIndex')">
       <van-picker
         show-toolbar
         :title="t('title')"
@@ -86,7 +102,7 @@
           @confirm="onConfirm2"
         />
       </van-popup>
-    </demo-block>
+    </demo-block> -->
   </demo-section>
 </template>
 
@@ -160,6 +176,8 @@ export default {
       showPicker: false,
       fieldValue: '',
       pupupd: true,
+
+      pickerValue: '',
     };
   },
 
@@ -211,6 +229,14 @@ export default {
     onCancel2() {
       this.showPicker = false;
     },
+    confirm111(value, index) {
+      console.log('pickerValue', this.pickerValue);
+      console.log(`confirm 当前值：${value}, 当前索引：${index}`);
+    },
+    change111(picker, value, index) {
+      console.log('pickerValue', this.pickerValue);
+      console.log(`change 当前值：${value}, 当前索引：${index}`);
+    }
   },
 };
 </script>
