@@ -45,7 +45,6 @@
     "deploy:pre": "lcap deploy dist-theme --platform https://defaulttenant.lcap.hadri.163yun.com && node bin/deploy-lcp-images --platform=https://defaulttenant.lcap.hadri.163yun.com",
     "deploy:online": "lcap deploy dist-theme --platform http://netease-template.lcap.163yun.com &&  node bin/deploy-lcp-images --platform=http://netease-template.lcap.163yun.com",
     "prepublishOnly": "npm run build:vusion && git add .",
-    "postpublish": "npm run deploy:online",
     "deploy:qz": "lcap deploy dist-theme --platform=https://defaulttenant.lcap.qz.163yun.com --username=admin --password=Netease123 && node bin/deploy-lcp-images --platform=https://defaulttenant.lcap.qz.163yun.com"
   },
   "repository": {
