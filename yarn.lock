@@ -4833,10 +4833,10 @@ clones@^1.2.0:
   resolved "https://registry.npmjs.org/clones/-/clones-1.2.0.tgz"
   integrity sha512-FXDYw4TjR8wgPZYui2LeTqWh1BLpfQ8lB6upMtlpDF6WlOOxghmTTxWyngdKTgozqBgKnHbTVwTE+hOHqAykuQ==
 
-cloud-ui.vusion@^0.14.33:
-  version "0.14.34"
-  resolved "https://registry.yarnpkg.com/cloud-ui.vusion/-/cloud-ui.vusion-0.14.34.tgz#06cca141807bc5e2b711d220565d9071f4022808"
-  integrity sha512-xAQlNmYiCV0r0LzwciUtMPTgkicTf+yX02fj0Hx/zK+Fl0CEiOl6gvGaT3S4Q6KWog6Cw1S3jPB25Mybl4N5fg==
+cloud-ui.vusion@^0.14.36-beta.1:
+  version "0.14.36-beta.1"
+  resolved "https://registry.yarnpkg.com/cloud-ui.vusion/-/cloud-ui.vusion-0.14.36-beta.1.tgz#1ef0463451e36980dbca22392fa1cd2f8dd9c19a"
+  integrity sha512-y4NCEj9rDDQM+QJbVP4NYKe+o4SeaVIlsB5tZ4xWag/ZdHdxueGJvYbCQZc5im/97dSpnNoikf2nh+sXYFXd4Q==
   dependencies:
     "@popperjs/core" "^2.10.2"
     "@vusion/utils" "0.4.11"
