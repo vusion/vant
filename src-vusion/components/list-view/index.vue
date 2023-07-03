@@ -123,8 +123,8 @@ export default {
         cancelable: { type: Boolean, default: true },
 
         selectable: {
-          type: String,
-          default: '',
+          type: Boolean,
+          default: false,
         },
         selectedIcon: String,
         unselectedIcon: String,
