@@ -1,14 +1,14 @@
 <template>
   <div :class="[$style.root, 'list-view-item']"
-      :selected="parentVM.multiple ? currentSelected : isSelected"
+      :selected="parentVM.selectable ? (parentVM.multiple ? currentSelected : isSelected) : false"
       :readonly="parentVM.readonly" :readonly-mode="parentVM.readonlyMode"
       :disabled="disabled || parentVM.disabled"
-      @click="select"
+      @click="onTap"
       v-ellipsis-title="ellipsisTitle"
       :designer="$env.VUE_APP_DESIGNER"
       vusion-slot-name="item">
 
-      <div :class="$style.icon">
+      <div v-if="parentVM.selectable" :class="$style.icon">
         <iconv
           v-if="parentVM.multiple ? currentSelected : isSelected"
           :name="parentVM.selectedIcon" />
@@ -33,6 +33,15 @@ export default {
       Iconv
     },
     extends: UListViewItem,
+    methods: {
+      onTap(e) {
+        if (!this.parentVM.selectable) {
+          return;
+        }
+
+        this.select(e)
+      }
+    }
 }
 </script>
 
