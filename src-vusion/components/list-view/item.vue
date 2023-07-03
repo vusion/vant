@@ -11,10 +11,12 @@
       <div v-if="parentVM.selectable" :class="$style.icon">
         <iconv
           v-if="parentVM.multiple ? currentSelected : isSelected"
-          :name="parentVM.selectedIcon" />
+          :name="parentVM.selectedIcon"
+          icotype="only" />
         <iconv
           v-else
-          :name="parentVM.unselectedIcon" />
+          :name="parentVM.unselectedIcon"
+          icotype="only" />
       </div>
 
       <slot>{{ text }}</slot>
