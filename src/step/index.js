@@ -12,6 +12,8 @@ export default createComponent({
     VanEmptyCol,
   },
   props: {
+    mantle: Boolean,
+
     value: [Number, String],
     icon: String,
     status: String,
@@ -133,6 +135,7 @@ export default createComponent({
 
     onClickStep() {
       if (this.readonly || this.parent.readonly) return;
+      if (this.mantle) return;
 
       this.parent.$emit('click-step', this.index);
       this.$emit('clicktitle', this.index);
@@ -141,6 +144,7 @@ export default createComponent({
     },
     onClickStepIcon() {
       if (this.readonly || this.parent.readonly) return;
+      if (this.mantle) return;
 
       this.$emit('clickicon', this.index);
       this.parent.value = this.value ?? this.index;
@@ -148,6 +152,7 @@ export default createComponent({
     },
     designerControl() {
       if (this.readonly || this.parent.readonly) return;
+      if (this.mantle) return;
 
       this.parent.value = this.value ?? this.index;
       this.parent.$emit('update:active', this.value ?? this.index);
@@ -159,7 +164,13 @@ export default createComponent({
     const { direction } = this.parent;
 
     return (
-      <div class={[BORDER, bem([direction, { [currentStatus]: currentStatus, mantle }])]}>
+      <div
+        class={[
+          BORDER,
+          bem([direction, { [currentStatus]: currentStatus, mantle }]),
+        ]}
+        disabled={mantle}
+      >
         <div
           class={bem('title', { active })}
           style={this.titleStyle}

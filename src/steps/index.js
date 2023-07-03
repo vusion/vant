@@ -41,8 +41,8 @@ export default createComponent({
   methods: {
     // 有数据源
     renderDataSource() {
-      return this.currentDataSource?.data?.map((item) => {
-        return this.slots('item', { item });
+      return this.currentDataSource?.data?.map((item, idx) => {
+        return this.slots('item', { item, mantle: idx > 0 && this.inDesigner });
       });
     },
 

@@ -8,7 +8,7 @@
   <van-step>交易完成</van-step>
 
   <template #item="current">
-    <van-step>步骤名</van-step>
+    <van-step :mantle="current.mantle">步骤名</van-step>
   </template>
 </van-steps>
 ```
