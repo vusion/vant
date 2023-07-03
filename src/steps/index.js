@@ -54,7 +54,10 @@ export default createComponent({
   render() {
     return (
       <div class={bem([this.direction])}>
-        <div class={bem('items')}>
+        <div
+          class={bem('items')}
+          child-cut-disabled={this.dataSource !== undefined} // 子项不可被删除操作
+        >
           {this.dataSource !== undefined
             ? this.renderDataSource()
             : this.renderNormal()}
