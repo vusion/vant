@@ -1,6 +1,7 @@
 @import '../style/var';
 
 .van-steps {
+  position: relative;
   overflow: hidden;
   background-color: @steps-background-color;
 
@@ -17,5 +18,22 @@
 
   &--vertical {
     padding: 0 0 0 @padding-xl;
+  }
+
+  &__mantle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.8);
+    }
   }
 }

@@ -2,6 +2,7 @@
   <demo-section>
     <demo-block :title="t('basicUsage')">
       <van-steps
+        direction="vertical"
         :data-source="[{ name: '出发', value: 0 }, { name: '到达地点1', value: 1 }, { name: '到达地点2', value: 2 }]">
         <template #item="current">
           <van-step :mantle="current.mantle">{{current.item.name}}</van-step>

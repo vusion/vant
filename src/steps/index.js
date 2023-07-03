@@ -41,8 +41,8 @@ export default createComponent({
   methods: {
     // 有数据源
     renderDataSource() {
-      return this.currentData?.map((item, idx) => {
-        return this.slots('item', { item, mantle: idx > 0 && this.inDesigner });
+      return this.currentData?.map((item) => {
+        return this.slots('item', { item });
       });
     },
 
@@ -70,6 +70,17 @@ export default createComponent({
               </div>
             )}
         </div>
+        {/* ide 蒙层 */}
+        {this.dataSource !== undefined && (
+          <div
+            class={bem('mantle')}
+            style={
+              this.direction === 'horizontal'
+                ? { width: `${(1 - 1 / this.currentData.length) * 100}%`, height: '100%' }
+                : { height: `${(1 - 1 / this.currentData.length) * 100}%`, width: '100%' }
+            }
+          ></div>
+        )}
       </div>
     );
   },
