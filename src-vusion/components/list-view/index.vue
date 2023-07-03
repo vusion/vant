@@ -24,7 +24,7 @@
               :class="$style.list"
               :striped="striped"
               ref="virtual"
-              v-if="(!currentLoading && !currentError || pageable === 'auto-more' || pageable === 'load-more') && currentData && currentData.length"
+              v-if="(!currentLoading && !currentError && !currentEmpty || pageable === 'auto-more' || pageable === 'load-more') && currentData && currentData.length"
               :style="{ paddingTop: virtualTop + 'px', paddingBottom: virtualBottom + 'px' }">
                 <component :is="ChildComponent"
                     v-for="(item, index) in virtualList"
@@ -52,7 +52,7 @@
             <div :class="$style.status" v-else-if="(pageable === 'auto-more' || pageable === 'load-more') && currentDataSource && !currentDataSource.hasMore() && !$env.VUE_APP_DESIGNER && !notext && !hiddenempty">
                 {{ $t('noMore') }}
             </div>
-            <div :class="$style.status" v-else-if="currentData && !currentData.length && !notext">
+            <div :class="$style.status" v-else-if="(currentData && !currentData.length || currentEmpty) && !notext">
                 <slot name="empty">{{ emptyText }}</slot>
             </div>
         </div>

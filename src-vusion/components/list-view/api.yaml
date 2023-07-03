@@ -12,16 +12,89 @@
       type: Array<Item> | Function | object | DataSource
       designer-value: '[{}, {}, {}]'
       description: 列表的数据源。数组方式表示直接的数据，函数需要返回一个 Promise。
+      group: 数据属性
     - name: data-schema
       title: 数据类型
       type: schema
       description: 表格每一行的数据类型
       compType: dataTypeSelect
+      group: 数据属性
     - name: initial-load
       type: boolean
       title: 初始加载
       default: true
       description: 是否在初始时立即加载
+      group: 状态属性
+    - name: designer-mode
+      title: 加载状态设置
+      type: string
+      options:
+        - value: success
+          title: 加载完成-有数据
+        - value: empty
+          title: 加载完成-暂无数据
+        - value: loading
+          title: 加载中
+        - value: error
+          title: 加载失败
+      default: success
+      description: 设置不同加载状态的展示内容
+      bindHide: true
+      group: 状态属性
+      tooltipLink: ""
+      docDescription: ""
+    - name: loading-text
+      title: 加载中文案
+      type: string
+      default: 加载中...
+      description: 加载中状态显示的文案
+      group: 状态属性
+      dependency:
+        - designer-mode: loading
+      brifeDoc: ""
+      docDescription: 当数据正在加载时展示的文字，默认为"加载中..."。
+      tooltipLink: ""
+    - name: loading
+      title: 自定义加载中触发条件
+      type: boolean
+      description: 支持自定义状态的触发条件，未设置则默认为系统定义条件
+      bindOpen: true
+      group: 状态属性
+      dependency:
+        - designer-mode: loading
+    - name: error-text
+      title: 加载失败文案
+      type: string
+      default: 加载失败，请重试
+      description: 加载失败状态显示的提示文案
+      group: 状态属性
+      dependency:
+        - designer-mode: error
+      brifeDoc: ""
+      docDescription: 加载失败的提示文字。默认"加载失败，请重试"
+      tooltipLink: ""
+    - name: error
+      title: 加载失败触发条件
+      type: boolean
+      description: 加载失败状态的触发条件，未设置则默认为系统定义条件
+      bindOpen: true
+      group: 状态属性
+      dependency:
+        - designer-mode: error
+      brifeDoc: ""
+      docDescription: 控制表格加载失败的展示时机。默认关闭。
+      tooltipLink: ""
+    - name: empty-text
+      title: 暂无数据文案
+      type: string
+      default: 暂无数据
+      description: 暂无数据状态显示的提示文案
+      group: 状态属性
+      dependency:
+        - designer-mode: empty
+      brifeDoc: ""
+      docDescription: 当列表为空时的提示文字。默认"暂无数据"
+      tooltipLink: ""
     - name: readonly
       title: 只读
       type: boolean
@@ -102,21 +175,8 @@
       default: false
       description: 是否显示底部
       advanced: true
-    - name: loading-text
-      title: 加载中提示文字
-      type: string
-      default: 加载中...
-      description: 加载时的文字。使用分页加载时才会出现
-    - name: error-text
-      title: 加载失败提示文字
-      type: string
-      default: 加载失败，请重试
-    - name: empty-text
-      title: 无数据提示文字
-      type: string
-      default: 暂无数据
     - name: pageable
-      title: 分页加载
+      title: 分页
       type: string
       default: ""
       options:
@@ -129,6 +189,7 @@
         - value: pagination
           title: 翻页器
       description: 是否需要分页
+      group: 数据属性
     - name: remote-paging
       title: 后端分页
       type: boolean
@@ -144,6 +205,7 @@
       description: 分页过小可能会导致滚动加载更多失效
       dependency:
         - '!pageable': ""
+      group: 数据属性
     - name: pull-refresh
       title: 下拉刷新
       type: boolean
@@ -151,6 +213,7 @@
       description: 是否开启下拉刷新
       dependency:
         - '!pageable': pagination
+      group: 交互属性
     - name: pulling-text
       title: 下拉过程中提示文字
       type: string
@@ -158,6 +221,7 @@
       dependency:
         - pull-refresh: true
           '!pageable': pagination
+      group: 交互属性
     - name: loosing-text
       title: 释放过程中提示文字
       type: string
@@ -165,6 +229,7 @@
       dependency:
         - pull-refresh: true
           '!pageable': pagination
+      group: 交互属性
     - name: success-text
       title: 刷新成功提示文字
       type: string
@@ -172,6 +237,7 @@
       dependency:
         - pull-refresh: true
           '!pageable': pagination
+      group: 交互属性
     - name: success-duration
       title: 刷新成功提示展示时长(ms)
       type: number
@@ -179,6 +245,7 @@
       dependency:
         - pull-refresh: true
           '!pageable': pagination
+      group: 交互属性
     - name: pull-distance
       title: 触发下拉刷新的距离
       type: number
@@ -186,11 +253,13 @@
       dependency:
         - pull-refresh: true
           '!pageable': pagination
+      group: 交互属性
     - name: filterable
       title: 可筛选
       type: boolean
       default: false
       description: 是否可以过滤（搜索），开启将会显示搜索框。
+      group: 数据属性
     - name: remote-filtering
       title: 后端筛选
       type: boolean
@@ -198,13 +267,13 @@
       description: 是否使用后端过滤
       dependency:
         - filterable: true
+      advanced: true
     - name: hiddenempty
-      title: 是否隐藏空态文案
+      title: 隐藏空态文案
       type: boolean
       default: false
       description: 是否隐藏表格末尾“没有更多了”文案
-      dependency:
-        - filterable: true
+      group: 交互属性
     - name: placeholder
       title: 筛选输入框的占位符
       type: string
@@ -212,6 +281,7 @@
       description: 搜索框的占位符
       dependency:
         - filterable: true
+      group: 数据属性
     - name: clearable
       title: 筛选清除按钮
       type: boolean
@@ -219,6 +289,7 @@
       description: 搜索框是否有清除按钮
       dependency:
         - filterable: true
+      group: 数据属性
     - name: match-method
       title: 匹配方法
       type: string, Function
