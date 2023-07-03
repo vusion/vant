@@ -1,6 +1,6 @@
 import { createNamespace } from '../utils';
 import { ParentMixin } from '../mixins/relation';
-import DataSourceMixin from '../mixins/support.datasource';
+import DataSourceMixin from '../mixins/DataSource';
 
 const [createComponent, bem] = createNamespace('steps');
 
@@ -41,7 +41,7 @@ export default createComponent({
   methods: {
     // 有数据源
     renderDataSource() {
-      return this.currentDataSource?.data?.map((item, idx) => {
+      return this.currentData?.map((item, idx) => {
         return this.slots('item', { item, mantle: idx > 0 && this.inDesigner });
       });
     },

@@ -12,7 +12,7 @@ export default createComponent({
     VanEmptyCol,
   },
   props: {
-    mantle: Boolean,
+    mantle: { type: Boolean, default: false },
 
     value: [Number, String],
     icon: String,
