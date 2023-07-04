@@ -34,8 +34,11 @@ export default createComponent({
   watch: {
     active(val) {
       this.value = val;
-      this.$emit('changestep');
     },
+    value(val) {
+      this.$emit('update:active', val);
+      this.$emit('changestep', val);
+    }
   },
 
   methods: {
@@ -71,7 +74,7 @@ export default createComponent({
             )}
         </div>
         {/* ide 蒙层 */}
-        {this.dataSource !== undefined && (
+        {this.inDesigner && this.dataSource !== undefined && (
           <div
             class={bem('mantle')}
             style={

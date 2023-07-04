@@ -2,10 +2,9 @@
   <demo-section>
     <demo-block :title="t('basicUsage')">
       <van-steps
-        direction="vertical"
         :data-source="[{ name: '出发', value: 0 }, { name: '到达地点1', value: 1 }, { name: '到达地点2', value: 2 }]">
         <template #item="current">
-          <van-step :mantle="current.mantle">{{current.item.name}}</van-step>
+          <van-step>{{current.item.name}}</van-step>
         </template>
       </van-steps>
 
@@ -14,13 +13,6 @@
         <van-step>1</van-step>
         <van-step icon="sure">2</van-step>
         <van-step>3</van-step>
-      </van-steps>
-
-      <van-steps
-        direction="vertical">
-      </van-steps>
-      <van-steps
-        >
       </van-steps>
 
       <!-- <van-steps>

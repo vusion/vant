@@ -8233,6 +8233,16 @@
             ],
             "attrs": [
                 {
+                    "name": "pvalue",
+                    "title": "值",
+                    "type": "string, number",
+                    "sync": true,
+                    "model": true,
+                    "default": "",
+                    "description": "选中的值",
+                    "group": "数据属性"
+                },
+                {
                     "name": "data-source",
                     "title": "数据源",
                     "type": "Array<Item> | Function | object | DataSource",
@@ -8335,15 +8345,6 @@
                     "title": "初始加载",
                     "default": true,
                     "description": "是否在初始时立即加载"
-                },
-                {
-                    "name": "pvalue",
-                    "title": "值",
-                    "type": "string, number",
-                    "sync": true,
-                    "model": true,
-                    "default": "",
-                    "description": "选中的值"
                 },
                 {
                     "name": "labelField",

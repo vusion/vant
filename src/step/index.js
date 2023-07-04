@@ -137,20 +137,17 @@ export default createComponent({
       this.parent.$emit('click-step', this.index);
       this.$emit('clicktitle', this.index);
       this.parent.value = this.value ?? this.index;
-      this.parent.$emit('update:active', this.value ?? this.index);
     },
     onClickStepIcon() {
       if (this.readonly || this.parent.readonly) return;
 
       this.$emit('clickicon', this.index);
       this.parent.value = this.value ?? this.index;
-      this.parent.$emit('update:active', this.value ?? this.index);
     },
     designerControl() {
       if (this.readonly || this.parent.readonly) return;
 
       this.parent.value = this.value ?? this.index;
-      this.parent.$emit('update:active', this.value ?? this.index);
     },
   },
 
