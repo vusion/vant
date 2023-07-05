@@ -2675,7 +2675,7 @@
                         }
                     ],
                     "default": "left",
-                    "description": "图标位置"
+                    "description": "设置图标居左或居右显示"
                 },
                 {
                     "name": "loading",

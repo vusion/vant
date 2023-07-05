@@ -95,7 +95,7 @@
         - value: right
           title: 右
       default: left
-      description: 图标位置
+      description: 设置图标居左或居右显示
     - name: loading
       title: 加载中
       type: boolean

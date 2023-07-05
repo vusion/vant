@@ -1,12 +1,12 @@
 <template>
   <demo-block :title="t('basicUsage')">
     <van-form>
-      <van-field required drole="other">
+      <van-field required drole="other" :rules="[{validate: 'number',message: `请输入数字`,trigger: 'input+blur'}]">
         <template #title>
           <van-text text="名称"></van-text>
         </template>
         <template #input>
-          <van-fieldtextarea :value.sync="xx" :maxlength="10" :autosize="{maxHeight: 100, minHeight: 50}" placeholder="请输入" clearable></van-fieldtextarea>
+          <van-fieldinput type="integer" :value.sync="xx" placeholder="请输入" clearable></van-fieldinput>
         </template>
       </van-field>
       <div style="margin: 16px 16px 0">
@@ -43,7 +43,7 @@ export default {
       username: '',
       username666:'',
       password: '',
-      xx: '',
+      xx: 0,
       xxx: ''
     };
   },
