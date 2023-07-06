@@ -4824,7 +4824,7 @@
                     "name": "loading",
                     "title": "加载中触发条件",
                     "type": "boolean",
-                    "description": "支持自定义状态的触发条件，未设置则默认为系统定义条件",
+                    "description": "加载中状态的触发条件，未设置则默认为系统定义条件",
                     "bindOpen": true,
                     "group": "状态属性",
                     "dependency": [

@@ -1,3 +1,5 @@
+import _get from 'lodash/get';
+
 import { deepClone } from '../utils/deep-clone';
 import { createNamespace, isObject } from '../utils';
 import { range } from '../utils/format/number';
@@ -200,9 +202,10 @@ export default createComponent({
     },
 
     getOptionText(option) {
-      if (isObject(option) && this.textField in option) {
-        return option[this.textField];
+      if (isObject(option) && _get(option, this.textField)) {
+        return _get(option, this.textField);
       }
+
       return option;
     },
 
