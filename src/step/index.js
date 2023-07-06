@@ -6,6 +6,8 @@ import VanEmptyCol from '../emptycol';
 
 const [createComponent, bem] = createNamespace('step');
 
+const statusList = ['wait', 'process', 'finish', 'error']
+
 export default createComponent({
   mixins: [ChildrenMixin('vanSteps')],
   components: {
@@ -16,11 +18,15 @@ export default createComponent({
     icon: String,
     status: String,
     readonly: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
   },
   computed: {
+    isDisabled() {
+      return (this.parent && this.parent.disabled) || this.disabled;
+    },
     currentStatus() {
       // 指定状态优先
-      if (this.status) {
+      if (statusList.indexOf(this.status) !== -1) {
         return this.status;
       }
 
@@ -157,10 +163,11 @@ export default createComponent({
 
     return (
       <div
-        class={[
-          BORDER,
-          bem([direction, { [currentStatus]: currentStatus }]),
-        ]}
+        key={this.index}
+        class={[BORDER, bem([direction, {
+          disabled: this.isDisabled,
+          [currentStatus]: currentStatus
+        }])]}
       >
         <div
           class={bem('title', { active })}

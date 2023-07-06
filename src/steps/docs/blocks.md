@@ -8,7 +8,10 @@
   <van-step>交易完成</van-step>
 
   <template #item="current">
-    <van-step>步骤名</van-step>
+    <van-step 
+      vusion-disabled-cut
+      vusion-disabled-copy
+    >步骤名</van-step>
   </template>
 </van-steps>
 ```

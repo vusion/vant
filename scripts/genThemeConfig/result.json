@@ -1071,6 +1071,11 @@
                         "type": "input",
                         "desc": "横向字体大小",
                         "prefix": "van-step"
+                    },
+                    "--van-step-disabled-color": {
+                        "type": "color",
+                        "desc": "禁用颜色",
+                        "prefix": "van-step"
                     }
                 },
                 "preview": {

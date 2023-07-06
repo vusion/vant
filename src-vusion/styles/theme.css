@@ -519,6 +519,7 @@
   --van-step-horizontal-title-font-size: var(
     --van-font-size-sm
   ); /* @desc 横向字体大小 */ /* @prefix van-step */
+  --van-step-disabled-color: #c8c9cc; /* @type color */ /* @desc 禁用颜色 */ /* @prefix van-step */
 
   /* @component van-stepper-new */
   --van-stepper-active-color: #e8e8e8; /* @type color */ /* @hidden */

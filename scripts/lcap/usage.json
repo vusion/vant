@@ -3810,7 +3810,7 @@
             "Display"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-steps>\\n  <van-step>买家下单</van-step>\\n  <van-step>商家接单</van-step>\\n  <van-step>买家提货</van-step>\\n  <van-step>交易完成</van-step>\\n\\n  <template #item=\\\"current\\\">\\n    <van-step>步骤名</van-step>\\n  </template>\\n</van-steps>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-steps>\\n  <van-step>买家下单</van-step>\\n  <van-step>商家接单</van-step>\\n  <van-step>买家提货</van-step>\\n  <van-step>交易完成</van-step>\\n\\n  <template #item=\\\"current\\\">\\n    <van-step \\n      vusion-disabled-cut\\n      vusion-disabled-copy\\n    >步骤名</van-step>\\n  </template>\\n</van-steps>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-steps",
             "title": "步骤条",
@@ -3822,7 +3822,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-steps>\n  <van-step>买家下单</van-step>\n  <van-step>商家接单</van-step>\n  <van-step>买家提货</van-step>\n  <van-step>交易完成</van-step>\n\n  <template #item=\"current\">\n    <van-step>步骤名</van-step>\n  </template>\n</van-steps>\n</template>\n"
+                    "code": "<template>\n<van-steps>\n  <van-step>买家下单</van-step>\n  <van-step>商家接单</van-step>\n  <van-step>买家提货</van-step>\n  <van-step>交易完成</van-step>\n\n  <template #item=\"current\">\n    <van-step \n      vusion-disabled-cut\n      vusion-disabled-copy\n    >步骤名</van-step>\n  </template>\n</van-steps>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -3849,7 +3849,7 @@
                     "sync": true,
                     "model": true,
                     "default": 0,
-                    "description": "指定当前步骤，从 0 开始记数。",
+                    "description": "指定当前步骤，从 0 开始记数",
                     "group": "数据属性"
                 },
                 {
@@ -3872,7 +3872,15 @@
                     "name": "readonly",
                     "title": "只读",
                     "type": "boolean",
-                    "default": false
+                    "default": false,
+                    "description": "正常显示，但禁止选择、输入"
+                },
+                {
+                    "name": "disabled",
+                    "title": "禁用",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "置灰显示，且禁止任何交互"
                 }
             ],
             "slots": [
@@ -3937,7 +3945,7 @@
                             "options": [
                                 {
                                     "value": "wait",
-                                    "title": "等待"
+                                    "title": "等待中"
                                 },
                                 {
                                     "value": "process",
@@ -3945,20 +3953,28 @@
                                 },
                                 {
                                     "value": "finish",
-                                    "title": "完成"
+                                    "title": "已完成"
                                 },
                                 {
                                     "value": "error",
                                     "title": "错误"
                                 }
                             ],
-                            "description": "指定状态。当不配置该属性时，会使用 步骤条 的 当前步骤 来自动指定状态；如果该属性与 当前步骤 指定的状态不匹配会覆盖自动匹配的状态。"
+                            "description": "设置步骤条的状态，分别为等待中、进行中、已完成、错误"
                         },
                         {
                             "name": "readonly",
                             "title": "只读",
                             "type": "boolean",
-                            "default": false
+                            "default": false,
+                            "description": "正常显示，但禁止选择、输入"
+                        },
+                        {
+                            "name": "disabled",
+                            "title": "禁用",
+                            "type": "boolean",
+                            "default": false,
+                            "description": "置灰显示，且禁止任何交互"
                         }
                     ],
                     "events": [

@@ -1,10 +1,15 @@
 <template>
   <demo-section>
     <demo-block :title="t('basicUsage')">
+      <div>{{ step }}</div>
       <van-steps
-        :data-source="[{ name: '出发', value: 0 }, { name: '到达地点1', value: 1 }, { name: '到达地点2', value: 2 }]">
+        direction="vertical"
+        :active.sync="step"
+        :data-source="load">
         <template #item="current">
-          <van-step>{{current.item.name}}</van-step>
+          <van-step
+          :disabled="(((current || {}).item || {}).entity3 || {}).disabled"
+          :status="(((current || {}).item || {}).entity3 || {}).stepStatus">{{current.item.entity3.title}}</van-step>
         </template>
       </van-steps>
 
@@ -100,6 +105,7 @@ export default {
   data() {
     return {
       active: 1,
+      step: 0,
     };
   },
 
@@ -107,6 +113,91 @@ export default {
     nextStep() {
       this.active = ++this.active % 4;
     },
+    load() {
+      return {
+                "list": [
+          {
+            "entity3": {
+              "id": 2646691305690368,
+              "createdTime": "2023-07-04T05:55:31.000Z",
+              "updatedTime": "2023-07-05T09:13:31.000Z",
+              "createdBy": null,
+              "updatedBy": null,
+              "title": "步骤1",
+              "stepStatus": "process"
+            }
+          },
+          {
+            "entity3": {
+              "id": 2646694855898368,
+              "createdTime": "2023-07-04T06:02:44.000Z",
+              "updatedTime": "2023-07-05T09:13:51.000Z",
+              "createdBy": null,
+              "updatedBy": null,
+              "title": "步骤2",
+              "stepStatus": "wait"
+            }
+          },
+          {
+            "entity3": {
+              "id": 2646694905050368,
+              "createdTime": "2023-07-04T06:02:50.000Z",
+              "updatedTime": "2023-07-06T03:16:21.000Z",
+              "createdBy": null,
+              "updatedBy": null,
+              "title": "步骤3",
+              "stepStatus": "finish",
+              disabled: true
+            }
+          },
+          {
+            "entity3": {
+              "id": 2647510326850816,
+              "createdTime": "2023-07-05T09:41:49.000Z",
+              "updatedTime": "2023-07-06T05:39:19.000Z",
+              "createdBy": null,
+              "updatedBy": null,
+              "title": "步骤41111111111顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶",
+              "stepStatus": "error"
+            }
+          },
+          {
+            "entity3": {
+              "id": 2647511004148992,
+              "createdTime": "2023-07-05T09:43:12.000Z",
+              "updatedTime": "2023-07-05T09:43:12.000Z",
+              "createdBy": null,
+              "updatedBy": null,
+              "title": "步骤5",
+              "stepStatus": "finish"
+            }
+          },
+          {
+            "entity3": {
+              "id": 2648098148037888,
+              "createdTime": "2023-07-06T05:37:44.000Z",
+              "updatedTime": "2023-07-06T06:14:18.000Z",
+              "createdBy": null,
+              "updatedBy": null,
+              "title": "步骤6",
+              "stepStatus": "122"
+            }
+          },
+          {
+            "entity3": {
+              "id": 2648098207298816,
+              "createdTime": "2023-07-06T05:37:52.000Z",
+              "updatedTime": "2023-07-06T05:37:52.000Z",
+              "createdBy": null,
+              "updatedBy": null,
+              "title": "步骤7",
+              "stepStatus": null
+            }
+          }
+        ],
+        "total": 7
+      }
+    }
   },
 };
 </script>

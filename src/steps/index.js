@@ -18,6 +18,8 @@ export default createComponent({
       type: String,
       default: 'horizontal',
     },
+    readonly: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
   },
 
   data() {
@@ -38,7 +40,7 @@ export default createComponent({
     value(val) {
       this.$emit('update:active', val);
       this.$emit('changestep', val);
-    }
+    },
   },
 
   methods: {
@@ -79,8 +81,14 @@ export default createComponent({
             class={bem('mantle')}
             style={
               this.direction === 'horizontal'
-                ? { width: `${(1 - 1 / this.currentData.length) * 100}%`, height: '100%' }
-                : { height: `${(1 - 1 / this.currentData.length) * 100}%`, width: '100%' }
+                ? {
+                    width: `${(1 - 1 / this.currentData.length) * 100}%`,
+                    height: '100%',
+                  }
+                : {
+                    height: `${(1 - 1 / this.currentData.length) * 100}%`,
+                    width: '100%',
+                  }
             }
           ></div>
         )}

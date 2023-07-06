@@ -289,6 +289,7 @@
     "--van-step-circle-size": "5px",
     "--van-step-circle-color": "#969799",
     "--van-step-horizontal-title-font-size": "var(\n    --van-font-size-sm\n  )",
+    "--van-step-disabled-color": "#c8c9cc",
     "--van-stepper-active-color": "#e8e8e8",
     "--van-stepper-background-color": "var(\n    --van-component-active-color\n  )",
     "--van-stepper-button-icon-color": "var(\n    --van-component-text-color\n  )",
