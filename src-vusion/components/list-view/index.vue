@@ -291,6 +291,7 @@ export default {
 }
 
 .filter[class][class] {
+    box-sizing: border-box;
     margin: 12px;
     width: calc(100% - 24px);
 
