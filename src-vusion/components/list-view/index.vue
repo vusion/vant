@@ -23,6 +23,7 @@
             <div
               :class="$style.list"
               :striped="striped"
+              :selectable="selectable"
               ref="virtual"
               v-if="(!currentLoading && !currentError && !currentEmpty || pageable === 'auto-more' || pageable === 'load-more') && currentData && currentData.length"
               :style="{ paddingTop: virtualTop + 'px', paddingBottom: virtualBottom + 'px' }">
@@ -261,11 +262,11 @@ export default {
   background: var(--van-list-view-striped-background);
 }
 
-.root .body .list > div {
+.root .body .list[selectable] > div > div {
   background: var(--van-list-view-item-unselected-backgroud);
 }
 
-.root .body .list > div[selected] {
+.root .body .list[selectable] > div[selected] > div {
   background: var(--van-list-view-item-selected-backgroud);
 }
 

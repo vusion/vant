@@ -4967,6 +4967,14 @@
                     "group": "交互属性"
                 },
                 {
+                    "name": "value",
+                    "title": "选中值",
+                    "type": "any",
+                    "sync": true,
+                    "model": true,
+                    "group": "交互属性"
+                },
+                {
                     "name": "selected-icon",
                     "title": "已选图标",
                     "type": "icon",

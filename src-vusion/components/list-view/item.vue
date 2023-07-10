@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.root, 'list-view-item']"
+  <div :class="[$style.root]"
       :selected="parentVM.selectable ? (parentVM.multiple ? currentSelected : isSelected) : false"
       :readonly="parentVM.readonly" :readonly-mode="parentVM.readonlyMode"
       :disabled="disabled || parentVM.disabled"
@@ -7,19 +7,20 @@
       v-ellipsis-title="ellipsisTitle"
       :designer="$env.VUE_APP_DESIGNER"
       vusion-slot-name="item">
+      <div class="list-view-item">
+        <div v-if="parentVM.selectable" :class="$style.icon">
+          <iconv
+            v-if="parentVM.selectedIcon && (parentVM.multiple ? currentSelected : isSelected)"
+            :name="parentVM.selectedIcon"
+            icotype="only" />
+          <iconv
+            v-else-if="parentVM.unselectedIcon"
+            :name="parentVM.unselectedIcon"
+            icotype="only" />
+        </div>
 
-      <div v-if="parentVM.selectable" :class="$style.icon">
-        <iconv
-          v-if="parentVM.selectedIcon && (parentVM.multiple ? currentSelected : isSelected)"
-          :name="parentVM.selectedIcon"
-          icotype="only" />
-        <iconv
-          v-else-if="parentVM.unselectedIcon"
-          :name="parentVM.unselectedIcon"
-          icotype="only" />
+        <slot>{{ text }}</slot>
       </div>
-
-      <slot>{{ text }}</slot>
   </div>
 </template>
 
