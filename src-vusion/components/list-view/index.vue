@@ -161,9 +161,6 @@ export default {
               return Promise.resolve(result);
             };
 
-            options.remotePaging = this.pageable;
-            options.remoteFiltering = !!this.pageable;
-
             return new DataSource(options);
           } if (dataSource instanceof Object) {
             if (dataSource.hasOwnProperty('list') && Array.isArray(dataSource.list)) {

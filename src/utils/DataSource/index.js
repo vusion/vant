@@ -116,9 +116,9 @@ const VueDataSource = Vue.extend({
           filtering: undefined, // @readonly
           // grouping: undefined,
           remote: false,
-          remotePaging: false,
-          remoteSorting: false,
-          remoteFiltering: false,
+          // remotePaging: false,
+          // remoteSorting: false,
+          // remoteFiltering: false,
           // remoteGrouping: false,
           // ------
           arrangedData: [], // 整理过的数据，用于缓存过滤和排序行为。比如多次获取分页的话，没有必要重新整理
@@ -132,11 +132,14 @@ const VueDataSource = Vue.extend({
         };
     },
     computed: {
+        pageable() {
+          return !!this.paging;
+        },
         offset() {
-            return this.paging ? (this.paging.number - 1) * this.paging.size : 0;
+            return this.pageable ? (this.paging.number - 1) * this.paging.size : 0;
         },
         limit() {
-            return this.paging ? this.paging.size : Infinity;
+            return this.pageable ? this.paging.size : Infinity;
         },
         /**
          * 当前的总数，过滤后的分页数目
@@ -145,23 +148,26 @@ const VueDataSource = Vue.extend({
             return this.originTotal === Infinity ? this.data.length : this.originTotal;
         },
         totalPage() {
-            if (!this.paging)
-                return 1;
+            if (!this.pageable) return 1;
+
             const totalPage = Math.ceil(this.total / this.paging.size);
             if (totalPage === Infinity || totalPage === 0)
                 return 1;
             return totalPage;
         },
         viewData() {
-            if (this.paging) {
-                let data
-                if (this.viewMode === 'more') {
-                  data = this.arrangedData.slice(0, this.offset + this.limit);
-                } else {
-                  data = this.arrangedData.slice(this.offset, this.offset + this.limit);
-                }
+            if (this.pageable) {
+              let data;
+              if (this.viewMode === 'more') {
+                data = this.arrangedData.slice(0, this.offset + this.limit);
+              } else {
+                data = this.arrangedData.slice(
+                  this.offset,
+                  this.offset + this.limit
+                );
+              }
 
-                return data;
+              return data;
             }
 
             return this.arrangedData;
@@ -169,6 +175,7 @@ const VueDataSource = Vue.extend({
     },
     // paging, sorting, filtering 暂不用 watch
     created() {
+        // 数据源是函数，优先默认是后端请求，后续再根据函数结果来重写
         this.remote = !!this._load;
         // 传 data 为本地数据模式，此时已知所有数据
         if (!this.remote) {
@@ -179,34 +186,19 @@ const VueDataSource = Vue.extend({
     },
     methods: {
         arrange(data = this.data) {
-          // 树形展示处理一下
-          if (this.treeDisplay) {
-            data = this.listToTree(data, {
-              valueField: this.treeDisplay.valueField,
-              parentField: this.treeDisplay.parentField,
-              childrenField: this.treeDisplay.childrenField,
-            });
-
-            this.originTotal = data.length;
-          }
-
           let arrangedData = Array.from(data);
 
           const { filtering } = this;
-          if (
-            !this.remoteFiltering &&
-            filtering &&
-            Object.keys(filtering).length
-          ) {
+          if (!this.remote && filtering && Object.keys(filtering).length) {
             arrangedData = arrangedData.filter((item) =>
               solveCondition(filtering, item)
             );
             // 前端筛选， 且无后端分页 时重置originTotal
-            !this.remotePaging && (this.originTotal = arrangedData.length);
+            this.originTotal = arrangedData.length;
           }
 
           const { sorting } = this;
-          if (!this.remoteSorting && sorting && sorting.field) {
+          if (!this.remote && sorting && sorting.field) {
             const { field } = sorting;
             const orderSign = sorting.order === 'asc' ? 1 : -1;
             if (sorting.compare) {
@@ -218,6 +210,17 @@ const VueDataSource = Vue.extend({
                 this.defaultCompare(item1[field], item2[field], orderSign)
               );
             }
+          }
+
+          // 树形展示处理
+          if (this.treeDisplay) {
+            arrangedData = this.listToTree(arrangedData, {
+              valueField: this.treeDisplay.valueField,
+              parentField: this.treeDisplay.parentField,
+              childrenField: this.treeDisplay.childrenField,
+            });
+
+            this.originTotal = arrangedData.length;
           }
 
           // 重置清除标志
@@ -328,19 +331,20 @@ const VueDataSource = Vue.extend({
           }
 
           const params = {
-            paging: this.remotePaging ? paging : undefined,
+            paging: this.pageable ? paging : undefined,
             sorting: this.sorting,
             filtering: this.filtering,
-            ...this._getExtraParams(),
+            ...this._getExtraParams(), // 带上filterText
           };
 
           // 支持 JDL
-          if (this.remotePaging && this.paging) {
+          if (params.paging) {
             params.page = params.paging.number;
             params.start = params.paging.offset;
             params.size = params.paging.size;
           }
-          if (this.remoteSorting && this.sorting && this.sorting.field) {
+
+          if (this.sorting && this.sorting.field) {
             params.sort = params.sorting.field;
             params.order = params.sorting.order;
           }
@@ -386,15 +390,15 @@ const VueDataSource = Vue.extend({
             }
 
             if (!this.remote) {
-              this.remotePaging = false;
-              this.remoteSorting = false;
-              this.remoteFiltering = false;
+              // this.remotePaging = false;
+              // this.remoteSorting = false;
+              // this.remoteFiltering = false;
 
               this.data = finalResult.data;
               this.originTotal = finalResult.total;
             } else {
               // 后端不分页
-              if (!this.remotePaging || limit === Infinity) {
+              if (!this.pageable || limit === Infinity) {
                 this.data = finalResult.data;
               } else {
                 for (let i = 0; i < limit; i++) {
