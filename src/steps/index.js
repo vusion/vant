@@ -46,8 +46,8 @@ export default createComponent({
   methods: {
     // 有数据源
     renderDataSource() {
-      return this.currentData?.map((item) => {
-        return this.slots('item', { item });
+      return this.currentData?.map((item, index) => {
+        return this.slots('item', { item, index });
       });
     },
 
