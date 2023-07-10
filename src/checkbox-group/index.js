@@ -151,7 +151,7 @@ export default createComponent({
               width: itemWidth,
             }}
           >
-            {this.slots('item', { item })}
+            {this.slots('item', { item, index })}
             {this.inDesigner && index > 0 && <div class="mantle"></div>}
           </div>
         ))}
