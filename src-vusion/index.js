@@ -1,9 +1,3 @@
-/* 引入cloud-ui theme */
-import 'cloud-ui.vusion/src/styles/theme.css';
-/* 引入cloud-ui typography */
-import 'cloud-ui.vusion/src/styles/typography.css';
-/* 引入cloud-ui animation */
-import 'cloud-ui.vusion/src/styles/animation.css';
 
 import 'themeCSS';
 import 'baseCSS';
@@ -26,3 +20,11 @@ requires.keys().forEach((key) => {
 //     const name = requires(key).default.name || key.slice(key.lastIndexOf('/') + 1, key.lastIndexOf('.'));
 //     Vue.component(name, requires(key).default);
 // });
+
+// 保证在H5样式之后
+/* 引入cloud-ui theme */
+require('cloud-ui.vusion/src/styles/theme.css');
+/* 引入cloud-ui typography */
+require('cloud-ui.vusion/src/styles/typography.css');
+/* 引入cloud-ui animation */
+require('cloud-ui.vusion/src/styles/animation.css');
