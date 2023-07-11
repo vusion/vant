@@ -141,20 +141,20 @@ export default createComponent({
     },
 
     onClickStep() {
-      if (this.isReadonly) return;
+      if (this.isReadonly || this.isDisabled) return;
 
       this.parent.$emit('click-step', this.index);
       this.$emit('clicktitle', this.index);
       this.parent.value = this.value ?? this.index;
     },
     onClickStepIcon() {
-      if (this.isReadonly) return;
+      if (this.isReadonly || this.isDisabled) return;
 
       this.$emit('clickicon', this.index);
       this.parent.value = this.value ?? this.index;
     },
     designerControl() {
-      if (this.isReadonly) return;
+      if (this.isReadonly || this.isDisabled) return;
 
       this.parent.value = this.value ?? this.index;
     },

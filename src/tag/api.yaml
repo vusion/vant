@@ -57,10 +57,10 @@
       description: 点击时触发
       params: []
     - name: before-close
-      title: 删除前
+      title: 关闭前
       description: 点击标签删除图标前触发，使用event.preventDefault可以阻止删除事件触发
       params: []
     - name: close
-      title: 删除时
+      title: 关闭时
       description: 点击标签删除图标时触发
       params: []
