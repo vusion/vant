@@ -125,7 +125,7 @@ export default {
 
         selectable: {
           type: Boolean,
-          default: false,
+          default: true,
         },
         selectedIcon: String,
         unselectedIcon: String,
