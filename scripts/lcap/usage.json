@@ -953,7 +953,7 @@
     {
         "symbol": "van-absolute-layout",
         "name": "自由布局",
-        "icon": "image",
+        "icon": "absolute-layout",
         "depDescription": {},
         "description": "拖拽内部元素到任意位置",
         "labels": [

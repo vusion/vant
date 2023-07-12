@@ -1,7 +1,7 @@
 - name: van-absolute-layout
   title: 自由布局
   description: 拖拽内部元素到任意位置
-  icon: image
+  icon: absolute-layout
   labels:
     - Layout
   next: true
