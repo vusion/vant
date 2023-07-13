@@ -45,6 +45,12 @@
           title: 垂直
       default: horizontal
       description: 是否禁用
+    - name: column
+      title: 每行排列数
+      type: number
+      description: 水平排列时每行展示的选项数量
+      dependency:
+        - direction: horizontal
     - name: converter
       title: 转换器
       type: string

@@ -1,16 +1,7 @@
 <template>
-<div :class="$style.root" :readonly="readonly" :readonly-mode="readonlyMode" :disabled="disabled"
+<div :class="[$style.root, 'list-view']" :readonly="readonly" :readonly-mode="readonlyMode" :disabled="disabled"
     :tabindex="readonly || disabled ? '' : 0"
     :vusion-designer="$env.VUE_APP_DESIGNER">
-    <div v-show="showHead" :class="$style.head">
-        <slot name="head">
-            <u-checkbox v-if="multiple" :value="allChecked" @check="checkAll($event.value)"></u-checkbox>
-            <span :class="$style.title" vusion-slot-name-edit="title">{{ title }}</span>
-            <div :class="$style.extra">
-                <span v-if="multiple">{{ selectedVMs.length }}{{ currentDataSource && currentDataSource.originTotal !== Infinity ? ' / ' + currentDataSource.originTotal : '' }}</span>
-            </div>
-        </slot>
-    </div>
     <u-input
       v-if="filterable"
       :class="$style.filter"
@@ -22,6 +13,7 @@
       :value="filterText"
       @input="onInput">
     </u-input>
+
     <div :class="$style.scrollwrap" @scroll="onScroll">
       <van-pull-refresh :value="$env.VUE_APP_DESIGNER ? false : refreshing" :disabled="!pullRefresh || pageable === 'pagination'"
         :pulling-text="pullingText" :loosing-text="loosingText" :loading-text="loadingText" :success-text="successText" :success-duration="successDuration" :pull-distance="pullDistance"
@@ -31,8 +23,9 @@
             <div
               :class="$style.list"
               :striped="striped"
+              :selectable="selectable"
               ref="virtual"
-              v-if="(!currentLoading && !currentError || pageable === 'auto-more' || pageable === 'load-more') && currentData && currentData.length"
+              v-if="(!currentLoading && !currentError && !currentEmpty || pageable === 'auto-more' || pageable === 'load-more') && currentData && currentData.length"
               :style="{ paddingTop: virtualTop + 'px', paddingBottom: virtualBottom + 'px' }">
                 <component :is="ChildComponent"
                     v-for="(item, index) in virtualList"
@@ -60,7 +53,7 @@
             <div :class="$style.status" v-else-if="(pageable === 'auto-more' || pageable === 'load-more') && currentDataSource && !currentDataSource.hasMore() && !$env.VUE_APP_DESIGNER && !notext && !hiddenempty">
                 {{ $t('noMore') }}
             </div>
-            <div :class="$style.status" v-else-if="currentData && !currentData.length && !notext">
+            <div :class="$style.status" v-else-if="(currentData && !currentData.length || currentEmpty) && !notext">
                 <slot name="empty">{{ emptyText }}</slot>
             </div>
         </div>
@@ -68,11 +61,11 @@
     </div>
 
     <div
-        v-show="(pageable === 'pagination')" :class="$style.foot">
+        v-if="(pageable === 'pagination')" :class="$style.foot">
             <van-pagination
-                :value="currentDataSource && currentDataSource.paging.number"
+                :value="currentDataSource && currentDataSource.paging && currentDataSource.paging.number"
                 :total-items="currentDataSource && currentDataSource.total"
-                :items-per-page="currentDataSource && currentDataSource.paging.size"
+                :items-per-page="currentDataSource && currentDataSource.paging && currentDataSource.paging.size"
                 mode="simple"
                 @change="page($event)"
             >
@@ -101,16 +94,19 @@ import DataSource from '../../../src/utils/DataSource';
 import VanPullRefresh from '../../../src/pull-refresh';
 import VanEmptyCol from '../../../src/emptycol';
 import VanPagination from '../../../src/pagination';
+import Iconv from '../../../src/iconv';
+
+import './index.css';
 
 export default {
     name: 'van-list-view',
     groupName: 'van-list-view-group',
     childName: 'van-list-view-item',
-    components: { VanPullRefresh, VanEmptyCol, VanPagination, UCheckbox, UInput, USpinner, ULink },
+    components: { VanPullRefresh, VanEmptyCol, VanPagination, UCheckbox, UInput, USpinner, ULink, Iconv },
     extends: UListView,
     props: {
         border: { type: Boolean, default: false },
-        readonly: { type: Boolean, default: true },
+        readonly: { type: Boolean, default: false },
         readonlyMode: { type: String, default: 'initial' },
         pageSize: { type: Number, default: 20 },
         pullRefresh: { type: Boolean, default: true },
@@ -123,6 +119,16 @@ export default {
         hiddenempty: { type: Boolean, default: false },
         striped: { type: Boolean, default: false },
         dataSource: [DataSource, Function, Object, Array],
+
+        // override
+        cancelable: { type: Boolean, default: true },
+
+        selectable: {
+          type: Boolean,
+          default: true,
+        },
+        selectedIcon: String,
+        unselectedIcon: String,
     },
     data() {
       return {
@@ -134,9 +140,7 @@ export default {
           return {
             viewMode: this.pageable === 'pagination' ? 'page' : 'more',
             paging: this.paging,
-            remotePaging: this.remotePaging,
             filtering: this.filtering,
-            remoteFiltering: !!this.remotePaging,
             getExtraParams: this.getExtraParams,
             refreshing: false,
           };
@@ -157,6 +161,7 @@ export default {
                 return Promise.resolve(result);
               return Promise.resolve(result);
             };
+
             return new DataSource(options);
           } if (dataSource instanceof Object) {
             if (dataSource.hasOwnProperty('list') && Array.isArray(dataSource.list)) {
@@ -257,9 +262,12 @@ export default {
   background: var(--van-list-view-striped-background);
 }
 
-/* 为了斑马纹能生效， 如果出现非div的 在这边加 */
-.body .list[striped] > div:nth-of-type(odd) > div {
-  background: transparent;
+.root .body .list[selectable] > div > div {
+  background: var(--van-list-view-item-unselected-backgroud);
+}
+
+.root .body .list[selectable] > div[selected] > div {
+  background: var(--van-list-view-item-selected-backgroud);
 }
 
 .root[readonly-mode="initial"] .body {
@@ -281,6 +289,7 @@ export default {
 }
 
 .filter[class][class] {
+    box-sizing: border-box;
     margin: 12px;
     width: calc(100% - 24px);
 

@@ -767,6 +767,13 @@
                         "excludeTags": [
                             "van-tab"
                         ]
+                    },
+                    "--van-tabs-bottom-bar-border-radius": {
+                        "type": "input",
+                        "desc": "滑动条圆角",
+                        "excludeTags": [
+                            "van-tab"
+                        ]
                     }
                 },
                 "preview": {
@@ -1063,6 +1070,11 @@
                     "--van-step-horizontal-title-font-size": {
                         "type": "input",
                         "desc": "横向字体大小",
+                        "prefix": "van-step"
+                    },
+                    "--van-step-disabled-color": {
+                        "type": "color",
+                        "desc": "禁用颜色",
                         "prefix": "van-step"
                     }
                 },
@@ -1893,6 +1905,16 @@
                     "--van-list-view-striped-background": {
                         "type": "color",
                         "desc": "斑马纹颜色"
+                    },
+                    "--van-list-view-item-unselected-backgroud": {
+                        "type": "input",
+                        "desc": "列表项未选中背景",
+                        "prefix": "van-list-view-item"
+                    },
+                    "--van-list-view-item-selected-backgroud": {
+                        "type": "input",
+                        "desc": "列表项选中背景",
+                        "prefix": "van-list-view-item"
                     }
                 },
                 "preview": {
@@ -1990,19 +2012,16 @@
                     },
                     "--popup-arrow-size": {
                         "type": "input",
-                        "group": "箭头",
                         "desc": "弹出层的内层三角箭头大小,如 1px",
                         "prefix": "popup"
                     },
                     "--popup-arrow-offset": {
                         "type": "input",
-                        "group": "箭头",
                         "desc": "弹出层的三角箭头平移位置,如 1px",
                         "prefix": "popup"
                     },
                     "--popup-outer-arrow-size": {
                         "type": "input",
-                        "group": "箭头",
                         "desc": "弹出层的外层三角箭头大小,如 1px",
                         "prefix": "popup"
                     },

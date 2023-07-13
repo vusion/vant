@@ -8,7 +8,7 @@
   nested: false
   attrs:
     - name: type
-      title: 类型
+      title: 主题颜色
       type: string
       options:
         - value: primary
@@ -31,29 +31,36 @@
         - value: small
           title: 小型
       default: medium
+      group: 样式属性
     - name: plain
-      title: 是否为空心
+      title: 空心
       type: boolean
       default: false
     - name: round
-      title: 是否为圆角
+      title: 圆角
       type: boolean
       default: false
+      group: 样式属性
     - name: mark
-      title: 是否为标记样式
+      title: 标记样式
       type: boolean
       default: false
     - name: closeable
-      title: 是否为可关闭标签
+      title: 可关闭
       type: boolean
       default: false
+      group: 交互属性
   slots: false
   events:
     - name: click
       title: 点击时
       description: 点击时触发
       params: []
+    - name: before-close
+      title: 关闭前
+      description: 点击标签删除图标前触发，使用event.preventDefault可以阻止删除事件触发
+      params: []
     - name: close
       title: 关闭时
-      description: 关闭标签时触发
+      description: 点击标签删除图标时触发
       params: []

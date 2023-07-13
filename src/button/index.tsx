@@ -36,16 +36,16 @@ export type ButtonProps = RouteProps & {
   loadingType?: LoadingType;
   loadingText?: string;
   iconPosition: 'left' | 'right';
-  href: string,
-  target: { type: string, default: '_self' },
-  to: [string, Object],
-  replace: { type: boolean, default: false },
-  append: { type: boolean, default: false },
-  decoration: { type: boolean, default: true },
-  download: { type: boolean, default: false },
-  destination: string,
-  squareroud?: string
-  link?: [String, Function]
+  href: string;
+  target: { type: string; default: '_self' };
+  to: [string, Record<string, any>];
+  replace: { type: boolean; default: false };
+  append: { type: boolean; default: false };
+  decoration: { type: boolean; default: true };
+  download: { type: boolean; default: false };
+  destination: string;
+  squareroud?: string;
+  link?: [string, Function];
 };
 
 export type ButtonEvents = {
@@ -114,7 +114,7 @@ function Button(
       }
       if (props.link) {
         const url = props.link;
-        const target = props.target;
+        const {target} = props;
         let realUrl: any;
         if (typeof url === 'function') {
             // @ts-ignore

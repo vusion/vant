@@ -1,14 +1,21 @@
+import _get from 'lodash/get'
+
 // Utils
 import { createNamespace } from '../utils';
-import Picker from '../picker';
+import Picker from './Picker';
 import Popup from '../popup';
 import Field from '../field';
+import Search from '../search';
+
+import DataSourceMixin from '../mixins/DataSource';
 
 
 const [createComponent, bem, t] = createNamespace('pickerson');
 
 export default createComponent({
+  mixins: [DataSourceMixin],
   props: {
+    columnsprop: [Array, String],
     pvalue: [String, Object],
     labelField: {
       type: String,
@@ -16,23 +23,30 @@ export default createComponent({
     },
     inputAlign: String,
     closeOnClickOverlay: Boolean,
+
+    pageable: { type: [Boolean, String], default: false },
+    filterable: { type: Boolean, default: false },
+    sorting: Object,
   },
 
   data() {
     return {
       valuepopup: false,
-      psonvalue: this.pvalue || '',
+      // 内部值
+      curValue: this.pvalue || '',
     };
   },
 
-  computed: {},
-
-  watch: {
-    psonvalue(val, old) {
-      this.$emit('update:pvalue', val);
+  computed: {
+    data() {
+      return this.currentData || this.columnsprop || [];
     },
+  },
+  watch: {
+    curValue() {},
+    // 监听props变化
     pvalue(val, old) {
-      this.psonvalue = val;
+      this.curValue = val;
     },
   },
 
@@ -42,21 +56,55 @@ export default createComponent({
     },
     getTitle() {
       if (this.ifDesigner()) return this.pvalue;
-      return this.psonvalue;
+
+      let title = '';
+      for (let i = 0; i < this.data.length; i++) {
+        const item = this.data[i];
+
+        let v;
+        let t;
+        if (typeof item === 'object' && item !== null) {
+          v = _get(item, this.valueField);
+          t = _get(item, this.textField);
+        } else {
+          v = item;
+          t = item;
+        }
+
+        if (this.curValue === v) {
+          title = t;
+          break;
+        }
+      }
+
+      return title;
     },
     togglePopup() {
       this.$refs.popforpison.togglePModal();
     },
     onChange(vm, val, index) {
+      // this.curValue = val;
       this.$emit('change', vm, val, index);
     },
     onConfirm(val, index) {
-      this.psonvalue = val;
+      this.curValue = val;
+      this.$emit('update:pvalue', val);
       this.$emit('confirm', val, index);
     },
     onCancel() {
       this.$emit('cancel');
-    }
+    },
+    onScrolltolower() {
+      console.log('到底了');
+      // 不分页
+      if (!this.pageable) return;
+      // 加载中
+      if (this.currentLoading) return;
+
+      if (this.currentDataSource && this.currentDataSource.hasMore()) {
+        this.debouncedLoad(true);
+      }
+    },
   },
 
   render(h) {
@@ -69,6 +117,7 @@ export default createComponent({
       change: this.onChange,
       confirm: this.onConfirm,
       cancel: this.onCancel,
+      scrolltolower: this.onScrolltolower,
     };
 
     return (
@@ -96,13 +145,27 @@ export default createComponent({
           // onClickOverlay={this.togglePopup}
         >
           <Picker
+            ref="picker"
             {...{
-              attrs: { ...this.$attrs },
+              attrs: {
+                ...this.$attrs,
+                columnsprop: this.data,
+                valueField: this.valueField,
+                textField: this.textField || this.$attrs.valueKey,
+              },
             }}
-            pvalue={this.psonvalue}
+            value={this.curValue}
             showToolbar={this.$attrs['show-toolbar']}
             {...{ on }}
-          />
+          >
+            {this.filterable ? (
+              <Search
+                slot="columns-top"
+                shape="round"
+                vModel={this.filterText}
+              />
+            ) : null}
+          </Picker>
         </Popup>
       </div>
     );

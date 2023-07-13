@@ -33,7 +33,7 @@ export type IconProps = {
   notext?: boolean;
   href?: string;
   target?: { type: string; default: '_self' };
-  to?: [string, Object];
+  to?: [string, Record<string, any>];
   replace?: { type: boolean; default: false };
   append?: { type: boolean; default: false };
   decoration?: { type: boolean; default: true };
@@ -81,7 +81,7 @@ function Iconv(
   ctx: RenderContext<IconProps>
 ) {
   const name = getName(props.name);
-  const imageIcon = isImage(name);
+  // const imageIcon = isImage(name);
 
   if (process.env.NODE_ENV === 'development' && props.info) {
     console.warn(
@@ -104,7 +104,7 @@ function Iconv(
     emit(ctx, 'click', event);
     if (props.link) {
       const url = props.link;
-      const target = props.target;
+      const {target} = props;
       let realUrl: any;
       if (typeof url === 'function') {
           // @ts-ignore

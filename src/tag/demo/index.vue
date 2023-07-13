@@ -1,7 +1,7 @@
 <template>
   <demo-section>
     <!-- <van-tag type="primary" :mark="true">标签</van-tag> -->
-    <demo-block card :title="t('basicUsage')">
+    <!-- <demo-block card :title="t('basicUsage')">
       <van-cell :title="`primary ${t('type')}`">
         <van-tag type="primary" :show="false" :mark="true"></van-tag>
       </van-cell>
@@ -14,7 +14,7 @@
       <van-cell :title="`warning ${t('type')}`">
         <van-tag type="warning">{{ t('tag') }}</van-tag>
       </van-cell>
-    </demo-block>
+    </demo-block> -->
 
     <demo-block card :title="t('tagStyle')">
       <van-cell :title="t('plain')">
@@ -32,6 +32,7 @@
           size="medium"
           closeable
           type="primary"
+          @before-close="onBeforeClose"
           @close="close"
         >
           {{ t('tag') }}
@@ -39,7 +40,7 @@
       </van-cell>
     </demo-block>
 
-    <demo-block card :title="t('customSize')">
+    <!-- <demo-block card :title="t('customSize')">
       <van-cell :title="t('smallSize')">
         <van-tag type="primary">{{ t('tag') }}</van-tag>
       </van-cell>
@@ -49,9 +50,9 @@
       <van-cell :title="t('largeSize')">
         <van-tag type="primary" size="large">{{ t('tag') }}</van-tag>
       </van-cell>
-    </demo-block>
+    </demo-block> -->
 
-    <demo-block card :title="t('customColor')">
+    <!-- <demo-block card :title="t('customColor')">
       <van-cell :title="t('customBgColor')">
         <van-tag color="#7232dd">{{ t('tag') }}</van-tag>
       </van-cell>
@@ -61,7 +62,7 @@
       <van-cell :title="t('customPlainColor')">
         <van-tag color="#7232dd" plain>{{ t('tag') }}</van-tag>
       </van-cell>
-    </demo-block>
+    </demo-block> -->
   </demo-section>
 </template>
 
@@ -109,7 +110,12 @@ export default {
 
   methods: {
     close() {
+      console.log('close');
       this.show = false;
+    },
+    onBeforeClose(e) {
+      console.log('before-close');
+      e.preventDefault()
     }
   }
 };

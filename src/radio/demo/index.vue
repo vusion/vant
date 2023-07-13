@@ -1,17 +1,22 @@
 <template>
   <demo-section>
     <demo-block>
-      <van-radio-group class="demo-radio-group" :data-source="[{}, {}, {}]">
+      <van-radio-group
+        class="demo-radio-group"
+        :data-source="[1,2,3,4,500,6,7,8,9]"
+        direction="horizontal"
+        column="3"
+      >
         <template #item="scope">
           <van-radio
-            name="scope.item.item"
-            title="选框+scope.item.item"
+            :name="scope.item"
+            :title="'选框' + scope.item"
           ></van-radio>
         </template>
-        <van-radio disabled name="scope.item.item" title="'节点"></van-radio>
       </van-radio-group>
     </demo-block>
-    <demo-block>
+
+    <!-- <demo-block>
       <van-radio-group class="demo-radio-group">
         <van-radio name="1">{{ t('radio') }} 1</van-radio>
         <van-radio name="23">{{ t('radio') }} 2</van-radio>
@@ -112,7 +117,7 @@
           </van-cell>
         </van-cell-group>
       </van-radio-group>
-    </demo-block>
+    </demo-block> -->
   </demo-section>
 </template>
 

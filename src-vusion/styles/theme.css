@@ -519,6 +519,7 @@
   --van-step-horizontal-title-font-size: var(
     --van-font-size-sm
   ); /* @desc 横向字体大小 */ /* @prefix van-step */
+  --van-step-disabled-color: #c8c9cc; /* @type color */ /* @desc 禁用颜色 */ /* @prefix van-step */
 
   /* @component van-stepper-new */
   --van-stepper-active-color: #e8e8e8; /* @type color */ /* @hidden */
@@ -619,6 +620,7 @@
   --van-tabs-bottom-bar-color: var(
     --van-tabs-default-color
   ); /* @type color */ /* @desc 滑动条背景色 */ /* @excludeTags van-tab */
+  --van-tabs-bottom-bar-border-radius: 3px; /* @desc 滑动条圆角 */ /* @excludeTags van-tab */
 
   /* @component van-uploader */
   --van-uploader-size: 80px; /* @desc 组件大小 */
@@ -782,6 +784,8 @@
   --van-list-view-input-color: #333; /* @type color */ /* @desc 筛选框文字颜色 */
   --van-list-view-placeholder-color: #c8c9cc; /* @type color */ /* @desc 筛选框占位提示文字颜色 */
   --van-list-view-striped-background: #f4f6f9; /* @type color */ /* @desc 斑马纹颜色 */
+  --van-list-view-item-unselected-backgroud: transparent; /* @desc 列表项未选中背景 */ /* @prefix van-list-view-item */
+  --van-list-view-item-selected-backgroud: transparent; /* @desc 列表项选中背景 */ /* @prefix van-list-view-item */
 
   /* @component van-fieldinput */
   --van-fieldinput-text-color: #333; /* @type color */ /* @desc 输入框文字颜色 */

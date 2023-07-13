@@ -9,7 +9,11 @@
         labelField="左侧标题"
         input-align="left"
         :pvalue.sync="pickerValue"
+        :data-source="load"
         :columnsprop="[1, 2, 3, 4]"
+        :pageable="true"
+        :pageSize="10"
+        :filterable="true"
         @confirm="confirm111"
         @change="change111">
         <template #title ref="template24">
@@ -109,6 +113,36 @@
 <script>
 import { dateColumns, cascadeColumns } from './data';
 
+const data = [
+  { 'text': '浙江省', 'value': '330000' },
+  { 'text': '杭州市', 'value': '330100', 'parentId': '330000' },
+  { 'text': '宁波市', 'value': '330200', 'parentId': '330000' },
+  { 'text': '江苏省', 'value': '320000' },
+  { 'text': '江苏省1', 'value': '320001' },
+  { 'text': '江苏省2', 'value': '320002' },
+  { 'text': '江苏省3', 'value': '320003' },
+  { 'text': '江苏省4', 'value': '320004' },
+  { 'text': '江苏省5', 'value': '320005' },
+  { 'text': '江苏省6', 'value': '320006' },
+  { 'text': '江苏省7', 'value': '320007' },
+  { 'text': '江苏省8', 'value': '320008' },
+  { 'text': '江苏省9', 'value': '320009' },
+  { 'text': '江苏省14', 'value': '3200010' },
+  { 'text': '江苏省24', 'value': '3201000' },
+  { 'text': '江苏省34', 'value': '320000000' },
+  { 'text': '江苏省44', 'value': '320100220' },
+  { 'text': '江苏省54', 'value': '32011000' },
+  { 'text': '江苏省64', 'value': '320111000' },
+  { 'text': '江苏省74', 'value': '3210111000' },
+  { 'text': '江苏省84', 'value': '3120000' },
+  { 'text': '江苏省94', 'value': '32100010' },
+  { 'text': '江苏省114', 'value': '31201000' },
+  { 'text': '江苏省124', 'value': '32110111000' },
+  { 'text': '江苏省134', 'value': '32001100' },
+  { 'text': '江苏省144', 'value': '320110010' },
+  { 'text': '江苏省154', 'value': '32001111100' },
+]
+
 export default {
   i18n: {
     'zh-CN': {
@@ -144,30 +178,6 @@ export default {
       },
       toastContent: (value, index) => `当前值：${value}, 当前索引：${index}`,
     },
-    'en-US': {
-      city: 'City',
-      cascade: 'Cascade',
-      withPopup: 'With Popup',
-      chooseCity: 'Choose City',
-      showToolbar: 'Show Toolbar',
-      dateColumns: dateColumns['en-US'],
-      defaultIndex: 'Default Index',
-      disableOption: 'Disable Option',
-      cascadeColumns: cascadeColumns['en-US'],
-      multipleColumns: 'Multiple Columns',
-      setColumnValues: 'Set Column Values',
-      textColumns: ['Delaware', 'Florida', 'Georqia', 'Indiana', 'Maine'],
-      disabledColumns: [
-        { text: 'Delaware', disabled: true },
-        { text: 'Florida' },
-        { text: 'Georqia' },
-      ],
-      column3: {
-        Group1: ['Delaware', 'Florida', 'Georqia', 'Indiana', 'Maine'],
-        Group2: ['Alabama', 'Kansas', 'Louisiana', 'Texas'],
-      },
-      toastContent: (value, index) => `Value: ${value}, Index：${index}`,
-    },
   },
 
   data() {
@@ -177,7 +187,7 @@ export default {
       fieldValue: '',
       pupupd: true,
 
-      pickerValue: '',
+      pickerValue: '330200',
     };
   },
 
@@ -236,6 +246,17 @@ export default {
     change111(picker, value, index) {
       console.log('pickerValue', this.pickerValue);
       console.log(`change 当前值：${value}, 当前索引：${index}`);
+    },
+    load(params) {
+      console.log('load arguments:', arguments);
+      const { page, size, filterText } = params;
+
+      let arr = data.filter(item => item.text.includes(filterText))
+
+      return {
+        total: arr.length,
+        list: arr.slice((page - 1) * size, page * size)
+      }
     }
   },
 };

@@ -186,7 +186,7 @@ export default createComponent({
       }
 
       if (status === 'loading') {
-        nodes.push(<Loading size="16">{text}</Loading>);
+        nodes.push(<Loading size="16" type="spinner">{text}</Loading>);
       }
 
       return nodes;

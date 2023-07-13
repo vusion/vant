@@ -6,6 +6,8 @@
   color: @step-text-color;
   font-size: @step-font-size;
 
+
+
   &__circle {
     display: block;
     width: @step-circle-size;
@@ -48,7 +50,7 @@
 
     .van-step__circle-container {
       position: absolute;
-      top: 30px;
+      top: calc(100% + 10px);
       left: -@padding-xs;
       z-index: 1;
       padding: 0 @padding-xs;
@@ -68,7 +70,7 @@
     }
 
     .van-step__line {
-      top: 30px;
+      top: calc(100% + 10px);
       left: 0;
       width: 100%;
       height: 1px;
@@ -105,10 +107,16 @@
     }
 
     .van-step__line {
-      top: 16px;
+      top: 28px;
+      // bottom: 30px;
       left: -15px;
       width: 1px;
-      height: 100%;
+      height: calc(100% - 18px);
+    }
+
+    .van-step__icon {
+      display: block;
+      font-size: @step-icon-size;
     }
   }
 
@@ -116,6 +124,18 @@
     .van-step__line {
       width: 0;
     }
+  }
+
+  &--disabled {
+    color: @step-disabled-color !important;
+
+    .van-step__icon {
+      color: @step-disabled-color !important;
+    }
+  }
+
+  &--process {
+    color: @step-finish-text-color;
   }
 
   &--finish {
@@ -127,13 +147,31 @@
     }
   }
 
-  &__icon,
-  &__title {
+  &__icon {
     transition: color @animation-duration-base;
 
     &--active,
+    &--process,
     &--finish {
       color: @step-active-color;
     }
+
+    &--error {
+      color: #F24957;
+    }
   }
+
+  // &__title {
+  //   transition: color @animation-duration-base;
+
+  //   &--active,
+  //   &--process,
+  //   &--finish {
+  //     color: @step-active-color;
+  //   }
+
+  //   &--error {
+  //     color: #F24957;
+  //   }
+  // }
 }

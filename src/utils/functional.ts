@@ -54,6 +54,28 @@ export function emit(context: Context, eventName: string, ...args: any[]) {
   }
 }
 
+export function emitPrevent(context: Context, eventName: string, event: any, ...args: any[]) {
+  let cancel = false;
+  event = event || {};
+  event.preventDefault = () => {
+    cancel = true;
+  }
+
+  const listeners = context.listeners[eventName];
+  if (listeners) {
+    if (Array.isArray(listeners)) {
+      listeners.forEach((listener) => {
+        listener(event, ...args);
+      });
+    } else {
+      listeners(event, ...args);
+    }
+  }
+
+  return cancel;
+}
+
+
 // mount functional component
 export function mount(Component: any, data?: VNodeData) {
   const instance = new Vue({
