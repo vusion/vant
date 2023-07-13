@@ -13,9 +13,15 @@
         </template>
       </van-steps>
 
+      <van-steps>
+        <van-step>sads乏术地方</van-step>
+        <van-step icon="sure">2</van-step>
+        <van-step>3</van-step>
+      </van-steps>
       <van-steps
-        direction="vertical">
-        <van-step>1</van-step>
+        direction="vertical"
+      >
+        <van-step>sadsdfsadsafdasafasd阿斯顿发生发顺丰阿斯顿发送到发的是分身乏术的阿斯顿夫妇撒地方水电费水电费是大丰收打发分身乏术地方</van-step>
         <van-step icon="sure">2</van-step>
         <van-step>3</van-step>
       </van-steps>
