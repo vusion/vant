@@ -203,13 +203,32 @@ export default createComponent({
 
     formValue() {
       if (this.children && (this.$scopedSlots.input || this.$slots.input)) {
-        if (this.children?.$options?._componentTag === 'van-calendar') {
-          return this.children.defaultDate;
-        } if (this.children?.$options?._componentTag === 'van-uploader') {
-          return this.children.fileListProp;
-        } if (this.children?.$options?._componentTag === 'van-radio') {
+        // 输入框
+        if (this.children?.$options?._componentTag === 'van-fieldinput') {
           return this.children.currentValue;
         }
+
+        // 单选组
+        if (this.children?.$options?._componentTag === 'van-radio-group') {
+          return this.children.datatemp;
+        }
+
+        // 多选组
+        if (this.children?.$options?._componentTag === 'van-checkbox-group') {
+          return this.children.currentValue;
+        }
+
+        // 日历
+        if (this.children?.$options?._componentTag === 'van-calendar') {
+          return this.children.defaultDate;
+        }
+
+        // 文件上传
+        if (this.children?.$options?._componentTag === 'van-uploader') {
+          return this.children.fileListProp;
+        }
+
+        // 默认使用组件props.value
         return this.children.value;
       }
       return (this.type === 'number' || this.type === 'digit') ? Number(this.value) : this.value;
@@ -530,9 +549,9 @@ export default createComponent({
       if (inputn && comSet.has(inputn.$options._componentTag)) {
         if (inputn.type === 'textarea') {
           return;
-        } 
+        }
           input = inputn.$refs.input;
-        
+
       } else if (!(this.type === 'textarea' && this.autosize) || !input) {
           return;
         }
