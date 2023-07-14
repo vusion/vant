@@ -1,12 +1,43 @@
 <template>
   <demo-block :title="t('basicUsage')">
     <van-form>
-      <van-field required drole="other" :rules="[{validate: 'number',message: `请输入数字`,trigger: 'input+blur'}]">
+      <van-field required drole="other" :rules="[{validate: 'ipRange', args: [4], message: `请输入正确的 IP 段`,trigger: 'input+blur'}]">
         <template #title>
           <van-text text="名称"></van-text>
         </template>
         <template #input>
-          <van-fieldinput type="integer" :value.sync="xx" placeholder="请输入" clearable></van-fieldinput>
+          <van-fieldinput type="integer" placeholder="请输入" clearable></van-fieldinput>
+        </template>
+      </van-field>
+      <van-field name="radio" drole="other" :rules="[{validate: 'filled',message: `表单项不得为空`,trigger: 'input+blur', required: true}]" :required="true">
+        <template #title>
+          <van-text text="单选框"></van-text>
+        </template>
+        <template #input>
+          <van-radio-group direction="horizontal">
+            <template #default="current">
+              <van-radio name="1" title="单选框 1"></van-radio>
+              <van-radio name="2" title="单选框 2"></van-radio>
+            </template>
+          </van-radio-group>
+        </template>
+      </van-field>
+      <van-field name="checkbox" drole="other" :rules="[{ validate: 'filled', message: `表单项不得为空`, trigger: 'input+blur', required: true }]" :required="true">
+        <template #title>
+          <van-text text="多选框"></van-text>
+        </template>
+        <template #input>
+          <van-checkbox-group ref="checkbox_group1" direction="horizontal" converter="none">
+              <van-checkbox ref="checkbox2" name="1" shape="square">
+                    <van-text ref="text27" text="节点"></van-text>
+              </van-checkbox>
+              <van-checkbox ref="checkbox3" name="2" shape="square">
+                    <van-text ref="text28" text="节点"></van-text>
+              </van-checkbox>
+              <van-checkbox ref="checkbox4" name="3" shape="square">
+                    <van-text ref="text29" text="节点"></van-text>
+              </van-checkbox>
+          </van-checkbox-group>
         </template>
       </van-field>
       <div style="margin: 16px 16px 0">
@@ -43,7 +74,7 @@ export default {
       username: '',
       username666:'',
       password: '',
-      xx: 0,
+      xx: '',
       xxx: ''
     };
   },

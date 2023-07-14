@@ -86,9 +86,6 @@
     - name: search
       title: 确定搜索时触发
       description: 确定搜索时触发
-    - name: cancel
-      title: 点击右侧按钮时触发
-      description: 点击右侧按钮时触发
     - name: iconsearch
       title: 点击搜索图标时触发
       description: 点击搜索图标时触发

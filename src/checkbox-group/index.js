@@ -7,7 +7,11 @@ import { Converter } from '../mixins/convertor';
 const [createComponent, bem] = createNamespace('checkbox-group');
 
 export default createComponent({
-  mixins: [ParentMixin('vanCheckbox'), FieldMixin, Converter],
+  mixins: [
+    ParentMixin('vanCheckbox'),
+    FieldMixin,
+    Converter
+  ],
 
   props: {
     dataSource: [Array, Object, Function, String],
