@@ -287,11 +287,9 @@ export default createComponent({
       return message;
     },
     runRulesVusion(rules, trigger='') {
-      let value = this.formValue;
-      let validatorVuF = this.validatorVuF;
-      return validatorVuF.validate(value, trigger, Object.assign({
-        label: this.label || '字段',
-      })).then(() => {
+      const value = this.formValue;
+      const {validatorVuF} = this;
+      return validatorVuF.validate(value, trigger, {label: this.label || '字段',}).then(() => {
       }).catch((error) => {
         this.validateFailed = true;
         this.validateMessage = error;
@@ -458,7 +456,7 @@ export default createComponent({
       this.$emit('focus', event);
 
 
-      this.$emit('clickinput', event);//点击搜索框输入区域追加事件
+      this.$emit('clickinput', event);// 点击搜索框输入区域追加事件
 
       // https://github.com/youzan/vant/issues/9715
       this.$nextTick(this.adjustSize);
@@ -492,13 +490,13 @@ export default createComponent({
     onClickLeftIcon(event) {
       this.$emit('click-left-icon', event);
 
-      this.$emit('iconsearch', event);//点击搜索框搜索按钮时触发
+      this.$emit('iconsearch', event);// 点击搜索框搜索按钮时触发
     },
 
     onClickRightIcon(event) {
       this.$emit('click-right-icon', event);
 
-      this.$emit('iconsearch', event);//点击搜索框搜索按钮时触发
+      this.$emit('iconsearch', event);// 点击搜索框搜索按钮时触发
     },
 
     onClear(event) {
@@ -527,19 +525,17 @@ export default createComponent({
     },
 
     adjustSize() {
-      let input = this.$refs.input;
-      let inputn = this.children;
+      let {input} = this.$refs;
+      const inputn = this.children;
       if (inputn && comSet.has(inputn.$options._componentTag)) {
         if (inputn.type === 'textarea') {
           return;
-        } else {
+        } 
           input = inputn.$refs.input;
-        }
-      } else {
-        if (!(this.type === 'textarea' && this.autosize) || !input) {
+        
+      } else if (!(this.type === 'textarea' && this.autosize) || !input) {
           return;
         }
-      }
 
       const scrollTop = getRootScrollTop();
       input.style.height = 'auto';

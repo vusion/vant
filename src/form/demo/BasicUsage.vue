@@ -1,7 +1,7 @@
 <template>
   <demo-block :title="t('basicUsage')">
     <van-form>
-      <van-field required drole="other" :rules="[{validate: 'number',message: `请输入数字`,trigger: 'input+blur'}]">
+      <van-field required drole="other" :rules="[{validate: 'ipRange', args: [4], message: `1231223123123`,trigger: 'input+blur'}]">
         <template #title>
           <van-text text="名称"></van-text>
         </template>
@@ -43,7 +43,7 @@ export default {
       username: '',
       username666:'',
       password: '',
-      xx: 0,
+      xx: '',
       xxx: ''
     };
   },
