@@ -24,6 +24,9 @@
 
   &--horizontal {
     float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 
     &:first-child {
       .van-step__title {
@@ -63,6 +66,7 @@
       // margin-left: 3px;
       font-size: @step-horizontal-title-font-size;
       // transform: translateX(-50%);
+      word-break: break-all;
 
       @media (max-width: 321px) {
         font-size: calc(var(--step-horizontal-title-font-size) - 1px);
