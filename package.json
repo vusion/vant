@@ -71,6 +71,7 @@
     "cloud-ui.vusion": "^0.14.36-beta.1",
     "lodash": "^4.17.21",
     "online-svg-icon-vue2": "^1.2.3",
+    "postcss": "7.0.0",
     "vconsole": "^3.9.3",
     "vue-lazyload": "1.2.3",
     "vue-month-picker": "^1.6.0"
