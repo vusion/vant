@@ -2,10 +2,12 @@
   <demo-section>
     <demo-block>
       <van-checkbox-group
-        :data-source="[1, 2, 3]"
+        :data-source="[1, 2, 3, 4, 5, 6, 700, 8, 9, 10000]"
         @change="onGroupChange"
         v-model="value1"
         converter=""
+        direction="horizontal"
+        column=""
       >
         <template #item="scope">
           <van-checkbox
@@ -16,7 +18,7 @@
       </van-checkbox-group>
     </demo-block>
 
-    <demo-block>
+    <!-- <demo-block>
       <van-checkbox-group
         :data-source="[1, 2, 3]"
         @change="onGroupChange2"
@@ -29,7 +31,7 @@
           ></van-checkbox>
         </template>
       </van-checkbox-group>
-    </demo-block>
+    </demo-block> -->
     <!-- <demo-block style="margin-top: 20px">
       <van-checkbox-group>
         <div class="fwfwwfwf"><van-checkbox name="b">{{ t('checkbox') }} b</van-checkbox></div>

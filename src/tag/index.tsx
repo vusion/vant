@@ -2,7 +2,7 @@ import _camelCase  from 'lodash/camelCase'
 
 // Utils
 import { createNamespace } from '../utils';
-import { inherit, emit } from '../utils/functional';
+import { inherit, emit, emitPrevent } from '../utils/functional';
 
 // Components
 import Icon from '../icon';
@@ -84,6 +84,10 @@ function Tag(
       class={bem('close')}
       onClick={(event: PointerEvent) => {
         event.stopPropagation();
+        if (emitPrevent(ctx, 'before-close', null)) {
+          return;
+        }
+
         emit(ctx, 'close');
       }}
     />

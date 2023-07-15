@@ -12,6 +12,78 @@
       model: true
       default: ""
       description: 选中的值
+      group: 数据属性
+    - name: data-source
+      title: 数据源
+      type: Array<Item> | Function | object | DataSource
+      designer-value: '[{}, {}, {}]'
+      description: 列表的数据源。数组方式表示直接的数据，函数需要返回一个 Promise。
+      group: 数据属性
+    - name: data-schema
+      title: 数据类型
+      type: schema
+      description: 表格每一行的数据类型
+      compType: dataTypeSelect
+      group: 数据属性
+    - name: value-field
+      title: 值字段
+      type: string
+      default: value
+      description: 选项值的字段名
+      group: 数据属性
+    - name: text-field
+      title: 文本字段
+      type: string
+      default: text
+      description: 选项文本的字段名
+      group: 数据属性
+    - name: pageable
+      title: 分页
+      type: boolean
+      default: false
+      description: 设置是否分页加载更多
+      group: 数据属性
+    - name: page-size
+      title: 默认每页条数
+      type: number
+      display: number
+      default: 50
+      min: 10
+      dependency:
+        - pageable: true
+      group: 数据属性
+    - name: sorting
+      title: 初始化排序规则
+      type: "{ field: string, order: string, compare: Function }"
+      default: "{ field: undefined, order: 'desc' }"
+      description: 设置数据初始化时的排序字段和顺序规则
+      group: 数据属性
+    - name: filterable
+      title: 筛选
+      type: boolean
+      default: false
+      description: 设置是否可以筛选，开启将会支持搜索。
+      group: 数据属性
+    - name: match-method
+      title: 匹配方法
+      type: string
+      options:
+        - value: includes
+          title: 包括
+        - value: startsWith
+          title: 匹配开头
+        - value: endsWith
+          title: 匹配结尾
+      default: includes
+      description: 过滤时的匹配方法
+      group: 数据属性
+      dependency:
+        - filterable: true
+    - name: initial-load
+      type: boolean
+      title: 初始加载
+      default: true
+      description: 是否在初始时立即加载
     - name: labelField
       title: 左侧标题
       type: string
@@ -20,8 +92,8 @@
     - name: columnsprop
       title: 数据源(一维数组)
       type: array
-      default222: '["杭州","宁波","温州","绍兴","湖州","嘉兴","金华","衢州"]'
       description: 一个包含字符串或对象的数组
+      advanced: true
     - name: value-key
       title: 选项对象中，选项文字对应的键名
       type: string
@@ -29,10 +101,11 @@
       description: 选项对象中，选项文字对应的键名
       advanced: true
     - name: default-index
-      title: 单列选择时，默认选中项的索引
+      title: 默认选中项的索引
       type: number
       default: 0
-      description: 单列选择时，默认选中项的索引
+      description: 默认选中项的索引
+      advanced: true
     - name: title
       title: 顶部栏标题
       type: string
@@ -79,17 +152,11 @@
   events:
     - name: confirm
       title: 点击完成按钮时触发
-      description: 回调参数 单列：选中值，选中值对应的索引 多列：所有列选中值，所有列选中值对应的索引
+      description: 回调参数：选中值，选中值对应的索引
     - name: cancel
       title: 点击取消按钮时触发
-      description: 回调参数 单列：选中值，选中值对应的索引 多列：所有列选中值，所有列选中值对应的索引
+      description: 回调参数：选中值，选中值对应的索引
     - name: change
       title: 选项改变时触发
-      description: 回调参数 单列：Picker 实例，选中值，选中值对应的索引 多列：Picker 实例，所有列选中值，当前列对应的索引提交表单且验证不通过后触发
-  methods:
-    - name: getValues
-      description: 获取所有列选中的值
-      params: []
-    - name: setValues
-      description: 设置所有列选中的值
-      params: []
+      description: 回调参数：Picker 实例，选中值，选中值对应的索引
+

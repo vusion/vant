@@ -49,9 +49,5 @@ export default {
 </script>
 
 <style lang="less">
-@import './item.less';
-  // .van-for-com-item {
-  //   margin-right: 10px;
-  //   margin-bottom: 10px;
-  // }
+
 </style>

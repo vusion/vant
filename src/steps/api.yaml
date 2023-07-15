@@ -5,15 +5,28 @@
     - Display
   description: 用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。
   attrs:
+    - name: data-source
+      title: 数据源
+      type: Array<Item> | Function
+      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑
+      designer-value: '[{}, {}, {}]'
+      group: 数据属性
+    - name: data-schema
+      title: 数据类型
+      type: schema
+      description: 集合类型每一元素的数据类型
+      compType: dataTypeSelect
+      group: 数据属性
     - name: active
-      title: 值
+      title: 当前步骤
       type: number,string
       sync: true
       model: true
       default: 0
-      description: 值
+      description: 指定当前步骤，从 0 开始记数
+      group: 数据属性
     - name: direction
-      title: 显示方向
+      title: 步骤条方向
       type: string
       options:
         - value: horizontal
@@ -21,7 +34,16 @@
         - value: vertical
           title: 垂直
       default: horizontal
-      description: 通知栏模式
+    - name: readonly
+      title: 只读
+      type: boolean
+      default: false
+      description: 正常显示，但禁止选择、输入
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 置灰显示，且禁止任何交互
   slots:
     - concept: Slot
       name: default
@@ -31,6 +53,21 @@
         - name: van-step
           title: 步骤条项
           snippet: '<van-step>stepn</van-step>'
+    - concept: Slot
+      name: item
+      description: 自定义选项的结构和样式
+      slotProps:
+        concept: Param
+        name: current
+        typeAnnotation:
+          concept: TypeAnnotation
+          typeKind: generic
+          typeNamespace: nasl.ui
+          typeName: Current
+          typeArguments:
+            - concept: TypeAnnotation
+              typeKind: typeParam
+              typeName: T
   events:
     - name: changestep
       title: 切换步骤时
@@ -38,12 +75,38 @@
 - name: van-step
   title: 步骤条项
   attrs:
-    - name: value
-      title: 值
-      type: number,string
-      sync: true
-      model: true
-      description: 值
+    # - name: value
+    #   title: 值
+    #   type: number,string
+    #   sync: true
+    #   model: true
+    - name: icon
+      title: 图标
+      type: icon
+      description: 步骤自定义图标
+    - name: status
+      title: 状态
+      type: string
+      options:
+        - value: wait
+          title: 等待中
+        - value: process
+          title: 进行中
+        - value: finish
+          title: 已完成
+        - value: error
+          title: 错误
+      description: 设置步骤条的状态，分别为等待中、进行中、已完成、错误
+    - name: readonly
+      title: 只读
+      type: boolean
+      default: false
+      description: 正常显示，但禁止选择、输入
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 置灰显示，且禁止任何交互
   events:
     - name: clicktitle
       title: 点击标题

@@ -148,6 +148,9 @@ export default {
           parentField: this.parentField,
           childrenField: this.childrenField,
         };
+
+        // 启用树形时不分页
+        options.paging = undefined;
       }
 
       return options;
@@ -170,10 +173,6 @@ export default {
 
           return Promise.resolve(result);
         };
-
-        options.remotePaging = this.treeDisplay ? false : this.pageable;
-        options.remoteSorting = !!options.remotePaging;
-        options.remoteFiltering = !!options.remotePaging;
 
         return new DataSource(options);
       }

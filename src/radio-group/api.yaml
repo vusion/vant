@@ -41,6 +41,12 @@
           title: 垂直
       default: horizontal
       description: 排列方向
+    - name: column
+      title: 每行排列数
+      type: number
+      description: 水平排列时每行展示的选项数量
+      dependency:
+        - direction: horizontal
   slots:
     - concept: Slot
       name: default

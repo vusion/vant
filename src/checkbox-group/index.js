@@ -7,7 +7,11 @@ import { Converter } from '../mixins/convertor';
 const [createComponent, bem] = createNamespace('checkbox-group');
 
 export default createComponent({
-  mixins: [ParentMixin('vanCheckbox'), FieldMixin, Converter],
+  mixins: [
+    ParentMixin('vanCheckbox'),
+    FieldMixin,
+    Converter
+  ],
 
   props: {
     dataSource: [Array, Object, Function, String],
@@ -27,6 +31,9 @@ export default createComponent({
     converter: {
       type: String,
       default: 'json',
+    },
+    column: {
+      type: Number,
     },
   },
   data() {
@@ -133,11 +140,22 @@ export default createComponent({
   },
 
   render() {
+    // 水平排列时
+    let itemWidth = 'auto';
+    if (this.column > 0) {
+      itemWidth = (100 / this.column) + '%';
+    }
+
     return (
       <div class={bem([this.direction])}>
         {this.options?.map((item, index) => (
-          <div style="position:relative">
-            {this.slots('item', { item })}
+          <div
+            style={{
+              position: 'relative',
+              width: itemWidth,
+            }}
+          >
+            {this.slots('item', { item, index })}
             {this.inDesigner && index > 0 && <div class="mantle"></div>}
           </div>
         ))}
