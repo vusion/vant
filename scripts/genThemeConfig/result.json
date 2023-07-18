@@ -2043,5 +2043,11 @@
                 }
             }
         ]
+    },
+    {
+        "id": 0.2,
+        "title": "画布尺寸及缩放",
+        "toPosition": "canvasScale",
+        "items": []
     }
 ]
