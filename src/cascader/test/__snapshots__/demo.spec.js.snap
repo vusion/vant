@@ -3,39 +3,19 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable van-field">
-      <div class="van-cell__title van-field__label"><span>地区</span></div>
-      <div class="van-cell__value van-field__value">
-        <div class="van-field__body"><input type="text" readonly="readonly" placeholder="请选择所在地区" class="van-field__control"></div>
-      </div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-  </div>
-  <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable van-field">
-      <div class="van-cell__title van-field__label"><span>地区</span></div>
-      <div class="van-cell__value van-field__value">
-        <div class="van-field__body"><input type="text" readonly="readonly" placeholder="请选择所在地区" class="van-field__control"></div>
-      </div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-  </div>
-  <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable van-field">
-      <div class="van-cell__title van-field__label"><span>地区</span></div>
-      <div class="van-cell__value van-field__value">
-        <div class="van-field__body"><input type="text" readonly="readonly" placeholder="请选择所在地区" class="van-field__control"></div>
-      </div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-  </div>
-  <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable van-field">
-      <div class="van-cell__title van-field__label"><span>地区</span></div>
-      <div class="van-cell__value van-field__value">
-        <div class="van-field__body"><input type="text" readonly="readonly" placeholder="请选择所在地区" class="van-field__control"></div>
-      </div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div class="van-cascader__wrapppcascader" datasource1="[object Object],[object Object]">
+      <div class="van-cellson van-cellson--center van-cellson--insel van-field" noallow>
+        <div class="van-cellson__title van-field__label van-field__labelhasslots" vusion-slot-name="title">
+          <span class="root" vusion-slot-name-edit="text">
+            地区
+          </span>
+        </div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body">
+            <input class="van-field__control van-field__control--right" readonly="readonly" type="text">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

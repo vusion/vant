@@ -24,7 +24,7 @@ exports[`renders demo correctly 1`] = `
     </div>
   </div>
   <div>
-    <div role="switch" aria-checked="false" class="van-switch" style="font-size: 24px;">
+    <div aria-checked="false" class="van-switch" role="switch" style="font-size: 24px;">
       <div class="van-switch__node"></div>
     </div>
     <div class="van-skeleton van-skeleton--animate">

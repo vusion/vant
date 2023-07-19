@@ -17,3 +17,6 @@ assets-package
 changelog.generated.md
 test/coverage
 vetur
+
+# 测试入口
+scripts/test/package-entry.js

@@ -3,13 +3,33 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div class="van-search">
+    <div action-text="搜索" class="van-search van-search--show-action" icon-align="right" placeholder="请输入搜索关键词">
       <div class="van-search__content van-search__content--square">
-        <div class="van-cell van-cell--borderless van-field">
-          <div class="van-field__left-icon"><i class="van-icon van-icon-search">
-              <!----></i></div>
-          <div class="van-cell__value van-cell__value--alone van-field__value">
-            <div class="van-field__body"><input type="search" placeholder="请输入搜索关键词" class="van-field__control"></div>
+        <div class="van-cell van-cell--center van-cell--borderless van-fieldsonforsearch" noallow>
+          <div class="van-fieldsonforsearch__left-icon">
+            <i class="van-icon van-icon-search"></i>
+          </div>
+          <div class="van-cell__value van-fieldsonforsearch__value">
+            <div class="van-fieldsonforsearch__body">
+              <input action-text="搜索" class="van-fieldsonforsearch__control" icon-align="right" placeholder="请输入搜索关键词" type="search">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="van-search__action" role="button" tabindex="0" vusion-slot-name="action"></div>
+    </div>
+  </div>
+  <div>
+    <div class="van-search" placeholder="请输入搜索关键词">
+      <div class="van-search__content van-search__content--square">
+        <div class="van-cell van-cell--center van-cell--borderless van-fieldsonforsearch" noallow>
+          <div class="van-fieldsonforsearch__left-icon">
+            <i class="van-icon van-icon-search"></i>
+          </div>
+          <div class="van-cell__value van-fieldsonforsearch__value">
+            <div class="van-fieldsonforsearch__body">
+              <input class="van-fieldsonforsearch__control" placeholder="请输入搜索关键词" type="search">
+            </div>
           </div>
         </div>
       </div>
@@ -17,72 +37,87 @@ exports[`renders demo correctly 1`] = `
   </div>
   <div>
     <form action="/">
-      <div class="van-search van-search--show-action">
+      <div class="van-search van-search--show-action" placeholder="请输入搜索关键词">
         <div class="van-search__content van-search__content--square">
-          <div class="van-cell van-cell--borderless van-field">
-            <div class="van-field__left-icon"><i class="van-icon van-icon-search">
-                <!----></i></div>
-            <div class="van-cell__value van-cell__value--alone van-field__value">
-              <div class="van-field__body"><input type="search" placeholder="请输入搜索关键词" class="van-field__control"></div>
+          <div class="van-cell van-cell--center van-cell--borderless van-fieldsonforsearch" noallow>
+            <div class="van-fieldsonforsearch__left-icon">
+              <i class="van-icon van-icon-search"></i>
+            </div>
+            <div class="van-cell__value van-fieldsonforsearch__value">
+              <div class="van-fieldsonforsearch__body">
+                <input class="van-fieldsonforsearch__control" placeholder="请输入搜索关键词" type="search">
+              </div>
             </div>
           </div>
         </div>
-        <div role="button" tabindex="0" class="van-search__action">取消</div>
+        <div class="van-search__action" role="button" tabindex="0" vusion-slot-name="action"></div>
       </div>
     </form>
   </div>
   <div>
-    <div class="van-search">
+    <div class="van-search" input-align="center" placeholder="请输入搜索关键词">
       <div class="van-search__content van-search__content--square">
-        <div class="van-cell van-cell--borderless van-field">
-          <div class="van-field__left-icon"><i class="van-icon van-icon-search">
-              <!----></i></div>
-          <div class="van-cell__value van-cell__value--alone van-field__value">
-            <div class="van-field__body"><input type="search" placeholder="请输入搜索关键词" class="van-field__control van-field__control--center"></div>
+        <div class="van-cell van-cell--center van-cell--borderless van-fieldsonforsearch" noallow>
+          <div class="van-fieldsonforsearch__left-icon">
+            <i class="van-icon van-icon-search"></i>
+          </div>
+          <div class="van-cell__value van-fieldsonforsearch__value">
+            <div class="van-fieldsonforsearch__body">
+              <input class="van-fieldsonforsearch__control van-fieldsonforsearch__control--center" placeholder="请输入搜索关键词" type="search">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div>
-    <div class="van-search">
+    <div class="van-search" disabled="disabled" placeholder="请输入搜索关键词">
       <div class="van-search__content van-search__content--square">
-        <div class="van-cell van-cell--borderless van-field van-field--disabled">
-          <div class="van-field__left-icon"><i class="van-icon van-icon-search">
-              <!----></i></div>
-          <div class="van-cell__value van-cell__value--alone van-field__value">
-            <div class="van-field__body"><input type="search" disabled="disabled" placeholder="请输入搜索关键词" class="van-field__control"></div>
+        <div class="van-cell van-cell--center van-cell--borderless van-fieldsonforsearch van-fieldsonforsearch--disabled" noallow>
+          <div class="van-fieldsonforsearch__left-icon">
+            <i class="van-icon van-icon-search"></i>
+          </div>
+          <div class="van-cell__value van-fieldsonforsearch__value">
+            <div class="van-fieldsonforsearch__body">
+              <input class="van-fieldsonforsearch__control" disabled="disabled" placeholder="请输入搜索关键词" type="search">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div>
-    <div class="van-search" style="background: rgb(79, 192, 141);">
+    <div class="van-search" placeholder="请输入搜索关键词">
       <div class="van-search__content van-search__content--round">
-        <div class="van-cell van-cell--borderless van-field">
-          <div class="van-field__left-icon"><i class="van-icon van-icon-search">
-              <!----></i></div>
-          <div class="van-cell__value van-cell__value--alone van-field__value">
-            <div class="van-field__body"><input type="search" placeholder="请输入搜索关键词" class="van-field__control"></div>
+        <div class="van-cell van-cell--center van-cell--borderless van-fieldsonforsearch" noallow>
+          <div class="van-fieldsonforsearch__left-icon">
+            <i class="van-icon van-icon-search"></i>
+          </div>
+          <div class="van-cell__value van-fieldsonforsearch__value">
+            <div class="van-fieldsonforsearch__body">
+              <input class="van-fieldsonforsearch__control" placeholder="请输入搜索关键词" type="search">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div>
-    <div class="van-search van-search--show-action">
+    <div class="van-search van-search--show-action" placeholder="请输入搜索关键词">
       <div class="van-search__content van-search__content--square">
         <div class="van-search__label">地址</div>
-        <div class="van-cell van-cell--borderless van-field">
-          <div class="van-field__left-icon"><i class="van-icon van-icon-search">
-              <!----></i></div>
-          <div class="van-cell__value van-cell__value--alone van-field__value">
-            <div class="van-field__body"><input type="search" placeholder="请输入搜索关键词" class="van-field__control"></div>
+        <div class="van-cell van-cell--center van-cell--borderless van-fieldsonforsearch" noallow>
+          <div class="van-fieldsonforsearch__left-icon">
+            <i class="van-icon van-icon-search"></i>
+          </div>
+          <div class="van-cell__value van-fieldsonforsearch__value">
+            <div class="van-fieldsonforsearch__body">
+              <input class="van-fieldsonforsearch__control" placeholder="请输入搜索关键词" type="search">
+            </div>
           </div>
         </div>
       </div>
-      <div role="button" tabindex="0" class="van-search__action">
+      <div class="van-search__action" role="button" tabindex="0" vusion-slot-name="action">
         <div>搜索</div>
       </div>
     </div>
