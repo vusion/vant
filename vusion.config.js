@@ -37,6 +37,13 @@ module.exports = {
         alias: '线性布局',
         vusion: true,
       },
+      {
+        group: 'Layout',
+        show: true,
+        name: 'absolute-layout',
+        alias: '自由布局',
+        vusion: true,
+      },
       { group: 'Layout', show: true, name: 'divider', alias: '分割线' },
       { group: 'Layout', show: true, name: 'cell-group', alias: '单元格' },
       { group: 'Layout', show: true, name: 'row', alias: '栅格' },
