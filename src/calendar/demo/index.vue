@@ -1,29 +1,34 @@
 <template>
   <demo-section>
     <demo-block>
-      <van-calendar
+
+      <!-- <van-calendar
       label-field="日历选择"
       title="选择日期"
-    ></van-calendar >
-      <van-calendar
+    ></van-calendar > -->
+
+      <!-- <van-calendar
       label-field="日历选择"
-      :defaultDate.sync="ddateffff"
+      :value.sync="ddateffff"
       :min-date="'1990-10-15'"
       :max-date="'2040-10-15'"
       title="选择日期"
-    ></van-calendar >
+    ></van-calendar > -->
+
     <van-calendar
       label-field="日历选择"
-      :defaultDate.sync="ddateffff"
+      :value.sync="ddateffff"
       title="选择日期"
     ></van-calendar >
-    <van-calendar
+
+    <div>{{ ddateffff }}</div>
+    <!-- <van-calendar
       label-field="日历选择"
-      type="multiple"
       title="选择日期"
-    ></van-calendar >
+    ></van-calendar > -->
+
     </demo-block>
-    <demo-block card :title="t('basicUsage')">
+    <!-- <demo-block card :title="t('basicUsage')">
       <van-cell
         is-link
         :title="t('selectSingle')"
@@ -44,9 +49,9 @@
         :value="formatRange(date.selectRange)"
         @click="show('range', 'selectRange')"
       />
-    </demo-block>
+    </demo-block> -->
 
-    <demo-block card :title="t('quickSelect')">
+    <!-- <demo-block card :title="t('quickSelect')">
       <van-cell
         is-link
         :title="t('selectSingle')"
@@ -60,8 +65,8 @@
         :value="formatRange(date.quickSelect2)"
         @click="show('range', 'quickSelect2')"
       />
-    </demo-block>
-
+    </demo-block> -->
+<!--
     <demo-block card :title="t('customCalendar')">
       <van-cell
         is-link
@@ -111,7 +116,7 @@
         :title="t('firstDayOfWeek')"
         @click="show('single', 'firstDayOfWeek')"
       />
-    </demo-block>
+    </demo-block> -->
 
     <!-- <demo-block card :title="t('tiledDisplay')">
       <van-calendar
@@ -125,8 +130,7 @@
       />
     </demo-block> -->
 
-    <van-calendar
-      v-model="showCalendar"
+    <!-- <van-calendar
       :type="type"
       :color="color"
       :round="round"
@@ -141,7 +145,7 @@
       :first-day-of-week="firstDayOfWeek"
       @confirm="onConfirm"
       :default-date.sync="cvalue"
-    />
+    /> -->
   </demo-section>
 </template>
 
@@ -200,7 +204,7 @@ export default {
 
   data() {
     return {
-      ddateffff: null,
+      ddateffff: '2023-07-25',
       showCalendarTest: false,
       cvalue: null,
       date: {

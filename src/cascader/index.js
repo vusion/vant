@@ -64,7 +64,7 @@ export default createComponent({
       activeTab: 0,
       options: [],
       valuepopup: false,
-      curValue: this.value || '',
+      currentValue: this.value || '',
 
       filterData: [],
     };
@@ -101,9 +101,9 @@ export default createComponent({
       handler: 'updateTabs',
     },
     value(val) {
-      this.curValue = val;
+      this.currentValue = val;
     },
-    curValue(value) {
+    currentValue(value) {
       if (value || value === 0) {
         const values = this.tabs.map((tab) => {
           if (tab.selectedOption) {
@@ -127,7 +127,7 @@ export default createComponent({
         return this.value;
       }
       const selectedOptions =
-        this.getSelectedOptionsByValue(this.options, this.curValue) || [];
+        this.getSelectedOptionsByValue(this.options, this.currentValue) || [];
       const result = selectedOptions
         .map((option) => _get(option, this.textKey))
         .join('/');
@@ -155,10 +155,10 @@ export default createComponent({
     async updateTabs() {
       this.options = formatResult(this.currentData);
 
-      if (this.curValue || this.curValue === 0) {
+      if (this.currentValue || this.currentValue === 0) {
         const selectedOptions = this.getSelectedOptionsByValue(
           this.options,
-          this.curValue
+          this.currentValue
         );
 
         if (selectedOptions) {
@@ -237,7 +237,7 @@ export default createComponent({
         tabIndex,
         selectedOptions,
       };
-      this.curValue = _get(option, this.valueKey);
+      this.currentValue = _get(option, this.valueKey);
       this.$emit('input', _get(option, this.valueKey));
       this.$emit('update:value', _get(option, this.valueKey));
       this.$emit('change', eventParams); // expose
@@ -258,7 +258,7 @@ export default createComponent({
         selectedOptions: [...option.parents, option],
       };
 
-      this.curValue = _get(option, this.valueKey);
+      this.currentValue = _get(option, this.valueKey);
       this.$emit('update:value', _get(option, this.valueKey));
       this.$emit('change', eventParams); // expose
       this.$emit('finish', eventParams); // expose

@@ -49,7 +49,7 @@ export default createComponent({
   },
 
   model: {
-    prop: 'active',
+    prop: 'value',
   },
 
   props: {
@@ -78,7 +78,7 @@ export default createComponent({
       type: String,
       default: 'line',
     },
-    active: {
+    value: {
       type: [Number, String],
       default: 0,
     },
@@ -157,14 +157,14 @@ export default createComponent({
   watch: {
     color: 'setLine',
 
-    active(name) {
+    value(name) {
       if (name !== this.currentName) {
         this.setCurrentIndexByName(name);
       }
     },
 
     children() {
-      this.setCurrentIndexByName(this.active);
+      this.setCurrentIndexByName(this.value);
       this.setLine();
 
       this.$nextTick(() => {
@@ -281,12 +281,12 @@ export default createComponent({
 
       this.currentIndex = newIndex;
 
-      if (newName !== this.active) {
+      if (newName !== this.value) {
         this.$emit('input', newName);
-        this.$emit('update:active', newName);
+        this.$emit('update:value', newName);
 
         if (shouldEmitChange) {
-          this.$emit('update:active', newName, newTab.title);
+          this.$emit('update:value', newName, newTab.title);
           this.$emit('change', newName, newTab.title);
 
         }

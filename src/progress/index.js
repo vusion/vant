@@ -20,10 +20,10 @@ export default createComponent({
     pivotColor: String,
     trackColor: String,
     strokeWidth: [Number, String],
-    percentage: {
+    value: {
       type: [Number, String],
       required: true,
-      validator: (value) => value >= 0 && value <= 100,
+      validator: (val) => val >= 0 && val <= 100,
     },
     showPivot: {
       type: Boolean,
@@ -69,23 +69,23 @@ export default createComponent({
   },
 
   render() {
-    const { pivotText, percentage } = this;
-    const text = pivotText ?? percentage + '%';
+    const { pivotText, value } = this;
+    const text = pivotText ?? value + '%';
     const showPivot = this.showPivot && text;
     const background = this.inactive ? '#cacaca' : this.color;
 
     const pivotStyle = {
       color: this.textColor,
-      left: `${((this.progressWidth - this.pivotWidth) * percentage) / 100}px`,
+      left: `${((this.progressWidth - this.pivotWidth) * value) / 100}px`,
       background: this.pivotColor || background,
     };
     const customStyle = {
-      left: `${((this.progressWidth - this.customWidth) * percentage) / 100}px`,
+      left: `${((this.progressWidth - this.customWidth) * value) / 100}px`,
     }
 
     const portionStyle = {
       background,
-      width: (this.progressWidth * percentage) / 100 + 'px',
+      width: (this.progressWidth * value) / 100 + 'px',
     };
 
     const wrapperStyle = {

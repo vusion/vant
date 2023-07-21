@@ -41,7 +41,7 @@ export default createComponent({
       columns: [],
       defaultIndex: 0,
 
-      curValue: this.value,
+      currentValue: this.value,
     };
   },
 
@@ -67,12 +67,12 @@ export default createComponent({
       handler: 'format',
       immediate: true,
     },
-    curValue: {
+    currentValue: {
       handler: 'setDefaultColumn',
     },
     // 监听props变化
     value(val) {
-      this.curValue = val;
+      this.currentValue = val;
     },
   },
 
@@ -84,10 +84,10 @@ export default createComponent({
     setDefaultColumn() {
       let index;
       if (this.dataType === 'text') {
-        index = (this.columnsprop || []).findIndex((x) => x === this.curValue);
+        index = (this.columnsprop || []).findIndex((x) => x === this.currentValue);
       } else {
         index = (this.columnsprop || []).findIndex(
-          (x) => _get(x, this.valueField) === this.curValue
+          (x) => _get(x, this.valueField) === this.currentValue
         );
       }
       this.defaultIndex = index;
@@ -107,7 +107,7 @@ export default createComponent({
 
     onChange(idx) {
       const value = this.getColumnValue(0);
-      this.curValue = value;
+      this.currentValue = value;
 
       this.$emit('change', this, value, this.getColumnIndex(0));
 

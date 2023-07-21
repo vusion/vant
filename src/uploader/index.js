@@ -48,11 +48,7 @@ export default createComponent({
     accept: {
       type: String,
     },
-    // fileList: {
-    //   type: Array,
-    //   default: () => [],
-    // },
-    fileListProp: {
+    value: {
       type: [Array, String],
       default: () => [],
     },
@@ -96,7 +92,7 @@ export default createComponent({
       type: String,
       default: 'json',
     },
-    readonlyy: {
+    readonly: {
       type: Boolean,
       default: false,
     },
@@ -115,7 +111,7 @@ export default createComponent({
   },
   data() {
     return {
-      fileList: this.fromValue(this.fileListProp),
+      currentValue: this.fromValue(this.value),
     };
   },
   computed: {
@@ -124,18 +120,20 @@ export default createComponent({
     },
 
     // for form
-    value() {
-      return this.toValue(this.fileList);
+    fileList() {
+      return this.toValue(this.currentValue);
     },
     canUp() {
-      if (this.fileList.length === 0) return true;
-      const can = this.fileList.every((item) => item.status !== 'uploading');
+      if (this.currentValue.length === 0) return true;
+      const can = this.currentValue.every(
+        (item) => item.status !== 'uploading'
+      );
       return can;
     },
   },
   watch: {
-    fileListProp(val) {
-      this.fileList = this.fromValue(val);
+    value(val) {
+      this.currentValue = this.fromValue(val);
     },
   },
   methods: {
@@ -171,7 +169,7 @@ export default createComponent({
     simpleConvert(value) {
       return value.map((x) => x.url).join(',');
     },
-    getDetail(index = this.fileList.length) {
+    getDetail(index = this.currentValue.length) {
       return {
         name: this.name,
         index,
@@ -197,7 +195,8 @@ export default createComponent({
       ).toLowerCase();
       const type = file.type.toLowerCase();
       const baseType = type.replace(/\/.*$/, '').toLowerCase();
-      const valid = accept.split(',')
+      const valid = accept
+        .split(',')
         .map((type) => type.trim())
         .filter((type) => type)
         .some((acceptedType) => {
@@ -214,7 +213,7 @@ export default createComponent({
           return false;
         });
 
-        return valid;
+      return valid;
     },
 
     onChange(event) {
@@ -272,7 +271,7 @@ export default createComponent({
     readFile(files) {
       const oversize = isOversize(files, this.maxSize);
       if (Array.isArray(files)) {
-        const maxCount = this.maxCount - this.fileList.length;
+        const maxCount = this.maxCount - this.currentValue.length;
 
         if (files.length > maxCount) {
           files = files.slice(0, maxCount);
@@ -280,7 +279,7 @@ export default createComponent({
 
         Promise.all(files.map((file) => readFile(file, this.resultType))).then(
           (contents) => {
-            const fileList = files.map((file, index) => {
+            const list = files.map((file, index) => {
               const result = { file, status: '', message: '' };
 
               if (contents[index]) {
@@ -290,7 +289,7 @@ export default createComponent({
               return result;
             });
 
-            this.onAfterRead(fileList, oversize);
+            this.onAfterRead(list, oversize);
           }
         );
       } else {
@@ -335,25 +334,21 @@ export default createComponent({
         : Boolean(validFiles);
 
       if (isValidFiles) {
-        const tempArr = [...this.fileList, ...toArray(validFiles)];
-        // this.$emit('input', this.toValue(tempArr));
-        // this.$emit('update:fileListProp', this.toValue(tempArr));
+        const tempArr = [...this.currentValue, ...toArray(validFiles)];
 
-        this.fileList = tempArr;
+        this.currentValue = tempArr;
 
         if (this.afterRead) {
           this.afterRead(validFiles, this.getDetail());
         }
         this.$nextTick(function () {
-          // setTimeout(() => {
-          this.fileList.forEach((file, index) => {
+          this.currentValue.forEach((file, index) => {
             if (!file.url && !file.status) {
               file.status = 'uploading';
               file.message = '上传中...';
               this.post(file, index);
             }
           });
-          // }, 100)
         });
       }
     },
@@ -381,11 +376,11 @@ export default createComponent({
     },
 
     deleteFile(file, index) {
-      const fileList = this.fileList.slice(0);
-      fileList.splice(index, 1);
-      this.fileList = fileList;
-      this.$emit('input', this.toValue(this.fileList));
-      this.$emit('update:fileListProp', this.toValue(this.fileList));
+      const list = this.currentValue.slice(0);
+      list.splice(index, 1);
+      this.currentValue = list;
+      this.$emit('input', this.toValue(this.currentValue));
+      this.$emit('update:value', this.toValue(this.currentValue));
       this.$emit('delete', file, this.getDetail(index));
     },
 
@@ -406,7 +401,7 @@ export default createComponent({
         return;
       }
 
-      const imageFiles = this.fileList.filter((item) => isImageFile(item));
+      const imageFiles = this.currentValue.filter((item) => isImageFile(item));
       const imageContents = imageFiles.map(
         (item) => item.content || item.url || item
       );
@@ -464,7 +459,7 @@ export default createComponent({
     genPreviewItem(item, index) {
       const deleteAble = item.deletable ?? this.deletable;
       const showDelete =
-        item.status !== 'uploading' && deleteAble && !this.readonlyy;
+        item.status !== 'uploading' && deleteAble && !this.readonly;
 
       const DeleteIcon = showDelete && (
         <div
@@ -536,14 +531,14 @@ export default createComponent({
 
     genPreviewList() {
       if (this.previewImage) {
-        return this.fileList.map(this.genPreviewItem);
+        return this.currentValue.map(this.genPreviewItem);
       }
     },
 
     genUpload() {
       if (!this.canUp) return;
-      if (this.readonlyy && !(this.$env && this.$env.VUE_APP_DESIGNER)) return;
-      if (this.fileList.length >= this.maxCount || !this.showUpload) {
+      if (this.readonly && !(this.$env && this.$env.VUE_APP_DESIGNER)) return;
+      if (this.currentValue.length >= this.maxCount || !this.showUpload) {
         return;
       }
 
@@ -648,14 +643,10 @@ export default createComponent({
           }
           file.response = res;
           setTimeout(() => {
-            // const value = [...this.fileList].filter(file => file.url && file.url.length > 0).map(file => {
-            //   return {url: file.url}
-            // })
-
             if (this.canUp) {
-              const value = this.fileList;
+              const value = this.currentValue;
               this.$emit('input', this.toValue(value));
-              this.$emit('update:fileListProp', this.toValue(value));
+              this.$emit('update:value', this.toValue(value));
 
               this.$emit(
                 'success',
@@ -682,12 +673,6 @@ export default createComponent({
             },
             this
           );
-
-          // setTimeout(() => {
-          //   const value = this.fileList.filter(file => file.url && file.url.length > 0).map(file => file.url);
-          //   this.$emit('input', this.toValue(value));
-          //   this.$emit('update:fileListProp', this.toValue(value));
-          // }, 500)
         },
       });
     },

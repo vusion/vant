@@ -50,7 +50,7 @@
 - name: van-dropdown-item
   title: 菜单项
   attrs:
-    - name: valueprop
+    - name: value
       title: 菜单项值
       type: number,string
       sync: true

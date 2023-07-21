@@ -41,11 +41,11 @@ export default createComponent({
     rangePrompt: String,
     labelField: {
       type: String,
-      default: ''
+      default: '',
     },
-    defaultDate: {
+    value: {
       type: [Date, Array, String],
-      default: null
+      default: null,
     },
     getContainer: [String, Function],
     allowSameDay: Boolean,
@@ -130,8 +130,7 @@ export default createComponent({
     return {
       subtitle: '',
       currentDate: this.getInitialDate(),
-      valuepopup: false,
-      value: false,
+      popupShown: false,
       getTitle: '',
       defaultMonthForSelect: null,
     };
@@ -170,28 +169,25 @@ export default createComponent({
       return this.firstDayOfWeek ? this.firstDayOfWeek % 7 : 0;
     },
 
-    currentDateCom() {
-      return this.currentDate;
-    },
     defaultMonthForSelectCom() {
       return this.defaultMonthForSelect;
-    }
+    },
   },
 
   watch: {
-    value: 'init',
+    popupShown: 'init',
 
     type() {
       this.reset();
     },
 
-    defaultDate: {
+    value: {
       handler(val) {
         this.currentDate = typeof val === 'string' ? new Date(val) : val;
         this.scrollIntoView();
         this.setTitle();
       },
-      immediate: true
+      immediate: true,
     },
   },
 
@@ -213,9 +209,9 @@ export default createComponent({
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
     togglePopup() {
-      this.valuepopup = !this.valuepopup;
-      this.value = !this.value;
-      this.$refs.popforcas.togglePModal();
+      if (this.poppable) {
+        this.popupShown = !this.popupShown;
+      }
     },
     // @exposed-api
     reset(date = this.getInitialDate()) {
@@ -224,7 +220,7 @@ export default createComponent({
     },
 
     init() {
-      if (this.poppable && !this.value) {
+      if (this.poppable && !this.popupShown) {
         return;
       }
 
@@ -242,7 +238,7 @@ export default createComponent({
     // @exposed-api
     scrollToDate(targetDate) {
       raf(() => {
-        const displayed = this.value || !this.poppable;
+        const displayed = this.popupShown || !this.poppable;
 
         /* istanbul ignore if */
         if (!targetDate || !displayed) {
@@ -275,42 +271,10 @@ export default createComponent({
     },
 
     getInitialDate() {
-      let { type, minDate, maxDate, defaultDate } = this;
-      if (defaultDate) {
-        defaultDate = defaultDate.replace(/-/g, "/");
+      let { type, minDate, maxDate, value } = this;
+      if (value) {
+        value = value.replace(/-/g, '/');
       }
-      if (defaultDate === null) {
-        // return typeof defaultDate === 'string' ? new Date(defaultDate) : defaultDate;
-      }
-
-
-      // if (isDate(defaultDate)) {
-
-      // } else {
-      //   try {
-      //     if (!defaultDate) {
-      //       defaultDate = new Date();
-      //     } else {
-      //       if (Array.isArray(defaultDate)) {
-      //         if (type === 'range' || type === 'multiple') {
-      //           defaultDate = defaultDate.map((item) => {
-      //             if (isDate(item)) {
-      //               return item;
-      //             } else {
-      //               return new Date(item);
-      //             }
-      //           });
-      //         }
-      //       } else {
-      //         defaultDate = isDate(defaultDate) ? defaultDate : new Date(defaultDate);
-      //       }
-
-      //     }
-      //   } catch (e) {
-      //     console.warn(e, 'error date');
-      //   }
-      // }
-
 
       let defaultVal = new Date();
       if (compareDay(defaultVal, transErrorDate(minDate, 'min')) === -1) {
@@ -320,15 +284,23 @@ export default createComponent({
       }
 
       if (type === 'range') {
-        const [startDay, endDay] = defaultDate || [];
+        const [startDay, endDay] = value || [];
         return [startDay || defaultVal, endDay || getNextDay(defaultVal)];
       }
 
       if (type === 'multiple') {
-        return (typeof defaultDate === 'string' ? new Date(defaultDate) : defaultDate) || [defaultVal];
+        return (
+          (typeof value === 'string'
+            ? new Date(value)
+            : value) || [defaultVal]
+        );
       }
 
-      return (typeof defaultDate === 'string' ? new Date(defaultDate) : defaultDate) || defaultVal;
+      return (
+        (typeof value === 'string'
+          ? new Date(value)
+          : value) || defaultVal
+      );
     },
 
     // calculate the position of the elements
@@ -441,10 +413,6 @@ export default createComponent({
       }
     },
 
-    // togglePopup(val) {
-    //   this.$emit('input', val);
-    // },
-
     select(date, complete) {
       const emit = (date) => {
         this.currentDate = date;
@@ -484,21 +452,29 @@ export default createComponent({
     },
 
     onConfirm() {
-      this.$emit('update:default-date', (copyDates(this.currentDate)).formath("yyyy-MM-dd"));
-      this.$emit('confirm', (copyDates(this.currentDate)).formath("yyyy-MM-dd"));
+      this.$emit(
+        'update:value',
+        copyDates(this.currentDate).formath('yyyy-MM-dd')
+      );
+      this.$emit('confirm', copyDates(this.currentDate).formath('yyyy-MM-dd'));
       this.togglePopup();
       this.setTitle();
     },
     setTitle() {
       if (this.ifDesigner()) {
-        this.getTitle = this.defaultDate;
-        return
+        this.getTitle = this.value;
+        return;
       }
       if (this.currentDate) {
         if (Array.isArray(this.currentDate)) {
-          this.getTitle = this.currentDate.reduce((p, c) => p + (isDate(c) ? c.formath("yyyy/MM/dd") : c)+'-', '');
+          this.getTitle = this.currentDate.reduce(
+            (p, c) => p + (isDate(c) ? c.formath('yyyy/MM/dd') : c) + '-',
+            ''
+          );
         } else {
-          this.getTitle =  isDate(this.currentDate) ? this.currentDate.formath("yyyy/MM/dd") : this.currentDate;
+          this.getTitle = isDate(this.currentDate)
+            ? this.currentDate.formath('yyyy/MM/dd')
+            : this.currentDate;
         }
       } else {
         this.getTitle = '';
@@ -579,7 +555,7 @@ export default createComponent({
             showTitle={this.showTitle}
             subtitle={this.subtitle}
             showSubtitle={this.showSubtitle}
-            currentDate={this.currentDateCom}
+            currentDate={this.currentDate}
             defaultMonthForSelect={this.defaultMonthForSelectCom}
             scopedSlots={{
               title: () => this.slots('title'),
@@ -601,15 +577,14 @@ export default createComponent({
 
   render() {
     const tempSlot = {
-      title: () => this.slots('title')
-    }
+      title: () => this.slots('title'),
+    };
     if (this.poppable) {
-      const createListener = (name) => () => this.$emit(name);
       return (
         <div class={bem('wrapppcalendar')}>
           <Field
             label={this.labelField}
-            value={this.ifDesigner() ? this.defaultDate : this.getTitle}
+            value={this.ifDesigner() ? this.value : this.getTitle}
             scopedSlots={tempSlot}
             readonly
             isLink
@@ -622,21 +597,13 @@ export default createComponent({
           />
           <Popup
             safe-area-inset-bottom
-            round
             class={bem('popup')}
+            value={this.popupShown}
             round={this.round}
             position={this.position}
             ref="popforcas"
-            // onClickOverlay={this.togglePopup}
-            // closeable={this.showTitle || this.showSubtitle}
             get-container="body" // 放body下不易出现异常情况
-            // closeOnPopstate={this.closeOnPopstate}
             closeOnClickOverlay={this.closeOnClickOverlay}
-            // onInput={this.togglePopup}
-            // onOpen={createListener('open')}
-            // onOpened={createListener('opened')}
-            // onClose={createListener('close')}
-            // onClosed={createListener('closed')}
           >
             {this.genCalendar()}
           </Popup>

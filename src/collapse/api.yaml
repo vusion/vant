@@ -5,7 +5,7 @@
     - Container
   description: 将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。
   attrs:
-    - name: valueprop
+    - name: value
       title: 值
       type: number,string
       sync: true

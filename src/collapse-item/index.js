@@ -47,11 +47,11 @@ export default createComponent({
         return null;
       }
 
-      const { value, accordion } = this.parent;
+      const { currentValue, accordion } = this.parent;
       if (
         process.env.NODE_ENV === 'development' &&
         !accordion &&
-        !Array.isArray(value)
+        !Array.isArray(currentValue)
       ) {
         console.error('[Vant] Collapse: type of prop "value" should be Array');
         return;
@@ -59,8 +59,8 @@ export default createComponent({
       if(this.disabled) return null;
       try {
         return accordion
-        ? value === this.currentName
-        : value.some((name) => name === this.currentName);
+        ? currentValue === this.currentName
+        : currentValue.some((name) => name === this.currentName);
       } catch (e) {
         // console.log(e)
       }
@@ -124,7 +124,7 @@ export default createComponent({
     // @exposed-api
     toggle(expanded = !this.expanded) {
       const { parent, currentName } = this;
-      const close = parent.accordion && currentName === parent.value;
+      const close = parent.accordion && currentName === parent.currentValue;
       const name = close ? '' : currentName;
       this.parent.switch(name, expanded);
     },
@@ -169,7 +169,7 @@ export default createComponent({
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
     genContent() {
-      const _scopeId = this.$vnode.context.$options._scopeId;
+      const {_scopeId} = this.$vnode.context.$options;
       if (this.inited) {
         return (
           <div
