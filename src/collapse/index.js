@@ -9,6 +9,7 @@ export default createComponent({
 
   props: {
     accordion: Boolean,
+    valueprop: [String, Number, Array], // 废弃
     value: [String, Number, Array],
     border: {
       type: Boolean,
@@ -17,27 +18,29 @@ export default createComponent({
   },
   data() {
     return {
-      currentValue: this.fromValue(this.value) ?? (this.accordion ? 0 : [0])
-    }
+      currentValue: this.fromValue(this.value ?? this.valueprop) ?? (this.accordion ? 0 : [0]),
+    };
   },
   watch: {
     value(val) {
       this.currentValue = this.fromValue(val) ?? (this.accordion ? 0 : [0]);
     },
+    valueprop(val) {
+      this.currentValue = this.fromValue(val) ?? (this.accordion ? 0 : [0]);
+    },
     accordion(val) {
-      if ((this.fromValue(this.value))) {
-      } else {
+      if (!this.fromValue(this.value ?? this.valueprop)) {
         this.currentValue = val ? 0 : [0];
       }
-    }
+    },
   },
   methods: {
     fromValue(value) {
       try {
-          if (value === null || value === undefined) return null;
-          return value;
+        if (value === null || value === undefined) return null;
+        return value;
       } catch (err) {
-          return null;
+        return null;
       }
     },
     switch(name, expanded) {
@@ -48,6 +51,7 @@ export default createComponent({
       }
       this.$emit('input', name);
       this.$emit('update:value', name);
+      this.$emit('update:valueprop', name);
       this.$emit('change', name);
       this.currentValue = name;
     },

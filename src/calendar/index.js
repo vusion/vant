@@ -43,6 +43,11 @@ export default createComponent({
       type: String,
       default: '',
     },
+    // 废弃
+    defaultDate: {
+      type: [Date, Array, String],
+      default: null,
+    },
     value: {
       type: [Date, Array, String],
       default: null,
@@ -181,6 +186,17 @@ export default createComponent({
       this.reset();
     },
 
+    defaultDate: {
+      handler(val) {
+        this.currentDate = this.getInitialDate(val);
+        this.scrollIntoView();
+        if (val) {
+          this.setTitle();
+        }
+      },
+      immediate: true,
+    },
+
     value: {
       handler(val) {
         this.currentDate = this.getInitialDate(val);
@@ -273,8 +289,8 @@ export default createComponent({
     },
 
     getInitialDate(val) {
-      const { type, minDate, maxDate, value } = this;
-      val = val || value;
+      const { type, minDate, maxDate, value, defaultDate } = this;
+      val = val || (value ?? defaultDate);
 
       if (val) {
         val = val.replace(/-/g, '/');
@@ -293,11 +309,7 @@ export default createComponent({
       }
 
       if (type === 'multiple') {
-        return (
-          (typeof val === 'string'
-            ? new Date(val)
-            : val) || [defaultVal]
-        );
+        return (typeof val === 'string' ? new Date(val) : val) || [defaultVal];
       }
 
       if (val) {
@@ -460,13 +472,17 @@ export default createComponent({
         'update:value',
         copyDates(this.currentDate).formath('yyyy-MM-dd')
       );
+      this.$emit(
+        'update:default-date',
+        copyDates(this.currentDate).formath('yyyy-MM-dd')
+      );
       this.$emit('confirm', copyDates(this.currentDate).formath('yyyy-MM-dd'));
       this.togglePopup();
       this.setTitle();
     },
     setTitle() {
       if (this.ifDesigner()) {
-        this.getTitle = this.value;
+        this.getTitle = this.value ?? this.defaultDate;
         return;
       }
       if (this.currentDate) {
@@ -588,7 +604,7 @@ export default createComponent({
         <div class={bem('wrapppcalendar')}>
           <Field
             label={this.labelField}
-            value={this.ifDesigner() ? this.value : this.getTitle}
+            value={this.ifDesigner() ? (this.value ?? this.defaultDate) : this.getTitle}
             scopedSlots={tempSlot}
             readonly
             isLink

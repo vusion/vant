@@ -16,6 +16,7 @@ export default createComponent({
   mixins: [DataSourceMixin],
   props: {
     columnsprop: [Array, String],
+    pvalue: [String, Object], // 废弃
     value: [String, Object],
     labelField: {
       type: String,
@@ -33,7 +34,7 @@ export default createComponent({
     return {
       valuepopup: false,
       // 内部值
-      currentValue: this.value || '',
+      currentValue: (this.value ?? this.pvalue) || '',
     };
   },
 
@@ -44,10 +45,14 @@ export default createComponent({
   },
   watch: {
     currentValue(val) {
-       this.$emit('update:value', val);
+      this.$emit('update:value', val);
+      this.$emit('update:pvalue', val);
     },
     // 监听props变化
     value(val) {
+      this.currentValue = val;
+    },
+    pvalue(val) {
       this.currentValue = val;
     },
   },
@@ -57,7 +62,9 @@ export default createComponent({
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
     getTitle() {
-      if (this.ifDesigner()) return this.value;
+      if (this.ifDesigner()) {
+        return this.value ?? this.pvalue;
+      }
 
       let title = '';
       for (let i = 0; i < this.data.length; i++) {

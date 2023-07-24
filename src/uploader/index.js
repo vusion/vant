@@ -48,6 +48,11 @@ export default createComponent({
     accept: {
       type: String,
     },
+    // 废弃
+    fileListProp: {
+      type: [Array, String],
+      default: () => [],
+    },
     value: {
       type: [Array, String],
       default: () => [],
@@ -111,7 +116,7 @@ export default createComponent({
   },
   data() {
     return {
-      currentValue: this.fromValue(this.value),
+      currentValue: this.fromValue(this.value ?? this.fileListProp),
     };
   },
   computed: {
@@ -133,6 +138,9 @@ export default createComponent({
   },
   watch: {
     value(val) {
+      this.currentValue = this.fromValue(val);
+    },
+    fileListProp(val) {
       this.currentValue = this.fromValue(val);
     },
   },
@@ -381,6 +389,7 @@ export default createComponent({
       this.currentValue = list;
       this.$emit('input', this.toValue(this.currentValue));
       this.$emit('update:value', this.toValue(this.currentValue));
+      this.$emit('update:fileListProp', this.toValue(this.currentValue));
       this.$emit('delete', file, this.getDetail(index));
     },
 
@@ -647,6 +656,7 @@ export default createComponent({
               const value = this.currentValue;
               this.$emit('input', this.toValue(value));
               this.$emit('update:value', this.toValue(value));
+              this.$emit('update:fileListProp', this.toValue(value));
 
               this.$emit(
                 'success',

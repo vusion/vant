@@ -21,6 +21,7 @@ export default createComponent({
   ],
 
   props: {
+    valueprop: null, // 废弃
     value: null,
     title: {
       type: String,
@@ -48,7 +49,7 @@ export default createComponent({
       showPopup: false,
       showWrapper: false,
       bem,
-      currentValue: this.value,
+      currentValue: this.value ?? this.valueprop,
     };
   },
 
@@ -57,6 +58,9 @@ export default createComponent({
       this.bindScroll(val);
     },
     value(val) {
+      this.currentValue = val;
+    },
+    valueprop(val) {
       this.currentValue = val;
     },
     currentValue(val) {
@@ -152,6 +156,7 @@ export default createComponent({
             if (option.value !== this.currentValue) {
               this.$emit('input', option.value);
               this.$emit('update:value', option.value);
+              this.$emit('update:valueprop', option.value);
               this.$emit('change', option.value);
             }
           }}
