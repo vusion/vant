@@ -18,6 +18,8 @@
     <van-calendar
       label-field="日历选择"
       :value.sync="ddateffff"
+      :min-date="'2020-10-15'"
+      :max-date="'2040-10-15'"
       title="选择日期"
     ></van-calendar >
 
@@ -204,7 +206,8 @@ export default {
 
   data() {
     return {
-      ddateffff: '2023-07-25',
+      // ddateffff: '2023-07-25',
+      ddateffff: null,
       showCalendarTest: false,
       cvalue: null,
       date: {

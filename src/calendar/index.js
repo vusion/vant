@@ -183,9 +183,11 @@ export default createComponent({
 
     value: {
       handler(val) {
-        this.currentDate = typeof val === 'string' ? new Date(val) : val;
+        this.currentDate = this.getInitialDate(val);
         this.scrollIntoView();
-        this.setTitle();
+        if (val) {
+          this.setTitle();
+        }
       },
       immediate: true,
     },
@@ -270,10 +272,12 @@ export default createComponent({
       }
     },
 
-    getInitialDate() {
-      let { type, minDate, maxDate, value } = this;
-      if (value) {
-        value = value.replace(/-/g, '/');
+    getInitialDate(val) {
+      const { type, minDate, maxDate, value } = this;
+      val = val || value;
+
+      if (val) {
+        val = val.replace(/-/g, '/');
       }
 
       let defaultVal = new Date();
@@ -284,23 +288,23 @@ export default createComponent({
       }
 
       if (type === 'range') {
-        const [startDay, endDay] = value || [];
+        const [startDay, endDay] = val || [];
         return [startDay || defaultVal, endDay || getNextDay(defaultVal)];
       }
 
       if (type === 'multiple') {
         return (
-          (typeof value === 'string'
-            ? new Date(value)
-            : value) || [defaultVal]
+          (typeof val === 'string'
+            ? new Date(val)
+            : val) || [defaultVal]
         );
       }
 
-      return (
-        (typeof value === 'string'
-          ? new Date(value)
-          : value) || defaultVal
-      );
+      if (val) {
+        return typeof val === 'string' ? new Date(val) : val;
+      }
+
+      return defaultVal;
     },
 
     // calculate the position of the elements
