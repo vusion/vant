@@ -85,7 +85,6 @@ export default createComponent({
     },
     value: {
       type: [Number, String],
-      default: 0,
     },
     ellipsis: {
       type: Boolean,

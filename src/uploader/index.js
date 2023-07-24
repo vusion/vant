@@ -55,7 +55,6 @@ export default createComponent({
     },
     value: {
       type: [Array, String],
-      default: () => [],
     },
     maxSize: {
       type: [Number, String, Function],
