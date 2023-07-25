@@ -125,5 +125,15 @@
   "jestSerializer": {
     "removeComments": true,
     "sortAttributes": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,vue,less}": "prettier --write",
+    "*.{ts,tsx,js,vue}": "eslint",
+    "*.{vue,css,less}": "stylelint --fix"
   }
 }
