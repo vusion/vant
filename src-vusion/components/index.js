@@ -116,6 +116,7 @@ export * from './grid-view';
 export * from './iframe';
 export * from './link';
 export * from './linear-layout';
+export * from './absolute-layout';
 export * from './count-down-new';
 export * from  './copy';
 export * from './popup-combination';
