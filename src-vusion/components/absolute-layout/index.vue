@@ -19,6 +19,7 @@ export default {
     position: relative;
     width: 100%;
     height: 300px;
+    min-height: 100px;
 }
 
 .root>* {
