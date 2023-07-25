@@ -218,17 +218,17 @@ export default createComponent({
           return this.children.currentValue;
         }
 
-        // 日历
-        if (this.children?.$options?._componentTag === 'van-calendar') {
-          return this.children.defaultDate;
-        }
+        // 日历 由于defaultDate->value 所以注释
+        // if (this.children?.$options?._componentTag === 'van-calendar') {
+        //   return this.children.defaultDate;
+        // }
 
-        // 文件上传
-        if (this.children?.$options?._componentTag === 'van-uploader') {
-          return this.children.fileListProp;
-        }
+        // 文件上传 由于fileListProp->value 所以注释
+        // if (this.children?.$options?._componentTag === 'van-uploader') {
+        //   return this.children.fileListProp;
+        // }
 
-        // 默认使用组件props.value
+        // 默认使用组件value
         return this.children.value;
       }
       return (this.type === 'number' || this.type === 'digit') ? Number(this.value) : this.value;

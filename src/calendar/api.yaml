@@ -9,7 +9,7 @@
       type: string
       description: 左侧标题
       advanced: true
-    - name: default-date
+    - name: value
       title: 值
       type: string, Date, Array
       sync: true

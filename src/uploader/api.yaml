@@ -5,7 +5,7 @@
   icon: uploader
   description: 上传文件。
   attrs:
-    - name: fileListProp
+    - name: value
       title: 值
       type: Array
       sync: true
@@ -62,7 +62,7 @@
       type: object
       default: null
       description: 附加数据
-    - name: readonlyy
+    - name: readonly
       title: 是否只读
       type: boolean
       default: false

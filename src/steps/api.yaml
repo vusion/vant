@@ -17,7 +17,7 @@
       description: 集合类型每一元素的数据类型
       compType: dataTypeSelect
       group: 数据属性
-    - name: active
+    - name: value
       title: 当前步骤
       type: number,string
       sync: true

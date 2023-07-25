@@ -16,7 +16,8 @@ export default createComponent({
   mixins: [DataSourceMixin],
   props: {
     columnsprop: [Array, String],
-    pvalue: [String, Object],
+    pvalue: [String, Object], // 废弃
+    value: [String, Object],
     labelField: {
       type: String,
       default: '',
@@ -33,7 +34,7 @@ export default createComponent({
     return {
       valuepopup: false,
       // 内部值
-      curValue: this.pvalue || '',
+      currentValue: (this.value ?? this.pvalue) || '',
     };
   },
 
@@ -43,10 +44,16 @@ export default createComponent({
     },
   },
   watch: {
-    curValue() {},
+    currentValue(val) {
+      this.$emit('update:value', val);
+      this.$emit('update:pvalue', val);
+    },
     // 监听props变化
-    pvalue(val, old) {
-      this.curValue = val;
+    value(val) {
+      this.currentValue = val;
+    },
+    pvalue(val) {
+      this.currentValue = val;
     },
   },
 
@@ -55,7 +62,9 @@ export default createComponent({
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
     getTitle() {
-      if (this.ifDesigner()) return this.pvalue;
+      if (this.ifDesigner()) {
+        return this.value ?? this.pvalue;
+      }
 
       let title = '';
       for (let i = 0; i < this.data.length; i++) {
@@ -71,7 +80,7 @@ export default createComponent({
           t = item;
         }
 
-        if (this.curValue === v) {
+        if (this.currentValue === v) {
           title = t;
           break;
         }
@@ -83,12 +92,10 @@ export default createComponent({
       this.$refs.popforpison.togglePModal();
     },
     onChange(vm, val, index) {
-      // this.curValue = val;
       this.$emit('change', vm, val, index);
     },
     onConfirm(val, index) {
-      this.curValue = val;
-      this.$emit('update:pvalue', val);
+      this.currentValue = val;
       this.$emit('confirm', val, index);
     },
     onCancel() {
@@ -154,7 +161,7 @@ export default createComponent({
                 textField: this.textField || this.$attrs.valueKey,
               },
             }}
-            value={this.curValue}
+            value={this.currentValue}
             showToolbar={this.$attrs['show-toolbar']}
             {...{ on }}
           >
