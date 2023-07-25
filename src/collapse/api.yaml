@@ -35,8 +35,6 @@
     - name: name
       title: 值
       type: number,string
-      sync: true
-      model: true
       description: 值
     - name: title
       title: 标题
