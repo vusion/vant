@@ -8,13 +8,11 @@ import Info from '../info';
 import VanEmptyCol from '../emptycol';
 import config from './config';
 
-import { onlineSvgIcon } from './components/main';
+import OnlineSvgIcon from './components/index.vue'
 // Types
 import { CreateElement, RenderContext } from 'vue/types';
 import { DefaultSlots } from '../utils/types';
 import encodeUrl from '../utils/encodeUrl';
-
-onlineSvgIcon;
 
 require('./icon');
 
@@ -210,7 +208,7 @@ function Iconv(
       onClick={onClick}
     >
       {isSvgUrl(props.name) ? (
-        <onlineSvgIcon purecss={true} url={props.name} />
+        <OnlineSvgIcon purecss={true} url={props.name} />
       ) : (
         <svg class="vant-iconv-svg van-shoud-pa" aria-hidden="true">
           <use {...href} class="van-shoud-pa"></use>

@@ -1,7 +1,7 @@
 <template>
-  <div class="online-svg-wrap" ref="wrap">
+  <div :class="$style.wrap" ref="wrap">
       <div class="icon" :style="genStyle"  v-if="purecss"></div>
-      <object class="iconob" type="image/svg+xml" :data="database64" v-if="!purecss"></object>
+      <object :class="$style.iconob" type="image/svg+xml" :data="database64" v-else></object>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import {fetch as fetchPolyfill} from 'whatwg-fetch'
 
 export default {
-  name: 'onlineSvgIcon',
+  name: 'online-svg-icon',
   props: {
     purecss: {
       type: Boolean,
@@ -48,7 +48,7 @@ export default {
           }
         }
         // colored
-        else {
+
           return {
             'background-image': `${uri}`,
             'background-repeat': 'no-repeat',
@@ -57,11 +57,11 @@ export default {
             height: '1em',
             width: '1em',
           }
-        }
+
       },
   },
   watch: {
-    'url'() {
+    'url': function() {
       this.getSvg();
     }
   },
@@ -73,6 +73,9 @@ export default {
           attributes: true,
       });
     }
+  },
+  destroyed() {
+    this.observerwh && this.observerwh.disconnect();
   },
   methods: {
     pwd() {
@@ -89,7 +92,7 @@ export default {
     },
     up64vg() {
       if (this.purecss) return;
-      const color = window.getComputedStyle(this.$refs.wrap).color;
+      const {color} = window.getComputedStyle(this.$refs.wrap);
       let tepsvg = this.svg;
       tepsvg = tepsvg.replace('currentColor', color);
       this.database64 = `data:image/svg+xml;base64,${(window.btoa(unescape(encodeURIComponent(tepsvg))))}`;
@@ -101,23 +104,22 @@ export default {
         //
         .replace(/"/g, '\'')
         .replace(/%/g, '%25')
-        .replace(/#/g, '%23')       
+        .replace(/#/g, '%23')
         .replace(/{/g, '%7B')
-        .replace(/}/g, '%7D')         
+        .replace(/}/g, '%7D')
         .replace(/</g, '%3C')
         .replace(/>/g, '%3E')
 
         .replace(/\s+/g,' ');
       }
   },
-  destroyed() {
-    this.observerwh && this.observerwh.disconnect();
-  },
 }
 </script>
-<style scoped>
-.online-svg-wrap {
-  display: inline-block;
+<style module>
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .iconob {
   display: block;
