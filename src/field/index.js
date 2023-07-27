@@ -203,7 +203,6 @@ export default createComponent({
 
     formValue() {
       if (this.children && (this.$scopedSlots.input || this.$slots.input)) {
-        console.log(this.children);
         // 单行输入
         if (this.children?.$options?._componentTag === 'van-fieldinput') {
           return this.children.value;
