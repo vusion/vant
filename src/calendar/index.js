@@ -41,11 +41,11 @@ export default createComponent({
     rangePrompt: String,
     labelField: {
       type: String,
-      default: ''
+      default: '',
     },
     defaultDate: {
       type: [Date, Array, String],
-      default: null
+      default: null,
     },
     getContainer: [String, Function],
     allowSameDay: Boolean,
@@ -130,8 +130,7 @@ export default createComponent({
     return {
       subtitle: '',
       currentDate: this.getInitialDate(),
-      valuepopup: false,
-      value: false,
+      popupVisible: false,
       getTitle: '',
       defaultMonthForSelect: null,
     };
@@ -175,11 +174,11 @@ export default createComponent({
     },
     defaultMonthForSelectCom() {
       return this.defaultMonthForSelect;
-    }
+    },
   },
 
   watch: {
-    value: 'init',
+    popupVisible: 'init',
 
     type() {
       this.reset();
@@ -187,11 +186,13 @@ export default createComponent({
 
     defaultDate: {
       handler(val) {
-        this.currentDate = typeof val === 'string' ? new Date(val) : val;
+        this.currentDate = this.getInitialDate(val);
         this.scrollIntoView();
-        this.setTitle();
+        if (val) {
+          this.setTitle();
+        }
       },
-      immediate: true
+      immediate: true,
     },
   },
 
@@ -213,9 +214,7 @@ export default createComponent({
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
     togglePopup() {
-      this.valuepopup = !this.valuepopup;
-      this.value = !this.value;
-      this.$refs.popforcas.togglePModal();
+      this.popupVisible = !this.popupVisible;
     },
     // @exposed-api
     reset(date = this.getInitialDate()) {
@@ -224,7 +223,7 @@ export default createComponent({
     },
 
     init() {
-      if (this.poppable && !this.value) {
+      if (this.poppable && !this.popupVisible) {
         return;
       }
 
@@ -242,7 +241,7 @@ export default createComponent({
     // @exposed-api
     scrollToDate(targetDate) {
       raf(() => {
-        const displayed = this.value || !this.poppable;
+        const displayed = this.popupVisible || !this.poppable;
 
         /* istanbul ignore if */
         if (!targetDate || !displayed) {
@@ -274,43 +273,13 @@ export default createComponent({
       }
     },
 
-    getInitialDate() {
-      let { type, minDate, maxDate, defaultDate } = this;
-      if (defaultDate) {
-        defaultDate = defaultDate.replace(/-/g, "/");
+    getInitialDate(val) {
+      const { type, minDate, maxDate, defaultDate } = this;
+      val = val || defaultDate;
+
+      if (val) {
+        val = val.replace(/-/g, '/');
       }
-      if (defaultDate === null) {
-        // return typeof defaultDate === 'string' ? new Date(defaultDate) : defaultDate;
-      }
-
-
-      // if (isDate(defaultDate)) {
-
-      // } else {
-      //   try {
-      //     if (!defaultDate) {
-      //       defaultDate = new Date();
-      //     } else {
-      //       if (Array.isArray(defaultDate)) {
-      //         if (type === 'range' || type === 'multiple') {
-      //           defaultDate = defaultDate.map((item) => {
-      //             if (isDate(item)) {
-      //               return item;
-      //             } else {
-      //               return new Date(item);
-      //             }
-      //           });
-      //         }
-      //       } else {
-      //         defaultDate = isDate(defaultDate) ? defaultDate : new Date(defaultDate);
-      //       }
-
-      //     }
-      //   } catch (e) {
-      //     console.warn(e, 'error date');
-      //   }
-      // }
-
 
       let defaultVal = new Date();
       if (compareDay(defaultVal, transErrorDate(minDate, 'min')) === -1) {
@@ -320,15 +289,19 @@ export default createComponent({
       }
 
       if (type === 'range') {
-        const [startDay, endDay] = defaultDate || [];
+        const [startDay, endDay] = val || [];
         return [startDay || defaultVal, endDay || getNextDay(defaultVal)];
       }
 
       if (type === 'multiple') {
-        return (typeof defaultDate === 'string' ? new Date(defaultDate) : defaultDate) || [defaultVal];
+        return (typeof val === 'string' ? new Date(val) : val) || [defaultVal];
       }
 
-      return (typeof defaultDate === 'string' ? new Date(defaultDate) : defaultDate) || defaultVal;
+      if (val) {
+        return typeof val === 'string' ? new Date(val) : val;
+      }
+
+      return defaultVal;
     },
 
     // calculate the position of the elements
@@ -484,21 +457,29 @@ export default createComponent({
     },
 
     onConfirm() {
-      this.$emit('update:default-date', (copyDates(this.currentDate)).formath("yyyy-MM-dd"));
-      this.$emit('confirm', (copyDates(this.currentDate)).formath("yyyy-MM-dd"));
+      this.$emit(
+        'update:default-date',
+        copyDates(this.currentDate).formath('yyyy-MM-dd')
+      );
+      this.$emit('confirm', copyDates(this.currentDate).formath('yyyy-MM-dd'));
       this.togglePopup();
       this.setTitle();
     },
     setTitle() {
       if (this.ifDesigner()) {
         this.getTitle = this.defaultDate;
-        return
+        return;
       }
       if (this.currentDate) {
         if (Array.isArray(this.currentDate)) {
-          this.getTitle = this.currentDate.reduce((p, c) => p + (isDate(c) ? c.formath("yyyy/MM/dd") : c)+'-', '');
+          this.getTitle = this.currentDate.reduce(
+            (p, c) => p + (isDate(c) ? c.formath('yyyy/MM/dd') : c) + '-',
+            ''
+          );
         } else {
-          this.getTitle =  isDate(this.currentDate) ? this.currentDate.formath("yyyy/MM/dd") : this.currentDate;
+          this.getTitle = isDate(this.currentDate)
+            ? this.currentDate.formath('yyyy/MM/dd')
+            : this.currentDate;
         }
       } else {
         this.getTitle = '';
@@ -601,8 +582,8 @@ export default createComponent({
 
   render() {
     const tempSlot = {
-      title: () => this.slots('title')
-    }
+      title: () => this.slots('title'),
+    };
     if (this.poppable) {
       const createListener = (name) => () => this.$emit(name);
       return (
@@ -622,8 +603,8 @@ export default createComponent({
           />
           <Popup
             safe-area-inset-bottom
-            round
             class={bem('popup')}
+            value={this.popupVisible}
             round={this.round}
             position={this.position}
             ref="popforcas"
