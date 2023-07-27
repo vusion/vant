@@ -10,7 +10,7 @@
       type: number
       sync: true
       model: true
-      defalut: 50
+      default: 50
     - name: size
       title: 圆环直径(px)
       type: numer
