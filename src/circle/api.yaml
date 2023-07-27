@@ -4,8 +4,6 @@
   labels:
     - Display
   description: 圆环形的进度条组件
-  next: true
-  nested: false
   attrs:
     - name: value
       title: 当前进度

@@ -8,7 +8,7 @@
     - name: name
       title: 图标
       type: icon
-      default: ''
+      default: ""
       description: 图标
     - name: icotype
       title: 图标类型

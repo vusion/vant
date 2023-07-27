@@ -34,7 +34,8 @@
       support:
         - name: van-tabbar-item
           title: 标签项
-          snippet: '<van-tabbar-item icon="默认" style="font-size:24px"><van-text text="标签"></van-text></van-tabbar-item>'
+          snippet: <van-tabbar-item icon="默认" style="font-size:24px"><van-text
+            text="标签"></van-text></van-tabbar-item>
   events:
     - name: change
       title: 切换后
@@ -49,7 +50,7 @@
     - name: icon
       title: 图标
       type: icon
-      default: ''
+      default: ""
       description: 图标
     - name: showbaget
       title: 是否显示徽章
@@ -59,7 +60,7 @@
     - name: badge
       title: 徽章值
       type: string, number
-      default: ''
+      default: ""
       description: 徽章值
     - name: badgemax
       title: 徽章最大值
@@ -101,4 +102,3 @@
     - name: click
       title: 点击标签项
       description: 点击选项导致 value 变化时触发
-

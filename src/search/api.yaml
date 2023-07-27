@@ -4,8 +4,6 @@
   icon: search
   labels:
     - Form
-  next: true
-  nested: true
   attrs:
     - name: value
       title: 值

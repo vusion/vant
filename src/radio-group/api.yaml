@@ -9,7 +9,7 @@
       title: 数据源
       type: Array<Item> | Function
       description: 集合类型变量或者输出参数为集合类型的逻辑
-      designer-value: '[{}, {}, {}]'
+      designer-value: "[{}, {}, {}]"
     - name: data-schema
       title: 数据类型
       type: schema
@@ -78,7 +78,6 @@
       params: []
 - name: van-radio
   title: 单选项
-  is-sub: true
   attrs:
     - name: title
       title: 文本

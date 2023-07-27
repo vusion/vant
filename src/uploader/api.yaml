@@ -10,7 +10,7 @@
       type: Array
       sync: true
       model: true
-      default2: '[]'
+      default2: "[]"
       description: 已上传的文件列表
     - name: name
       title: 上传的文件字段名
@@ -113,7 +113,7 @@
       default: false
       description: 是否禁用
     - name: access
-      title: '文件访问策略'
+      title: 文件访问策略
       type: string
       options:
         - value: public
@@ -128,7 +128,6 @@
       title: 上传后有效天数
       type: number
       description: 文件有效期天数
-      # 此属性依赖的属性
       depProp:
         - name: ttl
           value: true

@@ -4,8 +4,6 @@
   labels:
     - Display
   description: 按钮用于触发一个操作，如提交表单。
-  next: true
-  nested: false
   attrs:
     - name: text
       title: 文本
@@ -84,7 +82,7 @@
     - name: icon
       title: 图标
       type: icon
-      default: ''
+      default: ""
       description: 图标
     - name: icon-position
       title: 图标位置

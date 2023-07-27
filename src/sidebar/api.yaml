@@ -24,7 +24,8 @@
       support:
         - name: van-sidebar-item
           title: 菜单项
-          snippet: '<van-sidebar-item><template #title>标签名称n</template></van-sidebar-item>'
+          snippet: "<van-sidebar-item><template
+            #title>标签名称n</template></van-sidebar-item>"
   events:
     - name: change
       title: 切换导航时
@@ -52,7 +53,7 @@
     - name: badge
       title: 徽章值
       type: string, number
-      default: ''
+      default: ""
       description: 徽章值
     - name: badgemax
       title: 徽章最大值

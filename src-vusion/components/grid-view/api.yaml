@@ -207,7 +207,8 @@
       support:
         - name: van-cardu
           title: 卡片
-          snippet: '<template #item="current"><van-cardu><template #head><van-text text="标题"></van-text></template><van-text  text="卡片内容"></van-text></van-cardu></template>'
+          snippet: '<template #item="current"><van-cardu><template #head><van-text
+            text="标题"></van-text></template><van-text  text="卡片内容"></van-text></van-cardu></template>'
     - concept: Slot
       name: item
       description: 自定义选项的结构和样式
@@ -220,9 +221,9 @@
           typeNamespace: nasl.ui
           typeName: Current
           typeArguments:
-          - concept: TypeAnnotation
-            typeKind: typeParam
-            typeName: T
+            - concept: TypeAnnotation
+              typeKind: typeParam
+              typeName: T
   events:
     - name: load
       title: 加载后

@@ -114,7 +114,7 @@
       description: 设置完成按钮文字内容
       dependency:
         - keytheme: custom
-    - name : confirmSize
+    - name: confirmSize
       title: 完成按钮尺寸
       type: string
       options:

@@ -4,8 +4,6 @@
   labels:
     - Container
   description: 用于快速布局
-  next: false
-  nested: false
   slots:
     - concept: Slot
       name: default
@@ -92,8 +90,6 @@
 - name: van-cardu-group
   advanced: true
   title: 卡片组
-  next: false
-  nexted: false
   attrs:
     - name: title
       title: 标题
