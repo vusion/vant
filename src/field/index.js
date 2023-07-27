@@ -203,24 +203,64 @@ export default createComponent({
 
     formValue() {
       if (this.children && (this.$scopedSlots.input || this.$slots.input)) {
-        // 输入框
+        // 单行输入
         if (this.children?.$options?._componentTag === 'van-fieldinput') {
-          return this.children.currentValue;
+          return this.children.value;
+        }
+
+        // 多行输入
+        if (this.children?.$options?._componentTag === 'van-fieldtextarea') {
+          return this.children.value;
+        }
+
+        // 数字输入
+        if (this.children?.$options?._componentTag === 'van-stepper-new') {
+          return this.children.value;
+        }
+
+        // 滑块
+        if (this.children?.$options?._componentTag === 'van-slider') {
+          return this.children.value;
+        }
+
+        // 评分
+        if (this.children?.$options?._componentTag === 'van-rate') {
+          return this.children.value;
+        }
+
+        // 选择器
+        if (this.children?.$options?._componentTag === 'van-pickerson') {
+          return this.children.pvalue;
+        }
+
+        // 地区选择
+        if (this.children?.$options?._componentTag === 'van-area') {
+          return this.children.value;
+        }
+
+        // 级联选择
+        if (this.children?.$options?._componentTag === 'van-cascader') {
+          return this.children.value;
+        }
+
+        // 时间选择
+        if (this.children?.$options?._componentTag === 'van-datetime-picker') {
+          return this.children.value;
+        }
+
+        // 日期选择
+        if (this.children?.$options?._componentTag === 'van-calendar') {
+          return this.children.defaultDate;
         }
 
         // 单选组
         if (this.children?.$options?._componentTag === 'van-radio-group') {
-          return this.children.datatemp;
+          return this.children.value;
         }
 
         // 多选组
         if (this.children?.$options?._componentTag === 'van-checkbox-group') {
-          return this.children.currentValue;
-        }
-
-        // 日历
-        if (this.children?.$options?._componentTag === 'van-calendar') {
-          return this.children.defaultDate;
+          return this.children.value;
         }
 
         // 文件上传
