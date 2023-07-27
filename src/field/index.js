@@ -230,7 +230,7 @@ export default createComponent({
 
         // 选择器
         if (this.children?.$options?._componentTag === 'van-pickerson') {
-          return this.children.pvalue;
+          return this.children.value;
         }
 
         // 地区选择
