@@ -9,11 +9,12 @@ import Search from '../search';
 
 import DataSourceMixin from '../mixins/DataSource';
 
+import { FieldMixin } from '../mixins/field';
 
 const [createComponent, bem, t] = createNamespace('pickerson');
 
 export default createComponent({
-  mixins: [DataSourceMixin],
+  mixins: [FieldMixin, DataSourceMixin],
   props: {
     columnsprop: [Array, String],
     pvalue: [String, Object],
