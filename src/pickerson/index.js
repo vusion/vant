@@ -7,13 +7,14 @@ import Popup from '../popup';
 import Field from '../field';
 import Search from '../search';
 
+import { FieldMixin } from '../mixins/field';
 import DataSourceMixin from '../mixins/DataSource';
 
 
 const [createComponent, bem, t] = createNamespace('pickerson');
 
 export default createComponent({
-  mixins: [DataSourceMixin],
+  mixins: [FieldMixin, DataSourceMixin],
   props: {
     columnsprop: [Array, String],
     pvalue: [String, Object],
