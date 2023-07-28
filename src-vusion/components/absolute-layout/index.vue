@@ -11,11 +11,6 @@
 
 export default {
     name: 'van-absolute-layout',
-    computed: {
-        isEmpty() {
-            return !this.$slots.default && this.$env.VUE_APP_DESIGNER && !!this.$attrs['vusion-node-path'];
-        },
-    },
 };
 </script>
 
