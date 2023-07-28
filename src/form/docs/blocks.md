@@ -16,9 +16,15 @@
     </template>
     <template #input>
       <van-radio-group direction="horizontal">
-        <template #default="current">
-          <van-radio name="1" title="单选框 1"></van-radio>
-          <van-radio name="2" title="单选框 2"></van-radio>
+        <van-radio name="1">
+          <van-text text="单选框 1"></van-text>
+        </van-radio>
+        <van-radio name="2">
+          <van-text text="单选框 2"></van-text>
+        </van-radio>
+      
+        <template #item="current">
+          <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>
         </template>
       </van-radio-group>
     </template>
