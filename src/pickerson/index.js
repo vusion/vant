@@ -4,10 +4,12 @@ import Picker from '../picker';
 import Popup from '../popup';
 import Field from '../field';
 
+import { FieldMixin } from '../mixins/field';
 
 const [createComponent, bem, t] = createNamespace('pickerson');
 
 export default createComponent({
+  mixins: [FieldMixin],
   props: {
     pvalue: [String, Object],
     labelField: {
