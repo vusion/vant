@@ -18,19 +18,19 @@ export default createComponent({
   },
   data() {
     return {
-      currentValue: this.fromValue(this.value ?? this.valueprop) ?? (this.accordion ? 0 : [0]),
+      currentValue: this.fromValue(this.value ?? this.valueprop) ?? (this.accordion ? '' : []),
     };
   },
   watch: {
     value(val) {
-      this.currentValue = this.fromValue(val) ?? (this.accordion ? 0 : [0]);
+      this.currentValue = this.fromValue(val) ?? (this.accordion ? '' : []);
     },
     valueprop(val) {
-      this.currentValue = this.fromValue(val) ?? (this.accordion ? 0 : [0]);
+      this.currentValue = this.fromValue(val) ?? (this.accordion ? '' : []);
     },
     accordion(val) {
       if (!this.fromValue(this.value ?? this.valueprop)) {
-        this.currentValue = val ? 0 : [0];
+        this.currentValue = val ? '' : [];
       }
     },
   },
