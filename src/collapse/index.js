@@ -38,6 +38,11 @@ export default createComponent({
     fromValue(value) {
       try {
         if (value === null || value === undefined) return null;
+
+        if (!this.accordion && !Array.isArray(value)) {
+          return [value]
+        }
+
         return value;
       } catch (err) {
         return null;

@@ -104,7 +104,7 @@ export default {
 
   data() {
     return {
-      variable1: 2,
+      variable1: 'asfsa',
       active1: [0],
       active2: 0,
       active3: [],
