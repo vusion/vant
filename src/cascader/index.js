@@ -24,6 +24,7 @@ export default createComponent({
     value: [Number, String],
     fieldNamesp: [Object, String],
     placeholder: { type: String, default: '请选择' },
+    tabPlaceholder: { type: String, default: '请选择' },
     activeColor: String,
     converter: {
       type: String,
@@ -126,12 +127,12 @@ export default createComponent({
       if (ifDesigner) {
         return this.value;
       }
-      const selectedOptions =
-        this.getSelectedOptionsByValue(this.options, this.currentValue) || [];
+      const selectedOptions = this.getSelectedOptionsByValue(this.options, this.currentValue) || [];
       const result = selectedOptions
         .map((option) => _get(option, this.textKey))
         .join('/');
-      return result;
+
+      return result || this.placeholder;
     },
     getSelectedOptionsByValue(options, value) {
       for (let i = 0; i < options.length; i++) {
@@ -372,7 +373,7 @@ export default createComponent({
       const { options, selectedOption } = item;
       const title = selectedOption
         ? _get(selectedOption, this.textKey)
-        : this.placeholder || t('select');
+        : this.tabPlaceholder || t('select');
 
       return (
         <Tab
@@ -452,6 +453,7 @@ export default createComponent({
           novalue={this.novalue}
           insel={true}
           nofi={true}
+          vusion-click-enabled
         />
         <Popup
           safe-area-inset-bottom
