@@ -1,5 +1,6 @@
 {
-  "extends": [
-    "@vant/stylelint-config"
-  ]
+  "extends": "stylelint-config-vusion",
+  "rules": {
+    "length-zero-no-unit": null
+  }
 }

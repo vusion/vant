@@ -1,12 +1,12 @@
 <template>
   <demo-section>
-    <demo-block>
+    <!-- <demo-block>
       <van-checkbox-group :data-source="[1,2,3]">
         <template #default="scope">
           <van-checkbox :name="scope.item.item" :title="'选框'+scope.item.item"></van-checkbox>
         </template>
       </van-checkbox-group>
-    </demo-block>
+    </demo-block> -->
     <demo-block style="margin-top: 20px">
       <van-checkbox-group>
         <div class="fwfwwfwf"><van-checkbox name="b">{{ t('checkbox') }} b</van-checkbox></div>

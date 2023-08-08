@@ -3,12 +3,10 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable van-coupon-cell">
-      <div class="van-cell__title"><span>优惠券</span></div>
-      <div class="van-cell__value van-coupon-cell__value"><span>2张可用</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div class="van-cell van-cell--clickable van-cell--center van-coupon-cell" noallow role="button" tabindex="0">
+      <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">优惠券</div>
+      <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
     </div>
-    <!---->
   </div>
 </div>
 `;

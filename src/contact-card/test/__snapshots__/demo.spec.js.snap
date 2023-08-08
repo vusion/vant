@@ -3,26 +3,41 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-cell--borderless van-contact-card van-contact-card--add"><i class="van-icon van-icon-add-square van-cell__left-icon">
-        <!----></i>
-      <div class="van-cell__value van-cell__value--alone van-contact-card__value">添加联系人</div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div class="van-cell van-cell--clickable van-cell--center van-cell--borderless van-contact-card van-contact-card--add" noallow role="button" tabindex="0">
+      <i class="van-iconv van-cell__left-icon">
+        <svg aria-hidden="true" class="vant-iconv-svg van-shoud-pa">
+          <use class="van-shoud-pa" xlink:href="#h5-default" />
+        </svg>
+        <div class="van-iconv__slot"></div>
+      </i>
+      <div class="van-cell__value van-contact-card__value">添加联系人</div>
+      <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
     </div>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-cell--borderless van-contact-card van-contact-card--edit"><i class="van-icon van-icon-contact van-cell__left-icon">
-        <!----></i>
-      <div class="van-cell__value van-cell__value--alone van-contact-card__value">
+    <div class="van-cell van-cell--clickable van-cell--center van-cell--borderless van-contact-card van-contact-card--edit" noallow role="button" tabindex="0">
+      <i class="van-iconv van-cell__left-icon">
+        <svg aria-hidden="true" class="vant-iconv-svg van-shoud-pa">
+          <use class="van-shoud-pa" xlink:href="#h5-contact" />
+        </svg>
+        <div class="van-iconv__slot"></div>
+      </i>
+      <div class="van-cell__value van-contact-card__value">
         <div>张三：张三</div>
         <div>电话：13000000000</div>
-      </div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+      </div>
+      <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
     </div>
   </div>
   <div>
-    <div class="van-cell van-cell--center van-cell--borderless van-contact-card van-contact-card--edit"><i class="van-icon van-icon-contact van-cell__left-icon">
-        <!----></i>
-      <div class="van-cell__value van-cell__value--alone van-contact-card__value">
+    <div class="van-cell van-cell--center van-cell--borderless van-contact-card van-contact-card--edit" noallow>
+      <i class="van-iconv van-cell__left-icon">
+        <svg aria-hidden="true" class="vant-iconv-svg van-shoud-pa">
+          <use class="van-shoud-pa" xlink:href="#h5-contact" />
+        </svg>
+        <div class="van-iconv__slot"></div>
+      </i>
+      <div class="van-cell__value van-contact-card__value">
         <div>张三：张三</div>
         <div>电话：13000000000</div>
       </div>
