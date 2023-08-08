@@ -13,41 +13,41 @@ exports[`renders demo correctly 1`] = `
     </div>
   </div>
   <div>
-    <div class="van-uploader" multiple="multiple" value="[object Object],[object Object]">
+    <div class="van-uploader" multiple="multiple">
       <div class="van-uploader__wrapper">
         <div class="van-uploader__upload">
           <i class="van-icon van-icon-photograph van-uploader__upload-icon"></i>
-          <input accept="*" class="van-uploader__input" multiple="multiple" type="file" value="[object Object],[object Object]">
+          <input accept="*" class="van-uploader__input" multiple="multiple" type="file">
         </div>
       </div>
     </div>
   </div>
   <div>
-    <div class="van-uploader" value="[object Object],[object Object]">
+    <div class="van-uploader">
       <div class="van-uploader__wrapper">
         <div class="van-uploader__upload">
           <i class="van-icon van-icon-photograph van-uploader__upload-icon"></i>
-          <input class="van-uploader__input" type="file" value="[object Object],[object Object]">
+          <input class="van-uploader__input" type="file">
         </div>
       </div>
     </div>
   </div>
   <div>
-    <div class="van-uploader" multiple="multiple" value="[object Object]">
+    <div class="van-uploader" multiple="multiple">
       <div class="van-uploader__wrapper">
         <div class="van-uploader__upload">
           <i class="van-icon van-icon-photograph van-uploader__upload-icon"></i>
-          <input class="van-uploader__input" multiple="multiple" type="file" value="[object Object]">
+          <input class="van-uploader__input" multiple="multiple" type="file">
         </div>
       </div>
     </div>
   </div>
   <div>
-    <div class="van-uploader" multiple="multiple" value="[object Object]">
+    <div class="van-uploader" multiple="multiple">
       <div class="van-uploader__wrapper">
         <div class="van-uploader__upload">
           <i class="van-icon van-icon-photograph van-uploader__upload-icon"></i>
-          <input class="van-uploader__input" multiple="multiple" type="file" value="[object Object]">
+          <input class="van-uploader__input" multiple="multiple" type="file">
         </div>
       </div>
     </div>
@@ -75,21 +75,21 @@ exports[`renders demo correctly 1`] = `
     </div>
   </div>
   <div>
-    <div class="van-uploader" value="[object Object]">
+    <div class="van-uploader">
       <div class="van-uploader__wrapper">
         <div class="van-uploader__upload">
           <i class="van-icon van-icon-photograph van-uploader__upload-icon"></i>
-          <input class="van-uploader__input" type="file" value="[object Object]">
+          <input class="van-uploader__input" type="file">
         </div>
       </div>
     </div>
   </div>
   <div>
-    <div class="van-uploader" value>
+    <div class="van-uploader">
       <div class="van-uploader__wrapper">
         <div class="van-uploader__upload">
           <i class="van-icon van-icon-photograph van-uploader__upload-icon"></i>
-          <input class="van-uploader__input" type="file" value>
+          <input class="van-uploader__input" type="file">
         </div>
       </div>
     </div>
@@ -105,11 +105,11 @@ exports[`renders demo correctly 1`] = `
     </div>
   </div>
   <div>
-    <div class="van-uploader" multiple="multiple" value="[object Object],[object Object],[object Object]">
+    <div class="van-uploader" multiple="multiple">
       <div class="van-uploader__wrapper">
         <div class="van-uploader__upload">
           <i class="van-icon van-icon-photograph van-uploader__upload-icon"></i>
-          <input accept="*" class="van-uploader__input" multiple="multiple" type="file" value="[object Object],[object Object],[object Object]">
+          <input accept="*" class="van-uploader__input" multiple="multiple" type="file">
         </div>
       </div>
     </div>

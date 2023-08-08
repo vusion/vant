@@ -101,7 +101,7 @@ exports[`renders demo correctly 1`] = `
         </div>
         <div class="van-dropdown-menu__item" role="button" tabindex="0" vusion-slot-name="title" vusion-slot-name-edit="title">
           <span class="van-dropdown-menu__title" vusion-click-enabled="true">
-            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">标题</div>
+            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">默认排序</div>
           </span>
         </div>
       </div>
@@ -123,18 +123,18 @@ exports[`renders demo correctly 1`] = `
           </div>
         </div>
       </div>
-      <div value="a">
+      <div>
         <div class="van-dropdown-item van-dropdown-item--down" style="top: 0px; display: none;">
           <div class="van-popup van-popup--top noforvant van-dropdown-item__content" name="van-popup-slide-top" style="transition-duration: 0.2s; display: none;">
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option van-dropdown-item__option--active" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">默认排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">好评排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">销量排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
@@ -148,7 +148,7 @@ exports[`renders demo correctly 1`] = `
       <div class="van-dropdown-menu__bar">
         <div class="van-dropdown-menu__item" role="button" tabindex="0" vusion-slot-name="title" vusion-slot-name-edit="title">
           <span class="van-dropdown-menu__title" vusion-click-enabled="true">
-            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">标题</div>
+            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">全部商品</div>
           </span>
         </div>
         <div class="van-dropdown-menu__item" role="button" tabindex="0" vusion-slot-name="title" vusion-slot-name-edit="title">
@@ -157,18 +157,24 @@ exports[`renders demo correctly 1`] = `
           </span>
         </div>
       </div>
-      <div value="0">
+      <div>
         <div class="van-dropdown-item van-dropdown-item--down" style="top: 0px; display: none;">
           <div class="van-popup van-popup--top noforvant van-dropdown-item__content" name="van-popup-slide-top" style="transition-duration: 0.2s; display: none;">
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option--active van-dropdown-item__option van-dropdown-item__option--active" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">全部商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
+              <i class="van-iconv van-dropdown-item__icon">
+                <svg aria-hidden="true" class="vant-iconv-svg van-shoud-pa">
+                  <use class="van-shoud-pa" xlink:href="#h5-success" />
+                </svg>
+                <div class="van-iconv__slot"></div>
+              </i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">新款商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">活动商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
@@ -209,45 +215,51 @@ exports[`renders demo correctly 1`] = `
       <div class="van-dropdown-menu__bar">
         <div class="van-dropdown-menu__item" role="button" tabindex="0" vusion-slot-name="title" vusion-slot-name-edit="title">
           <span class="van-dropdown-menu__title" vusion-click-enabled="true">
-            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">标题</div>
+            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">全部商品</div>
           </span>
         </div>
         <div class="van-dropdown-menu__item" role="button" tabindex="0" vusion-slot-name="title" vusion-slot-name-edit="title">
           <span class="van-dropdown-menu__title" vusion-click-enabled="true">
-            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">标题</div>
+            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">默认排序</div>
           </span>
         </div>
       </div>
-      <div value="0">
+      <div>
         <div class="van-dropdown-item van-dropdown-item--down" style="top: 0px; display: none;">
           <div class="van-popup van-popup--top noforvant van-dropdown-item__content" name="van-popup-slide-top" style="transition-duration: 0.2s; display: none;">
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option--active van-dropdown-item__option van-dropdown-item__option--active" noallow role="button" style="color: rgb(25, 137, 250);" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">全部商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
+              <i class="van-iconv van-dropdown-item__icon" style="color: rgb(25, 137, 250);">
+                <svg aria-hidden="true" class="vant-iconv-svg van-shoud-pa">
+                  <use class="van-shoud-pa" xlink:href="#h5-success" />
+                </svg>
+                <div class="van-iconv__slot"></div>
+              </i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">新款商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">活动商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
           </div>
         </div>
       </div>
-      <div value="a">
+      <div>
         <div class="van-dropdown-item van-dropdown-item--down" style="top: 0px; display: none;">
           <div class="van-popup van-popup--top noforvant van-dropdown-item__content" name="van-popup-slide-top" style="transition-duration: 0.2s; display: none;">
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option van-dropdown-item__option--active" noallow role="button" style="color: rgb(25, 137, 250);" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">默认排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">好评排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">销量排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
@@ -261,45 +273,51 @@ exports[`renders demo correctly 1`] = `
       <div class="van-dropdown-menu__bar">
         <div class="van-dropdown-menu__item" role="button" tabindex="0" vusion-slot-name="title" vusion-slot-name-edit="title">
           <span class="van-dropdown-menu__title van-dropdown-menu__title--down" vusion-click-enabled="true">
-            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">标题</div>
+            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">全部商品</div>
           </span>
         </div>
         <div class="van-dropdown-menu__item" role="button" tabindex="0" vusion-slot-name="title" vusion-slot-name-edit="title">
           <span class="van-dropdown-menu__title van-dropdown-menu__title--down" vusion-click-enabled="true">
-            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">标题</div>
+            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">默认排序</div>
           </span>
         </div>
       </div>
-      <div value="0">
+      <div>
         <div class="van-dropdown-item van-dropdown-item--up" style="bottom: 0px; display: none;">
           <div class="van-popup van-popup--bottom noforvant van-dropdown-item__content" name="van-popup-slide-bottom" style="transition-duration: 0.2s; display: none;">
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option--active van-dropdown-item__option van-dropdown-item__option--active" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">全部商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
+              <i class="van-iconv van-dropdown-item__icon">
+                <svg aria-hidden="true" class="vant-iconv-svg van-shoud-pa">
+                  <use class="van-shoud-pa" xlink:href="#h5-success" />
+                </svg>
+                <div class="van-iconv__slot"></div>
+              </i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">新款商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">活动商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
           </div>
         </div>
       </div>
-      <div value="a">
+      <div>
         <div class="van-dropdown-item van-dropdown-item--up" style="bottom: 0px; display: none;">
           <div class="van-popup van-popup--bottom noforvant van-dropdown-item__content" name="van-popup-slide-bottom" style="transition-duration: 0.2s; display: none;">
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option van-dropdown-item__option--active" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">默认排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">好评排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">销量排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
@@ -313,45 +331,51 @@ exports[`renders demo correctly 1`] = `
       <div class="van-dropdown-menu__bar">
         <div class="van-dropdown-menu__item van-dropdown-menu__item--disabled" role="button" tabindex="-1" vusion-slot-name="title" vusion-slot-name-edit="title">
           <span class="van-dropdown-menu__title" vusion-click-enabled="true">
-            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">标题</div>
+            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">全部商品</div>
           </span>
         </div>
         <div class="van-dropdown-menu__item van-dropdown-menu__item--disabled" role="button" tabindex="-1" vusion-slot-name="title" vusion-slot-name-edit="title">
           <span class="van-dropdown-menu__title" vusion-click-enabled="true">
-            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">标题</div>
+            <div class="van-ellipsis" vusion-slot-name="title" vusion-slot-name-edit="title">默认排序</div>
           </span>
         </div>
       </div>
-      <div value="0">
+      <div>
         <div class="van-dropdown-item van-dropdown-item--down" style="top: 0px; display: none;">
           <div class="van-popup van-popup--top noforvant van-dropdown-item__content" name="van-popup-slide-top" style="transition-duration: 0.2s; display: none;">
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option--active van-dropdown-item__option van-dropdown-item__option--active" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">全部商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
+              <i class="van-iconv van-dropdown-item__icon">
+                <svg aria-hidden="true" class="vant-iconv-svg van-shoud-pa">
+                  <use class="van-shoud-pa" xlink:href="#h5-success" />
+                </svg>
+                <div class="van-iconv__slot"></div>
+              </i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">新款商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">活动商品</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
           </div>
         </div>
       </div>
-      <div value="a">
+      <div>
         <div class="van-dropdown-item van-dropdown-item--down" style="top: 0px; display: none;">
           <div class="van-popup van-popup--top noforvant van-dropdown-item__content" name="van-popup-slide-top" style="transition-duration: 0.2s; display: none;">
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option van-dropdown-item__option--active" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">默认排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">好评排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
-            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
+            <div class="van-cell van-cell--clickable van-cell--center van-dropdown-item__option van-dropdown-item__option" noallow role="button" tabindex="0" vusion-node-tag="van-dropdown-item-son">
               <div class="van-cell__title" vusion-slot-name="title" vusion-slot-name-edit="title">销量排序</div>
               <i class="van-icon van-icon-arrow van-cell__right-icon"></i>
             </div>
