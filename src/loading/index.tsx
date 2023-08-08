@@ -32,9 +32,19 @@ function LoadingIcon(h: CreateElement, props: LoadingProps) {
     return Spin;
   }
 
+  if (props.icon) {
+    return (
+      <Iconv
+        size={props.size}
+        name={props.icon} />
+    )
+  }
+
   return (
-    <Iconv name={props.icon} />
-  );
+    <svg class={bem('circular')} viewBox="25 25 50 50">
+      <circle cx="50" cy="50" r="20" fill="none" />
+    </svg>
+  )
 }
 
 function LoadingText(
@@ -76,7 +86,7 @@ function Loading(
       class={bem([type, { vertical: props.vertical }])}
       {...inherit(ctx, true)}
     >
-      <span class={[bem('spinner', type), bem([{ iconRotate: props.iconRotate }])]} style={style}>
+      <span class={[bem('spinner', type), props.iconRotate ? bem('rotate') : '' ]} style={style}>
         {LoadingIcon(h, props)}
       </span>
       {LoadingText(h, props, slots)}
@@ -90,6 +100,7 @@ Loading.components = {
 
 Loading.props = {
   icon: String,
+  // 是否自动
   iconRotate: {
     type: Boolean,
     default: true,
