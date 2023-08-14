@@ -19,7 +19,8 @@
     overflow: hidden;
   }
 
-  &--iconRotate {
+  &__rotate {
+    transform-origin: center;
     animation: van-rotate @loading-spinner-animation-duration linear infinite;
   }
 
@@ -32,6 +33,7 @@
     height: @loading-spinner-size;
     max-height: 100%;
     vertical-align: middle;
+    // animation: van-rotate @loading-spinner-animation-duration linear infinite;
 
     &--spinner {
       animation-timing-function: steps(12);

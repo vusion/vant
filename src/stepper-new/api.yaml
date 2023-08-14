@@ -59,7 +59,7 @@
           title: 圆角
       default: fang
       description: 样式风格
-    - name: min
+    - name: step
       title: 步长
       type: string, number
       default: 1
