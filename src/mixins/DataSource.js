@@ -189,14 +189,14 @@ export default {
     },
     load(more) {
       const dataSource = this.currentDataSource;
-      if (!dataSource) return;
+      if (!dataSource) return Promise.reject();
 
       // TODO 加载前
 
       this.currentLoading = true;
       this.currentError = false;
 
-      dataSource[more ? 'loadMore' : 'load']()
+      return dataSource[more ? 'loadMore' : 'load']()
         .then((data) => {
           this.currentLoading = false;
           this.$emit('load', undefined, this);

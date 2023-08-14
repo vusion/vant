@@ -263,6 +263,7 @@ export default createComponent({
                 textField={this.textField}
                 value={this.currentValue}
                 multiple={this.multiple}
+                loading={this.currentLoading}
                 {...{ on }}
               ></List>
             )}

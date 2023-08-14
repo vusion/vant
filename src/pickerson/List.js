@@ -24,6 +24,8 @@ export default createComponent({
       type: Boolean,
       default: false,
     },
+
+    loading: Boolean,
   },
   data() {
     return {
@@ -86,6 +88,7 @@ export default createComponent({
         <List
           ref="list"
           class={bem()}
+          loading={this.loading}
           onLoad={_debounce(this.onLoad, 300)}
           offset={10}
         >
@@ -134,11 +137,16 @@ export default createComponent({
         </List>
         {this.multiple && (
           <div class={bem('count')}>
-            当前已选中 <span class="number">{this.currentValue?.length}</span> 项
+            当前已选中 <span class="number">{this.currentValue?.length}</span>{' '}
+            项
             {this.currentValue.length === this.data.length ? (
-              <span class="handler" onClick={() => this.selectAll(true)}>取消全选</span>
+              <span class="handler" onClick={() => this.selectAll(true)}>
+                取消全选
+              </span>
             ) : (
-              <span class="handler" onClick={() => this.selectAll()}>全选</span>
+              <span class="handler" onClick={() => this.selectAll()}>
+                全选
+              </span>
             )}
           </div>
         )}
