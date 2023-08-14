@@ -132,7 +132,7 @@ export default createComponent({
         .map((option) => _get(option, this.textKey))
         .join('/');
 
-      return result || this.placeholder;
+      return result;
     },
     getSelectedOptionsByValue(options, value) {
       for (let i = 0; i < options.length; i++) {
@@ -442,6 +442,7 @@ export default createComponent({
         <Field
           label={this.labelField}
           value={this.getTitle()}
+          placeholder={this.placeholder}
           scopedSlots={tempSlot}
           readonly
           isLink={false}
