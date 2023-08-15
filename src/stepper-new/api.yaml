@@ -23,7 +23,7 @@
     - name: decimalLength
       title: 精度
       type: string, number
-      description: 固定显示的小数位数
+      description: 限制数字输入要保留的最小精度单位，默认不限制精度，如需保留两位小数，则填入0.01
     - name: placeholder
       title: 占位符
       type: string
