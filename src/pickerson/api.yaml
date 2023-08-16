@@ -16,7 +16,7 @@
     - name: data-source
       title: 数据源
       type: Array<Item> | Function | object | DataSource
-      designer-value: '[{}, {}, {}]'
+      designer-value: "[{}, {}, {}]"
       description: 列表的数据源。数组方式表示直接的数据，函数需要返回一个 Promise。
       group: 数据属性
     - name: data-schema
@@ -159,4 +159,3 @@
     - name: change
       title: 选项改变时触发
       description: 回调参数：Picker 实例，选中值，选中值对应的索引
-

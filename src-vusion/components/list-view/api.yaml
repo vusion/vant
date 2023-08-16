@@ -49,7 +49,6 @@
       group: 状态属性
       dependency:
         - designer-mode: loading
-      brifeDoc: ""
       docDescription: 当数据正在加载时展示的文字，默认为"加载中..."。
       tooltipLink: ""
     - name: loading
@@ -68,7 +67,6 @@
       group: 状态属性
       dependency:
         - designer-mode: error
-      brifeDoc: ""
       docDescription: 加载失败的提示文字。默认"加载失败，请重试"
       tooltipLink: ""
     - name: error
@@ -79,7 +77,6 @@
       group: 状态属性
       dependency:
         - designer-mode: error
-      brifeDoc: ""
       docDescription: 控制表格加载失败的展示时机。默认关闭。
       tooltipLink: ""
     - name: empty-text
@@ -90,7 +87,6 @@
       group: 状态属性
       dependency:
         - designer-mode: empty
-      brifeDoc: ""
       docDescription: 当列表为空时的提示文字。默认"暂无数据"
       tooltipLink: ""
     - name: readonly
@@ -152,14 +148,14 @@
     - name: selected-icon
       title: 已选图标
       type: icon
-      default: ''
+      default: ""
       dependency:
         - selectable: true
       group: 交互属性
     - name: unselected-icon
       title: 未选图标
       type: icon
-      default: ''
+      default: ""
       dependency:
         - selectable: true
       group: 交互属性
@@ -210,7 +206,7 @@
       default: 20
       description: 分页过小可能会导致滚动加载更多失效
       dependency:
-        - '!pageable': ""
+        - "!pageable": ""
       group: 数据属性
     - name: pull-refresh
       title: 下拉刷新
@@ -218,7 +214,7 @@
       default: true
       description: 是否开启下拉刷新
       dependency:
-        - '!pageable': pagination
+        - "!pageable": pagination
       group: 交互属性
     - name: pulling-text
       title: 下拉过程中提示文字
@@ -226,7 +222,7 @@
       default: 下拉刷新
       dependency:
         - pull-refresh: true
-          '!pageable': pagination
+          "!pageable": pagination
       group: 交互属性
     - name: loosing-text
       title: 释放过程中提示文字
@@ -234,7 +230,7 @@
       default: 释放刷新
       dependency:
         - pull-refresh: true
-          '!pageable': pagination
+          "!pageable": pagination
       group: 交互属性
     - name: success-text
       title: 刷新成功提示文字
@@ -242,7 +238,7 @@
       default: 已刷新
       dependency:
         - pull-refresh: true
-          '!pageable': pagination
+          "!pageable": pagination
       group: 交互属性
     - name: success-duration
       title: 刷新成功提示展示时长(ms)
@@ -250,7 +246,7 @@
       default: 500
       dependency:
         - pull-refresh: true
-          '!pageable': pagination
+          "!pageable": pagination
       group: 交互属性
     - name: pull-distance
       title: 触发下拉刷新的距离
@@ -258,7 +254,7 @@
       default: 50
       dependency:
         - pull-refresh: true
-          '!pageable': pagination
+          "!pageable": pagination
       group: 交互属性
     - name: filterable
       title: 可筛选
@@ -345,7 +341,8 @@
       support:
         - name: van-cell
           title: 单元格
-          snippet: '<template #item="current"><van-cell isLink><template #title>文本</template></van-cell></template>'
+          snippet: '<template #item="current"><van-cell isLink><template
+            #title>文本</template></van-cell></template>'
       advanced: true
     - concept: Slot
       name: item
