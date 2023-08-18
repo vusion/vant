@@ -319,6 +319,7 @@ export default createComponent({
             if (item.file) {
               if (isOversize(item.file, this.maxSize)) {
                 oversizeFiles.push(item);
+                Toast(`文件${item.file.name}超出大小${this.maxSize}MB！`);
               } else {
                 validFiles.push(item);
               }
@@ -326,6 +327,7 @@ export default createComponent({
           });
         } else {
           validFiles = null;
+          Toast(`文件${files.file.name}超出大小${this.maxSize}MB！`);
         }
         this.$emit('oversize', oversizeFiles, this.getDetail());
       }
