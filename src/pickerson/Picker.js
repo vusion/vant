@@ -1,9 +1,5 @@
-// 强制限制只能一列数据
-
-import _get from 'lodash/get';
-
 // Utils
-import { createNamespace } from '../utils';
+import { createNamespace, _get } from '../utils';
 import { preventDefault } from '../utils/dom/event';
 import { BORDER_UNSET_TOP_BOTTOM } from '../utils/constant';
 import { pickerProps, DEFAULT_ITEM_HEIGHT } from './shared';
@@ -25,9 +21,9 @@ export default createComponent({
       default: 'top',
     },
     // 值字段
-    valueField: { type: String, default: 'value' },
+    valueField: { type: String },
     // 文本字段
-    textField: { type: String, default: 'text' },
+    textField: { type: String },
   },
 
   data() {
