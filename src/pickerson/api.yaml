@@ -84,6 +84,38 @@
       title: 初始加载
       default: true
       description: 是否在初始时立即加载
+    - name: multiple
+      title: 可多选
+      type: boolean
+      default: false
+    - name: type
+      title: 列表样式
+      type: string
+      options:
+        - value: picker
+          title: 选择器
+          dependency:
+            - multiple: false
+        - value: list
+          title: 列表
+      default: picker
+      description: 仅列表展示时支持多选
+    - name: enable-select-all
+      title: 全选
+      type: boolean
+      default: false
+      dependency:
+        - multiple: true
+    - name: enable-selected-count
+      title: 当前已选中项数
+      type: boolean
+      default: false
+      dependency:
+        - multiple: true
+    - name: placeholder
+      title: 占位提示
+      type: string
+      default: 请选择
     - name: labelField
       title: 左侧标题
       type: string
@@ -107,10 +139,10 @@
       description: 默认选中项的索引
       advanced: true
     - name: title
-      title: 顶部栏标题
+      title: 工具栏标题
       type: string
       default: 标题
-      description: 顶部栏标题
+      description: 工具栏标题
     - name: confirm-button-text
       title: 确认按钮文字
       type: string
@@ -144,10 +176,10 @@
       default: false
       description: 是否点击遮罩层后关闭
     - name: show-toolbar
-      title: 显示顶部栏
+      title: 显示工具栏
       type: boolean
       default: true
-      description: 是否显示顶部栏
+      description: 是否显示工具栏
   slots: false
   events:
     - name: confirm
