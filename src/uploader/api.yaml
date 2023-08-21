@@ -75,7 +75,7 @@
     - name: url-field
       title: URL 字段名
       type: string
-      default: result
+      default: filePath
       description: 请求返回的 URL 字段名
     - name: auto-upload
       title: 是否自动上传
@@ -132,6 +132,22 @@
       depProp:
         - name: ttl
           value: true
+    - name: viaOriginURL
+      title: 源地址访问
+      type: boolean
+      description: 开启后支持通过文件存储源地址访问文件
+      group: 主要属性
+      brifeDoc: ""
+      docDescription: 开启后支持通过文件存储源地址访问文件
+      tooltipLink: ""
+    - name: lcapIsCompress
+      title: 启用压缩
+      type: boolean
+      description: 启用压缩后上传的文件按压缩规则进行压缩后上传，压缩规则可在自定义配置参数管理
+      group: 主要属性
+      brifeDoc: ""
+      docDescription: 启用压缩后上传的文件按压缩规则进行压缩后上传，压缩规则可在自定义配置参数管理
+      tooltipLink: ""
   slots: false
   events:
     - name: click-upload

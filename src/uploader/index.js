@@ -31,7 +31,7 @@ export default createComponent({
     autoUpload: { type: Boolean, default: true },
     withCredentials: { type: Boolean, default: false },
     data: Object,
-    urlField: { type: String, default: 'result' },
+    urlField: { type: String, default: 'filePath' },
     disabled: Boolean,
     readonly: Boolean,
     lazyLoad: Boolean,
@@ -112,6 +112,14 @@ export default createComponent({
       type: Number,
       default: null,
     },
+    lcapIsCompress: {
+      type: Boolean,
+      default: false,
+    },
+    viaOriginURL: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {
@@ -621,14 +629,21 @@ export default createComponent({
 
       if (window.appInfo && window.appInfo.domainName)
         headers.DomainName = window.appInfo.domainName;
-
-      const xhr = ajax({
+      const formData = {
+        ...this.data,
+        lcapIsCompress: this.lcapIsCompress,
+        viaOriginURL: this.viaOriginURL,
+      };
+      const requestData = {
         url: this.url,
         headers,
         withCredentials: this.withCredentials,
         file,
-        data: this.data,
+        data: formData,
         name: 'file',
+      };
+      const xhr = ajax({
+        ...requestData,
         onStart: () => {
           this.$emit('start');
         },
