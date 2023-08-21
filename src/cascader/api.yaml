@@ -39,10 +39,12 @@
     - name: text-field
       title: 文本字段
       type: string
+      default: text
       description: 文本字段
     - name: value-field
       title: 值字段
       type: string
+      default: value
       description: 值字段
     - name: tree-display
       title: 树形模式

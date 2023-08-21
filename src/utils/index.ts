@@ -84,6 +84,12 @@ export function isEmpty(value: any): boolean {
 }
 
 export function _get(value: any, path: string): any {
+  const type = Object.prototype.toString.call(value).slice(8, -1);
+  // 基础类型
+  if (['String', 'Number', 'Boolean', 'Undefined', 'Null'].includes(type)) {
+    return value;
+  }
+
   if (!path) {
     return value;
   }

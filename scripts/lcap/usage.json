@@ -8431,6 +8431,7 @@
                     "name": "value-field",
                     "title": "值字段",
                     "type": "string",
+                    "default": "value",
                     "description": "选项值的字段名",
                     "group": "数据属性"
                 },
@@ -8438,6 +8439,7 @@
                     "name": "text-field",
                     "title": "文本字段",
                     "type": "string",
+                    "default": "text",
                     "description": "选项文本的字段名",
                     "group": "数据属性"
                 },
@@ -8910,12 +8912,14 @@
                     "name": "text-field",
                     "title": "文本字段",
                     "type": "string",
+                    "default": "text",
                     "description": "文本字段"
                 },
                 {
                     "name": "value-field",
                     "title": "值字段",
                     "type": "string",
+                    "default": "value",
                     "description": "值字段"
                 },
                 {
