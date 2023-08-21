@@ -240,7 +240,7 @@ export default createComponent({
                 placeholder="请输入搜索关键词"
               />
             ) : null}
-            {this.type === 'picker' && (
+            {(!this.multiple && this.type === 'picker') && (
               <Picker
                 ref="picker"
                 {...{
@@ -255,7 +255,7 @@ export default createComponent({
                 {...{ on }}
               ></Picker>
             )}
-            {this.type === 'list' && (
+            {(this.multiple || this.type === 'list') && (
               <List
                 ref="picker"
                 data={this.data}
