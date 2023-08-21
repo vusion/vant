@@ -1,4 +1,3 @@
-import _get from 'lodash/get';
 import _debounce from 'lodash/debounce';
 import _cloneDeep from 'lodash/cloneDeep';
 
@@ -7,7 +6,7 @@ import Iconv from '../iconv'
 import Checkbox from '../checkbox'
 
 // Utils
-import { createNamespace } from '../utils';
+import { createNamespace, _get } from '../utils';
 
 const [createComponent, bem, t] = createNamespace('picker-list');
 
@@ -16,9 +15,9 @@ export default createComponent({
     data: Array,
     value: [String, Number, Array],
     // 值字段
-    valueField: { type: String, default: 'value' },
+    valueField: { type: String },
     // 文本字段
-    textField: { type: String, default: 'text' },
+    textField: { type: String },
 
     multiple: {
       type: Boolean,
@@ -94,6 +93,8 @@ export default createComponent({
         >
           {(this.data || []).map((item, index) => {
             const value = _get(item, this.valueField);
+            const text = _get(item, this.textField);
+
             // eslint-disable-next-line eqeqeq
             const checked = this.multiple
               ? this.currentValue.includes(value)
@@ -113,7 +114,7 @@ export default createComponent({
                   <div class="icon">
                     <Checkbox value={checked} shape="square">
                       <div class={{ text: true, checked }}>
-                        {_get(item, this.textField)}
+                        {text}
                       </div>
                     </Checkbox>
                   </div>
@@ -121,7 +122,7 @@ export default createComponent({
 
                 {!this.multiple && (
                   <div class={{ text: true, checked }}>
-                    {_get(item, this.textField)}
+                    {text}
                   </div>
                 )}
 
