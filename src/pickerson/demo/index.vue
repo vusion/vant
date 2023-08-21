@@ -3,7 +3,10 @@
     <demo-block card :title="t('basicUsage')">
       <div>pickerValue: {{ pickerValue }}</div>
       <van-pickerson
+        :multiple="true"
+        type="list"
         ref="pickerson1"
+
         title="标题"
         :show-toolbar="true"
         labelField="左侧标题"
@@ -187,7 +190,7 @@ export default {
       fieldValue: '',
       pupupd: true,
 
-      pickerValue: '330200',
+      pickerValue: undefined,
     };
   },
 

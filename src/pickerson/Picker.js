@@ -13,7 +13,7 @@ import { unitToPx } from '../utils/format/unit';
 import PickerColumn from './PickerColumn';
 
 
-const [createComponent, bem, t] = createNamespace('pick');
+const [createComponent, bem, t] = createNamespace('picker-pick');
 
 export default createComponent({
   props: {
@@ -28,10 +28,6 @@ export default createComponent({
     valueField: { type: String, default: 'value' },
     // 文本字段
     textField: { type: String, default: 'text' },
-    converter: {
-      type: String,
-      default: 'json',
-    },
   },
 
   data() {
@@ -103,6 +99,15 @@ export default createComponent({
         this.getColumnIndex(0),
         this.getColumnText(0)
       );
+    },
+
+    // 暴露给上层调用
+    getValue() {
+      return [
+        this.getColumnValue(0),
+        this.getColumnIndex(0),
+        this.getColumnText(0),
+      ];
     },
 
     onChange(idx) {
@@ -206,9 +211,13 @@ export default createComponent({
       });
     },
 
+    stopMomentum() {
+      this.children.forEach((child) => child.stopMomentum());
+    },
+
     // @exposed-api
     confirm() {
-      this.children.forEach((child) => child.stopMomentum());
+      this.stopMomentum();
       this.emit('confirm');
       try {
         this.$parent.closeModal();
@@ -321,11 +330,11 @@ export default createComponent({
   render(h) {
     return (
       <div class={bem()}>
-        {this.toolbarPosition === 'top' ? this.genToolbar() : h()}
+        {/* {this.toolbarPosition === 'top' ? this.genToolbar() : h()} */}
         {this.slots('columns-top')}
         {this.genColumns()}
         {this.slots('columns-bottom')}
-        {this.toolbarPosition === 'bottom' ? this.genToolbar() : h()}
+        {/* {this.toolbarPosition === 'bottom' ? this.genToolbar() : h()} */}
       </div>
     );
   },

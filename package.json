@@ -27,8 +27,8 @@
     "lint": "vant-cli lint",
     "test": "vant-cli test",
     "copyimg": "node bin/copy-lcp-images ",
-    "build:vusion": "npm run check && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap",
-    "build:vusion-local": "vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap",
+    "build:theme": "npm run check && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap",
+    "build:theme-local": "vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap",
     "build2": "vant-cli build",
     "build": "cross-env scene=desktop vant-cli build",
     "release": "vant-cli release",
@@ -44,8 +44,8 @@
     "deploy:test-without-img": "lcap deploy dist-theme --platform http://defaulttenant.lcap.ha.test.com",
     "deploy:pre": "lcap deploy dist-theme --platform https://defaulttenant.lcap.hadri.163yun.com && node bin/deploy-lcp-images --platform=https://defaulttenant.lcap.hadri.163yun.com",
     "deploy:online": "lcap deploy dist-theme --platform http://netease-template.lcap.163yun.com &&  node bin/deploy-lcp-images --platform=http://netease-template.lcap.163yun.com",
-    "prepublishOnly": "npm run build:vusion && git add .",
-    "deploy:qz": "lcap deploy dist-theme --platform=https://defaulttenant.lcap.qz.163yun.com --username=admin --password=Netease123 && node bin/deploy-lcp-images --platform=https://defaulttenant.lcap.qz.163yun.com"
+    "prepublishOnly": "npm run build:theme && git add .",
+    "deploy:qz": "lcap deploy dist-theme --platform=https://defaulttenant.lcap.qz.163yun.com && node bin/deploy-lcp-images --platform=https://defaulttenant.lcap.qz.163yun.com"
   },
   "repository": {
     "type": "git",
