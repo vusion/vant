@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import lodash_get from 'lodash/get'
 
 export { createNamespace } from './create';
 export { addUnit } from './format/unit';
@@ -80,4 +81,12 @@ export function isEmpty(value: any): boolean {
   }
 
   return Object.keys(value).length === 0;
+}
+
+export function _get(value: any, path: string): any {
+  if (!path) {
+    return value;
+  }
+
+  return lodash_get(value, path);
 }

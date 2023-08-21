@@ -10,11 +10,11 @@ export default {
     // 初始加载
     initialLoad: { type: Boolean, default: true },
     // 值字段
-    valueField: { type: String, default: 'value' },
+    valueField: { type: String },
     // 文本字段
-    textField: { type: String, default: 'text' },
+    textField: { type: String },
     // 描述字段
-    descriptionField: { type: String, default: 'description' },
+    descriptionField: { type: String },
 
     // 分页相关
     // pageable: { type: [Boolean, String], default: false }, // 由组件自己定义

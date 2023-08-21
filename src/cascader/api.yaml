@@ -39,12 +39,10 @@
     - name: text-field
       title: 文本字段
       type: string
-      default: text
       description: 文本字段
     - name: value-field
       title: 值字段
       type: string
-      default: value
       description: 值字段
     - name: tree-display
       title: 树形模式
@@ -82,7 +80,6 @@
           title: 中
         - value: right
           title: 右
-      default: left
       description: 右侧内容对齐方式
     - name: close-on-click-overlay
       title: 点击遮罩层后关闭

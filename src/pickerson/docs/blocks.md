@@ -4,6 +4,5 @@
 <van-pickerson
   title="标题"
   :show-toolbar="true"
-  input-align="left"
 ><template #title>标题</template></van-pickerson>
 ```
