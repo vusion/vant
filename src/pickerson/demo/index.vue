@@ -4,6 +4,8 @@
       <div>pickerValue: {{ pickerValue }}</div>
       <van-pickerson
         :multiple="true"
+        :enable-select-all="true"
+        :enable-selected-count="false"
         type="list"
         ref="pickerson1"
 
