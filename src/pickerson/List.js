@@ -23,6 +23,8 @@ export default createComponent({
       type: Boolean,
       default: false,
     },
+    enableSelectAll: Boolean,
+    enableSelectedCount: Boolean,
 
     loading: Boolean,
   },
@@ -42,14 +44,14 @@ export default createComponent({
   methods: {
     selectAll(cancel) {
       if (cancel) {
-        this.currentValue = []
+        this.currentValue = [];
         return;
       }
 
-      const list = []
+      const list = [];
       for (let i = 0; i < (this.data?.length || 0); i++) {
         const item = this.data[i];
-        list.push(_get(item, this.valueField))
+        list.push(_get(item, this.valueField));
       }
 
       this.currentValue = list;
@@ -113,17 +115,13 @@ export default createComponent({
                 {this.multiple && (
                   <div class="icon">
                     <Checkbox value={checked} shape="square">
-                      <div class={{ text: true, checked }}>
-                        {text}
-                      </div>
+                      <div class={{ text: true, checked }}>{text}</div>
                     </Checkbox>
                   </div>
                 )}
 
                 {!this.multiple && (
-                  <div class={{ text: true, checked }}>
-                    {text}
-                  </div>
+                  <div class={{ text: true, checked }}>{text}</div>
                 )}
 
                 {/* 单选 */}
@@ -136,17 +134,25 @@ export default createComponent({
             );
           })}
         </List>
-        {this.multiple && (
+        {this.multiple && (this.enableSelectedCount || this.enableSelectAll) && (
           <div class={bem('count')}>
-            当前已选中 <span class="number">{this.currentValue?.length}</span>{' '}
-            项
-            {this.currentValue.length === this.data.length ? (
-              <span class="handler" onClick={() => this.selectAll(true)}>
-                取消全选
+            {this.enableSelectedCount && (
+              <span class="desc">
+                当前已选中{' '}
+                <span class="number">{this.currentValue?.length}</span> 项
               </span>
-            ) : (
-              <span class="handler" onClick={() => this.selectAll()}>
-                全选
+            )}
+            {this.enableSelectAll && (
+              <span>
+                {this.currentValue.length === this.data.length ? (
+                  <span class="handler" onClick={() => this.selectAll(true)}>
+                    取消全选
+                  </span>
+                ) : (
+                  <span class="handler" onClick={() => this.selectAll()}>
+                    全选
+                  </span>
+                )}
               </span>
             )}
           </div>

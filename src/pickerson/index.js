@@ -37,6 +37,8 @@ export default createComponent({
       default: '确认',
     },
     multiple: Boolean,
+    enableSelectAll: Boolean,
+    enableSelectedCount: Boolean,
     type: {
       type: String,
       default: 'picker',
@@ -235,7 +237,7 @@ export default createComponent({
                 placeholder="请输入搜索关键词"
               />
             ) : null}
-            {(!this.multiple && this.type === 'picker') && (
+            {!this.multiple && this.type === 'picker' && (
               <Picker
                 ref="picker"
                 {...{
@@ -258,6 +260,8 @@ export default createComponent({
                 textField={this.textField}
                 value={this.currentValue}
                 multiple={this.multiple}
+                enableSelectAll={this.enableSelectAll}
+                enableSelectedCount={this.enableSelectedCount}
                 loading={this.currentLoading}
                 {...{ on }}
               ></List>
