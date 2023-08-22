@@ -8531,7 +8531,7 @@
                             "title": "选择器",
                             "dependency": [
                                 {
-                                    "multiple": false
+                                    "!multiple": true
                                 }
                             ]
                         },
