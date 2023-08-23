@@ -7,7 +7,7 @@
   attrs:
     - name: value
       title: 菜单值
-      type: number,string
+      type: string
       sync: true
       model: true
       advanced: true
@@ -54,7 +54,7 @@
   attrs:
     - name: valueprop
       title: 菜单项值
-      type: number,string
+      type: string
       sync: true
       model: true
       description: 菜单项值
@@ -132,7 +132,7 @@
       description: 左侧文本
     - name: value
       title: 值
-      type: string, number
+      type: string
       description: 值
     - name: rtitle
       title: 右侧文本
@@ -147,9 +147,10 @@
       description: 标题下方的描述信息
     - name: icon
       title: 图标
-      type: icon
+      type: string
       default: ""
       description: 图标
+      setter: iconSelect
     - name: linkType
       title: 链接类型
       type: string

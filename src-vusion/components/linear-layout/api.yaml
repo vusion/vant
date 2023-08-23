@@ -49,7 +49,7 @@
       toggleclear:
         - justify
         - alignment
-    - name: justify
+    - name: _justify
       title: 横轴对齐
       type: string
       display: capsules
@@ -84,11 +84,7 @@
       dependency:
         - direction: horizontal
         - mode: inline
-          direction: horizontal
-        - mode: inline
           direction: vertical
-        - mode: block
-          direction: horizontal
         - mode: block
           direction: vertical
       toggleupdate:
@@ -128,7 +124,7 @@
       dependency:
         - mode: flex
           direction: horizontal
-    - name: alignment
+    - name: _alignment
       title: 横轴对齐
       type: string
       display: capsules
@@ -247,9 +243,10 @@
         - mode: block
     - name: loadingIcon
       title: 加载中图标
-      type: icon
+      type: string
       default: loading
       description: 加载图标
+      setter: iconSelect
     - name: loadingIconRotate
       title: 加载中图标旋转
       type: boolean

@@ -12,15 +12,15 @@
       model: true
     - name: count
       title: 图标总数
-      type: numer | string
+      type: nasl.core.Integer
       default: 5
     - name: size
       title: 图标大小(px)
-      type: numer
+      type: number
       default: 20
     - name: gutter
       title: 图标间距
-      type: numer | string
+      type: nasl.core.Integer
       default: 4
     - name: color
       title: 选中时的颜色
@@ -33,10 +33,12 @@
       type: string
     - name: icon
       title: 选中时的图标名称或图片链接
-      type: icon
+      type: string
+      setter: iconSelect
     - name: void-icon
       title: 未选中时的图标名称或图片链接
-      type: icon
+      type: string
+      setter: iconSelect
     - name: allow-half
       title: 半选
       type: boolean

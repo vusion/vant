@@ -29,7 +29,7 @@
     - name: button-size
       title: 滑块按钮大小(px)
       type: number
-      default: 24px
+      default: 24
     - name: active-color
       title: 进度条激活态颜色
       type: string

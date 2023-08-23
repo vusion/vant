@@ -7,10 +7,10 @@
   attrs:
     - name: src
       title: 地址
-      type: image
+      type: string
       default: ""
       description: 图片地址
-      compType: linkInput
+      setter: imageSelect
     - name: fit
       title: 填充方式
       type: string

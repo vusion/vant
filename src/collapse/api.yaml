@@ -7,7 +7,7 @@
   attrs:
     - name: valueprop
       title: 值
-      type: number,string
+      type: string
       sync: true
       model: true
       description: 值
@@ -35,7 +35,7 @@
   attrs:
     - name: name
       title: 值
-      type: number,string
+      type: string
       description: 值
     - name: title
       title: 标题

@@ -7,12 +7,12 @@
   attrs:
     - name: left-width
       title: 左侧滑动区域宽度
-      type: number
+      type: nasl.core.Decimal | 'auto'
       default: auto
       description: 左侧滑动区域宽度
     - name: right-width
       title: 右侧滑动区域宽度
-      type: number
+      type: nasl.core.Decimal | 'auto'
       default: auto
       description: 右侧滑动区域宽度
     - name: disabled

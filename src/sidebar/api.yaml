@@ -7,7 +7,7 @@
   attrs:
     - name: value
       title: 菜单值
-      type: number,string
+      type: string
       sync: true
       model: true
       description: 菜单值
@@ -35,7 +35,7 @@
   attrs:
     - name: value
       title: 菜单项值
-      type: number,string
+      type: string
       sync: true
       model: true
       description: 菜单项值
@@ -52,12 +52,11 @@
       description: 是否显示徽章
     - name: badge
       title: 徽章值
-      type: string, number
-      default: ""
+      type: nasl.core.Integer
       description: 徽章值
     - name: badgemax
       title: 徽章最大值
-      type: number
+      type: nasl.core.Integer
       description: 徽章最大值
     - name: disabled
       title: 禁用

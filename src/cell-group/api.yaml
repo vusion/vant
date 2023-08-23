@@ -8,11 +8,6 @@
     - name: inset
       title: 卡片风格
       type: boolean
-      options:
-        - value: false
-          title: 否
-        - value: true
-          title: 是
       default: false
       description: 是否是卡片风格
   slots:
@@ -59,7 +54,7 @@
       description: 左侧文本
     - name: value
       title: 值
-      type: string, number
+      type: string
       description: 值
     - name: rtitle
       title: 右侧文本
@@ -74,9 +69,10 @@
       description: 标题下方的描述信息
     - name: icon
       title: 图标
-      type: icon
+      type: string
       default: ""
       description: 图标
+      setter: iconSelect 
     - name: linkType
       title: 链接类型
       type: string

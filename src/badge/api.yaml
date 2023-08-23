@@ -7,7 +7,7 @@
   attrs:
     - name: content
       title: 徽章值
-      type: string, number
+      type: nasl.core.Integer
       default: 2
       description: 徽章值
     - name: dot
@@ -17,7 +17,7 @@
       description: 是否展示为小红点
     - name: max
       title: 徽章最大值
-      type: number
+      type: nasl.core.Integer
       description: 徽章最大值
   slots:
     - concept: Slot

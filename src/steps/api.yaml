@@ -4,16 +4,17 @@
   labels:
     - Display
   description: 用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。
+  tsTypeParams: T
   attrs:
     - name: data-source
       title: 数据源
-      type: Array<Item> | Function
+      type: nasl.collection.List<T>
       description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑
       designer-value: "[{}, {}, {}]"
       group: 数据属性
     - name: data-schema
       title: 数据类型
-      type: schema
+      type: T
       description: 集合类型每一元素的数据类型
       compType: dataTypeSelect
       group: 数据属性

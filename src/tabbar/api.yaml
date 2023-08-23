@@ -7,7 +7,7 @@
   attrs:
     - name: value
       title: 值
-      type: number,string
+      type: string
       sync: true
       model: true
       description: 值
@@ -45,13 +45,14 @@
   attrs:
     - name: name
       title: 标签项值
-      type: number,string
+      type: string
       description: 标签项值
     - name: icon
       title: 图标
-      type: icon
+      type: string
       default: ""
       description: 图标
+      setter: iconSelect
     - name: showbaget
       title: 是否显示徽章
       type: boolean
@@ -59,12 +60,11 @@
       description: 是否显示徽章
     - name: badge
       title: 徽章值
-      type: string, number
-      default: ""
+      type: nasl.core.Integer
       description: 徽章值
     - name: badgemax
       title: 徽章最大值
-      type: number
+      type: nasl.core.Integer
       description: 徽章最大值
     - name: linkType
       title: 链接类型
