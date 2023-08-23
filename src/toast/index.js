@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueToast from './Toast';
+import VueToastGroup from './ToastGroup';
 import { isObject, isServer } from '../utils';
 import { removeNode } from '../utils/dom/node';
 
@@ -30,7 +31,9 @@ const defaultOptions = {
 let defaultOptionsMap = {};
 
 let queue = [];
-let multiple = false;
+let multipleForLegacy = false;
+let multiple = true; // 现在默认使用当前模式
+let toastGroupInstance = null;
 let currentOptions = {
   ...defaultOptions,
 };
@@ -47,7 +50,7 @@ function isInDocument(element) {
   return document.body.contains(element);
 }
 
-function createInstance() {
+function createInstanceForSingleton() {
   /* istanbul ignore if */
   if (isServer) {
     return {};
@@ -57,7 +60,7 @@ function createInstance() {
     (item) => !item.$el.parentNode || isInDocument(item.$el)
   );
 
-  if (!queue.length || multiple) {
+  if (!queue.length || multipleForLegacy) {
     const toast = new (Vue.extend(VueToast))({
       el: document.createElement('div'),
     });
@@ -82,8 +85,8 @@ function transformOptions(options) {
   };
 }
 
-function Toast(options = {}) {
-  const toast = createInstance();
+function ToastForSingletonAndLeagcyMultiple(options = {}) {
+  const toast = createInstanceForSingleton();
 
   // should add z-index if previous toast has not disappeared
   if (toast.value) {
@@ -111,7 +114,7 @@ function Toast(options = {}) {
       options.onClose = null;
     }
 
-    if (multiple && !isServer) {
+    if (multipleForLegacy && !isServer) {
       toast.$on('closed', () => {
         clearTimeout(toast.timer);
         queue = queue.filter((item) => item !== toast);
@@ -127,11 +130,47 @@ function Toast(options = {}) {
 
   if (options.duration > 0) {
     toast.timer = setTimeout(() => {
-      toast.clear();
+      // toast.clear();
     }, options.duration);
   }
 
   return toast;
+}
+
+function createInstanceForMultiple() {
+  if (toastGroupInstance) return toastGroupInstance;
+
+  toastGroupInstance = new (Vue.extend(VueToastGroup))({
+    el: document.createElement('div'),
+  });
+
+  return toastGroupInstance;
+}
+
+function ToastForMulitple(options) {
+  const toast = createInstanceForMultiple();
+
+  // should add z-index if previous toast has not disappeared
+  if (toast.value) {
+    toast.updateZIndex();
+  }
+
+  options = parseOptions(options);
+  options = {
+    ...currentOptions,
+    ...defaultOptionsMap[options.type || currentOptions.type],
+    ...options,
+    timestamp: Date.now(),
+  };
+
+  const item = toastGroupInstance.show(options);
+
+  return item;
+}
+
+function Toast(options = {}) {
+  if (!multiple) return ToastForSingletonAndLeagcyMultiple(options);
+  return ToastForMulitple(options);
 }
 
 const createMethod = (type) => (options) =>
@@ -153,7 +192,7 @@ Toast.clear = (all) => {
         toast.clear();
       });
       queue = [];
-    } else if (!multiple) {
+    } else if (!multipleForLegacy) {
       queue[0].clear();
     } else {
       queue.shift().clear();
@@ -178,12 +217,17 @@ Toast.resetDefaultOptions = (type) => {
   }
 };
 
-Toast.allowMultiple = (value = true) => {
+Toast.allowmultipleForLegacy = (value = true) => {
+  multipleForLegacy = value;
+};
+
+Toast.allowmultiple = (value = true) => {
   multiple = value;
 };
 
 Toast.install = () => {
   Vue.use(VueToast);
+  Vue.use(VueToastGroup);
 };
 
 Vue.prototype.$toast = Toast;
