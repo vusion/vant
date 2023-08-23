@@ -101,18 +101,12 @@ export default {
 };
 ```
 
-### Singleton
+### multi-instance
 
-Toast use singleton mode by default, if you need to pop multiple Toast at the same time, you can refer to the following example:
+The default behavior of the Toast has been changed to multi-instance mode, where multiple pieces of information are stacked on top of each other on the same Y-axis. If you want to restore the singleton mode, please use the following code.
 
 ```js
-Toast.allowMultiple();
-
-const toast1 = Toast('First Toast');
-const toast2 = Toast.success('Second Toast');
-
-toast1.clear();
-toast2.clear();
+Toast.allowMultiple(false);
 ```
 
 ### Set Default Options
