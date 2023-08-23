@@ -69,9 +69,6 @@ export default createComponent({
     data() {
       return this.currentData || this.columnsprop || [];
     },
-    realMultiple() {
-      return this.type === 'list' && this.multiple;
-    }
   },
   watch: {
     curValue() {},
@@ -106,7 +103,7 @@ export default createComponent({
     getTitle() {
       if (this.ifDesigner()) return this.pvalue;
 
-      let title =  this.realMultiple ? [] : '';
+      let title =  this.multiple ? [] : '';
       for (let i = 0; i < this.data.length; i++) {
         const item = this.data[i];
 
@@ -120,7 +117,7 @@ export default createComponent({
           t = item;
         }
 
-        if (this.realMultiple) {
+        if (this.multiple) {
           if (this.currentValue.includes(v)) {
             title.push(t)
           }
@@ -130,7 +127,7 @@ export default createComponent({
         }
       }
 
-      return this.realMultiple ? title.join('，') : title;
+      return this.multiple ? title.join('，') : title;
     },
     togglePopup() {
       this.popupVisible = !this.popupVisible;
