@@ -241,7 +241,7 @@ export default createComponent({
       if (this.lazyLoad) {
         return <img ref="image" vLazy={this.getSrc(this.src)} {...imgData} />;
       }
-      if (this.loadingType !== 'placeholder' && !this.loading) {
+      if (this.loadingType !== 'placeholder') {
         return <img src={this.convertedSrc} {...imgData} />;
       }
       if (!this.placeholderLoading) {
