@@ -112,6 +112,10 @@ export default createComponent({
       type: Number,
       default: null,
     },
+    lcapIsCompress: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -618,14 +622,20 @@ export default createComponent({
 
       if (window.appInfo && window.appInfo.domainName)
         headers.DomainName = window.appInfo.domainName;
-
-      const xhr = ajax({
+      const formData = {
+        ...this.data,
+        lcapIsCompress: this.lcapIsCompress,
+      };
+      const requestData = {
         url: this.url,
         headers,
         withCredentials: this.withCredentials,
         file,
-        data: this.data,
+        data: formData,
         name: 'file',
+      };
+      const xhr = ajax({
+        ...requestData,
         onStart: () => {
           this.$emit('start');
         },
