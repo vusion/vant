@@ -48,7 +48,7 @@ export default createComponent({
     },
     placeholder: {
       type: String,
-      default: '请选择'
+      default: '请选择',
     },
 
     pageable: { type: [Boolean, String], default: false },
@@ -59,8 +59,6 @@ export default createComponent({
   data() {
     return {
       popupVisible: false,
-      // 内部值
-      curValue: this.pvalue || '',
       currentValue: this.formatValue(this.pvalue || ''),
     };
   },
@@ -71,7 +69,10 @@ export default createComponent({
     },
   },
   watch: {
-    curValue() {},
+    currentValue(val) {
+      this.$emit('update:value', val);
+      this.$emit('update:pvalue', val);
+    },
     // 监听props变化
     value(val) {
       this.currentValue = this.formatValue(val);
@@ -87,7 +88,7 @@ export default createComponent({
       if (this.multiple && !Array.isArray(value)) {
         val = [value].filter((item) => {
           if (item !== null || item !== undefined || item !== '') {
-            return false
+            return false;
           }
 
           return true;
@@ -103,7 +104,7 @@ export default createComponent({
     getTitle() {
       if (this.ifDesigner()) return this.pvalue;
 
-      let title =  this.multiple ? [] : '';
+      let title = this.multiple ? [] : '';
       for (let i = 0; i < this.data.length; i++) {
         const item = this.data[i];
 
@@ -119,7 +120,7 @@ export default createComponent({
 
         if (this.multiple) {
           if (this.currentValue.includes(v)) {
-            title.push(t)
+            title.push(t);
           }
         } else if (this.currentValue === v) {
           title = t;
@@ -136,7 +137,6 @@ export default createComponent({
       this.popupVisible = false;
     },
     onChange(vm, val, index) {
-      // this.curValue = val;
       this.$emit('change', vm, val, index);
     },
     onConfirm() {
