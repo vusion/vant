@@ -24,20 +24,6 @@
         </template>
       </van-pickerson>
 
-      <van-pickerson
-        :ref="`pickerson2`"
-        title="标题"
-        :show-toolbar="true"
-        :data-source="[1, 2, 3, 4, 5]"
-        :multiple="true"
-        type="list"
-        :enable-select-all="true"
-        :enable-selected-count="true">
-          <template #title :ref="`template15`">
-                <van-text :ref="`text10`" text="标题"></van-text>
-          </template>
-      </van-pickerson>
-
       <!-- <van-pickerson
         :pvalue.sync="son"
         show-toolbar

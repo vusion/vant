@@ -1,6 +1,7 @@
+import _get from 'lodash/get'
 
 // Utils
-import { createNamespace, _get } from '../utils';
+import { createNamespace } from '../utils';
 import Picker from './Picker';
 import Popup from '../popup';
 import Field from '../field';

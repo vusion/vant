@@ -1,6 +1,7 @@
+import _get from 'lodash/get';
 
 import { deepClone } from '../utils/deep-clone';
-import { createNamespace, isObject, _get } from '../utils';
+import { createNamespace, isObject } from '../utils';
 import { range } from '../utils/format/number';
 import { preventDefault } from '../utils/dom/event';
 import { TouchMixin } from '../mixins/touch';

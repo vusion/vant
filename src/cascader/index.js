@@ -1,4 +1,4 @@
-import { createNamespace, isFunction, _get } from '../utils';
+import { createNamespace, isFunction } from '../utils';
 import { formatResult } from '../utils/format/data-source';
 import Tab from '../tab';
 import Tabs from '../tabs';
@@ -10,6 +10,9 @@ import Search from '../search';
 // Mixins
 import { FieldMixin } from '../mixins/field';
 import DataSourceMixin from '../mixins/DataSource';
+
+
+const _get = require('lodash/get');
 
 const [createComponent, bem, t] = createNamespace('cascader');
 
