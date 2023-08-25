@@ -149,6 +149,7 @@ export default createComponent({
     },
     onLoad(event) {
       this.loading = false;
+      this.placeholderLoading = false;
       this.$emit('load', event);
     },
 
