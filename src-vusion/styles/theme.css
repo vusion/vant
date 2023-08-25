@@ -423,8 +423,6 @@
   --van-picker-option-disabled-opacity: 0.3;
   --van-picker-loading-icon-color: var(--van-brand-primary); /* @type color */
   --van-picker-loading-mask-color: rgba(255, 255, 255, 0.9);
-  --van-picker-list-item-background-color: transparent; /* @type color */ /* @desc 选项未选中背景色 */
-  --van-picker-list-item-selected-background-color: transparent; /* @type color */ /* @desc 选项选中背景色 */
 
   /* @component van-popup */
   --van-popup-background-color: #fff; /* @type color */ /* @desc 背景色 */
