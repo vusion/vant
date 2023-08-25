@@ -64,6 +64,11 @@ export default createComponent({
     placeholderSrc() {
       this.loadPlaceholderImage();
     },
+    loadingType(type, oldType) {
+      if (oldType !== type && type === 'placeholder') {
+        this.loadPlaceholderImage();
+      }
+    },
   },
 
   computed: {
@@ -149,6 +154,7 @@ export default createComponent({
     },
     onLoad(event) {
       this.loading = false;
+      this.placeholderLoading = false;
       this.$emit('load', event);
     },
 
