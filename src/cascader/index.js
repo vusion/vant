@@ -452,6 +452,7 @@ export default createComponent({
           novalue={this.novalue}
           insel={true}
           nofi={true}
+          vusion-click-enabled
         />
         <Popup
           safe-area-inset-bottom
