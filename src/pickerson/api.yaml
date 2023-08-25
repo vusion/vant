@@ -95,7 +95,7 @@
         - value: picker
           title: 选择器
           dependency:
-            - "!multiple": true
+            - multiple: false
         - value: list
           title: 列表
       default: picker
