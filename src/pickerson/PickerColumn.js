@@ -13,7 +13,7 @@ const DEFAULT_DURATION = 200;
 const MOMENTUM_LIMIT_TIME = 300;
 const MOMENTUM_LIMIT_DISTANCE = 15;
 
-const [createComponent, bem] = createNamespace('picker-pick-column');
+const [createComponent, bem] = createNamespace('pick-column');
 
 function getElementTranslateY(element) {
   const style = window.getComputedStyle(element);
