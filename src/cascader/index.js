@@ -1,4 +1,4 @@
-import { createNamespace, isFunction, _get } from '../utils';
+import { createNamespace, isFunction } from '../utils';
 import { formatResult } from '../utils/format/data-source';
 import Tab from '../tab';
 import Tabs from '../tabs';
@@ -11,6 +11,9 @@ import Search from '../search';
 import { FieldMixin } from '../mixins/field';
 import DataSourceMixin from '../mixins/DataSource';
 
+
+const _get = require('lodash/get');
+
 const [createComponent, bem, t] = createNamespace('cascader');
 
 export default createComponent({
@@ -21,7 +24,6 @@ export default createComponent({
     value: [Number, String],
     fieldNamesp: [Object, String],
     placeholder: { type: String, default: '请选择' },
-    tabPlaceholder: { type: String, default: '请选择' },
     activeColor: String,
     converter: {
       type: String,
@@ -129,7 +131,6 @@ export default createComponent({
       const result = selectedOptions
         .map((option) => _get(option, this.textKey))
         .join('/');
-
       return result;
     },
     getSelectedOptionsByValue(options, value) {
@@ -371,7 +372,7 @@ export default createComponent({
       const { options, selectedOption } = item;
       const title = selectedOption
         ? _get(selectedOption, this.textKey)
-        : this.tabPlaceholder || t('select');
+        : this.placeholder || t('select');
 
       return (
         <Tab
@@ -440,7 +441,6 @@ export default createComponent({
         <Field
           label={this.labelField}
           value={this.getTitle()}
-          placeholder={this.placeholder}
           scopedSlots={tempSlot}
           readonly
           isLink={false}

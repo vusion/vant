@@ -3,12 +3,7 @@
     <demo-block card :title="t('basicUsage')">
       <div>pickerValue: {{ pickerValue }}</div>
       <van-pickerson
-        :multiple="true"
-        :enable-select-all="true"
-        :enable-selected-count="false"
-        type="list"
         ref="pickerson1"
-
         title="标题"
         :show-toolbar="true"
         labelField="左侧标题"
@@ -24,20 +19,6 @@
         <template #title ref="template24">
             <van-text ref="text19" text="标题"></van-text>
         </template>
-      </van-pickerson>
-
-      <van-pickerson
-        :ref="`pickerson2`"
-        title="标题"
-        :show-toolbar="true"
-        :data-source="[1, 2, 3, 4, 5]"
-        :multiple="true"
-        type="list"
-        :enable-select-all="true"
-        :enable-selected-count="true">
-          <template #title :ref="`template15`">
-                <van-text :ref="`text10`" text="标题"></van-text>
-          </template>
       </van-pickerson>
 
       <!-- <van-pickerson
@@ -206,7 +187,7 @@ export default {
       fieldValue: '',
       pupupd: true,
 
-      pickerValue: undefined,
+      pickerValue: '330200',
     };
   },
 
