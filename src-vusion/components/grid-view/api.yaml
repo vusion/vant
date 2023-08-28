@@ -32,9 +32,9 @@
     - name: pageable
       title: 分页加载更多
       type: string
-      default: false
+      default: ''
       options:
-        - value: false
+        - value: ''
           title: 不分页
         - value: auto-more
           title: 滚动加载更多
@@ -93,14 +93,14 @@
       group: 数据属性
     - name: match-method
       title: 匹配方法
-      type: string, Function
+      type: string | Function
       default: includes
       description: 过滤时的匹配方法
       advanced: true
       group: 数据属性
     - name: case-sensitive
       title: 大小写敏感
-      type: string, Function
+      type: string | Function
       default: includes
       description: 过滤时是否区分大小写
       advanced: true
@@ -191,14 +191,12 @@
       default: false
       description: ""
       advanced: true
-      group: 选择属性
     - name: disabled
       title: 禁用
       type: boolean
       default: false
       description: ""
       advanced: true
-      group: 选择属性
   slots:
     - concept: Slot
       name: default

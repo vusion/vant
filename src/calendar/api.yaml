@@ -11,7 +11,7 @@
       advanced: true
     - name: default-date
       title: 值
-      type: string, Date, Array
+      type: string | Date | Array
       sync: true
       model: true
       default: null
@@ -31,11 +31,11 @@
       description: 选择类型
     - name: minDate
       title: 最小日期
-      type: Date,String
+      type: Date | String
       description: 最小日期,默认为一年前
     - name: maxDate
       title: 最大日期
-      type: Date,String
+      type: Date | String
       description: 最大日期,默认为一年后
     - name: title
       title: 日历标题

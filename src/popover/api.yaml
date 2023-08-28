@@ -59,7 +59,7 @@
           name: 右上
         - value: right-end
           name: 右下
-      default: light
+      default: top
       description: 弹出位置
   slots:
     - concept: Slot

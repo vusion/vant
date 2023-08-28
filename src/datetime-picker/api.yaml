@@ -45,7 +45,7 @@
           value: year-month
     - name: value
       title: 值
-      type: string,number,Date
+      type: string | number | Date
       sync: true
       model: true
       default: null
@@ -60,22 +60,22 @@
       description: 当时间选择类型为datetime时可选的最大时间，精确到分钟, 默认为十年后
     - name: max-hour
       title: 最大小时
-      type: string, number
+      type: string | number
       default: 23
       description: 当时间选择类型为 time 时
     - name: min-hour
       title: 最小小时
-      type: string, number
+      type: string | number
       default: 0
       description: 当时间选择类型为 time 时
     - name: max-minute
       title: 最大分钟
-      type: string, number
+      type: string | number
       default: 59
       description: 当时间选择类型为 time 时
     - name: min-minute
       title: 最小分钟
-      type: string, number
+      type: string | number
       default: 0
       description: 当时间选择类型为 time 时
     - name: displayFormat

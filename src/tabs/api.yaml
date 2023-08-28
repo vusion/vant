@@ -95,7 +95,7 @@
       description: 是否显示徽章
     - name: badge
       title: 徽章值
-      type: string, number
+      type: string | number
       description: 徽章的内容
     - name: badgemax
       title: 最大值

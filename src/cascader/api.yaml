@@ -7,7 +7,7 @@
   attrs:
     - name: value
       title: 值
-      type: string, number
+      type: string | number
       sync: true
       model: true
       default: ""

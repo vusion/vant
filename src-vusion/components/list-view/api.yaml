@@ -147,18 +147,20 @@
       group: 交互属性
     - name: selected-icon
       title: 已选图标
-      type: icon
+      type: string
       default: ""
       dependency:
         - selectable: true
       group: 交互属性
+      setter: iconSelect
     - name: unselected-icon
       title: 未选图标
-      type: icon
+      type: string
       default: ""
       dependency:
         - selectable: true
       group: 交互属性
+      setter: iconSelect
     - name: show-head
       title: 显示头部
       type: boolean
@@ -294,7 +296,7 @@
       group: 数据属性
     - name: match-method
       title: 匹配方法
-      type: string, Function
+      type: string | Function
       default: includes
       advanced: true
       description: 过滤时的匹配方法

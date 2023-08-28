@@ -12,15 +12,15 @@
       description: 值
     - name: min
       title: 最小值
-      type: string, number
+      type: string | number
       description: 最小值
     - name: max
       title: 最大值
-      type: string, number
+      type: string | number
       description: 最大值
     - name: decimalLength
       title: 精度
-      type: string, number
+      type: string | number
       description: 固定显示的小数位数
     - name: placeholder
       title: 占位符
@@ -57,9 +57,9 @@
           title: 圆角
       default: fang
       description: 样式风格
-    - name: min
+    - name: step
       title: 步长
-      type: string, number
+      type: string | number
       default: 1
       description: 每次点击时改变的值
     - name: disableInput

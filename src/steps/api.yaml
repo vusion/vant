@@ -20,7 +20,7 @@
       group: 数据属性
     - name: active
       title: 当前步骤
-      type: number,string
+      type: number
       sync: true
       model: true
       default: 0
@@ -78,8 +78,9 @@
   attrs:
     - name: icon
       title: 图标
-      type: icon
+      type: string
       description: 步骤自定义图标
+      setter: iconSelect
     - name: status
       title: 状态
       type: string
