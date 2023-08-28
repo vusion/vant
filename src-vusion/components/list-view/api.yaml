@@ -4,16 +4,20 @@
   labels:
     - Table
   description: 用于列举大量数据的列表框，支持单选、多选、过滤（搜索）、分页等功能。
+  tsTypeParams: T, V, P extends boolean, M extends boolean, C extends string
   attrs:
     - name: data-source
       title: 数据源
-      type: Array<Item> | Function | object | DataSource
-      designer-value: "[{}, {}, {}]"
+      type: 'P extends true ? { list: nasl.collection.List<T>; total: nasl.core.Integer } : nasl.collection.List<T>'
+      readable: true
+      readableName: data
+      readableTitle: 数据
+      designer-value: '[{}, {}, {}]'
       description: 列表的数据源。数组方式表示直接的数据，函数需要返回一个 Promise。
       group: 数据属性
     - name: data-schema
       title: 数据类型
-      type: schema
+      type: T
       description: 表格每一行的数据类型
       compType: dataTypeSelect
       group: 数据属性
@@ -39,8 +43,8 @@
       description: 设置不同加载状态的展示内容
       bindHide: true
       group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
+      tooltipLink: ''
+      docDescription: ''
     - name: loading-text
       title: 加载中文案
       type: string
@@ -50,7 +54,7 @@
       dependency:
         - designer-mode: loading
       docDescription: 当数据正在加载时展示的文字，默认为"加载中..."。
-      tooltipLink: ""
+      tooltipLink: ''
     - name: loading
       title: 加载中触发条件
       type: boolean
@@ -68,7 +72,7 @@
       dependency:
         - designer-mode: error
       docDescription: 加载失败的提示文字。默认"加载失败，请重试"
-      tooltipLink: ""
+      tooltipLink: ''
     - name: error
       title: 加载失败触发条件
       type: boolean
@@ -78,7 +82,7 @@
       dependency:
         - designer-mode: error
       docDescription: 控制表格加载失败的展示时机。默认关闭。
-      tooltipLink: ""
+      tooltipLink: ''
     - name: empty-text
       title: 暂无数据文案
       type: string
@@ -88,7 +92,7 @@
       dependency:
         - designer-mode: empty
       docDescription: 当列表为空时的提示文字。默认"暂无数据"
-      tooltipLink: ""
+      tooltipLink: ''
     - name: readonly
       title: 只读
       type: boolean
@@ -103,21 +107,19 @@
       advanced: true
     - name: value
       title: 值
-      type: any
+      type: "M extends true ? (C extends '' ? nasl.collection.List<V> : nasl.core.String) : V"
       sync: true
       model: true
       advanced: true
       description: 当前选择的值
     - name: text-field
       title: 文本字段名
-      type: string
-      default: text
+      type: '(item: T) => nasl.core.String'
       description: 选项文本的字段名
       advanced: true
     - name: value-field
       title: 值字段名
-      type: string
-      default: value
+      type: '(item: T) => V'
       description: 选项值的字段名
       advanced: true
     - name: cancelable
@@ -133,22 +135,20 @@
       description: 是否可以选择
       group: 交互属性
       advanced: true
-    - name: value
-      title: 选中值
-      type: any
-      sync: true
-      model: true
-      group: 交互属性
     - name: multiple
       title: 可多选
-      type: boolean
+      type: M
       default: false
       description: 设置是否可以多选行，不开启则为单选
       group: 交互属性
     - name: selected-icon
       title: 已选图标
       type: string
+<<<<<<< HEAD
       default: ""
+=======
+      default: ''
+>>>>>>> 259338f09 (list api)
       dependency:
         - selectable: true
       group: 交互属性
@@ -156,7 +156,11 @@
     - name: unselected-icon
       title: 未选图标
       type: string
+<<<<<<< HEAD
       default: ""
+=======
+      default: ''
+>>>>>>> 259338f09 (list api)
       dependency:
         - selectable: true
       group: 交互属性
@@ -182,9 +186,9 @@
     - name: pageable
       title: 分页
       type: string
-      default: ""
+      default: ''
       options:
-        - value: ""
+        - value: ''
           title: 不分页
         - value: auto-more
           title: 滚动加载更多
@@ -201,14 +205,14 @@
       description: 是否使用后端分页
       advanced: true
       dependency:
-        - "!pageable": ""
+        - '!pageable': ''
     - name: page-size
       title: 默认分页大小
       type: number
       default: 20
       description: 分页过小可能会导致滚动加载更多失效
       dependency:
-        - "!pageable": ""
+        - '!pageable': ''
       group: 数据属性
     - name: pull-refresh
       title: 下拉刷新
@@ -216,7 +220,7 @@
       default: true
       description: 是否开启下拉刷新
       dependency:
-        - "!pageable": pagination
+        - '!pageable': pagination
       group: 交互属性
     - name: pulling-text
       title: 下拉过程中提示文字
@@ -224,7 +228,7 @@
       default: 下拉刷新
       dependency:
         - pull-refresh: true
-          "!pageable": pagination
+          '!pageable': pagination
       group: 交互属性
     - name: loosing-text
       title: 释放过程中提示文字
@@ -232,7 +236,7 @@
       default: 释放刷新
       dependency:
         - pull-refresh: true
-          "!pageable": pagination
+          '!pageable': pagination
       group: 交互属性
     - name: success-text
       title: 刷新成功提示文字
@@ -240,7 +244,7 @@
       default: 已刷新
       dependency:
         - pull-refresh: true
-          "!pageable": pagination
+          '!pageable': pagination
       group: 交互属性
     - name: success-duration
       title: 刷新成功提示展示时长(ms)
@@ -248,7 +252,7 @@
       default: 500
       dependency:
         - pull-refresh: true
-          "!pageable": pagination
+          '!pageable': pagination
       group: 交互属性
     - name: pull-distance
       title: 触发下拉刷新的距离
@@ -256,7 +260,7 @@
       default: 50
       dependency:
         - pull-refresh: true
-          "!pageable": pagination
+          '!pageable': pagination
       group: 交互属性
     - name: filterable
       title: 可筛选
@@ -296,7 +300,11 @@
       group: 数据属性
     - name: match-method
       title: 匹配方法
+<<<<<<< HEAD
       type: string | Function
+=======
+      type: string
+>>>>>>> 259338f09 (list api)
       default: includes
       advanced: true
       description: 过滤时的匹配方法
@@ -340,11 +348,6 @@
       name: default
       description: 插入<van-cell />
       empty-background: drag-entity-here
-      support:
-        - name: van-cell
-          title: 单元格
-          snippet: '<template #item="current"><van-cell isLink><template
-            #title>文本</template></van-cell></template>'
       advanced: true
     - concept: Slot
       name: item
@@ -376,7 +379,7 @@
           type: any
           description: 选择项的值
           schema:
-            $ref: "#/basicTypes/String"
+            $ref: '#/basicTypes/String'
         - name: senderVM
           type: UListView
           description: 发送事件实例
@@ -388,7 +391,7 @@
           type: object
           description: 自定义事件对象
           schema:
-            $ref: "#/systemTypes/ChangeItemEvent"
+            $ref: '#/systemTypes/ChangeItemEvent'
         - name: $event.value
           type: any
           description: 改变后的值
@@ -418,7 +421,7 @@
           type: object
           description: 自定义事件对象
           schema:
-            $ref: "#/systemTypes/ChangeItemEvent"
+            $ref: '#/systemTypes/ChangeItemEvent'
         - name: $event.value
           type: any
           description: 选择项的值
@@ -448,7 +451,7 @@
           type: object
           description: 自定义事件对象
           schema:
-            $ref: "#/systemTypes/EventTarget"
+            $ref: '#/systemTypes/EventTarget'
         - name: $event.preventDefault
           type: Function
           description: 阻止加载流程
@@ -460,7 +463,7 @@
       description: 加载时触发
       params:
         - name: $event
-          type: ""
+          type: ''
           description: 空
         - name: senderVM
           type: UTableView

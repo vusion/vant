@@ -4,14 +4,15 @@
   labels:
     - Table
   description: 组件列表
+  tsTypeParams: T
   attrs:
     - name: data-source
       title: 数据源
-      type: array
+      type: nasl.collection.List<T>
       description: 一个包含字符串或对象的数组
     - name: data-schema
       title: 数据类型
-      type: schema
+      type: T
       description: 组件列表每一项的结构
       compType: dataTypeComsItem
     - name: colnum
