@@ -4,13 +4,13 @@
   labels:
     - Selector
   description: 省市区三级联动选择
+  tsTypeParams: T, V, C extends string
   attrs:
     - name: value
       title: 值
-      type: string
+      type: "C extends 'json' ? V : nasl.core.String"
       sync: true
       model: true
-      default: ""
       description: 当前选中的省市区code
     - name: labelField
       title: 左侧标题
@@ -19,7 +19,7 @@
       advanced: true
     - name: areaListprop
       title: 数据源(默认全部)
-      type: array
+      type: nasl.collection.List<T>
       description: 一个包含字符串或对象的数组
     - name: title
       title: 顶部栏标题

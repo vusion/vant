@@ -144,11 +144,7 @@
     - name: selected-icon
       title: 已选图标
       type: string
-<<<<<<< HEAD
-      default: ""
-=======
       default: ''
->>>>>>> 259338f09 (list api)
       dependency:
         - selectable: true
       group: 交互属性
@@ -156,11 +152,7 @@
     - name: unselected-icon
       title: 未选图标
       type: string
-<<<<<<< HEAD
-      default: ""
-=======
       default: ''
->>>>>>> 259338f09 (list api)
       dependency:
         - selectable: true
       group: 交互属性
@@ -300,11 +292,7 @@
       group: 数据属性
     - name: match-method
       title: 匹配方法
-<<<<<<< HEAD
-      type: string | Function
-=======
       type: string
->>>>>>> 259338f09 (list api)
       default: includes
       advanced: true
       description: 过滤时的匹配方法

@@ -7,7 +7,7 @@
   attrs:
     - name: active
       title: 值
-      type: any
+      type: string
       sync: true
       model: true
       description: 选中标签页的值。

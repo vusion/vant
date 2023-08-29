@@ -4,20 +4,21 @@
     - Form
   icon: checkboxes
   description: 多项中选择一个或多个时使用
+  tsTypeParams: T, V
   attrs:
     - name: data-source
       title: 数据源
-      type: Array<Item> | Function
+      type: nasl.collection.List<T>
       description: 集合类型变量或者输出参数为集合类型的逻辑
       designer-value: "[{}, {}, {}]"
     - name: data-schema
       title: 数据类型
-      type: schema
+      type: T
       description: 集合类型每一元素的数据类型
       compType: dataTypeSelect
     - name: value
       title: 值
-      type: any
+      type: V
       sync: true
       model: true
       description: 当前选择的值
@@ -75,6 +76,7 @@
       empty-background: add-sub
       support:
         - name: van-checkbox
+          tsTypeArguments: V
           title: 复选项
           snippet: <van-checkbox name="n" shape="square"><van-text
             text="节点"></van-text></van-checkbox>
@@ -100,6 +102,7 @@
       params: []
 - name: van-checkbox
   title: 多选项
+  tsTypeParams: V
   attrs:
     - name: title
       title: 文本
@@ -108,7 +111,7 @@
       advanced: true
     - name: name
       title: 选中的值
-      type: string
+      type: V
       description: 选中的值
     - name: value
       title: 是否选中
