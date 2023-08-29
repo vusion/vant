@@ -610,7 +610,7 @@ export default createComponent({
             ref="popforcas"
             // onClickOverlay={this.togglePopup}
             // closeable={this.showTitle || this.showSubtitle}
-            // getContainer={this.getContainer}
+            get-container="body" // 放body下不易出现异常情况
             // closeOnPopstate={this.closeOnPopstate}
             closeOnClickOverlay={this.closeOnClickOverlay}
             // onInput={this.togglePopup}
