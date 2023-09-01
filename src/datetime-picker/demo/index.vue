@@ -41,6 +41,15 @@
         :max-hour="20"
       />
     </demo-block> -->
+    <demo-block card :title="t('yearMonthType')">
+      <van-datetime-picker
+        :value.sync="value.yearMonth"
+        type="year-month"
+        :title="t('yearMonthType')"
+        :min-date="minDate"
+        :max-date="maxDate"
+      />
+    </demo-block>
     <demo-block card :title="t('timeType')">
       <van-datetime-picker
         :value.sync="value.time"
@@ -72,14 +81,6 @@
 
         :max-date="maxDate"
       />
-    </demo-block>
-    <demo-block card :title="t('datetimeType')">
-      <van-datetime-picker
-    type="datetime"
-    title="选择完整时间222"
-    label-field="选择时间"
-    readonly
-  ></van-datetime-picker>
     </demo-block>
 
     <!-- <demo-block v-if="!isWeapp" card :title="t('datehourType')">
@@ -156,7 +157,8 @@ export default {
         datetime: '2022-03-31T07:21:52.066Z',
         datehour: new Date(2020, 0, 1),
         monthDay: new Date(2020, 0, 1),
-        yearMonth: new Date(2020, 0, 1),
+        // yearMonth: new Date(2020, 0, 1),
+        yearMonth: '2020-08',
         optionFilter: '12:00',
         sortColumnsDate: new Date(2020, 0, 1),
       },
