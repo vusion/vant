@@ -408,7 +408,12 @@ export default {
       this.$forceUpdate();
     },
     getWidth() {
-      return ((this.$refs.root.getBoundingClientRect() || {}).width-20) || 0;
+      let temp = 20;
+      if(this.$env.VUE_APP_DESIGNER && window && window.document && !window.document.querySelector('[root-app]')) {
+        // readme: 在页面编辑器中，有额外的2px的边框。
+        temp = 22;
+      }
+      return ((this.$refs.root.getBoundingClientRect() || {}).width-temp) || 0;
     },
     async resize(start = 0) {
       if (!this.$refs.body) return;
@@ -824,7 +829,7 @@ export default {
   overflow-y: auto;
 }
 .scrollwrapno {
-  overflow-y: unset;
+  /* overflow-y: unset; */
 }
 .scrollwrap::-webkit-scrollbar {
   display: none;

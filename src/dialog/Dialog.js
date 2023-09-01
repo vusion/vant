@@ -79,6 +79,12 @@ export default createComponent({
     };
   },
 
+  mounted() {
+    if (this.realValue) {
+      this.visible = true;
+    }
+  },
+
   methods: {
     onClickOverlay() {
       this.handleAction('overlay');
