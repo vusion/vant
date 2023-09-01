@@ -32,9 +32,9 @@
     - name: pageable
       title: 分页加载更多
       type: string
-      default: false
+      default: ''
       options:
-        - value: false
+        - value: ''
           title: 不分页
         - value: auto-more
           title: 滚动加载更多
