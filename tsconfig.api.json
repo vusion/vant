@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowJs": false,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "sourceMap": false,
+        "pretty": true,
+        "baseUrl": ".",
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "outFile": "../../low-code-fe/packages/nasl/sandbox/stdlib/nasl.ui.h5.ts",
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "types": ["nasl"],
+        "paths": {
+            "@/*": ["*"]
+        }
+    },
+    "include": [                
+        "./src/*/api.ts",
+        "./src-vusion/component/*/api.ts",
+    ]
+}

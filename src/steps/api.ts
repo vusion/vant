@@ -1,0 +1,137 @@
+/// <reference types="nasl" />
+
+namespace nasl.ui {
+    @Component({
+        title: '步骤条',
+        icon: 'steps',
+        description: '用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。',
+    })
+    export class VanSteps<T> extends VueComponent {
+
+        constructor(options?: Partial<VanStepsOptions<T>>) { super(); }
+    }
+
+    export class VanStepsOptions<T> {
+        @Prop({
+            group: '数据属性',
+            title: '数据源',
+            description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑',
+            designerValue: [{}, {}, {}],
+        })
+        dataSource: nasl.collection.List<T>;
+
+        @Prop({
+            group: '数据属性',
+            title: '数据类型',
+            description: '集合类型每一元素的数据类型',
+        })
+        dataSchema: T;
+
+        @Prop({
+            group: '数据属性',
+            title: '当前步骤',
+            description: '指定当前步骤，从 0 开始记数',
+            syncMode: 'both',
+        })
+        active: nasl.core.Decimal = 0;
+
+        @Prop({
+            title: '步骤条方向',
+            setter: {
+                type: 'enumSelect',
+                titles: ['横向', '垂直'],
+            },
+        })
+        direction: 'horizontal' | 'vertical' = 'horizontal';
+
+        @Prop({
+            title: '只读',
+            description: '正常显示，但禁止选择、输入',
+        })
+        readonly: nasl.core.Boolean = false;
+
+        @Prop({
+            title: '禁用',
+            description: '置灰显示，且禁止任何交互',
+        })
+        disabled: nasl.core.Boolean = false;
+
+        @Event({
+            title: '切换步骤时',
+            description: '切换步骤时',
+        })
+        onChangestep: () => void;
+
+        @Slot({
+            title: 'undefined',
+            description: '插入`<van-step>`子组件。',
+            emptyBackground: 'add-sub',
+            snippets: [
+                {
+                    title: '步骤条项',
+                    code: '<van-step>stepn</van-step>',
+                },
+            ],
+        })
+        slotDefault: () => Array<VanStep>;
+
+        @Slot({
+            title: 'undefined',
+            description: '自定义选项的结构和样式',
+        })
+        slotItem: (current: Current<T>) => Array<VueComponent>;
+    }
+
+    @Component({
+        title: '步骤条项',
+    })
+    export class VanStep extends VueComponent {
+
+        constructor(options?: Partial<VanStepOptions>) { super(); }
+    }
+
+    export class VanStepOptions {
+        @Prop({
+            title: '图标',
+            description: '步骤自定义图标',
+            setter: {
+                type: 'iconSelect',
+            },
+        })
+        icon: nasl.core.String;
+
+        @Prop({
+            title: '状态',
+            description: '设置步骤条的状态，分别为等待中、进行中、已完成、错误',
+            setter: {
+                type: 'enumSelect',
+                titles: ['等待中', '进行中', '已完成', '错误'],
+            },
+        })
+        status: 'wait' | 'process' | 'finish' | 'error';
+
+        @Prop({
+            title: '只读',
+            description: '正常显示，但禁止选择、输入',
+        })
+        readonly: nasl.core.Boolean = false;
+
+        @Prop({
+            title: '禁用',
+            description: '置灰显示，且禁止任何交互',
+        })
+        disabled: nasl.core.Boolean = false;
+
+        @Event({
+            title: '点击标题',
+            description: '点击标题',
+        })
+        onClicktitle: () => void;
+
+        @Event({
+            title: '点击图标',
+            description: '点击图标',
+        })
+        onClickicon: () => void;
+    }
+}

@@ -1,0 +1,91 @@
+/// <reference types="nasl" />
+
+namespace nasl.ui {
+    @Component({
+        title: '计时器',
+        icon: 'countdown',
+        description: '用于计时',
+    })
+    export class VanCountDownNew extends VueComponent {
+
+
+        @Method({
+            title: 'undefined',
+            description: '开始计时器',
+        })
+        start(): void {}
+
+        @Method({
+            title: 'undefined',
+            description: '暂停计时器',
+        })
+        pause(): void {}
+
+        @Method({
+            title: 'undefined',
+            description: '继续计时器',
+        })
+        continue(): void {}
+
+        @Method({
+            title: 'undefined',
+            description: '停止计时器',
+        })
+        stop(): void {}
+        constructor(options?: Partial<VanCountDownNewOptions>) { super(); }
+    }
+
+    export class VanCountDownNewOptions {
+        @Prop({
+            title: '计时器时长（秒）',
+            description: '设置定时时间',
+        })
+        timer: nasl.core.Decimal = 60;
+
+        @Prop({
+            title: '计时方式',
+            description: '设置计时器计时方式',
+            setter: {
+                type: 'enumSelect',
+                titles: ['正计时', '倒计时'],
+            },
+        })
+        reverse: 'positive' | 'negative' = 'positive';
+
+        @Prop({
+            title: '是否自动开始计时',
+            description: '设置是否自动开始计时器',
+        })
+        autostart: nasl.core.Boolean = true;
+
+        @Prop({
+            title: '隐藏分钟',
+            description: '设置是否隐藏分钟',
+        })
+        hideMinute: nasl.core.Boolean = false;
+
+        @Event({
+            title: '计时器开始',
+            description: '计时器开始时触发',
+        })
+        onStart: () => void;
+
+        @Event({
+            title: '计时器暂停',
+            description: '计时器暂停时触发',
+        })
+        onPause: () => void;
+
+        @Event({
+            title: '计时器继续',
+            description: '计时器继续时触发',
+        })
+        onContinue: () => void;
+
+        @Event({
+            title: '计时器结束',
+            description: '计时器结束时触发',
+        })
+        onStop: () => void;
+    }
+}

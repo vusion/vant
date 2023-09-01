@@ -63,8 +63,7 @@
       description: 是否可以过滤（搜索），开启将会显示搜索框。
     - name: field-namesp
       title: 自定义 options 结构中的字段
-      type: string, object
-      default: "{'text':'','value':'','children':'children'}"
+      type: string
       description: 自定义 options 结构中的字段
       advanced: true
     - name: input-align
