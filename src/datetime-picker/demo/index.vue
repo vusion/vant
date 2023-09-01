@@ -83,6 +83,17 @@
       />
     </demo-block>
 
+    <demo-block card>
+      <span>改变date</span>
+      <span>{{ date }}</span>
+      <button @click="changeDate">click</button>
+      <van-datetime-picker
+        :value.sync="date"
+        type="date"
+        :title="t('dateType')"
+      />
+    </demo-block>
+
     <!-- <demo-block v-if="!isWeapp" card :title="t('datehourType')">
       <van-datetime-picker
         :value.sync="value.datehour"
@@ -151,6 +162,7 @@ export default {
     return {
       minDate: new Date(2020, 0, 1),
       maxDate: "2020-12-12 12:12:12" || new Date(2025, 10, 1),
+      date: "2021-01-13 00:00:00" || new Date(2021, 0, 17),
       value: {
         date: "2021-01-13 00:00:00" || new Date(2021, 0, 17),
         time: '12:00',
@@ -186,6 +198,9 @@ export default {
 
       return values;
     },
+    changeDate() {
+      this.date = '2023-09-01'
+    }
   },
 };
 </script>
