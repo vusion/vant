@@ -100,11 +100,11 @@ export function formatFu(date: string | number | Date, type: string, gmt: boolea
   if (type === 'datetime') {
     if (gmt) return tmpDate.toJSON();
     // @ts-ignore
-    return tmpDate.formath("yyyy/MM/dd HH:mm:ss")
+    return tmpDate.formath("yyyy-MM-dd HH:mm:ss")
   }
   if (type === 'date') {
     // @ts-ignore
-    return tmpDate.formath("yyyy/MM/dd")
+    return tmpDate.formath("yyyy-MM-dd")
   }
   if (type === 'time') {
     // @ts-ignore
@@ -112,7 +112,7 @@ export function formatFu(date: string | number | Date, type: string, gmt: boolea
   }
   if (type === 'year-month') {
     // @ts-ignore
-    return tmpDate.formath("yyyy/MM")
+    return tmpDate.formath("yyyy-MM")
   }
 }
 
@@ -123,15 +123,15 @@ export function displayFormat(date: string | number | Date, type: string, custom
   const tmpDate = isDate(tempDate) ? tempDate : (tempDate ? new Date(tempDate) : new Date());
   if (type === 'datetime') {
     // @ts-ignore
-    return tmpDate.formath(customFormat || "yyyy/MM/dd HH:mm:ss")
+    return tmpDate.formath(customFormat || "yyyy-MM-dd HH:mm:ss")
   }
   if (type === 'date') {
     // @ts-ignore
-    return tmpDate.formath(customFormat || "yyyy/MM/dd")
+    return tmpDate.formath(customFormat || "yyyy-MM-dd")
   }
   if (type === 'year-month') {
     // @ts-ignore
-    return tmpDate.formath(customFormat || "yyyy/MM")
+    return tmpDate.formath(customFormat || "yyyy-MM")
   }
   if (type === 'time') {
     // @ts-ignore

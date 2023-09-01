@@ -140,11 +140,7 @@ export default createComponent({
 
   methods: {
     formatValue(value) {
-      // if (!isDate(value)) {
-      //   return null;
-      // }
-      if (isDate(value)) {
-      } else {
+      if (!isDate(value)) {
         try {
           if (!value || value === '') {
             value = new Date();
@@ -153,6 +149,8 @@ export default createComponent({
           }
         } catch (e) {
           console.warn(e, 'error date');
+          // 可能是2020/08这种格式，低版本iOS不兼容
+          value = new Date(value.replace('/', '-'))
         }
       }
 
