@@ -91,6 +91,7 @@
       type: boolean
       default: false
       description: 文字过长是否省略显示。
+      advanced: true
   slots:
     - concept: Slot
       name: default
