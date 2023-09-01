@@ -10,7 +10,7 @@ import VanEmptyCol from '../emptycol/index';
 const [createComponent, bem, t] = createNamespace('dialog');
 
 export default createComponent({
-  mixins: [PopupMixin()],
+  mixins: [PopupMixin({ independInDesigner: true })],
   // components: {
   //   [Button.name]: Button,
   // },
