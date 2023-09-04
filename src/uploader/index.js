@@ -502,8 +502,9 @@ export default createComponent({
 
       const previewSize = item.previewSize ?? this.previewSize;
       const imageFit = item.imageFit ?? this.imageFit;
-
-      const Preview = isImageFile(item) ? (
+      
+      let imgUrl = item.content || item.url
+      const Preview = isImageFile(item) && imgUrl ? (
         <Image
           fit={imageFit}
           src={item.content || item.url || item}
