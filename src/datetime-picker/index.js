@@ -34,22 +34,22 @@ export default createComponent({
         return this.value;
       }
 
-      if (this.cvalue) {
-        return displayFormat(this.cvalue, this.type, this.displayFormat);
-      }
-
       if (this.value) {
         return displayFormat(this.value, this.type, this.displayFormat);
+      }
+
+      if (this.cvalue) {
+        return displayFormat(this.cvalue, this.type, this.displayFormat);
       }
 
       return '';
 
       // FIXME：下面逻辑真奇怪啰里八嗦
       // if (this.value && !this.cvalue) {
-      //   return formatFu(this.value, this.type);
+      //   return displayFormat(this.value, this.type);
       // }
       // if (!this.cvalue) return '';
-      // return formatFu(this.cvalue, this.type);
+      // return displayFormat(this.cvalue, this.type);
     },
     togglePopup() {
       this.valuepopup = !this.valuepopup;

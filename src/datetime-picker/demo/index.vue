@@ -1,46 +1,18 @@
 <template>
   <demo-section>
-    <!-- <demo-block card :title="t('dateType')">
-      <van-datetime-picker
-        :value.sync="value.date"
-        type="date"
-        :title="t('dateType')"
-        :min-date="minDate"
-        :max-date="maxDate"
-      />
+    <demo-block card title="受控联动绑定">
+      <van-datetime-picker :ref="`datetime_picker1`" type="datetime" title="选择完整时间" input-align="left" :value.sync="variable1">
+            <template #title>
+                <van-text :ref="`text1`" text="标题"></van-text>
+          </template>
+      </van-datetime-picker>
+      <van-datetime-picker :ref="`datetime_picker2`" type="datetime" title="选择完整时间" input-align="left" :value.sync="variable1">
+            <template #title>
+                <van-text :ref="`text2`" text="标题"></van-text>
+          </template>
+      </van-datetime-picker>
     </demo-block>
 
-    <demo-block card :title="t('yearMonthType')">
-      <van-datetime-picker
-        :value.sync="value.yearMonth"
-        type="year-month"
-        :title="t('yearMonthType')"
-        :min-date="minDate"
-        :max-date="maxDate"
-        :formatter="formatter"
-      />
-    </demo-block>
-
-    <demo-block v-if="!isWeapp" card :title="t('monthDayType')">
-      <van-datetime-picker
-        :value.sync="value.monthDayType"
-        type="month-day"
-        :title="t('monthDayType')"
-        :min-date="minDate"
-        :max-date="maxDate"
-        :formatter="formatter"
-      />
-    </demo-block>
-
-    <demo-block card :title="t('timeType')">
-      <van-datetime-picker
-        :value.sync="value.time"
-        type="time"
-        :title="t('timeType')"
-        :min-hour="10"
-        :max-hour="20"
-      />
-    </demo-block> -->
     <demo-block card :title="t('yearMonthType')">
       <van-datetime-picker
         :value.sync="value.yearMonth"
@@ -83,36 +55,6 @@
       />
     </demo-block>
 
-    <!-- <demo-block v-if="!isWeapp" card :title="t('datehourType')">
-      <van-datetime-picker
-        :value.sync="value.datehour"
-        type="datehour"
-        :title="t('datehourType')"
-        :min-date="minDate"
-        :max-date="maxDate"
-      />
-    </demo-block>
-
-    <demo-block card :title="t('optionFilter')">
-      <van-datetime-picker
-        :value.sync="value.optionFilter"
-        type="time"
-        :title="t('optionFilter')"
-        :filter="filter"
-      />
-    </demo-block>
-
-    <demo-block v-if="!isWeapp" card :title="t('sortColumns')">
-      <van-datetime-picker
-        :value.sync="value.sortColumnsDate"
-        type="date"
-        :title="t('sortColumns')"
-        :columns-order="['month', 'day', 'year']"
-        :min-date="minDate"
-        :max-date="maxDate"
-        :formatter="formatter"
-      />
-    </demo-block> -->
   </demo-section>
 </template>
 
@@ -149,8 +91,11 @@ export default {
 
   data() {
     return {
+      variable1: undefined,
+
       minDate: new Date(2020, 0, 1),
       maxDate: "2020-12-12 12:12:12" || new Date(2025, 10, 1),
+      date: "2021-01-13 00:00:00" || new Date(2021, 0, 17),
       value: {
         date: "2021-01-13 00:00:00" || new Date(2021, 0, 17),
         time: '12:00',
@@ -186,6 +131,9 @@ export default {
 
       return values;
     },
+    changeDate() {
+      this.date = '2023-09-01'
+    }
   },
 };
 </script>
