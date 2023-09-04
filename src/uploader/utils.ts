@@ -43,6 +43,11 @@ export function isOversize(
         return maxSize(file);
       }
 
+      // 可能出现传入为空字符串的情况
+      if (maxSize === Infinity || maxSize === '') {
+        return false;
+      }
+
       maxSize = Number(maxSize) * 1024 * 1024;
 
       if (isNaN(maxSize)) {
