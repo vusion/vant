@@ -35,7 +35,6 @@ module.exports = {
         show: true,
         name: 'linear-layout',
         alias: '线性布局',
-        vusion: true,
       },
       {
         group: 'Layout',
