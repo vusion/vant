@@ -26,6 +26,19 @@
         color="linear-gradient(to right, #be99ff, #7232dd)"
       />
     </demo-block>
+
+    <demo-block>
+      <van-form :ref="`form1`">
+            <van-field :ref="`field1`" :required="true" drole="other">
+                <template #input :ref="`template26`">
+                    <van-progress :ref="`progress2`" :value="50"></van-progress>
+              </template>
+                <template #title :ref="`template27`">
+                    <van-text :ref="`text21`" text="名称"></van-text>
+              </template>
+          </van-field>
+      </van-form>
+    </demo-block>
   </demo-section>
 </template>
 
