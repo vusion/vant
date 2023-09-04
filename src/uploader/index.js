@@ -503,10 +503,21 @@ export default createComponent({
       const previewSize = item.previewSize ?? this.previewSize;
       const imageFit = item.imageFit ?? this.imageFit;
 
-      const Preview = isImageFile(item) ? (
+      const getUrl = (item) => {  
+        let imgUrl = '';
+        if (typeof item === 'object' && item !== null) {
+          if (`${item?.url}` != 'undefined') {
+            imgUrl = item.url
+          }
+        } else {
+          imgUrl = item ? item : ''
+        }
+        return imgUrl
+      }
+      const Preview = isImageFile(item) && getUrl(item.content || item.url || item) ? (
         <Image
           fit={imageFit}
-          src={item.content || item.url || item}
+          src={getUrl(item.content || item.url || item)}
           class={bem('preview-image')}
           width={previewSize}
           height={previewSize}
