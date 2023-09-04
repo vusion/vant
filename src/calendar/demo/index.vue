@@ -17,13 +17,13 @@
 
     <van-calendar
       label-field="日历选择"
-      :value.sync="ddateffff"
-      :min-date="'2020-10-15'"
-      :max-date="'2040-10-15'"
+      :value.sync="date"
+      :min-date="minDate"
+      :max-date="maxDate"
       title="选择日期"
     ></van-calendar >
 
-    <div>{{ ddateffff }}</div>
+    <div>{{ date }}</div>
     <!-- <van-calendar
       label-field="日历选择"
       title="选择日期"
@@ -207,27 +207,14 @@ export default {
   data() {
     return {
       // ddateffff: '2023-07-25',
-      ddateffff: null,
+      date: null,
+      minDate: undefined,
+      maxDate: null,
       showCalendarTest: false,
       cvalue: null,
-      date: {
-        maxRange: [],
-        selectSingle: null,
-        selectRange: [],
-        selectMultiple: [],
-        quickSelect1: null,
-        quickSelect2: [],
-        customColor: [],
-        customConfirm: [],
-        customRange: null,
-        customDayText: [],
-        customPosition: null,
-      },
       type: 'single',
       round: true,
       color: undefined,
-      minDate: undefined,
-      maxDate: undefined,
       maxRange: undefined,
       position: undefined,
       formatter: undefined,
