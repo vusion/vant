@@ -15,6 +15,12 @@ export const SlotsMixin = {
       return $slots[name];
     },
     inDesigner() {
+      // 开发态
+      if (process.env.NODE_ENV !== 'production') {
+        const searchParams = new URLSearchParams(window.location.search);
+        return searchParams.get('VUE_APP_DESIGNER');
+      }
+
       return this.$env && this.$env.VUE_APP_DESIGNER;
     }
   },
