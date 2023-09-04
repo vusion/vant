@@ -474,15 +474,15 @@
         "labels": [
             "Layout"
         ],
-        "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src-vusion/components/linear-layout/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src-vusion/components/linear-layout/screenshots/1.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src-vusion/components/linear-layout/screenshots/2.png",
+        "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/linear-layout/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/linear-layout/screenshots/1.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/linear-layout/screenshots/2.png",
         "blocks": "[{\"title\":\"单行排布\",\"description\":\"\",\"code\":\"<template>\\n<van-linear-layout direction=\\\"horizontal\\\">\\n</van-linear-layout>\\n</template>\\n\"},{\"title\":\"多行排布\",\"description\":\"\",\"code\":\"<template>\\n<van-linear-layout direction=\\\"vertical\\\">\\n    <van-linear-layout>\\n    </van-linear-layout>\\n    <van-linear-layout>\\n    </van-linear-layout>\\n</van-linear-layout>\\n</template>\\n\"},{\"title\":\"两端排布\",\"description\":\"\",\"code\":\"<template>\\n<van-linear-layout justify=\\\"space-between\\\">\\n    <van-linear-layout>\\n    </van-linear-layout>\\n    <van-linear-layout>\\n    </van-linear-layout>\\n</van-linear-layout>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-linear-layout",
             "title": "线性布局",
             "description": "内部元素按照一定的规则布局",
             "category": "Layout",
-            "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src-vusion/components/linear-layout/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src-vusion/components/linear-layout/screenshots/1.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src-vusion/components/linear-layout/screenshots/2.png",
-            "drawings": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src-vusion/components/linear-layout/drawings/0.svg,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src-vusion/components/linear-layout/drawings/1.svg,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src-vusion/components/linear-layout/drawings/2.svg",
+            "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/linear-layout/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/linear-layout/screenshots/1.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/linear-layout/screenshots/2.png",
+            "drawings": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/linear-layout/drawings/0.svg,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/linear-layout/drawings/1.svg,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/linear-layout/drawings/2.svg",
             "blocks": [
                 {
                     "title": "单行排布",
@@ -1124,7 +1124,7 @@
             "Display"
         ],
         "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/cell-group/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/cell-group/screenshots/1.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.15.0/src/cell-group/screenshots/2.png",
-        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-cell-group>\\n  <van-cell isLink center>\\n    <template #title>\\n      左侧文本\\n    </template>\\n    <template>\\n      右侧文本\\n    </template>\\n  </van-cell>\\n</van-cell-group>\\n</template>\\n\"},{\"title\":\"圆角风格\",\"description\":\"\",\"code\":\"<template>\\n<van-cell-group inset>\\n  <van-cell isLink center>\\n    <template #title>\\n      左侧文本\\n    </template>\\n    <template>\\n      右侧文本\\n    </template>\\n  </van-cell>\\n</van-cell-group>\\n</template>\\n\"},{\"title\":\"垂直居中\",\"description\":\"\",\"code\":\"<template>\\n<van-cell-group>\\n  <van-cell isLink center>\\n    <template #title>\\n      左侧文本\\n    </template>\\n    <template>\\n      右侧文本\\n    </template>\\n  </van-cell>\\n</van-cell-group>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-cell-group>\\n  <van-cell isLink center>\\n    <template #title>\\n      左侧文本\\n    </template>\\n    右侧文本\\n  </van-cell>\\n</van-cell-group>\\n</template>\\n\"},{\"title\":\"圆角风格\",\"description\":\"\",\"code\":\"<template>\\n<van-cell-group inset>\\n  <van-cell isLink center>\\n    <template #title>\\n      左侧文本\\n    </template>\\n    右侧文本\\n  </van-cell>\\n</van-cell-group>\\n</template>\\n\"},{\"title\":\"垂直居中\",\"description\":\"\",\"code\":\"<template>\\n<van-cell-group>\\n  <van-cell isLink center>\\n    <template #title>\\n      左侧文本\\n    </template>\\n    右侧文本\\n  </van-cell>\\n</van-cell-group>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-cell-group",
             "title": "单元格组",
@@ -1136,17 +1136,17 @@
                 {
                     "title": "基本用法",
                     "description": "",
-                    "code": "<template>\n<van-cell-group>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    <template>\n      右侧文本\n    </template>\n  </van-cell>\n</van-cell-group>\n</template>\n"
+                    "code": "<template>\n<van-cell-group>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    右侧文本\n  </van-cell>\n</van-cell-group>\n</template>\n"
                 },
                 {
                     "title": "圆角风格",
                     "description": "",
-                    "code": "<template>\n<van-cell-group inset>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    <template>\n      右侧文本\n    </template>\n  </van-cell>\n</van-cell-group>\n</template>\n"
+                    "code": "<template>\n<van-cell-group inset>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    右侧文本\n  </van-cell>\n</van-cell-group>\n</template>\n"
                 },
                 {
                     "title": "垂直居中",
                     "description": "",
-                    "code": "<template>\n<van-cell-group>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    <template>\n      右侧文本\n    </template>\n  </van-cell>\n</van-cell-group>\n</template>\n"
+                    "code": "<template>\n<van-cell-group>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    右侧文本\n  </van-cell>\n</van-cell-group>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -1444,7 +1444,7 @@
                     ]
                 },
                 {
-                    "name": "align",
+                    "name": "alignment",
                     "title": "纵轴对齐",
                     "type": "string",
                     "display": "capsules",
@@ -1562,7 +1562,7 @@
                             "default": "inline",
                             "toggleclear": [
                                 "justify",
-                                "align",
+                                "alignment",
                                 "wrap",
                                 "gap"
                             ]
@@ -1590,7 +1590,7 @@
                             "default": "horizontal",
                             "toggleclear": [
                                 "justify",
-                                "align"
+                                "alignment"
                             ],
                             "dependency": [
                                 {
@@ -1659,7 +1659,7 @@
                             ]
                         },
                         {
-                            "name": "align",
+                            "name": "alignment",
                             "title": "纵轴对齐",
                             "type": "string",
                             "display": "capsules",
@@ -1705,7 +1705,7 @@
                             ]
                         },
                         {
-                            "name": "align",
+                            "name": "alignment",
                             "title": "横轴对齐",
                             "type": "string",
                             "display": "capsules",
@@ -2965,6 +2965,38 @@
                     "type": "boolean",
                     "default": true,
                     "description": "是否支持点击放大全屏展示"
+                },
+                {
+                    "name": "loading-type",
+                    "title": "加载样式",
+                    "type": "string",
+                    "default": "loading",
+                    "options": [
+                        {
+                            "value": "loading",
+                            "title": "Loading"
+                        },
+                        {
+                            "value": "none",
+                            "title": "不显示加载状态"
+                        },
+                        {
+                            "value": "placeholder",
+                            "title": "自定义默认图"
+                        }
+                    ]
+                },
+                {
+                    "name": "placeholder-src",
+                    "title": "默认图地址",
+                    "type": "string",
+                    "default": "https://static-vusion.nos-eastchina1.126.net/h5-template/lietu.png",
+                    "required": true,
+                    "dependency": [
+                        {
+                            "loading-type": "placeholder"
+                        }
+                    ]
                 }
             ],
             "slots": false,
@@ -5707,10 +5739,10 @@
                     "name": "pageable",
                     "title": "分页加载更多",
                     "type": "string",
-                    "default": false,
+                    "default": "",
                     "options": [
                         {
-                            "value": false,
+                            "value": "",
                             "title": "不分页"
                         },
                         {
@@ -8050,7 +8082,7 @@
             "Form"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-uploader converter=\\\"json\\\" url=\\\"/upload\\\"></van-uploader>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-uploader converter=\\\"json\\\" url=\\\"/upload\\\" url-field=\\\"filePath\\\"></van-uploader>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-uploader",
             "title": "文件上传",
@@ -8062,7 +8094,7 @@
                 {
                     "title": "基本用法",
                     "description": "",
-                    "code": "<template>\n<van-uploader converter=\"json\" url=\"/upload\"></van-uploader>\n</template>\n"
+                    "code": "<template>\n<van-uploader converter=\"json\" url=\"/upload\" url-field=\"filePath\"></van-uploader>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -8169,7 +8201,7 @@
                     "name": "url-field",
                     "title": "URL 字段名",
                     "type": "string",
-                    "default": "result",
+                    "default": "filePath",
                     "description": "请求返回的 URL 字段名"
                 },
                 {
@@ -8256,6 +8288,26 @@
                             "value": true
                         }
                     ]
+                },
+                {
+                    "name": "viaOriginURL",
+                    "title": "源地址访问",
+                    "type": "boolean",
+                    "description": "开启后支持通过文件存储源地址访问文件",
+                    "group": "主要属性",
+                    "brifeDoc": "",
+                    "docDescription": "开启后支持通过文件存储源地址访问文件",
+                    "tooltipLink": ""
+                },
+                {
+                    "name": "lcapIsCompress",
+                    "title": "启用压缩",
+                    "type": "boolean",
+                    "description": "启用压缩后上传的文件按压缩规则进行压缩后上传，压缩规则可在自定义配置参数管理",
+                    "group": "主要属性",
+                    "brifeDoc": "",
+                    "docDescription": "启用压缩后上传的文件按压缩规则进行压缩后上传，压缩规则可在自定义配置参数管理",
+                    "tooltipLink": ""
                 }
             ],
             "slots": false,
@@ -9728,7 +9780,8 @@
                     "title": "省略显示",
                     "type": "boolean",
                     "default": false,
-                    "description": "文字过长是否省略显示。"
+                    "description": "文字过长是否省略显示。",
+                    "advanced": true
                 }
             ],
             "slots": [
