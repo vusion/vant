@@ -138,7 +138,6 @@ export default createComponent({
 
     emit(event) {
       if (this.dataType === 'text') {
-
         this.$emit(event, this.getColumnValue(0), this.getColumnIndex(0));
       } else {
         let values = this.getValues();
@@ -401,8 +400,8 @@ export default createComponent({
     return (
       <div class={bem()}>
         {this.toolbarPosition === 'top' ? this.genToolbar() : h()}
-        {this.loading ? <Loading class={bem('loading')} /> : h()}
         {this.slots('columns-top')}
+        {this.loading ? <Loading class={bem('loading')} /> : h()}
         {this.genColumns()}
         {this.slots('columns-bottom')}
         {this.toolbarPosition === 'bottom' ? this.genToolbar() : h()}
