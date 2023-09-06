@@ -3,10 +3,32 @@
 .van-radio {
   display: flex;
   align-items: center;
+  padding: @radio-padding;
   overflow: hidden;
+  background-color: @radio-background-color;
+  border: @radio-border-width solid @radio-border-color; 
+  border-radius: @radio-border-radius;
   cursor: pointer;
   user-select: none;
   // margin-bottom: 8px;
+
+
+  &--noIcon {
+    justify-content: center;
+
+    .van-radio__label{
+      margin-left: 0;
+    }
+  }
+
+  &--checked {
+    background-color: @radio-checked-background-color;
+    border: @radio-border-width solid @radio-checked-border-color;
+
+    .van-radio__label{
+      color: @radio-checked-label-color;
+    }
+  }
 
   &--disabled {
     cursor: not-allowed;
