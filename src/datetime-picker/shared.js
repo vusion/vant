@@ -2,6 +2,7 @@ import { times, formatFu } from './utils';
 import { padZero } from '../utils/format/string';
 import { pickerProps } from '../picker/shared';
 import Picker from '../picker';
+import { EmptyCol } from '../emptycol';
 
 export const sharedProps = {
   ...pickerProps,
@@ -16,6 +17,10 @@ export const sharedProps = {
     type: Function,
     default: (type, value) => value,
   },
+  isNew: {
+    type: Boolean,
+    default: true,
+  },
 };
 
 export const TimePickerMixin = {
@@ -26,6 +31,9 @@ export const TimePickerMixin = {
   },
 
   computed: {
+    inDesigner() {
+      return this.$env && this.$env.VUE_APP_DESIGNER;
+    },
     originColumns() {
       return this.ranges.map(({ type, range: rangeArr }) => {
         let values = times(rangeArr[1] - rangeArr[0] + 1, (index) => {
@@ -79,6 +87,14 @@ export const TimePickerMixin = {
       return this.$refs.picker;
     },
 
+    cancel() {
+      // readme: cancel->ref.cancel->oncancel
+      this.$refs.picker.cancel();
+    },
+    confirm() {
+      this.$refs.picker.confirm();
+    },
+
     onConfirm() {
       if (this.readonly || this.disabled) {
         //
@@ -127,6 +143,105 @@ export const TimePickerMixin = {
         this.$parent.$parent.togglePopup();
       } catch (error) {}
     },
+
+    genColumnsTop() {
+      let topCancel = this.slots('top-cancel');
+      let topConfirm = this.slots('top-confirm');
+      let titleSlot = this.slots('title');
+      if (this.inDesigner) {
+        if (!topCancel) {
+          topCancel = <EmptyCol></EmptyCol>;
+        }
+        if (!topConfirm) {
+          topConfirm = <EmptyCol></EmptyCol>;
+        }
+        if (!titleSlot) {
+          titleSlot = <EmptyCol></EmptyCol>;
+        }
+      }
+      return (
+        <template slot="columns-top">
+          <div style="display:flex; justify-content: space-between; align-items: center; position: relative;">
+            {topCancel && (
+              <div onClick={this.cancel} vusion-slot-name="top-cancel">
+                {topCancel}
+              </div>
+            )}
+            {topConfirm && (
+              <div onClick={this.confirm} vusion-slot-name="top-confirm">
+                {topConfirm}
+              </div>
+            )}
+            <div
+              style="position:absolute; top: 50%; left:50%; transform: translate(-50%,-50%);"
+              vusion-slot-name="title"
+            >
+              {titleSlot || this.title}
+            </div>
+          </div>
+        </template>
+      );
+    },
+
+    genColumnsBottom() {
+      let bottomCancel = this.slots('bottom-cancel');
+      let bottomConfirm = this.slots('bottom-confirm');
+      if (this.inDesigner) {
+        if (!bottomCancel) {
+          bottomCancel = <EmptyCol></EmptyCol>;
+        }
+        if (!bottomConfirm) {
+          bottomConfirm = <EmptyCol></EmptyCol>;
+        }
+      }
+      if (!bottomCancel && !bottomConfirm) return null;
+      return (
+        <template slot="columns-bottom">
+          <div style="display:flex; justify-content: space-between; align-items:center;">
+            {bottomCancel && (
+              <div
+                onClick={this.cancel}
+                // vusion-click-enabled
+                vusion-slot-name="bottom-cancel"
+              >
+                {bottomCancel}
+              </div>
+            )}
+            {bottomConfirm && (
+              <div
+                onClick={this.confirm}
+                // vusion-click-enabled
+                vusion-slot-name="bottom-confirm"
+              >
+                {bottomConfirm}
+              </div>
+            )}
+          </div>
+        </template>
+      );
+    },
+
+    renderForNew(props) {
+      return (
+        <Picker
+          ref="picker"
+          // columns={this.columns}
+          columnsprop={this.columns}
+          readonly={this.readonly}
+          disabled={this.disabled}
+          onChange={this.onChange}
+          onConfirm={this.onConfirm}
+          onCancel={this.onCancel}
+          {...{ props }}
+          toolbarPosition="none"
+          class="van-picker--new"
+          vusion-enable-click="true"
+        >
+          {this.genColumnsTop()}
+          {this.genColumnsBottom()}
+        </Picker>
+      );
+    },
   },
 
   render() {
@@ -134,6 +249,10 @@ export const TimePickerMixin = {
     Object.keys(pickerProps).forEach((key) => {
       props[key] = this[key];
     });
+
+    if (this.isNew) {
+      return this.renderForNew(props);
+    }
 
     return (
       <Picker

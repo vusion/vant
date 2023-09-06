@@ -63,7 +63,6 @@ export default createComponent({
       } catch (error) {
         console.log(error);
       }
-
     },
     // @exposed-api
     close() {
@@ -82,7 +81,11 @@ export default createComponent({
       title: () => this.slots('title'),
     };
     return (
-      <div class={bem('wrapppdtpicker')}>
+      <div
+        class={bem('wrapppdtpicker')}
+        vusion-click-enabled
+        onClick={this.togglePopup}
+      >
         <Field
           label={this.labelField}
           value={this.getTitle()}
@@ -90,15 +93,19 @@ export default createComponent({
           readonly
           isLink
           input-align={this.inputAlign || 'right'}
-          onClick={this.togglePopup}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           insel={true}
           nofi={true}
         />
         <Popup
-          get-container="body" // 放body下不易出现异常情况
+          // get-container="body" // 放body下不易出现异常情况
           safe-area-inset-bottom
+          onClick={(event) => {
+            if (event && event.stopPropagation) {
+              event.stopPropagation();
+            }
+          }}
           round
           ref="popforcas"
           class={bem('popup')}
