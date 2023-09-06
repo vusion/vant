@@ -19,7 +19,7 @@ export const sharedProps = {
   },
   isNew: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 };
 
@@ -237,8 +237,8 @@ export const TimePickerMixin = {
           class="van-picker--new"
           vusion-enable-click="true"
         >
-          {this.genColumnsTop()}
-          {this.genColumnsBottom()}
+          {/* {this.genColumnsTop()} */}
+          {/* {this.genColumnsBottom()} */}
         </Picker>
       );
     },
@@ -250,13 +250,15 @@ export const TimePickerMixin = {
       props[key] = this[key];
     });
 
-    if (this.isNew) {
-      return this.renderForNew(props);
-    }
+    // if (this.isNew) {
+    //   return this.renderForNew(props);
+    // }
 
     return (
       <Picker
         ref="picker"
+        vusion-enable-click="true"
+        toolbarPosition="none"
         // columns={this.columns}
         columnsprop={this.columns}
         readonly={this.readonly}

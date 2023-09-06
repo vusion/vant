@@ -1,9 +1,35 @@
 <template>
   <demo-section>
     <demo-block card title="受控联动绑定">
-      <van-datetime-picker :ref="`datetime_picker1`" type="datetime" title="选择完整时间" input-align="left" :value.sync="variable1">
-            <template #title>
-                <van-text :ref="`text1`" text="标题"></van-text>
+      <van-datetime-picker
+        :isNew="true"
+        :ref="`datetime_picker1`"
+        type="datetime"
+        title="选择完整时间"
+        input-align="left"
+        :value.sync="variable1"
+        :range="true">
+          <template #top-cancel>
+            <van-iconv name="left-arrow" icotype="only"> </van-iconv>
+          </template>
+          <template #title>
+            <van-text text="顶部标题"></van-text>
+          </template>
+          <template #bottom-cancel>
+            <van-button
+              type="info_secondary"
+              size="normal"
+              text="取消"
+              squareroud="round"
+            ></van-button>
+          </template>
+          <template #bottom-confirm>
+            <van-button
+              type="info"
+              size="normal"
+              text="确认"
+              squareroud="round"
+            ></van-button>
           </template>
       </van-datetime-picker>
       <van-datetime-picker :ref="`datetime_picker2`" type="datetime" title="选择完整时间" input-align="left" :value.sync="variable1">
@@ -11,6 +37,8 @@
                 <van-text :ref="`text2`" text="标题"></van-text>
           </template>
       </van-datetime-picker>
+
+      <van-button @click="clear">clear</van-button>
     </demo-block>
 
     <demo-block card :title="t('yearMonthType')">
@@ -133,6 +161,9 @@ export default {
     },
     changeDate() {
       this.date = '2023-09-01'
+    },
+    clear() {
+      this.variable1 = null
     }
   },
 };
