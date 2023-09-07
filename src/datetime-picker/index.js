@@ -66,7 +66,6 @@ export default createComponent({
     },
   },
   methods: {
-    // Date、Time内部自己实现
     getTitle() {
       if (this?.$env?.VUE_APP_DESIGNER) {
         return this.range
@@ -106,7 +105,7 @@ export default createComponent({
           );
         }
 
-        return `${startTitle} - ${endTitle}`;
+        return (startTitle || endTitle) ? `${startTitle} - ${endTitle}` : '';
       }
 
       // not range
