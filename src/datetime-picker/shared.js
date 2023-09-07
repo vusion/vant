@@ -2,7 +2,6 @@ import { times, formatFu } from './utils';
 import { padZero } from '../utils/format/string';
 import { pickerProps } from '../picker/shared';
 import Picker from '../picker';
-import { EmptyCol } from '../emptycol';
 
 export const sharedProps = {
   ...pickerProps,
@@ -17,6 +16,7 @@ export const sharedProps = {
     type: Function,
     default: (type, value) => value,
   },
+  displayFormat: String,
   isNew: {
     type: Boolean,
     default: false,
@@ -31,9 +31,6 @@ export const TimePickerMixin = {
   },
 
   computed: {
-    inDesigner() {
-      return this.$env && this.$env.VUE_APP_DESIGNER;
-    },
     originColumns() {
       return this.ranges.map(({ type, range: rangeArr }) => {
         let values = times(rangeArr[1] - rangeArr[0] + 1, (index) => {
@@ -100,147 +97,57 @@ export const TimePickerMixin = {
         //
       } else {
         let value = this.innerValue;
-        const isDateAndDateTime =
-          this.type === 'datetime' || this.type === 'date';
-        const isJSONType = isDateAndDateTime && this.converter === 'json';
-        const isTimestampType =
-          isDateAndDateTime && this.converter === 'timestamp';
-        const isDateType = isDateAndDateTime && this.converter === 'date';
 
-        if (isJSONType) {
-          value = new Date(value).toJSON();
+        // 低代码可用type： date、 time、 datetime、 year-month(即将废弃)
+        const isDateType = ['date', 'datetime'].includes(this.type);
+        const useConverter = isDateType && ['json', 'timestamp', 'date'].includes(this.converter);
+
+        if (useConverter) {
+          if (this.converter === 'json') {
+            value = new Date(value).toJSON();
+          }
+          if (this.converter === 'timestamp') {
+            value = +new Date(value);
+          }
+          if (this.converter === 'date') {
+            value = new Date(value);
+          }
+        } else {
+          value = formatFu(this.innerValue, this.type, true);
         }
-        if (isTimestampType) {
-          value = +new Date(value);
-        } else if (isDateType) {
-          value = new Date(value);
-        }
 
-        const useConverterValue = isJSONType || isTimestampType || isDateType;
+        // const isDateAndDateTime =
+        //   this.type === 'datetime' || this.type === 'date';
 
-        this.$emit('input', value);
-        // this.$emit('update:value', this.type==="datetime" ? value.formath("yyyy/MM/dd HH:mm:ss") : value);
-        this.$emit(
-          'update:value',
-          useConverterValue ? value : formatFu(this.innerValue, this.type, true)
-        );
-        this.$emit(
-          'update:cvalue',
-          useConverterValue ? value : formatFu(this.innerValue, this.type)
-        );
-        this.$emit('confirm', value);
+        // const isJSONType = isDateAndDateTime && this.converter === 'json';
+
+        // const isTimestampType =
+        //   isDateAndDateTime && this.converter === 'timestamp';
+
+        // const isDateType = isDateAndDateTime && this.converter === 'date';
+
+        // if (isJSONType) {
+        //   value = new Date(value).toJSON();
+        // }
+
+        // if (isTimestampType) {
+        //   value = +new Date(value);
+        // } else if (isDateType) {
+        //   value = new Date(value);
+        // }
+
+        // const useConverterValue = isJSONType || isTimestampType || isDateType;
+
+        // this.$emit('input', value);
+        // this.$emit(
+        //   'update:value',
+        //   value
+        // );
+
+        // this.$emit('confirm', value);
+
+        return value;
       }
-      try {
-        this.$parent.$parent.togglePopup();
-      } catch (error) {
-        //
-      }
-    },
-
-    onCancel() {
-      this.$emit('cancel');
-      try {
-        this.$parent.$parent.togglePopup();
-      } catch (error) {}
-    },
-
-    genColumnsTop() {
-      let topCancel = this.slots('top-cancel');
-      let topConfirm = this.slots('top-confirm');
-      let titleSlot = this.slots('title');
-      if (this.inDesigner) {
-        if (!topCancel) {
-          topCancel = <EmptyCol></EmptyCol>;
-        }
-        if (!topConfirm) {
-          topConfirm = <EmptyCol></EmptyCol>;
-        }
-        if (!titleSlot) {
-          titleSlot = <EmptyCol></EmptyCol>;
-        }
-      }
-      return (
-        <template slot="columns-top">
-          <div style="display:flex; justify-content: space-between; align-items: center; position: relative;">
-            {topCancel && (
-              <div onClick={this.cancel} vusion-slot-name="top-cancel">
-                {topCancel}
-              </div>
-            )}
-            {topConfirm && (
-              <div onClick={this.confirm} vusion-slot-name="top-confirm">
-                {topConfirm}
-              </div>
-            )}
-            <div
-              style="position:absolute; top: 50%; left:50%; transform: translate(-50%,-50%);"
-              vusion-slot-name="title"
-            >
-              {titleSlot || this.title}
-            </div>
-          </div>
-        </template>
-      );
-    },
-
-    genColumnsBottom() {
-      let bottomCancel = this.slots('bottom-cancel');
-      let bottomConfirm = this.slots('bottom-confirm');
-      if (this.inDesigner) {
-        if (!bottomCancel) {
-          bottomCancel = <EmptyCol></EmptyCol>;
-        }
-        if (!bottomConfirm) {
-          bottomConfirm = <EmptyCol></EmptyCol>;
-        }
-      }
-      if (!bottomCancel && !bottomConfirm) return null;
-      return (
-        <template slot="columns-bottom">
-          <div style="display:flex; justify-content: space-between; align-items:center;">
-            {bottomCancel && (
-              <div
-                onClick={this.cancel}
-                // vusion-click-enabled
-                vusion-slot-name="bottom-cancel"
-              >
-                {bottomCancel}
-              </div>
-            )}
-            {bottomConfirm && (
-              <div
-                onClick={this.confirm}
-                // vusion-click-enabled
-                vusion-slot-name="bottom-confirm"
-              >
-                {bottomConfirm}
-              </div>
-            )}
-          </div>
-        </template>
-      );
-    },
-
-    renderForNew(props) {
-      return (
-        <Picker
-          ref="picker"
-          // columns={this.columns}
-          columnsprop={this.columns}
-          readonly={this.readonly}
-          disabled={this.disabled}
-          onChange={this.onChange}
-          onConfirm={this.onConfirm}
-          onCancel={this.onCancel}
-          {...{ props }}
-          toolbarPosition="none"
-          class="van-picker--new"
-          vusion-enable-click="true"
-        >
-          {/* {this.genColumnsTop()} */}
-          {/* {this.genColumnsBottom()} */}
-        </Picker>
-      );
     },
   },
 
@@ -250,13 +157,10 @@ export const TimePickerMixin = {
       props[key] = this[key];
     });
 
-    // if (this.isNew) {
-    //   return this.renderForNew(props);
-    // }
-
     return (
       <Picker
         ref="picker"
+        class={this.isNew ? 'van-picker--new' : ''}
         vusion-enable-click="true"
         toolbarPosition="none"
         // columns={this.columns}
@@ -264,9 +168,8 @@ export const TimePickerMixin = {
         readonly={this.readonly}
         disabled={this.disabled}
         scopedSlots={this.$scopedSlots}
+
         onChange={this.onChange}
-        onConfirm={this.onConfirm}
-        onCancel={this.onCancel}
         {...{ props }}
       />
     );

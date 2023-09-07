@@ -18,7 +18,7 @@ export const SlotsMixin = {
       // 开发态
       if (process.env.NODE_ENV !== 'production') {
         const searchParams = new URLSearchParams(window.location.search);
-        return searchParams.get('VUE_APP_DESIGNER');
+        return searchParams.get('VUE_APP_DESIGNER') === 1;
       }
 
       return this.$env && this.$env.VUE_APP_DESIGNER;
