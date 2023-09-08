@@ -23,7 +23,16 @@
       sync: true
       model: true
       description: 当前选择的值
+    - name: icon
+      title: 单选项图标
+      clearable: true
+      type: icon
+      default: sure
+      description: ''
       group: 数据属性
+      brifeDoc: ''
+      docDescription: 增加自定义图标显示
+      tooltipLink: ''
     - name: disabled
       title: 禁用
       type: boolean
@@ -54,12 +63,6 @@
       dependency:
         - direction: horizontal
       group: 主要属性
-    - name: has-icon
-      title: 使用图标
-      type: boolean
-      default: true
-      description: 是否使用图标
-      group: 数据属性
   slots:
     - concept: Slot
       name: default
@@ -120,16 +123,10 @@
           title: 左
       default: right
       description: 文本位置
-    - name: has-icon
-      title: 使用图标
-      type: boolean
-      default: true
-      description: 是否使用图标
-      group: 数据属性
     - name: icon
       title: 单选项图标
+      clearable: true
       type: icon
-      default: 'success'
       description: ''
       group: 数据属性
       brifeDoc: ''
