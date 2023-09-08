@@ -86,8 +86,13 @@
     - name: title
       title: 顶部栏标题
       type: string
-      default: ""
+      default: ''
       description: 左侧文本插槽内容存在时优先展示插槽内容
+    - name: isNew
+      title: 是否使用新版外观
+      type: boolean
+      default: false
+      description: 是否使用新版外观
     - name: readonly
       title: 只读
       type: boolean
@@ -127,3 +132,16 @@
       description: 打开
     - name: close
       description: 关闭
+
+- name: van-datetime-picker-action-slot
+  title: 时间选择事件插槽
+  is-sub: true
+  attrs:
+    - name: target-method
+      title: 触发的事件名称
+      type: string
+      options:
+        - value: confirm
+          title: 确认
+        - value: cancel
+          title: 取消
