@@ -9,14 +9,8 @@ export default createComponent({
   mixins: [ParentMixin('vanRadio'), FieldMixin],
 
   props: {
-    icon: {
-      type: String,
-      default: 'success',
-    },
-    hasIcon: {
-      type: Boolean,
-      default: true,
-    },
+    isNew: Boolean,
+    icon: String,
     dataSource: [Array, Object, Function, String],
     value: null,
     disabled: Boolean,
@@ -52,6 +46,9 @@ export default createComponent({
   computed: {
     inDesigner() {
       return this.$env && this.$env.VUE_APP_DESIGNER;
+    },
+    currentIcon() {
+      return this.icon || (this.isNew ? undefined : 'sure');
     },
   },
   methods: {

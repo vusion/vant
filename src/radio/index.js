@@ -1,5 +1,6 @@
 import { createNamespace, addUnit } from '../utils';
 import { CheckboxMixin } from '../mixins/checkbox';
+import Iconv from '../iconv';
 
 const [createComponent, bem] = createNamespace('radio');
 
@@ -13,23 +14,15 @@ export default createComponent({
   ],
 
   props: {
-    icon: {
-      type: String,
-      default: 'success',
-    },
-    hasIcon: {
-      type: Boolean,
-      default: false,
-    },
+    icon: String,
   },
 
   computed: {
     currentHasIcon() {
-      if (this.hasIcon === true) return this.hasIcon;
-      return this.parent.hasIcon;
+      return !!this.currentIcon;
     },
     currentIcon() {
-      return this.icon || this.parent.icon;
+      return this.icon || this.parent.currentIcon;
     },
     currentValue: {
       get() {
@@ -59,26 +52,29 @@ export default createComponent({
     toggle() {
       this.currentValue = this.name;
     },
-  },
+    genIcon() {
+      const { checked } = this;
+      const iconSize = this.iconSize || (this.parent && this.parent.iconSize);
 
-  genIcon() {
-    const { checked } = this;
-    const iconSize = this.iconSize || (this.parent && this.parent.iconSize);
-
-    return (
-      <div
-        ref="icon"
-        class={bem('icon', [
-          this.shape,
-          { disabled: this.isDisabled, checked },
-        ])}
-        style={{ fontSize: addUnit(iconSize) }}
-      >
-        {this.slots('icon', { checked }) || (
-          <Icon name={this.currentIcon} style={this.iconStyle} />
-        )}
-      </div>
-    );
+      return (
+        <div
+          ref="icon"
+          class={bem('icon', [
+            this.shape,
+            { disabled: this.isDisabled, checked },
+          ])}
+          style={{ fontSize: addUnit(iconSize) }}
+        >
+          {this.slots('icon', { checked }) || (
+            <Iconv
+              icotype="only"
+              name={this.currentIcon}
+              style={this.iconStyle}
+            />
+          )}
+        </div>
+      );
+    },
   },
 
   render() {
