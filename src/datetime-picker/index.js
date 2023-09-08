@@ -240,7 +240,7 @@ export default createComponent({
 
       if (this.range) {
         return (
-          <Tabs line-width="150px">
+          <Tabs line-width="150px" lazyRender={false}>
             <Tab title="开始">
               <Component
                 ref="start"
