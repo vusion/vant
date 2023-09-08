@@ -47,6 +47,7 @@
       type: number
       default: 3
       description: 显示列数，3-省市区，2-省市，1-省
+      advanced: true
     - name: input-align
       title: 右侧内容对齐方式
       type: string
