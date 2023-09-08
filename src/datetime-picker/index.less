@@ -1,6 +1,32 @@
 @import '../style/var';
 
 .van-datetime-picker {
+
+  &__content-wrapper{
+    padding: 12px;
+  }
+  &__designer-close-button{
+    &::before{
+      margin: 0 4px;
+      content: '✕';
+    }
+
+    position: absolute;
+    top:0;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 4px;
+    color: white;
+    font-size: 12px;
+    line-height: 24px;
+    background: #4E75EC;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    transform: translateY(-100%);
+  }
+
+
   &__wrapppdtpicker {
     width: 100%;
   }
@@ -42,8 +68,4 @@
     }
 }
 
-.van-picker{
-  &&--new{
-    padding: 12px;
-  }
-}
+
