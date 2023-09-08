@@ -132,3 +132,16 @@
       description: 打开
     - name: close
       description: 关闭
+
+- name: van-datetime-picker-action-slot
+  title: 时间选择事件插槽
+  is-sub: true
+  attrs:
+    - name: target-method
+      title: 触发的事件名称
+      type: string
+      options:
+        - value: confirm
+          title: 确认
+        - value: cancel
+          title: 取消

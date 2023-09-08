@@ -100,7 +100,8 @@ export const TimePickerMixin = {
 
         // 低代码可用type： date、 time、 datetime、 year-month(即将废弃)
         const isDateType = ['date', 'datetime'].includes(this.type);
-        const useConverter = isDateType && ['json', 'timestamp', 'date'].includes(this.converter);
+        const useConverter =
+          isDateType && ['json', 'timestamp', 'date'].includes(this.converter);
 
         if (useConverter) {
           if (this.converter === 'json') {
@@ -168,7 +169,6 @@ export const TimePickerMixin = {
         readonly={this.readonly}
         disabled={this.disabled}
         scopedSlots={this.$scopedSlots}
-
         onChange={this.onChange}
         {...{ props }}
       />

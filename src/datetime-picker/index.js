@@ -13,6 +13,17 @@ const [createComponent, bem, t] = createNamespace('datetime-picker');
 
 export default createComponent({
   mixins: [FieldMixin],
+  provide() {
+    const execEventSlotCommand = (methodName, ...args) => {
+      const fn = this[methodName];
+      if (fn && typeof fn === 'function') {
+        return this[methodName](...args);
+      }
+    };
+    return {
+      execEventSlotCommand,
+    };
+  },
 
   props: {
     ...TimePicker.props,
@@ -27,6 +38,10 @@ export default createComponent({
     range: Boolean,
     startValue: String,
     endValue: String,
+    isNew: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -39,6 +54,8 @@ export default createComponent({
       // 临时值，用于记录区间change时的变化值
       tempStartValue: this.startValue,
       tempEndValue: this.endValue,
+
+      // inDesigner: this.$env && this.$env.VUE_APP_DESIGNER,
     };
   },
   watch: {
@@ -66,6 +83,9 @@ export default createComponent({
     },
   },
   methods: {
+    designerDbControl() {
+      this.$refs.popup.togglePModal();
+    },
     getTitle() {
       if (this?.$env?.VUE_APP_DESIGNER) {
         return this.range
@@ -105,7 +125,7 @@ export default createComponent({
           );
         }
 
-        return (startTitle || endTitle) ? `${startTitle} - ${endTitle}` : '';
+        return startTitle || endTitle ? `${startTitle} - ${endTitle}` : '';
       }
 
       // not range
@@ -121,12 +141,12 @@ export default createComponent({
     },
     togglePopup() {
       this.popupVisible = !this.popupVisible;
-      // this.$refs.popup.toggle()
+      // this.$refs.popup.toggle();
     },
     // @exposed-api
     open() {
       this.popupVisible = true;
-      // this.$refs.popup.open();
+      this.$refs.popup.open();
     },
     // @exposed-api
     close() {
@@ -138,14 +158,14 @@ export default createComponent({
       return this.$refs.root.getPicker();
     },
     onConfirm(value) {
-      this.$emit('comfirm', value);
+      this.$emit('confirm', value);
     },
     confirm() {
       if (this.range) {
         // date、datetime
         const { start, end } = this.$refs;
-        const startValue = start.onConfirm()
-        const endValue = end.onConfirm()
+        const startValue = start.onConfirm();
+        const endValue = end.onConfirm();
 
         this.currentStartValue = startValue;
         this.currentEndValue = endValue;
@@ -171,29 +191,29 @@ export default createComponent({
     },
     genToolBar() {
       if (this.isNew) {
-        let topCancel = this.slots('top-cancel');
-        let topConfirm = this.slots('top-confirm');
-        let titleSlot = this.slots('title');
-        if (this.inDesigner) {
-          if (!topCancel) {
-            topCancel = <EmptyCol></EmptyCol>;
-          }
-          if (!topConfirm) {
-            topConfirm = <EmptyCol></EmptyCol>;
+        let topSlot = this.slots('top');
+        let titleSlot = this.slots('pannel-title');
+        if (this.inDesigner()) {
+          if (!topSlot) {
+            topSlot = <EmptyCol></EmptyCol>;
           }
           if (!titleSlot) {
             titleSlot = <EmptyCol></EmptyCol>;
           }
         }
         return (
-          <div style="display:flex; justify-content: space-between; align-items: center; position: relative;">
-            {topCancel && <div vusion-slot-name="top-cancel">{topCancel}</div>}
-            {topConfirm && (
-              <div vusion-slot-name="top-confirm">{topConfirm}</div>
+          <div style=" position: relative; width:100%;">
+            {topSlot && (
+              <div
+                vusion-slot-name="top"
+                style="display:flex; justify-content: space-between; align-items: center;"
+              >
+                {topSlot}
+              </div>
             )}
             <div
               style="position:absolute; top: 50%; left:50%; transform: translate(-50%,-50%);"
-              vusion-slot-name="title"
+              vusion-slot-name="pannel-title"
             >
               {titleSlot || this.title}
             </div>
@@ -282,37 +302,21 @@ export default createComponent({
     renderBottom() {
       if (!this.isNew) return null;
 
-      let bottomCancel = this.slots('bottom-cancel');
-      let bottomConfirm = this.slots('bottom-confirm');
-      if (this.inDesigner) {
-        if (!bottomCancel) {
-          bottomCancel = <EmptyCol></EmptyCol>;
-        }
-        if (!bottomConfirm) {
-          bottomConfirm = <EmptyCol></EmptyCol>;
+      let bottomSlot = this.slots('bottom');
+      if (this.inDesigner()) {
+        if (!bottomSlot) {
+          bottomSlot = <EmptyCol></EmptyCol>;
         }
       }
 
-      if (!bottomCancel && !bottomConfirm) return null;
+      if (!bottomSlot) return null;
 
       return (
-        <div style="display:flex; justify-content: space-between; align-items:center;">
-          {bottomCancel && (
-            <div
-              // vusion-click-enabled
-              vusion-slot-name="bottom-cancel"
-            >
-              {bottomCancel}
-            </div>
-          )}
-          {bottomConfirm && (
-            <div
-              // vusion-click-enabled
-              vusion-slot-name="bottom-confirm"
-            >
-              {bottomConfirm}
-            </div>
-          )}
+        <div
+          style="display:flex; justify-content: space-between; align-items:center;"
+          vusion-slot-name="bottom"
+        >
+          {bottomSlot}
         </div>
       );
     },
@@ -322,24 +326,23 @@ export default createComponent({
     const tempSlot = {
       title: () => this.slots('title'),
     };
+
     return (
-      <div
-        class={bem('wrapppdtpicker')}
-        vusion-click-enabled
-        onClick={this.open}
-      >
+      <div class={bem('wrapppdtpicker')}>
         <Field
           label={this.labelField}
           value={this.getTitle()}
           scopedSlots={tempSlot}
           readonly
           isLink
+          onClick={this.open}
           input-align={this.inputAlign || 'right'}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           insel={true}
           nofi={true}
         />
+
         <Popup
           ref="popup"
           get-container="body" // 放body下不易出现异常情况
@@ -354,11 +357,25 @@ export default createComponent({
           class={bem('popup')}
           position={'bottom'}
           closeOnClickOverlay={this.closeOnClickOverlay}
+          {...{
+            attrs: this.$attrs,
+          }}
           // onClickOverlay={this.togglePopup}
         >
-          {this.genToolBar()}
-          {this.renderContent()}
-          {this.renderBottom()}
+          <div class={bem(this.isNew && 'content-wrapper')}>
+            {this.inDesigner() && (
+              <div
+                class={bem('designer-close-button')}
+                vusion-click-enabled="true"
+                onClick={this.designerDbControl}
+              >
+                点击关闭
+              </div>
+            )}
+            {this.genToolBar()}
+            {this.renderContent()}
+            {this.renderBottom()}
+          </div>
         </Popup>
       </div>
     );
