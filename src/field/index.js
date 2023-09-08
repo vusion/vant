@@ -56,6 +56,11 @@ export default createComponent({
       type: Boolean,
       default: null,
     },
+    labelLayout: {
+      type: String,
+      default: 'inline',
+      validator: (value) => ['inline','block'].includes(value),
+    },
     autosize: [Boolean, Object],
     leftIcon: String,
     rightIcon: String,
@@ -168,6 +173,12 @@ export default createComponent({
     }
   },
   computed: {
+    currentLabelLayout() {
+      return (
+          this.labelLayout
+          || (this.vanForm && this.vanForm.labelLayout)
+      );
+    },
     currentRules() {
       // return (this.rules || (this.rootVM && this.rootVM.rules && this.rootVM.rules[this.name]));
       return this.rules;
@@ -848,6 +859,7 @@ export default createComponent({
         notitleblock={this.notitleblock}
         novalue={this.novalue}
         insel={this.insel}
+        label-layout={this.currentLabelLayout}
       >
         <div class={bem('body')}>
           {this.genInput()}
