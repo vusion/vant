@@ -6,7 +6,14 @@
     <van-text text="顶部标题"></van-text>
   </template>
   <template #pannel-title>
-    <van-text text="顶部标题"></van-text>
+    <van-datetime-picker-action-slot
+      :vusion-disabled-cut="true"
+      :vusion-disabled-move="true"
+      :vusion-disabled-drag="true"
+      target-method="cancel"
+    >
+      <van-text text="顶部标题"></van-text>
+    </van-datetime-picker-action-slot>
   </template>
   <template #top>
     <van-datetime-picker-action-slot

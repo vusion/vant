@@ -206,7 +206,7 @@ export default createComponent({
             {topSlot && (
               <div
                 vusion-slot-name="top"
-                style="display:flex; justify-content: space-between; align-items: center;"
+                style="display:flex; justify-content: space-between; align-items: center; min-height:32px;"
               >
                 {topSlot}
               </div>
