@@ -1,9 +1,10 @@
 <template>
   <demo-section>
-    <div>stepper122222: {{ JSON.stringify(stepper122222) }}</div>
+    <div>value: {{ value }}</div>
     <van-cell center :title="t('basicUsage')">
-      <van-stepper-new :value.sync="stepper122222" />
+      <van-stepper-new :value.sync="value" />
     </van-cell>
+
     <van-cell center :title="t('basicUsage')">
       <van-stepper-new v-model="stepper1" />
     </van-cell>
@@ -78,7 +79,7 @@ export default {
 
   data() {
     return {
-      stepper122222: '',
+      value: null,
       stepper1: 1,
       stepper2: 1,
       stepper3: 1,

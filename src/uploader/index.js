@@ -31,7 +31,7 @@ export default createComponent({
     autoUpload: { type: Boolean, default: true },
     withCredentials: { type: Boolean, default: false },
     data: Object,
-    urlField: { type: String, default: 'result' },
+    urlField: { type: String, default: 'filePath' },
     disabled: Boolean,
     readonly: Boolean,
     lazyLoad: Boolean,
@@ -112,6 +112,14 @@ export default createComponent({
       type: Number,
       default: null,
     },
+    lcapIsCompress: {
+      type: Boolean,
+      default: false,
+    },
+    viaOriginURL: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {
@@ -325,6 +333,7 @@ export default createComponent({
             if (item.file) {
               if (isOversize(item.file, this.maxSize)) {
                 oversizeFiles.push(item);
+                Toast(`文件${item.file.name}超出大小${this.maxSize}MB！`);
               } else {
                 validFiles.push(item);
               }
@@ -332,6 +341,7 @@ export default createComponent({
           });
         } else {
           validFiles = null;
+          Toast(`文件${files.file.name}超出大小${this.maxSize}MB！`);
         }
         this.$emit('oversize', oversizeFiles, this.getDetail());
       }
@@ -493,10 +503,21 @@ export default createComponent({
       const previewSize = item.previewSize ?? this.previewSize;
       const imageFit = item.imageFit ?? this.imageFit;
 
-      const Preview = isImageFile(item) ? (
+      const getUrl = (item) => {  
+        let imgUrl = '';
+        if (typeof item === 'object' && item !== null) {
+          if (`${item?.url}` != 'undefined') {
+            imgUrl = item.url
+          }
+        } else {
+          imgUrl = item ? item : ''
+        }
+        return imgUrl
+      }
+      const Preview = isImageFile(item) && getUrl(item.content || item.url || item) ? (
         <Image
           fit={imageFit}
-          src={item.content || item.url || item}
+          src={getUrl(item.content || item.url || item)}
           class={bem('preview-image')}
           width={previewSize}
           height={previewSize}
@@ -619,14 +640,21 @@ export default createComponent({
 
       if (window.appInfo && window.appInfo.domainName)
         headers.DomainName = window.appInfo.domainName;
-
-      const xhr = ajax({
+      const formData = {
+        ...this.data,
+        lcapIsCompress: this.lcapIsCompress,
+        viaOriginURL: this.viaOriginURL,
+      };
+      const requestData = {
         url: this.url,
         headers,
         withCredentials: this.withCredentials,
         file,
-        data: this.data,
+        data: formData,
         name: 'file',
+      };
+      const xhr = ajax({
+        ...requestData,
         onStart: () => {
           this.$emit('start');
         },

@@ -143,7 +143,12 @@ export default createComponent({
       const provincet = this.getListTempNew('province', tcode.slice(0, 2) + '0000');
       const cityt = this.getListTempNew('city', tcode.slice(0, 4) + '00');
       const countyt = this.getListTempNew('county', tcode.slice(0, 6));
-      this.getTitle = `${provincet}/${cityt}/${countyt}`;
+
+      this.getTitle = [
+        provincet,
+        cityt,
+        countyt,
+      ].filter(item => !!item).join('/');
     },
     togglePopup() {
       this.valuepopup = !this.valuepopup;
@@ -259,10 +264,10 @@ export default createComponent({
       this.setValues();
       // 有 name 转换器的时候这里需要重置一下 code
       if (!this.value || this.converter === 'name') {
-        this.code = values[2].code;
+        this.code = values[this.columnsNum - 1].code;
       }
       // 最后一位选择的值
-      const lastValue = this.convertCode(values[2].code);
+      const lastValue = this.convertCode(values[this.columnsNum - 1].code);
       this.$emit('update:value', lastValue);
       this.$emit('confirm', values, index, lastValue);
       this.togglePopup();

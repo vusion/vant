@@ -45,6 +45,7 @@ export const popupMixinProps = {
 };
 
 export function PopupMixin(options = {}) {
+  const independInDesigner = options?.independInDesigner || false;
   return {
     mixins: [
       TouchMixin,
@@ -68,9 +69,15 @@ export function PopupMixin(options = {}) {
 
     data() {
       this.onReopenCallback = [];
+      if (!independInDesigner) {
+        return {
+          inited: this.value,
+          realValue: this.value,
+        };
+      }
       return {
-        inited: this.value,
-        realValue: this.value,
+        inited: !this.$env?.VUE_APP_DESIGNER ? this.value : false,
+        realValue: !this.$env?.VUE_APP_DESIGNER ? this.value : false,
       };
     },
 
@@ -82,7 +89,10 @@ export function PopupMixin(options = {}) {
 
     watch: {
       value(val) {
-        this.realValue = val;
+        if (!independInDesigner || !this.$env?.VUE_APP_DESIGNER) {
+          // 在编辑页面不使用value来控制状态
+          this.realValue = val;
+        }
         // const type = val ? 'open' : 'close';
         // this.inited = this.inited || this.value;
         // this.realValue = this.value;
@@ -110,15 +120,16 @@ export function PopupMixin(options = {}) {
           if (!options.skipToggleEvent) {
             this.$emit('close');
           }
-        }
-        catch (e) {
-
-        }
+        } catch (e) {}
       },
     },
 
     mounted() {
-      if (this.value) {
+      let openFlag = this.value;
+      if (independInDesigner && this.$env?.VUE_APP_DESIGNER) {
+        openFlag = false;
+      }
+      if (openFlag) {
         this.open();
       }
     },

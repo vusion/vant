@@ -16,6 +16,11 @@ export const sharedProps = {
     type: Function,
     default: (type, value) => value,
   },
+  displayFormat: String,
+  isNew: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 export const TimePickerMixin = {
@@ -79,53 +84,71 @@ export const TimePickerMixin = {
       return this.$refs.picker;
     },
 
+    cancel() {
+      // readme: cancel->ref.cancel->oncancel
+      this.$refs.picker.cancel();
+    },
+    confirm() {
+      this.$refs.picker.confirm();
+    },
+
     onConfirm() {
       if (this.readonly || this.disabled) {
         //
       } else {
         let value = this.innerValue;
-        const isDateAndDateTime =
-          this.type === 'datetime' || this.type === 'date';
-        const isJSONType = isDateAndDateTime && this.converter === 'json';
-        const isTimestampType =
-          isDateAndDateTime && this.converter === 'timestamp';
-        const isDateType = isDateAndDateTime && this.converter === 'date';
 
-        if (isJSONType) {
-          value = new Date(value).toJSON();
+        // 低代码可用type： date、 time、 datetime、 year-month(即将废弃)
+        const isDateType = ['date', 'datetime'].includes(this.type);
+        const useConverter =
+          isDateType && ['json', 'timestamp', 'date'].includes(this.converter);
+
+        if (useConverter) {
+          if (this.converter === 'json') {
+            value = new Date(value).toJSON();
+          }
+          if (this.converter === 'timestamp') {
+            value = +new Date(value);
+          }
+          if (this.converter === 'date') {
+            value = new Date(value);
+          }
+        } else {
+          value = formatFu(this.innerValue, this.type, true);
         }
-        if (isTimestampType) {
-          value = +new Date(value);
-        } else if (isDateType) {
-          value = new Date(value);
-        }
 
-        const useConverterValue = isJSONType || isTimestampType || isDateType;
+        // const isDateAndDateTime =
+        //   this.type === 'datetime' || this.type === 'date';
 
-        this.$emit('input', value);
-        // this.$emit('update:value', this.type==="datetime" ? value.formath("yyyy/MM/dd HH:mm:ss") : value);
-        this.$emit(
-          'update:value',
-          useConverterValue ? value : formatFu(this.innerValue, this.type, true)
-        );
-        this.$emit(
-          'update:cvalue',
-          useConverterValue ? value : formatFu(this.innerValue, this.type)
-        );
-        this.$emit('confirm', value);
+        // const isJSONType = isDateAndDateTime && this.converter === 'json';
+
+        // const isTimestampType =
+        //   isDateAndDateTime && this.converter === 'timestamp';
+
+        // const isDateType = isDateAndDateTime && this.converter === 'date';
+
+        // if (isJSONType) {
+        //   value = new Date(value).toJSON();
+        // }
+
+        // if (isTimestampType) {
+        //   value = +new Date(value);
+        // } else if (isDateType) {
+        //   value = new Date(value);
+        // }
+
+        // const useConverterValue = isJSONType || isTimestampType || isDateType;
+
+        // this.$emit('input', value);
+        // this.$emit(
+        //   'update:value',
+        //   value
+        // );
+
+        // this.$emit('confirm', value);
+
+        return value;
       }
-      try {
-        this.$parent.$parent.togglePopup();
-      } catch (error) {
-        //
-      }
-    },
-
-    onCancel() {
-      this.$emit('cancel');
-      try {
-        this.$parent.$parent.togglePopup();
-      } catch (error) {}
     },
   },
 
@@ -138,14 +161,15 @@ export const TimePickerMixin = {
     return (
       <Picker
         ref="picker"
+        class={this.isNew ? 'van-picker--new' : ''}
+        vusion-enable-click="true"
+        toolbarPosition="none"
         // columns={this.columns}
         columnsprop={this.columns}
         readonly={this.readonly}
         disabled={this.disabled}
         scopedSlots={this.$scopedSlots}
         onChange={this.onChange}
-        onConfirm={this.onConfirm}
-        onCancel={this.onCancel}
         {...{ props }}
       />
     );

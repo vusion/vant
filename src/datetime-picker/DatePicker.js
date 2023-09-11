@@ -1,7 +1,11 @@
 import { createNamespace } from '../utils';
 import { isDate } from '../utils/validate/date';
 import { padZero } from '../utils/format/string';
-import { getTrueValue, getMonthEndDay, transErrorDate } from './utils';
+import {
+  getTrueValue,
+  getMonthEndDay,
+  transErrorDate,
+} from './utils';
 import { sharedProps, TimePickerMixin } from './shared';
 
 const currentYear = new Date().getFullYear();
@@ -140,11 +144,7 @@ export default createComponent({
 
   methods: {
     formatValue(value) {
-      // if (!isDate(value)) {
-      //   return null;
-      // }
-      if (isDate(value)) {
-      } else {
+      if (!isDate(value)) {
         try {
           if (!value || value === '') {
             value = new Date();
@@ -153,6 +153,8 @@ export default createComponent({
           }
         } catch (e) {
           console.warn(e, 'error date');
+          // 可能是2020/08这种格式，低版本iOS不兼容
+          value = new Date(value.replace('/', '-'));
         }
       }
 
@@ -298,6 +300,8 @@ export default createComponent({
 
       const value = new Date(year, month - 1, day, hour, minute);
       this.innerValue = this.formatValue(value);
+
+      return this.innerValue;
     },
 
     onChange(picker) {
@@ -306,8 +310,8 @@ export default createComponent({
       this.$nextTick(() => {
         this.$nextTick(() => {
           // https://github.com/youzan/vant/issues/9775
-          this.updateInnerValue();
-          this.$emit('change', picker);
+          const value = this.updateInnerValue();
+          this.$emit('change', picker, value);
         });
       });
     },

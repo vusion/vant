@@ -146,7 +146,7 @@ export default createComponent({
     //   }
     // },
     value: {
-      handler: function (val, oldVal) {
+      handler (val, oldVal) {
         if (!equal(val, this.currentValue)) {
           this.currentValue = this.format(val);
         }
@@ -178,7 +178,7 @@ export default createComponent({
     },
 
     format(value) {
-      if (this.allowEmpty && (value === '' || value === undefined)) {
+      if (this.allowEmpty && ['', null, undefined].indexOf(value) !== -1) {
         return value;
       }
 

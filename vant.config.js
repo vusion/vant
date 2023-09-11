@@ -105,6 +105,10 @@ module.exports = {
             title: '基础组件',
             items: [
               {
+                path: 'linear-layout',
+                title: 'Linear-Layout 线性布局'
+              },
+              {
                 path: 'button',
                 title: 'Button 按钮',
               },

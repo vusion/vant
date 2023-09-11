@@ -1,7 +1,5 @@
 <template>
-<span :class="$style.root" v-on="$listeners"  v-bind="$attrs" vusion-slot-name-edit="text">
-    {{ text }}
-</span>
+<span :class="$style.root" v-on="$listeners"  v-bind="$attrs" vusion-slot-name-edit="text">{{ text }}</span>
 </template>
 
 <script>
@@ -18,7 +16,8 @@ export default {
 <style module>
 .root {
   /* color: var(--component-text-color); */
-  font-size: var(--van-text-font-size);
+    font-size: var(--van-text-font-size);
+    white-space: pre-wrap;
 }
 
 .root[size="small"] {

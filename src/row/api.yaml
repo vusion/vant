@@ -53,7 +53,7 @@
       default: start
       dependency:
         - type: flex
-    - name: align
+    - name: alignment
       title: 纵轴对齐
       type: string
       display: capsules
@@ -130,7 +130,7 @@
       default: inline
       toggleclear:
         - justify
-        - align
+        - alignment
         - wrap
         - gap
     - name: direction
@@ -150,7 +150,7 @@
       default: horizontal
       toggleclear:
         - justify
-        - align
+        - alignment
       dependency:
         - mode: flex
     - name: justify
@@ -190,7 +190,7 @@
         - value: space-around
           updateData:
             gap: normal
-    - name: align
+    - name: alignment
       title: 纵轴对齐
       type: string
       display: capsules
@@ -220,7 +220,7 @@
       dependency:
         - mode: flex
           direction: horizontal
-    - name: align
+    - name: alignment
       title: 横轴对齐
       type: string
       display: capsules

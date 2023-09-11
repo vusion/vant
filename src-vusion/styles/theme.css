@@ -423,6 +423,8 @@
   --van-picker-option-disabled-opacity: 0.3;
   --van-picker-loading-icon-color: var(--van-brand-primary); /* @type color */
   --van-picker-loading-mask-color: rgba(255, 255, 255, 0.9);
+  --van-picker-list-item-background-color: transparent; /* @type color */ /* @desc 选项未选中背景色 */
+  --van-picker-list-item-selected-background-color: transparent; /* @type color */ /* @desc 选项选中背景色 */
 
   /* @component van-popup */
   --van-popup-background-color: #fff; /* @type color */ /* @desc 背景色 */
@@ -436,16 +438,26 @@
 
   /* @component van-radio */
   --van-radio-size: 20px; /* @desc 单选项字体大小 */ /* @prefix van-radio */
-  --van-radio-border-color: #c8c9cc; /* @type color */ /* @desc 单选项边框颜色 */ /* @prefix van-radio */
   --van-radio-transition-duration: 0.2s; /* @hidden */
   --van-radio-label-margin: var(--van-padding-xs); /* @desc 单选项label外边距 */ /* @prefix van-radio */
-  --van-radio-label-color: var(--van-component-text-color); /* @type color */ /* @desc 单选项label字体大小 */ /* @prefix van-radio */
-  --van-radio-checked-icon-color: var(--van-brand-primary); /* @type color */ /* @desc 单选项选中颜色 */ /* @prefix van-radio */
+  --van-radio-checked-icon-color: var(--van-brand-primary); /* @type color */ /* @desc 单选项选中图标颜色 */ /* @prefix van-radio */
+  --van-radio-checked-icon-label-color: white; /* @type color */ /* @desc 单选项选中图标文字颜色 */ /* @prefix van-radio */
   --van-radio-disabled-icon-color: #c8c9cc; /* @type color */ /* @desc 单选项禁用边框颜色 */ /* @prefix van-radio */
+  --van-radio-disabled-icon-label-color: #c8c9cc; /* @type color */ /* @desc 单选项禁用图标文字颜色 */ /* @prefix van-radio */
   --van-radio-disabled-label-color: #c8c9cc; /* @type color */ /* @desc 单选项禁用字体颜色 */ /* @prefix van-radio */
   --van-radio-disabled-background-color: var(
     --van-border-color
   ); /* @type color */ /* @desc 单选项禁用背景色 */ /* @prefix van-radio */
+  --van-radio-border-radius: 999999px; /* @desc 圆角大小 */ /* @prefix van-radio */
+  --van-radio-border-width: 0; /* @desc 边框宽度 */ /* @prefix van-radio */
+  --van-radio-icon-border-width: 1px; /* @desc 图标边框宽度 */ /* @prefix van-radio */
+  --van-radio-border-color: transparent; /* @type color */ /* @desc 单选项未选中边框颜色 */ /* @prefix van-radio */
+  --van-radio-checked-border-color: transparent; /* @type color */ /* @desc 单选项选中边框颜色 */ /* @prefix van-radio */
+  --van-radio-background-color: transparent;/* @type color */ /* @desc 单选项未选中背景颜色 */ /* @prefix van-radio */
+  --van-radio-checked-background-color: transparent;/* @type color */ /* @desc 单选项选中背景颜色 */ /* @prefix van-radio */
+  --van-radio-label-color: var(--van-component-text-color);/* @type color */ /* @desc 单选项未选中文字颜色 */ /* @prefix van-radio */
+  --van-radio-checked-label-color: var(--van-component-text-color);/* @type color */ /* @desc 单选项选中文字颜色 */ /* @prefix van-radio */
+  --van-radio-padding: 0; /* @type color */ /* @desc 单选项内边距 */ /* @prefix van-radio */
 
   /* @component van-search */
   --van-search-padding: 10px var(--van-padding-sm); /* @hidden */
