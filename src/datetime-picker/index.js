@@ -191,7 +191,7 @@ export default createComponent({
     },
     genToolBar() {
       if (this.isNew) {
-        let topSlot = this.slots('top');
+        let topSlot = this.slots('picker-top');
         let titleSlot = this.slots('pannel-title');
         if (this.inDesigner()) {
           if (!topSlot) {
@@ -205,7 +205,7 @@ export default createComponent({
           <div style=" position: relative; width:100%;">
             {topSlot && (
               <div
-                vusion-slot-name="top"
+                vusion-slot-name="picker-top"
                 style="display:flex; justify-content: space-between; align-items: center; min-height:32px;"
               >
                 {topSlot}
@@ -302,7 +302,7 @@ export default createComponent({
     renderBottom() {
       if (!this.isNew) return null;
 
-      let bottomSlot = this.slots('bottom');
+      let bottomSlot = this.slots('picker-bottom');
       if (this.inDesigner()) {
         if (!bottomSlot) {
           bottomSlot = <EmptyCol></EmptyCol>;
@@ -314,7 +314,7 @@ export default createComponent({
       return (
         <div
           style="display:flex; justify-content: space-between; align-items:center;"
-          vusion-slot-name="bottom"
+          vusion-slot-name="picker-bottom"
         >
           {bottomSlot}
         </div>
@@ -357,6 +357,7 @@ export default createComponent({
           class={bem('popup')}
           position={'bottom'}
           closeOnClickOverlay={this.closeOnClickOverlay}
+          vusion-scope-id={this?.$vnode?.context?.$options?._scopeId}
           {...{
             attrs: this.$attrs,
           }}
