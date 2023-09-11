@@ -6,37 +6,24 @@
     <van-text text="顶部标题"></van-text>
   </template>
   <template #pannel-title>
-    <van-datetime-picker-action-slot
-      :vusion-disabled-cut="true"
-      :vusion-disabled-move="true"
-      :vusion-disabled-drag="true"
-      target-method="cancel"
-    >
-      <van-text text="顶部标题"></van-text>
-    </van-datetime-picker-action-slot>
+    <van-text text="顶部标题"></van-text>
   </template>
-  <template #top>
+  <template #picker-top>
     <van-datetime-picker-action-slot
       :vusion-disabled-cut="true"
-      :vusion-disabled-move="true"
-      :vusion-disabled-drag="true"
       target-method="cancel"
     >
       <van-iconv name="left-arrow" icotype="only"> </van-iconv>
     </van-datetime-picker-action-slot>
     <van-datetime-picker-action-slot
       :vusion-disabled-cut="true"
-      :vusion-disabled-move="true"
-      :vusion-disabled-drag="true"
       target-method="confirm"
     >
     </van-datetime-picker-action-slot>
   </template>
-  <template #bottom>
+  <template #picker-bottom>
     <van-datetime-picker-action-slot
       :vusion-disabled-cut="true"
-      :vusion-disabled-move="true"
-      :vusion-disabled-drag="true"
       target-method="cancel"
     >
       <van-button
@@ -48,8 +35,6 @@
     </van-datetime-picker-action-slot>
     <van-datetime-picker-action-slot
       :vusion-disabled-cut="true"
-      :vusion-disabled-move="true"
-      :vusion-disabled-drag="true"
       target-method="confirm"
     >
       <van-button
