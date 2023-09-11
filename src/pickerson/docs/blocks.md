@@ -3,6 +3,6 @@
 ```html
 <van-pickerson
   title="标题"
-  :show-toolbar="true"
+  :show-toolbar="true" :page-size="50"
 ><template #title>标题</template></van-pickerson>
 ```
