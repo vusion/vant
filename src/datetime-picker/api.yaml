@@ -44,6 +44,17 @@
           value: date
         - name: type
           value: year-month
+    - name: range
+      title: 区间选择
+      type: boolean
+      default: false
+      description: 是否支持区间选择
+    - name: start-value
+      title: 起始值
+      type: string,number,Date
+    - name: end-value
+      title: 结束值
+      type: string,number,Date
     - name: value
       title: 值
       type: string,number,Date
