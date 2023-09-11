@@ -15,6 +15,10 @@
       type: schema
       description: 集合类型每一元素的数据类型
       compType: dataTypeSelect
+    - name: name
+      title: 值字段
+      type: string
+      description: 用于标识选中值的字段
     - name: value
       title: 值
       type: any
@@ -117,10 +121,6 @@
       type: string
       description: 文本
       advanced: true
-    - name: name
-      title: 选中的值
-      type: string
-      description: 选中的值
     - name: value
       title: 是否选中
       type: boolean

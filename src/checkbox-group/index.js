@@ -19,7 +19,8 @@ export default createComponent({
     min: {
       type: Number,
       default: 0,
-    },
+    }, 
+    name: null,
     disabled: Boolean,
     direction: String,
     iconSize: [Number, String],
