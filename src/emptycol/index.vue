@@ -8,7 +8,7 @@ export default {
 };
 </script>
 
-<style module>
+<style lang="css" module>
 .empty {
   background: #f7f8fa;
   border: 1px dashed #c3c3c3;

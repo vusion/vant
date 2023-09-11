@@ -136,22 +136,19 @@ function Button(
         linkpao();
         return;
       }
-      // @ts-ignore：没办法
-      // if (props.target !== '_self')
-      //   return;
 
       if (hrefR === undefined) {
         let to;
         if (props.destination) {
           if (props.destination.startsWith('http')) {
-            location.href = encodeUrl(props.destination);
+            window.location.href = encodeUrl(props.destination);
             return;
           }
           to = props.destination;
         }
 
         if (window.__wxjs_environment === 'miniprogram') {
-         return  window.appVue.prototype.$destination(props.destination)
+         return  window.appVue.prototype.$destination(props.destination);
         }
 
         const currentTo = to || props.to;
@@ -183,8 +180,8 @@ function Button(
         emit(ctx, 'navigate', { to: currentTo, replace: props.replace, append: props.append });
       } else {
         function downloadClick() {
-          const a = document.createElement("a");
-          a.setAttribute("href", hrefR as string);
+          const a = document.createElement('a');
+          a.setAttribute('href', hrefR as string);
           document.body.appendChild(a);
           a.click();
           setTimeout(() => {

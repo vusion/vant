@@ -1,19 +1,12 @@
 module.exports = {
   extends: [
-    'airbnb-base',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/recommended',
     'prettier',
-    'prettier/vue',
   ],
 
-  parserOptions: {
-    parser: '@typescript-eslint/parser',
-    ecmaVersion: 2019,
-    sourceType: 'module',
-    extraFileExtensions: ['.vue'],
-  },
+  parser: '@typescript-eslint/parser',
 
   plugins: ['@typescript-eslint'],
 
@@ -41,7 +34,11 @@ module.exports = {
     'no-restricted-globals': 'off',
     'class-methods-use-this': 'off',
     'prefer-destructuring': ['error', { object: true, array: false }],
-    // eslint-plugin-import
+    'no-multiple-empty-lines': [1],
+    'quotes': [1, 'single'],
+    'no-extra-semi': [1],
+    'semi': [1],
+
     'import/order': 'off',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
@@ -53,8 +50,6 @@ module.exports = {
     'vue/require-v-for-key': 'off',
     'vue/require-default-prop': 'off',
     'vue/no-unused-components': 'off',
-    'vue/name-property-casing': ['error', 'kebab-case'],
-    'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     // typescript-eslint
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',

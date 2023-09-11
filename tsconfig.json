@@ -9,7 +9,8 @@
     "noEmit": true,
     "noImplicitThis": true,
     "esModuleInterop": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "types": ["jest", "node"],
   },
   "include": [
     "types/**/*",
@@ -17,7 +18,6 @@
   ],
   "exclude": [
     "**/*.spec.ts",
-    "**/*.spec.js",
-    "node_modules"
+    "**/*.spec.js"
   ]
 }
