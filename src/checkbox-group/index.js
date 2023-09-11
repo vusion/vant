@@ -20,7 +20,7 @@ export default createComponent({
       type: Number,
       default: 0,
     }, 
-    name: null,
+    valueField: null,
     disabled: Boolean,
     direction: String,
     iconSize: [Number, String],
@@ -160,7 +160,7 @@ export default createComponent({
               width: itemWidth,
             }}
           >
-            {this.slots('item', { item, index })}
+            {this.slots('item', { item, index, wybie: this.name })}
             {this.inDesigner && index > 0 && <div class="mantle"></div>}
           </div>
         ))}

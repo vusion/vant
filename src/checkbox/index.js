@@ -30,6 +30,9 @@ export default createComponent({
         }
       },
     },
+    name() {
+      return this.parent.dataSource[this.index][this.parent.valueField];
+    }
   },
 
   watch: {

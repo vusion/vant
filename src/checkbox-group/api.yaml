@@ -15,10 +15,12 @@
       type: schema
       description: 集合类型每一元素的数据类型
       compType: dataTypeSelect
-    - name: name
+    - name: value-field
       title: 值字段
       type: string
+      default: value
       description: 用于标识选中值的字段
+      display: property-select
     - name: value
       title: 值
       type: any
