@@ -111,12 +111,12 @@ export { default as VanForComponents } from '../../src/for-components';
 export { default as VanGallery } from '../../src/gallery';
 export { default as VanCardu } from '../../src/cardu';
 export { default as VanFieldsonforsearch } from '../../src/fieldsonforsearch';
-export { default as VanLinearLayout } from '../../src/linear-layout';
 
 export * from './list-view';
 export * from './grid-view';
 export * from './iframe';
 export * from './link';
 export * from './count-down-new';
+export * from './linear-layout';
 export * from './copy';
 export * from './popup-combination';
