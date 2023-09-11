@@ -70,6 +70,8 @@
       model: true
       default: null
       description: 开关状态
+      dependency:
+        - '!range': true
     - name: min-date
       title: 最小日期
       type: Date
