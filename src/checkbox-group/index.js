@@ -20,7 +20,7 @@ export default createComponent({
       type: Number,
       default: 0,
     }, 
-    valueField: null,
+    valueField: { type: String, default: 'value' },
     disabled: Boolean,
     direction: String,
     iconSize: [Number, String],
