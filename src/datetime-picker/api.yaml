@@ -52,9 +52,13 @@
     - name: start-value
       title: 起始值
       type: string,number,Date
+      dependency:
+        - range: true
     - name: end-value
       title: 结束值
       type: string,number,Date
+      dependency:
+        - range: true
     - name: value
       title: 值
       type: string,number,Date
@@ -62,6 +66,8 @@
       model: true
       default: null
       description: 开关状态
+      dependency:
+        - '!range': true
     - name: min-date
       title: 最小日期
       type: Date
