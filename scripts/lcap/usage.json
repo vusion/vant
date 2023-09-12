@@ -6075,7 +6075,7 @@
             "Form"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-form>\\n  <van-field required drole=\\\"other\\\">\\n    <template #title>\\n      <van-text text=\\\"名称\\\"></van-text>\\n    </template>\\n    <template #input>\\n      <van-fieldinput  placeholder=\\\"请输入\\\" clearable></van-fieldinput>\\n    </template>\\n  </van-field>\\n  <van-field name=\\\"radio\\\" drole=\\\"other\\\">\\n    <template #title>\\n      <van-text text=\\\"单选框\\\"></van-text>\\n    </template>\\n    <template #input>\\n      <van-radio-group direction=\\\"horizontal\\\">\\n        <van-radio name=\\\"1\\\">\\n          <van-text text=\\\"单选框 1\\\"></van-text>\\n        </van-radio>\\n        <van-radio name=\\\"2\\\">\\n          <van-text text=\\\"单选框 2\\\"></van-text>\\n        </van-radio>\\n      \\n        <template #item=\\\"current\\\">\\n          <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\\n        </template>\\n      </van-radio-group>\\n    </template>\\n  </van-field>\\n  <div style=\\\"margin: 16px 16px 0\\\">\\n    <van-button round block=\\\"blockb\\\" type=\\\"info\\\" native-type=\\\"submit\\\" text=\\\"提交\\\">\\n    </van-button>\\n  </div>\\n</van-form>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-form>\\n  <van-field required drole=\\\"other\\\">\\n    <template #title>\\n      <van-text text=\\\"名称\\\"></van-text>\\n    </template>\\n    <template #input>\\n      <van-fieldinput placeholder=\\\"请输入\\\" clearable></van-fieldinput>\\n    </template>\\n  </van-field>\\n  <van-field name=\\\"radio\\\" drole=\\\"other\\\">\\n    <template #title>\\n      <van-text text=\\\"单选框\\\"></van-text>\\n    </template>\\n    <template #input>\\n      <van-radio-group direction=\\\"horizontal\\\" is-new icon=\\\"sure\\\">\\n        <van-radio name=\\\"1\\\">\\n          <van-text text=\\\"单选框 1\\\"></van-text>\\n        </van-radio>\\n        <van-radio name=\\\"2\\\">\\n          <van-text text=\\\"单选框 2\\\"></van-text>\\n        </van-radio>\\n\\n        <template #item=\\\"current\\\">\\n          <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\\n        </template>\\n      </van-radio-group>\\n    </template>\\n  </van-field>\\n  <div style=\\\"margin: 16px 16px 0\\\">\\n    <van-button\\n      round\\n      block=\\\"blockb\\\"\\n      type=\\\"info\\\"\\n      native-type=\\\"submit\\\"\\n      text=\\\"提交\\\"\\n    >\\n    </van-button>\\n  </div>\\n</van-form>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-form",
             "title": "表单",
@@ -6087,7 +6087,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-form>\n  <van-field required drole=\"other\">\n    <template #title>\n      <van-text text=\"名称\"></van-text>\n    </template>\n    <template #input>\n      <van-fieldinput  placeholder=\"请输入\" clearable></van-fieldinput>\n    </template>\n  </van-field>\n  <van-field name=\"radio\" drole=\"other\">\n    <template #title>\n      <van-text text=\"单选框\"></van-text>\n    </template>\n    <template #input>\n      <van-radio-group direction=\"horizontal\">\n        <van-radio name=\"1\">\n          <van-text text=\"单选框 1\"></van-text>\n        </van-radio>\n        <van-radio name=\"2\">\n          <van-text text=\"单选框 2\"></van-text>\n        </van-radio>\n      \n        <template #item=\"current\">\n          <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\n        </template>\n      </van-radio-group>\n    </template>\n  </van-field>\n  <div style=\"margin: 16px 16px 0\">\n    <van-button round block=\"blockb\" type=\"info\" native-type=\"submit\" text=\"提交\">\n    </van-button>\n  </div>\n</van-form>\n</template>\n"
+                    "code": "<template>\n<van-form>\n  <van-field required drole=\"other\">\n    <template #title>\n      <van-text text=\"名称\"></van-text>\n    </template>\n    <template #input>\n      <van-fieldinput placeholder=\"请输入\" clearable></van-fieldinput>\n    </template>\n  </van-field>\n  <van-field name=\"radio\" drole=\"other\">\n    <template #title>\n      <van-text text=\"单选框\"></van-text>\n    </template>\n    <template #input>\n      <van-radio-group direction=\"horizontal\" is-new icon=\"sure\">\n        <van-radio name=\"1\">\n          <van-text text=\"单选框 1\"></van-text>\n        </van-radio>\n        <van-radio name=\"2\">\n          <van-text text=\"单选框 2\"></van-text>\n        </van-radio>\n\n        <template #item=\"current\">\n          <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\n        </template>\n      </van-radio-group>\n    </template>\n  </van-field>\n  <div style=\"margin: 16px 16px 0\">\n    <van-button\n      round\n      block=\"blockb\"\n      type=\"info\"\n      native-type=\"submit\"\n      text=\"提交\"\n    >\n    </van-button>\n  </div>\n</van-form>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -6192,6 +6192,27 @@
                             "type": "string",
                             "advanced": true,
                             "description": "提交表单的标识符"
+                        },
+                        {
+                            "name": "label-layout",
+                            "title": "标签布局",
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "inline",
+                                    "title": "行内展示"
+                                },
+                                {
+                                    "value": "block",
+                                    "title": "块级展示，标签与表单项分行展示"
+                                }
+                            ],
+                            "default": "inline",
+                            "description": "",
+                            "group": "主要属性",
+                            "brifeDoc": "",
+                            "docDescription": "设置标签布局方式。行内展示、块级展示，标签与表单项分行展示。",
+                            "tooltipLink": ""
                         },
                         {
                             "name": "type",
@@ -7015,7 +7036,7 @@
             "Form"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-radio-group direction=\\\"horizontal\\\">\\n  <template #item=\\\"current\\\">\\n    <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\\n  </template>\\n</van-radio-group>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-radio-group direction=\\\"horizontal\\\" is-new icon=\\\"sure\\\">\\n  <template #item=\\\"current\\\">\\n    <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\\n  </template>\\n</van-radio-group>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-radio-group",
             "title": "单选组",
@@ -7027,7 +7048,7 @@
                 {
                     "title": "基本用法",
                     "description": "",
-                    "code": "<template>\n<van-radio-group direction=\"horizontal\">\n  <template #item=\"current\">\n    <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\n  </template>\n</van-radio-group>\n</template>\n"
+                    "code": "<template>\n<van-radio-group direction=\"horizontal\" is-new icon=\"sure\">\n  <template #item=\"current\">\n    <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\n  </template>\n</van-radio-group>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -7036,14 +7057,16 @@
                     "title": "数据源",
                     "type": "Array<Item> | Function",
                     "description": "集合类型变量或者输出参数为集合类型的逻辑",
-                    "designer-value": "[{}, {}, {}]"
+                    "designer-value": "[{}, {}, {}]",
+                    "group": "数据属性"
                 },
                 {
                     "name": "data-schema",
                     "title": "数据类型",
                     "type": "schema",
                     "description": "集合类型每一元素的数据类型",
-                    "compType": "dataTypeSelect"
+                    "compType": "dataTypeSelect",
+                    "group": "数据属性"
                 },
                 {
                     "name": "value",
@@ -7054,18 +7077,32 @@
                     "description": "当前选择的值"
                 },
                 {
+                    "name": "icon",
+                    "title": "单选项图标",
+                    "clearable": true,
+                    "type": "icon",
+                    "default": "sure",
+                    "description": "",
+                    "group": "数据属性",
+                    "brifeDoc": "",
+                    "docDescription": "增加自定义图标显示",
+                    "tooltipLink": ""
+                },
+                {
                     "name": "disabled",
                     "title": "禁用",
                     "type": "boolean",
                     "default": false,
-                    "description": "是否禁用"
+                    "description": "是否禁用",
+                    "group": "状态属性"
                 },
                 {
                     "name": "readonly",
                     "title": "只读",
                     "type": "boolean",
                     "default": false,
-                    "description": "是否只读"
+                    "description": "是否只读",
+                    "group": "状态属性"
                 },
                 {
                     "name": "direction",
@@ -7082,7 +7119,8 @@
                         }
                     ],
                     "default": "horizontal",
-                    "description": "排列方向"
+                    "description": "排列方向",
+                    "group": "主要属性"
                 },
                 {
                     "name": "column",
@@ -7093,7 +7131,8 @@
                         {
                             "direction": "horizontal"
                         }
-                    ]
+                    ],
+                    "group": "主要属性"
                 }
             ],
             "slots": [
@@ -7151,20 +7190,23 @@
                             "title": "文本",
                             "type": "string",
                             "description": "文本",
-                            "advanced": true
+                            "advanced": true,
+                            "group": "数据属性"
                         },
                         {
                             "name": "name",
                             "title": "选中的值",
                             "type": "string",
-                            "description": "选项值"
+                            "description": "选项值",
+                            "group": "数据属性"
                         },
                         {
                             "name": "disabled",
                             "title": "禁用",
                             "type": "boolean",
                             "default": false,
-                            "description": "是否禁用"
+                            "description": "是否禁用",
+                            "group": "状态属性"
                         },
                         {
                             "name": "label-position",
@@ -7182,6 +7224,17 @@
                             ],
                             "default": "right",
                             "description": "文本位置"
+                        },
+                        {
+                            "name": "icon",
+                            "title": "单选项图标",
+                            "clearable": true,
+                            "type": "icon",
+                            "description": "",
+                            "group": "数据属性",
+                            "brifeDoc": "",
+                            "docDescription": "增加自定义图标显示",
+                            "tooltipLink": ""
                         }
                     ],
                     "slots": false,
@@ -7306,6 +7359,14 @@
                     "type": "schema",
                     "description": "集合类型每一元素的数据类型",
                     "compType": "dataTypeSelect"
+                },
+                {
+                    "name": "value-field",
+                    "title": "值字段",
+                    "type": "string",
+                    "default": "value",
+                    "description": "用于标识选中值的字段",
+                    "display": "property-select"
                 },
                 {
                     "name": "value",
@@ -7469,12 +7530,6 @@
                             "type": "string",
                             "description": "文本",
                             "advanced": true
-                        },
-                        {
-                            "name": "name",
-                            "title": "选中的值",
-                            "type": "string",
-                            "description": "选中的值"
                         },
                         {
                             "name": "value",
@@ -7716,7 +7771,7 @@
                     "name": "decimalLength",
                     "title": "精度",
                     "type": "string, number",
-                    "description": "限制数字输入要保留的最小精度单位，默认不限制精度，如需保留两位小数，则填入0.01"
+                    "description": "固定显示的小数位数"
                 },
                 {
                     "name": "placeholder",
@@ -8003,7 +8058,7 @@
                     "name": "button-size",
                     "title": "滑块按钮大小(px)",
                     "type": "number",
-                    "default": "24px"
+                    "default": 24
                 },
                 {
                     "name": "active-color",
@@ -8819,7 +8874,8 @@
                     "title": "显示列数",
                     "type": "number",
                     "default": 3,
-                    "description": "显示列数，3-省市区，2-省市，1-省"
+                    "description": "显示列数，3-省市区，2-省市，1-省",
+                    "advanced": true
                 },
                 {
                     "name": "input-align",
@@ -9064,7 +9120,7 @@
             "Selector"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-datetime-picker\\n  type=\\\"datetime\\\"\\n  title=\\\"选择完整时间\\\"\\n  input-align=\\\"left\\\"\\n><template #title>标题</template></van-datetime-picker>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-datetime-picker type=\\\"datetime\\\" title=\\\"顶部标题\\\">\\n  <template #title>\\n    <van-text text=\\\"顶部标题\\\"></van-text>\\n  </template>\\n  <template #pannel-title>\\n    <van-datetime-picker-action-slot\\n      :vusion-disabled-cut=\\\"true\\\"\\n      :vusion-disabled-move=\\\"true\\\"\\n      :vusion-disabled-drag=\\\"true\\\"\\n      target-method=\\\"cancel\\\"\\n    >\\n      <van-text text=\\\"顶部标题\\\"></van-text>\\n    </van-datetime-picker-action-slot>\\n  </template>\\n  <template #top>\\n    <van-datetime-picker-action-slot\\n      :vusion-disabled-cut=\\\"true\\\"\\n      :vusion-disabled-move=\\\"true\\\"\\n      :vusion-disabled-drag=\\\"true\\\"\\n      target-method=\\\"cancel\\\"\\n    >\\n      <van-iconv name=\\\"left-arrow\\\" icotype=\\\"only\\\"> </van-iconv>\\n    </van-datetime-picker-action-slot>\\n    <van-datetime-picker-action-slot\\n      :vusion-disabled-cut=\\\"true\\\"\\n      :vusion-disabled-move=\\\"true\\\"\\n      :vusion-disabled-drag=\\\"true\\\"\\n      target-method=\\\"confirm\\\"\\n    >\\n    </van-datetime-picker-action-slot>\\n  </template>\\n  <template #bottom>\\n    <van-datetime-picker-action-slot\\n      :vusion-disabled-cut=\\\"true\\\"\\n      :vusion-disabled-move=\\\"true\\\"\\n      :vusion-disabled-drag=\\\"true\\\"\\n      target-method=\\\"cancel\\\"\\n    >\\n      <van-button\\n        type=\\\"info_secondary\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"取消\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-datetime-picker-action-slot>\\n    <van-datetime-picker-action-slot\\n      :vusion-disabled-cut=\\\"true\\\"\\n      :vusion-disabled-move=\\\"true\\\"\\n      :vusion-disabled-drag=\\\"true\\\"\\n      target-method=\\\"confirm\\\"\\n    >\\n      <van-button\\n        type=\\\"info\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"确认\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-datetime-picker-action-slot>\\n  </template>\\n</van-datetime-picker>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-datetime-picker",
             "title": "时间选择",
@@ -9076,7 +9132,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-datetime-picker\n  type=\"datetime\"\n  title=\"选择完整时间\"\n  input-align=\"left\"\n><template #title>标题</template></van-datetime-picker>\n</template>\n"
+                    "code": "<template>\n<van-datetime-picker type=\"datetime\" title=\"顶部标题\">\n  <template #title>\n    <van-text text=\"顶部标题\"></van-text>\n  </template>\n  <template #pannel-title>\n    <van-datetime-picker-action-slot\n      :vusion-disabled-cut=\"true\"\n      :vusion-disabled-move=\"true\"\n      :vusion-disabled-drag=\"true\"\n      target-method=\"cancel\"\n    >\n      <van-text text=\"顶部标题\"></van-text>\n    </van-datetime-picker-action-slot>\n  </template>\n  <template #top>\n    <van-datetime-picker-action-slot\n      :vusion-disabled-cut=\"true\"\n      :vusion-disabled-move=\"true\"\n      :vusion-disabled-drag=\"true\"\n      target-method=\"cancel\"\n    >\n      <van-iconv name=\"left-arrow\" icotype=\"only\"> </van-iconv>\n    </van-datetime-picker-action-slot>\n    <van-datetime-picker-action-slot\n      :vusion-disabled-cut=\"true\"\n      :vusion-disabled-move=\"true\"\n      :vusion-disabled-drag=\"true\"\n      target-method=\"confirm\"\n    >\n    </van-datetime-picker-action-slot>\n  </template>\n  <template #bottom>\n    <van-datetime-picker-action-slot\n      :vusion-disabled-cut=\"true\"\n      :vusion-disabled-move=\"true\"\n      :vusion-disabled-drag=\"true\"\n      target-method=\"cancel\"\n    >\n      <van-button\n        type=\"info_secondary\"\n        size=\"normal\"\n        text=\"取消\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-datetime-picker-action-slot>\n    <van-datetime-picker-action-slot\n      :vusion-disabled-cut=\"true\"\n      :vusion-disabled-move=\"true\"\n      :vusion-disabled-drag=\"true\"\n      target-method=\"confirm\"\n    >\n      <van-button\n        type=\"info\"\n        size=\"normal\"\n        text=\"确认\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-datetime-picker-action-slot>\n  </template>\n</van-datetime-picker>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -9213,6 +9269,13 @@
                     "description": "左侧文本插槽内容存在时优先展示插槽内容"
                 },
                 {
+                    "name": "isNew",
+                    "title": "是否使用新版外观",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "是否使用新版外观"
+                },
+                {
                     "name": "readonly",
                     "title": "只读",
                     "type": "boolean",
@@ -9274,7 +9337,29 @@
                     "params": []
                 }
             ],
-            "children": []
+            "children": [
+                {
+                    "name": "van-datetime-picker-action-slot",
+                    "title": "时间选择事件插槽",
+                    "attrs": [
+                        {
+                            "name": "target-method",
+                            "title": "触发的事件名称",
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "confirm",
+                                    "title": "确认"
+                                },
+                                {
+                                    "value": "cancel",
+                                    "title": "取消"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     },
     {
@@ -10025,7 +10110,7 @@
             "Container"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-swipe-cell :leftforhelper=\\\"false\\\" :rightforhelper=\\\"false\\\">\\n  <template #left>\\n    <van-button\\n      style=\\\"height:100%;width:72px;border-radius:0;\\\"\\n      squareroud=\\\"square\\\"\\n      type=\\\"primary\\\"\\n      text=\\\"选择\\\"\\n      size=\\\"middle\\\"\\n    />\\n  </template>\\n  <van-cell center>\\n    <template #title> 左侧文本 </template>\\n    <template> 右侧文本 </template>\\n  </van-cell>\\n  <template #right>\\n    <van-button\\n      style=\\\"height:100%;width:72px;border-radius:0;\\\"\\n      squareroud=\\\"square\\\"\\n      type=\\\"danger\\\"\\n      text=\\\"删除\\\"\\n      size=\\\"middle\\\"\\n    />\\n  </template>\\n</van-swipe-cell>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-swipe-cell :leftforhelper=\\\"false\\\" :rightforhelper=\\\"false\\\">\\n  <template #left>\\n    <van-button\\n      style=\\\"height:100%;width:72px;border-radius:0;\\\"\\n      squareroud=\\\"square\\\"\\n      type=\\\"primary\\\"\\n      text=\\\"选择\\\"\\n      size=\\\"middle\\\"\\n    />\\n  </template>\\n  <van-cell center>\\n    <template #title> 左侧文本 </template>\\n    右侧文本\\n  </van-cell>\\n  <template #right>\\n    <van-button\\n      style=\\\"height:100%;width:72px;border-radius:0;\\\"\\n      squareroud=\\\"square\\\"\\n      type=\\\"danger\\\"\\n      text=\\\"删除\\\"\\n      size=\\\"middle\\\"\\n    />\\n  </template>\\n</van-swipe-cell>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-swipe-cell",
             "title": "滑动条",
@@ -10037,7 +10122,7 @@
                 {
                     "title": "基本用法",
                     "description": "",
-                    "code": "<template>\n<van-swipe-cell :leftforhelper=\"false\" :rightforhelper=\"false\">\n  <template #left>\n    <van-button\n      style=\"height:100%;width:72px;border-radius:0;\"\n      squareroud=\"square\"\n      type=\"primary\"\n      text=\"选择\"\n      size=\"middle\"\n    />\n  </template>\n  <van-cell center>\n    <template #title> 左侧文本 </template>\n    <template> 右侧文本 </template>\n  </van-cell>\n  <template #right>\n    <van-button\n      style=\"height:100%;width:72px;border-radius:0;\"\n      squareroud=\"square\"\n      type=\"danger\"\n      text=\"删除\"\n      size=\"middle\"\n    />\n  </template>\n</van-swipe-cell>\n</template>\n"
+                    "code": "<template>\n<van-swipe-cell :leftforhelper=\"false\" :rightforhelper=\"false\">\n  <template #left>\n    <van-button\n      style=\"height:100%;width:72px;border-radius:0;\"\n      squareroud=\"square\"\n      type=\"primary\"\n      text=\"选择\"\n      size=\"middle\"\n    />\n  </template>\n  <van-cell center>\n    <template #title> 左侧文本 </template>\n    右侧文本\n  </van-cell>\n  <template #right>\n    <van-button\n      style=\"height:100%;width:72px;border-radius:0;\"\n      squareroud=\"square\"\n      type=\"danger\"\n      text=\"删除\"\n      size=\"middle\"\n    />\n  </template>\n</van-swipe-cell>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -10045,14 +10130,12 @@
                     "name": "left-width",
                     "title": "左侧滑动区域宽度",
                     "type": "number",
-                    "default": "auto",
                     "description": "左侧滑动区域宽度"
                 },
                 {
                     "name": "right-width",
                     "title": "右侧滑动区域宽度",
                     "type": "number",
-                    "default": "auto",
                     "description": "右侧滑动区域宽度"
                 },
                 {
