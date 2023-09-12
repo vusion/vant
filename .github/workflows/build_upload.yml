@@ -22,9 +22,9 @@ jobs:
         run: echo "VERSION=$(echo ${{ env.BRANCH_NAME }} | cut -d'/' -f2)" >> $GITHUB_ENV
 
       - name: Set node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '16'
 
       - name: Install Yarn
         run: npm install -g yarn
@@ -37,7 +37,7 @@ jobs:
 
       # 创建一个临时目录
       - name: Create temp dir
-        run: mkdir temp && cp ./dist-theme ./temp/dist-theme && cp ./assets-package/src ./temp/src && cp ./assets-package/src-vusion ./temp/src-vusion
+        run: mkdir temp && cp -r ./dist-theme ./temp/dist-theme && cp -r ./assets-package/src ./temp/src && cp -r ./assets-package/src-vusion ./temp/src-vusion
 
       - name: Upload
         uses: actions/upload-artifact@v3
