@@ -189,7 +189,11 @@ export default createComponent({
       handler(val) {
         this.currentDate = typeof val === 'string' ? new Date(val) : val;
         this.scrollIntoView();
-        this.setTitle();
+        if (val) {
+          this.setTitle();
+        } else {
+          this.getTitle = '';
+        }
       },
       immediate: true
     },
