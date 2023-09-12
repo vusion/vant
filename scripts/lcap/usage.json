@@ -1136,17 +1136,17 @@
                 {
                     "title": "基本用法",
                     "description": "",
-                    "code": "<template>\n<van-cell-group>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    <template>\n      右侧文本\n    </template>\n  </van-cell>\n</van-cell-group>\n</template>\n"
+                    "code": "<template>\n<van-cell-group>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    右侧文本\n  </van-cell>\n</van-cell-group>\n</template>\n"
                 },
                 {
                     "title": "圆角风格",
                     "description": "",
-                    "code": "<template>\n<van-cell-group inset>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    <template>\n      右侧文本\n    </template>\n  </van-cell>\n</van-cell-group>\n</template>\n"
+                    "code": "<template>\n<van-cell-group inset>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    右侧文本\n  </van-cell>\n</van-cell-group>\n</template>\n"
                 },
                 {
                     "title": "垂直居中",
                     "description": "",
-                    "code": "<template>\n<van-cell-group>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    <template>\n      右侧文本\n    </template>\n  </van-cell>\n</van-cell-group>\n</template>\n"
+                    "code": "<template>\n<van-cell-group>\n  <van-cell isLink center>\n    <template #title>\n      左侧文本\n    </template>\n    右侧文本\n  </van-cell>\n</van-cell-group>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -2965,6 +2965,38 @@
                     "type": "boolean",
                     "default": true,
                     "description": "是否支持点击放大全屏展示"
+                },
+                {
+                    "name": "loading-type",
+                    "title": "加载样式",
+                    "type": "string",
+                    "default": "loading",
+                    "options": [
+                        {
+                            "value": "loading",
+                            "title": "Loading"
+                        },
+                        {
+                            "value": "none",
+                            "title": "不显示加载状态"
+                        },
+                        {
+                            "value": "placeholder",
+                            "title": "自定义默认图"
+                        }
+                    ]
+                },
+                {
+                    "name": "placeholder-src",
+                    "title": "默认图地址",
+                    "type": "string",
+                    "default": "https://static-vusion.nos-eastchina1.126.net/h5-template/lietu.png",
+                    "required": true,
+                    "dependency": [
+                        {
+                            "loading-type": "placeholder"
+                        }
+                    ]
                 }
             ],
             "slots": false,
@@ -8256,6 +8288,16 @@
                             "value": true
                         }
                     ]
+                },
+                {
+                    "name": "lcapIsCompress",
+                    "title": "启用压缩",
+                    "type": "boolean",
+                    "description": "启用压缩后上传的文件按压缩规则进行压缩后上传，压缩规则可在自定义配置参数管理",
+                    "group": "主要属性",
+                    "brifeDoc": "",
+                    "docDescription": "启用压缩后上传的文件按压缩规则进行压缩后上传，压缩规则可在自定义配置参数管理",
+                    "tooltipLink": ""
                 }
             ],
             "slots": false,
@@ -8767,7 +8809,8 @@
                     "title": "显示列数",
                     "type": "number",
                     "default": 3,
-                    "description": "显示列数，3-省市区，2-省市，1-省"
+                    "description": "显示列数，3-省市区，2-省市，1-省",
+                    "advanced": true
                 },
                 {
                     "name": "input-align",
