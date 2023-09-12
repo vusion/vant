@@ -190,6 +190,8 @@ export default createComponent({
         this.scrollIntoView();
         if (val) {
           this.setTitle();
+        } else {
+          this.getTitle = '';
         }
       },
       immediate: true,

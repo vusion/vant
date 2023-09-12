@@ -84,34 +84,28 @@ export const TimePickerMixin = {
         //
       } else {
         let value = this.innerValue;
-        const isDateAndDateTime =
-          this.type === 'datetime' || this.type === 'date';
-        const isJSONType = isDateAndDateTime && this.converter === 'json';
-        const isTimestampType =
-          isDateAndDateTime && this.converter === 'timestamp';
-        const isDateType = isDateAndDateTime && this.converter === 'date';
 
-        if (isJSONType) {
-          value = new Date(value).toJSON();
-        }
-        if (isTimestampType) {
-          value = +new Date(value);
-        } else if (isDateType) {
-          value = new Date(value);
-        }
+        // 低代码可用type： date、 time、 datetime、 year-month
+        const isDateType = ['date', 'datetime'].includes(this.type);
+        const useConverter =
+          isDateType && ['json', 'timestamp', 'date'].includes(this.converter);
 
-        const useConverterValue = isJSONType || isTimestampType || isDateType;
+        if (useConverter) {
+          if (this.converter === 'json') {
+            value = new Date(value).toJSON();
+          }
+          if (this.converter === 'timestamp') {
+            value = +new Date(value);
+          }
+          if (this.converter === 'date') {
+            value = new Date(value);
+          }
+        } else {
+          value = formatFu(this.innerValue, this.type, true);
+        }
 
         this.$emit('input', value);
-        // this.$emit('update:value', this.type==="datetime" ? value.formath("yyyy/MM/dd HH:mm:ss") : value);
-        this.$emit(
-          'update:value',
-          useConverterValue ? value : formatFu(this.innerValue, this.type, true)
-        );
-        this.$emit(
-          'update:cvalue',
-          useConverterValue ? value : formatFu(this.innerValue, this.type)
-        );
+        this.$emit('update:value', value);
         this.$emit('confirm', value);
       }
       try {
