@@ -25,8 +25,16 @@ export default createComponent({
   data() {
     return {
       valuepopup: false,
-      cvalue: null,
+      cvalue: this.value,
     };
+  },
+  watch: {
+    cvalue(val) {
+      this.$emit('update:value', val);
+    },
+    value(val) {
+      this.cvalue = val;
+    },
   },
   methods: {
     getTitle() {
@@ -111,10 +119,13 @@ export default createComponent({
             class={bem()}
             scopedSlots={this.$scopedSlots}
             {...{
-              props: this.$props,
+              props: {
+                ...this.$props,
+                value: this.cvalue,
+              },
               on: {
                 ...this.$listeners,
-                'update:cvalue': (v) => {
+                'update:value': (v) => {
                   this.cvalue = v;
                 },
               },
