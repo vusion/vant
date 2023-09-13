@@ -1680,29 +1680,29 @@
                         "desc": "单选项字体大小",
                         "prefix": "van-radio"
                     },
-                    "--van-radio-border-color": {
-                        "type": "color",
-                        "desc": "单选项边框颜色",
-                        "prefix": "van-radio"
-                    },
                     "--van-radio-label-margin": {
                         "type": "input",
                         "desc": "单选项label外边距",
                         "prefix": "van-radio"
                     },
-                    "--van-radio-label-color": {
-                        "type": "color",
-                        "desc": "单选项label字体大小",
-                        "prefix": "van-radio"
-                    },
                     "--van-radio-checked-icon-color": {
                         "type": "color",
-                        "desc": "单选项选中颜色",
+                        "desc": "单选项选中图标颜色",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-checked-icon-label-color": {
+                        "type": "color",
+                        "desc": "单选项选中图标文字颜色",
                         "prefix": "van-radio"
                     },
                     "--van-radio-disabled-icon-color": {
                         "type": "color",
                         "desc": "单选项禁用边框颜色",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-disabled-icon-label-color": {
+                        "type": "color",
+                        "desc": "单选项禁用图标文字颜色",
                         "prefix": "van-radio"
                     },
                     "--van-radio-disabled-label-color": {
@@ -1713,6 +1713,56 @@
                     "--van-radio-disabled-background-color": {
                         "type": "color",
                         "desc": "单选项禁用背景色",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-border-radius": {
+                        "type": "input",
+                        "desc": "圆角大小",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-border-width": {
+                        "type": "input",
+                        "desc": "边框宽度",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-icon-border-width": {
+                        "type": "input",
+                        "desc": "图标边框宽度",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-border-color": {
+                        "type": "color",
+                        "desc": "单选项未选中边框颜色",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-checked-border-color": {
+                        "type": "color",
+                        "desc": "单选项选中边框颜色",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-background-color": {
+                        "type": "color",
+                        "desc": "单选项未选中背景颜色",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-checked-background-color": {
+                        "type": "color",
+                        "desc": "单选项选中背景颜色",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-label-color": {
+                        "type": "color",
+                        "desc": "单选项未选中文字颜色",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-checked-label-color": {
+                        "type": "color",
+                        "desc": "单选项选中文字颜色",
+                        "prefix": "van-radio"
+                    },
+                    "--van-radio-padding": {
+                        "type": "color",
+                        "desc": "单选项内边距",
                         "prefix": "van-radio"
                     }
                 },
