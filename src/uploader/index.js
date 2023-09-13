@@ -557,7 +557,10 @@ export default createComponent({
 
       const Input = this.readonly ? null : (
         <input
-          {...{ attrs: this.$attrs }}
+          {...{ attrs: {
+            ...this.$attrs,
+            capture: ['camera'].includes(this.$attrs.capture) ? this.$attrs.capture : undefined
+          } }}
           ref="input"
           type="file"
           accept={this.accept}
