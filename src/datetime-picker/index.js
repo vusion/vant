@@ -45,8 +45,8 @@ export default createComponent({
   },
   data() {
     const val = isValidDate(this.value) ? this.value : null;
-    const start = isValidDate(this.startValue) ? this.value : null;
-    const end = isValidDate(this.endValue) ? this.value : null;
+    const start = isValidDate(this.startValue) ? this.startValue : null;
+    const end = isValidDate(this.endValue) ? this.endValue : null;
 
     return {
       popupVisible: false,
@@ -77,15 +77,19 @@ export default createComponent({
       this.$emit('update:startValue', val);
     },
     startValue(val) {
-      this.currentStartValue = val;
-      this.tempStartValue = val;
+      if (isValidDate(val)) {
+        this.currentStartValue = val;
+        this.tempStartValue = val;
+      }
     },
     currentEndValue(val) {
       this.$emit('update:endValue', val);
     },
     endValue(val) {
-      this.currentEndValue = val;
-      this.tempEndValue = val;
+      if (isValidDate) {
+        this.currentEndValue = val;
+        this.tempEndValue = val;
+      }
     },
   },
   methods: {
@@ -103,7 +107,7 @@ export default createComponent({
         let startTitle = '';
         let endTitle = '';
 
-        if (this.startValue) {
+        if (isValidDate(this.startValue)) {
           startTitle = displayFormat(
             this.startValue,
             this.type,
@@ -117,7 +121,7 @@ export default createComponent({
           );
         }
 
-        if (this.endValue) {
+        if (isValidDate(this.endValue)) {
           endTitle = displayFormat(
             this.endValue,
             this.type,
@@ -135,7 +139,7 @@ export default createComponent({
       }
 
       // not range
-      if (this.value) {
+      if (isValidDate(this.value)) {
         return displayFormat(this.value, this.type, this.displayFormat);
       }
 
@@ -243,7 +247,8 @@ export default createComponent({
     },
     renderContent() {
       const Component = this.type === 'time' ? TimePicker : DatePicker;
-
+      console.log('currentStartValue', this.currentStartValue);
+      console.log('currentEndValue', this.currentEndValue);
       if (this.range) {
         return (
           <Tabs line-width="150px" lazyRender={false}>
