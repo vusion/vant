@@ -503,7 +503,7 @@ export default createComponent({
       const previewSize = item.previewSize ?? this.previewSize;
       const imageFit = item.imageFit ?? this.imageFit;
 
-      const getUrl = (item) => {  
+      const getUrl = (item) => {
         let imgUrl = '';
         if (typeof item === 'object' && item !== null) {
           if (`${item?.url}` != 'undefined') {
@@ -575,7 +575,10 @@ export default createComponent({
 
       const Input = this.readonly ? null : (
         <input
-          {...{ attrs: this.$attrs }}
+          {...{ attrs: {
+            ...this.$attrs,
+            capture: ['camera'].includes(this.$attrs.capture) ? this.$attrs.capture : undefined
+          } }}
           ref="input"
           type="file"
           accept={this.accept}
