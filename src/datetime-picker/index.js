@@ -1,5 +1,5 @@
 import { createNamespace } from '../utils';
-import { displayFormat } from './utils';
+import { displayFormat, isValidDate } from './utils';
 import TimePicker from './TimePicker';
 import DatePicker from './DatePicker';
 import Popup from '../popup';
@@ -44,16 +44,20 @@ export default createComponent({
     },
   },
   data() {
+    const val = isValidDate(this.value) ? this.value : null;
+    const start = isValidDate(this.startValue) ? this.value : null;
+    const end = isValidDate(this.endValue) ? this.value : null;
+
     return {
       popupVisible: false,
 
-      currentValue: this.value,
-      currentStartValue: this.startValue,
-      currentEndValue: this.endValue,
+      currentValue: val,
+      currentStartValue: start,
+      currentEndValue: end,
 
       // 临时值，用于记录区间change时的变化值
-      tempStartValue: this.startValue,
-      tempEndValue: this.endValue,
+      tempStartValue: start,
+      tempEndValue: end,
 
       // inDesigner: this.$env && this.$env.VUE_APP_DESIGNER,
     };
@@ -63,7 +67,9 @@ export default createComponent({
       this.$emit('update:value', val);
     },
     value(val) {
-      this.currentValue = val;
+      if (isValidDate(val)) {
+        this.currentValue = val;
+      }
     },
 
     // range value

@@ -1,5 +1,6 @@
 import { isNaN } from '../utils/validate/number';
 import { isDate } from '../utils/validate/date'
+import dayjs from '../utils/dayjs';
 
 export function times(n: number, iteratee: (index: number) => any[]) {
   let index = -1;
@@ -137,4 +138,18 @@ export function displayFormat(date: string | number | Date, type: string, custom
     // @ts-ignore
     return tempDate
   }
+}
+
+export function isValidDate(date: string | Date): boolean {
+  const isPrimitiveDate = Object.prototype.toString.call(date) === '[object Date]';
+
+  //  Date 类型
+  if (isPrimitiveDate) {
+    return !isNaN((date as Date).getTime());
+  }
+
+  // string类型
+  const valid = dayjs(date).isValid();
+
+  return valid;
 }
