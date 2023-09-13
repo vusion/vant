@@ -86,6 +86,26 @@ export default createComponent({
     designerDbControl() {
       this.$refs.popup.togglePModal();
     },
+    designerClose() {
+      if (window.parent && this?.$attrs?.['vusion-node-path']) {
+        window.parent?.postMessage(
+          {
+            protocol: 'vusion',
+            sender: 'helper',
+            type: 'send',
+            command: 'setPopupStatusInfo',
+            args: [
+              {
+                nodePath: this?.$attrs?.['vusion-node-path'],
+                visible: false,
+              },
+            ],
+          },
+          '*'
+        );
+      }
+      this.$refs.popup.togglePModal();
+    },
     getTitle() {
       if (this?.$env?.VUE_APP_DESIGNER) {
         return this.range
@@ -368,7 +388,7 @@ export default createComponent({
               <div
                 class={bem('designer-close-button')}
                 vusion-click-enabled="true"
-                onClick={this.designerDbControl}
+                onClick={this.designerClose}
               >
                 点击关闭
               </div>
