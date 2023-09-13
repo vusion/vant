@@ -2,7 +2,7 @@ interface CApi {
   name: string
   title: string
   description: string
-  attrs: CAttribute[]
+  attrs?: CAttribute[]
 }
 
 type CAttributeType =

@@ -2,20 +2,19 @@ import type { Meta, StoryObj } from '@storybook/vue';
 import type { Component } from 'vue';
 import { parseApiYaml } from '../utils/parseYaml';
 // 样式
-import '@/button/index.less';
+import '@/col/index.less';
 // 组件
-import Button from '@/button/index';
-import api from '@/button/api.yaml';
-
+import Col from '@/col/index';
+import api from '@/col/api.yaml';
 
 const { argTypes, args } = parseApiYaml(api);
 
 const meta = {
-  title: '展示/按钮',
-  component: Button as Component,
+  title: '布局/栅格列',
+  component: Col as Component,
   tags: ['autodocs'],
   argTypes,
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Col>;
 
 export default meta;
 
@@ -24,14 +23,11 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   name: '全部配置',
   render: (args, { argTypes }) => ({
-    components: {  Button },
+    components: { Col },
     props: Object.keys(argTypes),
-    template: '<Button v-bind="$props"></Button>',
+    template: '<Col v-bind="$props"></Col>',
   }),
   args: {
     ...args,
-    text: '按钮',
-    type: '主要按钮',
-    hairline: false,
   }
 };
