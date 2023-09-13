@@ -156,7 +156,7 @@ export default createComponent({
     // @exposed-api
     open() {
       this.popupVisible = true;
-      this.$refs.popup.open();
+      // this.$refs.popup.open();
     },
     // @exposed-api
     close() {
