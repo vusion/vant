@@ -187,8 +187,10 @@ export default createComponent({
     },
     currentValue(val) {
       this.tempValue = val;
-      this.$emit('update:value', dayjs(val).format('YYYY-MM-DD'));
-      this.$emit('update:default-date', dayjs(val).format('YYYY-MM-DD'));
+
+      const date = dayjs(val)
+      this.$emit('update:value', date.isValid() ? date.format('YYYY-MM-DD') : val);
+      this.$emit('update:default-date', date.isValid() ? date.format('YYYY-MM-DD') : val);
     },
     defaultDate: {
       handler(val) {

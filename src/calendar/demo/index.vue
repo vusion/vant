@@ -18,6 +18,7 @@
         :max-date="max"
         title="选择日期"
       ></van-calendar>
+      <button @click="clear">clear</button>
     </demo-block>
   </demo-section>
 </template>
@@ -192,6 +193,11 @@ export default {
       this.showCalendar = false;
       this.date[this.id] = date;
     },
+    clear() {
+      this.date = null
+      this.start = null
+      this.end = null
+    }
   },
 };
 </script>
