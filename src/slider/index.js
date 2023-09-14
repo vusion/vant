@@ -315,15 +315,18 @@ export default createComponent({
     };
 
     return (
-      <div
-        style={wrapperStyle}
-        class={bem({ disabled: this.disabled, vertical })}
-        onClick={this.onClick}
-      >
-        <div class={bem('bar')} style={barStyle}>
-          {this.range ? [renderButton(0), renderButton(1)] : renderButton()}
+      <div class="van-slider-room">
+        <div
+          style={wrapperStyle}
+          class={bem({ disabled: this.disabled, vertical })}
+          onClick={this.onClick}
+        >
+          <div class={bem('bar')} style={barStyle}>
+            {this.range ? [renderButton(0), renderButton(1)] : renderButton()}
+          </div>
         </div>
       </div>
+
     );
   },
 });
