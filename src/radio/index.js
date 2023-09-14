@@ -46,10 +46,7 @@ export default createComponent({
       // eslint-disable-next-line eqeqeq
       return this.currentValue == this.name;
     },
-  },
-  updated() {
-    console.log('radioVm', this)
-  },
+  },q
   methods: {
     toggle() {
       this.currentValue = this.name;
