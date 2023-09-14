@@ -51,9 +51,6 @@ export default createComponent({
     scope() {
       return this.max - this.min;
     },
-    inDesigner() {
-      return this.$env && this.$env.VUE_APP_DESIGNER;
-    },
     buttonStyle() {
       if (this.buttonSize) {
         const size = addUnit(this.buttonSize);
@@ -275,25 +272,19 @@ export default createComponent({
         return `wrapper`;
       };
 
+      const slotName = isNumber ? (i === 0 ? 'left-button' : 'right-button') : 'button';
+
       const renderButtonContent = () => {
-        const defaultButton =this.inDesigner ? <VanEmptyCol></VanEmptyCol>:<div class={bem('button')} style={this.buttonStyle} />
+        const defaultButton = this.inDesigner ? <VanEmptyCol></VanEmptyCol> : <div class={bem('button')} style={this.buttonStyle} />;
+
         if (isNumber) {
-          const slotName = i === 0 ? 'left-button' : 'right-button'
-          const slot = this.slots(i === 0 ? 'left-button' : 'right-button', {
-            value: current,
-          });
           if (this.custom) {
-            return <div vusion-slot-name={slotName} >{slot || defaultButton} </div>
+            return this.slots(slotName, { value: current }) || defaultButton;
           }
         }
 
-        // if (this.slots('button')) {
-        //   // this.slots("button")
-        //   return  this.custom &&
-        // }
-
         if (this.custom) {
-          return <div vusion-slot-name="button">{this.slots("button") ? this.slots("button") : defaultButton}</div>;
+          return this.slots(slotName) || defaultButton;
         }
 
         return <div class={bem('button')} style={this.buttonStyle} />;
@@ -316,6 +307,7 @@ export default createComponent({
             }
           }}
           onClick={(e) => e.stopPropagation()}
+          vusion-slot-name={this.custom ? slotName : undefined}
         >
           {renderButtonContent()}
         </div>
@@ -323,7 +315,7 @@ export default createComponent({
     };
 
     return (
-      <div class="van-slider-room">
+      <div class={`van-slider-room ${vertical ? 'vertical' : ''}`}>
         <div
           style={wrapperStyle}
           class={bem({ disabled: this.disabled, vertical })}
@@ -332,7 +324,7 @@ export default createComponent({
           <div class={bem('bar')} style={barStyle}>
             {this.range ? [renderButton(0), renderButton(1)] : renderButton()}
           </div>
-          </div>
+        </div>
       </div>
     );
   },

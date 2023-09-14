@@ -1,9 +1,12 @@
 // Utils
+import dayjs from '../utils/dayjs';
 import { raf } from '../utils/dom/raf';
 import { isDate } from '../utils/validate/date';
 import { isNaN } from '../utils/validate/number';
 import { getScrollTop } from '../utils/dom/scroll';
-import { transErrorDate ,
+import {
+  transErrorDate,
+  transErrorMinOrMaxDate,
   t,
   bem,
   copyDate,
@@ -25,7 +28,6 @@ import Header from './components/Header';
 import Field from '../field';
 
 import { FieldMixin } from '../mixins/field';
-
 
 export default createComponent({
   mixins: [FieldMixin],
@@ -132,40 +134,38 @@ export default createComponent({
   },
 
   data() {
+    const currentValue = this.value ?? this.defaultDate;
+
     return {
+      currentValue,
+      tempValue: currentValue,
+
       subtitle: '',
-      currentDate: this.getInitialDate(),
       popupShown: false,
-      getTitle: '',
       defaultMonthForSelect: null,
     };
   },
 
   computed: {
+    currentDate() {
+      return this.getInitialDate(this.tempValue);
+    },
+
     months() {
       const months = [];
-      const cursor = transErrorDate(this.minDate, 'min');
+      const cursor = transErrorMinOrMaxDate(this.minDate, 'min');
 
       cursor.setDate(1);
       do {
         months.push(new Date(cursor));
         cursor.setMonth(cursor.getMonth() + 1);
-      } while (compareMonth(cursor, transErrorDate(this.maxDate, 'max')) !== 1);
+      } while (compareMonth(cursor, transErrorMinOrMaxDate(this.maxDate, 'max')) !== 1);
 
       return months;
     },
 
     buttonDisabled() {
-      const { type, currentDate } = this;
-
-      if (currentDate) {
-        if (type === 'range') {
-          return !currentDate[0] || !currentDate[1];
-        }
-        if (type === 'multiple') {
-          return !currentDate.length;
-        }
-      }
+      const { currentDate } = this;
 
       return !currentDate;
     },
@@ -185,27 +185,25 @@ export default createComponent({
     type() {
       this.reset();
     },
+    currentValue(val) {
+      this.tempValue = val;
 
+      const date = dayjs(val)
+      this.$emit('update:value', date.isValid() ? date.format('YYYY-MM-DD') : val);
+      this.$emit('update:default-date', date.isValid() ? date.format('YYYY-MM-DD') : val);
+    },
     defaultDate: {
       handler(val) {
-        this.currentDate = this.getInitialDate(val);
+        this.currentValue = val;
         this.scrollIntoView();
-        if (val) {
-          this.setTitle();
-        } else {
-          this.getTitle = '';
-        }
       },
       immediate: true,
     },
 
     value: {
       handler(val) {
-        this.currentDate = this.getInitialDate(val);
+        this.currentValue = val;
         this.scrollIntoView();
-        if (val) {
-          this.setTitle();
-        }
       },
       immediate: true,
     },
@@ -213,7 +211,6 @@ export default createComponent({
 
   mounted() {
     this.init();
-    // this.setTitle();
   },
 
   /* istanbul ignore next */
@@ -222,20 +219,41 @@ export default createComponent({
   },
 
   methods: {
-    setCurrentDate(data) {
-      this.currentDate = data;
+    getTitle() {
+      if (this.ifDesigner()) {
+        return this.value ?? this.defaultDate;
+      }
+
+      const controledValue = this.value ?? this.defaultDate;
+      if (controledValue && dayjs(controledValue).isValid()) {
+        console.log(11);
+        return dayjs(controledValue).format('YYYY-MM-DD')
+      }
+
+      if (this.currentValue && dayjs(this.currentValue).isValid()) {
+        return dayjs(this.currentValue).format('YYYY-MM-DD')
+      }
+
+      return '';
+    },
+    setCurrentDate(date) {
+      this.currentValue = date;
     },
     ifDesigner() {
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
     togglePopup() {
+      if (this.readonly || this.disabled) {
+        return;
+      }
+
       if (this.poppable) {
         this.popupShown = !this.popupShown;
       }
     },
     // @exposed-api
     reset(date = this.getInitialDate()) {
-      this.currentDate = date;
+      this.currentValue = date;
       this.scrollIntoView();
     },
 
@@ -284,41 +302,29 @@ export default createComponent({
       const { currentDate } = this;
 
       if (currentDate) {
-        const targetDate =
-          this.type === 'single' ? currentDate : currentDate[0];
+        const targetDate = currentDate;
         this.scrollToDate(targetDate);
       }
     },
 
     getInitialDate(val) {
-      const { type, minDate, maxDate, value, defaultDate } = this;
+      const { minDate, maxDate, value, defaultDate } = this;
       val = val || (value ?? defaultDate);
 
-      if (val) {
-        val = val.replace(/-/g, '/');
-      }
-
       let defaultVal = new Date();
-      if (compareDay(defaultVal, transErrorDate(minDate, 'min')) === -1) {
-        defaultVal = transErrorDate(minDate, 'min');
-      } else if (compareDay(defaultVal, transErrorDate(maxDate, 'max')) === 1) {
-        defaultVal = transErrorDate(maxDate, 'max');
-      }
-
-      if (type === 'range') {
-        const [startDay, endDay] = val || [];
-        return [startDay || defaultVal, endDay || getNextDay(defaultVal)];
-      }
-
-      if (type === 'multiple') {
-        return (typeof val === 'string' ? new Date(val) : val) || [defaultVal];
+      const min = transErrorMinOrMaxDate(minDate, 'min');
+      const max = transErrorMinOrMaxDate(maxDate, 'max');
+      if (compareDay(defaultVal, min) === -1) {
+        defaultVal = min;
+      } else if (compareDay(defaultVal, max) === 1) {
+        defaultVal = max;
       }
 
       if (val) {
-        return typeof val === 'string' ? new Date(val) : val;
+        return dayjs(val).toDate();
       }
 
-      return defaultVal;
+      return dayjs(defaultVal).toDate();
     },
 
     // calculate the position of the elements
@@ -380,128 +386,22 @@ export default createComponent({
       }
 
       const { date } = item;
-      const { type, currentDate } = this;
 
-      if (type === 'range') {
-        if (!currentDate) {
-          this.select([date, null]);
-          return;
-        }
+      this.tempValue = date;
+      this.$emit('select', dayjs(date).toDate());
 
-        const [startDay, endDay] = currentDate;
-
-        if (startDay && !endDay) {
-          const compareToStart = compareDay(date, startDay);
-
-          if (compareToStart === 1) {
-            this.select([startDay, date], true);
-          } else if (compareToStart === -1) {
-            this.select([date, null]);
-          } else if (this.allowSameDay) {
-            this.select([date, date], true);
-          }
-        } else {
-          this.select([date, null]);
-        }
-      } else if (type === 'multiple') {
-        if (!currentDate) {
-          this.select([date]);
-          return;
-        }
-
-        let selectedIndex;
-        const selected = this.currentDate.some((dateItem, index) => {
-          const equal = compareDay(dateItem, date) === 0;
-          if (equal) {
-            selectedIndex = index;
-          }
-          return equal;
-        });
-
-        if (selected) {
-          const [unselectedDate] = currentDate.splice(selectedIndex, 1);
-          this.$emit('unselect', copyDate(unselectedDate));
-        } else if (this.maxRange && currentDate.length >= this.maxRange) {
-          Toast(this.rangePrompt || t('rangePrompt', this.maxRange));
-        } else {
-          this.select([...currentDate, date]);
-        }
-      } else {
-        this.select(date, true);
-      }
-    },
-
-    select(date, complete) {
-      const emit = (date) => {
-        this.currentDate = date;
-        this.$emit('select', copyDates(this.currentDate));
-      };
-
-      if (complete && this.type === 'range') {
-        const valid = this.checkRange(date);
-
-        if (!valid) {
-          // auto selected to max range if showConfirm
-          if (this.showConfirm) {
-            emit([date[0], getDayByOffset(date[0], this.maxRange - 1)]);
-          } else {
-            emit(date);
-          }
-          return;
-        }
-      }
-
-      emit(date);
-
-      if (complete && !this.showConfirm) {
+      if (!this.showConfirm) {
         this.onConfirm();
       }
     },
 
-    checkRange(date) {
-      const { maxRange, rangePrompt } = this;
-
-      if (maxRange && calcDateNum(date) > maxRange) {
-        Toast(rangePrompt || t('rangePrompt', maxRange));
-        return false;
-      }
-
-      return true;
-    },
-
     onConfirm() {
-      this.$emit(
-        'update:value',
-        copyDates(this.currentDate).formath('yyyy-MM-dd')
-      );
-      this.$emit(
-        'update:default-date',
-        copyDates(this.currentDate).formath('yyyy-MM-dd')
-      );
-      this.$emit('confirm', copyDates(this.currentDate).formath('yyyy-MM-dd'));
+      this.currentValue = this.currentDate;
+      this.$emit('confirm', dayjs(this.currentValue).format('YYYY-MM-DD'));
+
       this.togglePopup();
-      this.setTitle();
     },
-    setTitle() {
-      if (this.ifDesigner()) {
-        this.getTitle = this.value ?? this.defaultDate;
-        return;
-      }
-      if (this.currentDate) {
-        if (Array.isArray(this.currentDate)) {
-          this.getTitle = this.currentDate.reduce(
-            (p, c) => p + (isDate(c) ? c.formath('yyyy/MM/dd') : c) + '-',
-            ''
-          );
-        } else {
-          this.getTitle = isDate(this.currentDate)
-            ? this.currentDate.formath('yyyy/MM/dd')
-            : this.currentDate;
-        }
-      } else {
-        this.getTitle = '';
-      }
-    },
+
     genMonth(date, index) {
       const showMonthTitle = index !== 0 || !this.showSubtitle;
       return (
@@ -512,8 +412,8 @@ export default createComponent({
           type={this.type}
           disabled={this.disabled}
           color={this.color}
-          minDate={this.minDate}
-          maxDate={this.maxDate}
+          minDate={transErrorMinOrMaxDate(this.minDate, 'min')}
+          maxDate={transErrorMinOrMaxDate(this.maxDate, 'max')}
           showMark={this.showMark}
           formatter={this.formatter}
           rowHeight={this.rowHeight}
@@ -606,7 +506,7 @@ export default createComponent({
         <div class={bem('wrapppcalendar')}>
           <Field
             label={this.labelField}
-            value={this.ifDesigner() ? (this.value ?? this.defaultDate) : this.getTitle}
+            value={this.getTitle()}
             scopedSlots={tempSlot}
             readonly
             isLink
