@@ -86,7 +86,7 @@ export default createComponent({
       this.$emit('update:endValue', val);
     },
     endValue(val) {
-      if (isValidDate) {
+      if (isValidDate(val)) {
         this.currentEndValue = val;
         this.tempEndValue = val;
       }
@@ -98,9 +98,13 @@ export default createComponent({
     },
     getTitle() {
       if (this?.$env?.VUE_APP_DESIGNER) {
+        const value = isValidDate(this.value) ? this.value : '';
+        const start = isValidDate(this.startValue) ? this.startValue : '';
+        const end = isValidDate(this.endValue) ? this.endValue : '';
+
         return this.range
-          ? `${this.startValue} - ${this.endValue}`
-          : this.value;
+          ? `${start} - ${end}`
+          : value;
       }
 
       if (this.range) {
