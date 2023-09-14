@@ -1,5 +1,5 @@
 import { createNamespace } from '../utils';
-import { displayFormat } from './utils';
+import { displayFormat, isValidDate } from './utils';
 import TimePicker from './TimePicker';
 import DatePicker from './DatePicker';
 import Popup from '../popup';
@@ -44,16 +44,20 @@ export default createComponent({
     },
   },
   data() {
+    const val = isValidDate(this.value) ? this.value : null;
+    const start = isValidDate(this.startValue) ? this.startValue : null;
+    const end = isValidDate(this.endValue) ? this.endValue : null;
+
     return {
       popupVisible: false,
 
-      currentValue: this.value,
-      currentStartValue: this.startValue,
-      currentEndValue: this.endValue,
+      currentValue: val,
+      currentStartValue: start,
+      currentEndValue: end,
 
       // 临时值，用于记录区间change时的变化值
-      tempStartValue: this.startValue,
-      tempEndValue: this.endValue,
+      tempStartValue: start,
+      tempEndValue: end,
 
       // inDesigner: this.$env && this.$env.VUE_APP_DESIGNER,
     };
@@ -63,7 +67,9 @@ export default createComponent({
       this.$emit('update:value', val);
     },
     value(val) {
-      this.currentValue = val;
+      if (isValidDate(val)) {
+        this.currentValue = val;
+      }
     },
 
     // range value
@@ -71,15 +77,19 @@ export default createComponent({
       this.$emit('update:startValue', val);
     },
     startValue(val) {
-      this.currentStartValue = val;
-      this.tempStartValue = val;
+      if (isValidDate(val)) {
+        this.currentStartValue = val;
+        this.tempStartValue = val;
+      }
     },
     currentEndValue(val) {
       this.$emit('update:endValue', val);
     },
     endValue(val) {
-      this.currentEndValue = val;
-      this.tempEndValue = val;
+      if (isValidDate(val)) {
+        this.currentEndValue = val;
+        this.tempEndValue = val;
+      }
     },
   },
   methods: {
@@ -108,16 +118,20 @@ export default createComponent({
     },
     getTitle() {
       if (this?.$env?.VUE_APP_DESIGNER) {
+        const value = isValidDate(this.value) ? this.value : '';
+        const start = isValidDate(this.startValue) ? this.startValue : '';
+        const end = isValidDate(this.endValue) ? this.endValue : '';
+
         return this.range
-          ? `${this.startValue} - ${this.endValue}`
-          : this.value;
+          ? `${start} - ${end}`
+          : value;
       }
 
       if (this.range) {
         let startTitle = '';
         let endTitle = '';
 
-        if (this.startValue) {
+        if (isValidDate(this.startValue)) {
           startTitle = displayFormat(
             this.startValue,
             this.type,
@@ -131,7 +145,7 @@ export default createComponent({
           );
         }
 
-        if (this.endValue) {
+        if (isValidDate(this.endValue)) {
           endTitle = displayFormat(
             this.endValue,
             this.type,
@@ -149,7 +163,7 @@ export default createComponent({
       }
 
       // not range
-      if (this.value) {
+      if (isValidDate(this.value)) {
         return displayFormat(this.value, this.type, this.displayFormat);
       }
 
@@ -166,7 +180,7 @@ export default createComponent({
     // @exposed-api
     open() {
       this.popupVisible = true;
-      this.$refs.popup.open();
+      // this.$refs.popup.open();
     },
     // @exposed-api
     close() {
@@ -257,7 +271,8 @@ export default createComponent({
     },
     renderContent() {
       const Component = this.type === 'time' ? TimePicker : DatePicker;
-
+      console.log('currentStartValue', this.currentStartValue);
+      console.log('currentEndValue', this.currentEndValue);
       if (this.range) {
         return (
           <Tabs line-width="150px" lazyRender={false}>
