@@ -52,11 +52,15 @@
     - name: start-value
       title: 起始值
       type: string,number,Date
+      sync: true
+      model: true
       dependency:
         - range: true
     - name: end-value
       title: 结束值
       type: string,number,Date
+      sync: true
+      model: true
       dependency:
         - range: true
     - name: value
