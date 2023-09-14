@@ -226,7 +226,6 @@ export default createComponent({
 
       const controledValue = this.value ?? this.defaultDate;
       if (controledValue && dayjs(controledValue).isValid()) {
-        console.log(11);
         return dayjs(controledValue).format('YYYY-MM-DD')
       }
 
