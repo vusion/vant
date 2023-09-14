@@ -9,7 +9,13 @@
   min-height: @slider-button-height;
   min-width: @slider-button-width;
 
+  width: 100%;
   padding: 0 calc(@slider-button-width / 2);
+
+  &.vertical {
+    height: 100%;
+    padding: calc(@slider-button-height / 2) 0;
+  }
 
   .van-slider {
       position: relative;

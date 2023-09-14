@@ -315,7 +315,7 @@ export default createComponent({
     };
 
     return (
-      <div class="van-slider-room">
+      <div class={`van-slider-room ${vertical ? 'vertical' : ''}`}>
         <div
           style={wrapperStyle}
           class={bem({ disabled: this.disabled, vertical })}
@@ -326,7 +326,6 @@ export default createComponent({
           </div>
         </div>
       </div>
-
     );
   },
 });
