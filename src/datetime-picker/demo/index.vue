@@ -127,7 +127,7 @@ export default {
           maxDate: '2020-12-12 12:12:12' || new Date(2025, 10, 1),
           date: '2021-01-13 00:00:00' || new Date(2021, 0, 17),
           startDate: 'asdfsadf-asdf',
-          endDate: new Date(2024, 1, 1),
+          endDate: 'asdfasdf',
 
           time: undefined,
           startTime: undefined,
