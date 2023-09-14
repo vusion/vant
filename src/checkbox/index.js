@@ -31,7 +31,7 @@ export default createComponent({
       },
     },
     name() {
-      return this.parent.dataSource[this.index][this.parent.valueField];
+      return this.parent.dataSource[this.index]?.[this.parent.valueField] ?? this.parent.dataSource[this.index];
     }
   },
 
