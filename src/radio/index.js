@@ -37,9 +37,6 @@ export default createComponent({
       return this.currentValue == this.name;
     },
   },
-  updated() {
-    console.log('radioVm', this)
-  },
   methods: {
     toggle() {
       this.currentValue = this.name;
