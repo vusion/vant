@@ -2,6 +2,8 @@
   <demo-section>
       <demo-block card title="受控联动绑定">
           <div>value: {{ date }}</div>
+          <div>start: {{ startDate }}</div>
+          <div>end: {{ endDate }}</div>
           <van-datetime-picker
               :isNew="false"
               :ref="`datetime_picker1`"
@@ -35,6 +37,8 @@
           </van-datetime-picker>
           <van-button @click="clear">clear</van-button>
           <div>time: {{ time }}</div>
+          <div>start: {{ startTime }}</div>
+          <div>end: {{ endTime }}</div>
           <van-datetime-picker
               :isNew="false"
               :ref="`datetime_picker1`"
