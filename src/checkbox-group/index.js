@@ -19,7 +19,7 @@ export default createComponent({
     min: {
       type: Number,
       default: 0,
-    }, 
+    },
     valueField: { type: String, default: 'value' },
     disabled: Boolean,
     direction: String,

@@ -11,7 +11,10 @@ export default createComponent({
       parent: 'vanRadio',
     }),
   ],
-
+  props: {
+    icon: String,
+    name: null
+  },
   computed: {
     currentValue: {
       get() {
@@ -34,7 +37,9 @@ export default createComponent({
       return this.currentValue == this.name;
     },
   },
-
+  updated() {
+    console.log('radioVm', this)
+  },
   methods: {
     toggle() {
       this.currentValue = this.name;
