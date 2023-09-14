@@ -44,9 +44,9 @@ export default createComponent({
     },
   },
   data() {
-    const val = isValidDate(this.value) ? this.value : null;
-    const start = isValidDate(this.startValue) ? this.startValue : null;
-    const end = isValidDate(this.endValue) ? this.endValue : null;
+    const val = isValidDate(this.value, this.type) ? this.value : null;
+    const start = isValidDate(this.startValue, this.type) ? this.startValue : null;
+    const end = isValidDate(this.endValue, this.type) ? this.endValue : null;
 
     return {
       popupVisible: false,
@@ -67,7 +67,7 @@ export default createComponent({
       this.$emit('update:value', val);
     },
     value(val) {
-      if (isValidDate(val)) {
+      if (isValidDate(val, this.type)) {
         this.currentValue = val;
       }
     },
@@ -77,7 +77,7 @@ export default createComponent({
       this.$emit('update:startValue', val);
     },
     startValue(val) {
-      if (isValidDate(val)) {
+      if (isValidDate(val, this.type)) {
         this.currentStartValue = val;
         this.tempStartValue = val;
       }
@@ -86,7 +86,7 @@ export default createComponent({
       this.$emit('update:endValue', val);
     },
     endValue(val) {
-      if (isValidDate(val)) {
+      if (isValidDate(val, this.type)) {
         this.currentEndValue = val;
         this.tempEndValue = val;
       }
@@ -98,9 +98,9 @@ export default createComponent({
     },
     getTitle() {
       if (this?.$env?.VUE_APP_DESIGNER) {
-        const value = isValidDate(this.value) ? this.value : '';
-        const start = isValidDate(this.startValue) ? this.startValue : '';
-        const end = isValidDate(this.endValue) ? this.endValue : '';
+        const value = isValidDate(this.value, this.type) ? this.value : '';
+        const start = isValidDate(this.startValue, this.type) ? this.startValue : '';
+        const end = isValidDate(this.endValue, this.type) ? this.endValue : '';
 
         return this.range
           ? `${start} - ${end}`
@@ -111,13 +111,13 @@ export default createComponent({
         let startTitle = '';
         let endTitle = '';
 
-        if (isValidDate(this.startValue)) {
+        if (isValidDate(this.startValue, this.type)) {
           startTitle = displayFormat(
             this.startValue,
             this.type,
             this.displayFormat
           );
-        } else if (this.currentStartValue) {
+        } else if (isValidDate(this.currentStartValue, this.type)) {
           startTitle = displayFormat(
             this.currentStartValue,
             this.type,
@@ -125,13 +125,13 @@ export default createComponent({
           );
         }
 
-        if (isValidDate(this.endValue)) {
+        if (isValidDate(this.endValue, this.type)) {
           endTitle = displayFormat(
             this.endValue,
             this.type,
             this.displayFormat
           );
-        } else if (this.currentEndValue) {
+        } else if (isValidDate(this.currentEndValue, this.type)) {
           endTitle = displayFormat(
             this.currentEndValue,
             this.type,
@@ -143,11 +143,11 @@ export default createComponent({
       }
 
       // not range
-      if (isValidDate(this.value)) {
+      if (isValidDate(this.value, this.type)) {
         return displayFormat(this.value, this.type, this.displayFormat);
       }
 
-      if (this.currentValue) {
+      if (isValidDate(this.currentValue, this.type)) {
         return displayFormat(this.currentValue, this.type, this.displayFormat);
       }
 
@@ -251,8 +251,7 @@ export default createComponent({
     },
     renderContent() {
       const Component = this.type === 'time' ? TimePicker : DatePicker;
-      console.log('currentStartValue', this.currentStartValue);
-      console.log('currentEndValue', this.currentEndValue);
+
       if (this.range) {
         return (
           <Tabs line-width="150px" lazyRender={false}>

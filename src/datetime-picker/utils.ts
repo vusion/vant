@@ -140,7 +140,7 @@ export function displayFormat(date: string | number | Date, type: string, custom
   }
 }
 
-export function isValidDate(date: string | Date): boolean {
+export function isValidDate(date: string | Date, type?: string): boolean {
   const isPrimitiveDate = Object.prototype.toString.call(date) === '[object Date]';
 
   //  Date 类型
@@ -148,8 +148,20 @@ export function isValidDate(date: string | Date): boolean {
     return !isNaN((date as Date).getTime());
   }
 
+  if (!date) {
+    return false;
+  }
+
+  let format;
+
+  if (type === 'time') {
+    format = 'HH:mm'
+  } else if (type === 'year-month') {
+    format = 'YYYY-MM'
+  }
+
   // string类型
-  const valid = dayjs(date).isValid();
+  const valid = dayjs(date, format).isValid();
 
   return valid;
 }
