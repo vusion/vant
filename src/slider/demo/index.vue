@@ -30,7 +30,7 @@
     </demo-block>
 
     <demo-block :title="t('customButton')">
-      <van-slider v-model="value7" active-color="#ee0a24">
+      <van-slider v-model="value7" active-color="#ee0a24" custom>
         <template #button>
           <div class="custom-button">{{ value7 }}</div>
         </template>
@@ -38,13 +38,12 @@
     </demo-block>
 
     <demo-block v-if="!isWeapp" :title="t('vertical')">
-      <div :style="{ height: '150px', paddingLeft: '30px' }">
-        <van-slider v-model="value8" vertical @change="onChange" />
+      <div :style="{ height: '150px', paddingLeft: '30px', display: 'flex' }">
+        <van-slider v-model="value8" vertical @change="onChange" custom />
         <van-slider
           v-model="value9"
           range
           vertical
-          style="margin-left: 100px"
           @change="onChange"
         />
       </div>

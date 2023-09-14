@@ -126,6 +126,8 @@
       type: number
       default: 6
       description: 可见选项个数
+      dependency:
+        - type: picker
     - name: input-align
       title: 右侧内容对齐方式
       type: string
