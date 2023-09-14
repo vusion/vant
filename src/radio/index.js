@@ -46,7 +46,7 @@ export default createComponent({
       // eslint-disable-next-line eqeqeq
       return this.currentValue == this.name;
     },
-  },q
+  },
   methods: {
     toggle() {
       this.currentValue = this.name;
