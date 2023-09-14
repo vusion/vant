@@ -15,8 +15,8 @@ export default createComponent({
 
   props: {
     icon: String,
+    name: null
   },
-
   computed: {
     currentHasIcon() {
       return !!this.currentIcon;
@@ -47,7 +47,9 @@ export default createComponent({
       return this.currentValue == this.name;
     },
   },
-
+  updated() {
+    console.log('radioVm', this)
+  },
   methods: {
     toggle() {
       this.currentValue = this.name;
