@@ -31,7 +31,11 @@ export default createComponent({
       },
     },
     name() {
-      return this.parent.dataSource[this.index]?.[this.parent.valueField] ?? this.parent.dataSource[this.index];
+      let name = this.parent.options[this.index]?.[this.parent.valueField] ?? this.parent.options[this.index];
+      this.parent.valueField.split('.').forEach(key => {
+        name = name[key] || name
+      });
+      return name
     }
   },
 
