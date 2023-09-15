@@ -67,9 +67,9 @@ export default createComponent({
       this.$emit('update:value', val);
     },
     value(val) {
-      if (isValidDate(val, this.type)) {
+      // if (isValidDate(val, this.type)) {
         this.currentValue = val;
-      }
+      // }
     },
 
     // range value
@@ -77,19 +77,19 @@ export default createComponent({
       this.$emit('update:startValue', val);
     },
     startValue(val) {
-      if (isValidDate(val, this.type)) {
+      // if (isValidDate(val, this.type)) {
         this.currentStartValue = val;
         this.tempStartValue = val;
-      }
+      // }
     },
     currentEndValue(val) {
       this.$emit('update:endValue', val);
     },
     endValue(val) {
-      if (isValidDate(val, this.type)) {
+      // if (isValidDate(val, this.type)) {
         this.currentEndValue = val;
         this.tempEndValue = val;
-      }
+      // }
     },
   },
   methods: {
