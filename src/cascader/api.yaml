@@ -10,7 +10,7 @@
       type: string, number
       sync: true
       model: true
-      default: ""
+      default: ''
       description: 选中的值
     - name: labelField
       title: 左侧标题
@@ -22,7 +22,7 @@
       type: array
       default2: '[{"text":"理学","value":"理学","children":[{"text":"物理学","value":"物理学","children":[{"text":"理论物理","value":"理论物理"},{"text":"凝聚态物理","value":"凝聚态物理"},{"text":"材料物理","value":"材料物理"}]},{"text":"数学","value":"数学","children":[{"text":"基础数学","value":"基础数学"},{"text":"计算数学","value":"计算数学"},{"text":"应用数学","value":"应用数学"}]},{"text":"化学","value":"化学"}]},{"text":"工学","value":"工学","children":[{"text":"计算机科学与技术","value":"计算机科学与技术","children":[{"text":"计算机系统结构","value":"计算机系统结构"},{"text":"计算机软件与理论","value":"计算机软件与理论","disabled":true},{"text":"计算机应用技术","value":"计算机应用技术"}]},{"text":"软件工程","value":"软件工程","disabled":true},{"text":"机械工程","value":"机械工程","children":[{"text":"机械制造及其自动化","value":"机械制造及其自动化"},{"text":"机械电子工程","value":"机械电子工程"},{"text":"机械设计及理论","value":"机械设计及理论","disabled":true},{"text":"车辆工程","value":"车辆工程","disabled":true}]}]}]'
       description: 一个包含字符串或对象的数组
-      designer-value: "[{}]"
+      designer-value: '[{}]'
     - name: placeholder
       title: 占位提示
       type: string
@@ -53,17 +53,18 @@
       default: false
       description: 将平铺数据转为树形结构数据
     - name: parent-field
-      title: 父级字段
+      title: 父级值字段
       type: string
       default: parentId
       description: 父级字段
     - name: children-field
-      title: 子级字段
+      title: 子级值字段
+      advanced: true
       type: string
       default: children
       description: 子级字段
     - name: filterable
-      title: 可筛选
+      title: 搜索框
       type: boolean
       default: false
       description: 是否可以过滤（搜索），开启将会显示搜索框。
@@ -74,7 +75,7 @@
       description: 自定义 options 结构中的字段
       advanced: true
     - name: input-align
-      title: 右侧内容对齐方式
+      title: 对齐方式
       type: string
       options:
         - value: left
@@ -85,7 +86,7 @@
           title: 右
       description: 右侧内容对齐方式
     - name: close-on-click-overlay
-      title: 点击遮罩层后关闭
+      title: 是否点击遮罩层后关闭
       type: boolean
       default: false
       description: 是否点击遮罩层后关闭
