@@ -74,11 +74,35 @@
           <van-button @click="clear">clear</van-button>
       </demo-block>
 
-      <demo-block card :title="t('yearMonthType')">
-          <van-datetime-picker :value.sync="value.yearMonth" type="year-month" :title="t('yearMonthType')" :min-date="minDate" :max-date="maxDate" />
+      <demo-block card title="年月日">
+          <div>value: {{ value.date }}</div>
+          <van-datetime-picker :value.sync="value.date" type="date" unit="date"  />
+      </demo-block>
+      <demo-block card title="年周">
+          <div>value: {{ value.week }}</div>
+          <van-datetime-picker :value.sync="value.week" type="date" unit="week"  />
+      </demo-block>
+      <demo-block card title="年月">
+          <div>value: {{ value.month }}</div>
+          <van-datetime-picker :value.sync="value.month" type="date" unit="month"  />
+      </demo-block>
+      <demo-block card title="年季度">
+          <div>value: {{ value.quarter }}</div>
+          <van-datetime-picker :value.sync="value.quarter" type="date" unit="quarter"  />
+      </demo-block>
+      <demo-block card title="年">
+          <div>value: {{ value.year }}</div>
+          <van-datetime-picker :value.sync="value.year" type="date" unit="year"  />
+      </demo-block>
+
+      <demo-block card title="">
+          <van-datetime-picker :value.sync="value.yearMonth" type="date" unit="month"  />
       </demo-block>
       <demo-block card :title="t('timeType')">
           <van-datetime-picker :value.sync="value.time" type="time" :title="t('timeType')" :min-hour="10" :max-hour="20" />
+      </demo-block>
+      <demo-block card :title="t('timeType')">
+          <van-datetime-picker :value.sync="value.secondTime" type="time" unit="second" :title="t('timeType')" :min-hour="10" :max-hour="20" />
       </demo-block>
       <demo-block card :title="t('dateType')">
           <van-datetime-picker :value.sync="value.date" type="date" :title="t('dateType')" />
@@ -139,7 +163,13 @@ export default {
 
           value: {
               date: '2021-01-13 00:00:00' || new Date(2021, 0, 17),
+              week: null,
+              month: null,
+              quarter: null,
+              year: null,
+
               time: '12:00',
+              secondTime: '12:11:11',
               datetime: '2022-03-31T07:21:52.066Z',
               datehour: new Date(2020, 0, 1),
               monthDay: new Date(2020, 0, 1),

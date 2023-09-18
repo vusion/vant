@@ -17,33 +17,45 @@
           title: 时间选择
         - value: date
           title: 日期选择
-        - value: year-month
-          title: 年月选择器
         - value: datetime
           title: 日期时间选择
       default: datetime
-    - name: converter
-      title: 转换器
-      type: string
-      description: 转换绑定的值类型
+    - name: unit
+      title: 最小单位
       options:
-        - title: yyyy/MM/dd HH:mm:ss
-          value: format
-        - title: Unix 时间戳
-          value: timestamp
-        - title: JSON
-          value: json
-        - title: Date 对象
+        - title: 日期
           value: date
-      default: format
-      # 此属性依赖的属性
-      depProp:
-        - name: type
-          value: datetime
-        - name: type
-          value: date
-        - name: type
-          value: year-month
+          dependency:
+            - type: date
+        - title: 周
+          value: week
+          dependency:
+            - type: date
+        - title: 月份
+          value: month
+          dependency:
+            - type: date
+        - title: 季度
+          value: quarter
+          dependency:
+            - type: date
+        - title: 年份
+          value: year
+          dependency:
+            - type: date
+        - title: 分
+          value: minute
+          dependency:
+            - '!type': date
+        - title: 秒
+          value: second
+          dependency:
+            - '!type': date
+    - name: displayFormat
+      title: 展示格式
+      type: string
+      options:
+
     - name: range
       title: 区间选择
       type: boolean
@@ -72,6 +84,28 @@
       description: 开关状态
       dependency:
         - '!range': true
+    - name: converter
+      title: 转换器
+      type: string
+      description: 转换绑定的值类型
+      options:
+        - title: yyyy/MM/dd HH:mm:ss
+          value: format
+        - title: Unix 时间戳
+          value: timestamp
+        - title: JSON
+          value: json
+        - title: Date 对象
+          value: date
+      default: format
+      # 此属性依赖的属性
+      depProp:
+        - name: type
+          value: datetime
+        - name: type
+          value: date
+        - name: type
+          value: year-month
     - name: min-date
       title: 最小日期
       type: Date
@@ -108,10 +142,6 @@
       description: 当时间选择类型为 time 时
       dependency:
         - type: time
-    - name: displayFormat
-      title: 自定义展示格式
-      type: string
-      description: 只用于页面上展示的格式，例如：yyyy年MM月dd日
     - name: title
       title: 顶部栏标题
       type: string
