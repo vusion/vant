@@ -1,5 +1,5 @@
 import { createNamespace } from '../utils';
-import { displayFormat, isValidDate, valueFormat } from './utils';
+import { displayFormat, isValidDate } from './utils';
 import TimePicker from './TimePicker';
 import DatePicker from './DatePicker';
 import Popup from '../popup';
@@ -36,7 +36,7 @@ export default createComponent({
     },
     inputAlign: String,
     closeOnClickOverlay: Boolean,
-
+    placeholder: String,
     range: Boolean,
     startValue: String,
     endValue: String,
@@ -105,6 +105,11 @@ export default createComponent({
   methods: {
     // 展示格式
     getDisplayFormatter() {
+      // 高级格式化开启
+      if (this.advancedFormat && this.advancedFormat.enable && this.advancedFormat.value) {
+        return this.advancedFormat.value;
+      }
+
       const formatters = validDisplayFormatters[this.realType][this.realUnit];
 
       if (formatters.includes(this.displayFormat)) {
@@ -290,6 +295,8 @@ export default createComponent({
                 {...{
                   props: {
                     ...this.$props,
+                    type: this.realType,
+                    unit: this.realUnit,
                     value: this.currentStartValue,
                     maxDate: this.tempEndValue ?? this.$props.maxDate,
                   },
@@ -310,6 +317,8 @@ export default createComponent({
                 {...{
                   props: {
                     ...this.$props,
+                    type: this.realType,
+                    unit: this.realUnit,
                     value: this.currentEndValue,
                     // 当currentStartValue存在时，使用
                     minDate: this.tempStartValue ?? this.$props.minDate,
@@ -334,6 +343,8 @@ export default createComponent({
           {...{
             props: {
               ...this.$props,
+              type: this.realType,
+              unit: this.realUnit,
               value: this.currentValue,
             },
           }}
@@ -373,6 +384,7 @@ export default createComponent({
         <Field
           label={this.labelField}
           value={this.getTitle()}
+          placeholder={this.placeholder}
           scopedSlots={tempSlot}
           readonly
           isLink

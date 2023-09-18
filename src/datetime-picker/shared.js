@@ -16,6 +16,13 @@ export const sharedProps = {
     default: (type, value) => value,
   },
   displayFormat: String,
+  advancedFormat: {
+    type: Object,
+    default: () => ({
+        enable: false,
+        value: '',
+    }),
+  },
   isNew: {
     type: Boolean,
     default: false,
@@ -162,8 +169,8 @@ export const validDisplayFormatters = {
     second: ['HH:mm:ss', 'HH时mm分ss秒'],
   },
   'datetime': {
-    'minute': ['YYYY-MM-DD HH:mm', 'YYYY年M月D日 HH时mm分'],
-    'second': ['YYYY-MM-DD HH:mm:ss', 'YYYY年M月D日 HH时mm分ss秒'],
+    minute: ['YYYY-MM-DD HH:mm', 'YYYY年M月D日 HH时mm分'],
+    second: ['YYYY-MM-DD HH:mm:ss', 'YYYY年M月D日 HH时mm分ss秒'],
   }
 }
 

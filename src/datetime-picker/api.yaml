@@ -55,7 +55,134 @@
       title: 展示格式
       type: string
       options:
+        - value: YYYY年M月D日
+          title: 中国（2023年7月26日）
+          dependency:
+            - unit: date
+              type: date
+        - value: YYYY-MM-DD
+          title: ISO（2023-07-26）
+          dependency:
+            - unit: date
+              type: date
+        - value: M/D/YYYY
+          title: US（7/26/2023）
+          dependency:
+            - unit: date
+              type: date
+        - value: D/M/YYYY
+          title: EU（26/7/2023）
+          dependency:
+            - unit: date
+              type: date
+        - value: GGGG-W周
+          title: 2023-28周
+          dependency:
+            - unit: week
+              type: date
+        - value: GGGG年第W周
+          title: 2023年第28周
+          dependency:
+            - unit: week
+              type: date
+        - value: GGGG-WWWW
+          title: 2023-W28
+          dependency:
+            - unit: week
+              type: date
+        - value: YYYY年M月
+          title: 中国（2023年7月）
+          dependency:
+            - unit: month
+              type: date
+        - value: YYYY-MM
+          title: ISO（2023-07）
+          dependency:
+            - unit: month
+              type: date
+        - value: M/YYYY
+          title: US/EU（7/2023）
+          dependency:
+            - unit: month
+              type: date
+        - value: YYYY年第Q季度
+          title: 2023年第3季度
+          dependency:
+            - unit: quarter
+              type: date
+        - value: YYYY年QQ
+          title: 2023年Q3
+          dependency:
+            - unit: quarter
+              type: date
+        - value: YYYY-QQ
+          title: 2023-Q3
+          dependency:
+            - unit: quarter
+              type: date
+        - value: YYYY年
+          title: 中国（2023年）
+          dependency:
+            - unit: year
+              type: date
+        - value: YYYY
+          title: ISO（2023）
+          dependency:
+            - unit: year
+              type: date
 
+        - value: HH:mm:ss
+          title: "12:09:09"
+          dependency:
+            - unit: second
+              type: time
+        - value: HH时mm分ss秒
+          title: 12时09分09秒
+          dependency:
+            - unit: second
+              type: time
+        - value: HH:mm
+          title: "12:09"
+          dependency:
+            - unit: minute
+              type: time
+        - value: HH时mm分
+          title: 12时09分
+          dependency:
+            - unit: minute
+              type: time
+
+        - value: YYYY-MM-DD HH:mm:ss
+          title: "2023-07-26 12:09:09"
+          dependency:
+            - unit: second
+              type: datetime
+        - value: YYYY年M月D日 HH时mm分ss秒
+          title: 2023年7月26日 12时09分09秒
+          dependency:
+            - unit: second
+              type: datetime
+        - value: YYYY-MM-DD HH:mm HH:mm
+          title: "2023-07-26 12:09"
+          dependency:
+            - unit: minute
+              type: datetime
+        - value: YYYY年M月D日 HH时mm分
+          title: 2023年7月26日 12时09分
+          dependency:
+            - unit: minute
+              type: datetime
+      dependency:
+        - advanced-format.enable: false
+    - name: advanced-format
+      title: 高级格式化
+      type: "{ enable: boolean, value: string }"
+      default: "{ enable: false, value: '' }"
+      description: ""
+      brifeDoc: ""
+      docDescription: ""
+      tooltipLink: ""
+      bindHide: true
     - name: range
       title: 区间选择
       type: boolean

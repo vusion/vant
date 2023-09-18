@@ -178,7 +178,31 @@ export default createComponent({
           },
         ];
       } else if (this.unit === 'week') {
+        const {
+          maxYear,
+        } = this.getBoundary(
+          'max',
+          this.innerValue ? this.innerValue : this.minDate
+        );
 
+        const {
+          minYear,
+        } = this.getBoundary(
+          'min',
+          this.innerValue ? this.innerValue : this.minDate
+        );
+
+        return [
+          {
+            type: 'year',
+            range: [minYear, maxYear],
+          },
+          {
+            type: 'week',
+            range: [1, 52],
+            format: (value) => `W${value}`,
+          },
+        ];
       } else { // 默认日期（年月日）
         const {
           maxYear,
@@ -230,19 +254,10 @@ export default createComponent({
         this.updateInnerValue();
       }
     },
-    // value(val) {
-    //   val = this.formatValue(val);
-
-    //   if (val && val.valueOf() !== this.innerValue.valueOf()) {
-    //     this.innerValue = val;
-    //   }
-    // },
     value: {
       handler(val) {
-        val = this.formatValue(val);
-        if (val && val.valueOf() !== this.innerValue.valueOf()) {
-          this.innerValue = val;
-        }
+        // 将外部值转内部值
+        this.innerValue = this.formatValue(val)
       },
       immediate: true,
     },
@@ -273,9 +288,10 @@ export default createComponent({
         value = new Date();
       }
 
+      // 此时value一定是Date类型
       if (this.type === 'datetime') {
-        let minDate = transErrorDate(this.minDate, 'min');
-        let maxDate = transErrorDate(this.maxDate, 'max');
+        let minDate = transErrorMinOrMaxDate(this.minDate, 'min');
+        let maxDate = transErrorMinOrMaxDate(this.maxDate, 'max');
 
         const dateMethods = {
           year: 'getFullYear',
@@ -326,6 +342,114 @@ export default createComponent({
         value = Math.min(value, maxDate.getTime());
         return new Date(value);
       }
+
+      // date模式
+      const getDates = (originColumns, ranges, dateMethods) => {
+          const dateColumns = originColumns.map(
+            ({ type, values }, index) => {
+              const { range } = ranges[index];
+
+              const minDateVal = dayjs(minDate)[dateMethods[type]]()
+              const maxDateVal = dayjs(maxDate)[dateMethods[type]]()
+
+              const min = +values[0];
+              const max = +values[values.length - 1];
+
+              return {
+                type,
+                values: [
+                  minDateVal < range[0]
+                    ? Math.max(minDateVal, min)
+                    : min || minDateVal,
+                  maxDateVal > range[1]
+                    ? Math.min(maxDateVal, max)
+                    : max || maxDateVal,
+                ],
+              };
+            }
+          );
+
+          const dates = Object.keys(dateMethods).map((type) =>
+              dateColumns.filter((item) => item.type === type)[0]?.values
+          ).filter((item) => item);
+
+          return dates;
+      }
+
+      let minDate = transErrorMinOrMaxDate(this.minDate, 'min');
+      let maxDate = transErrorMinOrMaxDate(this.maxDate, 'max');
+      if (this.unit === 'year') {
+        const dateMethods = {
+          year: 'year',
+        };
+
+        if (this.originColumns) {
+          const dates = getDates(this.originColumns, this.ranges, dateMethods);
+          const [[minYear, maxYear]] = dates;
+
+          minDate = dayjs(minYear, 'YYYY').toDate()
+          maxDate = dayjs(maxYear, 'YYYY').toDate()
+        }
+      } else if (this.unit === 'quarter') {
+        const dateMethods = {
+          year: 'year',
+          quarter: 'quarter',
+        };
+
+        if (this.originColumns) {
+          const dates = getDates(this.originColumns, this.ranges, dateMethods);
+          const [[minYear, maxYear], [minQuarter, maxQuarter]] = dates;
+          minDate = dayjs(`${minYear}-Q${minQuarter}`, 'YYYY-QQ').toDate()
+          maxDate = dayjs(`${maxYear}-Q${maxQuarter}`, 'YYYY-QQ').toDate()
+        }
+      } else if (this.unit === 'month') {
+        const dateMethods = {
+          year: 'year',
+          month: 'month',
+        };
+
+        if (this.originColumns) {
+          const dates = getDates(this.originColumns, this.ranges, dateMethods);
+          const [[minYear, maxYear], [minMonth, maxMonth]] = dates;
+          minDate = dayjs(`${minYear}-${minMonth}`, 'YYYY-M').toDate()
+          maxDate = dayjs(`${maxYear}-${maxMonth}`, 'YYYY-M').toDate()
+        }
+      } else if (this.unit === 'week') {
+        const dateMethods = {
+          year: 'year',
+          week: 'isoWeek',
+        };
+
+        if (this.originColumns) {
+          const dates = getDates(this.originColumns, this.ranges, dateMethods);
+          const [[minYear, maxYear], [minWeek, maxWeek]] = dates;
+          minDate = dayjs(`${minYear}-W${minWeek}`, 'GGGG-WWW').toDate()
+          maxDate = dayjs(`${maxYear}-W${maxWeek}`, 'GGGG-WWW').toDate()
+        }
+      } else {
+        const dateMethods = {
+          year: 'year',
+          month: 'month',
+          day: 'date',
+        };
+
+        if (this.originColumns) {
+          const dates = getDates(this.originColumns, this.ranges, dateMethods);
+          const [[minYear, maxYear], [minMonth, maxMonth], [minDay, maxDay]] = dates;
+          minDate = dayjs(`${minYear}-${minMonth}-${minDay}`, 'YYYY-M-D').toDate()
+          maxDate = dayjs(`${maxYear}-${maxMonth}-${maxDay}`, 'YYYY-M-D').toDate()
+        }
+      }
+
+      if (dayjs(value).isBefore(minDate)) {
+        value = minDate;
+      }
+
+      if (dayjs(value).isAfter(maxDate)) {
+        value = maxDate;
+      }
+
+      return dayjs(value).toDate();
     },
 
     getBoundary(type, value) {
@@ -407,9 +531,8 @@ export default createComponent({
         this.innerValue = this.formatValue(dayjs(dateString).toDate());
       } else {
         if (this.unit === 'year') {
-          const year = getValue('year')
-
-          this.innerValue = this.formatValue(dayjs(year, 'YYYY').toDate());
+          const year = getValue('year');
+          this.innerValue = this.formatValue(dayjs(`${year}`, 'YYYY').toDate());
         } else if (this.unit === 'quarter') {
           const year = getValue('year')
           const quarter = getValue('quarter')
@@ -424,7 +547,7 @@ export default createComponent({
           const year = getValue('year')
           const week = getValue('week')
 
-          this.innerValue = this.formatValue(dayjs(`${year}-W${week}`, 'GGGG-WWWW').toDate());
+          this.innerValue = this.formatValue(dayjs(`${year}-W${week}`, 'GGGG-WWW').toDate());
         } else {
           const year = getValue('year')
           const month = getValue('month')
@@ -454,20 +577,26 @@ export default createComponent({
 
     updateColumnValue() {
       const value = this.innerValue ? this.innerValue : this.minDate;
-      const { formatter } = this;
+      const date = dayjs(value);
 
       const values = this.originColumns.map((column) => {
         switch (column.type) {
           case 'year':
-            return formatter('year', `${value.getFullYear()}`);
+            return padZero(date.year())
+          case 'quarter':
+            return `Q${date.quarter()}`
           case 'month':
-            return formatter('month', padZero(value.getMonth() + 1));
+            return padZero(date.month() + 1)
+          case 'week':
+            return `W${date.isoWeek()}`
           case 'day':
-            return formatter('day', padZero(value.getDate()));
+            return padZero(date.date())
           case 'hour':
-            return formatter('hour', padZero(value.getHours()));
+            return padZero(date.hour())
           case 'minute':
-            return formatter('minute', padZero(value.getMinutes()));
+            return padZero(date.minute())
+          case 'second':
+            return padZero(date.second())
           default:
             // no default
             return null;

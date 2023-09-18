@@ -105,11 +105,11 @@ export function transErrorMinOrMaxDate(date: any, type: 'min' | 'max'): Date {
   // 二十年前
   const thisYear = dayjs().year();
   if (type === 'min') {
-    return dayjs(`${thisYear - 20}-1-1`).toDate();
+    return dayjs(`${thisYear - 20}-1-1 00:00:00`).toDate();
   }
 
   // 二十年后
-  return dayjs(`${thisYear + 20}-12-31`).toDate();
+  return dayjs(`${thisYear + 20}-12-31 23:59:59`).toDate();
 }
 
 export function formatFu(date: string | number | Date, type: string, gmt: boolean) {

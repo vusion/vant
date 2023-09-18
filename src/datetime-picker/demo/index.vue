@@ -13,7 +13,9 @@
               :value.sync="date"
               :startValue.sync="startDate"
               :endValue.sync="endDate"
-              :range="true">
+              :range="true"
+              :advanced-format="{enable: true, value: 'YYYY年MM月DD日'}"
+          >
               <template #title>
                   <van-text text="顶部标题"></van-text>
               </template>
@@ -48,7 +50,8 @@
               :value.sync="time"
               :startValue.sync="startTime"
               :endValue.sync="endTime"
-              :range="true">
+              :range="true"
+          >
               <template #title>
                   <van-text text="顶部标题"></van-text>
               </template>
@@ -76,7 +79,7 @@
 
       <demo-block card title="年月日">
           <div>value: {{ value.date }}</div>
-          <van-datetime-picker :value.sync="value.date" type="date" unit="date"  />
+          <van-datetime-picker :value.sync="value.date" type="date" unit="date" displayFormat="YYYY年M月D日" />
       </demo-block>
       <demo-block card title="年周">
           <div>value: {{ value.week }}</div>
@@ -95,24 +98,20 @@
           <van-datetime-picker :value.sync="value.year" type="date" unit="year"  />
       </demo-block>
 
-      <demo-block card title="">
-          <van-datetime-picker :value.sync="value.yearMonth" type="date" unit="month"  />
-      </demo-block>
-      <demo-block card :title="t('timeType')">
-          <van-datetime-picker :value.sync="value.time" type="time" :title="t('timeType')" :min-hour="10" :max-hour="20" />
-      </demo-block>
-      <demo-block card :title="t('timeType')">
-          <van-datetime-picker :value.sync="value.secondTime" type="time" unit="second" :title="t('timeType')" :min-hour="10" :max-hour="20" />
-      </demo-block>
-      <demo-block card :title="t('dateType')">
-          <van-datetime-picker :value.sync="value.date" type="date" :title="t('dateType')" />
-      </demo-block>
       <demo-block card :title="t('datetimeType')">
           <van-datetime-picker :value.sync="value.datetime" type="datetime" :title="t('datetimeType')" />
       </demo-block>
       <demo-block card :title="t('datetimeType')">
-          <van-datetime-picker :value.sync="value.datetime" type="datetime" :title="t('datetimeType')" :max-date="maxDate" />
+          <van-datetime-picker :value.sync="value.datetime" type="datetime" unit="minute" :title="t('datetimeType')" />
       </demo-block>
+
+      <demo-block card :title="t('timeType')">
+          <van-datetime-picker :value.sync="value.time" type="time" :title="t('timeType')" />
+      </demo-block>
+      <demo-block card :title="t('timeType')">
+          <van-datetime-picker :value.sync="value.secondTime" type="time" unit="second" :title="t('timeType')" />
+      </demo-block>
+
   </demo-section>
 </template>
 
