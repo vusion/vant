@@ -148,28 +148,6 @@ export function valueFormat(value: string | number | Date, type: string) {
   if (type === 'datetime') {
     return date.toJSON();
   }
-
-
-  const tempDate = date;
-  // @ts-ignore
-  const tmpDate = isDate(tempDate) ? tempDate : (tempDate ? new Date(tempDate) : new Date());
-  if (type === 'datetime') {
-    if (gmt) return tmpDate.toJSON();
-    // @ts-ignore
-    return tmpDate.formath("yyyy-MM-dd HH:mm:ss")
-  }
-  if (type === 'date') {
-    // @ts-ignore
-    return tmpDate.formath("yyyy-MM-dd")
-  }
-  if (type === 'time') {
-    // @ts-ignore
-    return tempDate
-  }
-  if (type === 'year-month') {
-    // @ts-ignore
-    return tmpDate.formath("yyyy-MM")
-  }
 }
 
 
