@@ -218,6 +218,7 @@ export default createComponent({
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           insel={true}
+          style={this.style}
         />
         <Popup
           value={this.popupVisible}
