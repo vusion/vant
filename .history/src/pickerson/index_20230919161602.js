@@ -35,7 +35,6 @@ export default createComponent({
       valuepopup: false,
       // 内部值
       curValue: this.pvalue || '',
-      style: ''
     };
   },
   mounted() {
@@ -137,7 +136,6 @@ export default createComponent({
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           insel={true}
-          style={this.style}
         />
         <Popup
           safe-area-inset-bottom
@@ -161,7 +159,6 @@ export default createComponent({
             }}
             value={this.curValue}
             showToolbar={this.$attrs['show-toolbar']}
-            style={this.style}
             {...{ on }}
           >
             {this.filterable ? (
