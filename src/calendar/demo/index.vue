@@ -5,12 +5,12 @@
       <van-calendar
         label-field="日历选择"
         title="选择日期"
-        :defaultDate.sync="date"
+        :value.sync="date"
       ></van-calendar>
       <van-calendar
         label-field="日历选择"
         title="选择日期"
-        :defaultDate.sync="date"
+        :value.sync="date"
       ></van-calendar>
       <button @click="clear">clear</button>
     </demo-block>
