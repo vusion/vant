@@ -66,9 +66,7 @@ export default createComponent({
     };
   },
   mounted() {
-    console.log('props', this)
     this.style = `font-size: 16px;${this.$el.style.cssText}`;
-    console.log('style', this.style, this.$el.cssText)
   },
   computed: {
     data() {
