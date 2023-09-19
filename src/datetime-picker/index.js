@@ -1,5 +1,5 @@
 import { createNamespace } from '../utils';
-import { displayFormat, isValidDate } from './utils';
+import { showFormat, isValidDate } from './utils';
 import TimePicker from './TimePicker';
 import DatePicker from './DatePicker';
 import Popup from '../popup';
@@ -112,11 +112,12 @@ export default createComponent({
 
       const formatters = validDisplayFormatters[this.realType][this.realUnit];
 
-      if (formatters.includes(this.displayFormat)) {
-        return this.displayFormat
+      if (formatters.includes(this.showFormatter)) {
+        return this.showFormatter
       }
 
-      return formatters[0];
+      // 兼容之前displayFormat配置
+      return this.displayFormat || formatters[0];
     },
     designerDbControl() {
       this.$refs.popup.togglePModal();
@@ -157,7 +158,7 @@ export default createComponent({
         let endTitle = '';
 
         if (isValidDate(this.currentStartValue, this.realType, this.realUnit)) {
-          startTitle = displayFormat(this.currentStartValue, {
+          startTitle = showFormat(this.currentStartValue, {
             type: this.realType,
             unit: this.realUnit,
             formatter: this.getDisplayFormatter(),
@@ -165,7 +166,7 @@ export default createComponent({
         }
 
         if (isValidDate(this.currentEndValue, this.realType, this.realUnit)) {
-          endTitle = displayFormat(this.currentEndValue, {
+          endTitle = showFormat(this.currentEndValue, {
             type: this.realType,
             unit: this.realUnit,
             formatter: this.getDisplayFormatter(),
@@ -176,7 +177,7 @@ export default createComponent({
       }
 
       if (isValidDate(this.currentValue, this.realType, this.realUnit)) {
-        return displayFormat(this.currentValue, {
+        return showFormat(this.currentValue, {
             type: this.realType,
             unit: this.realUnit,
             formatter: this.getDisplayFormatter(),

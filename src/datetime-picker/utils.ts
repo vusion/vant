@@ -151,7 +151,7 @@ export function valueFormat(value: string | number | Date, type: string) {
 }
 
 
-export function displayFormat(value: string | number | Date, options: Record<string, any>) {
+export function showFormat(value: string | number | Date, options: Record<string, any>) {
   const { type, unit, formatter } = options;
   if (type === 'time') {
     let valueFormatter = 'HH:mm'

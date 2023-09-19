@@ -51,7 +51,7 @@
           value: second
           dependency:
             - '!type': date
-    - name: displayFormat
+    - name: show-formatter
       title: 展示格式
       type: string
       options:
@@ -269,6 +269,11 @@
       description: 当时间选择类型为 time 时
       dependency:
         - type: time
+    - name: displayFormat
+      title: 自定义展示格式
+      type: string
+      description: 只用于页面上展示的格式，例如：yyyy年MM月dd日
+      advanced: true
     - name: title
       title: 顶部栏标题
       type: string

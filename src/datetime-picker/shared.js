@@ -16,6 +16,7 @@ export const sharedProps = {
     default: (type, value) => value,
   },
   displayFormat: String,
+  showFormatter: String,
   advancedFormat: {
     type: Object,
     default: () => ({
