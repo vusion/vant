@@ -3,9 +3,8 @@
     :class="$style.root"
     v-on="$listeners"
     v-bind="$attrs"
-    vusion-slot-name-edit="text">
-    {{ formatedText }}
-  </span>
+    vusion-slot-name-edit="text">{{ formatedText }}</span>
+    <!-- 不要换行，会有空格 -->
 </template>
 
 <script>
