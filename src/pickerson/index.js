@@ -62,9 +62,12 @@ export default createComponent({
       popupVisible: false,
       // 内部值
       currentValue: this.formatValue((this.value ?? this.pvalue) || ''),
+      style: ''
     };
   },
-
+  mounted() {
+    this.style = `font-size: 16px;${this.$el.style.cssText}`;
+  },
   computed: {
     data() {
       return this.currentData || this.columnsprop || [];
@@ -250,6 +253,7 @@ export default createComponent({
                   },
                 }}
                 value={this.currentValue}
+                style={this.style}
                 {...{ on }}
               ></Picker>
             )}

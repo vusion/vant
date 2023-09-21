@@ -119,7 +119,7 @@ export default createComponent({
     viaOriginURL: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   data() {
     return {
@@ -163,7 +163,9 @@ export default createComponent({
       else if (this.converter === 'simple')
         try {
           if (!value) return [];
-          return value.split(',').map((x) => ({ url: x }));
+          return value
+            .split(',')
+            .map((x) => ({ url: x, name: this.handleFileName(x) }));
         } catch (err) {
           return [];
         }
@@ -295,8 +297,16 @@ export default createComponent({
         Promise.all(files.map((file) => readFile(file, this.resultType))).then(
           (contents) => {
             const list = files.map((file, index) => {
-              const result = { file, status: '', message: '' };
-
+              const result = {
+                file,
+                status: '',
+                message: '',
+                uid:
+                  file.uid !== undefined ? file.uid : Date.now() + files.length,
+                name: file.name,
+                size: file.size,
+                percent: 0,
+              };
               if (contents[index]) {
                 result.content = contents[index];
               }
@@ -309,7 +319,18 @@ export default createComponent({
         );
       } else {
         readFile(files, this.resultType).then((content) => {
-          const result = { file: files, status: '', message: '' };
+          const file = files; // 此时为单文件
+          const result = {
+            file: files,
+            status: '',
+            message: '',
+            uid:
+              file.uid !== undefined
+                ? file.uid
+                : Date.now() + (files?.length || 1),
+            name: file.name,
+            size: file.size,
+          };
 
           if (content) {
             result.content = content;
@@ -507,42 +528,43 @@ export default createComponent({
         let imgUrl = '';
         if (typeof item === 'object' && item !== null) {
           if (`${item?.url}` != 'undefined') {
-            imgUrl = item.url
+            imgUrl = item.url;
           }
         } else {
-          imgUrl = item ? item : ''
+          imgUrl = item ? item : '';
         }
-        return imgUrl
-      }
-      const Preview = isImageFile(item) && getUrl(item.content || item.url || item) ? (
-        <Image
-          fit={imageFit}
-          src={getUrl(item.content || item.url || item)}
-          class={bem('preview-image')}
-          width={previewSize}
-          height={previewSize}
-          lazyLoad={this.lazyLoad}
-          onClick={() => {
-            this.onPreviewImage(item);
-          }}
-        >
-          {PreviewCover}
-        </Image>
-      ) : (
-        <div
-          class={bem('file')}
-          style={{
-            width: this.previewSizeWithUnit,
-            height: this.previewSizeWithUnit,
-          }}
-        >
-          <Icon class={bem('file-icon')} name="description" />
-          <div class={[bem('file-name'), 'van-ellipsis']}>
-            {item.file ? item.file.name : item.url}
+        return imgUrl;
+      };
+      const Preview =
+        isImageFile(item) && getUrl(item.content || item.url || item) ? (
+          <Image
+            fit={imageFit}
+            src={getUrl(item.content || item.url || item)}
+            class={bem('preview-image')}
+            width={previewSize}
+            height={previewSize}
+            lazyLoad={this.lazyLoad}
+            onClick={() => {
+              this.onPreviewImage(item);
+            }}
+          >
+            {PreviewCover}
+          </Image>
+        ) : (
+          <div
+            class={bem('file')}
+            style={{
+              width: this.previewSizeWithUnit,
+              height: this.previewSizeWithUnit,
+            }}
+          >
+            <Icon class={bem('file-icon')} name="description" />
+            <div class={[bem('file-name'), 'van-ellipsis']}>
+              {item.file ? item.file.name : item.name ? item.name : item.url}
+            </div>
+            {PreviewCover}
           </div>
-          {PreviewCover}
-        </div>
-      );
+        );
 
       return (
         <div
@@ -625,6 +647,11 @@ export default createComponent({
       );
     },
 
+    handleFileName(url) {
+      const match = url.match(/\/([^/]+)$/);
+      return match ? match[1] : null;
+    },
+
     post(file) {
       const headers = {
         ...this.headers,
@@ -664,22 +691,28 @@ export default createComponent({
         onProgress: (e) => {
           // file.status = 'uploading';
           // file.message = e.percent + '%' || '上传中...';
+          file.percent = e.percent;
           this.$emit(
             'progress',
             {
-              ...e,
-              file,
+              e,
+              file: file.file,
+              item: file,
               xhr,
             },
             this
           );
         },
         onSuccess: (res) => {
-          file.status = '';
+          file.status = 'success';
           file.message = '';
+          file.percent = 100;
           if (res[this.urlField]) {
             file.url = res[this.urlField];
           }
+          file.name = file?.url
+            ? this.handleFileName(file?.url)
+            : file?.file?.name;
           file.response = res;
           setTimeout(() => {
             if (this.canUp) {
@@ -692,7 +725,8 @@ export default createComponent({
                 'success',
                 {
                   res,
-                  file,
+                  file: file.file,
+                  item: file,
                   xhr,
                 },
                 this
@@ -708,7 +742,8 @@ export default createComponent({
             {
               e,
               res,
-              file,
+              file: file.file,
+              item: file,
               xhr,
             },
             this

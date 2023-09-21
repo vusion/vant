@@ -282,7 +282,13 @@ export default createComponent({
 
       // 设置filterData
       this.filterData = this.flattenData.filter((item) => {
-        if (_get(item, this.textKey).indexOf(value) !== -1) {
+        const text = _get(item, this.textField);
+
+        if (!text) {
+          return false;
+        }
+
+        if (text.indexOf(value) !== -1) {
           return true;
         }
 
