@@ -22,6 +22,7 @@
       default: datetime
     - name: unit
       title: 最小单位
+      type: string
       options:
         - title: 日期
           value: date
