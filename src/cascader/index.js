@@ -17,6 +17,8 @@ export default createComponent({
   mixins: [FieldMixin, DataSourceMixin],
 
   props: {
+    readonly: Boolean,
+    disabled: Boolean,
     title: String,
     value: [Number, String],
     fieldNamesp: [Object, String],
@@ -124,7 +126,8 @@ export default createComponent({
       if (ifDesigner) {
         return this.value;
       }
-      const selectedOptions = this.getSelectedOptionsByValue(this.options, this.currentValue) || [];
+      const selectedOptions =
+        this.getSelectedOptionsByValue(this.options, this.currentValue) || [];
       const result = selectedOptions
         .map((option) => _get(option, this.textKey))
         .join('/');
@@ -273,6 +276,14 @@ export default createComponent({
     togglePopup() {
       this.valuepopup = !this.valuepopup;
       this.$refs.popforcas.togglePModal();
+    },
+
+    onClickField() {
+      if (this.readonly || this.disabled) {
+        return;
+      }
+
+      this.togglePopup();
     },
 
     // 覆盖mixin
@@ -448,9 +459,10 @@ export default createComponent({
           placeholder={this.placeholder}
           scopedSlots={tempSlot}
           readonly
+          disabled={this.disabled}
           isLink={false}
           input-align={this.inputAlign || 'right'}
-          onClick={this.togglePopup}
+          onClick={this.onClickField}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           notitleblock={this.notitleblock}

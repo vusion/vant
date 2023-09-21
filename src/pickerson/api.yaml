@@ -181,6 +181,14 @@
       type: boolean
       default: true
       description: 是否显示工具栏
+    - name: readonly
+      title: 只读
+      type: boolean
+      default: false
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
   slots: false
   events:
     - name: confirm
