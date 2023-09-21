@@ -1,4 +1,4 @@
-import { times, formatFu } from './utils';
+import { times, formatFu, valueFormat } from './utils';
 import { padZero } from '../utils/format/string';
 import { pickerProps } from '../picker/shared';
 import Picker from '../picker';
@@ -7,7 +7,6 @@ export const sharedProps = {
   ...pickerProps,
   value: null,
   filter: Function,
-  columnsOrder: Array,
   showToolbar: {
     type: Boolean,
     default: true,
@@ -17,6 +16,14 @@ export const sharedProps = {
     default: (type, value) => value,
   },
   displayFormat: String,
+  showFormatter: String,
+  advancedFormat: {
+    type: Object,
+    default: () => ({
+        enable: false,
+        value: '',
+    }),
+  },
   isNew: {
     type: Boolean,
     default: false,
@@ -32,9 +39,13 @@ export const TimePickerMixin = {
 
   computed: {
     originColumns() {
-      return this.ranges.map(({ type, range: rangeArr }) => {
+      return this.ranges.map(({
+        type,
+        range: rangeArr,
+        format = value => padZero(value)
+      }) => {
         let values = times(rangeArr[1] - rangeArr[0] + 1, (index) => {
-          const value = padZero(rangeArr[0] + index);
+          const value = format(rangeArr[0] + index);
           return value;
         });
 
@@ -114,38 +125,8 @@ export const TimePickerMixin = {
             value = new Date(value);
           }
         } else {
-          value = formatFu(this.innerValue, this.type, true);
+          value = valueFormat(this.innerValue, this.type, true);
         }
-
-        // const isDateAndDateTime =
-        //   this.type === 'datetime' || this.type === 'date';
-
-        // const isJSONType = isDateAndDateTime && this.converter === 'json';
-
-        // const isTimestampType =
-        //   isDateAndDateTime && this.converter === 'timestamp';
-
-        // const isDateType = isDateAndDateTime && this.converter === 'date';
-
-        // if (isJSONType) {
-        //   value = new Date(value).toJSON();
-        // }
-
-        // if (isTimestampType) {
-        //   value = +new Date(value);
-        // } else if (isDateType) {
-        //   value = new Date(value);
-        // }
-
-        // const useConverterValue = isJSONType || isTimestampType || isDateType;
-
-        // this.$emit('input', value);
-        // this.$emit(
-        //   'update:value',
-        //   value
-        // );
-
-        // this.$emit('confirm', value);
 
         return value;
       }
@@ -175,3 +156,29 @@ export const TimePickerMixin = {
     );
   },
 };
+
+export const validDisplayFormatters = {
+  'date': {
+    date: ['YYYY-MM-DD', 'M/D/YYYY', 'D/M/YYYY', 'YYYY年M月D日'],
+    week: ['GGGG-WWWW', 'GGGG-W周', 'GGGG年第W周'],
+    month: ['YYYY-MM', 'M/YYYY', 'YYYY年M月'],
+    quarter: ['YYYY-QQ', 'YYYY年第Q季度', 'YYYY年QQ'],
+    year: ['YYYY', 'YYYY年'],
+  },
+  'time': {
+    minute: ['HH:mm', 'HH时mm分'],
+    second: ['HH:mm:ss', 'HH时mm分ss秒'],
+  },
+  'datetime': {
+    minute: ['YYYY-MM-DD HH:mm', 'YYYY年M月D日 HH时mm分'],
+    second: ['YYYY-MM-DD HH:mm:ss', 'YYYY年M月D日 HH时mm分ss秒'],
+  }
+}
+
+export const validUnit = {
+  'date': ['date', 'week', 'month', 'quarter', 'year'],
+  'time': ['minute', 'second'],
+  'datetime': ['second', 'minute']
+}
+
+export const validType = ['date', 'time', 'datetime']
