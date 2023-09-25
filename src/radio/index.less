@@ -113,3 +113,8 @@
     }
   }
 }
+
+// 对于图片形式的图标，强制使其在非选中状态为空
+.van-radio__icon:not(.van-radio__icon--checked) .van-iconv div.icon{
+  background: unset !important;
+}
