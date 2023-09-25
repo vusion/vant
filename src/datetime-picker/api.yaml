@@ -20,6 +20,9 @@
         - value: datetime
           title: 日期时间选择
       default: datetime
+      toggleclear:
+        - unit
+        - show-formatter
     - name: unit
       title: 最小单位
       type: string
@@ -52,6 +55,8 @@
           value: second
           dependency:
             - '!type': date
+      toggleclear:
+        - show-formatter
     - name: show-formatter
       title: 展示格式
       type: string
