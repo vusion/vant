@@ -126,6 +126,7 @@
     - name: icon
       title: 单选项图标
       clearable: true
+      default: sure
       type: icon
       description: ''
       group: 数据属性
