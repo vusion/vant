@@ -610,19 +610,6 @@ export default createComponent({
         />
       );
 
-      // if (slot) {
-      //   return (
-      //     <div
-      //       class={bem('input-wrapper')}
-      //       key="input-wrapper"
-      //       onClick={this.onClickUpload}
-      //     >
-      //       {slot}
-      //       {Input}
-      //     </div>
-      //   );
-      // }
-
       let style;
       if (this.previewSize) {
         const size = this.previewSizeWithUnit;
@@ -638,7 +625,9 @@ export default createComponent({
           style={style}
           onClick={this.onClickUpload}
         >
-          <div class={bem('upload-icon-slot')} vusion-slot-name="default">
+          <div
+            class={bem('upload-icon-slot', { designer: this.$env && this.$env.VUE_APP_DESIGNER })}
+            vusion-slot-name="default">
             { slot || <Icon name={this.uploadIcon} class={bem('upload-icon')} /> }
           </div>
           {this.uploadText && (
