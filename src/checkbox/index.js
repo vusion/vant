@@ -33,8 +33,9 @@ export default createComponent({
       },
     },
     name() {
+      console.log('this', this)
       try {
-        if(!this.parent.options || this.parent.options.length === 0) {
+        if(!this.parent.options || this.parent.options.length === 0 || (this.parent.options.length < this.parent.children.length && this.index >= this.parent.options.length )) {
           return this.label
         } else {
           let name = this.parent.options[this.index]?.[this.parent.valueField] ?? this.parent.options[this.index];
@@ -44,7 +45,7 @@ export default createComponent({
           return name
         }
       } catch (err) {
-        console.err('checkbox获取name出错，', err)
+        console.log('checkbox获取name出错，', err)
         return ''
       }
     }
