@@ -10,7 +10,7 @@
       type: string
       sync: true
       model: true
-      default: ""
+      default: ''
       description: 当前选中的省市区code
     - name: labelField
       title: 左侧标题
@@ -20,7 +20,7 @@
     - name: areaListprop
       title: 数据源(默认全部)
       type: array
-      default2: '{"province_list":{"110000":"北京市"},"city_list":{"110100":"北京市"},"county_list":{"110101":"东城区","110102":"西城区","110105":"朝阳区","110106":"丰台区","110107":"石景山区","110108":"海淀区","110109":"门头沟区","110111":"房山区","110112":"通州区","110113":"顺义区","110114":"昌平区","110115":"大兴区","110116":"怀柔区","110117":"平谷区","110118":"密云区","110119":"延庆区"}}'
+      default: '{"province_list":{"110000":"北京市"},"city_list":{"110100":"北京市"},"county_list":{"110101":"东城区","110102":"西城区","110105":"朝阳区","110106":"丰台区","110107":"石景山区","110108":"海淀区","110109":"门头沟区","110111":"房山区","110112":"通州区","110113":"顺义区","110114":"昌平区","110115":"大兴区","110116":"怀柔区","110117":"平谷区","110118":"密云区","110119":"延庆区"}}'
       description: 一个包含字符串或对象的数组
     - name: title
       title: 顶部栏标题
@@ -76,7 +76,19 @@
       type: boolean
       default: false
       description: 是否点击遮罩层后关闭
-  slots: false
+    - name: isNew
+      title: 是否使用新版外观
+      type: boolean
+      default: false
+      description: 是否使用新版外观
+  slots:
+    - concept: Slot
+      name: default
+      description: 插入`<van-datetime-picker-action-slot>`子组件
+      support:
+        - name: van-datetime-picker-action-slot
+          title: 事件插槽
+          snippet: <van-datetime-picker-action-slot target-method="confirm"></van-datetime-picker-action-slot>
   events:
     - name: confirm
       title: 点击右上方完成按钮

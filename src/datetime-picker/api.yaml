@@ -149,7 +149,14 @@
       type: boolean
       default: false
       description: 是否点击遮罩层后关闭
-  slots: false
+  slots:
+    - concept: Slot
+      name: default
+      description: 插入`<van-datetime-picker-action-slot>`子组件
+      support:
+        - name: van-datetime-picker-action-slot
+          title: 事件插槽
+          snippet: <van-datetime-picker-action-slot target-method="confirm"></van-datetime-picker-action-slot>
   events:
     - name: confirm
       title: 确认

@@ -19,7 +19,7 @@ export default createComponent({
     minDate: Date,
     maxDate: Date,
     currentDate: null,
-    defaultMonthForSelect: null
+    defaultMonthForSelect: null,
   },
   methods: {
     genTitle() {

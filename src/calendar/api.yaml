@@ -67,6 +67,11 @@
       type: boolean
       default: false
       description: 是否点击遮罩层后关闭
+    - name: isNew
+      title: 是否使用新版外观
+      type: boolean
+      default: false
+      description: 是否使用新版外观
   slots: false
   events:
     - name: confirm

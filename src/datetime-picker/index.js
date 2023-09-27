@@ -8,23 +8,12 @@ import Tabs from '../tabs';
 import Tab from '../tab';
 import { EmptyCol } from '../emptycol';
 import { FieldMixin } from '../mixins/field';
+import { EventSlotCommandProvider } from '../mixins/EventSlotCommandProvider';
 
 const [createComponent, bem, t] = createNamespace('datetime-picker');
 
 export default createComponent({
-  mixins: [FieldMixin],
-  provide() {
-    const execEventSlotCommand = (methodName, ...args) => {
-      const fn = this[methodName];
-      if (fn && typeof fn === 'function') {
-        return this[methodName](...args);
-      }
-    };
-    return {
-      execEventSlotCommand,
-    };
-  },
-
+  mixins: [FieldMixin, EventSlotCommandProvider(['cancel', 'confirm'])],
   props: {
     ...TimePicker.props,
     ...DatePicker.props,
@@ -45,7 +34,9 @@ export default createComponent({
   },
   data() {
     const val = isValidDate(this.value, this.type) ? this.value : null;
-    const start = isValidDate(this.startValue, this.type) ? this.startValue : null;
+    const start = isValidDate(this.startValue, this.type)
+      ? this.startValue
+      : null;
     const end = isValidDate(this.endValue, this.type) ? this.endValue : null;
 
     return {
@@ -68,7 +59,7 @@ export default createComponent({
     },
     value(val) {
       // if (isValidDate(val, this.type)) {
-        this.currentValue = val;
+      this.currentValue = val;
       // }
     },
 
@@ -78,8 +69,8 @@ export default createComponent({
     },
     startValue(val) {
       // if (isValidDate(val, this.type)) {
-        this.currentStartValue = val;
-        this.tempStartValue = val;
+      this.currentStartValue = val;
+      this.tempStartValue = val;
       // }
     },
     currentEndValue(val) {
@@ -87,8 +78,8 @@ export default createComponent({
     },
     endValue(val) {
       // if (isValidDate(val, this.type)) {
-        this.currentEndValue = val;
-        this.tempEndValue = val;
+      this.currentEndValue = val;
+      this.tempEndValue = val;
       // }
     },
   },
@@ -119,12 +110,12 @@ export default createComponent({
     getTitle() {
       if (this?.$env?.VUE_APP_DESIGNER) {
         const value = isValidDate(this.value, this.type) ? this.value : '';
-        const start = isValidDate(this.startValue, this.type) ? this.startValue : '';
+        const start = isValidDate(this.startValue, this.type)
+          ? this.startValue
+          : '';
         const end = isValidDate(this.endValue, this.type) ? this.endValue : '';
 
-        return this.range
-          ? `${start} - ${end}`
-          : value;
+        return this.range ? `${start} - ${end}` : value;
       }
 
       if (this.range) {
@@ -236,7 +227,7 @@ export default createComponent({
           }
         }
         return (
-          <div style=" position: relative; width:100%;">
+          <div class={bem('picker-top')}>
             {topSlot && (
               <div
                 vusion-slot-name="picker-top"
@@ -346,10 +337,7 @@ export default createComponent({
       if (!bottomSlot) return null;
 
       return (
-        <div
-          style="display:flex; justify-content: space-between; align-items:center;"
-          vusion-slot-name="picker-bottom"
-        >
+        <div class={bem('picker-bottom')} vusion-slot-name="picker-bottom">
           {bottomSlot}
         </div>
       );
@@ -393,7 +381,7 @@ export default createComponent({
           closeOnClickOverlay={this.closeOnClickOverlay}
           vusion-scope-id={this?.$vnode?.context?.$options?._scopeId}
           {...{
-            attrs: this.$attrs,
+            attrs: { ...this.$attrs, 'vusion-empty-background': undefined },
           }}
           // onClickOverlay={this.togglePopup}
         >
