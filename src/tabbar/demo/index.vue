@@ -81,6 +81,17 @@
         <van-tabbar-item icon="setting-o">{{ t('tab') + 4 }}</van-tabbar-item>
       </van-tabbar>
     </demo-block>
+
+    <demo-block>
+      <van-tabbar :ref="`tabbar1`">
+          <van-tabbar-item :ref="`tabbar_item1`" style="font-size:24px" icon="frontpage">
+                <van-text :ref="`text14`" text="标签"></van-text>
+          </van-tabbar-item>
+            <van-tabbar-item :ref="`tabbar_item2`" style="font-size:24px" icon="contact" destination="https://www.baidu.com">
+                <van-text :ref="`text15`" text="标签"></van-text>
+          </van-tabbar-item>
+      </van-tabbar>
+    </demo-block>
   </demo-section>
 </template>
 
