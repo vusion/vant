@@ -235,8 +235,6 @@
     "--van-picker-option-disabled-opacity": "0.3",
     "--van-picker-loading-icon-color": "var(--van-brand-primary)",
     "--van-picker-loading-mask-color": "rgba(255, 255, 255, 0.9)",
-    "--van-picker-list-item-background-color": "transparent",
-    "--van-picker-list-item-selected-background-color": "transparent",
     "--van-popup-background-color": "#fff",
     "--van-popup-transition": "transform 0.3s",
     "--van-popup-round-border-radius": "16px",
