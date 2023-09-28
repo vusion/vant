@@ -79,7 +79,7 @@ export default createComponent({
     },
     lazyRender: {
       type: Boolean,
-      default: false, // ???
+      default: true,
     },
     showMark: {
       type: Boolean,

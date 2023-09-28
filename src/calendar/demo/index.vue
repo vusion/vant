@@ -20,6 +20,17 @@
       ></van-calendar>
       <button @click="clear">clear</button>
     </demo-block>
+
+    <demo-block title="全量渲染节点">
+      <van-calendar
+        label-field="日历选择"
+        :value.sync="start"
+        :min-date="min"
+        :max-date="end"
+        title="选择日期"
+        :lazyRender="false"
+      ></van-calendar>
+    </demo-block>
   </demo-section>
 </template>
 
@@ -81,8 +92,8 @@ export default {
       date: '2023-10-11',
       start: null,
       end: null,
-      min: null,
-      max: null,
+      min: '1900-01-01',
+      max: '2050-12-31',
     };
   },
 
