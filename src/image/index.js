@@ -44,7 +44,7 @@ export default createComponent({
     },
     preview: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
 
@@ -177,11 +177,14 @@ export default createComponent({
     },
 
     onClick(event) {
-      if (this.$parent.$options._componentTag === 'van-cardu') return;
+      // if (this.$parent.$options._componentTag === 'van-cardu') return;
       if (window.top.globalData) return;
+
       if (this.$listeners.click) {
         this.$emit('click', event);
-      } else if (!this.ifDesigner() && this.preview) {
+      }
+
+      if (!this.ifDesigner() && this.preview) {
         ImagePreview([this.getSrc(this.src)]);
       }
     },
