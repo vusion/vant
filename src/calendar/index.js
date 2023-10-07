@@ -29,9 +29,15 @@ import Field from '../field';
 import { EmptyCol } from '../emptycol';
 
 import { FieldMixin } from '../mixins/field';
+import { EventSlotCommandProvider } from '../mixins/EventSlotCommandProvider';
+
+const EventSlotCommandMap = {
+  cancel: 'onCancel',
+  confirm: 'onConfirm',
+};
 
 export default createComponent({
-  mixins: [FieldMixin],
+  mixins: [FieldMixin, EventSlotCommandProvider(EventSlotCommandMap)],
 
   props: {
     title: String,

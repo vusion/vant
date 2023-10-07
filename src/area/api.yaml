@@ -84,11 +84,26 @@
   slots:
     - concept: Slot
       name: default
-      description: 插入`<van-datetime-picker-action-slot>`子组件
+      description: 插入`<van-picker-action-slot>`子组件
       support:
-        - name: van-datetime-picker-action-slot
+        - name: van-picker-action-slot
           title: 事件插槽
-          snippet: <van-datetime-picker-action-slot target-method="confirm"></van-datetime-picker-action-slot>
+          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
+    - concept: Slot
+      name: option
+      title: option
+      slotProps:
+        concept: Param
+        name: current
+        typeAnnotation:
+          concept: TypeAnnotation
+          typeKind: generic
+          typeNamespace: nasl.ui
+          typeName: Current
+          typeArguments:
+            - concept: TypeAnnotation
+              typeKind: typeParam
+              typeName: T
   events:
     - name: confirm
       title: 点击右上方完成按钮
