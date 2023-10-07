@@ -610,19 +610,6 @@ export default createComponent({
         />
       );
 
-      if (slot) {
-        return (
-          <div
-            class={bem('input-wrapper')}
-            key="input-wrapper"
-            onClick={this.onClickUpload}
-          >
-            {slot}
-            {Input}
-          </div>
-        );
-      }
-
       let style;
       if (this.previewSize) {
         const size = this.previewSizeWithUnit;
@@ -634,11 +621,15 @@ export default createComponent({
 
       return (
         <div
-          class={bem('upload', { readonly: this.readonly })}
+          class={bem('upload', { readonly: this.readonly, empty: this.currentValue.length === 0 })}
           style={style}
           onClick={this.onClickUpload}
         >
-          <Icon name={this.uploadIcon} class={bem('upload-icon')} />
+          <div
+            class={bem('upload-icon-slot', { designer: this.$env && this.$env.VUE_APP_DESIGNER })}
+            vusion-slot-name="default">
+            { slot || <Icon name={this.uploadIcon} class={bem('upload-icon')} /> }
+          </div>
           {this.uploadText && (
             <span class={bem('upload-text')}>{this.uploadText}</span>
           )}
@@ -765,8 +756,12 @@ export default createComponent({
 
   render() {
     return (
-      <div class={bem()} {...{ attrs: this.$attrs }}>
-        <div class={bem('wrapper', { disabled: this.disabled })}>
+      <div class={bem('', { uploaded: this.currentValue.length > 0 })}
+        {...{ attrs: this.$attrs }}>
+        <div class={bem('wrapper', {
+          disabled: this.disabled,
+          empty: this.currentValue.length === 0,
+        })}>
           {this.genPreviewList()}
           {this.genUpload()}
         </div>

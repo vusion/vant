@@ -1,5 +1,5 @@
 import { createNamespace } from '../utils';
-import { displayFormat, isValidDate } from './utils';
+import { showFormat, isValidDate } from './utils';
 import TimePicker from './TimePicker';
 import DatePicker from './DatePicker';
 import Popup from '../popup';
@@ -9,6 +9,8 @@ import Tab from '../tab';
 import { EmptyCol } from '../emptycol';
 import { FieldMixin } from '../mixins/field';
 import { EventSlotCommandProvider } from '../mixins/EventSlotCommandProvider';
+
+import { validDisplayFormatters, validUnit, validType } from './shared';
 
 const [createComponent, bem, t] = createNamespace('datetime-picker');
 
@@ -23,7 +25,7 @@ export default createComponent({
     },
     inputAlign: String,
     closeOnClickOverlay: Boolean,
-
+    placeholder: String,
     range: Boolean,
     startValue: String,
     endValue: String,
@@ -33,11 +35,9 @@ export default createComponent({
     },
   },
   data() {
-    const val = isValidDate(this.value, this.type) ? this.value : null;
-    const start = isValidDate(this.startValue, this.type)
-      ? this.startValue
-      : null;
-    const end = isValidDate(this.endValue, this.type) ? this.endValue : null;
+    const val = this.value;
+    const start = this.startValue;
+    const end = this.endValue;
 
     return {
       popupVisible: false,
@@ -53,14 +53,26 @@ export default createComponent({
       // inDesigner: this.$env && this.$env.VUE_APP_DESIGNER,
     };
   },
+  computed: {
+    realType() {
+      if (validType.includes(this.type)) {
+        return this.type
+      }
+      return validType[0];
+    },
+    realUnit() {
+      if (validUnit[this.realType].includes(this.unit)) {
+        return this.unit
+      }
+      return validUnit[this.realType][0];
+    }
+  },
   watch: {
     currentValue(val) {
       this.$emit('update:value', val);
     },
     value(val) {
-      // if (isValidDate(val, this.type)) {
       this.currentValue = val;
-      // }
     },
 
     // range value
@@ -68,22 +80,34 @@ export default createComponent({
       this.$emit('update:startValue', val);
     },
     startValue(val) {
-      // if (isValidDate(val, this.type)) {
       this.currentStartValue = val;
       this.tempStartValue = val;
-      // }
     },
     currentEndValue(val) {
       this.$emit('update:endValue', val);
     },
     endValue(val) {
-      // if (isValidDate(val, this.type)) {
       this.currentEndValue = val;
       this.tempEndValue = val;
-      // }
     },
   },
   methods: {
+    // 展示格式
+    getDisplayFormatter() {
+      // 高级格式化开启
+      if (this.advancedFormat && this.advancedFormat.enable && this.advancedFormat.value) {
+        return this.advancedFormat.value;
+      }
+
+      const formatters = validDisplayFormatters[this.realType][this.realUnit];
+
+      if (formatters.includes(this.showFormatter)) {
+        return this.showFormatter
+      }
+
+      // 兼容之前displayFormat配置
+      return this.displayFormat || formatters[0];
+    },
     designerDbControl() {
       this.$refs.popup.togglePModal();
     },
@@ -108,12 +132,10 @@ export default createComponent({
       this.$refs.popup.togglePModal();
     },
     getTitle() {
-      if (this?.$env?.VUE_APP_DESIGNER) {
-        const value = isValidDate(this.value, this.type) ? this.value : '';
-        const start = isValidDate(this.startValue, this.type)
-          ? this.startValue
-          : '';
-        const end = isValidDate(this.endValue, this.type) ? this.endValue : '';
+      if (this.inDesigner()) {
+        const value = isValidDate(this.value, this.realType) ? this.value : '';
+        const start = isValidDate(this.startValue, this.realType) ? this.startValue : '';
+        const end = isValidDate(this.endValue, this.realType) ? this.endValue : '';
 
         return this.range ? `${start} - ${end}` : value;
       }
@@ -122,44 +144,31 @@ export default createComponent({
         let startTitle = '';
         let endTitle = '';
 
-        if (isValidDate(this.startValue, this.type)) {
-          startTitle = displayFormat(
-            this.startValue,
-            this.type,
-            this.displayFormat
-          );
-        } else if (isValidDate(this.currentStartValue, this.type)) {
-          startTitle = displayFormat(
-            this.currentStartValue,
-            this.type,
-            this.displayFormat
-          );
+        if (isValidDate(this.currentStartValue, this.realType, this.realUnit)) {
+          startTitle = showFormat(this.currentStartValue, {
+            type: this.realType,
+            unit: this.realUnit,
+            formatter: this.getDisplayFormatter(),
+          });
         }
 
-        if (isValidDate(this.endValue, this.type)) {
-          endTitle = displayFormat(
-            this.endValue,
-            this.type,
-            this.displayFormat
-          );
-        } else if (isValidDate(this.currentEndValue, this.type)) {
-          endTitle = displayFormat(
-            this.currentEndValue,
-            this.type,
-            this.displayFormat
-          );
+        if (isValidDate(this.currentEndValue, this.realType, this.realUnit)) {
+          endTitle = showFormat(this.currentEndValue, {
+            type: this.realType,
+            unit: this.realUnit,
+            formatter: this.getDisplayFormatter(),
+          });
         }
 
         return startTitle || endTitle ? `${startTitle} - ${endTitle}` : '';
       }
 
-      // not range
-      if (isValidDate(this.value, this.type)) {
-        return displayFormat(this.value, this.type, this.displayFormat);
-      }
-
-      if (isValidDate(this.currentValue, this.type)) {
-        return displayFormat(this.currentValue, this.type, this.displayFormat);
+      if (isValidDate(this.currentValue, this.realType, this.realUnit)) {
+        return showFormat(this.currentValue, {
+            type: this.realType,
+            unit: this.realUnit,
+            formatter: this.getDisplayFormatter(),
+          });
       }
 
       return '';
@@ -261,7 +270,7 @@ export default createComponent({
       );
     },
     renderContent() {
-      const Component = this.type === 'time' ? TimePicker : DatePicker;
+      const Component = this.realType === 'time' ? TimePicker : DatePicker;
 
       if (this.range) {
         return (
@@ -274,6 +283,8 @@ export default createComponent({
                 {...{
                   props: {
                     ...this.$props,
+                    type: this.realType,
+                    unit: this.realUnit,
                     value: this.currentStartValue,
                     maxDate: this.tempEndValue ?? this.$props.maxDate,
                   },
@@ -294,6 +305,8 @@ export default createComponent({
                 {...{
                   props: {
                     ...this.$props,
+                    type: this.realType,
+                    unit: this.realUnit,
                     value: this.currentEndValue,
                     // 当currentStartValue存在时，使用
                     minDate: this.tempStartValue ?? this.$props.minDate,
@@ -318,6 +331,8 @@ export default createComponent({
           {...{
             props: {
               ...this.$props,
+              type: this.realType,
+              unit: this.realUnit,
               value: this.currentValue,
             },
           }}
@@ -354,6 +369,7 @@ export default createComponent({
         <Field
           label={this.labelField}
           value={this.getTitle()}
+          placeholder={this.placeholder}
           scopedSlots={tempSlot}
           readonly
           isLink

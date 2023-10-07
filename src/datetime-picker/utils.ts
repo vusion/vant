@@ -94,6 +94,24 @@ export function transErrorDate(date: any, type: any) {
   return fDate;
 }
 
+export function transErrorMinOrMaxDate(date: any, type: 'min' | 'max'): Date {
+  const day = new Date(date);
+
+  // 非空有效值
+  if (![null, undefined].includes(date) && isDate(day)) {
+    return day;
+  }
+
+  // 二十年前
+  const thisYear = dayjs().year();
+  if (type === 'min') {
+    return dayjs(`${thisYear - 20}-1-1 00:00:00`).toDate();
+  }
+
+  // 二十年后
+  return dayjs(`${thisYear + 20}-12-31 23:59:59`).toDate();
+}
+
 export function formatFu(date: string | number | Date, type: string, gmt: boolean) {
   const tempDate = date;
   // @ts-ignore
@@ -117,30 +135,38 @@ export function formatFu(date: string | number | Date, type: string, gmt: boolea
   }
 }
 
-
-export function displayFormat(date: string | number | Date, type: string, customFormat?: string) {
-  const tempDate = date;
-  // @ts-ignore
-  const tmpDate = isDate(tempDate) ? tempDate : (tempDate ? new Date(tempDate) : new Date());
-  if (type === 'datetime') {
-    // @ts-ignore
-    return tmpDate.formath(customFormat || "yyyy-MM-dd HH:mm:ss")
-  }
-  if (type === 'date') {
-    // @ts-ignore
-    return tmpDate.formath(customFormat || "yyyy-MM-dd")
-  }
-  if (type === 'year-month') {
-    // @ts-ignore
-    return tmpDate.formath(customFormat || "yyyy-MM")
-  }
+export function valueFormat(value: string | number | Date, type: string) {
   if (type === 'time') {
-    // @ts-ignore
-    return tempDate
+    return value;
+  }
+  // @ts-ignore
+  const date = isDate(value) ? value : (value ? new Date(value) : new Date());
+  if (type === 'date') {
+    return dayjs(date).format('YYYY-MM-DD')
+  }
+
+  if (type === 'datetime') {
+    return date.toJSON();
   }
 }
 
-export function isValidDate(date: string | Date, type?: string): boolean {
+
+export function showFormat(value: string | number | Date, options: Record<string, any>) {
+  const { type, unit, formatter } = options;
+  if (type === 'time') {
+    let valueFormatter = 'HH:mm'
+    if (unit === 'second') {
+      valueFormatter += ':ss'
+    }
+
+    return dayjs(value, valueFormatter).format(formatter);
+  }
+
+  const date = isDate(value) ? value : (value ? new Date(value) : new Date());
+  return dayjs(date).format(formatter);
+}
+
+export function isValidDate(date: string | Date, type: string, unit: string): boolean {
   const isPrimitiveDate = Object.prototype.toString.call(date) === '[object Date]';
 
   //  Date 类型
@@ -156,8 +182,10 @@ export function isValidDate(date: string | Date, type?: string): boolean {
 
   if (type === 'time') {
     format = 'HH:mm'
-  } else if (type === 'year-month') {
-    format = 'YYYY-MM'
+
+    if (unit === 'second') {
+      format += ':ss'
+    }
   }
 
   // string类型

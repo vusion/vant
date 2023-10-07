@@ -32,10 +32,10 @@
       type: number
       description: 最大可选数(0为不限制)
     - name: min
-      title: 最小选择数量
+      title: 最小可选数
       type: number
       default: 0
-      description: 最小选择数量
+      description: 最小可选数
     - name: disabled
       title: 禁用
       type: boolean
@@ -81,7 +81,7 @@
       empty-background: add-sub
       support:
         - name: van-checkbox
-          title: 复选项
+          title: 多选项
           snippet: <van-checkbox name="n" shape="square"><van-text text="节点"></van-text></van-checkbox>
     - concept: Slot
       name: item
@@ -130,6 +130,10 @@
       model: true
       default: false
       description: 是否选中
+    - name: label
+      title: 选项值
+      type: any
+      description: 多选框选项值，只在多选组中使用。
     - name: shape
       title: 形状
       type: string
