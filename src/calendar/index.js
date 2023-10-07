@@ -445,6 +445,10 @@ export default createComponent({
       this.togglePopup();
     },
 
+    onCancel() {
+      this.togglePopup();
+    },
+
     genMonth(date, index) {
       const showMonthTitle = index !== 0 || !this.showSubtitle;
       return (

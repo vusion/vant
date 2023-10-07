@@ -122,6 +122,12 @@ export default createComponent({
       handler: 'setValues',
     },
 
+    isNew() {
+      this.$nextTick(function () {
+        this.setValues(true);
+      });
+    },
+
     columnsNum() {
       this.$nextTick(() => {
         this.setValues();
