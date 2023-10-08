@@ -26,9 +26,22 @@
     transform: translateY(-100%);
   }
 
+  &__picker-top{
+    position: relative; 
+    width:100%; 
+  }
+
+  &__picker-bottom{
+    display:flex; 
+    align-items:center; 
+    justify-content: space-between; 
+  }
 
   &__wrapppdtpicker {
     width: 100%;
+    &[vusion-empty-background]{
+      background: unset;
+    }
   }
     &__toolbar {
       display: flex;
