@@ -44,7 +44,7 @@ export default createComponent({
     },
     preview: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
 

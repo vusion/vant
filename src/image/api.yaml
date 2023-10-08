@@ -42,7 +42,7 @@
     - name: preview
       title: 点击放大
       type: boolean
-      default: false
+      default: true
       description: 是否支持点击放大全屏展示
     - name: loading-type
       title: 加载样式
