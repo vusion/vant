@@ -25,7 +25,6 @@ export { default as VanCouponCell } from '../../src/coupon-cell';
 export { default as VanCouponList } from '../../src/coupon-list';
 export { default as VanDatetimePicker } from '../../src/datetime-picker';
 export { default as VanDatetimePickerActionSlot } from '../../src/datetime-picker-action-slot';
-export { default as VanActionSlot } from '../../src/picker-action-slot';
 export { default as VanDialog } from '../../src/dialog';
 export { default as VanNotify } from '../../src/notify';
 

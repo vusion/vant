@@ -17,7 +17,7 @@ import {
   compareMonth,
   createComponent,
   getDayByOffset,
-} from './utils';
+} from './utils'
 
 // Components
 import Popup from '../popup';
@@ -26,18 +26,11 @@ import Toast from '../toast';
 import Month from './components/Month';
 import Header from './components/Header';
 import Field from '../field';
-import { EmptyCol } from '../emptycol';
 
 import { FieldMixin } from '../mixins/field';
-import { EventSlotCommandProvider } from '../mixins/EventSlotCommandProvider';
-
-const EventSlotCommandMap = {
-  cancel: 'onCancel',
-  confirm: 'onConfirm',
-};
 
 export default createComponent({
-  mixins: [FieldMixin, EventSlotCommandProvider(EventSlotCommandMap)],
+  mixins: [FieldMixin],
 
   props: {
     title: String,
@@ -138,10 +131,6 @@ export default createComponent({
       validator: (val) => val >= 0 && val <= 6,
     },
     inputAlign: String,
-    isNew: {
-      type: Boolean,
-      default: false,
-    },
   },
 
   data() {
@@ -170,9 +159,7 @@ export default createComponent({
       do {
         months.push(new Date(cursor));
         cursor.setMonth(cursor.getMonth() + 1);
-      } while (
-        compareMonth(cursor, transErrorMinOrMaxDate(this.maxDate, 'max')) !== 1
-      );
+      } while (compareMonth(cursor, transErrorMinOrMaxDate(this.maxDate, 'max')) !== 1);
 
       return months;
     },
@@ -201,15 +188,9 @@ export default createComponent({
     currentValue(val) {
       this.tempValue = val;
 
-      const date = dayjs(val);
-      this.$emit(
-        'update:value',
-        date.isValid() ? date.format('YYYY-MM-DD') : val
-      );
-      this.$emit(
-        'update:default-date',
-        date.isValid() ? date.format('YYYY-MM-DD') : val
-      );
+      const date = dayjs(val)
+      this.$emit('update:value', date.isValid() ? date.format('YYYY-MM-DD') : val);
+      this.$emit('update:default-date', date.isValid() ? date.format('YYYY-MM-DD') : val);
     },
     defaultDate: {
       handler(val) {
@@ -238,31 +219,6 @@ export default createComponent({
   },
 
   methods: {
-    designerDbControl() {
-      this.popupShown = true;
-      this.$refs.popforcas.togglePModal();
-    },
-    designerClose() {
-      if (window.parent && this?.$attrs?.['vusion-node-path']) {
-        window.parent?.postMessage(
-          {
-            protocol: 'vusion',
-            sender: 'helper',
-            type: 'send',
-            command: 'setPopupStatusInfo',
-            args: [
-              {
-                nodePath: this?.$attrs?.['vusion-node-path'],
-                visible: false,
-              },
-            ],
-          },
-          '*'
-        );
-      }
-      this.$refs.popforcas.togglePModal();
-      this.popupShown = false;
-    },
     getTitle() {
       if (this.ifDesigner()) {
         return this.value ?? this.defaultDate;
@@ -270,11 +226,11 @@ export default createComponent({
 
       const controledValue = this.value ?? this.defaultDate;
       if (controledValue && dayjs(controledValue).isValid()) {
-        return dayjs(controledValue).format('YYYY-MM-DD');
+        return dayjs(controledValue).format('YYYY-MM-DD')
       }
 
       if (this.currentValue && dayjs(this.currentValue).isValid()) {
-        return dayjs(this.currentValue).format('YYYY-MM-DD');
+        return dayjs(this.currentValue).format('YYYY-MM-DD')
       }
 
       return '';
@@ -445,10 +401,6 @@ export default createComponent({
       this.togglePopup();
     },
 
-    onCancel() {
-      this.togglePopup();
-    },
-
     genMonth(date, index) {
       const showMonthTitle = index !== 0 || !this.showSubtitle;
       return (
@@ -509,74 +461,16 @@ export default createComponent({
     },
 
     genFooter() {
-      let bottomSlot = this.slots('picker-bottom');
-      if (this.inDesigner()) {
-        if (!bottomSlot) {
-          bottomSlot = <EmptyCol></EmptyCol>;
-        }
-      }
-
-      if (!bottomSlot && this.isNew) return null;
       return (
         <div class={bem('footer', { unfit: !this.safeAreaInsetBottom })}>
-          {!this.isNew && this.genFooterContent()}
-          {this.isNew && (
-            <div class={bem('picker-bottom')} vusion-slot-name="picker-bottom">
-              {bottomSlot}
-            </div>
-          )}
+          {this.genFooterContent()}
         </div>
       );
-    },
-
-    genTitleForNew() {
-      let topSlot = this.slots('picker-top');
-      let titleSlot = this.slots('pannel-title');
-      if (this.inDesigner()) {
-        if (!topSlot) {
-          topSlot = <EmptyCol></EmptyCol>;
-        }
-        if (!titleSlot) {
-          titleSlot = <EmptyCol></EmptyCol>;
-        }
-      }
-      return (
-        <div class={bem('picker-top')}>
-          {topSlot && (
-            <div
-              vusion-slot-name="picker-top"
-              style="display:flex; justify-content: space-between; align-items: center; min-height:32px;"
-            >
-              {topSlot}
-            </div>
-          )}
-          <div
-            style="position:absolute; top: 50%; left:50%; transform: translate(-50%,-50%);"
-            vusion-slot-name="pannel-title"
-          >
-            {titleSlot || this.title}
-          </div>
-        </div>
-      );
-    },
-
-    genTitle() {
-      if (this.isNew) return this.genTitleForNew();
-      return this.slots('title');
     },
 
     genCalendar() {
       return (
-        <div class={bem([this.isNew && 'new'])}>
-          {this.inDesigner() && (
-            <div
-              class={bem('designer-close-button')}
-              vusion-click-enabled="true"
-              onClick={this.designerClose}
-            >
-              点击关闭
-            </div>
-          )}
+        <div class={bem()}>
           <Header
             title={this.title}
             showTitle={this.showTitle}
@@ -585,7 +479,7 @@ export default createComponent({
             currentDate={this.currentDate}
             defaultMonthForSelect={this.defaultMonthForSelectCom}
             scopedSlots={{
-              title: () => this.genTitle(),
+              title: () => this.slots('title'),
             }}
             firstDayOfWeek={this.dayOffset}
             setCurrentDate={this.setCurrentDate}
@@ -631,10 +525,6 @@ export default createComponent({
             ref="popforcas"
             get-container="body" // 放body下不易出现异常情况
             closeOnClickOverlay={this.closeOnClickOverlay}
-            vusion-scope-id={this?.$vnode?.context?.$options?._scopeId}
-            {...{
-              attrs: { ...this.$attrs, 'vusion-empty-background': undefined },
-            }}
           >
             {this.genCalendar()}
           </Popup>
