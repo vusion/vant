@@ -10,6 +10,7 @@ import Search from '../search';
 // Mixins
 import { FieldMixin } from '../mixins/field';
 import DataSourceMixin from '../mixins/DataSource';
+import { EmptyCol } from '../emptycol';
 
 const [createComponent, bem, t] = createNamespace('cascader');
 
@@ -54,6 +55,10 @@ export default createComponent({
       default: false,
     },
     treeDisplay: { type: Boolean, default: false }, // 组件内部默认不开启树，兼容老版本
+    isNew: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -119,12 +124,36 @@ export default createComponent({
   },
 
   methods: {
+    designerDbControl() {
+      this.$refs.popforcas.togglePModal();
+    },
+    designerClose() {
+      if (window.parent && this?.$attrs?.['vusion-node-path']) {
+        window.parent?.postMessage(
+          {
+            protocol: 'vusion',
+            sender: 'helper',
+            type: 'send',
+            command: 'setPopupStatusInfo',
+            args: [
+              {
+                nodePath: this?.$attrs?.['vusion-node-path'],
+                visible: false,
+              },
+            ],
+          },
+          '*'
+        );
+      }
+      this.$refs.popforcas.togglePModal();
+    },
     getTitle() {
       const ifDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
       if (ifDesigner) {
         return this.value;
       }
-      const selectedOptions = this.getSelectedOptionsByValue(this.options, this.currentValue) || [];
+      const selectedOptions =
+        this.getSelectedOptionsByValue(this.options, this.currentValue) || [];
       const result = selectedOptions
         .map((option) => _get(option, this.textKey))
         .join('/');
@@ -328,6 +357,19 @@ export default createComponent({
     },
 
     renderHeader() {
+      if (this.isNew) {
+        let topSlot = this.slots('picker-top');
+        if (this.inDesigner()) {
+          if (!topSlot) {
+            topSlot = <EmptyCol></EmptyCol>;
+          }
+        }
+        if (topSlot) {
+          return <div vusion-slot-name="picker-top">{topSlot}</div>;
+        }
+        return null;
+      }
+
       return (
         <div class={bem('header')}>
           <h2 class={bem('title')}>{this.slots('title') || this.title}</h2>
@@ -342,16 +384,37 @@ export default createComponent({
       );
     },
 
+    renderBottom() {
+      if (!this.isNew) return null;
+
+      let bottomSlot = this.slots('picker-bottom');
+      if (this.inDesigner()) {
+        if (!bottomSlot) {
+          bottomSlot = <EmptyCol></EmptyCol>;
+        }
+      }
+
+      if (!bottomSlot) return null;
+
+      return <div vusion-slot-name="picker-bottom">{bottomSlot}</div>;
+    },
+
     renderOptions(options, selectedOption, tabIndex) {
+      const isInDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
       const renderOption = (option) => {
         const isSelected =
           selectedOption &&
           _get(option, this.valueKey) === _get(selectedOption, this.valueKey);
         // option[this.valueKey] === selectedOption[this.valueKey];
         // console.log(option);
-        const Text = this.slots('option', { option, selected: isSelected }) || (
-          <span>{_get(option, this.textKey)}</span>
-        );
+
+        const Text =
+          this.slots('option', { option, selected: isSelected, ...option }) ||
+          (isInDesigner ? (
+            <EmptyCol></EmptyCol>
+          ) : (
+            <span>{_get(option, this.textKey)}</span>
+          ));
 
         return (
           <li
@@ -360,6 +423,7 @@ export default createComponent({
             onClick={() => {
               this.onSelect(option, tabIndex);
             }}
+            vusion-slot-name="option"
           >
             {Text}
             {isSelected ? (
@@ -468,11 +532,25 @@ export default createComponent({
           closeOnClickOverlay={this.closeOnClickOverlay}
           // onClickOverlay={this.togglePopup}
           get-container="body" // 放body下不易出现异常情况
+          vusion-scope-id={this?.$vnode?.context?.$options?._scopeId}
+          {...{
+            attrs: { ...this.$attrs, 'vusion-empty-background': undefined },
+          }}
         >
-          <div class={bem()}>
+          <div class={bem(this.isNew && 'content-wrapper')}>
+            {this.inDesigner() && (
+              <div
+                class={bem('designer-close-button')}
+                vusion-click-enabled="true"
+                onClick={this.designerClose}
+              >
+                点击关闭
+              </div>
+            )}
             {this.renderHeader()}
             {this.renderSearch()}
             {this.renderTabs()}
+            {this.renderBottom()}
           </div>
         </Popup>
       </div>

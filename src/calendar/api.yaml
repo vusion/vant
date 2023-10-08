@@ -67,7 +67,19 @@
       type: boolean
       default: false
       description: 是否点击遮罩层后关闭
-  slots: false
+    - name: isNew
+      title: 是否使用新版外观
+      type: boolean
+      default: false
+      description: 是否使用新版外观
+  slots:
+    - concept: Slot
+      name: default
+      description: 插入`<van-picker-action-slot>`子组件
+      support:
+        - name: van-picker-action-slot
+          title: 事件插槽
+          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
   events:
     - name: confirm
       title: 确认

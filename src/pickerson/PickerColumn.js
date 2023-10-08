@@ -1,9 +1,9 @@
-
 import { deepClone } from '../utils/deep-clone';
 import { createNamespace, isObject, _get } from '../utils';
 import { range } from '../utils/format/number';
 import { preventDefault } from '../utils/dom/event';
 import { TouchMixin } from '../mixins/touch';
+import { EmptyCol } from '../emptycol';
 
 const DEFAULT_DURATION = 200;
 
@@ -272,6 +272,7 @@ export default createComponent({
     },
 
     genOptions() {
+      const isInDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
       const optionStyle = {
         height: `${this.itemHeight}px`,
       };
@@ -307,8 +308,9 @@ export default createComponent({
         };
 
         return (
-          <li {...data}>
-            {this.slots('option', option) || <div {...childData} />}
+          <li {...data} vusion-slot-name="option">
+            {this.slots('option', option) ||
+              (isInDesigner ? <EmptyCol></EmptyCol> : <div {...childData} />)}
           </li>
         );
       });
