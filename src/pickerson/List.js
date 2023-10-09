@@ -1,9 +1,10 @@
 import _debounce from 'lodash/debounce';
 import _cloneDeep from 'lodash/cloneDeep';
 
-import List from '../list'
-import Iconv from '../iconv'
-import Checkbox from '../checkbox'
+import List from '../list';
+import Iconv from '../iconv';
+import Checkbox from '../checkbox';
+import { EmptyCol } from '../emptycol';
 
 // Utils
 import { createNamespace, _get } from '../utils';
@@ -84,6 +85,8 @@ export default createComponent({
     },
   },
   render(h) {
+    const isInDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
+
     return (
       <div>
         <List
@@ -111,18 +114,28 @@ export default createComponent({
                   checked ? 'checked' : '',
                 ]}
                 onClick={() => this.onSelect(value, index, item)}
+                vusion-slot-name="option"
               >
                 {this.multiple && (
                   <div class="icon">
                     <Checkbox value={checked} shape="square">
-                      <div class={{ text: true, checked }}>{text}</div>
+                      {this.slots('option', item) ||
+                        (isInDesigner ? (
+                          <EmptyCol></EmptyCol>
+                        ) : (
+                          <div class={{ text: true, checked }}>{text}</div>
+                        ))}
                     </Checkbox>
                   </div>
                 )}
 
-                {!this.multiple && (
-                  <div class={{ text: true, checked }}>{text}</div>
-                )}
+                {!this.multiple &&
+                  (this.slots('option', item) ||
+                    (isInDesigner ? (
+                      <EmptyCol></EmptyCol>
+                    ) : (
+                      <div class={{ text: true, checked }}>{text}</div>
+                    )))}
 
                 {/* 单选 */}
                 {checked && !this.multiple && (

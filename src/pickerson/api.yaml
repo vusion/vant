@@ -10,7 +10,7 @@
       type: string, number
       sync: true
       model: true
-      default: ""
+      default: ''
       description: 选中的值
       group: 数据属性
     - name: data-source
@@ -54,7 +54,7 @@
       group: 数据属性
     - name: sorting
       title: 初始化排序规则
-      type: "{ field: string, order: string, compare: Function }"
+      type: '{ field: string, order: string, compare: Function }'
       default: "{ field: undefined, order: 'desc' }"
       description: 设置数据初始化时的排序字段和顺序规则
       group: 数据属性
@@ -95,7 +95,7 @@
         - value: picker
           title: 选择器
           dependency:
-            - "!multiple": true
+            - '!multiple': true
         - value: list
           title: 列表
       default: picker
@@ -138,6 +138,10 @@
       default: 0
       description: 默认选中项的索引
       advanced: true
+    - name: isNew
+      title: 是否使用新版外观
+      type: boolean
+      default: false
     - name: title
       title: 工具栏标题
       type: string
@@ -148,11 +152,15 @@
       type: string
       default: 确认
       description: 确认按钮文字
+      dependency:
+        - isNew: false
     - name: cancel-button-text
       title: 取消按钮文字
       type: string
       default: 取消
       description: 取消按钮文字
+      dependency:
+        - isNew: false
     - name: visible-item-count
       title: 可见选项个数
       type: number
@@ -181,7 +189,29 @@
       type: boolean
       default: true
       description: 是否显示工具栏
-  slots: false
+  slots:
+    - concept: Slot
+      name: default
+      description: 插入`<van-picker-action-slot>`子组件
+      support:
+        - name: van-picker-action-slot
+          title: 事件插槽
+          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
+    - concept: Slot
+      name: option
+      title: option
+      slotProps:
+        concept: Param
+        name: current
+        typeAnnotation:
+          concept: TypeAnnotation
+          typeKind: generic
+          typeNamespace: nasl.ui
+          typeName: Current
+          typeArguments:
+            - concept: TypeAnnotation
+              typeKind: typeParam
+              typeName: T
   events:
     - name: confirm
       title: 点击完成按钮时触发
@@ -192,4 +222,3 @@
     - name: change
       title: 选项改变时触发
       description: 回调参数：Picker 实例，选中值，选中值对应的索引
-
