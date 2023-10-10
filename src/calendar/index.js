@@ -117,16 +117,16 @@ export default createComponent({
       default: true,
     },
     minDate: {
-      type: Date,
-      validator: isDate,
+      type: [Date, String],
+      // validator: isDate,
       default: () => {
         const now = new Date();
         return new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
       },
     },
     maxDate: {
-      type: Date,
-      validator: isDate,
+      type: [Date, String],
+      // validator: isDate,
       default() {
         const now = new Date();
         return new Date(now.getFullYear(), now.getMonth() + 12, now.getDate());

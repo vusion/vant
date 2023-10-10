@@ -25,12 +25,12 @@ export default createComponent({
     minDate: {
       type: [Date, String],
       default: () => new Date(currentYear - 20, 0, 1),
-      validator: isDate,
+      // validator: isDate,
     },
     maxDate: {
       type: [Date, String],
       default: () => new Date(currentYear + 20, 11, 31),
-      validator: isDate,
+      // validator: isDate,
     },
     converter: {
       type: String,
@@ -70,7 +70,7 @@ export default createComponent({
           this.innerValue ? this.innerValue : this.minDate
         );
 
-        let result = [
+        const result = [
           {
             type: 'year',
             range: [minYear, maxYear],
@@ -124,7 +124,7 @@ export default createComponent({
             range: [minYear, maxYear],
           },
         ];
-      } else if (this.unit === 'quarter') { // 季度
+      } if (this.unit === 'quarter') { // 季度
         const {
           maxYear,
         } = this.getBoundary(
@@ -150,7 +150,7 @@ export default createComponent({
             format: (value) => `Q${value}`,
           },
         ];
-      } else if (this.unit === 'month') {
+      } if (this.unit === 'month') {
         const {
           maxYear,
           maxMonth,
@@ -177,7 +177,7 @@ export default createComponent({
             range: [minMonth, maxMonth],
           },
         ];
-      } else if (this.unit === 'week') {
+      } if (this.unit === 'week') {
         const {
           maxYear,
         } = this.getBoundary(
@@ -203,7 +203,7 @@ export default createComponent({
             format: (value) => `W${value}`,
           },
         ];
-      } else { // 默认日期（年月日）
+      }  // 默认日期（年月日）
         const {
           maxYear,
           maxMonth,
@@ -236,7 +236,7 @@ export default createComponent({
             range: [minDate, maxDate],
           },
         ];
-      }
+      
     },
   },
 
@@ -529,8 +529,7 @@ export default createComponent({
         }
 
         this.innerValue = this.formatValue(dayjs(dateString).toDate());
-      } else {
-        if (this.unit === 'year') {
+      } else if (this.unit === 'year') {
           const year = getValue('year');
           this.innerValue = this.formatValue(dayjs(`${year}`, 'YYYY').toDate());
         } else if (this.unit === 'quarter') {
@@ -558,7 +557,6 @@ export default createComponent({
 
           this.innerValue = this.formatValue(dayjs(`${year}-${month}-${day}`).toDate());
         }
-      }
 
       return this.innerValue;
     },
