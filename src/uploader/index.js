@@ -593,7 +593,7 @@ export default createComponent({
         return;
       }
 
-      const slot = this.slots();
+      const slot = this.slots('picker-top');
 
       const Input = this.readonly ? null : (
         <input
