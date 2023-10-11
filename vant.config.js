@@ -109,6 +109,10 @@ module.exports = {
                 title: 'Linear-Layout 线性布局'
               },
               {
+                path: 'text',
+                title: 'Text 文本'
+              },
+              {
                 path: 'button',
                 title: 'Button 按钮',
               },
