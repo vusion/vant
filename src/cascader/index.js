@@ -372,7 +372,10 @@ export default createComponent({
 
       return (
         <div class={bem('header')}>
-          <h2 class={bem('title')}>{this.slots('title') || this.title}</h2>
+          <h2 class={bem('title')} vusion-slot-name="title">
+            {this.slots('title') ||
+              (this.inDesigner() ? <EmptyCol></EmptyCol> : this.title)}
+          </h2>
           {this.closeable ? (
             <Icon
               name="cross"
