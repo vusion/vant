@@ -89,6 +89,10 @@
       title: 点击
       description: 点击并选中任意日期时触发
       params: []
+    - name: cancel
+      title: 取消
+      description: 点击完成取消时触发的事件
+      params: []
   methods:
     - name: reset
       title: 日期重置

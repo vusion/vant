@@ -330,6 +330,10 @@
       title: 确认
       description: 点击完成按钮时触发的事件
       params: []
+    - name: cancel
+      title: 取消
+      description: 点击完成取消时触发的事件
+      params: []
   description: 时间选择，支持日期、年月、时分等维度
   methods:
     - name: open
