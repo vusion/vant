@@ -4,3 +4,59 @@
   labels:
     - Feedback
   description: 在页面中间弹出黑色半透明提示，用于消息通知、加载提示、操作结果提示等场景。
+  attrs:
+    - name: value
+      title: 是否展示
+      type: boolean
+      sync: true
+      model: true
+      default: false
+      description: 是否展示轻提示
+    - name: message
+      title: 文本
+      type: string
+      default: 轻提示消息
+      description: 文本内容
+    - name: type
+      title: 类型
+      type: string
+      default: text
+      options:
+        - value: text
+          title: 普通
+        - value: success
+          title: 成功
+        - value: fail
+          title: 失败
+        - value: loading
+          title: 加载中
+    - name: duration
+      title: 展示时长
+      type: number
+      default: 2000
+    - name: position
+      title: 位置
+      type: string
+      default: middle
+      options:
+        - value: top
+          title: 顶部
+        - value: middle
+          title: 中间
+        - value: bottom
+          title: 底部
+      advanced: true
+  events:
+    - name: open
+      title: 打开轻提示后
+      description: 打开轻提示时触发
+      params: []
+    - name: close
+      title: 关闭轻提示后
+      description: 关闭轻提示时触发
+      params: []
+  methods:
+    - name: openToast
+      description: 打开轻提示
+    - name: closeToast
+      description: 关闭轻提示

@@ -120,6 +120,15 @@ export default createComponent({
 
       return <div class={bem('text')}>{message}</div>;
     },
+
+    // expose
+    openToast() {
+      this.realValue = true;
+    },
+    // expose
+    closeToast() {
+      this.realValue = false;
+    },
   },
 
   render() {
@@ -130,13 +139,14 @@ export default createComponent({
         onAfterLeave={this.onAfterLeave}
       >
         <div
-          vShow={this.value}
+          vShow={this.realValue}
           class={[
             bem([this.position, { [this.type]: !this.icon }]),
             this.className,
           ]}
           onClick={this.onClick}
         >
+          {this.slots('inject')}
           {this.genIcon()}
           {this.genMessage()}
         </div>

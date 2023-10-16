@@ -258,7 +258,7 @@
     "--van-radio-border-width": "0",
     "--van-radio-icon-border-width": "1px",
     "--van-radio-border-color": "#c8c9cc",
-    "--van-radio-checked-border-color": "transparent",
+    "--van-radio-checked-border-color": "rgb(150, 151, 153)",
     "--van-radio-background-color": "transparent",
     "--van-radio-checked-background-color": "transparent",
     "--van-radio-label-color": "var(--van-component-text-color)",
