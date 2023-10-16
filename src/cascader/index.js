@@ -17,6 +17,8 @@ export default createComponent({
   mixins: [FieldMixin, DataSourceMixin],
 
   props: {
+    readonly: Boolean,
+    disabled: Boolean,
     title: String,
     value: [Number, String],
     fieldNamesp: [Object, String],
@@ -275,6 +277,14 @@ export default createComponent({
       this.$refs.popforcas.togglePModal();
     },
 
+    onClickField() {
+      if (this.readonly || this.disabled) {
+        return;
+      }
+
+      this.togglePopup();
+    },
+
     // 覆盖mixin
     filter() {},
     onInput(value) {
@@ -448,9 +458,10 @@ export default createComponent({
           placeholder={this.placeholder}
           scopedSlots={tempSlot}
           readonly
+          disabled={this.disabled}
           isLink={false}
           input-align={this.inputAlign || 'right'}
-          onClick={this.togglePopup}
+          onClick={this.onClickField}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           notitleblock={this.notitleblock}

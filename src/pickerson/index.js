@@ -15,6 +15,8 @@ const [createComponent, bem, t] = createNamespace('pickerson');
 export default createComponent({
   mixins: [FieldMixin, DataSourceMixin],
   props: {
+    readonly: Boolean,
+    disabled: Boolean,
     columnsprop: [Array, String],
     pvalue: [String, Object], // 废弃
     value: [String, Object],
@@ -189,6 +191,14 @@ export default createComponent({
         </div>
       );
     },
+
+    onClickField() {
+      if (this.readonly || this.disabled) {
+        return;
+      }
+
+      this.togglePopup();
+    },
   },
 
   render(h) {
@@ -212,9 +222,10 @@ export default createComponent({
           placeholder={this.placeholder}
           scopedSlots={tempSlot}
           readonly
+          disabled={this.disabled}
           isLink
           input-align={this.inputAlign || 'right'}
-          onClick={this.togglePopup}
+          onClick={this.onClickField}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           insel={true}
