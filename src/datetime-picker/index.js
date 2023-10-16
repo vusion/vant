@@ -8,25 +8,14 @@ import Tabs from '../tabs';
 import Tab from '../tab';
 import { EmptyCol } from '../emptycol';
 import { FieldMixin } from '../mixins/field';
+import { EventSlotCommandProvider } from '../mixins/EventSlotCommandProvider';
 
 import { validDisplayFormatters, validUnit, validType } from './shared';
 
 const [createComponent, bem, t] = createNamespace('datetime-picker');
 
 export default createComponent({
-  mixins: [FieldMixin],
-  provide() {
-    const execEventSlotCommand = (methodName, ...args) => {
-      const fn = this[methodName];
-      if (fn && typeof fn === 'function') {
-        return this[methodName](...args);
-      }
-    };
-    return {
-      execEventSlotCommand,
-    };
-  },
-
+  mixins: [FieldMixin, EventSlotCommandProvider(['cancel', 'confirm'])],
   props: {
     ...TimePicker.props,
     ...DatePicker.props,
@@ -148,9 +137,7 @@ export default createComponent({
         const start = isValidDate(this.startValue, this.realType) ? this.startValue : '';
         const end = isValidDate(this.endValue, this.realType) ? this.endValue : '';
 
-        return this.range
-          ? `${start} - ${end}`
-          : value;
+        return this.range ? `${start} - ${end}` : value;
       }
 
       if (this.range) {
@@ -253,7 +240,7 @@ export default createComponent({
           }
         }
         return (
-          <div style=" position: relative; width:100%;">
+          <div class={bem('picker-top')}>
             {topSlot && (
               <div
                 vusion-slot-name="picker-top"
@@ -369,10 +356,7 @@ export default createComponent({
       if (!bottomSlot) return null;
 
       return (
-        <div
-          style="display:flex; justify-content: space-between; align-items:center;"
-          vusion-slot-name="picker-bottom"
-        >
+        <div class={bem('picker-bottom')} vusion-slot-name="picker-bottom">
           {bottomSlot}
         </div>
       );
@@ -418,7 +402,7 @@ export default createComponent({
           closeOnClickOverlay={this.closeOnClickOverlay}
           vusion-scope-id={this?.$vnode?.context?.$options?._scopeId}
           {...{
-            attrs: this.$attrs,
+            attrs: { ...this.$attrs, 'vusion-empty-background': undefined },
           }}
           // onClickOverlay={this.togglePopup}
         >

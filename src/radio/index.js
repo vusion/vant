@@ -42,6 +42,9 @@ export default createComponent({
     },
 
     checked() {
+      if (this.currentValue === null || this.currentValue === 'undefined') {
+        return false;
+      }
       // fixme: 不清楚需不需要隐式转化
       // eslint-disable-next-line eqeqeq
       return this.currentValue == this.name;

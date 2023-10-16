@@ -98,7 +98,22 @@
       title: 禁用
       type: boolean
       default: false
-  slots: false
+  slots:
+    - concept: Slot
+      name: option
+      title: option
+      slotProps:
+        concept: Param
+        name: current
+        typeAnnotation:
+          concept: TypeAnnotation
+          typeKind: generic
+          typeNamespace: nasl.ui
+          typeName: Current
+          typeArguments:
+            - concept: TypeAnnotation
+              typeKind: typeParam
+              typeName: T
   events:
     - name: finish
       title: 全部选项选择完成后触发

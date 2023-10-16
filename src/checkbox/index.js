@@ -11,7 +11,9 @@ export default createComponent({
       parent: 'vanCheckbox',
     }),
   ],
-
+  props: {
+    label: { type: String, default: '' },
+  },
   computed: {
     checked: {
       get() {
@@ -31,11 +33,21 @@ export default createComponent({
       },
     },
     name() {
-      let name = this.parent.options[this.index]?.[this.parent.valueField] ?? this.parent.options[this.index];
-      this.parent.valueField.split('.').forEach(key => {
-        name = name[key] || name
-      });
-      return name
+      console.log('this', this)
+      try {
+        if(!this.parent.options || this.parent.options.length === 0 || (this.parent.options.length < this.parent.children.length && this.index >= this.parent.options.length )) {
+          return this.label
+        } else {
+          let name = this.parent.options[this.index]?.[this.parent.valueField] ?? this.parent.options[this.index];
+          this.parent.valueField.split('.').forEach(key => {
+            name = name[key] || name
+          });
+          return name
+        }
+      } catch (err) {
+        console.log('checkbox获取name出错，', err)
+        return ''
+      }
     }
   },
 

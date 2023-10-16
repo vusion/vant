@@ -1,4 +1,3 @@
-
 // Utils
 import { createNamespace, _get } from '../utils';
 import Picker from './Picker';
@@ -9,11 +8,22 @@ import List from './List';
 
 import { FieldMixin } from '../mixins/field';
 import DataSourceMixin from '../mixins/DataSource';
+import { EmptyCol } from '../emptycol';
+import { EventSlotCommandProvider } from '../mixins/EventSlotCommandProvider';
 
 const [createComponent, bem, t] = createNamespace('pickerson');
 
+const EventSlotCommandMap = {
+  cancel: 'onCancel',
+  confirm: 'onConfirm',
+};
+
 export default createComponent({
-  mixins: [FieldMixin, DataSourceMixin],
+  mixins: [
+    FieldMixin,
+    DataSourceMixin,
+    EventSlotCommandProvider(EventSlotCommandMap),
+  ],
   props: {
     readonly: Boolean,
     disabled: Boolean,
@@ -51,12 +61,17 @@ export default createComponent({
     },
     placeholder: {
       type: String,
-      default: '请选择'
+      default: '请选择',
     },
 
     pageable: { type: [Boolean, String], default: false },
     filterable: { type: Boolean, default: false },
     sorting: Object,
+
+    isNew: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -64,7 +79,7 @@ export default createComponent({
       popupVisible: false,
       // 内部值
       currentValue: this.formatValue((this.value ?? this.pvalue) || ''),
-      style: ''
+      style: '',
     };
   },
   mounted() {
@@ -90,12 +105,35 @@ export default createComponent({
   },
 
   methods: {
+    designerDbControl() {
+      this.$refs.popup.togglePModal();
+    },
+    designerClose() {
+      if (window.parent && this?.$attrs?.['vusion-node-path']) {
+        window.parent?.postMessage(
+          {
+            protocol: 'vusion',
+            sender: 'helper',
+            type: 'send',
+            command: 'setPopupStatusInfo',
+            args: [
+              {
+                nodePath: this?.$attrs?.['vusion-node-path'],
+                visible: false,
+              },
+            ],
+          },
+          '*'
+        );
+      }
+      this.$refs.popup.togglePModal();
+    },
     formatValue(value) {
       let val = value;
       if (this.multiple && !Array.isArray(value)) {
         val = [value].filter((item) => {
           if (item !== null || item !== undefined || item !== '') {
-            return false
+            return false;
           }
 
           return true;
@@ -113,7 +151,7 @@ export default createComponent({
         return this.value ?? this.pvalue;
       }
 
-      let title =  this.multiple ? [] : '';
+      let title = this.multiple ? [] : '';
       for (let i = 0; i < this.data.length; i++) {
         const item = this.data[i];
 
@@ -129,7 +167,7 @@ export default createComponent({
 
         if (this.multiple) {
           if (this.currentValue.includes(v)) {
-            title.push(t)
+            title.push(t);
           }
         } else if (this.currentValue === v) {
           title = t;
@@ -173,6 +211,37 @@ export default createComponent({
     },
 
     genToolBar() {
+      if (this.isNew) {
+        let topSlot = this.slots('picker-top');
+        let titleSlot = this.slots('pannel-title');
+        if (this.inDesigner()) {
+          if (!topSlot) {
+            topSlot = <EmptyCol></EmptyCol>;
+          }
+          if (!titleSlot) {
+            titleSlot = <EmptyCol></EmptyCol>;
+          }
+        }
+        return (
+          <div class={bem('picker-top')}>
+            {topSlot && (
+              <div
+                vusion-slot-name="picker-top"
+                style="display:flex; justify-content: space-between; align-items: center; min-height:32px;"
+              >
+                {topSlot}
+              </div>
+            )}
+            <div
+              style="position:absolute; top: 50%; left:50%; transform: translate(-50%,-50%);"
+              vusion-slot-name="pannel-title"
+            >
+              {titleSlot || this.title}
+            </div>
+          </div>
+        );
+      }
+
       if (!this.showToolbar) {
         return null;
       }
@@ -198,7 +267,26 @@ export default createComponent({
       }
 
       this.togglePopup();
-    }
+    },
+
+    renderBottom() {
+      if (!this.isNew) return null;
+
+      let bottomSlot = this.slots('picker-bottom');
+      if (this.inDesigner()) {
+        if (!bottomSlot) {
+          bottomSlot = <EmptyCol></EmptyCol>;
+        }
+      }
+
+      if (!bottomSlot) return null;
+
+      return (
+        <div vusion-slot-name="picker-bottom" class={bem('picker-bottom')}>
+          {bottomSlot}
+        </div>
+      );
+    },
   },
 
   render(h) {
@@ -240,8 +328,21 @@ export default createComponent({
           closeOnClickOverlay={this.closeOnClickOverlay}
           get-container="body" // 放body下不易出现异常情况
           // onClickOverlay={this.togglePopup}
+          vusion-scope-id={this?.$vnode?.context?.$options?._scopeId}
+          {...{
+            attrs: { ...this.$attrs, 'vusion-empty-background': undefined },
+          }}
         >
-          <div>
+          <div class={bem(this.isNew && 'content-wrapper')}>
+            {this.inDesigner() && (
+              <div
+                class={bem('designer-close-button')}
+                vusion-click-enabled="true"
+                onClick={this.designerClose}
+              >
+                点击关闭
+              </div>
+            )}
             {/* toolbar */}
             {this.genToolBar()}
             {/* search */}
@@ -263,6 +364,9 @@ export default createComponent({
                     textField: this.textField || this.$attrs.valueKey,
                   },
                 }}
+                scopedSlots={{
+                  option: this.$scopedSlots.option,
+                }}
                 value={this.currentValue}
                 style={this.style}
                 {...{ on }}
@@ -277,11 +381,15 @@ export default createComponent({
                 value={this.currentValue}
                 multiple={this.multiple}
                 enableSelectAll={this.enableSelectAll}
+                scopedSlots={{
+                  option: this.$scopedSlots.option,
+                }}
                 enableSelectedCount={this.enableSelectedCount}
                 loading={this.currentLoading}
                 {...{ on }}
               ></List>
             )}
+            {this.renderBottom()}
           </div>
         </Popup>
       </div>

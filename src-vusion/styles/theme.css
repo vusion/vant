@@ -452,7 +452,7 @@
   --van-radio-border-width: 0; /* @desc 边框宽度 */ /* @prefix van-radio */
   --van-radio-icon-border-width: 1px; /* @desc 图标边框宽度 */ /* @prefix van-radio */
   --van-radio-border-color: #c8c9cc; /* @type color */ /* @desc 单选项未选中边框颜色 */ /* @prefix van-radio */
-  --van-radio-checked-border-color: transparent; /* @type color */ /* @desc 单选项选中边框颜色 */ /* @prefix van-radio */
+  --van-radio-checked-border-color: rgb(150, 151, 153); /* @type color */ /* @desc 单选项选中边框颜色 */ /* @prefix van-radio */
   --van-radio-background-color: transparent;/* @type color */ /* @desc 单选项未选中背景颜色 */ /* @prefix van-radio */
   --van-radio-checked-background-color: transparent;/* @type color */ /* @desc 单选项选中背景颜色 */ /* @prefix van-radio */
   --van-radio-label-color: var(--van-component-text-color);/* @type color */ /* @desc 单选项未选中文字颜色 */ /* @prefix van-radio */

@@ -20,6 +20,9 @@
         - value: datetime
           title: 日期时间选择
       default: datetime
+      toggleclear:
+        - unit
+        - show-formatter
     - name: unit
       title: 最小单位
       type: string
@@ -52,6 +55,8 @@
           value: second
           dependency:
             - '!type': date
+      toggleclear:
+        - show-formatter
     - name: show-formatter
       title: 展示格式
       type: string
@@ -312,11 +317,22 @@
       type: boolean
       default: false
       description: 是否点击遮罩层后关闭
-  slots: false
+  slots:
+    - concept: Slot
+      name: default
+      description: 插入`<van-picker-action-slot>`子组件
+      support:
+        - name: van-picker-action-slot
+          title: 事件插槽
+          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
   events:
     - name: confirm
       title: 确认
       description: 点击完成按钮时触发的事件
+      params: []
+    - name: cancel
+      title: 取消
+      description: 点击完成取消时触发的事件
       params: []
   description: 时间选择，支持日期、年月、时分等维度
   methods:
@@ -327,6 +343,19 @@
 
 - name: van-datetime-picker-action-slot
   title: 时间选择事件插槽
+  is-sub: true
+  attrs:
+    - name: target-method
+      title: 触发的事件名称
+      type: string
+      options:
+        - value: confirm
+          title: 确认
+        - value: cancel
+          title: 取消
+
+- name: van-picker-action-slot
+  title: 事件插槽
   is-sub: true
   attrs:
     - name: target-method
