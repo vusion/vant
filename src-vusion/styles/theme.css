@@ -823,4 +823,10 @@
   --popup-background: white; /* @type color */ /* @desc 弹出层的背景色,如 #223325 */ /* @prefix popup */
   --popup-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* @desc 弹出层的阴影效果,如 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */ /* @prefix popup */
   --popup-border-color: var(--border-color-base); /* @type color */ /* @desc 弹出层的边框颜色,如 #223325 */ /* @prefix popup */
+
+  /* @component van-toast */
+  --van-toast-max-width: 70%; /* @desc 弹出消息的最大宽度 */
+  --van-toast-font-size: 14px; /* @desc 弹出消息的字体大小 */
+  --van-toast-text-color: #fff; /* @type color */ /* @desc 弹出消息的字体颜色 */
+  --van-toast-background-color: rgba(0, 0, 0, 0.7); /* @type color */ /* @desc 弹出消息的背景色 */
 }

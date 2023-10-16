@@ -10739,7 +10739,7 @@
             "Feedback"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-toast \\n  message=\\\"轻提示消息\\\"\\n  :duration=\\\"2000\\\"\\n  type=\\\"text\\\"\\n  position=\\\"middle\\\">\\n</van-toast>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-toast message=\\\"弹出消息\\\" :duration=\\\"2000\\\" type=\\\"text\\\" position=\\\"middle\\\">\\n</van-toast>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-toast",
             "title": "轻提示",
@@ -10751,7 +10751,7 @@
                 {
                     "title": "基本用法",
                     "description": "",
-                    "code": "<template>\n<van-toast \n  message=\"轻提示消息\"\n  :duration=\"2000\"\n  type=\"text\"\n  position=\"middle\">\n</van-toast>\n</template>\n"
+                    "code": "<template>\n<van-toast message=\"弹出消息\" :duration=\"2000\" type=\"text\" position=\"middle\">\n</van-toast>\n</template>\n"
                 }
             ],
             "attrs": [
