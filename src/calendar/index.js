@@ -614,6 +614,7 @@ export default createComponent({
             value={this.getTitle()}
             scopedSlots={tempSlot}
             readonly
+            disabled={this.disabled}
             isLink
             input-align={this.inputAlign || 'right'}
             onClick={this.togglePopup}

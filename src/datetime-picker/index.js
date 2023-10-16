@@ -179,6 +179,10 @@ export default createComponent({
     },
     // @exposed-api
     open() {
+      if (this.readonly || this.disabled) {
+        return;
+      }
+
       this.popupVisible = true;
       // this.$refs.popup.open();
     },
@@ -372,6 +376,7 @@ export default createComponent({
           placeholder={this.placeholder}
           scopedSlots={tempSlot}
           readonly
+          disabled={this.disabled}
           isLink
           onClick={this.open}
           input-align={this.inputAlign || 'right'}

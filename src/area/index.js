@@ -518,6 +518,14 @@ export default createComponent({
         </template>
       );
     },
+
+    onClickField() {
+      if (this.readonly || this.disabled) {
+        return;
+      }
+
+      this.togglePopup();
+    }
   },
 
   render() {
@@ -590,9 +598,10 @@ export default createComponent({
           value={this.getTitle}
           scopedSlots={tempSlot}
           readonly
+          disabled={this.disabled}
           isLink
           input-align={this.inputAlign || 'right'}
-          onClick={this.togglePopup}
+          onClick={this.onClickField}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           insel={true}

@@ -39,93 +39,39 @@
                 <van-text :ref="`text10`" text="标题"></van-text>
           </template>
       </van-pickerson>
+    </demo-block>
 
-      <!-- <van-pickerson
-        :pvalue.sync="son"
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('textColumns')"
-        @change="onChange1"
-      />
+    <demo-block card title="只读">
       <van-pickerson
-        :pvalue.sync="son"
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('textColumns')"
-        @change="onChange1"
-      /> -->
-    </demo-block>
-    <!-- <demo-block card :title="t('defaultIndex')">
-      <van-picker
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('textColumns')"
-        :default-index="2"
-        @change="onChange1"
-      />
+        title="标题"
+        :show-toolbar="true"
+        :value="1"
+        :data-source="[1, 2, 3, 4, 5]"
+        type="list"
+        :enable-select-all="true"
+        :enable-selected-count="true"
+        :readonly="true">
+          <template #title>
+                <van-text :ref="`text10`" text="标题"></van-text>
+          </template>
+      </van-pickerson>
     </demo-block>
 
-    <demo-block card :title="t('multipleColumns')">
-      <van-picker
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('dateColumns')"
-        @cancel="onCancel"
-        @confirm="onConfirm"
-      />
+    <demo-block card title="禁用">
+      <van-pickerson
+        title="标题"
+        :show-toolbar="true"
+        :value="1"
+        :data-source="[1, 2, 3, 4, 5]"
+        type="list"
+        :enable-select-all="true"
+        :enable-selected-count="true"
+        :disabled="true">
+          <template #title>
+                <van-text :ref="`text10`" text="标题"></van-text>
+          </template>
+      </van-pickerson>
     </demo-block>
-
-    <demo-block card v-if="!isWeapp" :title="t('cascade')">
-      <van-picker
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('cascadeColumns')"
-        @cancel="onCancel"
-        @confirm="onConfirm"
-      />
-    </demo-block>
-
-    <demo-block card :title="t('disableOption')">
-      <van-picker
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('disabledColumns')"
-        @confirm="onConfirm222"
-      />
-    </demo-block>
-
-    <demo-block card :title="t('setColumnValues')">
-      <van-picker
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="columns"
-        @change="onChange2"
-      />
-    </demo-block>
-
-    <demo-block card :title="t('loadingStatus')">
-      <van-picker loading show-toolbar :title="t('title')" :columnsprop="columns" />
-    </demo-block>
-
-    <demo-block card v-if="!isWeapp" :title="t('withPopup')">
-      <van-field
-        readonly
-        clickable
-        :label="t('city')"
-        :value="fieldValue"
-        :placeholder="t('chooseCity')"
-        @click="onClickField"
-      />
-      <van-popup v-model="showPicker" round position="bottom">
-        <van-picker
-          show-toolbar
-          :title="t('title')"
-          :columnsprop="t('textColumns')"
-          @cancel="onCancel2"
-          @confirm="onConfirm2"
-        />
-      </van-popup>
-    </demo-block> -->
   </demo-section>
 </template>
 
