@@ -7,6 +7,7 @@ import { PopupMixin } from '../mixins/popup';
 
 // Components
 import Icon from '../icon';
+import Iconv from '../iconv';
 import Loading from '../loading';
 
 const [createComponent, bem] = createNamespace('toast');
@@ -38,6 +39,8 @@ export default createComponent({
       type: Boolean,
       default: false,
     },
+
+    customIcon: String,
   },
 
   data() {
@@ -89,21 +92,35 @@ export default createComponent({
     },
 
     genIcon() {
-      const { icon, type, iconPrefix, loadingType } = this;
-      const hasIcon = icon || type === 'success' || type === 'fail';
+      const { type, loadingType, customIcon } = this;
 
-      if (hasIcon) {
-        return (
-          <Icon
-            class={bem('icon')}
-            classPrefix={iconPrefix}
-            name={icon || type}
-          />
-        );
+      if (type === 'custom') {
+        if (customIcon) {
+          return <Iconv class={bem('icon')} icotype="only" name={customIcon}></Iconv>;
+        }
+
+        return null;
       }
 
       if (type === 'loading') {
         return <Loading class={bem('loading')} type={loadingType} />;
+      }
+
+      let name = type;
+      if (type === 'warning') {
+        name = 'info';
+      }
+
+      const hasIcon = name;
+
+      if (hasIcon) {
+        return (
+          <Iconv
+            class={bem('icon')}
+            icotype="only"
+            name={name}
+          />
+        );
       }
     },
 
@@ -120,18 +137,14 @@ export default createComponent({
 
       return <div class={bem('text')}>{message}</div>;
     },
-
-    // expose
-    openToast() {
-      this.realValue = true;
-    },
-    // expose
-    closeToast() {
-      this.realValue = false;
-    },
   },
 
   render() {
+    let { type } = this
+    if (this.type === 'custom' && !this.customIcon) {
+      type = 'text';
+    }
+
     return (
       <transition
         name={this.transition}
@@ -141,7 +154,7 @@ export default createComponent({
         <div
           vShow={this.realValue}
           class={[
-            bem([this.position, { [this.type]: !this.icon }]),
+            bem([this.position, { [type]: !this.icon }]),
             this.className,
           ]}
           onClick={this.onClick}

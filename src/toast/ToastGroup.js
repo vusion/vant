@@ -7,6 +7,7 @@ import { PopupMixin } from '../mixins/popup';
 
 // Components
 import Icon from '../icon';
+import Iconv from '../iconv';
 import Loading from '../loading';
 
 const [createComponent, bem] = createNamespace('toast-group');
@@ -39,6 +40,8 @@ export default createComponent({
       type: Boolean,
       default: false,
     },
+
+    customIcon: String,
   },
 
   data() {
@@ -147,7 +150,13 @@ export default createComponent({
       this.items.splice(index, 1);
       this.$emit('close', item, this);
     },
-
+    /**
+     * @method closeAll() 关闭所有消息
+     * @return {void}
+     */
+    closeAll() {
+        this.items = [];
+    },
     /* istanbul ignore next */
     // onAfterEnter(item) {
     //   this.$emit('opened');
@@ -162,21 +171,35 @@ export default createComponent({
     // },
 
     genIcon(item) {
-      const { icon, type, iconPrefix, loadingType } = item;
-      const hasIcon = icon || type === 'success' || type === 'fail';
+      const { type, loadingType, customIcon } = item;
 
-      if (hasIcon) {
-        return (
-          <Icon
-            class={bem('item__icon')}
-            classPrefix={iconPrefix}
-            name={icon || type}
-          />
-        );
+      if (type === 'custom') {
+        if (customIcon) {
+          return (
+            <Iconv
+              class={bem('item__icon')}
+              icotype="only"
+              name={customIcon}
+            ></Iconv>
+          );
+        }
+
+        return null;
       }
 
       if (type === 'loading') {
         return <Loading class={bem('item__loading')} type={loadingType} />;
+      }
+
+      let name = type;
+      if (type === 'warning') {
+        name = 'info';
+      }
+
+      const hasIcon = name;
+
+      if (hasIcon) {
+        return <Iconv class={bem('item__icon')} icotype="only" name={name} />;
       }
     },
 
@@ -193,19 +216,40 @@ export default createComponent({
 
       return <div class={bem('item__text')}>{message}</div>;
     },
+
+    // expose
+    openToast() {
+      this.show({
+        message: this.message,
+        duration: this.duration,
+        type: this.type,
+        customIcon: this.customIcon,
+      });
+    },
+    // expose
+    closeToast() {
+      this.closeAll();
+    },
   },
 
   render() {
-    const items = this.items.map((item) => (
-      <div
-        key={item.timestamp}
-        class={bem('item', [{ [item.type]: !item.icon }])}
-        onClick={this.onClick(item)}
-      >
-        {this.genIcon(item)}
-        {this.genMessage(item)}
-      </div>
-    ));
+    const items = this.items.map((item) => {
+      let { type } = item;
+      if (item.type === 'custom' && !item.customIcon) {
+        type = 'text';
+      }
+      return (
+        <div
+          key={item.timestamp}
+          class={bem('item', [{ [type]: !item.icon }])}
+          onClick={this.onClick(item)}
+        >
+          {this.genIcon(item)}
+          {this.genMessage(item)}
+        </div>
+      );
+    });
+
     return (
       <transition-group
         tag="div"

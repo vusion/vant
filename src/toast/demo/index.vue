@@ -1,7 +1,7 @@
 <template>
   <demo-section>
     <demo-block card :title="t('basicUsage')">
-      <van-cell is-link :title="t('title1')" @click="$toast(t('text'))" />
+      <van-cell is-link :title="t('title1')" @click="$toast({message: t('text'), duration: 0 })" />
       <van-cell is-link :title="t('title2')" @click="showLoadingToast()" />
       <van-cell is-link :title="t('success')" @click="showSuccessToast" />
       <van-cell is-link :title="t('fail')" @click="showFailToast" />
@@ -27,6 +27,14 @@
         is-link
         :title="t('updateMessage')"
         @click="showCustomizedToast"
+      />
+    </demo-block>
+
+    <demo-block>
+      <van-cell
+        is-link
+        title="自定义图标"
+        @click="showCustomizedToastIcon"
       />
     </demo-block>
   </demo-section>
@@ -136,6 +144,17 @@ export default {
         }
       }, 1000);
     },
+
+    showCustomizedToastIcon() {
+      this.$toast.show({
+        duration: 0,
+        forbidClick: true,
+        message: '自定义图标',
+        // type: 'custom',
+        type: 'warning',
+        customIcon: 'fail'
+      });
+    }
   },
 };
 </script>

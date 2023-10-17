@@ -10731,7 +10731,7 @@
     },
     {
         "symbol": "van-toast",
-        "name": "轻提示",
+        "name": "弹出消息",
         "icon": "toast",
         "depDescription": {},
         "description": "在页面中间弹出黑色半透明提示，用于消息通知、加载提示、操作结果提示等场景。",
@@ -10742,7 +10742,7 @@
         "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-toast message=\\\"弹出消息\\\" :duration=\\\"2000\\\" type=\\\"text\\\" position=\\\"middle\\\">\\n</van-toast>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-toast",
-            "title": "轻提示",
+            "title": "弹出消息",
             "description": "在页面中间弹出黑色半透明提示，用于消息通知、加载提示、操作结果提示等场景。",
             "category": "Feedback",
             "screenShot": "",
@@ -10762,25 +10762,22 @@
                     "sync": true,
                     "model": true,
                     "default": false,
-                    "description": "是否展示轻提示"
+                    "description": "是否展示弹出消息",
+                    "advanced": true
                 },
                 {
                     "name": "message",
                     "title": "文本",
                     "type": "string",
-                    "default": "轻提示消息",
+                    "default": "弹出消息消息",
                     "description": "文本内容"
                 },
                 {
                     "name": "type",
                     "title": "类型",
                     "type": "string",
-                    "default": "text",
+                    "default": "custom",
                     "options": [
-                        {
-                            "value": "text",
-                            "title": "普通"
-                        },
                         {
                             "value": "success",
                             "title": "成功"
@@ -10790,8 +10787,26 @@
                             "title": "失败"
                         },
                         {
+                            "value": "warning",
+                            "title": "警告"
+                        },
+                        {
                             "value": "loading",
                             "title": "加载中"
+                        },
+                        {
+                            "value": "custom",
+                            "title": "自定义"
+                        }
+                    ]
+                },
+                {
+                    "name": "custom-icon",
+                    "title": "自定义图标",
+                    "type": "icon",
+                    "dependency": [
+                        {
+                            "type": "custom"
                         }
                     ]
                 },
@@ -10799,7 +10814,8 @@
                     "name": "duration",
                     "title": "展示时长",
                     "type": "number",
-                    "default": 2000
+                    "default": 2000,
+                    "description": "提示停留的时间。`0`表示常驻。"
                 },
                 {
                     "name": "position",
@@ -10826,24 +10842,24 @@
             "methods": [
                 {
                     "name": "openToast",
-                    "description": "打开轻提示"
+                    "description": "打开弹出消息"
                 },
                 {
                     "name": "closeToast",
-                    "description": "关闭轻提示"
+                    "description": "关闭弹出消息"
                 }
             ],
             "events": [
                 {
                     "name": "open",
-                    "title": "打开轻提示后",
-                    "description": "打开轻提示时触发",
+                    "title": "打开弹出消息后",
+                    "description": "打开弹出消息时触发",
                     "params": []
                 },
                 {
                     "name": "close",
-                    "title": "关闭轻提示后",
-                    "description": "关闭轻提示时触发",
+                    "title": "关闭弹出消息后",
+                    "description": "关闭弹出消息时触发",
                     "params": []
                 }
             ],
