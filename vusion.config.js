@@ -139,6 +139,12 @@ module.exports = {
         name: 'swipe-cell',
         alias: '滑动单元格',
       },
+      {
+        group: 'Feedback',
+        show: true,
+        name: 'toast',
+        alias: '轻提示',
+      },
     ],
     blocks: [],
     directives: [
