@@ -2091,6 +2091,34 @@
                         "prefix": "popup"
                     }
                 }
+            },
+            {
+                "id": "4fcd4dfd-683b-4d7e-9211f-gv9sdf08e0899nbnanb112eeeea4",
+                "name": "van-toast",
+                "title": "弹出消息",
+                "toPosition": "toast",
+                "type": [],
+                "preview": {
+                    "template": "<van-toast message=\"弹出消息\" :duration=\"2000\" type=\"text\" position=\"middle\"></van-toast>"
+                },
+                "cssProperty": {
+                    "--van-toast-max-width": {
+                        "type": "input",
+                        "desc": "弹出消息的最大宽度"
+                    },
+                    "--van-toast-font-size": {
+                        "type": "input",
+                        "desc": "弹出消息的字体大小"
+                    },
+                    "--van-toast-text-color": {
+                        "type": "color",
+                        "desc": "弹出消息的字体颜色"
+                    },
+                    "--van-toast-background-color": {
+                        "type": "color",
+                        "desc": "弹出消息的背景色"
+                    }
+                }
             }
         ]
     },

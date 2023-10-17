@@ -230,6 +230,7 @@ Toast.install = () => {
   Vue.use(VueToastGroup);
 };
 
+Toast.Component = VueToast;
 Vue.prototype.$toast = Toast;
 
 export default Toast;

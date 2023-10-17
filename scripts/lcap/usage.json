@@ -283,7 +283,7 @@
             "Container"
         ],
         "screenShot": "https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.16.0/src/cardu/screenshots/0.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.16.0/src/cardu/screenshots/1.png,https://static-vusion.163yun.com/packages/@lcap/mobile-ui@0.16.0/src/cardu/screenshots/2.png",
-        "blocks": "[{\"title\":\"基本样式\",\"description\":\"\",\"code\":\"<template>\\n<van-cardu>\\n  <template #head>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  卡片内容\\n</van-cardu>\\n</template>\\n\"},{\"title\":\"带分割线样式\",\"description\":\"\",\"code\":\"<template>\\n<van-cardu split>\\n  <template #head>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  卡片内容\\n</van-cardu>\\n</template>\\n\"},{\"title\":\"带图片样式\",\"description\":\"\",\"code\":\"<template>\\n<van-cardu title=\\\"卡片\\\" cover-slot>\\n  <template #cover>\\n    <van-image src=\\\"https://static-vusion.163yun.com/assets/cloud-ui/1.jpg\\\"></van-image>\\n  </template>\\n  <template #head>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  卡片内容\\n</van-cardu>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基本样式\",\"description\":\"\",\"code\":\"<template>\\n<van-cardu>\\n  <template #head>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  卡片内容\\n</van-cardu>\\n</template>\\n\"},{\"title\":\"带分割线样式\",\"description\":\"\",\"code\":\"<template>\\n<van-cardu split>\\n  <template #head>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  卡片内容\\n</van-cardu>\\n</template>\\n\"},{\"title\":\"带图片样式\",\"description\":\"\",\"code\":\"<template>\\n<van-cardu title=\\\"卡片\\\" cover-slot>\\n  <template #cover>\\n    <van-image :preview=\\\"false\\\" src=\\\"https://static-vusion.163yun.com/assets/cloud-ui/1.jpg\\\"></van-image>\\n  </template>\\n  <template #head>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  卡片内容\\n</van-cardu>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-cardu",
             "title": "卡片",
@@ -305,7 +305,7 @@
                 {
                     "title": "带图片样式",
                     "description": "",
-                    "code": "<template>\n<van-cardu title=\"卡片\" cover-slot>\n  <template #cover>\n    <van-image src=\"https://static-vusion.163yun.com/assets/cloud-ui/1.jpg\"></van-image>\n  </template>\n  <template #head>\n    <van-text text=\"标题\"></van-text>\n  </template>\n  卡片内容\n</van-cardu>\n</template>\n"
+                    "code": "<template>\n<van-cardu title=\"卡片\" cover-slot>\n  <template #cover>\n    <van-image :preview=\"false\" src=\"https://static-vusion.163yun.com/assets/cloud-ui/1.jpg\"></van-image>\n  </template>\n  <template #head>\n    <van-text text=\"标题\"></van-text>\n  </template>\n  卡片内容\n</van-cardu>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -2934,7 +2934,7 @@
                     "name": "preview",
                     "title": "点击放大",
                     "type": "boolean",
-                    "default": true,
+                    "default": false,
                     "description": "是否支持点击放大全屏展示"
                 },
                 {
@@ -6046,7 +6046,7 @@
             "Form"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-form>\\n  <van-field required drole=\\\"other\\\">\\n    <template #title>\\n      <van-text text=\\\"名称\\\"></van-text>\\n    </template>\\n    <template #input>\\n      <van-fieldinput placeholder=\\\"请输入\\\" clearable></van-fieldinput>\\n    </template>\\n  </van-field>\\n  <van-field name=\\\"radio\\\" drole=\\\"other\\\">\\n    <template #title>\\n      <van-text text=\\\"单选框\\\"></van-text>\\n    </template>\\n    <template #input>\\n      <van-radio-group direction=\\\"horizontal\\\" is-new icon=\\\"sure\\\">\\n        <van-radio name=\\\"1\\\">\\n          <van-text text=\\\"单选框 1\\\"></van-text>\\n        </van-radio>\\n        <van-radio name=\\\"2\\\">\\n          <van-text text=\\\"单选框 2\\\"></van-text>\\n        </van-radio>\\n\\n        <template #item=\\\"current\\\">\\n          <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\\n        </template>\\n      </van-radio-group>\\n    </template>\\n  </van-field>\\n  <div style=\\\"margin: 16px 16px 0\\\">\\n    <van-button\\n      round\\n      block=\\\"blockb\\\"\\n      type=\\\"info\\\"\\n      native-type=\\\"submit\\\"\\n      text=\\\"提交\\\"\\n    >\\n    </van-button>\\n  </div>\\n</van-form>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-form>\\n  <van-field required drole=\\\"other\\\">\\n    <template #title>\\n      <van-text text=\\\"名称\\\"></van-text>\\n    </template>\\n    <template #input>\\n      <van-fieldinput placeholder=\\\"请输入\\\" clearable></van-fieldinput>\\n    </template>\\n  </van-field>\\n  <van-field name=\\\"radio\\\" drole=\\\"other\\\">\\n    <template #title>\\n      <van-text text=\\\"单选框\\\"></van-text>\\n    </template>\\n    <template #input>\\n      <van-radio-group direction=\\\"horizontal\\\" is-new icon=\\\"sure\\\">\\n        <van-radio name=\\\"1\\\" icon=\\\"sure\\\">\\n          <van-text text=\\\"单选框 1\\\"></van-text>\\n        </van-radio>\\n        <van-radio name=\\\"2\\\" icon=\\\"sure\\\">\\n          <van-text text=\\\"单选框 2\\\"></van-text>\\n        </van-radio>\\n\\n        <template #item=\\\"current\\\">\\n          <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\\n        </template>\\n      </van-radio-group>\\n    </template>\\n  </van-field>\\n  <div style=\\\"margin: 16px 16px 0\\\">\\n    <van-button\\n      round\\n      block=\\\"blockb\\\"\\n      type=\\\"info\\\"\\n      native-type=\\\"submit\\\"\\n      text=\\\"提交\\\"\\n    >\\n    </van-button>\\n  </div>\\n</van-form>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-form",
             "title": "表单",
@@ -6058,7 +6058,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-form>\n  <van-field required drole=\"other\">\n    <template #title>\n      <van-text text=\"名称\"></van-text>\n    </template>\n    <template #input>\n      <van-fieldinput placeholder=\"请输入\" clearable></van-fieldinput>\n    </template>\n  </van-field>\n  <van-field name=\"radio\" drole=\"other\">\n    <template #title>\n      <van-text text=\"单选框\"></van-text>\n    </template>\n    <template #input>\n      <van-radio-group direction=\"horizontal\" is-new icon=\"sure\">\n        <van-radio name=\"1\">\n          <van-text text=\"单选框 1\"></van-text>\n        </van-radio>\n        <van-radio name=\"2\">\n          <van-text text=\"单选框 2\"></van-text>\n        </van-radio>\n\n        <template #item=\"current\">\n          <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\n        </template>\n      </van-radio-group>\n    </template>\n  </van-field>\n  <div style=\"margin: 16px 16px 0\">\n    <van-button\n      round\n      block=\"blockb\"\n      type=\"info\"\n      native-type=\"submit\"\n      text=\"提交\"\n    >\n    </van-button>\n  </div>\n</van-form>\n</template>\n"
+                    "code": "<template>\n<van-form>\n  <van-field required drole=\"other\">\n    <template #title>\n      <van-text text=\"名称\"></van-text>\n    </template>\n    <template #input>\n      <van-fieldinput placeholder=\"请输入\" clearable></van-fieldinput>\n    </template>\n  </van-field>\n  <van-field name=\"radio\" drole=\"other\">\n    <template #title>\n      <van-text text=\"单选框\"></van-text>\n    </template>\n    <template #input>\n      <van-radio-group direction=\"horizontal\" is-new icon=\"sure\">\n        <van-radio name=\"1\" icon=\"sure\">\n          <van-text text=\"单选框 1\"></van-text>\n        </van-radio>\n        <van-radio name=\"2\" icon=\"sure\">\n          <van-text text=\"单选框 2\"></van-text>\n        </van-radio>\n\n        <template #item=\"current\">\n          <van-radio vusion-disabled-cut vusion-disabled-copy></van-radio>\n        </template>\n      </van-radio-group>\n    </template>\n  </van-field>\n  <div style=\"margin: 16px 16px 0\">\n    <van-button\n      round\n      block=\"blockb\"\n      type=\"info\"\n      native-type=\"submit\"\n      text=\"提交\"\n    >\n    </van-button>\n  </div>\n</van-form>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -7116,7 +7116,7 @@
                         {
                             "name": "van-radio",
                             "title": "单选项",
-                            "snippet": "<van-radio><van-text text=\"节点\"></van-text></van-radio>"
+                            "snippet": "<van-radio icon=\"sure\"><van-text text=\"节点\"></van-text></van-radio>"
                         }
                     ]
                 },
@@ -7200,6 +7200,7 @@
                             "name": "icon",
                             "title": "单选项图标",
                             "clearable": true,
+                            "default": "sure",
                             "type": "icon",
                             "description": "",
                             "group": "数据属性",
@@ -7355,10 +7356,10 @@
                 },
                 {
                     "name": "min",
-                    "title": "最小选择数量",
+                    "title": "最小可选数",
                     "type": "number",
                     "default": 0,
-                    "description": "最小选择数量"
+                    "description": "最小可选数"
                 },
                 {
                     "name": "disabled",
@@ -7435,7 +7436,7 @@
                     "support": [
                         {
                             "name": "van-checkbox",
-                            "title": "复选项",
+                            "title": "多选项",
                             "snippet": "<van-checkbox name=\"n\" shape=\"square\"><van-text text=\"节点\"></van-text></van-checkbox>"
                         }
                     ]
@@ -7510,6 +7511,12 @@
                             "model": true,
                             "default": false,
                             "description": "是否选中"
+                        },
+                        {
+                            "name": "label",
+                            "title": "选项值",
+                            "type": "any",
+                            "description": "多选框选项值，只在多选组中使用。"
                         },
                         {
                             "name": "shape",
@@ -8336,7 +8343,14 @@
                     "tooltipLink": ""
                 }
             ],
-            "slots": false,
+            "slots": [
+                {
+                    "concept": "Slot",
+                    "name": "default",
+                    "title": "配置文件上传图标",
+                    "accept-type": "all"
+                }
+            ],
             "methods": [
                 {
                     "name": "chooseFile",
@@ -8463,7 +8477,7 @@
             "Selector"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-pickerson\\n  title=\\\"标题\\\"\\n  :show-toolbar=\\\"true\\\" :page-size=\\\"50\\\"\\n><template #title>标题</template></van-pickerson>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-pickerson title=\\\"标题\\\" :show-toolbar=\\\"true\\\" :page-size=\\\"50\\\">\\n  <template #title>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  <template #pannel-title>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  <template #picker-top>\\n    <van-picker-action-slot target-method=\\\"cancel\\\">\\n      <van-iconv name=\\\"left-arrow\\\" icotype=\\\"only\\\"></van-iconv>\\n    </van-picker-action-slot>\\n    <van-picker-action-slot target-method=\\\"confirm\\\"></van-picker-action-slot>\\n  </template>\\n  <template #picker-bottom>\\n    <van-picker-action-slot target-method=\\\"cancel\\\">\\n      <van-button\\n        type=\\\"info_secondary\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"取消\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-picker-action-slot>\\n    <van-picker-action-slot target-method=\\\"confirm\\\">\\n      <van-button\\n        type=\\\"info\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"确认\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-picker-action-slot>\\n  </template>\\n</van-pickerson>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-pickerson",
             "title": "选择器",
@@ -8475,7 +8489,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-pickerson\n  title=\"标题\"\n  :show-toolbar=\"true\" :page-size=\"50\"\n><template #title>标题</template></van-pickerson>\n</template>\n"
+                    "code": "<template>\n<van-pickerson title=\"标题\" :show-toolbar=\"true\" :page-size=\"50\">\n  <template #title>\n    <van-text text=\"标题\"></van-text>\n  </template>\n  <template #pannel-title>\n    <van-text text=\"标题\"></van-text>\n  </template>\n  <template #picker-top>\n    <van-picker-action-slot target-method=\"cancel\">\n      <van-iconv name=\"left-arrow\" icotype=\"only\"></van-iconv>\n    </van-picker-action-slot>\n    <van-picker-action-slot target-method=\"confirm\"></van-picker-action-slot>\n  </template>\n  <template #picker-bottom>\n    <van-picker-action-slot target-method=\"cancel\">\n      <van-button\n        type=\"info_secondary\"\n        size=\"normal\"\n        text=\"取消\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-picker-action-slot>\n    <van-picker-action-slot target-method=\"confirm\">\n      <van-button\n        type=\"info\"\n        size=\"normal\"\n        text=\"确认\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-picker-action-slot>\n  </template>\n</van-pickerson>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -8680,6 +8694,12 @@
                     "advanced": true
                 },
                 {
+                    "name": "isNew",
+                    "title": "是否使用新版外观",
+                    "type": "boolean",
+                    "default": false
+                },
+                {
                     "name": "title",
                     "title": "工具栏标题",
                     "type": "string",
@@ -8691,21 +8711,36 @@
                     "title": "确认按钮文字",
                     "type": "string",
                     "default": "确认",
-                    "description": "确认按钮文字"
+                    "description": "确认按钮文字",
+                    "dependency": [
+                        {
+                            "isNew": false
+                        }
+                    ]
                 },
                 {
                     "name": "cancel-button-text",
                     "title": "取消按钮文字",
                     "type": "string",
                     "default": "取消",
-                    "description": "取消按钮文字"
+                    "description": "取消按钮文字",
+                    "dependency": [
+                        {
+                            "isNew": false
+                        }
+                    ]
                 },
                 {
                     "name": "visible-item-count",
                     "title": "可见选项个数",
                     "type": "number",
                     "default": 6,
-                    "description": "可见选项个数"
+                    "description": "可见选项个数",
+                    "dependency": [
+                        {
+                            "type": "picker"
+                        }
+                    ]
                 },
                 {
                     "name": "input-align",
@@ -8742,7 +8777,42 @@
                     "description": "是否显示工具栏"
                 }
             ],
-            "slots": false,
+            "slots": [
+                {
+                    "concept": "Slot",
+                    "name": "default",
+                    "description": "插入`<van-picker-action-slot>`子组件",
+                    "support": [
+                        {
+                            "name": "van-picker-action-slot",
+                            "title": "事件插槽",
+                            "snippet": "<van-picker-action-slot target-method=\"confirm\"></van-picker-action-slot>"
+                        }
+                    ]
+                },
+                {
+                    "concept": "Slot",
+                    "name": "option",
+                    "title": "option",
+                    "slotProps": {
+                        "concept": "Param",
+                        "name": "current",
+                        "typeAnnotation": {
+                            "concept": "TypeAnnotation",
+                            "typeKind": "generic",
+                            "typeNamespace": "nasl.ui",
+                            "typeName": "Current",
+                            "typeArguments": [
+                                {
+                                    "concept": "TypeAnnotation",
+                                    "typeKind": "typeParam",
+                                    "typeName": "T"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
             "events": [
                 {
                     "name": "confirm",
@@ -8773,7 +8843,7 @@
             "Selector"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-area\\n  title=\\\"标题\\\"\\n  input-align=\\\"left\\\"\\n  converter=\\\"name\\\"\\n><template #title>标题</template></van-area>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-area title=\\\"标题\\\" input-align=\\\"left\\\" converter=\\\"name\\\">\\n  <template #title>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  <template #pannel-title>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  <template #picker-top>\\n    <van-picker-action-slot target-method=\\\"cancel\\\">\\n      <van-iconv name=\\\"left-arrow\\\" icotype=\\\"only\\\"></van-iconv>\\n    </van-picker-action-slot>\\n    <van-picker-action-slot target-method=\\\"confirm\\\"></van-picker-action-slot>\\n  </template>\\n  <template #picker-bottom>\\n    <van-picker-action-slot target-method=\\\"cancel\\\">\\n      <van-button\\n        type=\\\"info_secondary\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"取消\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-picker-action-slot>\\n    <van-picker-action-slot target-method=\\\"confirm\\\">\\n      <van-button\\n        type=\\\"info\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"确认\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-picker-action-slot> </template\\n></van-area>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-area",
             "title": "地区选择",
@@ -8785,7 +8855,7 @@
                 {
                     "title": "基本用法",
                     "description": "",
-                    "code": "<template>\n<van-area\n  title=\"标题\"\n  input-align=\"left\"\n  converter=\"name\"\n><template #title>标题</template></van-area>\n</template>\n"
+                    "code": "<template>\n<van-area title=\"标题\" input-align=\"left\" converter=\"name\">\n  <template #title>\n    <van-text text=\"标题\"></van-text>\n  </template>\n  <template #pannel-title>\n    <van-text text=\"标题\"></van-text>\n  </template>\n  <template #picker-top>\n    <van-picker-action-slot target-method=\"cancel\">\n      <van-iconv name=\"left-arrow\" icotype=\"only\"></van-iconv>\n    </van-picker-action-slot>\n    <van-picker-action-slot target-method=\"confirm\"></van-picker-action-slot>\n  </template>\n  <template #picker-bottom>\n    <van-picker-action-slot target-method=\"cancel\">\n      <van-button\n        type=\"info_secondary\"\n        size=\"normal\"\n        text=\"取消\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-picker-action-slot>\n    <van-picker-action-slot target-method=\"confirm\">\n      <van-button\n        type=\"info\"\n        size=\"normal\"\n        text=\"确认\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-picker-action-slot> </template\n></van-area>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -8809,7 +8879,7 @@
                     "name": "areaListprop",
                     "title": "数据源(默认全部)",
                     "type": "array",
-                    "default2": "{\"province_list\":{\"110000\":\"北京市\"},\"city_list\":{\"110100\":\"北京市\"},\"county_list\":{\"110101\":\"东城区\",\"110102\":\"西城区\",\"110105\":\"朝阳区\",\"110106\":\"丰台区\",\"110107\":\"石景山区\",\"110108\":\"海淀区\",\"110109\":\"门头沟区\",\"110111\":\"房山区\",\"110112\":\"通州区\",\"110113\":\"顺义区\",\"110114\":\"昌平区\",\"110115\":\"大兴区\",\"110116\":\"怀柔区\",\"110117\":\"平谷区\",\"110118\":\"密云区\",\"110119\":\"延庆区\"}}",
+                    "default": "{\"province_list\":{\"110000\":\"北京市\"},\"city_list\":{\"110100\":\"北京市\"},\"county_list\":{\"110101\":\"东城区\",\"110102\":\"西城区\",\"110105\":\"朝阳区\",\"110106\":\"丰台区\",\"110107\":\"石景山区\",\"110108\":\"海淀区\",\"110109\":\"门头沟区\",\"110111\":\"房山区\",\"110112\":\"通州区\",\"110113\":\"顺义区\",\"110114\":\"昌平区\",\"110115\":\"大兴区\",\"110116\":\"怀柔区\",\"110117\":\"平谷区\",\"110118\":\"密云区\",\"110119\":\"延庆区\"}}",
                     "description": "一个包含字符串或对象的数组"
                 },
                 {
@@ -8895,9 +8965,51 @@
                     "type": "boolean",
                     "default": false,
                     "description": "是否点击遮罩层后关闭"
+                },
+                {
+                    "name": "isNew",
+                    "title": "是否使用新版外观",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "是否使用新版外观"
                 }
             ],
-            "slots": false,
+            "slots": [
+                {
+                    "concept": "Slot",
+                    "name": "default",
+                    "description": "插入`<van-picker-action-slot>`子组件",
+                    "support": [
+                        {
+                            "name": "van-picker-action-slot",
+                            "title": "事件插槽",
+                            "snippet": "<van-picker-action-slot target-method=\"confirm\"></van-picker-action-slot>"
+                        }
+                    ]
+                },
+                {
+                    "concept": "Slot",
+                    "name": "option",
+                    "title": "option",
+                    "slotProps": {
+                        "concept": "Param",
+                        "name": "current",
+                        "typeAnnotation": {
+                            "concept": "TypeAnnotation",
+                            "typeKind": "generic",
+                            "typeNamespace": "nasl.ui",
+                            "typeName": "Current",
+                            "typeArguments": [
+                                {
+                                    "concept": "TypeAnnotation",
+                                    "typeKind": "typeParam",
+                                    "typeName": "T"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
             "events": [
                 {
                     "name": "confirm",
@@ -9011,21 +9123,22 @@
                 },
                 {
                     "name": "parent-field",
-                    "title": "父级字段",
+                    "title": "父级值字段",
                     "type": "string",
                     "default": "parentId",
                     "description": "父级字段"
                 },
                 {
                     "name": "children-field",
-                    "title": "子级字段",
+                    "title": "子级值字段",
+                    "advanced": true,
                     "type": "string",
                     "default": "children",
                     "description": "子级字段"
                 },
                 {
                     "name": "filterable",
-                    "title": "可筛选",
+                    "title": "搜索框",
                     "type": "boolean",
                     "default": false,
                     "description": "是否可以过滤（搜索），开启将会显示搜索框。"
@@ -9040,7 +9153,7 @@
                 },
                 {
                     "name": "input-align",
-                    "title": "右侧内容对齐方式",
+                    "title": "对齐方式",
                     "type": "string",
                     "options": [
                         {
@@ -9060,13 +9173,36 @@
                 },
                 {
                     "name": "close-on-click-overlay",
-                    "title": "点击遮罩层后关闭",
+                    "title": "是否点击遮罩层后关闭",
                     "type": "boolean",
                     "default": false,
                     "description": "是否点击遮罩层后关闭"
                 }
             ],
-            "slots": false,
+            "slots": [
+                {
+                    "concept": "Slot",
+                    "name": "option",
+                    "title": "option",
+                    "slotProps": {
+                        "concept": "Param",
+                        "name": "current",
+                        "typeAnnotation": {
+                            "concept": "TypeAnnotation",
+                            "typeKind": "generic",
+                            "typeNamespace": "nasl.ui",
+                            "typeName": "Current",
+                            "typeArguments": [
+                                {
+                                    "concept": "TypeAnnotation",
+                                    "typeKind": "typeParam",
+                                    "typeName": "T"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
             "events": [
                 {
                     "name": "finish",
@@ -9092,7 +9228,7 @@
             "Selector"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-datetime-picker type=\\\"datetime\\\" title=\\\"顶部标题\\\">\\n  <template #title>\\n    <van-text text=\\\"顶部标题\\\"></van-text>\\n  </template>\\n  <template #pannel-title>\\n    <van-text text=\\\"顶部标题\\\"></van-text>\\n  </template>\\n  <template #picker-top>\\n    <van-datetime-picker-action-slot\\n      :vusion-disabled-cut=\\\"true\\\"\\n      target-method=\\\"cancel\\\"\\n    >\\n      <van-iconv name=\\\"left-arrow\\\" icotype=\\\"only\\\"> </van-iconv>\\n    </van-datetime-picker-action-slot>\\n    <van-datetime-picker-action-slot\\n      :vusion-disabled-cut=\\\"true\\\"\\n      target-method=\\\"confirm\\\"\\n    >\\n    </van-datetime-picker-action-slot>\\n  </template>\\n  <template #picker-bottom>\\n    <van-datetime-picker-action-slot\\n      :vusion-disabled-cut=\\\"true\\\"\\n      target-method=\\\"cancel\\\"\\n    >\\n      <van-button\\n        type=\\\"info_secondary\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"取消\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-datetime-picker-action-slot>\\n    <van-datetime-picker-action-slot\\n      :vusion-disabled-cut=\\\"true\\\"\\n      target-method=\\\"confirm\\\"\\n    >\\n      <van-button\\n        type=\\\"info\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"确认\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-datetime-picker-action-slot>\\n  </template>\\n</van-datetime-picker>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-datetime-picker type=\\\"datetime\\\" title=\\\"顶部标题\\\">\\n  <template #title>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  <template #pannel-title>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  <template #picker-top>\\n    <van-picker-action-slot target-method=\\\"cancel\\\">\\n      <van-iconv name=\\\"left-arrow\\\" icotype=\\\"only\\\"></van-iconv>\\n    </van-picker-action-slot>\\n    <van-picker-action-slot target-method=\\\"confirm\\\"></van-picker-action-slot>\\n  </template>\\n  <template #picker-bottom>\\n    <van-picker-action-slot target-method=\\\"cancel\\\">\\n      <van-button\\n        type=\\\"info_secondary\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"取消\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-picker-action-slot>\\n    <van-picker-action-slot target-method=\\\"confirm\\\">\\n      <van-button\\n        type=\\\"info\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"确认\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-picker-action-slot>\\n  </template>\\n</van-datetime-picker>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-datetime-picker",
             "title": "时间选择",
@@ -9104,7 +9240,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-datetime-picker type=\"datetime\" title=\"顶部标题\">\n  <template #title>\n    <van-text text=\"顶部标题\"></van-text>\n  </template>\n  <template #pannel-title>\n    <van-text text=\"顶部标题\"></van-text>\n  </template>\n  <template #picker-top>\n    <van-datetime-picker-action-slot\n      :vusion-disabled-cut=\"true\"\n      target-method=\"cancel\"\n    >\n      <van-iconv name=\"left-arrow\" icotype=\"only\"> </van-iconv>\n    </van-datetime-picker-action-slot>\n    <van-datetime-picker-action-slot\n      :vusion-disabled-cut=\"true\"\n      target-method=\"confirm\"\n    >\n    </van-datetime-picker-action-slot>\n  </template>\n  <template #picker-bottom>\n    <van-datetime-picker-action-slot\n      :vusion-disabled-cut=\"true\"\n      target-method=\"cancel\"\n    >\n      <van-button\n        type=\"info_secondary\"\n        size=\"normal\"\n        text=\"取消\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-datetime-picker-action-slot>\n    <van-datetime-picker-action-slot\n      :vusion-disabled-cut=\"true\"\n      target-method=\"confirm\"\n    >\n      <van-button\n        type=\"info\"\n        size=\"normal\"\n        text=\"确认\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-datetime-picker-action-slot>\n  </template>\n</van-datetime-picker>\n</template>\n"
+                    "code": "<template>\n<van-datetime-picker type=\"datetime\" title=\"顶部标题\">\n  <template #title>\n    <van-text text=\"标题\"></van-text>\n  </template>\n  <template #pannel-title>\n    <van-text text=\"标题\"></van-text>\n  </template>\n  <template #picker-top>\n    <van-picker-action-slot target-method=\"cancel\">\n      <van-iconv name=\"left-arrow\" icotype=\"only\"></van-iconv>\n    </van-picker-action-slot>\n    <van-picker-action-slot target-method=\"confirm\"></van-picker-action-slot>\n  </template>\n  <template #picker-bottom>\n    <van-picker-action-slot target-method=\"cancel\">\n      <van-button\n        type=\"info_secondary\"\n        size=\"normal\"\n        text=\"取消\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-picker-action-slot>\n    <van-picker-action-slot target-method=\"confirm\">\n      <van-button\n        type=\"info\"\n        size=\"normal\"\n        text=\"确认\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-picker-action-slot>\n  </template>\n</van-datetime-picker>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -9129,15 +9265,386 @@
                             "title": "日期选择"
                         },
                         {
-                            "value": "year-month",
-                            "title": "年月选择器"
-                        },
-                        {
                             "value": "datetime",
                             "title": "日期时间选择"
                         }
                     ],
-                    "default": "datetime"
+                    "default": "datetime",
+                    "toggleclear": [
+                        "unit",
+                        "show-formatter"
+                    ]
+                },
+                {
+                    "name": "unit",
+                    "title": "最小单位",
+                    "type": "string",
+                    "options": [
+                        {
+                            "title": "日期",
+                            "value": "date",
+                            "dependency": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "周",
+                            "value": "week",
+                            "dependency": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "月份",
+                            "value": "month",
+                            "dependency": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "季度",
+                            "value": "quarter",
+                            "dependency": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "年份",
+                            "value": "year",
+                            "dependency": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "分",
+                            "value": "minute",
+                            "dependency": [
+                                {
+                                    "!type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "秒",
+                            "value": "second",
+                            "dependency": [
+                                {
+                                    "!type": "date"
+                                }
+                            ]
+                        }
+                    ],
+                    "toggleclear": [
+                        "show-formatter"
+                    ]
+                },
+                {
+                    "name": "show-formatter",
+                    "title": "展示格式",
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "YYYY年M月D日",
+                            "title": "中国（2023年7月26日）",
+                            "dependency": [
+                                {
+                                    "unit": "date",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY-MM-DD",
+                            "title": "ISO（2023-07-26）",
+                            "dependency": [
+                                {
+                                    "unit": "date",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "M/D/YYYY",
+                            "title": "US（7/26/2023）",
+                            "dependency": [
+                                {
+                                    "unit": "date",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "D/M/YYYY",
+                            "title": "EU（26/7/2023）",
+                            "dependency": [
+                                {
+                                    "unit": "date",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "GGGG-W周",
+                            "title": "2023-28周",
+                            "dependency": [
+                                {
+                                    "unit": "week",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "GGGG年第W周",
+                            "title": "2023年第28周",
+                            "dependency": [
+                                {
+                                    "unit": "week",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "GGGG-WWWW",
+                            "title": "2023-W28",
+                            "dependency": [
+                                {
+                                    "unit": "week",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年M月",
+                            "title": "中国（2023年7月）",
+                            "dependency": [
+                                {
+                                    "unit": "month",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY-MM",
+                            "title": "ISO（2023-07）",
+                            "dependency": [
+                                {
+                                    "unit": "month",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "M/YYYY",
+                            "title": "US/EU（7/2023）",
+                            "dependency": [
+                                {
+                                    "unit": "month",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年第Q季度",
+                            "title": "2023年第3季度",
+                            "dependency": [
+                                {
+                                    "unit": "quarter",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年QQ",
+                            "title": "2023年Q3",
+                            "dependency": [
+                                {
+                                    "unit": "quarter",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY-QQ",
+                            "title": "2023-Q3",
+                            "dependency": [
+                                {
+                                    "unit": "quarter",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年",
+                            "title": "中国（2023年）",
+                            "dependency": [
+                                {
+                                    "unit": "year",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY",
+                            "title": "ISO（2023）",
+                            "dependency": [
+                                {
+                                    "unit": "year",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "HH:mm:ss",
+                            "title": "12:09:09",
+                            "dependency": [
+                                {
+                                    "unit": "second",
+                                    "type": "time"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "HH时mm分ss秒",
+                            "title": "12时09分09秒",
+                            "dependency": [
+                                {
+                                    "unit": "second",
+                                    "type": "time"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "HH:mm",
+                            "title": "12:09",
+                            "dependency": [
+                                {
+                                    "unit": "minute",
+                                    "type": "time"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "HH时mm分",
+                            "title": "12时09分",
+                            "dependency": [
+                                {
+                                    "unit": "minute",
+                                    "type": "time"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY-MM-DD HH:mm:ss",
+                            "title": "2023-07-26 12:09:09",
+                            "dependency": [
+                                {
+                                    "unit": "second",
+                                    "type": "datetime"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年M月D日 HH时mm分ss秒",
+                            "title": "2023年7月26日 12时09分09秒",
+                            "dependency": [
+                                {
+                                    "unit": "second",
+                                    "type": "datetime"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY-MM-DD HH:mm HH:mm",
+                            "title": "2023-07-26 12:09",
+                            "dependency": [
+                                {
+                                    "unit": "minute",
+                                    "type": "datetime"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年M月D日 HH时mm分",
+                            "title": "2023年7月26日 12时09分",
+                            "dependency": [
+                                {
+                                    "unit": "minute",
+                                    "type": "datetime"
+                                }
+                            ]
+                        }
+                    ],
+                    "dependency": [
+                        {
+                            "advanced-format.enable": false
+                        }
+                    ]
+                },
+                {
+                    "name": "advanced-format",
+                    "title": "高级格式化",
+                    "type": "{ enable: boolean, value: string }",
+                    "default": "{ enable: false, value: '' }",
+                    "description": "",
+                    "brifeDoc": "",
+                    "docDescription": "",
+                    "tooltipLink": "",
+                    "bindHide": true
+                },
+                {
+                    "name": "range",
+                    "title": "区间选择",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "是否支持区间选择"
+                },
+                {
+                    "name": "start-value",
+                    "title": "起始值",
+                    "type": "string,number,Date",
+                    "sync": true,
+                    "model": true,
+                    "dependency": [
+                        {
+                            "range": true
+                        }
+                    ]
+                },
+                {
+                    "name": "end-value",
+                    "title": "结束值",
+                    "type": "string,number,Date",
+                    "sync": true,
+                    "model": true,
+                    "dependency": [
+                        {
+                            "range": true
+                        }
+                    ]
+                },
+                {
+                    "name": "value",
+                    "title": "值",
+                    "type": "string,number,Date",
+                    "sync": true,
+                    "model": true,
+                    "default": null,
+                    "description": "开关状态",
+                    "dependency": [
+                        {
+                            "!range": true
+                        }
+                    ]
                 },
                 {
                     "name": "converter",
@@ -9175,47 +9682,6 @@
                         {
                             "name": "type",
                             "value": "year-month"
-                        }
-                    ]
-                },
-                {
-                    "name": "range",
-                    "title": "区间选择",
-                    "type": "boolean",
-                    "default": false,
-                    "description": "是否支持区间选择"
-                },
-                {
-                    "name": "start-value",
-                    "title": "起始值",
-                    "type": "string,number,Date",
-                    "dependency": [
-                        {
-                            "range": true
-                        }
-                    ]
-                },
-                {
-                    "name": "end-value",
-                    "title": "结束值",
-                    "type": "string,number,Date",
-                    "dependency": [
-                        {
-                            "range": true
-                        }
-                    ]
-                },
-                {
-                    "name": "value",
-                    "title": "值",
-                    "type": "string,number,Date",
-                    "sync": true,
-                    "model": true,
-                    "default": null,
-                    "description": "开关状态",
-                    "dependency": [
-                        {
-                            "!range": true
                         }
                     ]
                 },
@@ -9283,7 +9749,8 @@
                     "name": "displayFormat",
                     "title": "自定义展示格式",
                     "type": "string",
-                    "description": "只用于页面上展示的格式，例如：yyyy年MM月dd日"
+                    "description": "只用于页面上展示的格式，例如：yyyy年MM月dd日",
+                    "advanced": true
                 },
                 {
                     "name": "title",
@@ -9342,7 +9809,20 @@
                     "description": "是否点击遮罩层后关闭"
                 }
             ],
-            "slots": false,
+            "slots": [
+                {
+                    "concept": "Slot",
+                    "name": "default",
+                    "description": "插入`<van-picker-action-slot>`子组件",
+                    "support": [
+                        {
+                            "name": "van-picker-action-slot",
+                            "title": "事件插槽",
+                            "snippet": "<van-picker-action-slot target-method=\"confirm\"></van-picker-action-slot>"
+                        }
+                    ]
+                }
+            ],
             "methods": [
                 {
                     "name": "open",
@@ -9382,6 +9862,27 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "name": "van-picker-action-slot",
+                    "title": "事件插槽",
+                    "attrs": [
+                        {
+                            "name": "target-method",
+                            "title": "触发的事件名称",
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "confirm",
+                                    "title": "确认"
+                                },
+                                {
+                                    "value": "cancel",
+                                    "title": "取消"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
@@ -9396,7 +9897,7 @@
             "Selector"
         ],
         "screenShot": "",
-        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-calendar\\n  title=\\\"选择日期\\\"\\n  input-align=\\\"left\\\"\\n><template #title>标题</template></van-calendar>\\n</template>\\n\"}]",
+        "blocks": "[{\"title\":\"基础用法\",\"description\":\"\",\"code\":\"<template>\\n<van-calendar title=\\\"选择日期\\\" input-align=\\\"left\\\">\\n  <template #title>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  <template #pannel-title>\\n    <van-text text=\\\"标题\\\"></van-text>\\n  </template>\\n  <template #picker-top>\\n    <van-picker-action-slot target-method=\\\"cancel\\\">\\n      <van-iconv name=\\\"left-arrow\\\" icotype=\\\"only\\\"></van-iconv>\\n    </van-picker-action-slot>\\n    <van-picker-action-slot target-method=\\\"confirm\\\"></van-picker-action-slot>\\n  </template>\\n  <template #picker-bottom>\\n    <van-picker-action-slot target-method=\\\"cancel\\\">\\n      <van-button\\n        type=\\\"info_secondary\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"取消\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-picker-action-slot>\\n    <van-picker-action-slot target-method=\\\"confirm\\\">\\n      <van-button\\n        type=\\\"info\\\"\\n        size=\\\"normal\\\"\\n        text=\\\"确认\\\"\\n        squareroud=\\\"round\\\"\\n      ></van-button>\\n    </van-picker-action-slot> </template\\n></van-calendar>\\n</template>\\n\"}]",
         "jsonSchema": {
             "name": "van-calendar",
             "title": "日期选择",
@@ -9408,7 +9909,7 @@
                 {
                     "title": "基础用法",
                     "description": "",
-                    "code": "<template>\n<van-calendar\n  title=\"选择日期\"\n  input-align=\"left\"\n><template #title>标题</template></van-calendar>\n</template>\n"
+                    "code": "<template>\n<van-calendar title=\"选择日期\" input-align=\"left\">\n  <template #title>\n    <van-text text=\"标题\"></van-text>\n  </template>\n  <template #pannel-title>\n    <van-text text=\"标题\"></van-text>\n  </template>\n  <template #picker-top>\n    <van-picker-action-slot target-method=\"cancel\">\n      <van-iconv name=\"left-arrow\" icotype=\"only\"></van-iconv>\n    </van-picker-action-slot>\n    <van-picker-action-slot target-method=\"confirm\"></van-picker-action-slot>\n  </template>\n  <template #picker-bottom>\n    <van-picker-action-slot target-method=\"cancel\">\n      <van-button\n        type=\"info_secondary\"\n        size=\"normal\"\n        text=\"取消\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-picker-action-slot>\n    <van-picker-action-slot target-method=\"confirm\">\n      <van-button\n        type=\"info\"\n        size=\"normal\"\n        text=\"确认\"\n        squareroud=\"round\"\n      ></van-button>\n    </van-picker-action-slot> </template\n></van-calendar>\n</template>\n"
                 }
             ],
             "attrs": [
@@ -9508,9 +10009,29 @@
                     "type": "boolean",
                     "default": false,
                     "description": "是否点击遮罩层后关闭"
+                },
+                {
+                    "name": "isNew",
+                    "title": "是否使用新版外观",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "是否使用新版外观"
                 }
             ],
-            "slots": false,
+            "slots": [
+                {
+                    "concept": "Slot",
+                    "name": "default",
+                    "description": "插入`<van-picker-action-slot>`子组件",
+                    "support": [
+                        {
+                            "name": "van-picker-action-slot",
+                            "title": "事件插槽",
+                            "snippet": "<van-picker-action-slot target-method=\"confirm\"></van-picker-action-slot>"
+                        }
+                    ]
+                }
+            ],
             "methods": [
                 {
                     "name": "reset",
@@ -10205,6 +10726,143 @@
             ],
             "next": true,
             "nested": false,
+            "children": []
+        }
+    },
+    {
+        "symbol": "van-toast",
+        "name": "弹出消息",
+        "icon": "toast",
+        "depDescription": {},
+        "description": "在页面中间弹出黑色半透明提示，用于消息通知、加载提示、操作结果提示等场景。",
+        "labels": [
+            "Feedback"
+        ],
+        "screenShot": "",
+        "blocks": "[{\"title\":\"基本用法\",\"description\":\"\",\"code\":\"<template>\\n<van-toast message=\\\"弹出消息\\\" :duration=\\\"2000\\\" type=\\\"text\\\" position=\\\"middle\\\">\\n</van-toast>\\n</template>\\n\"}]",
+        "jsonSchema": {
+            "name": "van-toast",
+            "title": "弹出消息",
+            "description": "在页面中间弹出黑色半透明提示，用于消息通知、加载提示、操作结果提示等场景。",
+            "category": "Feedback",
+            "screenShot": "",
+            "drawings": "",
+            "blocks": [
+                {
+                    "title": "基本用法",
+                    "description": "",
+                    "code": "<template>\n<van-toast message=\"弹出消息\" :duration=\"2000\" type=\"text\" position=\"middle\">\n</van-toast>\n</template>\n"
+                }
+            ],
+            "attrs": [
+                {
+                    "name": "value",
+                    "title": "是否展示",
+                    "type": "boolean",
+                    "sync": true,
+                    "model": true,
+                    "default": false,
+                    "description": "是否展示弹出消息",
+                    "advanced": true
+                },
+                {
+                    "name": "message",
+                    "title": "文本",
+                    "type": "string",
+                    "default": "弹出消息消息",
+                    "description": "文本内容"
+                },
+                {
+                    "name": "type",
+                    "title": "类型",
+                    "type": "string",
+                    "default": "custom",
+                    "options": [
+                        {
+                            "value": "success",
+                            "title": "成功"
+                        },
+                        {
+                            "value": "fail",
+                            "title": "失败"
+                        },
+                        {
+                            "value": "warning",
+                            "title": "警告"
+                        },
+                        {
+                            "value": "loading",
+                            "title": "加载中"
+                        },
+                        {
+                            "value": "custom",
+                            "title": "自定义"
+                        }
+                    ]
+                },
+                {
+                    "name": "custom-icon",
+                    "title": "自定义图标",
+                    "type": "icon",
+                    "dependency": [
+                        {
+                            "type": "custom"
+                        }
+                    ]
+                },
+                {
+                    "name": "duration",
+                    "title": "展示时长",
+                    "type": "number",
+                    "default": 2000,
+                    "description": "提示停留的时间。`0`表示常驻。"
+                },
+                {
+                    "name": "position",
+                    "title": "位置",
+                    "type": "string",
+                    "default": "middle",
+                    "options": [
+                        {
+                            "value": "top",
+                            "title": "顶部"
+                        },
+                        {
+                            "value": "middle",
+                            "title": "中间"
+                        },
+                        {
+                            "value": "bottom",
+                            "title": "底部"
+                        }
+                    ],
+                    "advanced": true
+                }
+            ],
+            "methods": [
+                {
+                    "name": "openToast",
+                    "description": "打开弹出消息"
+                },
+                {
+                    "name": "closeToast",
+                    "description": "关闭弹出消息"
+                }
+            ],
+            "events": [
+                {
+                    "name": "open",
+                    "title": "打开弹出消息后",
+                    "description": "打开弹出消息时触发",
+                    "params": []
+                },
+                {
+                    "name": "close",
+                    "title": "关闭弹出消息后",
+                    "description": "关闭弹出消息时触发",
+                    "params": []
+                }
+            ],
             "children": []
         }
     }
