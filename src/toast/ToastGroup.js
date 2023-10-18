@@ -48,6 +48,8 @@ export default createComponent({
     return {
       clickable: false,
       items: [],
+
+      events: new Map(),
     };
   },
 
@@ -126,6 +128,11 @@ export default createComponent({
         }, item.duration);
       }
       this.$emit('open', item, this);
+
+      const event = this.events.get(item.key);
+      if (event && event.onShow) {
+        event.onShow(item);
+      }
     },
     close(item) {
       const index = this.items.indexOf(item);
@@ -149,13 +156,18 @@ export default createComponent({
       if (cancel) return;
       this.items.splice(index, 1);
       this.$emit('close', item, this);
+
+      const event = this.events.get(item.key);
+      if (event && event.onHide) {
+        event.onHide(item);
+      }
     },
     /**
      * @method closeAll() 关闭所有消息
      * @return {void}
      */
     closeAll() {
-        this.items = [];
+      this.items = [];
     },
     /* istanbul ignore next */
     // onAfterEnter(item) {
@@ -172,6 +184,8 @@ export default createComponent({
 
     genIcon(item) {
       const { type, loadingType, customIcon } = item;
+
+      if (type === 'text') return null;
 
       if (type === 'custom') {
         if (customIcon) {
@@ -217,18 +231,29 @@ export default createComponent({
       return <div class={bem('item__text')}>{message}</div>;
     },
 
-    // expose
-    openToast() {
-      this.show({
-        message: this.message,
-        duration: this.duration,
-        type: this.type,
-        customIcon: this.customIcon,
+    openToast(config) {
+      const { key, message, type, duration, customIcon, onShow, onHide } = config;
+
+      if (!this.$el) this.$mount(document.createElement('div')); // Vue 加载完成后，触发某一事件后，先执行methods，再执行watch方法，会导致标签显示异常
+      this.$nextTick(() => {
+        this.events.set(key, {
+          onShow,
+          onHide,
+        });
+
+        this.open({
+          key,
+          message,
+          type,
+          duration,
+          customIcon,
+          timestamp: +new Date(),
+        });
       });
     },
-    // expose
-    closeToast() {
-      this.closeAll();
+    closeToast(key) {
+      const target = this.items.find((item) => item.key === key);
+      this.close(target);
     },
   },
 

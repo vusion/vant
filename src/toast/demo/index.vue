@@ -1,7 +1,7 @@
 <template>
   <demo-section>
     <demo-block card :title="t('basicUsage')">
-      <van-cell is-link :title="t('title1')" @click="$toast({message: t('text'), duration: 0 })" />
+      <van-cell is-link :title="t('title1')" @click="$toast({message: t('text'), duration: 1000 })" />
       <van-cell is-link :title="t('title2')" @click="showLoadingToast()" />
       <van-cell is-link :title="t('success')" @click="showSuccessToast" />
       <van-cell is-link :title="t('fail')" @click="showFailToast" />
@@ -31,11 +31,9 @@
     </demo-block>
 
     <demo-block>
-      <van-cell
-        is-link
-        title="自定义图标"
-        @click="showCustomizedToastIcon"
-      />
+      <van-toast ref="toast1" message="弹出消息" :duration="0" type="custom" custom-icon="info" @open="onShow1" @close="onHide1"></van-toast>
+      <van-button @click="showToast1">打开toast</van-button>
+      <van-button @click="hideToast1">关闭toast</van-button>
     </demo-block>
   </demo-section>
 </template>
@@ -145,15 +143,26 @@ export default {
       }, 1000);
     },
 
-    showCustomizedToastIcon() {
-      this.$toast.show({
-        duration: 0,
-        forbidClick: true,
-        message: '自定义图标',
-        // type: 'custom',
-        type: 'warning',
-        customIcon: 'fail'
-      });
+    showToast1() {
+      this.$refs.toast1.open()
+
+      // this.$toast.show({
+      //   duration: 0,
+      //   forbidClick: true,
+      //   message: '自定义图标',
+      //   // type: 'custom',
+      //   type: 'warning',
+      //   customIcon: 'fail'
+      // });
+    },
+    hideToast1() {
+      this.$refs.toast1.close()
+    },
+    onShow1() {
+      console.log('show1');
+    },
+    onHide1() {
+      console.log('hide1');
     }
   },
 };
