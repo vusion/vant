@@ -2099,7 +2099,8 @@
                 "toPosition": "toast",
                 "type": [],
                 "preview": {
-                    "template": "<van-toast message=\"弹出消息\" :duration=\"2000\" type=\"text\" position=\"middle\"></van-toast>"
+                    "template": "<van-button @click=\"onOpen\">弹出消息</van-button>",
+                    "script": "export default {\n    data() {\n        return {\n     };\n    },\n    methods: {\n        onOpen() {\n            this.$toast.show(\"弹出消息\");\n        },\n    },\n};"
                 },
                 "cssProperty": {
                     "--van-toast-max-width": {
@@ -2117,6 +2118,10 @@
                     "--van-toast-background-color": {
                         "type": "color",
                         "desc": "弹出消息的背景色"
+                    },
+                    "--van-toast-custom-icon-color": {
+                        "type": "color",
+                        "desc": "弹出消息的自定义图标颜色"
                     }
                 }
             }

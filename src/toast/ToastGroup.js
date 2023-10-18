@@ -191,7 +191,7 @@ export default createComponent({
         if (customIcon) {
           return (
             <Iconv
-              class={bem('item__icon')}
+              class={bem('item__custom-icon')}
               icotype="only"
               name={customIcon}
             ></Iconv>
@@ -206,14 +206,28 @@ export default createComponent({
       }
 
       let name = type;
-      if (type === 'warning') {
+      let color;
+
+      if (type === 'success') {
+        color = '#26bd71';
+      } else if (type === 'fail') {
+        color = '#f24957';
+      } else if (type === 'warning') {
         name = 'info';
+        color = '#ffb21a';
       }
 
       const hasIcon = name;
 
       if (hasIcon) {
-        return <Iconv class={bem('item__icon')} icotype="only" name={name} />;
+        return (
+          <Iconv
+            class={bem('item__icon')}
+            icotype="only"
+            name={name}
+            color={color}
+          />
+        );
       }
     },
 

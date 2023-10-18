@@ -829,4 +829,5 @@
   --van-toast-font-size: 14px; /* @desc 弹出消息的字体大小 */
   --van-toast-text-color: #fff; /* @type color */ /* @desc 弹出消息的字体颜色 */
   --van-toast-background-color: rgba(0, 0, 0, 0.7); /* @type color */ /* @desc 弹出消息的背景色 */
+  --van-toast-custom-icon-color: white; /* @type color */ /* @desc 弹出消息的自定义图标颜色 */
 }

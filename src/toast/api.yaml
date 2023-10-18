@@ -14,21 +14,22 @@
       description: 是否展示弹出消息
       advanced: true
     - name: message
-      title: 文本
+      title: 提示内容
       type: string
-      default: 弹出消息消息
-      description: 文本内容
+      default: 弹出消息
+      description: 默认提示内容
     - name: type
-      title: 类型
+      title: 消息类型
       type: string
+      description: 提示的类型
       default: custom
       options:
         - value: success
           title: 成功
-        - value: fail
-          title: 失败
         - value: warning
           title: 警告
+        - value: fail
+          title: 失败
         - value: loading
           title: 加载中
         - value: custom
@@ -39,10 +40,10 @@
       dependency:
         - type: custom
     - name: duration
-      title: 展示时长
+      title: 停留时间
       type: number
       default: 2000
-      description: 提示停留的时间。`0`表示常驻。
+      description: 自动关闭的延时，单位毫秒。设为 0 时不自动关闭
     - name: position
       title: 位置
       type: string
