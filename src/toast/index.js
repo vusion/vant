@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueToast from './Toast';
+import VueToastDesigner from './Toast.designer';
 import VueToastGroup from './ToastGroup';
 import { isObject, isServer } from '../utils';
 import { removeNode } from '../utils/dom/node';
@@ -181,6 +182,33 @@ const createMethod = (type) => (options) =>
 
 Toast.show = (options) => Toast(options);
 
+Toast.openToast = (options) => {
+  const toast = createInstanceForMultiple();
+
+  // should add z-index if previous toast has not disappeared
+  if (toast.value) {
+    toast.updateZIndex();
+  }
+
+  options = parseOptions(options);
+  options = {
+    ...currentOptions,
+    ...defaultOptionsMap[options.type || currentOptions.type],
+    ...options,
+    timestamp: Date.now(),
+  };
+
+  const item = toast.openToast(options);
+
+  return item;
+}
+
+Toast.closeToast = (key) => {
+  const toast = createInstanceForMultiple();
+  toast.closeToast(key);
+}
+
+
 ['loading', 'success', 'fail'].forEach((method) => {
   Toast[method] = createMethod(method);
 });
@@ -230,7 +258,7 @@ Toast.install = () => {
   Vue.use(VueToastGroup);
 };
 
-Toast.Component = VueToast;
+Toast.Component = VueToastDesigner;
 Vue.prototype.$toast = Toast;
 
 export default Toast;
