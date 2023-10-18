@@ -31,9 +31,13 @@
     </demo-block>
 
     <demo-block>
-      <van-toast ref="toast1" message="弹出消息" :duration="0" type="custom" custom-icon="info" @open="onShow1" @close="onHide1"></van-toast>
-      <van-button @click="showToast1">打开toast</van-button>
-      <van-button @click="hideToast1">关闭toast</van-button>
+      <van-toast style="--van-toast-text-color: red;" ref="toast1" message="弹出消息" :duration="0" type="custom" custom-icon="info" @open="onShow1" @close="onHide1"></van-toast>
+      <van-button @click="() => $refs.toast1.open()">打开toast</van-button>
+      <van-button @click="() => $refs.toast1.close()">关闭toast</van-button>
+
+      <van-toast style="--van-toast-text-color: yellow;" ref="toast2" message="弹出消息" :duration="0" type="custom" custom-icon="info"></van-toast>
+      <van-button @click="() => $refs.toast2.open()">打开toast</van-button>
+      <van-button @click="() => $refs.toast2.close()">关闭toast</van-button>
     </demo-block>
   </demo-section>
 </template>
