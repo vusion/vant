@@ -65,7 +65,7 @@
       description: 关闭弹出消息时触发
       params: []
   methods:
-    - name: openToast
+    - name: open
       description: 打开弹出消息
-    - name: closeToast
+    - name: close
       description: 关闭弹出消息
