@@ -477,5 +477,6 @@
     "--van-toast-max-width": "70%",
     "--van-toast-font-size": "14px",
     "--van-toast-text-color": "#fff",
-    "--van-toast-background-color": "rgba(0, 0, 0, 0.7)"
+    "--van-toast-background-color": "rgba(0, 0, 0, 0.7)",
+    "--van-toast-custom-icon-color": "white"
 }
