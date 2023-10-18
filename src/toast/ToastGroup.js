@@ -232,7 +232,7 @@ export default createComponent({
     },
 
     openToast(config) {
-      const { key, message, type, duration, customIcon, onShow, onHide } = config;
+      const { key, onShow, onHide, ...rest } = config;
 
       if (!this.$el) this.$mount(document.createElement('div')); // Vue 加载完成后，触发某一事件后，先执行methods，再执行watch方法，会导致标签显示异常
       this.$nextTick(() => {
@@ -243,10 +243,7 @@ export default createComponent({
 
         this.open({
           key,
-          message,
-          type,
-          duration,
-          customIcon,
+          ...rest,
           timestamp: +new Date(),
         });
       });
@@ -263,11 +260,13 @@ export default createComponent({
       if (item.type === 'custom' && !item.customIcon) {
         type = 'text';
       }
+
       return (
         <div
           key={item.timestamp}
           class={bem('item', [{ [type]: !item.icon }])}
           onClick={this.onClick(item)}
+          style={item.staticStyle || {}}
         >
           {this.genIcon(item)}
           {this.genMessage(item)}
