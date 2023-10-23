@@ -830,4 +830,31 @@
   --van-toast-text-color: #fff; /* @type color */ /* @desc 弹出消息的字体颜色 */
   --van-toast-background-color: rgba(0, 0, 0, 0.7); /* @type color */ /* @desc 弹出消息的背景色 */
   --van-toast-custom-icon-color: white; /* @type color */ /* @desc 弹出消息的自定义图标颜色 */
+
+  /* @component van-capsules */
+  --van-capsules-item-font-size: 12px; /* @desc 胶囊字体大小 */ /* @prefix van-capsules-item */
+  --van-capsules-item-padding: 4px 20px; /* @desc 胶囊内边距 */ /* @prefix van-capsules-item */
+  --van-capsules-item-border-color: #e5e5e5; /* @type color */ /* @desc 胶囊边框颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-background: #fff; /* @type color */ /* @desc 胶囊背景色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-color: #333; /* @type color */ /* @desc 胶囊字体颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-border-radius: 4px; /* @desc 胶囊圆角 */
+
+  --van-capsules-item-active-border-color: #337eff; /* @type color */ /* @desc 胶囊选中时边框颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-active-background: #337eff; /* @type color */ /* @desc 胶囊选中时背景色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-active-color: #fff; /* @type color */ /* @desc 胶囊选中时字体颜色 */ /* @prefix van-capsules-item */
+
+  --van-capsules-item-disabled-border-color: #337eff; /* @type color */ /* @desc 胶囊禁用时边框颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-disabled-background: #f5f5f5; /* @type color */ /* @desc 胶囊禁用时背景色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-disabled-color: #aaa; /* @type color */ /* @desc 胶囊禁用时字体颜色 */ /* @prefix van-capsules-item */
+
+  --van-capsules-item-active-disabled-border-color: #bbd4ff; /* @type color */ /* @desc 胶囊选中时的禁用边框颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-active-disabled-background: #bbd4ff; /* @type color */ /* @desc 胶囊选中时的禁用背景色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-active-disabled-color: #fff; /* @type color */ /* @desc 胶囊选中时的禁用字体颜色 */ /* @prefix van-capsules-item */
+
+  --van-capsules-item-label-font-size: 10px; /* @desc 胶囊标签字体大小 */ /* @prefix van-capsules-item */
+  --van-capsules-item-label-background: #f24957; /* @type color */ /* @desc 胶囊标签背景色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-label-color: #fff; /* @type color */ /* @desc 胶囊标签字体颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-label-max-width: 100%; /* @desc 胶囊标签最大宽度 */ /* @prefix van-capsules-item */
+
+  --van-capsules-item-flag-color: #f24957; /* @type color */ /* @desc 胶囊flag颜色 */ /* @prefix van-capsules-item */
 }
