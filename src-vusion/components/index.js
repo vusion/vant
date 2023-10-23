@@ -114,6 +114,10 @@ export { default as VanCardu } from '../../src/cardu';
 export { default as VanFieldsonforsearch } from '../../src/fieldsonforsearch';
 export { default as VanLinearLayout } from '../../src/linear-layout';
 
+export { default as VanCapsules } from '../../src/capsules';
+export { default as VanCapsulesItem } from '../../src/capsules-item';
+export { default as VanCapsulesGroup } from '../../src/capsules-group';
+
 export * from './list-view';
 export * from './grid-view';
 export * from './iframe';

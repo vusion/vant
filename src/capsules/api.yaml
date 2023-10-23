@@ -90,8 +90,8 @@
           description: 选择项的值
 
 - name: van-capsules-item
-  title: 子选项
-  description: 子选项
+  title: 胶囊选项
+  description: 胶囊选项
   attrs:
     - name: value
       title: 值
@@ -134,13 +134,13 @@
       description: 插入文本或 HTML。
 
 - name: van-capsules-group
-  title: 子选项组
-  description: 子选项组
+  title: 胶囊选项组
+  description: 胶囊选项组
   slots:
     - concept: Slot
       name: default
       description: 插入`<van-capsules-item>`子组件。
       support:
         - name: u-capsules-item
-          title: 子选项
+          title: 胶囊选项
           snippet: <van-capsules-item>选项</van-capsules-item>
