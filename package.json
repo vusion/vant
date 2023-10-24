@@ -71,6 +71,7 @@
     "clipboard": "^2.0.11",
     "cloud-ui.vusion": "^0.14.36-beta.1",
     "dayjs": "^1.11.9",
+    "decimal.js": "^10.4.3",
     "lodash": "^4.17.21",
     "online-svg-icon-vue2": "^1.2.3",
     "vconsole": "^3.9.3",
