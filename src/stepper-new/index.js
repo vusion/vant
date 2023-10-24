@@ -81,7 +81,7 @@ export default createComponent({
   },
 
   data() {
-    if (typeof this.value === 'object') {
+    if (this.highPrecision && typeof this.value === 'object') {
       this.value += '';
     }
     const defaultValue = this.value;
