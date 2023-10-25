@@ -24,6 +24,10 @@ export default createComponent({
 
   computed: {
     active() {
+      if ([undefined].includes(this.value)) {
+        return false;
+      }
+
       if (this.parent.multiple) {
         return (this.parent.currentValue || []).indexOf(this.value) !== -1;
       }

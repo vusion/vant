@@ -34,6 +34,20 @@
         <van-capsules-item value="3" label="1群">标签</van-capsules-item>
       </van-capsules>
     </demo-block>
+
+    <demo-block>
+      <van-capsules :ref="`capsules1`" style="--custom-start: auto;">
+          <van-capsules-item :ref="`capsules_item1`" value="a">
+                <van-text :ref="`text8`" :text="`Option-A`"></van-text>
+          </van-capsules-item>
+          <van-capsules-item :ref="`capsules_item2`">
+                <van-text :ref="`text9`" :text="`Option-B`"></van-text>
+          </van-capsules-item>
+          <van-capsules-item :ref="`capsules_item3`">
+                <van-text :ref="`text10`" :text="`Option-C`"></van-text>
+          </van-capsules-item>
+      </van-capsules>
+    </demo-block>
   </demo-section>
 </template>
 
