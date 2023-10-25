@@ -102,6 +102,7 @@ module.exports = {
       { group: 'Form', show: true, name: 'rate', alias: '评分' },
       { group: 'Form', show: true, name: 'slider', alias: '滑块' },
       { group: 'Form', show: true, name: 'uploader', alias: '文件上传' },
+      { group: 'Form', show: true, name: 'capsules', alias: '胶囊' },
       {
         group: 'Selector',
         show: true,

@@ -2091,6 +2091,136 @@
                         "prefix": "popup"
                     }
                 }
+            },
+            {
+                "id": "4fcd4dfd-683b-4d7e-9211f-gv9sdf08e0899nbnanb112eeeea5",
+                "name": "van-capsules",
+                "title": "胶囊",
+                "toPosition": "capsules",
+                "type": [],
+                "preview": {
+                    "template": "<van-capsules>\n        <van-capsules-item value=\"1\" disabled>胶囊项</van-capsules-item>\n        <van-capsules-item value=\"2\" flag>胶囊项</van-capsules-item>\n        <van-capsules-item value=\"3\" label=\"label\">胶囊项</van-capsules-item>\n      </van-capsules>"
+                },
+                "cssProperty": {
+                    "--van-capsules-item-font-size": {
+                        "type": "input",
+                        "desc": "胶囊字体大小",
+                        "prefix": "van-capsules-item",
+                        "group": "通用"
+                    },
+                    "--van-capsules-item-padding": {
+                        "type": "input",
+                        "desc": "胶囊内边距",
+                        "prefix": "van-capsules-item",
+                        "group": "通用"
+                    },
+                    "--van-capsules-item-border-color": {
+                        "type": "color",
+                        "desc": "胶囊边框颜色",
+                        "prefix": "van-capsules-item",
+                        "group": "通用"
+                    },
+                    "--van-capsules-item-background": {
+                        "type": "color",
+                        "desc": "胶囊背景色",
+                        "prefix": "van-capsules-item",
+                        "group": "通用"
+                    },
+                    "--van-capsules-item-color": {
+                        "type": "color",
+                        "desc": "胶囊字体颜色",
+                        "prefix": "van-capsules-item",
+                        "group": "通用"
+                    },
+                    "--van-capsules-border-radius": {
+                        "type": "input",
+                        "desc": "胶囊圆角",
+                        "group": "通用"
+                    },
+                    "--van-capsules-item-active-border-color": {
+                        "type": "color",
+                        "desc": "胶囊选中时边框颜色",
+                        "prefix": "van-capsules-item",
+                        "group": "选中"
+                    },
+                    "--van-capsules-item-active-background": {
+                        "type": "color",
+                        "desc": "胶囊选中时背景色",
+                        "prefix": "van-capsules-item",
+                        "group": "选中"
+                    },
+                    "--van-capsules-item-active-color": {
+                        "type": "color",
+                        "desc": "胶囊选中时字体颜色",
+                        "prefix": "van-capsules-item",
+                        "group": "选中"
+                    },
+                    "--van-capsules-item-disabled-border-color": {
+                        "type": "color",
+                        "desc": "胶囊禁用时边框颜色",
+                        "prefix": "van-capsules-item",
+                        "group": "禁用"
+                    },
+                    "--van-capsules-item-disabled-background": {
+                        "type": "color",
+                        "desc": "胶囊禁用时背景色",
+                        "prefix": "van-capsules-item",
+                        "group": "禁用"
+                    },
+                    "--van-capsules-item-disabled-color": {
+                        "type": "color",
+                        "desc": "胶囊禁用时字体颜色",
+                        "prefix": "van-capsules-item",
+                        "group": "禁用"
+                    },
+                    "--van-capsules-item-active-disabled-border-color": {
+                        "type": "color",
+                        "desc": "胶囊选中时的禁用边框颜色",
+                        "prefix": "van-capsules-item",
+                        "group": "选中时禁用"
+                    },
+                    "--van-capsules-item-active-disabled-background": {
+                        "type": "color",
+                        "desc": "胶囊选中时的禁用背景色",
+                        "prefix": "van-capsules-item",
+                        "group": "选中时禁用"
+                    },
+                    "--van-capsules-item-active-disabled-color": {
+                        "type": "color",
+                        "desc": "胶囊选中时的禁用字体颜色",
+                        "prefix": "van-capsules-item",
+                        "group": "选中时禁用"
+                    },
+                    "--van-capsules-item-label-font-size": {
+                        "type": "input",
+                        "desc": "胶囊标签字体大小",
+                        "prefix": "van-capsules-item",
+                        "group": "标签"
+                    },
+                    "--van-capsules-item-label-background": {
+                        "type": "color",
+                        "desc": "胶囊标签背景色",
+                        "prefix": "van-capsules-item",
+                        "group": "标签"
+                    },
+                    "--van-capsules-item-label-color": {
+                        "type": "color",
+                        "desc": "胶囊标签字体颜色",
+                        "prefix": "van-capsules-item",
+                        "group": "标签"
+                    },
+                    "--van-capsules-item-label-max-width": {
+                        "type": "input",
+                        "desc": "胶囊标签最大宽度",
+                        "prefix": "van-capsules-item",
+                        "group": "标签"
+                    },
+                    "--van-capsules-item-flag-color": {
+                        "type": "color",
+                        "desc": "胶囊flag颜色",
+                        "prefix": "van-capsules-item"
+                    }
+                }
             }
         ]
     }
