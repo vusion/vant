@@ -158,3 +158,6 @@
     - name: change
       title: 选中项变化时触发
       description: 选中项变化时触发
+  i18n:
+    zh-CN:
+      vanCascader_select: '请选择'

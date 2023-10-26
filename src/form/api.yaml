@@ -150,3 +150,6 @@
     - concept: Slot
       name: input
       description: 插入自定义输入框
+  i18n:
+    zh-CN:
+      validateLabel: '字段'

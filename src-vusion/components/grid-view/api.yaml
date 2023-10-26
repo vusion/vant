@@ -300,3 +300,6 @@
     - name: reload
       description: 清除缓存，重新加载
       params: []
+  i18n:
+    zh-CN:
+      vanGridView_loading: '加载中'

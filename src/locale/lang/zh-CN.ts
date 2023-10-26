@@ -1,4 +1,47 @@
 export default {
+  // 日历
+  vanCalendar_title: '日期选择',
+  vanCalendar_confirm: '确定',
+  vanCalendar_weekdays: '日,一,二,三,四,五,六',
+  vanCalendar_monthTitle: '{year}年{month}月',
+  vanCalendar_end: '结束',
+  vanCalendar_start: '开始',
+  vanCalendar_startEnd: '开始/结束',
+
+  // 级联选择
+  vanCascader_select: '请选择',
+
+  // 日期时间选择
+  vanDatetimePicker_confirm: '确定',
+  vanDatetimePicker_cancel: '取消',
+  vanDatetimePicker_rangeTabStart: '开始',
+  vanDatetimePicker_rangeTabTo: '至',
+  vanDatetimePicker_rangeTabEnd: '结束',
+
+  // 选择器
+  vanPickerson_confirm: '确定',
+  vanPickerson_cancel: '取消',
+  vanPickerson_searchPlaceholder: '请输入搜索关键词',
+  vanPickerson_selected: '当前已选中',
+  vanPickerson_selectAll: '全选',
+  vanPickerson_cancelSelectAll: '取消全选',
+
+  // 表单项
+  validateLabel: '字段',
+
+  // 文件上传
+  vanUploader_uploading: '上传中...',
+  vanUploader_fail: '上传失败',
+  vanUploader_typeError: '文件类型不匹配，请上传{accept}的文件类型',
+  vanUploader_maxSize: '文件{name}超出大小{size}MB！',
+
+  // 复制
+  vanCopy_fail: '无复制对象',
+
+  // 数据网格
+  vanGridView_loading: '加载中',
+
+  // 以下为未用到组件的翻译
   name: '姓名',
   tel: '电话',
   save: '保存',
@@ -12,19 +55,7 @@ export default {
   nameInvalid: '请输入正确的姓名',
   confirmDelete: '确定要删除吗',
   telInvalid: '请输入正确的手机号',
-  vanCalendar: {
-    end: '结束',
-    start: '开始',
-    title: '日期选择',
-    confirm: '确定',
-    startEnd: '开始/结束',
-    weekdays: ['日', '一', '二', '三', '四', '五', '六'],
-    monthTitle: (year: number, month: number) => `${year}年${month}月`,
-    rangePrompt: (maxRange: number) => `选择天数不能超过 ${maxRange} 天`,
-  },
-  vanCascader: {
-    select: '请选择',
-  },
+
   vanContactCard: {
     addText: '添加联系人',
   },

@@ -279,7 +279,7 @@ export default createComponent({
       if (this.range) {
         return (
           <Tabs line-width="150px" lazyRender={false}>
-            <Tab title="开始">
+            <Tab title={t('rangeTabStart')}>
               <Component
                 ref="start"
                 class={bem()}
@@ -300,8 +300,12 @@ export default createComponent({
                 }}
               />
             </Tab>
-            <Tab style={{ flex: '0 0 20px' }} title="至" disabled></Tab>
-            <Tab title="结束">
+            <Tab
+              style={{ flex: '0 0 20px' }}
+              title={t('rangeTabTo')}
+              disabled
+            ></Tab>
+            <Tab title={t('rangeTabEnd')}>
               <Component
                 ref="end"
                 class={bem()}

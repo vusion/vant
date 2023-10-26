@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import lodash_get from 'lodash/get'
+import lodash_template from 'lodash/template'
 
 export { createNamespace } from './create';
 export { addUnit } from './format/unit';
@@ -95,4 +96,12 @@ export function _get(value: any, path: string): any {
   }
 
   return lodash_get(value, path);
+}
+
+export function _template(template: string, data: any): string {
+  const compiled = lodash_template(template, {
+    interpolate: /\{(.+?)\}/g,
+  });
+
+  return compiled(data);
 }
