@@ -9,7 +9,7 @@
       title: 数据源
       type: Array<Item> | Function
       description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑
-      designer-value: '[{}, {}, {}]'
+      designer-value: "[{}, {}, {}]"
       group: 数据属性
     - name: data-schema
       title: 数据类型
@@ -23,8 +23,10 @@
       sync: true
       model: true
       default: 0
-      description: 指定当前步骤，从 0 开始记数
+      description: 设置当前处于选中状态的步骤
       group: 数据属性
+      tooltipLink: ""
+      docDescription: 当前步骤数
     - name: direction
       title: 步骤条方向
       type: string
@@ -34,16 +36,26 @@
         - value: vertical
           title: 垂直
       default: horizontal
+      group: 主要属性
+      description: ""
+      tooltipLink: ""
+      docDescription: 步骤条的方向，支持水平或垂直
     - name: readonly
       title: 只读
       type: boolean
       default: false
-      description: 正常显示，但禁止选择、输入
+      description: 正常显示，但禁止选择/输入
+      group: 状态属性
+      tooltipLink: ""
+      docDescription: 是否只读，非只读的情况下可以选择
     - name: disabled
       title: 禁用
       type: boolean
       default: false
-      description: 置灰显示，且禁止任何交互
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
+      tooltipLink: ""
+      docDescription: ""
   slots:
     - concept: Slot
       name: default
@@ -52,7 +64,7 @@
       support:
         - name: van-step
           title: 步骤条项
-          snippet: '<van-step>stepn</van-step>'
+          snippet: <van-step>stepn</van-step>
     - concept: Slot
       name: item
       description: 自定义选项的结构和样式
@@ -75,15 +87,6 @@
 - name: van-step
   title: 步骤条项
   attrs:
-    # - name: value
-    #   title: 值
-    #   type: number,string
-    #   sync: true
-    #   model: true
-    - name: icon
-      title: 图标
-      type: icon
-      description: 步骤自定义图标
     - name: status
       title: 状态
       type: string
@@ -102,11 +105,21 @@
       type: boolean
       default: false
       description: 正常显示，但禁止选择、输入
+    - name: icon
+      title: 图标
+      type: icon
+      description: ""
+      group: 主要属性
+      tooltipLink: ""
+      docDescription: 在该步骤展示的图标
     - name: disabled
       title: 禁用
       type: boolean
       default: false
-      description: 置灰显示，且禁止任何交互
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
+      tooltipLink: ""
+      docDescription: 禁用该项
   events:
     - name: clicktitle
       title: 点击标题

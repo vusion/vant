@@ -29,27 +29,33 @@
       default: single
       advanced: true
       description: 选择类型
+    - name: isNew
+      title: 是否使用新版外观
+      type: boolean
+      default: false
+      description: 是否使用新版外观
     - name: minDate
-      title: 最小日期
+      title: 最小日期值
       type: Date,String
-      description: 最小日期,默认为一年前
+      description: 最小可选的日期值，默认为10年前，日期填写格式为“yyyy-mm-dd”
+      group: 数据属性
+      tooltipLink: ""
+      docDescription: 设置日期范围，支持输入的最小日期
     - name: maxDate
-      title: 最大日期
+      title: 最大日期值
       type: Date,String
-      description: 最大日期,默认为一年后
+      description: 最大可选的日期值，默认为9年后，日期填写格式为“yyyy-mm-dd”
+      group: 数据属性
+      tooltipLink: ""
+      docDescription: 设置日期范围，支持输入的最大日期
     - name: title
       title: 日历标题
       type: string
       default: 选择日期
-    - name: readonly
-      title: 只读
-      type: boolean
-      default: false
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 是否禁用
+      group: 主要属性
+      description: ""
+      tooltipLink: ""
+      docDescription: ""
     - name: input-align
       title: 右侧内容对齐方式
       type: string
@@ -61,17 +67,34 @@
         - value: right
           title: 右
       default: left
-      description: 右侧内容对齐方式
+      description: ""
+      group: 主要属性
+      tooltipLink: ""
+      docDescription: ""
     - name: close-on-click-overlay
-      title: 点击遮罩层后关闭
+      title: 点击遮罩关闭
       type: boolean
       default: false
       description: 是否点击遮罩层后关闭
-    - name: isNew
-      title: 是否使用新版外观
+      group: 交互属性
+      tooltipLink: ""
+      docDescription: ""
+    - name: readonly
+      title: 只读
       type: boolean
       default: false
-      description: 是否使用新版外观
+      group: 状态属性
+      description: 正常显示，但禁止选择/输入
+      tooltipLink: ""
+      docDescription: 正常显示，但禁止选择或输入
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
+      tooltipLink: ""
+      docDescription: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
   slots:
     - concept: Slot
       name: default
@@ -79,7 +102,8 @@
       support:
         - name: van-picker-action-slot
           title: 事件插槽
-          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
+          snippet: <van-picker-action-slot
+            target-method="confirm"></van-picker-action-slot>
   events:
     - name: confirm
       title: 确认

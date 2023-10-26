@@ -9,20 +9,6 @@
       type: string
       description: 左侧文本插槽内容存在时优先展示插槽内容
       advanced: true
-    - name: type
-      title: 时间类型
-      type: string
-      options:
-        - value: time
-          title: 时间选择
-        - value: date
-          title: 日期选择
-        - value: datetime
-          title: 日期时间选择
-      default: datetime
-      toggleclear:
-        - unit
-        - show-formatter
     - name: unit
       title: 最小单位
       type: string
@@ -50,11 +36,11 @@
         - title: 分
           value: minute
           dependency:
-            - '!type': date
+            - "!type": date
         - title: 秒
           value: second
           dependency:
-            - '!type': date
+            - "!type": date
       toggleclear:
         - show-formatter
     - name: show-formatter
@@ -136,9 +122,8 @@
           dependency:
             - unit: year
               type: date
-
         - value: HH:mm:ss
-          title: "12:09:09"
+          title: 12:09:09
           dependency:
             - unit: second
               type: time
@@ -148,7 +133,7 @@
             - unit: second
               type: time
         - value: HH:mm
-          title: "12:09"
+          title: 12:09
           dependency:
             - unit: minute
               type: time
@@ -157,9 +142,8 @@
           dependency:
             - unit: minute
               type: time
-
         - value: YYYY-MM-DD HH:mm:ss
-          title: "2023-07-26 12:09:09"
+          title: 2023-07-26 12:09:09
           dependency:
             - unit: second
               type: datetime
@@ -169,7 +153,7 @@
             - unit: second
               type: datetime
         - value: YYYY-MM-DD HH:mm HH:mm
-          title: "2023-07-26 12:09"
+          title: 2023-07-26 12:09
           dependency:
             - unit: minute
               type: datetime
@@ -208,15 +192,95 @@
       model: true
       dependency:
         - range: true
+    - name: isNew
+      title: 是否使用新版外观
+      type: boolean
+      default: false
+      description: 是否使用新版外观
+    - name: type
+      title: 时间类型
+      type: string
+      options:
+        - value: time
+          title: 时间选择
+        - value: date
+          title: 日期选择
+        - value: datetime
+          title: 日期时间选择
+      default: datetime
+      toggleclear:
+        - unit
+        - show-formatter
+      group: 数据属性
+      description: ""
+      tooltipLink: ""
+      docDescription: ""
     - name: value
       title: 值
       type: string,number,Date
       sync: true
       model: true
       default: null
-      description: 开关状态
+      description: 开关状态值
       dependency:
-        - '!range': true
+        - "!range": true
+      group: 数据属性
+      tooltipLink: ""
+      docDescription: ""
+    - name: min-date
+      title: 最小日期
+      type: Date
+      description: 当时间选择器类型为datetime时可选的最小时间，精确到分钟, 默认为十年前
+      group: 数据属性
+      tooltipLink: ""
+      docDescription: ""
+    - name: max-date
+      title: 最大日期
+      type: Date
+      description: 当时间选择器类型为datetime时可选的最大时间，精确到分钟, 默认为十年后
+      group: 数据属性
+      tooltipLink: ""
+      docDescription: ""
+    - name: max-hour
+      title: 最大小时
+      type: string, number
+      default: 23
+      description: ""
+      dependency:
+        - type: time
+      group: 数据属性
+      tooltipLink: ""
+      docDescription: ""
+    - name: min-hour
+      title: 最小小时
+      type: string, number
+      default: 0
+      description: ""
+      dependency:
+        - type: time
+      group: 数据属性
+      tooltipLink: ""
+      docDescription: ""
+    - name: max-minute
+      title: 最大分钟
+      type: string, number
+      default: 59
+      description: ""
+      dependency:
+        - type: time
+      group: 数据属性
+      tooltipLink: ""
+      docDescription: ""
+    - name: min-minute
+      title: 最小分钟
+      type: string, number
+      default: 0
+      description: ""
+      dependency:
+        - type: time
+      group: 数据属性
+      tooltipLink: ""
+      docDescription: ""
     - name: converter
       title: 转换器
       type: string
@@ -231,7 +295,6 @@
         - title: Date 对象
           value: date
       default: format
-      # 此属性依赖的属性
       depProp:
         - name: type
           value: datetime
@@ -239,67 +302,25 @@
           value: date
         - name: type
           value: year-month
-    - name: min-date
-      title: 最小日期
-      type: Date
-      description: 当时间选择类型为datetime时可选的最小时间，精确到分钟, 默认为十年前
-    - name: max-date
-      title: 最大日期
-      type: Date
-      description: 当时间选择类型为datetime时可选的最大时间，精确到分钟, 默认为十年后
-    - name: max-hour
-      title: 最大小时
-      type: string, number
-      default: 23
-      description: 当时间选择类型为 time 时
-      dependency:
-        - type: time
-    - name: min-hour
-      title: 最小小时
-      type: string, number
-      default: 0
-      description: 当时间选择类型为 time 时
-      dependency:
-        - type: time
-    - name: max-minute
-      title: 最大分钟
-      type: string, number
-      default: 59
-      description: 当时间选择类型为 time 时
-      dependency:
-        - type: time
-    - name: min-minute
-      title: 最小分钟
-      type: string, number
-      default: 0
-      description: 当时间选择类型为 time 时
-      dependency:
-        - type: time
+      group: 主要属性
+      tooltipLink: ""
+      docDescription: ""
     - name: displayFormat
       title: 自定义展示格式
       type: string
       description: 只用于页面上展示的格式，例如：yyyy年MM月dd日
       advanced: true
+      group: 主要属性
+      tooltipLink: ""
+      docDescription: ""
     - name: title
       title: 顶部栏标题
       type: string
-      default: ''
+      default: ""
       description: 左侧文本插槽内容存在时优先展示插槽内容
-    - name: isNew
-      title: 是否使用新版外观
-      type: boolean
-      default: false
-      description: 是否使用新版外观
-    - name: readonly
-      title: 只读
-      type: boolean
-      default: false
-      description: 是否只读
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 是否禁用
+      group: 主要属性
+      tooltipLink: ""
+      docDescription: ""
     - name: input-align
       title: 右侧内容对齐方式
       type: string
@@ -311,12 +332,34 @@
         - value: right
           title: 右
       default: left
-      description: 右侧内容对齐方式
+      description: ""
+      group: 主要属性
+      tooltipLink: ""
+      docDescription: ""
     - name: close-on-click-overlay
-      title: 点击遮罩层后关闭
+      title: 点击遮罩关闭
       type: boolean
       default: false
       description: 是否点击遮罩层后关闭
+      group: 交互属性
+      tooltipLink: ""
+      docDescription: ""
+    - name: readonly
+      title: 只读
+      type: boolean
+      default: false
+      description: 正常显示，但禁止选择/输入
+      group: 状态属性
+      tooltipLink: ""
+      docDescription: ""
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
+      tooltipLink: ""
+      docDescription: ""
   slots:
     - concept: Slot
       name: default
@@ -324,7 +367,8 @@
       support:
         - name: van-picker-action-slot
           title: 事件插槽
-          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
+          snippet: <van-picker-action-slot
+            target-method="confirm"></van-picker-action-slot>
   events:
     - name: confirm
       title: 确认
@@ -340,7 +384,6 @@
       description: 打开
     - name: close
       description: 关闭
-
 - name: van-datetime-picker-action-slot
   title: 时间选择事件插槽
   is-sub: true
@@ -353,7 +396,6 @@
           title: 确认
         - value: cancel
           title: 取消
-
 - name: van-picker-action-slot
   title: 事件插槽
   is-sub: true
