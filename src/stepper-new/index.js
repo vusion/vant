@@ -4,6 +4,7 @@ import { preventDefault } from '../utils/dom/event';
 import { addNumber, formatNumber } from '../utils/format/number';
 import { isNaN } from '../utils/validate/number';
 import { FieldMixin } from '../mixins/field';
+import { Decimal } from 'decimal.js';
 
 const [createComponent, bem] = createNamespace('stepper-new');
 
@@ -19,7 +20,7 @@ export default createComponent({
 
   props: {
     value: {
-      type: [Number, String],
+      type: [Number, String, Object],
     },
     theme: String,
     integer: Boolean,
@@ -52,6 +53,10 @@ export default createComponent({
       type: [Number, String],
       default: 1,
     },
+    highPrecision: {
+      type: Boolean,
+      default: false,
+    },
     defaultValue: {
       type: [Number, String],
       default: 1,
@@ -76,6 +81,9 @@ export default createComponent({
   },
 
   data() {
+    if (this.highPrecision && typeof this.value === 'object') {
+      this.value += '';
+    }
     const defaultValue = this.value;
     const value = this.format(defaultValue);
     if (this.ifDesigner()) {
@@ -90,6 +98,7 @@ export default createComponent({
 
     return {
       currentValue: value,
+      Decimal
     };
   },
 
@@ -146,7 +155,7 @@ export default createComponent({
     //   }
     // },
     value: {
-      handler (val, oldVal) {
+      handler(val, oldVal) {
         if (!equal(val, this.currentValue)) {
           this.currentValue = this.format(val);
         }
@@ -185,13 +194,27 @@ export default createComponent({
       value = this.formatNumber(value);
 
       // format range
-      value = value === '' ? 1 : +value;
+      if (!this.highPrecision) {
+        value = value === '' ? 1 : +value;
+      }
       value = isNaN(value) ? this.min : value;
-      value = Math.max(Math.min(this.max, value), this.min);
+      if (this.highPrecision) {
+        if (!this.Decimal && this?.decimalLength > -1) {
+          this.Decimal = Decimal
+          // || this.getCloneDecimal();
+        }
+        value = this.Decimal.max(this.Decimal.min(this.max, new this.Decimal(value)), this.min).toString();
+      } else {
+        value = Math.max(Math.min(this.max, value), this.min);
+      }
 
       // format decimal
       if (isDef(this.decimalLength)) {
-        value = value.toFixed(this.decimalLength);
+        if (this.highPrecision) {
+          value = new this.Decimal(value).toFixed(this.decimalLength).toString();
+        } else {
+          value = value.toFixed(this.decimalLength);
+        }
       }
 
       return value;
@@ -239,10 +262,17 @@ export default createComponent({
         return;
       }
 
+      let value
       const diff = type === 'minus' ? -this.step : +this.step;
-
-      const value = this.format(addNumber(+this.currentValue, diff));
-
+      if (this.highPrecision) {
+        const map = {
+          minus: 'sub',
+          plus: 'add',
+        }
+        value = new this.Decimal(String(this.currentValue))[map[type]](new this.Decimal(String(this.step)));
+      } else {
+        value = this.format(addNumber(+this.currentValue, diff));
+      }
       this.emitChange(value);
       this.$emit(type);
     },
