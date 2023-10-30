@@ -4,56 +4,102 @@
   labels:
     - Display
   description: 滑动输入条，用于在给定的范围内选择一个值。
-  next: true
-  nested: false
   attrs:
     - name: value
-      title: 当前进度百分比
+      title: 滑块值
       type: number
       sync: true
       model: true
+      group: 数据属性
+      description: ""
+      tooltipLink: ""
+      docDescription: 滑块的值
     - name: max
       title: 最大值
       type: number
       default: 100
+      group: 数据属性
+      description: ""
+      tooltipLink: ""
+      docDescription: 可设置的最小值 。
     - name: min
       title: 最小值
       type: number
       default: 0
+      group: 数据属性
+      description: ""
+      tooltipLink: ""
+      docDescription: 可设置的最大值 。
     - name: step
-      title: 步长
+      title: 间隔
       type: number | string
       default: 0
+      group: 数据属性
+      description: 间隔，`0`表示连续
+      tooltipLink: ""
+      docDescription: 表示点击按钮或按上下键所增加或减少的量，0表示连续
+    - name: range
+      title: 范围
+      type: boolean
+      default: false
+      group: 数据属性
+      description: 进一步对`value`限制，通常传入一个数组，第一个值表示范围开始值，第二个值表示范围的结束值
+      tooltipLink: ""
+      docDescription: 进一步对`值`限制，通常传入一个数组，第一个值表示范围开始值，第二个值表示范围的结束值
+    - name: vertical
+      title: 垂直展示
+      type: boolean
+      default: false
+      group: 主要属性
+      description: ""
+      tooltipLink: ""
+      docDescription: ""
+    - name: custom
+      title: 自定义组件
+      type: boolean
+      default: false
+      group: 主要属性
+      description: ""
+      tooltipLink: ""
+      docDescription: ""
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      group: 状态属性
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      tooltipLink: ""
+      docDescription: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
     - name: bar-height
       title: 进度条高度(px)
       type: number
       default: 2
+      group: 样式属性
+      description: ""
+      tooltipLink: ""
+      docDescription: ""
     - name: button-size
       title: 滑块按钮大小(px)
       type: number
       default: 24
+      group: 样式属性
+      description: ""
+      tooltipLink: ""
+      docDescription: ""
     - name: active-color
       title: 进度条激活态颜色
       type: string
+      group: 样式属性
+      description: ""
+      tooltipLink: ""
+      docDescription: ""
     - name: inactive-color
       title: 进度条非激活态颜色
       type: string
-    - name: range
-      title: 是否开启双滑块模式
-      type: boolean
-      default: false
-    - name: disabled
-      title: 是否禁用滑块
-      type: boolean
-      default: false
-    - name: vertical
-      title: 是否垂直展示
-      type: boolean
-      default: false
-    - name: custom
-      title: 是否自定义组件
-      type: boolean
-      default: false
+      group: 样式属性
+      description: ""
+      tooltipLink: ""
+      docDescription: ""
   slots: false
   events:
     - name: input

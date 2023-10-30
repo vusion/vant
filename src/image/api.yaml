@@ -4,13 +4,11 @@
   labels:
     - Display
   description: 可以用来展示一张图片，支持设置图片地址。
-  next: true
-  nested: false
   attrs:
     - name: src
       title: 地址
       type: image
-      default: ''
+      default: ""
       description: 图片地址
       compType: linkInput
     - name: fit
@@ -61,7 +59,7 @@
       default: https://static-vusion.nos-eastchina1.126.net/h5-template/lietu.png
       required: true
       dependency:
-        - 'loading-type': 'placeholder'
+        - loading-type: placeholder
   slots: false
   events:
     - name: click
