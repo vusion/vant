@@ -2,6 +2,19 @@ name: Upload to NOS
 
 on:
   workflow_dispatch:
+    inputs:
+      bucket:
+        description: 'nos bucket'
+        required: true
+        type: string
+      access-key-id:
+        description: 'nos access key id'
+        required: true
+        type: string
+      access-key-secret:
+        description: 'nos access key secret'
+        required: true
+        type: string
 
 jobs:
   build:
@@ -34,4 +47,4 @@ jobs:
 
       # 上传到 NOS
       - name: Upload to nos
-        run: node scripts/upload-nos/index.js --version ${{ env.VERSION }} --bucket ${{ secrets.NOS_BUCKET }} --access-key-id ${{ secrets.NOS_ACCESS_KEY_ID }} --access-key-secret ${{ secrets.NOS_ACCESS_KEY_SECRET }}
+        run: node scripts/upload-nos/index.js --version ${{ env.VERSION }} --bucket ${{ inputs.bucket }} --access-key-id ${{ inputs.access-key-id }} --access-key-secret ${{ inputs.access-key-secret }}
