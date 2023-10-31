@@ -62,7 +62,10 @@ export default {
       // FIXME: typo column
       colnum: {
         type: Number,
-        default: 5
+        default: 5,
+        validator: (val) => {
+          return val >= 0;
+        }
       },
       equalWidth: {
         type: Boolean,
