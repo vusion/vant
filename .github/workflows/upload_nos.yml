@@ -1,0 +1,37 @@
+name: Upload to NOS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get current branch name
+        run: echo "BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+
+      - name: Get version from branch name
+        # 从分支名中获取版本号release/v1.0.0 => 1.0.0
+        run: echo "VERSION=$(echo $BRANCH_NAME | sed 's/release\/v//g')" >> $GITHUB_ENV
+
+      - name: Set node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install Dependencies
+        run: yarn install
+
+      # npm pack
+      - name: Pack
+        run: yarn pack
+
+      # 上传到 NOS
+      - name: Upload to nos
+        run: node scripts/upload-nos/index.js --version ${{ env.VERSION }} --bucket ${{ secrets.NOS_BUCKET }} --access-key-id ${{ secrets.NOS_ACCESS_KEY_ID }} --access-key-secret ${{ secrets.NOS_ACCESS_KEY_SECRET }}
