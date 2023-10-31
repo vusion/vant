@@ -19,6 +19,7 @@
       type: number
       default: 5
       description: 为空时自适应宽度，自动换行
+      min: 0
     - name: wrap
       title: 自动换行
       type: boolean
