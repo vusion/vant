@@ -123,3 +123,12 @@
       description: 将选中的日期重置到指定日期，未传参时会重置到默认日期
       params: []
   description: 日历组件用于选择日期或日期区间
+  i18n:
+    zh-CN:
+      vanCalendar_title: '日期选择'
+      vanCalendar_confirm: '确定'
+      vanCalendar_weekdays: '日,一,二,三,四,五,六'
+      vanCalendar_monthTitle: '{year}年{month}月'
+      vanCalendar_end: '结束'
+      vanCalendar_start: '开始'
+      vanCalendar_startEnd: '开始/结束'

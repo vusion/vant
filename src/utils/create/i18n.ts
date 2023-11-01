@@ -3,7 +3,7 @@ import { camelize } from '../format/string';
 import locale from '../../locale';
 
 export function createI18N(name: string) {
-  const prefix = camelize(name) + '.';
+  const prefix = camelize(name) + '_';
 
   return function (path: string, ...args: any[]): string {
     const messages = locale.messages();

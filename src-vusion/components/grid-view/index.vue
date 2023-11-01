@@ -186,9 +186,13 @@ import USpinner from 'cloud-ui.vusion/src/components/u-spinner.vue/index.vue';
 import ULink from 'cloud-ui.vusion/src/components/u-link.vue/index.vue';
 import VanPullRefresh from '../../../src/pull-refresh';
 import VanEmptyCol from '../../../src/emptycol';
+import { createI18N } from '../../../src/utils/create/i18n'
+
 let loaderCache = {};
 let loaderImg = new Map();
 let time = null;
+
+const t = createI18N('van-grid-view');
 
 export default {
   name: 'van-grid-view',
@@ -374,7 +378,7 @@ export default {
       if (el.scrollHeight <= el.scrollTop + el.clientHeight+30 && this.currentDataSource && this.currentDataSource.hasMore()) {
         if (this.iffall) {
           if (!window.cusloading) {
-              window.cusloading = window.vant.VanToast.loading({duration: 0,forbidClick: true, message: '加载中',});
+              window.cusloading = window.vant.VanToast.loading({duration: 0,forbidClick: true, message: t('loading'),});
           } else {
               window.cusloading.value = true;
           }

@@ -23,7 +23,7 @@ import VanFieldinput from '../fieldinput/index';
 
 import VusionValidator from '@vusion/validator';
 
-const [createComponent, bem] = createNamespace('field');
+const [createComponent, bem, t] = createNamespace('field');
 const comSet = new Set(['van-fieldinput','van-fieldtextarea','van-fieldnumber']);
 
 export default createComponent({
@@ -359,7 +359,7 @@ export default createComponent({
     runRulesVusion(rules, trigger='') {
       const value = this.formValue;
       const {validatorVuF} = this;
-      return validatorVuF.validate(value, trigger, {label: this.label || '字段',}).then(() => {
+      return validatorVuF.validate(value, trigger, { label: this.label || t('validateLabel') }).then(() => {
       }).catch((error) => {
         this.validateFailed = true;
         this.validateMessage = error;

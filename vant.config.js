@@ -144,6 +144,14 @@ module.exports = {
                 path: 'toast',
                 title: 'Toast 轻提示',
               },
+              // {
+              //   path: 'copy',
+              //   title: 'Copy 复制',
+              // },
+              // {
+              //   path: 'link',
+              //   title: 'Link 链接',
+              // }
             ],
           },
           {

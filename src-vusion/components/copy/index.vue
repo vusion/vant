@@ -10,7 +10,7 @@
         {{ successText }}
     </u-tooltip>
     <u-tooltip :placement="placement" trigger="manual" :opened.sync="failed">
-        无复制对象
+        {{ failTip }}
     </u-tooltip>
 </div>
 </template>
@@ -20,9 +20,14 @@ import ClipboardJS from 'clipboard';
 // import i18n from '@/utils/i18n';
 import { SEmpty } from 'cloud-ui.vusion/src/components/s-empty.vue';
 import { UTooltip } from 'cloud-ui.vusion/src/components/u-tooltip.vue';
+import { createI18N } from '../../../src/utils/create/i18n'
+
+const name = 'van-copy';
+
+const t = createI18N(name);
 
 export default {
-    name: 'van-copy',
+    name,
     components: { SEmpty, UTooltip },
     props: {
         value: String,
@@ -35,6 +40,11 @@ export default {
     },
     data() {
         return { success: false, timeoutId: undefined, failed: false };
+    },
+    computed: {
+        failTip() {
+            return t('fail');
+        },
     },
     destroyed() {
         clearTimeout(this.timeoutId);

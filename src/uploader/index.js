@@ -1,5 +1,5 @@
 // Utils
-import { createNamespace, addUnit, noop, isPromise, isDef } from '../utils';
+import { createNamespace, addUnit, noop, isPromise, isDef, _template } from '../utils';
 import { toArray, readFile, isOversize, isImageFile } from './utils';
 
 // Mixins
@@ -14,7 +14,7 @@ import Toast from '../toast/index';
 
 import ajax from './ajax';
 
-const [createComponent, bem] = createNamespace('uploader');
+const [createComponent, bem, t] = createNamespace('uploader');
 
 export default createComponent({
   inheritAttrs: false,
@@ -269,7 +269,7 @@ export default createComponent({
             const valid = this.validateFile(files[i], this.accept);
             if (!valid) {
               this.resetInput();
-              Toast('文件类型不匹配，请上传' + this.accept + '的文件类型');
+              Toast(_template(t('typeError'), { accept: this.accept }));
               return null;
             }
           }
@@ -277,7 +277,7 @@ export default createComponent({
       } else if (this.accept) {
         const valid = this.validateFile(files, this.accept);
         if (!valid) {
-          Toast('文件类型不匹配，请上传' + this.accept + '的文件类型');
+          Toast(_template(t('typeError'), { accept: this.accept }));
           this.resetInput();
           return null;
         }
@@ -354,7 +354,10 @@ export default createComponent({
             if (item.file) {
               if (isOversize(item.file, this.maxSize)) {
                 oversizeFiles.push(item);
-                Toast(`文件${item.file.name}超出大小${this.maxSize}MB！`);
+                Toast(_template(t('maxSize'), {
+                  name: item.file.name,
+                  size: this.maxSize,
+                }));
               } else {
                 validFiles.push(item);
               }
@@ -362,7 +365,12 @@ export default createComponent({
           });
         } else {
           validFiles = null;
-          Toast(`文件${files.file.name}超出大小${this.maxSize}MB！`);
+          Toast(
+            _template(t('maxSize'), {
+              name: files.file.name,
+              size: this.maxSize,
+            })
+          );
         }
         this.$emit('oversize', oversizeFiles, this.getDetail());
       }
@@ -383,7 +391,7 @@ export default createComponent({
           this.currentValue.forEach((file, index) => {
             if (!file.url && !file.status) {
               file.status = 'uploading';
-              file.message = '上传中...';
+              file.message = t('uploading');
               this.post(file, index);
             }
           });
@@ -531,7 +539,7 @@ export default createComponent({
             imgUrl = item.url;
           }
         } else {
-          imgUrl = item ? item : '';
+          imgUrl = item || '';
         }
         return imgUrl;
       };
@@ -727,7 +735,7 @@ export default createComponent({
         },
         onError: (e, res) => {
           file.status = 'failed';
-          file.message = '上传失败';
+          file.message = t('fail');
           this.$emit(
             'error',
             {
