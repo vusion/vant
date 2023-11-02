@@ -18587,10 +18587,10 @@ vusion-loader@^0.5.1:
   dependencies:
     vue-multifile-loader "^15.0.1"
 
-vusion@^0.12.18:
-  version "0.12.20"
-  resolved "https://registry.npmjs.org/vusion/-/vusion-0.12.20.tgz"
-  integrity sha512-vzsRLrnRNr8pxwQdo6PKY35E20vxXw41XrIGgbsxkAI9Qk7xx/d6lpJ9Q1DCrXjuammtZr+4xAX4tf8iXNckoQ==
+vusion@^0.12.22-beta.0:
+  version "0.12.22-beta.0"
+  resolved "https://registry.yarnpkg.com/vusion/-/vusion-0.12.22-beta.0.tgz#42019440484f883bf715c389e5b2236c5abfb58a"
+  integrity sha512-ML5M15fQzQ7x/fy7NkM/fcjERJ77Ik/83jDVNVf/KC/TeKqW60EADLVqPNX3JB1oClEa/LjfmzT3tF27pulswQ==
   dependencies:
     canvas "^2.6.1"
     chalk "^2.4.2"
