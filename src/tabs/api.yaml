@@ -10,12 +10,14 @@
       type: any
       sync: true
       model: true
-      description: 指当前打开标签的标签项
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: 指当前打开标签的标签项
+      description: 选中标签页的值。
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 是否禁用。
     - name: type
-      title: 样式类型
+      title: 展示外观
       type: string
       options:
         - value: line
@@ -24,54 +26,31 @@
           title: 胶囊
       default: line
       description: 选项卡样式风格
-      group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: sticky
       title: 自动吸顶
       type: boolean
       default: false
-      description: ""
-      group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
+      description: 是否自动吸顶
+    - name: swipeable
+      title: 滑动切换
+      type: boolean
+      default: false
+      description: 是否滑动切换
     - name: scrollspystr
       title: 导航模式
       type: string
-      default: no
+      default: 'no'
       options:
-        - value: no
+        - value: 'no'
           title: 切换导航
-        - value: scrollspy
+        - value: 'scrollspy'
           title: 滚动导航
-      description: ""
-      group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
-    - name: swipeable
-      title: 可滑动切换
-      type: boolean
-      default: false
-      description: ""
-      group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
+      description: 导航模式
     - name: animated
-      title: 启用切换动画
+      title: 切换动画
       type: boolean
       default: false
-      description: 是否开启切换选项的转场动画
-      group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
-      group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
+      description: 是否开启转场动画
   slots:
     - concept: Slot
       name: default
@@ -93,51 +72,37 @@
       params: []
 - name: van-tab
   title: 标签页
+  control: button
   is-sub: true
   attrs:
+    - name: name
+      title: 值
+      type: string
+      description: 标签页的值
     - name: title
       title: 标题
       type: string
       default: 标题
       description: 自定义标题
       advanced: true
-    - name: name
-      title: 值
-      type: string
-      description: 标签页的值
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
-    - name: badgebtn
-      title: 徽章
-      type: boolean
-      default: false
-      description: ""
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
-    - name: badge
-      title: 徽章值
-      type: string, number
-      description: 徽章的内容
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
-    - name: badgemax
-      title: 最大值
-      type: number
-      description: 徽章内容为数字时显示的最大值
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disabled
       title: 禁用
       type: boolean
       default: false
-      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
-      group: 状态属性
-      tooltipLink: ""
-      docDescription: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      description: 是否禁用
+    - name: badgebtn
+      title: 徽章
+      type: boolean
+      default: false
+      description: 是否显示徽章
+    - name: badge
+      title: 徽章值
+      type: string, number
+      description: 徽章的内容
+    - name: badgemax
+      title: 最大值
+      type: number
+      description: 徽章内容为数字时显示的最大值
   slots:
     - concept: Slot
       name: default

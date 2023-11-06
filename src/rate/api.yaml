@@ -4,99 +4,53 @@
   labels:
     - Display
   description: 用于对事物进行评级操作。
+  next: true
+  nested: false
   attrs:
     - name: value
-      title: 评分值
+      title: 当前分值
       type: number
       sync: true
       model: true
-      group: 数据属性
-      description: ""
-      tooltipLink: ""
-      docDescription: 当前选择的值
     - name: count
       title: 图标总数
       type: numer | string
       default: 5
-      group: 主要属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
-    - name: icon
-      title: 选中时的图标名称或图片链接
-      type: icon
-      group: 主要属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
-    - name: void-icon
-      title: 未选中时的图标名称或图片链接
-      type: icon
-      group: 主要属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
-    - name: allow-half
-      title: 可半选
-      type: boolean
-      default: false
-      group: 交互属性
-      description: 是否允许半选
-      tooltipLink: ""
-      docDescription: 是否允许半选
-    - name: readonly
-      title: 只读
-      type: boolean
-      default: false
-      group: 状态属性
-      description: 正常显示，但禁止选择/输入
-      tooltipLink: ""
-      docDescription: 正常显示，但禁止选择或输入
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      group: 状态属性
-      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
-      tooltipLink: ""
-      docDescription: ""
     - name: size
       title: 图标大小(px)
       type: numer
       default: 20
-      group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: gutter
       title: 图标间距
       type: numer | string
       default: 4
-      group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: color
-      title: 选中时颜色
+      title: 选中时的颜色
       type: string
-      group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: void-color
-      title: 未选中时颜色
+      title: 未选中时的颜色
       type: string
-      group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: disabled-color
-      title: 禁用时颜色
+      title: 禁用时的颜色
       type: string
-      group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
+    - name: icon
+      title: 选中时的图标名称或图片链接
+      type: icon
+    - name: void-icon
+      title: 未选中时的图标名称或图片链接
+      type: icon
+    - name: allow-half
+      title: 半选
+      type: boolean
+      default: false
+    - name: readonly
+      title: 只读
+      type: boolean
+      default: false
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
   slots: false
   events:
     - name: change

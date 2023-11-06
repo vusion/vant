@@ -5,6 +5,80 @@
     - Selector
   description: 提供多个选项集合供用户选择，支持单列选择和多列级联。
   attrs:
+    - name: value
+      title: 值
+      type: string, number
+      sync: true
+      model: true
+      default: ''
+      description: 选中的值
+      group: 数据属性
+    - name: data-source
+      title: 数据源
+      type: Array<Item> | Function | object | DataSource
+      designer-value: '[{}, {}, {}]'
+      description: 列表的数据源。数组方式表示直接的数据，函数需要返回一个 Promise。
+      group: 数据属性
+    - name: data-schema
+      title: 数据类型
+      type: schema
+      description: 表格每一行的数据类型
+      compType: dataTypeSelect
+      group: 数据属性
+    - name: value-field
+      title: 值字段
+      type: string
+      default: value
+      description: 选项值的字段名
+      group: 数据属性
+    - name: text-field
+      title: 文本字段
+      type: string
+      default: text
+      description: 选项文本的字段名
+      group: 数据属性
+    - name: pageable
+      title: 分页
+      type: boolean
+      default: false
+      description: 设置是否分页加载更多
+      group: 数据属性
+    - name: page-size
+      title: 默认每页条数
+      type: number
+      display: number
+      default: 50
+      min: 10
+      dependency:
+        - pageable: true
+      group: 数据属性
+    - name: sorting
+      title: 初始化排序规则
+      type: '{ field: string, order: string, compare: Function }'
+      default: "{ field: undefined, order: 'desc' }"
+      description: 设置数据初始化时的排序字段和顺序规则
+      group: 数据属性
+    - name: filterable
+      title: 筛选
+      type: boolean
+      default: false
+      description: 设置是否可以筛选，开启将会支持搜索。
+      group: 数据属性
+    - name: match-method
+      title: 匹配方法
+      type: string
+      options:
+        - value: includes
+          title: 包括
+        - value: startsWith
+          title: 匹配开头
+        - value: endsWith
+          title: 匹配结尾
+      default: includes
+      description: 过滤时的匹配方法
+      group: 数据属性
+      dependency:
+        - filterable: true
     - name: initial-load
       type: boolean
       title: 初始加载
@@ -21,7 +95,7 @@
         - value: picker
           title: 选择器
           dependency:
-            - "!multiple": true
+            - '!multiple': true
         - value: list
           title: 列表
       default: picker
@@ -123,80 +197,6 @@
       title: 禁用
       type: boolean
       default: false
-    - name: value
-      title: 值
-      type: string, number
-      sync: true
-      model: true
-      default: ""
-      description: 选中的值
-      group: 数据属性
-    - name: data-source
-      title: 数据源
-      type: Array<Item> | Function | object | DataSource
-      designer-value: "[{}, {}, {}]"
-      description: 列表的数据源。数组方式表示直接的数据，函数需要返回一个 Promise。
-      group: 数据属性
-    - name: data-schema
-      title: 数据类型
-      type: schema
-      description: 表格每一行的数据类型
-      compType: dataTypeSelect
-      group: 数据属性
-    - name: value-field
-      title: 值字段
-      type: string
-      default: value
-      description: 选项值的字段名
-      group: 数据属性
-    - name: text-field
-      title: 文本字段
-      type: string
-      default: text
-      description: 选项文本的字段名
-      group: 数据属性
-    - name: pageable
-      title: 分页
-      type: boolean
-      default: false
-      description: 设置是否分页加载更多
-      group: 数据属性
-    - name: page-size
-      title: 默认每页条数
-      type: number
-      display: number
-      default: 50
-      min: 10
-      dependency:
-        - pageable: true
-      group: 数据属性
-    - name: sorting
-      title: 初始化排序规则
-      type: "{ field: string, order: string, compare: Function }"
-      default: "{ field: undefined, order: 'desc' }"
-      description: 设置数据初始化时的排序字段和顺序规则
-      group: 数据属性
-    - name: filterable
-      title: 筛选
-      type: boolean
-      default: false
-      description: 设置是否可以筛选，开启将会支持搜索。
-      group: 数据属性
-    - name: match-method
-      title: 匹配方法
-      type: string
-      options:
-        - value: includes
-          title: 包括
-        - value: startsWith
-          title: 匹配开头
-        - value: endsWith
-          title: 匹配结尾
-      default: includes
-      description: 过滤时的匹配方法
-      group: 数据属性
-      dependency:
-        - filterable: true
   slots:
     - concept: Slot
       name: default
@@ -204,8 +204,7 @@
       support:
         - name: van-picker-action-slot
           title: 事件插槽
-          snippet: <van-picker-action-slot
-            target-method="confirm"></van-picker-action-slot>
+          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
     - concept: Slot
       name: option
       title: option

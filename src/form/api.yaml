@@ -4,6 +4,8 @@
   labels:
     - Form
   description: 具有数据收集、校验和提交功能的表单，包含输入框、选择框、复选框、单选框等元素。
+  next: true
+  nested: false
   attrs:
     - name: label-align
       title: 标签对齐方式
@@ -39,9 +41,7 @@
       support:
         - name: van-field
           title: 表单项
-          snippet: '<van-field drole="other"><template #title><van-text
-            text="表单项"><van-text></template><template
-            #input></template></van-field>'
+          snippet: '<van-field drole="other"><template #title><van-text text="表单项"><van-text></template><template #input></template></van-field>'
   events:
     - name: submit
       title: 验证通过
@@ -54,13 +54,15 @@
       description: 验证表单，支持传入 name 来验证单个或部分表单项
 - name: van-field
   title: 表单项
+  next: false
+  nested: false
   attrs:
     - name: value
       title: 表单项值
       type: any
       sync: true
       model: true
-      default: ""
+      default: ''
       advanced: true
       description: 表单项值
     - name: name
@@ -68,6 +70,20 @@
       type: string
       advanced: true
       description: 提交表单的标识符
+    - name: label-layout
+      title: 标签布局
+      type: string
+      options:
+        - value: inline
+          title: 行内展示
+        - value: block
+          title: 块级展示，标签与表单项分行展示
+      default: inline
+      description: ''
+      group: 主要属性
+      brifeDoc: ''
+      docDescription: 设置标签布局方式。行内展示、块级展示，标签与表单项分行展示。
+      tooltipLink: ''
     - name: type
       title: 输入框类型
       type: string
@@ -98,54 +114,30 @@
       type: string
       advanced: true
       options:
-        - value: "-"
+        - value: '-'
           title: 正常
         - value: large
           title: 大
-      default: "-"
+      default: '-'
       description: 输入框左侧文本大小
     - name: placeholder
       title: 输入框占位提示文字
       type: string
       advanced: true
-    - name: label-layout
-      title: 标签布局
-      type: string
-      options:
-        - value: inline
-          title: 行内展示
-        - value: block
-          title: 块级展示，标签与表单项分行展示
-      default: inline
-      description: ""
-      group: 主要属性
-      brifeDoc: ""
-      docDescription: 设置标签布局方式，行内展示、块级展示，标签与表单项分行展示
-      tooltipLink: ""
     - name: required
       title: 必填标记
       type: boolean
       default: false
-      group: 主要属性
-      description: 是否必填。仅显示样式，如果要验证必填项，需要在`rules`中添加必填规则。
-      tooltipLink: ""
-      docDescription: 是否必填。仅显示样式，如果要验证必填项，需要在rules中添加必填规则。
     - name: rules
       title: 验证规则
       type: string | Array
       description: 验证规则。简写格式为字符串类型，完整格式或混合格式为数组类型
       compType: validationRulesSelect
-      group: 主要属性
-      tooltipLink: ""
-      docDescription: 验证规则。简写格式为字符串类型，完整格式或混合格式为数组类型，详见[验证规则](#验证规则)。
     - name: border
-      title: 显示底边框
+      title: 是否显示底边框
       type: boolean
       default: true
-      description: ""
-      group: 样式属性
-      tooltipLink: ""
-      docDescription: ""
+      description: 是否显示底边框
   slots:
     - concept: Slot
       name: input

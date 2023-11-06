@@ -4,6 +4,8 @@
   description: 单元格为列表中的单个展示项
   labels:
     - Display
+  next: true
+  nested: false
   attrs:
     - name: inset
       title: 卡片风格
@@ -23,8 +25,7 @@
       support:
         - name: van-cell
           title: 单元格
-          snippet: "<van-cell isLink center><template
-            #title>左侧文本</template><template>右侧文本</template></van-cell>"
+          snippet: '<van-cell isLink center><template #title>左侧文本</template><template>右侧文本</template></van-cell>'
 - name: van-cell
   title: 单元格
   attrs:
@@ -76,7 +77,7 @@
     - name: icon
       title: 图标
       type: icon
-      default: ""
+      default: ''
       description: 图标
     - name: linkType
       title: 链接类型

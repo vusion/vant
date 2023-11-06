@@ -4,66 +4,41 @@
   labels:
     - Display
   description: 圆环形的进度条组件
+  next: true
+  nested: false
   attrs:
-    - name: text
-      title: 文字
-      type: string
-      advanced: true
     - name: value
-      title: 当前进度（%）
+      title: 当前进度
       type: number
       sync: true
       model: true
       defalut: 50
-      group: 数据属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
-    - name: clockwise
-      title: 顺时针增加
-      type: boolean
-      default: true
-      description: ""
-      group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: size
       title: 圆环直径(px)
       type: numer
       default: 100
-      group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: color
       title: 进度条颜色
       type: string
-      group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: layer-color
       title: 轨道颜色
       type: string
-      group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: fill
       title: 填充颜色
       type: string
-      group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
+    - name: text
+      title: 文字
+      type: string
+      advanced: true
     - name: stroke-width
-      title: 进度条粗细(px)
+      title: 进度条宽度
       type: number | string
       default: 40
-      group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
+    - name: clockwise
+      title: 是否顺时针增加
+      type: boolean
+      default: true
+      description: 是否顺时针增加
   slots:
     - concept: Slot
       name: default

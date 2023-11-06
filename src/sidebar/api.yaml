@@ -10,18 +10,12 @@
       type: number,string
       sync: true
       model: true
-      description: 用于标识菜单的值
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
+      description: 菜单值
     - name: route
-      title: 使用路由
+      title: 是否开启路由模式
       type: boolean
       default: false
       description: 是否开启路由模式
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
   slots:
     - concept: Slot
       name: default
@@ -30,8 +24,7 @@
       support:
         - name: van-sidebar-item
           title: 菜单项
-          snippet: "<van-sidebar-item><template
-            #title>标签名称n</template></van-sidebar-item>"
+          snippet: '<van-sidebar-item><template #title>标签名称n</template></van-sidebar-item>'
   events:
     - name: change
       title: 切换导航时
@@ -44,42 +37,32 @@
       type: number,string
       sync: true
       model: true
-      description: 用于标识菜单项的值
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
-    - name: showbaget
-      title: 显示徽章
-      type: boolean
-      default: true
-      description: ""
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
-    - name: badge
-      title: 徽章值
-      type: string, number
-      default: ""
-      description: ""
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
-    - name: badgemax
-      title: 徽章最大值
-      type: number
-      description: ""
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
+      description: 菜单项值
     - name: title
       title: 标题
       type: string
       default: 标题
-      description: ""
+      description: 标题
       advanced: true
-      group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
+    - name: showbaget
+      title: 是否显示徽章
+      type: boolean
+      default: true
+      description: 是否显示徽章
+    - name: badge
+      title: 徽章值
+      type: string, number
+      default: ''
+      description: 徽章值
+    - name: badgemax
+      title: 徽章最大值
+      type: number
+      description: 徽章最大值
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 禁用
     - name: linkType
       title: 链接类型
       type: string
@@ -89,21 +72,15 @@
         - value: download
           title: 下载链接
       default: destination
-      description: ""
+      description: 链接类型
       compType: linkTypeSelect
-      group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: hrefAndTo
-      title: 链接地址
+      title: 链接
       type: string
-      description: ""
+      description: 链接地址
       compType: linkHrefInput
-      group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: target
-      title: 链接打开方式
+      title: 打开方式
       type: string
       options:
         - value: _blank
@@ -117,18 +94,7 @@
           title: 顶级窗口
           advanced: true
       default: _self
-      description: 链接跳转的打开方式，父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则其打开方式同当前窗口。
-      group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
-      group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
+      description: 父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。
   events:
     - name: click
       title: 点击菜单项
