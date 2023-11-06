@@ -23,16 +23,15 @@ export default createComponent({
   },
 
   computed: {
+    currentValue() {
+      return this.value !== undefined ? this.value : this.index;
+    },
     active() {
-      if ([undefined].includes(this.value)) {
-        return false;
-      }
-
       if (this.parent.multiple) {
-        return (this.parent.currentValue || []).indexOf(this.value) !== -1;
+        return (this.parent.currentValue || []).indexOf(this.currentValue) !== -1;
       }
 
-      return this.parent.currentValue === this.value;
+      return this.parent.currentValue === this.currentValue;
     },
     isDisabled() {
       return this.parent.disabled || this.disabled;
@@ -49,8 +48,8 @@ export default createComponent({
         return;
       }
 
-      this.parent.onSelect(this.value);
-      this.$emit('select', this.value);
+      this.parent.onSelect(this.currentValue);
+      this.$emit('select', this.currentValue);
     },
     renderSlots() {
       if (this.inDesigner() && !this.slots()) {
