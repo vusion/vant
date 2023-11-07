@@ -62,6 +62,7 @@
         - name: van-capsules-group
           title: 胶囊选项组
           snippet: <van-capsules-group><van-capsules-item>选项</van-capsules-item><van-capsules-item>选项</van-capsules-item></van-capsules-group>
+
   events:
     - name: select
       title: 选择后
@@ -87,6 +88,7 @@
         - name: $event.value
           type: any
           description: 选择项的值
+
 - name: van-capsules-item
   title: 胶囊选项
   description: 胶囊选项
@@ -130,6 +132,7 @@
     - concept: Slot
       name: default
       description: 插入文本或 HTML。
+
 - name: van-capsules-group
   title: 胶囊选项组
   description: 胶囊选项组

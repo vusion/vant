@@ -3,6 +3,8 @@
   labels:
     - Form
   icon: switch
+  next: true
+  nested: false
   attrs:
     - name: value
       title: 值
@@ -10,26 +12,17 @@
       sync: true
       model: true
       default: false
-      description: 标识开关状态的值
-      group: 数据属性
-      tooltipLink: ""
-      docDescription: 开关状态，返还true或者false。
+      description: 开关状态
     - name: disabled
       title: 禁用
       type: boolean
       default: false
-      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
-      group: 状态属性
-      tooltipLink: ""
-      docDescription: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      description: 是否禁用
     - name: readonly
       title: 只读
       type: boolean
       default: false
-      description: 正常显示，但禁止选择/输入
-      group: 状态属性
-      tooltipLink: ""
-      docDescription: 正常显示，但禁止选择或输入。
+      description: 是否只读
   slots: false
   events:
     - name: click
