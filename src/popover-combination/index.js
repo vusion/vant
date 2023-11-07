@@ -1,4 +1,5 @@
-import { createPopper, offsetModifier } from '@vant/popperjs';
+import { createPopper } from '@popperjs/core/lib/popper-lite';
+import offsetModifier from '@popperjs/core/lib/modifiers/offset';
 import { createNamespace } from '../utils';
 import { BORDER_BOTTOM } from '../utils/constant';
 
@@ -6,12 +7,11 @@ import { BORDER_BOTTOM } from '../utils/constant';
 import { ClickOutsideMixin } from '../mixins/click-outside';
 import { ParentMixin } from '../mixins/relation';
 
-
 // Components
 import Icon from '../icon';
 import Popup from '../popup';
-import PopoverCombinationItem from '../popover-combination-item'
-import VanEmptyCol from '../emptycol'
+import PopoverCombinationItem from '../popover-combination-item';
+import VanEmptyCol from '../emptycol';
 
 const [createComponent, bem] = createNamespace('popover-combination');
 
@@ -21,14 +21,14 @@ export default createComponent({
       event: 'touchstart',
       method: 'onClickOutside',
     }),
-    ParentMixin('vanPopoverCombination')
+    ParentMixin('vanPopoverCombination'),
   ],
 
   props: {
     value: Boolean,
     trigger: {
       type: String,
-      default: 'click'
+      default: 'click',
     },
     overlay: Boolean,
     offset: {
@@ -58,19 +58,19 @@ export default createComponent({
   data() {
     return {
       valued: this.value || false,
-    }
+    };
   },
   watch: {
     value: {
-      handler (val) {
+      handler(val) {
         this.valued = val;
-	    },
-	    immediate: true,
+      },
+      immediate: true,
     },
     valued: {
-      handler (val) {
-	      this.updateLocation(val)
-	    },
+      handler(val) {
+        this.updateLocation(val);
+      },
     },
     placement: 'updateLocation',
   },
@@ -92,24 +92,17 @@ export default createComponent({
         return this.$refs.wrapper;
       }
       // 求上下文中的 parent
-      if (this.$parent === this.$vnode.context)
-          return this.$el.parentElement; // Vue 的 vnode.parent 没有连接起来，需要自己找，不知道有没有更好的方法
+      if (this.$parent === this.$vnode.context) return this.$el.parentElement; // Vue 的 vnode.parent 没有连接起来，需要自己找，不知道有没有更好的方法
       let parentVNode = this.$parent._vnode;
-      while (
-          parentVNode
-          && !parentVNode.children.includes(this.$vnode)
-      )
-          parentVNode = parentVNode.children.find((child) =>
-              child.elm.contains(this.$el),
-          ); // if (!parentVNode)
+      while (parentVNode && !parentVNode.children.includes(this.$vnode))
+        parentVNode = parentVNode.children.find((child) =>
+          child.elm.contains(this.$el)
+        ); // if (!parentVNode)
       if (parentVNode && parentVNode.context === this.$vnode.context)
-          return parentVNode.elm; // 否则，找第一个上下文一致的组件
+        return parentVNode.elm; // 否则，找第一个上下文一致的组件
       let parentVM = this.$parent;
-      while (
-          parentVM
-          && parentVM.$vnode.context !== this.$vnode.context
-      )
-          parentVM = parentVM.$parent;
+      while (parentVM && parentVM.$vnode.context !== this.$vnode.context)
+        parentVM = parentVM.$parent;
       return parentVM.$el;
     },
 
@@ -153,7 +146,12 @@ export default createComponent({
     renderAction(action, index) {
       const { icon, text, disabled, className } = action;
       return (
-        <PopoverCombinationItem icon={icon} text={text} disabled={disabled} className={className}/>
+        <PopoverCombinationItem
+          icon={icon}
+          text={text}
+          disabled={disabled}
+          className={className}
+        />
       );
     },
 
@@ -178,8 +176,6 @@ export default createComponent({
       if (action.disabled) {
         return;
       }
-
-
 
       if (this.closeOnClickAction) {
         this.valued = false;
@@ -231,12 +227,17 @@ export default createComponent({
       if (this.ifDesigner()) {
         this.valued = !this.valued;
       }
-  },
+    },
   },
 
   render() {
     return (
-      <span ref="wrapper" class={bem('wrapper')} onClick={this.onClickWrapper} vusion-click-enabled>
+      <span
+        ref="wrapper"
+        class={bem('wrapper')}
+        onClick={this.onClickWrapper}
+        vusion-click-enabled
+      >
         <Popup
           ref="popover"
           value={this.valued}
@@ -255,12 +256,18 @@ export default createComponent({
         >
           <div class={bem('arrow')} />
           <div class={bem('content')} role="menu" vusion-slot-name="default">
-            {!this.slots('default') && this.ifDesigner() ? <van-empty-col></van-empty-col> : null}
+            {!this.slots('default') && this.ifDesigner() ? (
+              <van-empty-col></van-empty-col>
+            ) : null}
             {this.slots('default') || this.actions.map(this.renderAction)}
           </div>
         </Popup>
         {this.slots('reference')}
-        {!this.slots('reference') && this.ifDesigner() ? <div vusion-slot-name="reference"><van-empty-col></van-empty-col></div> : null}
+        {!this.slots('reference') && this.ifDesigner() ? (
+          <div vusion-slot-name="reference">
+            <van-empty-col></van-empty-col>
+          </div>
+        ) : null}
       </span>
     );
   },

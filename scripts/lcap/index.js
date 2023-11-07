@@ -42,7 +42,7 @@ Object.values(map).forEach((item) => {
 });
 
 // 晚点可以去掉，以文件形式获取，不走资产中心了
-fs.writeFileSync(path.join(__dirname, './usage.json'), JSON.stringify(map, null, 4));
+// fs.writeFileSync(path.join(__dirname, './usage.json'), JSON.stringify(map, null, 4));
 
 fs.writeFileSync(path.join(__dirname, '../../dist-theme/usage.json'), JSON.stringify(map, null, 4));
 const theme = {

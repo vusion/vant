@@ -1,5 +1,7 @@
 const pkg = require('./package.json');
 
+const postcss = require('./postcss.config.js');
+
 module.exports = {
   version: '>=0.1.1',
   type: 'library',
@@ -171,20 +173,5 @@ module.exports = {
       { group: 'Layout', name: 'l-root', alias: '界面根节点' },
     ],
   },
-  postcss:
-    process.env.scene === 'desktop'
-      ? []
-      : [
-          require('./postcss-plugins/px2vw')({
-            unitToConvert: 'px',
-            viewportWidth: 375,
-            propList: ['*'],
-            selectorBlackList: ['nov', /^m401$/, /^m404$/],
-
-            landscape: true,
-            landscapeUnit: 'vw',
-            landscapeWidth: 812,
-            // exclude: [/node_modules/],
-          }),
-        ],
+  postcss: postcss.plugins,
 };

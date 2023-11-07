@@ -1,12 +1,11 @@
-if (process.env.scene === 'desktop') {
-  module.exports = {
-    plugins: {
-    }
-  };
-} else {
-  module.exports = {
+const px2vw = require('./plugins/postcss-px2vw');
+
+let config = {}
+
+if (process.env.scene !== 'desktop') {
+  config = {
     plugins: [
-      require('./postcss-plugins/px2vw')({
+      px2vw({
         unitToConvert: 'px',
         viewportWidth: 375,
         propList: ['*'],
@@ -15,10 +14,10 @@ if (process.env.scene === 'desktop') {
         landscape: true,
         landscapeUnit: 'vw',
         landscapeWidth: 812,
-        exclude: [
-          /\/cli\/site\//
-        ],
+        exclude: [/[\\/]cli[\\/]site[\\/]/],
       }),
     ],
   };
 }
+
+module.exports = config;

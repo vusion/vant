@@ -11,13 +11,6 @@ module.exports = {
   },
   site: {
     defaultLang: 'zh-CN',
-    versions: [
-      { label: 'v1', link: '/vant/v1/' },
-      { label: 'v3', link: '/vant/v3/' },
-    ],
-    baiduAnalytics: {
-      seed: 'ad6b5732c36321f2dafed737ac00002da92f',
-    },
     htmlPluginOptions: {
       meta: {
         'docsearch:version': 'v2',
@@ -31,12 +24,8 @@ module.exports = {
         langLabel: '中文',
         links: [
           {
-            logo: 'https://b.yzcdn.cn/vant/logo/weapp.svg',
-            url: '/vant-weapp',
-          },
-          {
             logo: 'https://b.yzcdn.cn/vant/logo/github.svg',
-            url: 'https://github.com/youzan/vant',
+            url: 'https://github.com/vusion/vant',
           },
         ],
         searchConfig: {

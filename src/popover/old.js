@@ -1,4 +1,6 @@
-import { createPopper, offsetModifier } from '@vant/popperjs';
+import { createPopper } from '@popperjs/core/lib/popper-lite';
+import offsetModifier from '@popperjs/core/lib/modifiers/offset';
+
 import { createNamespace } from '../utils';
 import { BORDER_BOTTOM } from '../utils/constant';
 
