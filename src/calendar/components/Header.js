@@ -36,7 +36,9 @@ export default createComponent({
     },
 
     genWeekDays() {
-      const weekdays = t('weekdays');
+      // '日, 一, 二, 三, 四, 五, 六'
+      let weekdays = t('weekdays');
+      weekdays = weekdays.split(',').map((s) => s.trim());
 
       const { firstDayOfWeek } = this;
 

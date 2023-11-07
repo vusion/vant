@@ -99,6 +99,3 @@
           type: UCopy
           title: 事件发送对象
           description: 事件发送对象
-  i18n:
-    zh-CN:
-      vanCopy_fail: '无复制对象'

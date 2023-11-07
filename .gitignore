@@ -19,3 +19,5 @@ changelog.generated.md
 test/coverage
 vetur
 .history/
+*.tar.gz
+*.tgz

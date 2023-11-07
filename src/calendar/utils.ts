@@ -1,4 +1,4 @@
-import { createNamespace } from '../utils';
+import { _template, createNamespace } from '../utils';
 import { isDate } from '../utils/validate/date';
 import dayjs from '../utils/dayjs';
 
@@ -7,7 +7,12 @@ const [createComponent, bem, t] = createNamespace('calendar');
 export { createComponent, bem, t };
 
 export function formatMonthTitle(date: Date) {
-  return t('monthTitle', date.getFullYear(), date.getMonth() + 1);
+  const format = t('monthTitle');
+
+  return _template(format, {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+  })
 }
 
 export function compareMonth(date1: Date, date2: Date) {

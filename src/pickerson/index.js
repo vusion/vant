@@ -350,7 +350,7 @@ export default createComponent({
               <Search
                 shape="round"
                 vModel={this.filterText}
-                placeholder="请输入搜索关键词"
+                placeholder={t('searchPlaceholder')}
               />
             ) : null}
             {!this.multiple && this.type === 'picker' && (

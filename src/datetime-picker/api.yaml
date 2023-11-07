@@ -340,6 +340,13 @@
       description: 打开
     - name: close
       description: 关闭
+  i18n:
+    zh-CN:
+      vanDatetimePicker_confirm: '确定'
+      vanDatetimePicker_cancel: '取消'
+      vanDatetimePicker_rangeTabStart: '开始'
+      vanDatetimePicker_rangeTabTo: '至'
+      vanDatetimePicker_rangeTabEnd: '结束'
 
 - name: van-datetime-picker-action-slot
   title: 时间选择事件插槽

@@ -18,7 +18,11 @@
       title: 每行排列项数
       type: number
       default: 5
-      description: 为空时自适应宽度，自动换行
+      min: 0
+      description: 为空时默认为5
+      group: 主要属性
+      tooltipLink: ""
+      docDescription: 支持定义每一行排列的项数，为空时会自适应宽度并自动换行。
     - name: wrap
       title: 自动换行
       type: boolean

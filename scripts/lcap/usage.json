@@ -9232,6 +9232,11 @@
                     "description": "是否使用新版外观"
                 }
             ],
+            "i18n": {
+                "zh-CN": {
+                    "name": "地区选择"
+                }
+            },
             "slots": [
                 {
                     "concept": "Slot",
@@ -9389,7 +9394,6 @@
                 {
                     "name": "children-field",
                     "title": "子级值字段",
-                    "advanced": true,
                     "type": "string",
                     "default": "children",
                     "description": "子级字段"
@@ -10294,6 +10298,17 @@
                     "description": "是否使用新版外观"
                 }
             ],
+            "i18n": {
+                "zh-CN": {
+                    "vanCalendar_end": "结束",
+                    "vanCalendar_start": "开始",
+                    "vanCalendar_title": "日期选择",
+                    "vanCalendar_confirm": "确定",
+                    "vanCalendar_startEnd": "开始/结束",
+                    "vanCalendar_weekdays": "日,一,二,三,四,五,六",
+                    "vanCalendar_monthTitleFormat": "YYYY年M月"
+                }
+            },
             "slots": [
                 {
                     "concept": "Slot",

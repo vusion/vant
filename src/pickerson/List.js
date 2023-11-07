@@ -151,7 +151,7 @@ export default createComponent({
           <div class={bem('count')}>
             {this.enableSelectedCount && (
               <span class="desc">
-                当前已选中{' '}
+                {t('selected')}{' '}
                 <span class="number">{this.currentValue?.length}</span> 项
               </span>
             )}
@@ -159,11 +159,11 @@ export default createComponent({
               <span>
                 {this.currentValue.length === this.data.length ? (
                   <span class="handler" onClick={() => this.selectAll(true)}>
-                    取消全选
+                    {t('cancelSelectAll')}
                   </span>
                 ) : (
                   <span class="handler" onClick={() => this.selectAll()}>
-                    全选
+                    {t('selectAll')}
                   </span>
                 )}
               </span>
