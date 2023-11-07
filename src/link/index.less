@@ -1,0 +1,76 @@
+.van-link {
+  color: var(--link-color);
+}
+
+.van-link:hover {
+  text-decoration: underline;
+}
+
+.van-link[hoverType="color"]:hover {
+  text-decoration: none;
+  color: var(--link-color-hover);
+}
+
+.van-link[noDecoration] {
+  text-decoration: none !important;
+}
+
+.van-link:focus {
+  /* Remove default focus style */
+  outline: var(--focus-outline);
+  text-decoration: underline;
+}
+
+.van-link[color="success"] {
+  color: var(--link-color-success);
+}
+
+.van-link[hoverType="color"][color="success"]:hover {
+  color: var(--link-color-success-hover);
+}
+
+.van-link[color="warning"] {
+  color: var(--link-color-warning);
+}
+
+.van-link[hoverType="color"][color="warning"]:hover {
+  color: var(--link-color-warning-hover);
+}
+
+.van-link[color="error"] {
+  color: var(--link-color-error);
+}
+
+.van-link[hoverType="color"][color="error"]:hover {
+  color: var(--link-color-error-hover);
+}
+
+.van-link[color="danger"] {
+  color: var(--link-color-danger);
+}
+
+.van-link[hoverType="color"][color="danger"]:hover {
+  color: var(--link-color-danger-hover);
+}
+
+.van-link[color="light"] {
+  color: var(--link-color-light);
+}
+
+.van-link[color="white"] {
+  color: var(--link-color-white);
+}
+
+.van-link[disabled] {
+  cursor: var(--cursor-not-allowed);
+  color: var(--link-color-disabled);
+  text-decoration: none;
+}
+
+.van-link[hoverType=color][disabled]:hover {
+  color: var(--link-color-disabled);
+}
+
+.van-link[display="block"] {
+  display: block;
+}
