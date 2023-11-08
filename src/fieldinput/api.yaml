@@ -5,128 +5,6 @@
     - Form
   description: 基本的表单输入组件
   attrs:
-    - name: type
-      title: 类型
-      type: string
-      options:
-        - value: text
-          title: 文本
-        - value: password
-          title: 密码
-        - value: integer
-          title: 整数
-        - value: rndinteger
-          title: 随机整数
-        - value: point
-          title: 小数
-        - value: card
-          title: 身份证
-      default: text
-      description: 输入框的类型
-    - name: value
-      title: 值
-      type: string
-      sync: true
-      model: true
-      description: 输入框的值
-    - name: inputstyle
-      title: 输入框样式
-      type: string
-      options:
-        - value: input
-          title: 默认
-        - value: password
-          title: 格子
-      default: input
-      description: 输入框样式
-      toggleupdate:
-        - value: input
-          updateData:
-            maxlength: 10000
-        - value: password
-          updateData:
-            clearable: false
-            maxlength: 6
-    - name: clearable
-      title: 清除按钮
-      type: boolean
-      description: 开启并在输入框有内容时会显示清除按钮。
-      dependency:
-        - inputstyle: input
-    - name: placeholder
-      title: 占位符
-      type: string
-      description: 原生属性
-      dependency:
-        - inputstyle: input
-    - name: readonly
-      title: 只读
-      type: boolean
-      default: false
-      description: 是否只读
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 是否禁用
-    - name: maxlength
-      title: 输入长度
-      type: number
-      description: 为展示美观，可输入的最大长度限制为6
-      display: number
-      default: 6
-      min: 1
-      max: 6
-      dependency:
-        - inputstyle: password
-    - name: keytheme
-      title: 键盘样式
-      type: string
-      options:
-        - value: native
-          title: 默认键盘
-        - value: custom
-          title: 定制键盘
-      default: native
-      description: 键盘样式
-    - name: keyboard-title
-      title: 键盘标题
-      type: string
-      description: 键盘标题
-      dependency:
-        - keytheme: custom
-    - name: keyboard-theme
-      title: 定制键盘布局
-      type: string
-      options:
-        - value: default
-          title: 默认
-        - value: custom
-          title: 右侧栏
-      default: default
-      description: 定制键盘布局
-      dependency:
-        - keytheme: custom
-    - name: confirmText
-      title: 完成按钮内容
-      type: string
-      default: 完成
-      description: 设置完成按钮文字内容
-      dependency:
-        - keytheme: custom
-    - name : confirmSize
-      title: 完成按钮尺寸
-      type: string
-      options:
-        - value: default
-          title: 默认
-        - value: large
-          title: 大号
-      default: default
-      description: 设置完成按钮大小
-      dependency:
-        - keytheme: custom
-          keyboard-theme: custom
     - name: prefix
       title: 前缀图标
       type: string
@@ -149,6 +27,141 @@
           title: 暂无
       default: ""
       description: 后缀图标
+    - name: type
+      title: 类型
+      type: string
+      options:
+        - value: text
+          title: 文本
+        - value: password
+          title: 密码
+        - value: integer
+          title: 整数
+        - value: rndinteger
+          title: 随机整数
+        - value: point
+          title: 小数
+        - value: card
+          title: 身份证
+      default: text
+      description: 输入框的类型
+      group: 数据属性
+    - name: value
+      title: 值
+      type: string
+      sync: true
+      model: true
+      description: 用于标识输入框的值
+      group: 数据属性
+    - name: placeholder
+      title: 占位符
+      type: string
+      description: ""
+      dependency:
+        - inputstyle: input
+      group: 主要属性
+    - name: maxlength
+      title: 最大输入长度
+      type: number
+      description: ""
+      display: number
+      default: 6
+      min: 1
+      max: 6
+      dependency:
+        - inputstyle: password
+      group: 主要属性
+    - name: keyboard-title
+      title: 键盘标题
+      type: string
+      description: ""
+      dependency:
+        - keytheme: custom
+      group: 主要属性
+    - name: confirmText
+      title: 按钮内容
+      type: string
+      default: 完成
+      description: 设置完成按钮文字内容
+      dependency:
+        - keytheme: custom
+      group: 主要属性
+    - name: confirmSize
+      title: 按钮尺寸
+      type: string
+      options:
+        - value: default
+          title: 默认
+        - value: large
+          title: 大号
+      default: default
+      description: 设置完成按钮大小
+      dependency:
+        - keytheme: custom
+          keyboard-theme: custom
+      group: 主要属性
+    - name: clearable
+      title: 支持清除
+      type: boolean
+      description: 是否在输入框内展示清除按钮
+      dependency:
+        - inputstyle: input
+      group: 交互属性
+    - name: readonly
+      title: 只读
+      type: boolean
+      default: false
+      description: 正常显示，但禁止选择/输入。
+      group: 状态属性
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
+    - name: inputstyle
+      title: 输入框样式
+      type: string
+      options:
+        - value: input
+          title: 默认
+        - value: password
+          title: 格子
+      default: input
+      description: ""
+      toggleupdate:
+        - value: input
+          updateData:
+            maxlength: 10000
+        - value: password
+          updateData:
+            clearable: false
+            maxlength: 6
+      group: 样式属性
+    - name: keytheme
+      title: 键盘样式
+      type: string
+      options:
+        - value: native
+          title: 默认键盘
+        - value: custom
+          title: 定制键盘
+      default: native
+      description: 设置键盘样式
+      group: 样式属性
+    - name: keyboard-theme
+      title: 定制键盘布局
+      type: string
+      options:
+        - value: default
+          title: 默认
+        - value: custom
+          title: 右侧栏
+      default: default
+      description: ""
+      dependency:
+        - keytheme: custom
+      group: 样式属性
   slots: []
   events:
     - name: input

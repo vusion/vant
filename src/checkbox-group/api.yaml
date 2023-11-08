@@ -5,42 +5,42 @@
   icon: checkboxes
   description: 多项中选择一个或多个时使用
   attrs:
-    - name: data-source
-      title: 数据源
-      type: Array<Item> | Function
-      description: 集合类型变量或者输出参数为集合类型的逻辑
-      designer-value: '[{}, {}, {}]'
-    - name: data-schema
-      title: 数据类型
-      type: schema
-      description: 集合类型每一元素的数据类型
-      compType: dataTypeSelect
     - name: value-field
       title: 值字段
       type: string
       default: value
       description: 用于标识选中值的字段
       display: property-select
+    - name: data-source
+      title: 数据源
+      type: Array<Item> | Function
+      description: 集合类型变量或者输出参数为集合类型的逻辑
+      designer-value: "[{}, {}, {}]"
+      group: 数据属性
+    - name: data-schema
+      title: 数据类型
+      type: schema
+      description: 数据源返回的数据结构的类型，自动识别类型进行展示说明。
+      compType: dataTypeSelect
+      group: 数据属性
     - name: value
       title: 值
       type: any
       sync: true
       model: true
-      description: 当前选择的值
+      description: ""
+      group: 数据属性
     - name: max
-      title: 最大可选数
+      title: 最大可选数量
       type: number
-      description: 最大可选数(0为不限制)
+      description: 最大可选数量(0为不限制)
+      group: 数据属性
     - name: min
-      title: 最小可选数
+      title: 最小可选数量
       type: number
       default: 0
-      description: 最小可选数
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 是否禁用
+      description: 最小可选数量(0为不限制)
+      group: 数据属性
     - name: direction
       title: 排列方向
       type: string
@@ -50,13 +50,15 @@
         - value: vertical
           title: 垂直
       default: horizontal
-      description: 是否禁用
+      description: 设置多选组的排列方向
+      group: 主要属性
     - name: column
-      title: 每行排列数
+      title: 排列数
       type: number
       description: 水平排列时每行展示的选项数量
       dependency:
         - direction: horizontal
+      group: 主要属性
     - name: converter
       title: 转换器
       type: string
@@ -72,8 +74,15 @@
         - value: none
           title: 无
       default: none
-      description: 将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式
+      description: 将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式。
       bindHide: true
+      group: 主要属性
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 正常显示，但禁止选择/输入
+      group: 状态属性
   slots:
     - concept: Slot
       name: default
@@ -82,7 +91,8 @@
       support:
         - name: van-checkbox
           title: 多选项
-          snippet: <van-checkbox name="n" shape="square"><van-text text="节点"></van-text></van-checkbox>
+          snippet: <van-checkbox name="n" shape="square"><van-text
+            text="节点"></van-text></van-checkbox>
     - concept: Slot
       name: item
       description: 自定义选项的结构和样式
@@ -123,6 +133,10 @@
       type: string
       description: 文本
       advanced: true
+    - name: label
+      title: 选项值
+      type: any
+      description: 多选框选项值，只在多选组中使用。
     - name: value
       title: 是否选中
       type: boolean
@@ -130,10 +144,7 @@
       model: true
       default: false
       description: 是否选中
-    - name: label
-      title: 选项值
-      type: any
-      description: 多选框选项值，只在多选组中使用。
+      group: 数据属性
     - name: shape
       title: 形状
       type: string
@@ -143,17 +154,8 @@
         - value: round
           title: 圆形
       default: square
-      description: 形状
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 是否禁用
-    - name: readonly
-      title: 只读
-      type: boolean
-      default: false
-      description: 是否只读
+      description: 设置多选项的形状
+      group: 主要属性
     - name: label-position
       title: 文本位置
       type: string
@@ -163,7 +165,20 @@
         - value: lfet
           title: 左
       default: right
-      description: 是否禁用
+      description: 设置文本位置
+      group: 主要属性
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 正常显示，但禁止选择/输入
+      group: 状态属性
+    - name: readonly
+      title: 只读
+      type: boolean
+      default: false
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
   slots: false
   events:
     - name: click

@@ -4,9 +4,18 @@
   icon: linear-layout
   labels:
     - Layout
-  next: true
-  nested: true
   attrs:
+    - name: display
+      title: 展示方式
+      type: string
+      options:
+        - value: inline
+          title: 行内
+        - value: block
+          title: 块级
+      default: block
+      description: 行内展示，或块级换行展示
+      advanced: true
     - name: mode
       title: 布局模式
       type: string
@@ -33,6 +42,63 @@
         - alignment
         - wrap
         - layout
+      group: 主要属性
+    - name: gap
+      title: 内容间隙
+      type: string
+      options:
+        - value: shrink
+          title: 收缩
+          advanced: true
+        - value: none
+          title: 无
+        - value: small
+          title: 小
+        - value: normal
+          title: 正常
+        - value: large
+          title: 大
+      default: normal
+      description: 内容块间隙大小
+      dependency:
+        - "!justify":
+            - space-between
+            - space-around
+      group: 主要属性
+    - name: layout
+      title: 子元素展示方式
+      type: string
+      options:
+        - value: none
+          title: 子元素默认布局
+        - value: inline
+          title: 子元素行内布局
+        - value: block
+          title: 子元素块级布局
+      default: none
+      description: 设置子元素行内展示或块级换行展示
+      dependency:
+        - mode: inline
+        - mode: block
+      group: 主要属性
+    - name: loadingIcon
+      title: 加载中图标
+      type: icon
+      default: loading
+      description: 加载状态中显示的图标
+      group: 状态属性
+    - name: loadingIconRotate
+      title: 加载中图标旋转
+      type: boolean
+      default: true
+      description: 设置加载中图标是否旋转，默认开启。
+      group: 状态属性
+    - name: loadingText
+      title: 加载中文案
+      type: string
+      default: ""
+      description: 加载状态中显示的文案
+      group: 状态属性
     - name: direction
       title: 主轴方向
       type: string
@@ -51,6 +117,8 @@
       toggleclear:
         - justify
         - alignment
+      group: 样式属性
+      description: ""
     - name: justify
       title: 横轴对齐
       type: string
@@ -100,6 +168,8 @@
         - value: space-around
           updateData:
             gap: normal
+      group: 样式属性
+      description: ""
     - name: alignment
       title: 纵轴对齐
       type: string
@@ -130,8 +200,10 @@
       dependency:
         - mode: flex
           direction: horizontal
+      group: 样式属性
+      description: ""
     - name: alignment
-      title: 横轴对齐
+      title: 纵轴对齐
       type: string
       display: capsules
       bindHide: true
@@ -156,8 +228,10 @@
       dependency:
         - mode: flex
           direction: vertical
+      group: 样式属性
+      description: ""
     - name: justify
-      title: 纵轴对齐
+      title: 横轴对齐
       type: string
       display: capsules
       bindHide: true
@@ -193,75 +267,16 @@
         - value: space-around
           updateData:
             gap: normal
+      group: 样式属性
+      description: ""
     - name: wrap
-      title: 是否换行
+      title: 换行
       type: boolean
       default: true
       description: 弹性布局下子元素总宽度超出父级时子元素是否换行展示
       dependency:
         - mode: flex
-    - name: gap
-      title: 内容间隙
-      type: string
-      options:
-        - value: shrink
-          title: 收缩
-          advanced: true
-        - value: none
-          title: 无
-        - value: small
-          title: 小
-        - value: normal
-          title: 正常
-        - value: large
-          title: 大
-      default: normal
-      description: 内容块间隙大小
-      dependency:
-        - '!justify':
-          - space-between
-          - space-around
-    - name: display
-      title: 展示方式
-      type: string
-      options:
-        - value: inline
-          title: 行内
-        - value: block
-          title: 块级
-      default: block
-      description: 行内展示，或块级换行展示
-      advanced: true
-    - name: layout
-      title: 子元素展示方式
-      type: string
-      options:
-        - value: none
-          title: 子元素默认布局
-        - value: inline
-          title: 子元素行内布局
-        - value: block
-          title: 子元素块级布局
-      default: none
-      description: 子元素行内展示或块级换行展示
-      dependency:
-        - mode: inline
-        - mode: block
-    - name: loadingIcon
-      title: 加载中图标
-      type: icon
-      default: "loading"
-      description: 加载图标
-    - name: loadingIconRotate
-      title: 加载中图标旋转
-      type: boolean
-      default: true
-      description: 加载中图标旋转
-    - name: loadingText
-      title: 加载中文案
-      type: string
-      default: ""
-      description: 加载中文案
+      group: 样式属性
   slots:
     - concept: Slot
       name: default

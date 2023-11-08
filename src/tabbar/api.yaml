@@ -10,22 +10,26 @@
       type: number,string
       sync: true
       model: true
-      description: 值
+      description: ""
+      group: 数据属性
     - name: fixed
-      title: 是否固定在底部
+      title: 固定底部
       type: boolean
       default: false
-      description: 是否固定在底部
-    - name: border
-      title: 是否显示外边框
-      type: boolean
-      default: true
-      description: 是否显示外边框
+      description: ""
+      group: 主要属性
     - name: route
-      title: 是否开启路由模式
+      title: 开启路由模式
       type: boolean
       default: false
       description: 是否开启路由模式
+      group: 主要属性
+    - name: border
+      title: 显示外边框
+      type: boolean
+      default: true
+      description: ""
+      group: 样式属性
   slots:
     - concept: Slot
       name: default
@@ -34,7 +38,8 @@
       support:
         - name: van-tabbar-item
           title: 标签项
-          snippet: '<van-tabbar-item icon="默认" style="font-size:24px"><van-text text="标签"></van-text></van-tabbar-item>'
+          snippet: <van-tabbar-item icon="默认" style="font-size:24px"><van-text
+            text="标签"></van-text></van-tabbar-item>
   events:
     - name: change
       title: 切换后
@@ -45,26 +50,31 @@
     - name: name
       title: 标签项值
       type: number,string
-      description: 标签项值
-    - name: icon
-      title: 图标
-      type: icon
-      default: ''
-      description: 图标
+      description: 用于标识标签项的值
+      group: 数据属性
     - name: showbaget
-      title: 是否显示徽章
+      title: 显示徽章
       type: boolean
       default: false
       description: 是否显示徽章
+      group: 数据属性
     - name: badge
       title: 徽章值
       type: string, number
-      default: ''
-      description: 徽章值
+      default: ""
+      description: ""
+      group: 数据属性
     - name: badgemax
       title: 徽章最大值
       type: number
-      description: 徽章最大值
+      description: ""
+      group: 数据属性
+    - name: icon
+      title: 图标
+      type: icon
+      default: ""
+      description: 标签项的图标
+      group: 主要属性
     - name: linkType
       title: 链接类型
       type: string
@@ -74,13 +84,15 @@
         - value: download
           title: 下载链接
       default: destination
-      description: 链接类型
+      description: ""
       compType: linkTypeSelect
+      group: 交互属性
     - name: hrefAndTo
-      title: 链接
+      title: 链接地址
       type: string
-      description: 链接地址
+      description: ""
       compType: linkHrefInput
+      group: 交互属性
     - name: target
       title: 打开方式
       type: string
@@ -97,8 +109,8 @@
           advanced: true
       default: _self
       description: 父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。
+      group: 交互属性
   events:
     - name: click
       title: 点击标签项
       description: 点击选项导致 value 变化时触发
-

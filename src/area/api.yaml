@@ -5,51 +5,63 @@
     - Selector
   description: 省市区三级联动选择
   attrs:
-    - name: value
-      title: 值
-      type: string
-      sync: true
-      model: true
-      default: ''
-      description: 当前选中的省市区code
     - name: labelField
       title: 左侧标题
       type: string
       description: 左侧标题
       advanced: true
+    - name: isNew
+      title: 是否使用新版外观
+      type: boolean
+      default: false
+      description: 是否使用新版外观
+    - name: value
+      title: 值
+      type: string
+      sync: true
+      model: true
+      default: ""
+      description: ""
+      group: 数据属性
     - name: areaListprop
-      title: 数据源(默认全部)
+      title: 数据源
       type: array
       default: '{"province_list":{"110000":"北京市"},"city_list":{"110100":"北京市"},"county_list":{"110101":"东城区","110102":"西城区","110105":"朝阳区","110106":"丰台区","110107":"石景山区","110108":"海淀区","110109":"门头沟区","110111":"房山区","110112":"通州区","110113":"顺义区","110114":"昌平区","110115":"大兴区","110116":"怀柔区","110117":"平谷区","110118":"密云区","110119":"延庆区"}}'
-      description: 一个包含字符串或对象的数组
+      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。
+      group: 数据属性
     - name: title
       title: 顶部栏标题
       type: string
       default: 标题
-      description: 顶部栏标题
+      description: ""
+      group: 主要属性
     - name: confirm-button-text
       title: 确认按钮文字
       type: string
       default: 确认
-      description: 确认按钮文字
+      description: ""
+      group: 主要属性
     - name: cancel-button-text
       title: 取消按钮文字
       type: string
       default: 取消
-      description: 取消按钮文字
+      description: ""
+      group: 主要属性
     - name: visible-item-count
       title: 可见选项个数
       type: number
       default: 6
-      description: 可见选项个数
+      description: ""
+      group: 主要属性
     - name: columns-num
       title: 显示列数
       type: number
       default: 3
       description: 显示列数，3-省市区，2-省市，1-省
       advanced: true
+      group: 主要属性
     - name: input-align
-      title: 右侧内容对齐方式
+      title: 对齐方式
       type: string
       options:
         - value: left
@@ -59,7 +71,8 @@
         - value: right
           title: 右
       default: left
-      description: 右侧内容对齐方式
+      description: 设置右侧内容的对齐方式
+      group: 主要属性
     - name: converter
       title: 转换器
       type: string
@@ -71,24 +84,25 @@
         - value: json
           title: JSON
       description: 选择地区名称，返回：浙江省/杭州市/滨江区（不加空格）；选择地区码，返回：330108
+      group: 主要属性
     - name: close-on-click-overlay
       title: 点击遮罩层后关闭
       type: boolean
       default: false
-      description: 是否点击遮罩层后关闭
+      description: ""
+      group: 交互属性
     - name: readonly
       title: 只读
       type: boolean
       default: false
+      group: 状态属性
+      description: 正常显示，但禁止选择/输入
     - name: disabled
       title: 禁用
       type: boolean
       default: false
-    - name: isNew
-      title: 是否使用新版外观
-      type: boolean
-      default: false
-      description: 是否使用新版外观
+      group: 状态属性
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
   slots:
     - concept: Slot
       name: default
@@ -96,7 +110,8 @@
       support:
         - name: van-picker-action-slot
           title: 事件插槽
-          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
+          snippet: <van-picker-action-slot
+            target-method="confirm"></van-picker-action-slot>
     - concept: Slot
       name: option
       title: option
