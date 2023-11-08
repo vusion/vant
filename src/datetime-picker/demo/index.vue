@@ -99,16 +99,20 @@
       </demo-block>
 
       <demo-block card :title="t('datetimeType')">
+          <div>value: {{value.datetime}}</div>
           <van-datetime-picker :value.sync="value.datetime" type="datetime" :title="t('datetimeType')" />
       </demo-block>
       <demo-block card :title="t('datetimeType')">
+          <div>value: {{value.datetime}}</div>
           <van-datetime-picker :value.sync="value.datetime" type="datetime" unit="minute" :title="t('datetimeType')" />
       </demo-block>
 
       <demo-block card :title="t('timeType')">
+          <div>value: {{value.time}}</div>
           <van-datetime-picker :value.sync="value.time" type="time" :title="t('timeType')" />
       </demo-block>
       <demo-block card :title="t('timeType')">
+          <div>value: {{value.secondTime}}</div>
           <van-datetime-picker :value.sync="value.secondTime" type="time" unit="second" :title="t('timeType')" />
       </demo-block>
   </demo-section>
