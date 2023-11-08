@@ -10,12 +10,10 @@
       type: any
       sync: true
       model: true
-      description: 指当前打开标签的标签项
+      description: ""
       group: 数据属性
-      tooltipLink: ""
-      docDescription: 指当前打开标签的标签项
     - name: type
-      title: 样式类型
+      title: 样式风格
       type: string
       options:
         - value: line
@@ -23,18 +21,14 @@
         - value: card
           title: 胶囊
       default: line
-      description: 选项卡样式风格
+      description: 设置选项卡的样式风格
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: sticky
       title: 自动吸顶
       type: boolean
       default: false
       description: ""
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: scrollspystr
       title: 导航模式
       type: string
@@ -44,34 +38,26 @@
           title: 切换导航
         - value: scrollspy
           title: 滚动导航
-      description: ""
+      description: 设置选项卡的导航模式
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: swipeable
-      title: 可滑动切换
+      title: 滑动切换
       type: boolean
       default: false
       description: ""
       group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: animated
-      title: 启用切换动画
+      title: 开启转场动画
       type: boolean
       default: false
-      description: 是否开启切换选项的转场动画
+      description: ""
       group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disabled
       title: 禁用
       type: boolean
       default: false
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
   slots:
     - concept: Slot
       name: default
@@ -104,40 +90,30 @@
     - name: name
       title: 值
       type: string
-      description: 标签页的值
+      description: ""
       group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
     - name: badgebtn
-      title: 徽章
+      title: 显示徽章
       type: boolean
       default: false
       description: ""
       group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
     - name: badge
       title: 徽章值
       type: string, number
-      description: 徽章的内容
+      description: ""
       group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
     - name: badgemax
-      title: 最大值
+      title: 徽章最大值
       type: number
       description: 徽章内容为数字时显示的最大值
       group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disabled
       title: 禁用
       type: boolean
       default: false
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
-      tooltipLink: ""
-      docDescription: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
   slots:
     - concept: Slot
       name: default

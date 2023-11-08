@@ -19,21 +19,17 @@
       description: 是否显示指示器
       advanced: true
     - name: duration
-      title: 切换间隔时间
+      title: 动画时间
       type: number
       default: 4000
-      description: 单位：毫秒，幻灯片切换时间，如果设置值小于动画时长，会在动画完成后切换
+      description: 单位：毫秒，幻灯片切换时间，如果设置值小于动画时长，会在动画完成后切换。
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: touchable
       title: 手势滑动
       type: boolean
       default: true
-      description: 是否可以通过手势滑动
+      description: 是否支持手势滑动
       group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
   slots:
     - concept: Slot
       name: default

@@ -5,8 +5,12 @@
     - Display
   description: 用于标记关键词和概括主要内容。
   attrs:
+    - name: plain
+      title: 空心
+      type: boolean
+      default: false
     - name: type
-      title: 样式类型
+      title: 类型
       type: string
       options:
         - value: primary
@@ -19,33 +23,19 @@
           title: 警告
       default: primary
       group: 主要属性
-      description: 设置标签样式，主要标签有背景，次要标签没有背景
-      tooltipLink: ""
-      docDescription: 支持选择标签样式，包括主要标签和普通标签
-    - name: plain
-      title: 空心类型
-      type: boolean
-      default: false
-      group: 主要属性
-      description: 设置按钮的风格类型，分填充和空心
-      tooltipLink: ""
-      docDescription: ""
+      description: ""
     - name: mark
-      title: 标记样式
+      title: 显示为标记样式
       type: boolean
       default: false
       group: 主要属性
       description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: closeable
       title: 可关闭
       type: boolean
       default: false
       group: 交互属性
-      description: 设置标签是否可点击删除图标进行关闭
-      tooltipLink: ""
-      docDescription: ""
+      description: ""
     - name: size
       title: 尺寸
       type: string
@@ -58,17 +48,13 @@
           title: 小型
       default: medium
       group: 样式属性
-      description: 设置标签大小
-      tooltipLink: ""
-      docDescription: 标签尺寸，支持小、正常、大、巨大
+      description: ""
     - name: round
-      title: 圆角
+      title: 显示为圆角
       type: boolean
       default: false
       group: 样式属性
       description: ""
-      tooltipLink: ""
-      docDescription: ""
   slots: false
   events:
     - name: click

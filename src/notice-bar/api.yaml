@@ -21,26 +21,20 @@
         - value: normal
           title: 普通
       default: normal
-      description: ""
+      description: 设置通知栏模式
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: scrollable
-      title: 滚动播放
+      title: 开启滚动播放
       type: boolean
       default: true
-      description: 是否开启滚动播放
+      description: ""
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: wrapable
-      title: 文本换行
+      title: 开启文本换行
       type: boolean
       default: false
-      description: 是否开启文本换行（当关闭滚动播放时，该属性才生效）
+      description: 关闭滚动播放时该属性即可生效
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: linkType
       title: 链接类型
       type: string
@@ -53,18 +47,14 @@
       description: ""
       compType: linkTypeSelect
       group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: hrefAndTo
       title: 链接地址
       type: string
       description: ""
       compType: linkHrefInput
       group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: target
-      title: 链接打开方式
+      title: 打开方式
       type: string
       options:
         - value: _blank
@@ -78,10 +68,8 @@
           title: 顶级窗口
           advanced: true
       default: _self
-      description: 链接跳转的打开方式，父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则其打开方式同当前窗口。
+      description: 父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。
       group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
   slots:
     - concept: Slot
       name: default

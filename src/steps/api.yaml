@@ -23,10 +23,8 @@
       sync: true
       model: true
       default: 0
-      description: 设置当前处于选中状态的步骤
+      description: 指定当前步骤，从0开始记数。
       group: 数据属性
-      tooltipLink: ""
-      docDescription: 当前步骤数
     - name: direction
       title: 步骤条方向
       type: string
@@ -37,25 +35,19 @@
           title: 垂直
       default: horizontal
       group: 主要属性
-      description: ""
-      tooltipLink: ""
-      docDescription: 步骤条的方向，支持水平或垂直
+      description: 设置步骤条方向
     - name: readonly
       title: 只读
       type: boolean
       default: false
       description: 正常显示，但禁止选择/输入
       group: 状态属性
-      tooltipLink: ""
-      docDescription: 是否只读，非只读的情况下可以选择
     - name: disabled
       title: 禁用
       type: boolean
       default: false
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
   slots:
     - concept: Slot
       name: default
@@ -100,26 +92,24 @@
         - value: error
           title: 错误
       description: 设置步骤条的状态，分别为等待中、进行中、已完成、错误
+      group: 数据属性
+    - name: icon
+      title: 图标
+      type: icon
+      description: 自定义步骤的图标
+      group: 主要属性
     - name: readonly
       title: 只读
       type: boolean
       default: false
-      description: 正常显示，但禁止选择、输入
-    - name: icon
-      title: 图标
-      type: icon
-      description: ""
-      group: 主要属性
-      tooltipLink: ""
-      docDescription: 在该步骤展示的图标
+      description: 正常显示，但禁止选择/输入
+      group: 状态属性
     - name: disabled
       title: 禁用
       type: boolean
       default: false
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
-      tooltipLink: ""
-      docDescription: 禁用该项
   events:
     - name: clicktitle
       title: 点击标题

@@ -9,12 +9,10 @@
       title: 图标
       type: icon
       default: ""
-      description: ""
+      description: 图标
       group: 主要属性
-      tooltipLink: ""
-      docDescription: 支持从图标库选择图标或上传自定义图标。
     - name: icotype
-      title: 图标布局
+      title: 图标类型
       type: string
       options:
         - value: only
@@ -24,10 +22,8 @@
         - value: left
           title: 组合图标-左右
       default: top
-      description: 图标和文本的布局方式
+      description: 设置图标类型
       group: 主要属性
-      tooltipLink: ""
-      docDescription: 支持选择图标的展示方式，包括仅图标、组合图标-上下、组合图标-左右三种方式。
     - name: linkType
       title: 链接类型
       type: string
@@ -40,18 +36,14 @@
       description: ""
       compType: linkTypeSelect
       group: 交互属性
-      tooltipLink: ""
-      docDescription: 支持页面跳转、普通链接、下载链接。
     - name: hrefAndTo
       title: 链接地址
       type: string
       description: ""
       compType: linkHrefInput
       group: 交互属性
-      tooltipLink: ""
-      docDescription: 链接的详细地址。
     - name: target
-      title: 链接打开方式
+      title: 打开方式
       type: string
       options:
         - value: _blank
@@ -65,10 +57,8 @@
           title: 顶级窗口
           advanced: true
       default: _self
-      description: 链接跳转的打开方式，父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则其打开方式同当前窗口。
+      description: 父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。
       group: 交互属性
-      tooltipLink: ""
-      docDescription: 可选新窗口、父级窗口、当前窗口和顶级窗口，其中父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。
   slots:
     - concept: Slot
       name: default

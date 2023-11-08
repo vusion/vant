@@ -5,52 +5,6 @@
   labels:
     - Layout
   attrs:
-    - name: type
-      title: 布局模式
-      type: string
-      display: capsules
-      bindHide: true
-      options:
-        - value: "-"
-          title: 正常
-          icon: layout-block
-          tooltip: 块级布局
-        - value: flex
-          title: 弹性布局
-          icon: layout-flex
-          tooltip: 弹性布局
-      default: flex
-      description: 设置布局模式
-      tooltipLink: http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/030.%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80.html
-    - name: justify
-      title: 横轴对齐
-      type: string
-      display: capsules
-      bindHide: true
-      options:
-        - value: start
-          title: 左对齐
-          icon: horizontal-justify-start
-          tooltip: 左对齐
-        - value: center
-          title: 居中对齐
-          icon: horizontal-justify-center
-          tooltip: 居中对齐
-        - value: end
-          title: 右对齐
-          icon: horizontal-justify-end
-          tooltip: 右对齐
-        - value: space-between
-          title: 平均分布(两端不留空)
-          icon: horizontal-justify-space-between
-          tooltip: 平均分布(两端不留空)
-        - value: space-around
-          title: 水平分布-左右留空
-          icon: horizontal-justify-space-around
-          tooltip: 平均分布
-      default: start
-      dependency:
-        - type: flex
     - name: alignment
       title: 纵轴对齐
       type: string
@@ -80,6 +34,55 @@
       default: stretch
       dependency:
         - type: flex
+    - name: type
+      title: 布局模式
+      type: string
+      display: capsules
+      bindHide: true
+      options:
+        - value: "-"
+          title: 正常
+          icon: layout-block
+          tooltip: 块级布局
+        - value: flex
+          title: 弹性布局
+          icon: layout-flex
+          tooltip: 弹性布局
+      default: flex
+      description: 设置布局模式
+      tooltipLink: http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/030.%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80.html
+      group: 样式属性
+    - name: justify
+      title: 横轴对齐
+      type: string
+      display: capsules
+      bindHide: true
+      options:
+        - value: start
+          title: 左对齐
+          icon: horizontal-justify-start
+          tooltip: 左对齐
+        - value: center
+          title: 居中对齐
+          icon: horizontal-justify-center
+          tooltip: 居中对齐
+        - value: end
+          title: 右对齐
+          icon: horizontal-justify-end
+          tooltip: 右对齐
+        - value: space-between
+          title: 平均分布(两端不留空)
+          icon: horizontal-justify-space-between
+          tooltip: 平均分布(两端不留空)
+        - value: space-around
+          title: 水平分布-左右留空
+          icon: horizontal-justify-space-around
+          tooltip: 平均分布
+      default: start
+      dependency:
+        - type: flex
+      group: 样式属性
+      description: ""
     - name: gutter
       title: 列间距
       type: string
@@ -93,7 +96,8 @@
         - value: "30"
           title: 大（30）
       default: "0"
-      description: 列元素之间的间距（单位为 px）
+      description: 列元素之间的间距，单位为 px。
+      group: 样式属性
   slots:
     - concept: Slot
       name: default
@@ -107,28 +111,6 @@
   title: 栅格列
   description: 内部元素行内列布局
   attrs:
-    - name: mode
-      title: 布局模式
-      type: string
-      display: capsules
-      bindHide: true
-      description: 设置布局模式
-      tooltipLink: http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/030.%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80.html
-      options:
-        - value: inline
-          title: 块级
-          icon: layout-inline-block
-          tooltip: 内联布局
-        - value: flex
-          title: 弹性
-          icon: layout-flex
-          tooltip: 弹性布局
-      default: inline
-      toggleclear:
-        - justify
-        - alignment
-        - wrap
-        - gap
     - name: direction
       title: 主轴方向
       type: string
@@ -324,6 +306,29 @@
       display: number
       description: 栅格列向右偏移列数
       precision: 1
+    - name: mode
+      title: 布局模式
+      type: string
+      display: capsules
+      bindHide: true
+      description: 设置布局模式
+      tooltipLink: http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/030.%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80.html
+      options:
+        - value: inline
+          title: 块级
+          icon: layout-inline-block
+          tooltip: 内联布局
+        - value: flex
+          title: 弹性
+          icon: layout-flex
+          tooltip: 弹性布局
+      default: inline
+      toggleclear:
+        - justify
+        - alignment
+        - wrap
+        - gap
+      group: 主要属性
   slots:
     - concept: Slot
       name: default

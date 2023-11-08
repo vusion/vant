@@ -17,24 +17,20 @@
       default: true
       advanced: true
       description: 是否展示取消按钮
-    - name: close-on-click-overlay
-      title: 点击遮罩关闭
-      type: boolean
-      default: false
-      description: 是否点击遮罩层后关闭
-      group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: value
-      title: 弹出状态
+      title: 展示弹框
       type: boolean
       sync: true
       model: true
       default: false
-      description: 弹出状态分为“True(弹出)/False(关闭)”，默认为“弹出”
-      group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
+      description: ""
+      group: 主要属性
+    - name: close-on-click-overlay
+      title: 点击遮罩层后关闭
+      type: boolean
+      default: false
+      description: ""
+      group: 交互属性
   slots:
     - concept: Slot
       name: default

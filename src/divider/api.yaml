@@ -5,6 +5,18 @@
     - Display
   description: 用于将内容分隔为多个区域
   attrs:
+    - name: content-position
+      title: 内容位置
+      type: string
+      options:
+        - value: center
+          title: 居中
+        - value: left
+          title: 左
+        - value: right
+          title: 右
+      default: center
+      description: 内容位置
     - name: title
       title: 文本
       type: string
@@ -19,25 +31,8 @@
         - value: a
           title: 实线
       default: a
-      description: ""
+      description: 线条类型
       group: 主要属性
-      tooltipLink: ""
-      docDescription: 实线、虚线
-    - name: content-position
-      title: 内容位置
-      type: string
-      options:
-        - value: center
-          title: 居中
-        - value: left
-          title: 左
-        - value: right
-          title: 右
-      default: center
-      description: ""
-      group: 主要属性
-      tooltipLink: ""
-      docDescription: 居中、左、右
   slots:
     - concept: Slot
       name: default

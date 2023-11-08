@@ -68,20 +68,16 @@
       description: 提示框显示时长
       advanced: true
     - name: value
-      title: 复制的值
+      title: 需要复制的值
       type: string
       description: 需要复制的值
       group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disabled
       title: 禁用
       type: boolean
       default: false
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
   slots:
     - concept: Slot
       name: default
@@ -107,4 +103,4 @@
           description: 事件发送对象
   i18n:
     zh-CN:
-      vanCopy_fail: '无复制对象'
+      vanCopy_fail: 无复制对象

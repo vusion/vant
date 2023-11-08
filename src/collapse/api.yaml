@@ -10,18 +10,14 @@
       type: number,string
       sync: true
       model: true
-      description: 值
+      description: 用于标识折叠面板的值
+      group: 数据属性
     - name: accordion
       title: 手风琴模式
       type: boolean
       default: false
-      description: 设置是否每次只展开一个
+      description: 是否开启手风琴模式
       group: 交互属性
-      tooltipLink: ""
-      docDescription: |-
-        控制手风琴模式的开关，默认关闭。
-        - 开启：展开一个面板项时，其他面板项全部折叠。
-        - 关闭：可同时展开多个面板项。
   slots:
     - concept: Slot
       name: default
@@ -47,26 +43,20 @@
     - name: name
       title: 值
       type: number,string
-      description: 用于标识的值
+      description: 用于标识面板项的值
       group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
     - name: is-link
       title: 显示箭头图标
       type: boolean
       default: true
       description: ""
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disabled
       title: 禁用
       type: boolean
       default: false
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
   events:
     - name: open
       title: 展开

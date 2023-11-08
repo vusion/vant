@@ -43,12 +43,17 @@
     - name: title
       title: 标题
       type: string
-      description: 弹出框标题
+      description: ""
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
+    - name: opened
+      title: 弹出状态
+      type: boolean
+      sync: true
+      default: false
+      description: 弹出状态分为“True(弹出)/False(关闭)”，默认为“弹出”
+      group: 主要属性
     - name: placement
-      title: 弹出方向
+      title: 弹出位置
       type: string
       options:
         - value: top
@@ -60,18 +65,14 @@
         - value: right
           title: 右
       default: bottom
-      description: 弹出框的弹出方向。
+      description: 设置弹出位置
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: hide-delay
       title: 消失延迟时间
       type: number
       default: 200
-      description: 当触发方式为'悬浮'时，提示内容消失延迟时间，单位是`'ms'`
+      description: 当触发方式为“悬浮”时，提示内容消失延迟时间，单位为ms。
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: display
       title: 展示方式
       type: string
@@ -81,36 +82,21 @@
         - value: block
           title: 块级展示，宽度会充满父元素
       default: inline
-      description: ""
+      description: 设置展示方式
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: ellipsis
-      title: 文本过长省略
+      title: 省略显示
       type: boolean
       default: false
-      description: 文字过长是否省略显示。
+      description: 文字过长时是否省略显示
       advanced: true
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
-    - name: opened
-      title: 弹出状态
-      type: boolean
-      sync: true
-      default: false
-      description: 弹出状态分为“True(弹出)/False(关闭)”，默认为“弹出”
-      group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disabled
       title: 禁用
       type: boolean
       default: false
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
   slots:
     - concept: Slot
       name: default

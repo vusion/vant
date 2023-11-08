@@ -8,28 +8,22 @@
     - name: data-source
       title: 数据源
       type: Array<Item> | Function
-      description: 展示数据的输入源，可设置为集合类型变量（List<T>）或输出参数为集合类型的逻辑。
+      description: 集合类型变量或者输出参数为集合类型的逻辑
       designer-value: "[{}, {}, {}]"
       group: 数据属性
-      tooltipLink: ""
-      docDescription: 支持动态绑定集合类型变量（List\<T>）或输出参数为集合类型的逻辑
     - name: data-schema
       title: 数据类型
       type: schema
-      description: 数据源返回的数据结构的类型，自动识别类型进行展示说明
+      description: 数据源返回的数据结构的类型，自动识别类型进行展示说明。
       compType: dataTypeSelect
       group: 数据属性
-      tooltipLink: ""
-      docDescription: 该属性为只读状态，当数据源动态绑定集合List\<T>后，会自动识别T的类型并进行展示
     - name: value
-      title: 选中值
+      title: 值
       type: any
       sync: true
       model: true
-      description: 当前选中的值
+      description: ""
       group: 数据属性
-      tooltipLink: ""
-      docDescription: 当前选择的值
     - name: icon
       title: 单选项图标
       clearable: true
@@ -49,10 +43,8 @@
         - value: vertical
           title: 垂直
       default: horizontal
-      description: 设置单选组之间的排列方向为水平/竖直
+      description: 设置单选组的排列方向
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: column
       title: 每行排列数
       type: number
@@ -64,18 +56,14 @@
       title: 禁用
       type: boolean
       default: false
-      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      description: 正常显示，但禁止选择/输入
       group: 状态属性
-      tooltipLink: ""
-      docDescription: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
     - name: readonly
       title: 只读
       type: boolean
       default: false
-      description: 正常显示，但禁止选择/输入
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
-      tooltipLink: ""
-      docDescription: 正常显示，但禁止选择或输入
   slots:
     - concept: Slot
       name: default
@@ -120,8 +108,6 @@
       type: string
       description: 用于标识选项的值
       group: 数据属性
-      tooltipLink: ""
-      docDescription: ""
     - name: icon
       title: 单选项图标
       clearable: true
@@ -141,18 +127,14 @@
         - value: left
           title: 左
       default: right
-      description: ""
+      description: 设置文本位置
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disabled
       title: 禁用
       type: boolean
       default: false
-      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      description: 正常显示，但禁止选择/输入
       group: 状态属性
-      tooltipLink: ""
-      docDescription: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
   slots: false
   events:
     - name: click

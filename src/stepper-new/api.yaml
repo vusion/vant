@@ -9,87 +9,65 @@
       type: number
       sync: true
       model: true
-      description: 输入的值
+      description: 值
       group: 数据属性
-      tooltipLink: ""
-      docDescription: 输入框的值。
     - name: min
       title: 最小值
       type: string, number
-      description: 最小可输入的值
+      description: ""
       group: 数据属性
-      tooltipLink: ""
-      docDescription: 限制输入数值的最小值。
     - name: max
       title: 最大值
       type: string, number
-      description: 最大可输入的值
+      description: ""
       group: 数据属性
-      tooltipLink: ""
-      docDescription: 限制输入数值的最大值。
     - name: decimalLength
       title: 精度
       type: string, number
       description: 固定显示的小数位数
-      group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
+      group: 数据属性
     - name: placeholder
       title: 占位符
       type: string
       default: 请输入
-      description: 为空时显示的占位符文本
-      group: 主要属性
-      tooltipLink: ""
-      docDescription: 为空时的提示文本。
+      description: ""
+      group: 数据属性
     - name: showPlus
       title: 显示增加按钮
       type: boolean
       default: true
-      description: 是否显示增加按钮
+      description: ""
       group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: showMinus
       title: 显示减少按钮
       type: boolean
       default: true
-      description: 是否显示减少按钮
+      description: ""
       group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disablePlus
       title: 禁用增加按钮
       type: boolean
       default: false
-      description: 是否禁用增加按钮
+      description: ""
       group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disableMinus
       title: 禁用减少按钮
       type: boolean
       default: false
-      description: 是否禁用减少按钮
+      description: ""
       group: 交互属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disableInput
       title: 只读
       type: boolean
       default: false
-      description: 正常显示，但禁止选择/输入
+      description: 正常显示，但禁止选择/输入。
       group: 状态属性
-      tooltipLink: ""
-      docDescription: ""
     - name: disabled
       title: 禁用
       type: boolean
       default: false
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
-      tooltipLink: ""
-      docDescription: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
     - name: theme
       title: 样式风格
       type: string
@@ -101,16 +79,12 @@
       default: fang
       description: ""
       group: 样式属性
-      tooltipLink: ""
-      docDescription: ""
     - name: step
-      title: 间隔
+      title: 步长
       type: string, number
       default: 1
-      description: 间隔，表示点击按钮或按上下键所增加或减少的量
+      description: 每次点击时改变的值
       group: 样式属性
-      tooltipLink: ""
-      docDescription: 限制点击按钮或按上下键所增加或减少的量。
     - name: align
       title: 对齐方式
       type: string
@@ -122,10 +96,8 @@
         - value: right
           title: 右对齐
       default: center
-      description: ""
+      description: 设置对齐方式
       group: 样式属性
-      tooltipLink: ""
-      docDescription: ""
   slots: false
   events:
     - name: click

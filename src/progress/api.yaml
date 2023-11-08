@@ -10,74 +10,57 @@
       type: number | string
       sync: true
       model: true
-      description: 0
+      description: ""
+      group: 主要属性
     - name: pivot-text
-      title: 进度文字内容
+      title: 文字内容
       type: string
       group: 主要属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
+      description: 进度条中的文字内容
     - name: show-pivot
-      title: 显示进度文字
+      title: 显示文字
       type: boolean
       default: true
-      description: ""
+      description: 是否显示进度条中的文字
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: custom
       title: 自定义
       type: boolean
       default: false
       description: ""
       group: 主要属性
-      tooltipLink: ""
-      docDescription: ""
     - name: inactive
       title: 禁用
       type: boolean
       default: false
       group: 状态属性
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
-      tooltipLink: ""
-      docDescription: ""
     - name: stroke-width
-      title: 进度条粗细(px)
+      title: 进度条粗细
       type: number
       default: 4
       group: 样式属性
-      description: ""
-      tooltipLink: ""
-      docDescription: ""
+      description: 设置进度条粗细，单位为px。
     - name: color
       title: 进度条颜色
       type: string
       group: 样式属性
       description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: track-color
       title: 轨道颜色
       type: string
       group: 样式属性
       description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: text-color
-      title: 进度文字颜色
+      title: 文字颜色
       type: string
       group: 样式属性
       description: ""
-      tooltipLink: ""
-      docDescription: ""
     - name: pivot-color
-      title: 进度文字背景色
+      title: 文字背景色
       type: string
       group: 样式属性
       description: ""
-      tooltipLink: ""
-      docDescription: ""
   slots:
     - concept: Slot
       name: default
