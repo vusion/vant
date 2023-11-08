@@ -4,22 +4,23 @@
   description: 滑动条
   labels:
     - Container
-  next: true
-  nested: false
   attrs:
     - name: left-width
       title: 左侧滑动区域宽度
       type: number
-      description: 左侧滑动区域宽度
+      description: ""
+      group: 主要属性
     - name: right-width
       title: 右侧滑动区域宽度
       type: number
-      description: 右侧滑动区域宽度
+      description: ""
+      group: 主要属性
     - name: disabled
       title: 禁止滑动
       type: boolean
       default: false
-      description: 禁止滑动
+      description: ""
+      group: 主要属性
   slots:
     - concept: Slot
       name: default
