@@ -144,14 +144,14 @@ export default createComponent({
       const hour = hourColumn.values[hourIndex] || hourColumn.values[0];
       const minute = minuteColumn.values[minuteIndex] || minuteColumn.values[0];
 
-      let innerValue = this.formatValue(`${hour}:${minute}`);
+      let innerValue = `${hour}:${minute}`;
 
       if (this.unit === 'second') {
         const second = secondColumn.values[secondIndex] || secondColumn.values[0];
         innerValue += `:${second}`
       }
 
-      this.innerValue = innerValue;
+      this.innerValue = this.formatValue(innerValue);
       this.updateColumnValue();
     },
 
