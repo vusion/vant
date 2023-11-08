@@ -4,21 +4,31 @@
   icon: search
   labels:
     - Form
-  next: true
-  nested: true
   attrs:
+    - name: actiontext
+      title: 按钮文字
+      type: string
+      description: 按钮文字
+      advanced: true
     - name: value
       title: 值
       type: any
       sync: true
       model: true
-      description: 值
+      description: ""
+      group: 数据属性
+    - name: maxlength
+      title: 最大字符数
+      type: string | number
+      description: 输入框内输入的最大字符数
+      group: 数据属性
     - name: placeholder
-      title: 占位提示文字
+      title: 占位符
       type: string
-      description: 占位提示文字
+      description: 为空时的占位文本
+      group: 主要属性
     - name: shape
-      title: 搜索框形状
+      title: 形状
       type: string
       options:
         - value: square
@@ -26,15 +36,13 @@
         - value: round
           title: 圆形
       default: square
-      description: 搜索框形状
-    - name: maxlength
-      title: 输入的最大字符数
-      type: string | number
-      description: 输入的最大字符数
+      description: 设置搜索框形状
+      group: 主要属性
     - name: clearable
-      title: 是否启用清除图标
+      title: 支持清除
       type: boolean
       description: 是否启用清除图标，点击清除图标后会清空输入框
+      group: 主要属性
     - name: cleartrigger
       title: 显示清除图标
       type: string
@@ -43,22 +51,10 @@
           title: 一直显示
         - value: focus
           title: 输入框获取焦点且不为空时展示
-      description: 显示清除图标
-    - name: actiontext
-      title: 按钮文字
-      type: string
-      description: 按钮文字
-      advanced: true
-    - name: readonly
-      title: 只读
-      type: boolean
-      description: 只读
-    - name: disabled
-      title: 禁用
-      type: boolean
-      description: 禁用
+      description: ""
+      group: 主要属性
     - name: input-align
-      title: 内容对齐方式
+      title: 对齐方式
       type: string
       options:
         - value: left
@@ -67,7 +63,8 @@
           title: 居中对齐
         - value: right
           title: 右对齐
-      description: 搜索框形状
+      description: 设置对齐方式
+      group: 主要属性
     - name: iconalign
       title: 搜索图标位置
       type: string
@@ -76,7 +73,18 @@
           title: 左
         - value: right
           title: 右
-      description: 搜索图标位置
+      description: 设置搜索图标位置
+      group: 主要属性
+    - name: readonly
+      title: 只读
+      type: boolean
+      description: 正常显示，但禁止选择/输入
+      group: 状态属性
+    - name: disabled
+      title: 禁用
+      type: boolean
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
   slots:
     - concept: Slot
       name: default

@@ -8,8 +8,9 @@
     - name: name
       title: 图标
       type: icon
-      default: ''
+      default: ""
       description: 图标
+      group: 主要属性
     - name: icotype
       title: 图标类型
       type: string
@@ -21,7 +22,8 @@
         - value: left
           title: 组合图标-左右
       default: top
-      description: 图标类型
+      description: 设置图标类型
+      group: 主要属性
     - name: linkType
       title: 链接类型
       type: string
@@ -31,13 +33,15 @@
         - value: download
           title: 下载链接
       default: destination
-      description: 链接类型
+      description: ""
       compType: linkTypeSelect
+      group: 交互属性
     - name: hrefAndTo
-      title: 链接
+      title: 链接地址
       type: string
-      description: 链接地址
+      description: ""
       compType: linkHrefInput
+      group: 交互属性
     - name: target
       title: 打开方式
       type: string
@@ -54,6 +58,7 @@
           advanced: true
       default: _self
       description: 父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。
+      group: 交互属性
   slots:
     - concept: Slot
       name: default

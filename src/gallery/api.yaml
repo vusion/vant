@@ -5,10 +5,11 @@
     - Display
   description: 画廊
   attrs:
-  - name: data-source
-    title: 数据源
-    type: Array<Item> | Function | object
-    value: 'https://static-vusion.163yun.com/h5-template/cat.jpeg'
-    description: 数据源
+    - name: data-source
+      title: 数据源
+      type: Array<Item> | Function | object
+      value: https://static-vusion.163yun.com/h5-template/cat.jpeg
+      description: 数据源
+      group: 数据属性
   slots: false
-  events:
+  events: null

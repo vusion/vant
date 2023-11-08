@@ -4,8 +4,6 @@
   description: 单元格为列表中的单个展示项
   labels:
     - Display
-  next: true
-  nested: false
   attrs:
     - name: inset
       title: 卡片风格
@@ -16,7 +14,8 @@
         - value: true
           title: 是
       default: false
-      description: 是否是卡片风格
+      description: 是否显示为卡片风格
+      group: 主要属性
   slots:
     - concept: Slot
       name: default
@@ -25,15 +24,39 @@
       support:
         - name: van-cell
           title: 单元格
-          snippet: '<van-cell isLink center><template #title>左侧文本</template><template>右侧文本</template></van-cell>'
+          snippet: "<van-cell isLink center><template
+            #title>左侧文本</template><template>右侧文本</template></van-cell>"
 - name: van-cell
   title: 单元格
   attrs:
+    - name: title
+      title: 左侧文本
+      type: string
+      advanced: true
+      description: 左侧文本
+    - name: rtitle
+      title: 右侧文本
+      type: string
+      advanced: true
+      description: 右侧文本
+    - name: label
+      title: 标题下方的描述信息
+      type: string
+      default: 这是单元格
+      advanced: true
+      description: 标题下方的描述信息
+    - name: value
+      title: 值
+      type: string, number
+      default2: 内容
+      description: 用于标识单元格的值
+      group: 数据属性
     - name: isLink
       title: 箭头
       type: boolean
       default: true
-      description: 是否展示箭头
+      description: 是否显示箭头图标
+      group: 主要属性
     - name: arrow-direction
       title: 箭头方向
       type: string
@@ -47,38 +70,20 @@
         - value: right
           title: 右
       default: right
-      description: 箭头得方向
+      description: ""
+      group: 主要属性
     - name: center
-      title: 垂直居中
+      title: 是否垂直居中
       type: boolean
       default: true
-      description: 是否垂直居中
-    - name: title
-      title: 左侧文本
-      type: string
-      advanced: true
-      description: 左侧文本
-    - name: value
-      title: 值
-      type: string, number
-      default2: 内容
-      description: 值
-    - name: rtitle
-      title: 右侧文本
-      type: string
-      advanced: true
-      description: 右侧文本
-    - name: label
-      title: 标题下方的描述信息
-      type: string
-      default: 这是单元格
-      advanced: true
-      description: 标题下方的描述信息
+      description: ""
+      group: 主要属性
     - name: icon
       title: 图标
       type: icon
-      default: ''
-      description: 图标
+      default: ""
+      description: ""
+      group: 主要属性
     - name: linkType
       title: 链接类型
       type: string
@@ -88,13 +93,15 @@
         - value: download
           title: 下载链接
       default: destination
-      description: 链接类型
+      description: ""
       compType: linkTypeSelect
+      group: 交互属性
     - name: hrefAndTo
-      title: 链接
+      title: 链接地址
       type: string
-      description: 链接地址
+      description: ""
       compType: linkHrefInput
+      group: 交互属性
     - name: target
       title: 打开方式
       type: string
@@ -111,6 +118,7 @@
           advanced: true
       default: _self
       description: 父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。
+      group: 交互属性
   slots:
     - concept: Slot
       name: default

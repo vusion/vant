@@ -9,13 +9,6 @@
       type: string
       description: 左侧标题
       advanced: true
-    - name: value
-      title: 值
-      type: string, Date, Array
-      sync: true
-      model: true
-      default: null
-      description: 值
     - name: type
       title: 类型
       type: string
@@ -29,29 +22,37 @@
       default: single
       advanced: true
       description: 选择类型
+    - name: isNew
+      title: 是否使用新版外观
+      type: boolean
+      default: false
+      description: 是否使用新版外观
+    - name: value
+      title: 值
+      type: string, Date, Array
+      sync: true
+      model: true
+      default: null
+      description: ""
+      group: 数据属性
     - name: minDate
       title: 最小日期
       type: Date,String
       description: 最小日期,默认为一年前
+      group: 数据属性
     - name: maxDate
       title: 最大日期
       type: Date,String
       description: 最大日期,默认为一年后
+      group: 数据属性
     - name: title
       title: 日历标题
       type: string
       default: 选择日期
-    - name: readonly
-      title: 只读
-      type: boolean
-      default: false
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 是否禁用
+      group: 主要属性
+      description: ""
     - name: input-align
-      title: 右侧内容对齐方式
+      title: 对齐方式
       type: string
       options:
         - value: left
@@ -61,17 +62,26 @@
         - value: right
           title: 右
       default: left
-      description: 右侧内容对齐方式
+      description: 设置右侧内容的对齐方式
+      group: 主要属性
     - name: close-on-click-overlay
       title: 点击遮罩层后关闭
       type: boolean
       default: false
-      description: 是否点击遮罩层后关闭
-    - name: isNew
-      title: 是否使用新版外观
+      description: ""
+      group: 交互属性
+    - name: readonly
+      title: 只读
       type: boolean
       default: false
-      description: 是否使用新版外观
+      group: 状态属性
+      description: 正常显示，但禁止选择/输入
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
   slots:
     - concept: Slot
       name: default
@@ -79,7 +89,8 @@
       support:
         - name: van-picker-action-slot
           title: 事件插槽
-          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
+          snippet: <van-picker-action-slot
+            target-method="confirm"></van-picker-action-slot>
   events:
     - name: confirm
       title: 确认
@@ -101,10 +112,10 @@
   description: 日历组件用于选择日期或日期区间
   i18n:
     zh-CN:
-      vanCalendar_title: '日期选择'
-      vanCalendar_confirm: '确定'
-      vanCalendar_weekdays: '日,一,二,三,四,五,六'
-      vanCalendar_monthTitle: '{year}年{month}月'
-      vanCalendar_end: '结束'
-      vanCalendar_start: '开始'
-      vanCalendar_startEnd: '开始/结束'
+      vanCalendar_title: 日期选择
+      vanCalendar_confirm: 确定
+      vanCalendar_weekdays: 日,一,二,三,四,五,六
+      vanCalendar_monthTitle: "{year}年{month}月"
+      vanCalendar_end: 结束
+      vanCalendar_start: 开始
+      vanCalendar_startEnd: 开始/结束

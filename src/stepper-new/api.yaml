@@ -3,8 +3,6 @@
   labels:
     - Form
   icon: numberh5
-  next: true
-  nested: false
   attrs:
     - name: value
       title: 值
@@ -12,43 +10,64 @@
       sync: true
       model: true
       description: 值
+      group: 数据属性
     - name: min
       title: 最小值
       type: string, number
-      description: 最小值
+      description: ""
+      group: 数据属性
     - name: max
       title: 最大值
       type: string, number
-      description: 最大值
+      description: ""
+      group: 数据属性
     - name: decimalLength
       title: 精度
       type: string, number
       description: 固定显示的小数位数
+      group: 数据属性
     - name: placeholder
       title: 占位符
       type: string
       default: 请输入
-      description: 为空时的占位文本
+      description: ""
+      group: 数据属性
     - name: showPlus
-      title: 是否显示增加按钮
+      title: 显示增加按钮
       type: boolean
       default: true
-      description: 是否显示增加按钮
+      description: ""
+      group: 交互属性
     - name: showMinus
-      title: 是否显示减少按钮
+      title: 显示减少按钮
       type: boolean
       default: true
-      description: 是否显示减少按钮
+      description: ""
+      group: 交互属性
     - name: disablePlus
-      title: 是否禁用增加按钮
+      title: 禁用增加按钮
       type: boolean
       default: false
-      description: 是否禁用增加按钮
+      description: ""
+      group: 交互属性
     - name: disableMinus
-      title: 是否禁用减少按钮
+      title: 禁用减少按钮
       type: boolean
       default: false
-      description: 是否禁用减少按钮
+      description: ""
+      group: 交互属性
+    - name: disableInput
+      title: 只读
+      type: boolean
+      default: false
+      description: 正常显示，但禁止选择/输入。
+      group: 状态属性
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
     - name: theme
       title: 样式风格
       type: string
@@ -58,22 +77,14 @@
         - value: round
           title: 圆角
       default: fang
-      description: 样式风格
+      description: ""
+      group: 样式属性
     - name: step
       title: 步长
       type: string, number
       default: 1
       description: 每次点击时改变的值
-    - name: disableInput
-      title: 只读
-      type: boolean
-      default: false
-      description: 是否只读
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 是否禁用
+      group: 样式属性
     - name: align
       title: 对齐方式
       type: string
@@ -85,7 +96,8 @@
         - value: right
           title: 右对齐
       default: center
-      description: 样式风格
+      description: 设置对齐方式
+      group: 样式属性
   slots: false
   events:
     - name: click

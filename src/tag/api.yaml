@@ -4,11 +4,13 @@
   labels:
     - Display
   description: 用于标记关键词和概括主要内容。
-  next: true
-  nested: false
   attrs:
+    - name: plain
+      title: 空心
+      type: boolean
+      default: false
     - name: type
-      title: 主题颜色
+      title: 类型
       type: string
       options:
         - value: primary
@@ -20,6 +22,20 @@
         - value: warning
           title: 警告
       default: primary
+      group: 主要属性
+      description: ""
+    - name: mark
+      title: 显示为标记样式
+      type: boolean
+      default: false
+      group: 主要属性
+      description: ""
+    - name: closeable
+      title: 可关闭
+      type: boolean
+      default: false
+      group: 交互属性
+      description: ""
     - name: size
       title: 尺寸
       type: string
@@ -32,24 +48,13 @@
           title: 小型
       default: medium
       group: 样式属性
-    - name: plain
-      title: 空心
-      type: boolean
-      default: false
+      description: ""
     - name: round
-      title: 圆角
+      title: 显示为圆角
       type: boolean
       default: false
       group: 样式属性
-    - name: mark
-      title: 标记样式
-      type: boolean
-      default: false
-    - name: closeable
-      title: 可关闭
-      type: boolean
-      default: false
-      group: 交互属性
+      description: ""
   slots: false
   events:
     - name: click
