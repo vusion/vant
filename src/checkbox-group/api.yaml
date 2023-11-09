@@ -5,12 +5,6 @@
   icon: checkboxes
   description: 多项中选择一个或多个时使用
   attrs:
-    - name: value-field
-      title: 值字段
-      type: string
-      default: value
-      description: 用于标识选中值的字段
-      display: property-select
     - name: data-source
       title: 数据源
       type: Array<Item> | Function
@@ -40,6 +34,13 @@
       type: number
       default: 0
       description: 最小可选数量(0为不限制)
+      group: 数据属性
+    - name: value-field
+      title: 值字段
+      type: string
+      default: value
+      description: 用于标识选中值的字段
+      display: property-select
       group: 数据属性
     - name: direction
       title: 排列方向

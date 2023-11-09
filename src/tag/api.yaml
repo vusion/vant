@@ -52,7 +52,7 @@
       group: 样式属性
       description: ""
     - name: plain
-      title: 空心
+      title: 显示为空心
       type: boolean
       default: false
       group: 样式属性
