@@ -130,7 +130,7 @@ export default createComponent({
 
     columnsNum() {
       this.$nextTick(() => {
-        this.setValues();
+        this.setValues(true);
       });
     },
   },
@@ -525,7 +525,7 @@ export default createComponent({
       }
 
       this.togglePopup();
-    }
+    },
   },
 
   render() {
