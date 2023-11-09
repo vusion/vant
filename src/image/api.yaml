@@ -27,7 +27,7 @@
       title: 地址
       type: image
       default: ""
-      description: 图片地址
+      description: ""
       compType: linkInput
       group: 主要属性
     - name: fit
