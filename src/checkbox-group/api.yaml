@@ -28,7 +28,7 @@
       type: any
       sync: true
       model: true
-      description: ""
+      description: 用于标识多选组的值
       group: 数据属性
     - name: max
       title: 最大可选数量
@@ -134,16 +134,17 @@
       description: 文本
       advanced: true
     - name: label
-      title: 选项值
+      title: 选中值
       type: any
-      description: 多选框选项值，只在多选组中使用。
+      description: 当前选中的值
+      group: 数据属性
     - name: value
-      title: 是否选中
+      title: 选中
       type: boolean
       sync: true
       model: true
       default: false
-      description: 是否选中
+      description: 是否选中选项
       group: 数据属性
     - name: shape
       title: 形状

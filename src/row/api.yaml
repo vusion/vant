@@ -34,6 +34,7 @@
       default: stretch
       dependency:
         - type: flex
+      group: 样式属性
     - name: type
       title: 布局模式
       type: string
@@ -297,15 +298,17 @@
       default: 1
       min: 1
       max: 24
-      description: 栅格列宽度，栅格行最大为24列
+      description: 栅格列宽度，栅格行最大为24列。
       precision: 1
+      group: 主要属性
     - name: offset
-      title: 偏移
+      title: 偏移数
       type: number
       default: 0
       display: number
       description: 栅格列向右偏移列数
       precision: 1
+      group: 主要属性
     - name: mode
       title: 布局模式
       type: string

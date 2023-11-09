@@ -5,12 +5,8 @@
     - Display
   description: 用于标记关键词和概括主要内容。
   attrs:
-    - name: plain
-      title: 空心
-      type: boolean
-      default: false
     - name: type
-      title: 类型
+      title: 标签类型
       type: string
       options:
         - value: primary
@@ -55,6 +51,11 @@
       default: false
       group: 样式属性
       description: ""
+    - name: plain
+      title: 空心
+      type: boolean
+      default: false
+      group: 样式属性
   slots: false
   events:
     - name: click

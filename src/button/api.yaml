@@ -27,7 +27,7 @@
     - name: text
       title: 文本
       type: string
-      description: 按钮文字
+      description: ''
       group: 主要属性
     - name: type
       title: 类型

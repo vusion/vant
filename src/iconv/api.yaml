@@ -9,7 +9,7 @@
       title: 图标
       type: icon
       default: ""
-      description: 图标
+      description: ''
       group: 主要属性
     - name: icotype
       title: 图标类型

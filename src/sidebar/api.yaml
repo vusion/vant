@@ -35,11 +35,6 @@
 - name: van-sidebar-item
   title: 菜单项
   attrs:
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 禁用
     - name: value
       title: 菜单项值
       type: number,string
@@ -106,6 +101,12 @@
       default: _self
       description: 父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。
       group: 交互属性
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 禁用
+      group: 状态属性
   events:
     - name: click
       title: 点击菜单项

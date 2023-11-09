@@ -30,7 +30,7 @@
       type: icon
       default: sure
       description: ""
-      group: 数据属性
+      group: 主要属性
       brifeDoc: ""
       docDescription: 增加自定义图标显示
       tooltipLink: ""
@@ -114,7 +114,7 @@
       default: sure
       type: icon
       description: ""
-      group: 数据属性
+      group: 主要属性
       brifeDoc: ""
       docDescription: 增加自定义图标显示
       tooltipLink: ""
