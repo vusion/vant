@@ -20,8 +20,8 @@
       type: string
       sync: true
       model: true
-      default: ""
-      description: ""
+      default: ''
+      description: ''
       group: 数据属性
     - name: areaListprop
       title: 数据源
@@ -33,32 +33,31 @@
       title: 顶部栏标题
       type: string
       default: 标题
-      description: ""
+      description: ''
       group: 主要属性
     - name: confirm-button-text
       title: 确认按钮文字
       type: string
       default: 确认
-      description: ""
+      description: ''
       group: 主要属性
     - name: cancel-button-text
       title: 取消按钮文字
       type: string
       default: 取消
-      description: ""
+      description: ''
       group: 主要属性
     - name: visible-item-count
       title: 可见选项个数
       type: number
       default: 6
-      description: ""
+      description: ''
       group: 主要属性
     - name: columns-num
       title: 显示列数
       type: number
       default: 3
       description: 显示列数，3-省市区，2-省市，1-省
-      advanced: true
       group: 主要属性
     - name: input-align
       title: 对齐方式
@@ -89,7 +88,7 @@
       title: 点击遮罩层后关闭
       type: boolean
       default: false
-      description: ""
+      description: ''
       group: 交互属性
     - name: readonly
       title: 只读
@@ -110,8 +109,7 @@
       support:
         - name: van-picker-action-slot
           title: 事件插槽
-          snippet: <van-picker-action-slot
-            target-method="confirm"></van-picker-action-slot>
+          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
     - concept: Slot
       name: option
       title: option

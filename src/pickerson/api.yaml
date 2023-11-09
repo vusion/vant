@@ -44,13 +44,13 @@
       type: string, number
       sync: true
       model: true
-      default: ""
-      description: ""
+      default: ''
+      description: ''
       group: 数据属性
     - name: data-source
       title: 数据源
       type: Array<Item> | Function | object | DataSource
-      designer-value: "[{}, {}, {}]"
+      designer-value: '[{}, {}, {}, {}, {}, {}]'
       description: 列表的数据源。数组方式表示直接的数据，函数需要返回一个 Promise。
       group: 数据属性
     - name: data-schema
@@ -86,10 +86,10 @@
       dependency:
         - pageable: true
       group: 数据属性
-      description: ""
+      description: ''
     - name: sorting
       title: 初始化排序规则
-      type: "{ field: string, order: string, compare: Function }"
+      type: '{ field: string, order: string, compare: Function }'
       default: "{ field: undefined, order: 'desc' }"
       description: 设置数据初始化时的排序字段和顺序规则
       group: 数据属性
@@ -127,7 +127,7 @@
         - value: picker
           title: 选择器
           dependency:
-            - "!multiple": true
+            - '!multiple': true
         - value: list
           title: 列表
       default: picker
@@ -138,18 +138,18 @@
       type: string
       default: 请选择
       group: 主要属性
-      description: ""
+      description: ''
     - name: title
       title: 工具栏标题
       type: string
       default: 标题
-      description: ""
+      description: ''
       group: 主要属性
     - name: confirm-button-text
       title: 确认按钮文字
       type: string
       default: 确认
-      description: ""
+      description: ''
       dependency:
         - isNew: false
       group: 主要属性
@@ -157,7 +157,7 @@
       title: 取消按钮文字
       type: string
       default: 取消
-      description: ""
+      description: ''
       dependency:
         - isNew: false
       group: 主要属性
@@ -185,14 +185,14 @@
       title: 显示工具栏
       type: boolean
       default: true
-      description: ""
+      description: ''
       group: 主要属性
     - name: multiple
       title: 可多选
       type: boolean
       default: false
       group: 交互属性
-      description: ""
+      description: ''
     - name: enable-select-all
       title: 全选
       type: boolean
@@ -200,7 +200,7 @@
       dependency:
         - multiple: true
       group: 交互属性
-      description: ""
+      description: ''
     - name: enable-selected-count
       title: 已选中项数
       type: boolean
@@ -213,7 +213,7 @@
       title: 点击遮罩层后关闭
       type: boolean
       default: false
-      description: ""
+      description: ''
       group: 交互属性
   slots:
     - concept: Slot
@@ -222,8 +222,7 @@
       support:
         - name: van-picker-action-slot
           title: 事件插槽
-          snippet: <van-picker-action-slot
-            target-method="confirm"></van-picker-action-slot>
+          snippet: <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
     - concept: Slot
       name: option
       title: option
