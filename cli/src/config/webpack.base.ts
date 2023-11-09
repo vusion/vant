@@ -1,5 +1,6 @@
 import path from 'path';
 import { VueLoaderPlugin } from 'vue-loader';
+import IconFontLoader from 'icon-font-loader';
 import { WebpackConfig } from '../common/types';
 import {
   CACHE_DIR,
@@ -18,6 +19,7 @@ const CACHE_LOADER = {
 const CSS_LOADERS = [
   require.resolve('style-loader'),
   require.resolve('css-loader'),
+  require.resolve('icon-font-loader'),
   {
     loader: require.resolve('postcss-loader'),
     options: {
@@ -30,6 +32,7 @@ const CSS_LOADERS = [
 
 const plugins = [
   new VueLoaderPlugin(),
+  new IconFontLoader.Plugin()
 ];
 
 const VUE_LOADER = {

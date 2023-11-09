@@ -112,18 +112,23 @@ export { default as VanForComponents } from '../../src/for-components';
 export { default as VanGallery } from '../../src/gallery';
 export { default as VanCardu } from '../../src/cardu';
 export { default as VanFieldsonforsearch } from '../../src/fieldsonforsearch';
-export { default as VanLinearLayout } from '../../src/linear-layout';
 
 export { default as VanCapsules } from '../../src/capsules';
 export { default as VanCapsulesItem } from '../../src/capsules-item';
 export { default as VanCapsulesGroup } from '../../src/capsules-group';
 
+export { default as VanLinearLayout } from '../../src/linear-layout';
+export { default as VanAbsoluteLayout } from '../../src/absolute-layout';
+export { default as VanCopy } from '../../src/copy';
+export { default as VanLink } from '../../src/link';
+
+
 export * from './list-view';
 export * from './grid-view';
 export * from './iframe';
-export * from './link';
+// export * from './link';
 // export * from './linear-layout';
-export * from './absolute-layout';
+// export * from './absolute-layout';
 export * from './count-down-new';
-export * from './copy';
+// export * from './copy';
 export * from './popup-combination';

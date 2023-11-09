@@ -1,7 +1,7 @@
 import { createNamespace } from '../utils';
 import ClipboardJS from 'clipboard';
-import { UTooltip } from 'cloud-ui.vusion/src/components/u-tooltip.vue';
 
+import Popover from '../popover';
 import Empty from '../emptycol';
 import Link from '../link';
 
@@ -9,7 +9,6 @@ const [createComponent, bem, t] = createNamespace('copy');
 
 export default createComponent({
   components: {
-    UTooltip,
     Empty,
     Link,
   },
@@ -24,10 +23,19 @@ export default createComponent({
   },
   data() {
     return {
-      success: false,
+      popoverVisible: false,
       failed: false,
       timeoutId: undefined,
     };
+  },
+  computed: {
+    popoverText() {
+      if (this.failed) {
+        return t('fail');
+      }
+
+      return this.successText
+    }
   },
   destroyed() {
     clearTimeout(this.timeoutId);
@@ -36,10 +44,11 @@ export default createComponent({
     copy() {
       if (this.disabled) return;
 
-      this.success = ClipboardJS.copy(this.value);
-      this.failed = !this.success;
+      const isSuccess = ClipboardJS.copy(this.value);
+      this.failed = !isSuccess;
+      this.popoverVisible = true;
 
-      if (this.success) {
+      if (isSuccess) {
         if (this.feedback === 'toast') {
           this.$toast.show(this.successText, this.hideDelay);
         }
@@ -48,8 +57,8 @@ export default createComponent({
 
         clearTimeout(this.timeoutId);
         this.timeoutId = setTimeout(() => {
-          this.success = false;
           this.failed = false;
+          this.popoverVisible = false;
         }, this.hideDelay);
       }
     },
@@ -68,50 +77,29 @@ export default createComponent({
         </Link>
       );
     },
-
-    renderFeedback() {
-      if (this.feedback !== 'tooltip') return null;
-
-      return [
-        <UTooltip
-          placement={this.placement}
-          trigger="manual"
-          opened={!!this.success}
-          {...{
-            on: {
-              'update:opened': (opened) => {
-                this.success = opened;
-              },
-            },
-          }}
-        >
-          {this.successText}
-        </UTooltip>,
-        <UTooltip
-          placement={this.placement}
-          trigger="manual"
-          opened={!!this.failed}
-          {...{
-            on: {
-              'update:opened': (opened) => {
-                this.failed = opened;
-              },
-            },
-          }}
-        >
-          {t('fail')}
-        </UTooltip>,
-      ];
-    }
   },
   render() {
     return (
       <div class={bem()}>
-        <div onClick={this.copy} vusion-slot-name="default">
-          {this.renderSlot()}
-        </div>
-        {this.renderFeedback()}
+        {this.feedback === 'tooltip' ? (
+          <Popover
+            theme="dark"
+            placement="top"
+            vModel={this.popoverVisible}
+          >
+            <div class={bem('tip')}>{this.popoverText}</div>
+            <template slot="reference">
+              <div onClick={this.copy} vusion-slot-name="default">
+                {this.renderSlot()}
+              </div>
+            </template>
+          </Popover>
+        ) : (
+          <div onClick={this.copy} vusion-slot-name="default">
+            {this.renderSlot()}
+          </div>
+        )}
       </div>
-    )
+    );
   }
 });

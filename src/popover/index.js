@@ -1,19 +1,15 @@
 import { createPopper } from '@popperjs/core/lib/popper-lite';
 import offsetModifier from '@popperjs/core/lib/modifiers/offset';
 
-
-import { createNamespace } from '../utils';
+import { createNamespace, isServer } from '../utils';
 import { BORDER_BOTTOM } from '../utils/constant';
 
 // Mixins
 import { ClickOutsideMixin } from '../mixins/click-outside';
-import { ParentMixin } from '../mixins/relation';
-
 
 // Components
 import Icon from '../icon';
 import Popup from '../popup';
-import PopoverItem from '../popover-item'
 
 const [createComponent, bem] = createNamespace('popover');
 
@@ -23,7 +19,6 @@ export default createComponent({
       event: 'touchstart',
       method: 'onClickOutside',
     }),
-    ParentMixin('vanPopover')
   ],
 
   props: {
@@ -55,23 +50,9 @@ export default createComponent({
       default: true,
     },
   },
-  data() {
-    return {
-      valued: this.value || false,
-    }
-  },
+
   watch: {
-    value: {
-      handler (val) {
-        this.valued = val;
-	    },
-	    immediate: true,
-    },
-    valued: {
-      handler (val) {
-	      this.updateLocation(val)
-	    },
-    },
+    value: 'updateLocation',
     placement: 'updateLocation',
   },
 
@@ -81,44 +62,18 @@ export default createComponent({
 
   beforeDestroy() {
     if (this.popper) {
+      if (!isServer) {
+        window.removeEventListener('animationend', this.updateLocation);
+        window.removeEventListener('transitionend', this.updateLocation);
+      }
       this.popper.destroy();
       this.popper = null;
     }
   },
 
   methods: {
-    getReferEl() {
-      if (this.slots('reference')) {
-        return this.$refs.wrapper;
-      }
-      if (this.ifDesigner() && (/l-root-h5|h5template-|/).test(this.$el.parentNode.className)) {
-        return this.$refs.wrappertemp;
-      }
-      // 求上下文中的 parent
-      if (this.$parent === this.$vnode.context)
-          return this.$el.parentElement; // Vue 的 vnode.parent 没有连接起来，需要自己找，不知道有没有更好的方法
-      let parentVNode = this.$parent._vnode;
-      while (
-          parentVNode
-          && !parentVNode.children.includes(this.$vnode)
-      )
-          parentVNode = parentVNode.children.find((child) =>
-              child.elm.contains(this.$el),
-          ); // if (!parentVNode)
-      if (parentVNode && parentVNode.context === this.$vnode.context)
-          return parentVNode.elm; // 否则，找第一个上下文一致的组件
-      let parentVM = this.$parent;
-      while (
-          parentVM
-          && parentVM.$vnode.context !== this.$vnode.context
-      )
-          parentVM = parentVM.$parent;
-      return parentVM.$el;
-    },
-
     createPopper() {
-      const referEl = this.getReferEl();
-      return createPopper(referEl, this.$refs.popover.$el, {
+      const popper = createPopper(this.$refs.wrapper, this.$refs.popover.$el, {
         placement: this.placement,
         modifiers: [
           {
@@ -136,13 +91,19 @@ export default createComponent({
           },
         ],
       });
+      if (!isServer) {
+        window.addEventListener('animationend', this.updateLocation);
+        window.addEventListener('transitionend', this.updateLocation);
+      }
+      return popper;
     },
 
-    updateLocation(val) {
+    updateLocation() {
       this.$nextTick(() => {
-        if (!this.valued) {
+        if (!this.value) {
           return;
         }
+
         if (!this.popper) {
           this.popper = this.createPopper();
         } else {
@@ -155,9 +116,6 @@ export default createComponent({
 
     renderAction(action, index) {
       const { icon, text, disabled, className } = action;
-      return (
-        <PopoverItem icon={icon} text={text} disabled={disabled} className={className}/>
-      );
       return (
         <div
           role="menuitem"
@@ -172,12 +130,11 @@ export default createComponent({
 
     onToggle(value) {
       this.$emit('input', value);
-      this.$emit('update:value', value);
     },
 
     onClickWrapper() {
       if (this.trigger === 'click') {
-        this.onToggle(!this.valued);
+        this.onToggle(!this.value);
       }
     },
 
@@ -190,21 +147,16 @@ export default createComponent({
       if (action.disabled) {
         return;
       }
-      if (this.closeOnClickAction) {
-        this.valued = false;
-        this.$emit('input', false);
-        this.$emit('update:value', false);
-      }
 
       this.$emit('select', action, index);
 
-
+      if (this.closeOnClickAction) {
+        this.$emit('input', false);
+      }
     },
 
     onClickOutside() {
-      this.valued = false;
       this.$emit('input', false);
-      this.$emit('update:value', false);
     },
 
     onOpen() {
@@ -224,75 +176,20 @@ export default createComponent({
     onClosed() {
       this.$emit('closed');
     },
-    ifDesigner() {
-      return this.$env && this.$env.VUE_APP_DESIGNER;
-    },
-    openModal() {
-      this.valued = true;
-    },
-    closeModal() {
-      this.valued = false;
-    },
-    designerDbControl() {
-      if (this.ifDesigner()) {
-        this.valued = !this.valued;
-      }
-    },
   },
 
   render() {
-    const styletemp = {
-      background: '#FAFAFA',
-      border: '1px dashed #CCCCCC',
-      height: '14.93333vw',
-      alignItems: 'center',
-      justifyContent: 'center',
-      display: 'flex',
-      fontSize: '4.26667vw',
-      color: '#666666',
-    }
-    if (this.ifDesigner()) {
-      return (
-        <div style={styletemp} ref="wrappertemp">
-          <span ref="wrapper" class={bem('wrapper')} onClick={this.onClickWrapper}>
-            <Popup
-              ref="popover"
-              value={this.valued}
-              class={bem([this.theme])}
-              overlay={this.overlay}
-              position={null}
-              transition="van-popover-zoom"
-              lockScroll={false}
-              // getContainer={this.getContainer}
-              onOpen={this.onOpen}
-              onClose={this.onClose}
-              onInput={this.onToggle}
-              onOpened={this.onOpened}
-              onClosed={this.onClosed}
-              nativeOnTouchstart={this.onTouchstart}
-            >
-              <div class={bem('arrow')} />
-              <div class={bem('content')} role="menu">
-                {this.slots('default') || this.actions.map(this.renderAction)}
-              </div>
-            </Popup>
-          </span>
-          <div>双击打开/关闭气泡框</div>
-        </div>
-      )
-    }
-
     return (
       <span ref="wrapper" class={bem('wrapper')} onClick={this.onClickWrapper}>
         <Popup
           ref="popover"
-          value={this.valued}
+          value={this.value}
           class={bem([this.theme])}
           overlay={this.overlay}
           position={null}
           transition="van-popover-zoom"
           lockScroll={false}
-          // getContainer={this.getContainer}
+          getContainer={this.getContainer}
           onOpen={this.onOpen}
           onClose={this.onClose}
           onInput={this.onToggle}

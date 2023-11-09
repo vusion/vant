@@ -18,7 +18,7 @@ export default createComponent({
   render() {
     return (
       <a
-        class={[bem(), 'u-link__']}
+        class={bem()}
         href={this.currentHref}
         target={this.target}
         noDecoration={!this.decoration}

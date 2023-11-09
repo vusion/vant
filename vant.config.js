@@ -98,6 +98,10 @@ module.exports = {
                 title: 'Linear-Layout 线性布局',
               },
               {
+                path: 'absolute-layout',
+                title: 'Absolute-Layout 自由布局',
+              },
+              {
                 path: 'button',
                 title: 'Button 按钮',
               },
@@ -133,14 +137,14 @@ module.exports = {
                 path: 'toast',
                 title: 'Toast 轻提示',
               },
-              // {
-              //   path: 'copy',
-              //   title: 'Copy 复制',
-              // },
-              // {
-              //   path: 'link',
-              //   title: 'Link 链接',
-              // }
+              {
+                path: 'copy',
+                title: 'Copy 复制',
+              },
+              {
+                path: 'link',
+                title: 'Link 链接',
+              },
             ],
           },
           {
@@ -328,12 +332,6 @@ module.exports = {
               {
                 path: 'popover',
                 title: 'Popover 气泡弹出框',
-                className: 'hide-in-weapp',
-              },
-              {
-                path: 'popover-item',
-                title: 'Popover item',
-                className: 'hide-in-weapp',
               },
               {
                 path: 'progress',
