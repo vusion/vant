@@ -68,9 +68,6 @@ export { default as VanPasswordInput } from '../../src/password-input';
 export { default as VanPicker } from '../../src/picker';
 export { default as VanPickerson } from '../../src/pickerson';
 export { default as VanPopover } from '../../src/popover';
-export { default as VanPopoverItem } from '../../src/popover-item';
-// export { default as VanPopoverCombination } from '../../src/popover-combination';
-// export { default as VanPopoverCombinationItem } from '../../src/popover-combination-item';
 
 export { default as VanPopup } from '../../src/popup';
 export { default as VanProgress } from '../../src/progress';
