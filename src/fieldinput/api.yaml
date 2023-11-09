@@ -45,7 +45,7 @@
           title: 身份证
       default: text
       description: 输入框的类型
-      group: 数据属性
+      group: 主要属性
     - name: value
       title: 值
       type: string
@@ -101,7 +101,7 @@
           keyboard-theme: custom
       group: 主要属性
     - name: clearable
-      title: 支持清除
+      title: 可清除
       type: boolean
       description: 是否在输入框内展示清除按钮
       dependency:
