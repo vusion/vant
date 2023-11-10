@@ -33,6 +33,9 @@ export default {
     // treeDisplay: { type: Boolean, default: false }, // 由组件自己定义
     parentField: { type: String, default: 'parentId' },
     childrenField: { type: String, default: 'children' },
+
+    // 其他
+    // needAllRemoteData: { type: Boolean, default: false }, // 由组件自己定义
   },
   data() {
     return {
@@ -47,6 +50,13 @@ export default {
   computed: {
     currentData() {
       return this.currentDataSource && this.currentDataSource.viewData;
+    },
+    allRemoteData() {
+      if (this.currentDataSource.remote) {
+        return this.currentDataSource.allData;
+      }
+
+      return this.currentDataSource.data;
     },
     paging() {
       if (this.pageable) {
@@ -133,6 +143,8 @@ export default {
         paging: this.paging,
         filtering: this.filtering,
         sorting: this.currentSorting,
+
+        needAllData: this.needAllRemoteData,
 
         getExtraParams: this.getExtraParams,
       };
