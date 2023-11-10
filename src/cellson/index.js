@@ -161,7 +161,7 @@ export default createComponent({
             {((!isDef(rtitle) || rtitle === '') && !slots()) ? <van-empty-col></van-empty-col> : null}
           </div>
         );
-      } 
+      }
         if (showValue) {
           return (
             <div class={[bem('value', { alone: singleslot }), props.valueClass]}>
@@ -169,7 +169,7 @@ export default createComponent({
             </div>
           );
         }
-      
+
     }
 
     function LeftIcon() {
@@ -241,7 +241,7 @@ export default createComponent({
         let to;
         if (props.destination) {
           if (props.destination.startsWith('http')) {
-            location.href = encodeUrl(props.destination);
+            window.location.href = encodeUrl(props.destination);
             return;
           }
           to = props.destination;
