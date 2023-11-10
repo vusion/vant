@@ -129,6 +129,10 @@ const VueDataSource = Vue.extend({
           queryChanged: false,
 
           treeDisplay: false,
+
+          // 选择项相关
+          needAllData: false, // 是否需要所有数据，比如分页时用于选择项回显
+          allData: [], // 所有数据，用于选择项回显
         };
     },
     computed: {
@@ -182,6 +186,10 @@ const VueDataSource = Vue.extend({
             this.initialLoaded = true;
             this.originTotal = this.data.length;
             this.arrange(this.data.slice(this.offset, this.offset + this.limit));
+        } else if (this.needAllData) {
+          this.loadAll().then((data) => {
+            this.allData = data;
+          });
         }
     },
     methods: {
@@ -477,6 +485,59 @@ const VueDataSource = Vue.extend({
 
             return tree;
         },
+        loadAll() {
+          const paging = {
+            offset: 0,
+            limit: Infinity,
+            number: 1,
+            size: Infinity,
+          };
+
+          const params = {
+            paging,
+            sorting: this.sorting,
+            filtering: this.filtering,
+            ...this._getExtraParams(), // 带上filterText
+          };
+
+          // 支持 JDL
+          if (params.paging) {
+            params.page = 1;
+            params.start = 0;
+            params.size = Infinity;
+          }
+
+          const extraParams = this._getExtraParams();
+
+          return this._load(params, extraParams).then((result) => {
+            const finalResult = {};
+
+            // 判断是否后端数据
+            if (getType(result) === 'Object') {
+              if (
+                result.hasOwnProperty('list') &&
+                result.hasOwnProperty('total')
+              ) {
+                finalResult.data = result.list;
+                finalResult.total = result.total;
+              } else if (
+                result.hasOwnProperty('totalElements') &&
+                result.hasOwnProperty('content')
+              ) {
+                finalResult.data = result.content;
+                finalResult.total = result.totalElements;
+              } else {
+                finalResult.data = result.data;
+                finalResult.total = result.total;
+              }
+            } else if (getType(result) === 'Array') {
+              finalResult.data = result;
+              finalResult.total = result.length;
+            }
+
+            return finalResult.data;
+          });
+        }
     },
 });
 
