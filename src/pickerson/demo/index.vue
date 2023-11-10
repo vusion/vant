@@ -74,6 +74,19 @@
           </template>
       </van-pickerson>
     </demo-block>
+
+    <demo-block card title="临时测试">
+        <van-pickerson
+        title="标题"
+        :show-toolbar="true"
+        :value="1"
+        :data-source="[1, 2, 3, 4, 5]"
+        :close-on-click-overlay="true">
+          <template #title>
+                <van-text :ref="`text10`" text="标题"></van-text>
+          </template>
+      </van-pickerson>
+    </demo-block>
   </demo-section>
 </template>
 

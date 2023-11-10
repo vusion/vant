@@ -400,7 +400,7 @@ export default createComponent({
             }
           }}
           round
-          value={this.popupVisible}
+          vModel={this.popupVisible}
           class={bem('popup')}
           position={'bottom'}
           closeOnClickOverlay={this.closeOnClickOverlay}
