@@ -52,7 +52,11 @@ export default {
       return this.currentDataSource && this.currentDataSource.viewData;
     },
     allRemoteData() {
-      return this.currentDataSource && this.currentDataSource.allData;
+      if (this.currentDataSource.remote) {
+        return this.currentDataSource.allData;
+      }
+
+      return this.currentDataSource.data;
     },
     paging() {
       if (this.pageable) {

@@ -11,10 +11,8 @@
 
         title="标题"
         :show-toolbar="true"
-        input-align="left"
         :pvalue.sync="pickerValue"
         :data-source="load"
-        :columnsprop="[1, 2, 3, 4]"
         :pageable="true"
         :pageSize="10"
         :filterable="true"
@@ -31,7 +29,10 @@
         :ref="`pickerson2`"
         title="标题"
         :show-toolbar="true"
-        :data-source="[1, 2, 3, 4, 5]"
+        :data-source="list"
+        :pvalue.sync="pickerValue"
+        :pageable="true"
+        :pageSize="10"
         :multiple="true"
         type="list"
         :enable-select-all="true"
@@ -114,7 +115,7 @@ export default {
       showPicker: false,
       fieldValue: '',
       pupupd: true,
-
+      list: data,
       pickerValue: ['32001111100'],
     };
   },
