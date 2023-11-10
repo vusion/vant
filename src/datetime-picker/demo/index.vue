@@ -111,6 +111,10 @@
       <demo-block card :title="t('timeType')">
           <van-datetime-picker :value.sync="value.secondTime" type="time" unit="second" :title="t('timeType')" />
       </demo-block>
+
+      <demo-block card title="临时测试">
+          <van-datetime-picker :close-on-click-overlay="true" />
+      </demo-block>
   </demo-section>
 </template>
 
