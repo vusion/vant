@@ -31,6 +31,15 @@
         :lazyRender="false"
       ></van-calendar>
     </demo-block>
+
+    <demo-block card title="临时测试">
+        <van-calendar
+          label-field="日历选择"
+          title="选择日期"
+          :lazyRender="true"
+          :close-on-click-overlay="true"
+        ></van-calendar>
+    </demo-block>
   </demo-section>
 </template>
 
