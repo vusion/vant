@@ -626,7 +626,7 @@ export default createComponent({
           <Popup
             safe-area-inset-bottom
             class={bem('popup')}
-            value={this.popupShown}
+            vModel={this.popupShown}
             round={this.round}
             position={this.position}
             ref="popforcas"

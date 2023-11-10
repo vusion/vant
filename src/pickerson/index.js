@@ -319,7 +319,7 @@ export default createComponent({
           insel={true}
         />
         <Popup
-          value={this.popupVisible}
+          vModel={this.popupVisible}
           safe-area-inset-bottom
           round
           ref="popup"
