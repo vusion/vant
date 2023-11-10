@@ -67,6 +67,7 @@ export default createComponent({
     pageable: { type: [Boolean, String], default: false },
     filterable: { type: Boolean, default: false },
     sorting: Object,
+    needAllRemoteData: { type: Boolean, default: true },
 
     isNew: {
       type: Boolean,
@@ -152,8 +153,8 @@ export default createComponent({
       }
 
       let title = this.multiple ? [] : '';
-      for (let i = 0; i < this.data.length; i++) {
-        const item = this.data[i];
+      for (let i = 0; i < this.allRemoteData.length; i++) {
+        const item = this.allRemoteData[i];
 
         let v;
         let t;
