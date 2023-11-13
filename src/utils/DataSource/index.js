@@ -488,9 +488,9 @@ const VueDataSource = Vue.extend({
         loadAll() {
           const paging = {
             offset: 0,
-            limit: Infinity,
+            limit: 10000,
             number: 1,
-            size: Infinity,
+            size: 10000,
           };
 
           const params = {
