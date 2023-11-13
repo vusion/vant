@@ -486,11 +486,13 @@ const VueDataSource = Vue.extend({
             return tree;
         },
         loadAll() {
+          const size = 10000;
+
           const paging = {
             offset: 0,
-            limit: 10000,
+            limit: size,
             number: 1,
-            size: 10000,
+            size,
           };
 
           const params = {
@@ -504,7 +506,7 @@ const VueDataSource = Vue.extend({
           if (params.paging) {
             params.page = 1;
             params.start = 0;
-            params.size = Infinity;
+            params.size = size;
           }
 
           const extraParams = this._getExtraParams();
