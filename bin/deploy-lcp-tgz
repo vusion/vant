@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+const vusion = require('vusion-api');
+const fs = require('fs');
+
+// zip.tgz 是否存在
+if (!fs.existsSync('zip.tgz')) {
+    vusion.cli.error('zip.tgz not found');
+    process.exit(1);
+}
+
+const command = `lcap deploy zip.tgz`;
+console.log(command);
+vusion.cli.execSync(command);
+vusion.cli.done('zip.tgz');
