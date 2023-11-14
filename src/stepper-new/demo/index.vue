@@ -1,54 +1,81 @@
 <template>
   <demo-section>
-    <div>value: {{ value }}</div>
-    <van-cell center :title="t('basicUsage')">
-      <van-stepper-new :value.sync="value" />
-    </van-cell>
+    <demo-block>
+      <van-cell center title="value:"> {{value}} </van-cell>
+    </demo-block>
 
-    <van-cell center :title="t('basicUsage')">
-      <van-stepper-new v-model="stepper1" />
-    </van-cell>
+    <demo-block title="格式化">
+      <van-cell center title="单位">
+        <van-stepper-new :value.sync="value" :unit="{ type: 'suffix', value: '元' }" />
+      </van-cell>
 
-    <van-cell center :title="t('step')">
-      <van-stepper-new v-model="stepper2" step="2" />
-    </van-cell>
+      <van-cell center title="千分位">
+        <van-stepper-new :value.sync="value" :thousandths="true" />
+      </van-cell>
 
-    <van-cell center :title="t('range')">
-      <van-stepper-new v-model="stepper3" :min="5" :max="8" />
-    </van-cell>
+      <van-cell center title="百分号">
+        <van-stepper-new :value.sync="value" :percentSign="true" />
+      </van-cell>
 
-    <van-cell center :title="t('integer')">
-      <van-stepper-new v-model="stepper4" integer />
-    </van-cell>
+      <van-cell center title="小数位">
+        <van-stepper-new :value.sync="value" :decimalPlaces="{ places: 3, omit: false }" />
+      </van-cell>
 
-    <van-cell center :title="t('disabled')">
-      <van-stepper-new v-model="stepper5" disabled />
-    </van-cell>
+      <van-cell center title="高级格式化">
+        <van-stepper-new :value.sync="value" :advancedFormat="{ enable: true, value: '#,##0.00' }" />
+      </van-cell>
+    </demo-block>
 
-    <van-cell center :title="t('disableInput')">
-      <van-stepper-new v-model="disabledInput" disable-input />
-    </van-cell>
+    <demo-block title="基础">
+      <van-cell center :title="t('basicUsage')">
+        <van-stepper-new :value.sync="value" />
+      </van-cell>
 
-    <van-cell center :title="t('decimalLength')">
-      <van-stepper-new v-model="stepper8" :decimal-length="1" step="0.2" />
-    </van-cell>
+      <van-cell center :title="t('basicUsage')">
+        <van-stepper-new v-model="stepper1" />
+      </van-cell>
 
-    <van-cell center :title="t('customSize')">
-      <van-stepper-new v-model="stepper7" button-size="32px" input-width="40px" />
-    </van-cell>
+      <van-cell center :title="t('step')">
+        <van-stepper-new v-model="stepper2" step="2" />
+      </van-cell>
 
-    <van-cell center :title="t('asyncChange')">
-      <van-stepper-new :value="stepper6" async-change @change="onChange" />
-    </van-cell>
+      <van-cell center :title="t('range')">
+        <van-stepper-new v-model="stepper3" :min="5" :max="8" />
+      </van-cell>
 
-    <van-cell v-if="!isWeapp" center :title="t('roundTheme')">
-      <van-stepper-new
-        v-model="stepperRound"
-        theme="round"
-        button-size="22"
-        disable-input
-      />
-    </van-cell>
+      <van-cell center :title="t('integer')">
+        <van-stepper-new v-model="stepper4" integer />
+      </van-cell>
+
+      <van-cell center :title="t('disabled')">
+        <van-stepper-new v-model="stepper5" disabled />
+      </van-cell>
+
+      <van-cell center :title="t('disableInput')">
+        <van-stepper-new v-model="disabledInput" disable-input />
+      </van-cell>
+
+      <van-cell center :title="t('decimalLength')">
+        <van-stepper-new v-model="stepper8" :decimal-length="1" step="0.2" />
+      </van-cell>
+
+      <van-cell center :title="t('customSize')">
+        <van-stepper-new v-model="stepper7" button-size="32px" input-width="40px" />
+      </van-cell>
+
+      <van-cell center :title="t('asyncChange')">
+        <van-stepper-new :value="stepper6" async-change @change="onChange" />
+      </van-cell>
+
+      <van-cell v-if="!isWeapp" center :title="t('roundTheme')">
+        <van-stepper-new
+          v-model="stepperRound"
+          theme="round"
+          button-size="22"
+          disable-input
+        />
+      </van-cell>
+    </demo-block>
   </demo-section>
 </template>
 
