@@ -69,17 +69,19 @@ export default createComponent({
   },
 
   mounted() {
+    debugger
     this.setDefaultColumn();
   },
 
   methods: {
     setDefaultColumn() {
+
       let index;
       if (this.dataType === 'text') {
-        index = (this.columnsprop || []).findIndex((x) => x === this.currentValue);
+        index = (this.columnsprop || []).findIndex((x) => x === this.currentValue || String(x) === String(this.currentValue));
       } else {
         index = (this.columnsprop || []).findIndex(
-          (x) => _get(x, this.valueField) === this.currentValue
+          (x) => _get(x, this.valueField) === this.currentValue || String(_get(x, this.valueField)) === String(this.currentValue)
         );
       }
       this.defaultIndex = index;
@@ -326,11 +328,7 @@ export default createComponent({
   render(h) {
     return (
       <div class={bem()}>
-        {/* {this.toolbarPosition === 'top' ? this.genToolbar() : h()} */}
-        {this.slots('columns-top')}
-        {this.genColumns()}
-        {this.slots('columns-bottom')}
-        {/* {this.toolbarPosition === 'bottom' ? this.genToolbar() : h()} */}
+        我是姜令浩
       </div>
     );
   },
