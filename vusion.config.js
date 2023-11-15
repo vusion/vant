@@ -124,7 +124,7 @@ module.exports = {
         alias: '时间选择',
       },
       { group: 'Selector', show: true, name: 'calendar', alias: '日期选择' },
-      { group: 'Feedback', show: true, name: 'popover', alias: '气泡弹出框' },
+      // { group: 'Feedback', show: true, name: 'popover', alias: '气泡弹出框' },
       // { group: 'Feedback', show: true, name: 'popover-combination', alias: '气泡弹出框' },
       {
         group: 'Feedback',
