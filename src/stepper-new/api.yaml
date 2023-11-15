@@ -26,6 +26,7 @@
       type: string, number
       description: 固定显示的小数位数
       group: 数据属性
+      advanced: true
     - name: decimal-places
       title: 小数位数
       type: "{ places: number, omit: boolean }"
@@ -170,11 +171,11 @@
   slots: false
   events:
     - name: click
-      title: 点击
-      description: 点击时触发
+      title: 点击按钮
+      description: 点击加减按钮时触发
       params: []
     - name: change
-      title: 状态切换
-      description: 开关状态切换时触发
+      title: 值改变
+      description: 值改变时触发
       params: []
-  description: 开关
+  description: 数字输入框

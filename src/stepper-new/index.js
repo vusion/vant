@@ -161,7 +161,6 @@ export default createComponent({
     const formattedValue = currentFormatter.format(value);
 
     if (!equal(value, this.value)) {
-      this.$emit('input', value);
       this.$emit('update:value', value);
     }
 
@@ -234,10 +233,10 @@ export default createComponent({
       immediate: true,
     },
     currentValue(val) {
-      this.$emit('input', val);
       this.$emit('update:value', val);
       this.$emit('change', val, { name: this.name });
 
+      console.log('currentValue change', val);
       this.formattedValue = this.currentFormatter.format(val);
     },
   },
@@ -281,31 +280,29 @@ export default createComponent({
     onInput(event) {
       const { value } = event.target;
 
-      const parsedValue = this.currentFormatter.parse(value);
+      // const parsedValue = this.currentFormatter.parse(value);
 
-      let formatted = this.formatNumber(parsedValue);
+      // let formatted = this.formatNumber(parsedValue);
 
-      // limit max decimal length
-      if (isDef(this.decimalLength) && formatted.indexOf('.') !== -1) {
-        const pair = formatted.split('.');
-        formatted = `${pair[0]}.${pair[1].slice(0, this.decimalLength)}`;
-      }
+      // if (isDef(this.decimalLength) && formatted.indexOf('.') !== -1) {
+      //   const pair = formatted.split('.');
+      //   formatted = `${pair[0]}.${pair[1].slice(0, this.decimalLength)}`;
+      // }
 
-      if (!equal(parsedValue, formatted)) {
-        event.target.value = formatted;
-      }
+      // if (!equal(parsedValue, formatted)) {
+      //   event.target.value = formatted;
+      // }
 
-      // prefer number type
-      if (formatted === String(+formatted)) {
-        formatted = +formatted;
-      }
+      // if (formatted === String(+formatted)) {
+      //   formatted = +formatted;
+      // }
 
-      this.emitChange(formatted);
+      // this.emitChange(formatted);
+      this.$emit('input', value);
     },
 
     emitChange(value) {
       if (this.asyncChange) {
-        this.$emit('input', value);
         this.$emit('change', value, { name: this.name });
         this.$emit('update:value', value);
       } else {
@@ -342,8 +339,17 @@ export default createComponent({
 
     onBlur(event) {
       const { value } = event.target;
-      const parsedValue = this.currentFormatter.parse(value);
-      const formatted = this.format(parsedValue);
+      // const parsedValue = this.currentFormatter.parse(value);
+      let formatted = this.format(value);
+
+      if (isDef(this.decimalLength) && formatted.indexOf('.') !== -1) {
+        const pair = formatted.split('.');
+        formatted = `${pair[0]}.${pair[1].slice(0, this.decimalLength)}`;
+      }
+
+      if (formatted === String(+formatted)) {
+        formatted = +formatted;
+      }
 
       this.emitChange(formatted);
 
