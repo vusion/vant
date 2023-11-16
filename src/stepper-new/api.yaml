@@ -42,6 +42,7 @@
       dependency:
         - advanced-format.enable: false
       group: 主要属性
+      bindHide: true
       brifeDoc: ""
       docDescription: ""
       tooltipLink: ""
@@ -53,6 +54,7 @@
       dependency:
         - advanced-format.enable: false
       group: 主要属性
+      bindHide: true
       brifeDoc: ""
       docDescription: ""
       tooltipLink: ""
@@ -64,6 +66,7 @@
       dependency:
         - advanced-format.enable: false
       group: 主要属性
+      bindHide: true
       brifeDoc: ""
       docDescription: ""
       tooltipLink: ""
@@ -83,6 +86,7 @@
           type: text
       description: 输入框中显示的单位
       group: 主要属性
+      bindHide: true
       brifeDoc: ""
       docDescription: ""
       tooltipLink: ""
