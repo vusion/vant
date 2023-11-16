@@ -2,14 +2,30 @@
 
 const vusion = require('vusion-api');
 const fs = require('fs');
+const argv = require('minimist')(process.argv.slice(2));
+const pkg = require('../package.json');
 
-// zip.tgz 是否存在
-if (!fs.existsSync('zip.tgz')) {
-    vusion.cli.error('zip.tgz not found');
-    process.exit(1);
+
+const tgz = `lcap-mobile-ui-${pkg.version}.tgz`;
+
+// tgz 是否存在
+if (!fs.existsSync(tgz)) {
+  vusion.cli.error(`${tgz} not found`);
+  process.exit(1);
 }
 
-const command = `lcap deploy zip.tgz`;
+// zip.tgz 是否存在
+if (fs.existsSync('zip.tgz')) {
+  fs.unlinkSync('zip.tgz');
+}
+
+// rename
+fs.renameSync(tgz, 'zip.tgz');
+
+const command = `lcap deploy zip.tgz --platform ${argv.platform}`;
 console.log(command);
 vusion.cli.execSync(command);
-vusion.cli.done('zip.tgz');
+vusion.cli.done(`${tgz}`);
+
+// remove
+fs.unlinkSync('zip.tgz');
