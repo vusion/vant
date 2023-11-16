@@ -7995,10 +7995,10 @@
                 {
                     "name": "decimalLength",
                     "title": "精度",
-                    "type": "string, number",
+                    "type": "number",
+                    "min": 0,
                     "description": "固定显示的小数位数",
-                    "group": "数据属性",
-                    "advanced": true
+                    "group": "数据属性"
                 },
                 {
                     "name": "decimal-places",

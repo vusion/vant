@@ -270,7 +270,7 @@ export default createComponent({
       value = Math.max(Math.min(this.max, value), this.min);
 
       // format decimal
-      if (isDef(this.decimalLength)) {
+      if (isDef(this.decimalLength) && this.decimalLength !== '') {
         value = value.toFixed(this.decimalLength);
       }
 
@@ -342,7 +342,7 @@ export default createComponent({
       // const parsedValue = this.currentFormatter.parse(value);
       let formatted = this.format(value);
 
-      if (isDef(this.decimalLength) && formatted.indexOf('.') !== -1) {
+      if ((isDef(this.decimalLength) && this.decimalLength !== '') && formatted.indexOf('.') !== -1) {
         const pair = formatted.split('.');
         formatted = `${pair[0]}.${pair[1].slice(0, this.decimalLength)}`;
       }
