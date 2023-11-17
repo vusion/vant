@@ -8,7 +8,7 @@
     - name: data-source
       title: 数据源
       type: array
-      description: 一个包含字符串或对象的数组
+      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。
       group: 数据属性
     - name: data-schema
       title: 数据类型

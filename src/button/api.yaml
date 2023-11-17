@@ -27,10 +27,10 @@
     - name: text
       title: 文本
       type: string
-      description: ''
+      description: 默认文本显示内容
       group: 主要属性
     - name: type
-      title: 类型
+      title: 样式类型
       type: string
       options:
         - value: info
@@ -48,35 +48,7 @@
         - value: danger_secondary
           title: 次要危险操作按钮
       default: info
-      description: ""
-      group: 主要属性
-    - name: size
-      title: 尺寸
-      type: string
-      options:
-        - value: large
-          title: 大
-        - value: middle
-          title: 中型
-        - value: normal
-          title: 正常
-        - value: small
-          title: 小
-        - value: mini
-          title: 迷你
-      default: middle
-      description: ""
-      group: 主要属性
-    - name: squareroud
-      title: 形状
-      type: string
-      options:
-        - value: square
-          title: 方形
-        - value: round
-          title: 圆形
-      default: round
-      description: ""
+      description: 设置按钮主题颜色与样式类型
       group: 主要属性
     - name: block
       title: 展示方式
@@ -87,7 +59,7 @@
         - value: blockb
           title: 块级展示
       default: spanb
-      description: 设置按钮的展示方式
+      description: 选择行内或块级展示
       group: 主要属性
     - name: icon
       title: 图标
@@ -145,7 +117,7 @@
       title: 禁用
       type: boolean
       default: false
-      description: 禁用后不会响应点击事件
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
     - name: loading
       title: 加载中
@@ -159,6 +131,34 @@
       default: ""
       description: ""
       group: 状态属性
+    - name: size
+      title: 尺寸
+      type: string
+      options:
+        - value: large
+          title: 大
+        - value: middle
+          title: 中型
+        - value: normal
+          title: 正常
+        - value: small
+          title: 小
+        - value: mini
+          title: 迷你
+      default: middle
+      description: 设置按钮大小
+      group: 样式属性
+    - name: squareroud
+      title: 形状
+      type: string
+      options:
+        - value: square
+          title: 方形
+        - value: round
+          title: 圆形
+      default: round
+      description: 设置按钮形状
+      group: 样式属性
     - name: hairline
       title: 显示为细边框
       type: boolean

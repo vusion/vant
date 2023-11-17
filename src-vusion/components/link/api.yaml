@@ -33,10 +33,10 @@
     - name: text
       title: 文本
       type: string
-      description: ''
+      description: 默认文本显示内容
       group: 主要属性
     - name: color
-      title: 颜色
+      title: 主题颜色
       type: string
       options:
         - value: default
@@ -50,7 +50,7 @@
         - value: danger
           title: 危险色
       default: default
-      description: ""
+      description: 设置链接主题颜色
       group: 主要属性
     - name: display
       title: 展示方式
@@ -61,7 +61,7 @@
         - value: block
           title: 块级展示，宽度会充满父元素
       default: inline
-      description: 设置链接展示方式
+      description: 选择行内或块级展示
       group: 主要属性
     - name: linkType
       title: 链接类型

@@ -38,11 +38,6 @@
       default: square
       description: 设置搜索框形状
       group: 主要属性
-    - name: clearable
-      title: 支持清除
-      type: boolean
-      description: 是否启用清除图标，点击清除图标后会清空输入框
-      group: 主要属性
     - name: cleartrigger
       title: 显示清除图标
       type: string
@@ -75,6 +70,11 @@
           title: 右
       description: 设置搜索图标位置
       group: 主要属性
+    - name: clearable
+      title: 可清除
+      type: boolean
+      description: 是否启用清除图标，点击清除图标后会清空输入框
+      group: 交互属性
     - name: readonly
       title: 只读
       type: boolean

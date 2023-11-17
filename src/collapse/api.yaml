@@ -6,7 +6,7 @@
   description: 将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。
   attrs:
     - name: value
-      title: 值
+      title: 值字段
       type: number,string
       sync: true
       model: true
@@ -41,15 +41,15 @@
       description: 标题
       advanced: true
     - name: name
-      title: 值
+      title: 值字段
       type: number,string
       description: 用于标识面板项的值
       group: 数据属性
     - name: is-link
-      title: 显示箭头图标
+      title: 箭头图标
       type: boolean
       default: true
-      description: ""
+      description: 是否显示箭头图标
       group: 主要属性
     - name: disabled
       title: 禁用

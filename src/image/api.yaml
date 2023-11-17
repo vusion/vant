@@ -24,7 +24,7 @@
       dependency:
         - loading-type: placeholder
     - name: src
-      title: 地址
+      title: 图片地址
       type: image
       default: ""
       description: ""
@@ -59,7 +59,7 @@
       description: 设置图片风格
       group: 主要属性
     - name: preview
-      title: 支持点击放大
+      title: 点击放大
       type: boolean
       default: false
       description: 是否支持点击放大全屏展示

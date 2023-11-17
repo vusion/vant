@@ -56,7 +56,7 @@
   title: 菜单项
   attrs:
     - name: value
-      title: 菜单项值
+      title: 值字段
       type: number,string
       sync: true
       model: true
@@ -78,7 +78,7 @@
       title: 禁用
       type: boolean
       default: false
-      description: 禁用
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
   slots:
     - concept: Slot
@@ -121,10 +121,10 @@
       advanced: true
       description: 标题下方的描述信息
     - name: value
-      title: 值
+      title: 值字段
       type: string, number
       default2: 内容
-      description: ""
+      description: 用于标识菜单子项的值
       group: 数据属性
     - name: isLink
       title: 箭头

@@ -62,22 +62,22 @@
         - value: r
           title: 圆角
       default: r
-      description: 设置图片风格
+      description: ""
       group: 样式属性
     - name: shadow
-      title: 显示卡片阴影
+      title: 卡片阴影
       type: boolean
       description: ""
       default: true
       group: 样式属性
     - name: border
-      title: 显示卡片边框
+      title: 卡片边框
       type: boolean
       default: true
       description: ""
       group: 样式属性
     - name: split
-      title: 显示分割线
+      title: 分割线
       type: boolean
       default: false
       description: ""
