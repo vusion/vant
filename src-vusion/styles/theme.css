@@ -830,6 +830,7 @@
   --van-toast-text-color: #fff; /* @type color */ /* @desc 弹出消息的字体颜色 */
   --van-toast-background-color: rgba(0, 0, 0, 0.7); /* @type color */ /* @desc 弹出消息的背景色 */
   --van-toast-custom-icon-color: white; /* @type color */ /* @desc 弹出消息的自定义图标颜色 */
+  --van-toast-box-shadow: none; /* @desc 弹出消息的阴影效果，如  0px 2px 6px rgba(0, 0, 0, 0.1) */
 
   /* @component van-capsules */
   --van-capsules-item-font-size: 12px; /* @desc 胶囊字体大小 */ /* @prefix van-capsules-item */
