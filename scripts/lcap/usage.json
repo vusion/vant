@@ -8024,6 +8024,7 @@
                         }
                     ],
                     "group": "主要属性",
+                    "bindHide": true,
                     "brifeDoc": "",
                     "docDescription": "",
                     "tooltipLink": ""
@@ -8040,6 +8041,7 @@
                         }
                     ],
                     "group": "主要属性",
+                    "bindHide": true,
                     "brifeDoc": "",
                     "docDescription": "",
                     "tooltipLink": ""
@@ -8056,6 +8058,7 @@
                         }
                     ],
                     "group": "主要属性",
+                    "bindHide": true,
                     "brifeDoc": "",
                     "docDescription": "",
                     "tooltipLink": ""
@@ -8087,6 +8090,7 @@
                     ],
                     "description": "输入框中显示的单位",
                     "group": "主要属性",
+                    "bindHide": true,
                     "brifeDoc": "",
                     "docDescription": "",
                     "tooltipLink": ""

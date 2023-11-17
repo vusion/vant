@@ -45,20 +45,22 @@ export default createComponent({
     open() {
       const { staticStyle } = this.$vnode.data;
 
-      this.$toast.openToast({
-        key: this.key,
-        message: this.message,
-        type: this.type,
-        duration: this.duration,
-        customIcon: this.customIcon,
-        onShow: () => {
-          this.$emit('open');
-        },
-        onHide: () => {
-          this.$emit('close');
-        },
-        staticStyle: this.filterCSSVarInStyle(staticStyle),
-      });
+      this.$nextTick(() => {
+        this.$toast.openToast({
+          key: this.key,
+          message: this.message,
+          type: this.type,
+          duration: this.duration,
+          customIcon: this.customIcon,
+          onShow: () => {
+            this.$emit('open');
+          },
+          onHide: () => {
+            this.$emit('close');
+          },
+          staticStyle: this.filterCSSVarInStyle(staticStyle),
+        });
+      })
     },
     close() {
       this.$toast.closeToast(this.key);
