@@ -8,7 +8,7 @@
     - name: data-source
       title: 数据源
       type: Array<Item> | Function
-      description: 集合类型变量或者输出参数为集合类型的逻辑
+      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。
       designer-value: "[{}, {}, {}]"
       group: 数据属性
     - name: data-schema
@@ -139,14 +139,6 @@
       type: any
       description: 当前选中的值
       group: 数据属性
-    - name: value
-      title: 选中
-      type: boolean
-      sync: true
-      model: true
-      default: false
-      description: 是否选中选项
-      group: 数据属性
     - name: shape
       title: 形状
       type: string
@@ -169,6 +161,14 @@
       default: right
       description: 设置文本位置
       group: 主要属性
+    - name: value
+      title: 选中
+      type: boolean
+      sync: true
+      model: true
+      default: false
+      description: 是否选中选项
+      group: 交互属性
     - name: disabled
       title: 禁用
       type: boolean

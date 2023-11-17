@@ -10,10 +10,10 @@
       type: any
       sync: true
       model: true
-      description: ""
+      description: 用于标识选项卡的值
       group: 数据属性
     - name: type
-      title: 样式风格
+      title: 样式类型
       type: string
       options:
         - value: line
@@ -21,7 +21,7 @@
         - value: card
           title: 胶囊
       default: line
-      description: 设置选项卡的样式风格
+      description: 设置选项卡为线条类型或胶囊类型
       group: 主要属性
     - name: sticky
       title: 自动吸顶

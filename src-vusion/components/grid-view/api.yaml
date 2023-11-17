@@ -54,7 +54,7 @@
       title: 数据源
       type: Array<Item> | Function | object | DataSource
       designer-value: "[{}, {}, {}, {}, {}, {}, {}, {}]"
-      description: 数据网格的数据源，数据集对象或者返回数据集的逻辑
+      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。
       group: 数据属性
     - name: data-schema
       title: 数据类型
@@ -189,7 +189,7 @@
       title: 瀑布模式
       type: boolean
       default: false
-      description: 瀑布模式
+      description: 是否开启瀑布模式
       group: 样式属性
     - name: col
       title: 网格数

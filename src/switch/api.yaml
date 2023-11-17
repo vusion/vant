@@ -10,7 +10,7 @@
       sync: true
       model: true
       default: false
-      description: 开关状态
+      description: ""
       group: 数据属性
     - name: disabled
       title: 禁用

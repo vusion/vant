@@ -11,6 +11,7 @@
       sync: true
       model: true
       group: 数据属性
+      description: ""
     - name: max
       title: 最大值
       type: number
@@ -23,18 +24,18 @@
       default: 0
       group: 数据属性
       description: ""
-    - name: step
-      title: 步长
-      type: number | string
-      default: 0
-      group: 数据属性
-      description: ""
     - name: range
       title: 双滑块模式
       type: boolean
       default: false
-      group: 交互属性
+      group: 主要属性
       description: 是否开启双滑块模式
+    - name: custom
+      title: 自定义组件
+      type: boolean
+      default: false
+      group: 主要属性
+      description: ""
     - name: disabled
       title: 禁用
       type: boolean
@@ -47,11 +48,11 @@
       default: false
       group: 交互属性
       description: ""
-    - name: custom
-      title: 自定义组件
-      type: boolean
-      default: false
-      group: 交互属性
+    - name: step
+      title: 步长
+      type: number | string
+      default: 0
+      group: 样式属性
       description: ""
     - name: bar-height
       title: 进度条高度

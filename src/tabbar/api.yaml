@@ -6,11 +6,11 @@
   description: 标签栏
   attrs:
     - name: value
-      title: 值
+      title: 值字段
       type: number,string
       sync: true
       model: true
-      description: ""
+      description: 用于标识标签栏的值
       group: 数据属性
     - name: fixed
       title: 固定底部

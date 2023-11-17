@@ -24,7 +24,7 @@
       sync: true
       model: true
       default2: "[]"
-      description: 已上传的文件列表
+      description: ""
       group: 数据属性
     - name: name
       title: 字段名

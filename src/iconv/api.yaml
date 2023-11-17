@@ -9,10 +9,10 @@
       title: 图标
       type: icon
       default: ""
-      description: ''
+      description: ""
       group: 主要属性
     - name: icotype
-      title: 图标类型
+      title: 布局类型
       type: string
       options:
         - value: only
@@ -22,7 +22,7 @@
         - value: left
           title: 组合图标-左右
       default: top
-      description: 设置图标类型
+      description: 设置图标布局类型
       group: 主要属性
     - name: linkType
       title: 链接类型

@@ -11,6 +11,7 @@
       sync: true
       model: true
       group: 数据属性
+      description: ""
     - name: count
       title: 图标总数
       type: numer | string
@@ -50,13 +51,13 @@
       type: numer
       default: 20
       group: 样式属性
-      description: 设置图标大小，单位为px
+      description: 设置图标大小，单位为px。
     - name: gutter
       title: 图标间距
       type: numer | string
       default: 4
       group: 样式属性
-      description: 设置图标间距，最小值为0
+      description: 设置图标间距，最小值为0。
     - name: color
       title: 选中颜色
       type: string

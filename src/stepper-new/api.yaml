@@ -9,7 +9,7 @@
       type: number
       sync: true
       model: true
-      description: 值
+      description: ""
       group: 数据属性
     - name: min
       title: 最小值
@@ -143,7 +143,7 @@
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
     - name: theme
-      title: 样式风格
+      title: 风格
       type: string
       options:
         - value: fang

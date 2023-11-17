@@ -32,7 +32,7 @@
       type: string
       sync: true
       model: true
-      description: 输入框的值
+      description: ""
       group: 数据属性
     - name: placeholder
       title: 占位符
