@@ -50,9 +50,9 @@ export default createComponent({
       oldValue = this.converter !== 'none' ? this.currentConverter.get(oldValue) : oldValue;
       this.$emit(
         'change', {
-          value,
-          oldValue,
-        }
+        value,
+        oldValue,
+      }
       );
 
       this.currentValue =

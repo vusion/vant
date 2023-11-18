@@ -36,7 +36,6 @@ export default createComponent({
   watch: {
     value(val) {
       this.currentValue = _cloneDeep(val);
-      console.log('this.currentValue: ', this.currentValue);
     },
     // currentValue(val) {
     //   this.$emit('update:value', val)
@@ -102,7 +101,7 @@ export default createComponent({
             const checked = this.multiple
               ? this.currentValue.includes(value)
               : // eslint-disable-next-line eqeqeq
-              (this.currentValue == value || String(this.currentValue) == String(value));
+              (this.currentValue == value);
             return (
               <div
                 key={value}

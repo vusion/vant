@@ -33,9 +33,8 @@ export default createComponent({
       },
     },
     name() {
-      console.log('this', this)
       try {
-        if(!this.parent.options || this.parent.options.length === 0 || (this.parent.options.length < this.parent.children.length && this.index >= this.parent.options.length )) {
+        if (!this.parent.options || this.parent.options.length === 0 || (this.parent.options.length < this.parent.children.length && this.index >= this.parent.options.length)) {
           return this.label
         } else {
           let name = this.parent.options[this.index]?.[this.parent.valueField] ?? this.parent.options[this.index];
