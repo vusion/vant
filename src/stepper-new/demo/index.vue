@@ -2,17 +2,23 @@
   <demo-section>
     <demo-block>
       <van-cell center title="value:"> {{value}} </van-cell>
+      <van-cell center title="精度:">
+        <van-stepper-new
+          :showPlus="true"
+          :showMinus="true"
+          :value.sync="precision"
+          :decimalLength="0">
+        </van-stepper-new>
+      </van-cell>
+
     </demo-block>
 
     <demo-block title="格式化">
       <van-cell v-if="false" center title="小数位数10,省略小数位数">
         <van-stepper-new
-          :showPlus="false"
-          :showMinus="false"
-          :align="`left`"
           :value.sync="value"
+          :decimalLength="precision"
           :decimal-places="{places:10, omit:true}"
-          :decimalLength="5"
           :unit="{type:'prefix',value:''}"
           :highPrecision="true">
         </van-stepper-new>
@@ -20,11 +26,8 @@
 
       <van-cell v-if="true" center title="小数位数10,不省略小数位数">
         <van-stepper-new
-          :showPlus="false"
-          :showMinus="false"
-          :align="`left`"
           :value.sync="value"
-          :decimalLength="5"
+          :decimalLength="precision"
           :decimal-places="{ places: 10, omit:false }"
           :unit="{type:'prefix',value:''}"
           :highPrecision="true">
@@ -86,10 +89,6 @@
         <van-stepper-new v-model="disabledInput" disable-input />
       </van-cell>
 
-      <van-cell center :title="t('decimalLength')">
-        <van-stepper-new v-model="stepper8" :decimal-length="1" step="0.2" />
-      </van-cell>
-
       <van-cell center :title="t('customSize')">
         <van-stepper-new v-model="stepper7" button-size="32px" input-width="40px" />
       </van-cell>
@@ -137,7 +136,9 @@ export default {
 
   data() {
     return {
+      precision: 2,
       value: null,
+
       stepper1: 1,
       stepper2: 1,
       stepper3: 1,
