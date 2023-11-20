@@ -19,6 +19,8 @@ function equal(value1, value2) {
   return String(value1) === String(value2);
 }
 
+const isNil = (val) => val === null || val === undefined || val === '';
+
 export default createComponent({
   mixins: [FieldMixin],
 
@@ -124,7 +126,7 @@ export default createComponent({
       } else if (
         this.thousandths ||
         this.percentSign ||
-        this.decimalPlaces.places >= 0
+        !isNil(this.decimalPlaces.places)
       ) {
         formatter = '0';
         // 千分位
@@ -140,11 +142,8 @@ export default createComponent({
           for (let i = 0; i < this.decimalPlaces.places; i++) {
             formatter += char;
           }
-        } else if (this.decimalPlaces && this.decimalPlaces.places === '') {
-          formatter += '.';
-          for (let i = 0; i < 17; i++) {
-            formatter += '#';
-          }
+        } else if (this.decimalPlaces && isNil(this.decimalPlaces.places)) {
+          formatter += '.*';
         }
       }
 
@@ -270,7 +269,7 @@ export default createComponent({
       value = Math.max(Math.min(this.max, value), this.min);
 
       // format decimal
-      if (isDef(this.decimalLength) && this.decimalLength !== '') {
+      if (!isNil(this.decimalLength)) {
         value = value.toFixed(this.decimalLength);
       }
 
@@ -342,7 +341,7 @@ export default createComponent({
       // const parsedValue = this.currentFormatter.parse(value);
       let formatted = this.format(value);
 
-      if ((isDef(this.decimalLength) && this.decimalLength !== '') && formatted.indexOf('.') !== -1) {
+      if (!isNil(this.decimalLength) && formatted.indexOf('.') !== -1) {
         const pair = formatted.split('.');
         formatted = `${pair[0]}.${pair[1].slice(0, this.decimalLength)}`;
       }

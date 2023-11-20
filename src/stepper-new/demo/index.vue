@@ -24,8 +24,8 @@
           :showMinus="false"
           :align="`left`"
           :value.sync="value"
-          :decimal-places="{ places:10, omit:false }"
           :decimalLength="5"
+          :decimal-places="{ places: 10, omit:false }"
           :unit="{type:'prefix',value:''}"
           :highPrecision="true">
         </van-stepper-new>
@@ -45,6 +45,11 @@
 
       <van-cell v-if="true" center title="小数3位">
         <van-stepper-new :value.sync="value" :decimalPlaces="{ places: 3, omit: false }" />
+      </van-cell>
+
+
+      <van-cell v-if="true" center title="不限制小数位">
+        <van-stepper-new :value.sync="value" :decimalPlaces="{ places: null, omit: false }" />
       </van-cell>
 
       <van-cell v-if="false" center title="高级格式化">
