@@ -21,7 +21,7 @@
       sync: true
       model: true
       default: ""
-      description: ""
+      description: 用于标识地区选择的值
       group: 数据属性
     - name: areaListprop
       title: 数据源

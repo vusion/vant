@@ -10,7 +10,7 @@
       sync: true
       model: true
       default: false
-      description: ""
+      description: 用于标识开关的值
       group: 数据属性
     - name: disabled
       title: 禁用

@@ -22,7 +22,7 @@
       type: any
       sync: true
       model: true
-      description: ""
+      description: 用于标识单选组的值
       group: 数据属性
     - name: icon
       title: 单选项图标
@@ -43,7 +43,7 @@
         - value: vertical
           title: 垂直
       default: horizontal
-      description: 设置单选组的排列方向
+      description: 选择水平或垂直排列
       group: 主要属性
     - name: column
       title: 每行排列数
@@ -106,7 +106,7 @@
     - name: name
       title: 选项值
       type: string
-      description: 用于标识选项的值
+      description: 当前选中的值
       group: 数据属性
     - name: icon
       title: 单选项图标
@@ -127,7 +127,7 @@
         - value: left
           title: 左
       default: right
-      description: 设置文本位置
+      description: 设置文本居左或居右放置
       group: 主要属性
     - name: disabled
       title: 禁用

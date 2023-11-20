@@ -6,7 +6,7 @@
   description: 侧边导航
   attrs:
     - name: value
-      title: 值字段
+      title: 值
       type: number,string
       sync: true
       model: true
@@ -36,7 +36,7 @@
   title: 菜单项
   attrs:
     - name: value
-      title: 值字段
+      title: 值
       type: number,string
       sync: true
       model: true

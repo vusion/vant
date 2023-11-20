@@ -56,7 +56,7 @@
         - value: r
           title: 圆形
       default: s
-      description: 设置图片风格
+      description: 选择图片为方形或圆形
       group: 主要属性
     - name: preview
       title: 点击放大

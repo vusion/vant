@@ -117,20 +117,20 @@
       compType: dataTypeSelect
       group: 数据属性
     - name: value
-      title: 选中值
+      title: 值
       type: any
       sync: true
       model: true
       advanced: true
-      description: ""
+      description: 用于标识数据列表的值
       group: 数据属性
     - name: value
-      title: 选中值
+      title: 值
       type: any
       sync: true
       model: true
       group: 数据属性
-      description: ""
+      description: 用于标识数据列表的值
     - name: pageable
       title: 分页
       type: string
@@ -161,7 +161,7 @@
       description: 是否可以过滤（搜索），开启将会显示搜索框。
       group: 主要属性
     - name: placeholder
-      title: 筛选输入框的占位符
+      title: 筛选输入框显示文字
       type: string
       default: 请输入
       description: ""
@@ -341,7 +341,7 @@
       docDescription: 当列表为空时的提示文字。默认"暂无数据"
       tooltipLink: ""
     - name: striped
-      title: 显示斑马条纹
+      title: 斑马条纹
       type: boolean
       default: false
       description: 是否按斑马线条纹显示

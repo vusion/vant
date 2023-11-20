@@ -15,7 +15,7 @@
       type: any
       sync: true
       model: true
-      description: ""
+      description: 用于标识搜索框的值
       group: 数据属性
     - name: maxlength
       title: 最大字符数
@@ -25,18 +25,7 @@
     - name: placeholder
       title: 占位符
       type: string
-      description: 为空时的占位文本
-      group: 主要属性
-    - name: shape
-      title: 形状
-      type: string
-      options:
-        - value: square
-          title: 方形
-        - value: round
-          title: 圆形
-      default: square
-      description: 设置搜索框形状
+      description: 搜索框为空的显示文字
       group: 主要属性
     - name: cleartrigger
       title: 显示清除图标
@@ -85,6 +74,17 @@
       type: boolean
       description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
+    - name: shape
+      title: 形状
+      type: string
+      options:
+        - value: square
+          title: 方形
+        - value: round
+          title: 圆形
+      default: square
+      description: 选择搜索框为方形或圆形
+      group: 样式属性
   slots:
     - concept: Slot
       name: default

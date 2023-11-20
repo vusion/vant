@@ -203,7 +203,7 @@
       sync: true
       model: true
       default: null
-      description: ""
+      description: 用于标识时间选择的值
       dependency:
         - "!range": true
       group: 数据属性

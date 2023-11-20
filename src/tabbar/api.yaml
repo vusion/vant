@@ -6,7 +6,7 @@
   description: 标签栏
   attrs:
     - name: value
-      title: 值字段
+      title: 值
       type: number,string
       sync: true
       model: true
