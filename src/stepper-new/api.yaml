@@ -9,7 +9,7 @@
       type: number
       sync: true
       model: true
-      description: ""
+      description: 用于标识数字输入的值
       group: 数据属性
     - name: min
       title: 最小值
@@ -104,7 +104,7 @@
       title: 占位符
       type: string
       default: 请输入
-      description: 输入框为空时显示的占位文本
+      description: 输入框为空的显示文字
       group: 主要属性
     - name: showPlus
       title: 显示增加按钮

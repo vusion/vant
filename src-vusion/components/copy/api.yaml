@@ -70,7 +70,7 @@
     - name: value
       title: 值
       type: string
-      description: ""
+      description: 用于标识的值
       group: 数据属性
     - name: disabled
       title: 禁用

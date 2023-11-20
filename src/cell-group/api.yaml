@@ -46,13 +46,13 @@
       advanced: true
       description: 标题下方的描述信息
     - name: value
-      title: 值字段
+      title: 值
       type: string, number
       default2: 内容
       description: 用于标识单元格的值
       group: 数据属性
     - name: isLink
-      title: 箭头
+      title: 箭头图标
       type: boolean
       default: true
       description: 是否显示箭头图标
@@ -73,10 +73,10 @@
       description: ""
       group: 主要属性
     - name: center
-      title: 是否垂直居中
+      title: 垂直居中
       type: boolean
       default: true
-      description: ""
+      description: 是否垂直居中展示
       group: 主要属性
     - name: icon
       title: 图标

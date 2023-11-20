@@ -88,9 +88,9 @@
       description: 自定义标题
       advanced: true
     - name: name
-      title: 值
+      title: 选项值
       type: string
-      description: ""
+      description: 用于标识选项的值
       group: 数据属性
     - name: badgebtn
       title: 显示徽章

@@ -24,13 +24,13 @@
       sync: true
       model: true
       default2: "[]"
-      description: ""
+      description: 用于标识文件上传的值
       group: 数据属性
     - name: name
       title: 字段名
       type: string
       default: file
-      description: 上传的文件字段名
+      description: 当前上传的文件字段名
       group: 数据属性
     - name: accept
       title: 支持上传文件类型
@@ -88,10 +88,10 @@
       description: ""
       group: 主要属性
     - name: multiple
-      title: 支持多文件上传
+      title: 多文件上传
       type: boolean
       default: false
-      description: ""
+      description: 是否支持多文件上传
       group: 主要属性
     - name: max-count
       title: 列表数量上限

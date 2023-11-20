@@ -33,17 +33,17 @@
       sync: true
       model: true
       default: null
-      description: ""
+      description: 用于标识日期选择的值
       group: 数据属性
     - name: minDate
       title: 最小日期
       type: Date,String
-      description: 最小日期,默认为一年前
+      description: 最小日期，默认为一年前。
       group: 数据属性
     - name: maxDate
       title: 最大日期
       type: Date,String
-      description: 最大日期,默认为一年后
+      description: 最大日期，默认为一年后。
       group: 数据属性
     - name: title
       title: 日历标题

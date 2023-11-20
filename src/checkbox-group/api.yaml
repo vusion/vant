@@ -148,7 +148,7 @@
         - value: round
           title: 圆形
       default: square
-      description: 设置多选项的形状
+      description: 选择多选项为方形或圆形
       group: 主要属性
     - name: label-position
       title: 文本位置
@@ -159,7 +159,7 @@
         - value: lfet
           title: 左
       default: right
-      description: 设置文本位置
+      description: 设置文本居左或居右放置
       group: 主要属性
     - name: value
       title: 选中

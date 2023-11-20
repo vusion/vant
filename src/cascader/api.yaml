@@ -27,7 +27,7 @@
       sync: true
       model: true
       default: ""
-      description: ""
+      description: 用于标识级联选择的值
       group: 数据属性
     - name: data-source
       title: 数据源
@@ -37,25 +37,25 @@
       designer-value: "[{}]"
       group: 数据属性
     - name: text-field
-      title: 文本字段
+      title: 文本字段名
       type: string
       default: text
-      description: ""
+      description: 文本的字段名
       group: 数据属性
     - name: value-field
-      title: 值字段
+      title: 值字段名
       type: string
       default: value
-      description: ""
+      description: 选项值的字段名
       group: 数据属性
     - name: parent-field
-      title: 父级值字段
+      title: 父级值字段名
       type: string
       default: parentId
       description: ""
       group: 数据属性
     - name: children-field
-      title: 子级值字段
+      title: 子级值字段名
       type: string
       default: children
       description: ""
@@ -91,7 +91,7 @@
       description: 设置右侧内容的对齐方式
       group: 主要属性
     - name: filterable
-      title: 搜索框
+      title: 开启搜索框
       type: boolean
       default: false
       description: 是否开启搜索框进行过滤

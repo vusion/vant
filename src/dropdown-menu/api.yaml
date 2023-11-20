@@ -56,7 +56,7 @@
   title: 菜单项
   attrs:
     - name: value
-      title: 值字段
+      title: 值
       type: number,string
       sync: true
       model: true
@@ -121,7 +121,7 @@
       advanced: true
       description: 标题下方的描述信息
     - name: value
-      title: 值字段
+      title: 值
       type: string, number
       default2: 内容
       description: 用于标识菜单子项的值
