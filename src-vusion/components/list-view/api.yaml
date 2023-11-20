@@ -210,6 +210,7 @@
       title: 默认分页大小
       type: number
       default: 20
+      min: 1
       description: 分页过小可能会导致滚动加载更多失效
       dependency:
         - '!pageable': ""
