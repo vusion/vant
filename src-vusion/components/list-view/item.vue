@@ -38,11 +38,9 @@ export default {
     extends: UListViewItem,
     methods: {
       onTap(e) {
-        if (!this.parentVM.selectable) {
-          return;
+        if (this.parentVM && this.parentVM.selectable) {
+          this.select(e)
         }
-
-        this.select(e)
       }
     }
 }
