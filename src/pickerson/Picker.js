@@ -76,10 +76,10 @@ export default createComponent({
     setDefaultColumn() {
       let index;
       if (this.dataType === 'text') {
-        index = (this.columnsprop || []).findIndex((x) => x === this.currentValue || String(x) === String(this.currentValue));
+        index = (this.columnsprop || []).findIndex((x) => x === this.currentValue);
       } else {
         index = (this.columnsprop || []).findIndex(
-          (x) => _get(x, this.valueField) === this.currentValue || String(_get(x, this.valueField)) === String(this.currentValue)
+          (x) => _get(x, this.valueField) === this.currentValue
         );
       }
       this.defaultIndex = index;

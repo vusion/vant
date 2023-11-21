@@ -110,7 +110,6 @@ export default createComponent({
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
     getTitle() {
-
       if (this.ifDesigner()) {
         return this.value ?? this.pvalue;
       }
@@ -130,11 +129,10 @@ export default createComponent({
         }
 
         if (this.multiple) {
-          // if (this.currentValue.includes(v)) {
-          if (this.currentValue.find(item => item === v || String(item) === String(v))) {
+          if (this.currentValue.includes(v)) {
             title.push(t)
           }
-        } else if (this.currentValue === v || String(this.currentValue) === String(v)) {
+        } else if (this.currentValue === v) {
           title = t;
           break;
         }
@@ -242,7 +240,7 @@ export default createComponent({
           position={'bottom'}
           closeOnClickOverlay={this.closeOnClickOverlay}
           get-container="body" // 放body下不易出现异常情况
-        // onClickOverlay={this.togglePopup}
+          // onClickOverlay={this.togglePopup}
         >
           <div>
             {/* toolbar */}

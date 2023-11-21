@@ -146,7 +146,7 @@ export default createComponent({
     //   }
     // },
     value: {
-      handler(val, oldVal) {
+      handler (val, oldVal) {
         if (!equal(val, this.currentValue)) {
           this.currentValue = this.format(val);
         }
