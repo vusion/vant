@@ -26,8 +26,10 @@
     - name: value-field
       title: 值字段名
       type: string
+      display: property-select
       default: value
       description: 选项值的字段名
+      group: 数据属性
     - name: cancelable
       title: 可取消
       type: boolean
