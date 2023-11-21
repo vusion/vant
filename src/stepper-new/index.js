@@ -36,7 +36,7 @@ export default createComponent({
     disablePlus: Boolean,
     disableMinus: Boolean,
     disableInput: Boolean,
-    decimalLength: { type: [Number, String], default: 40, },
+    decimalLength: [Number, String],
     name: {
       type: [Number, String],
       default: '',
@@ -199,8 +199,9 @@ export default createComponent({
       }
       value = isNaN(value) ? this.min : value;
       if (this.highPrecision) {
-        if (!this.Decimal) {
-          this.Decimal = Decimal.clone({ precision: 40 });
+        if (!this.Decimal && this?.decimalLength > -1) {
+          this.Decimal = Decimal
+          // || this.getCloneDecimal();
         }
         value = this.Decimal.max(this.Decimal.min(this.max, new this.Decimal(value)), this.min).toString();
       } else {
@@ -210,7 +211,9 @@ export default createComponent({
       // format decimal
       if (isDef(this.decimalLength)) {
         if (this.highPrecision) {
-          value = new this.Decimal(value).toString();
+          value = new this.Decimal(value).toFixed(this.decimalLength).toString();
+        } else {
+          value = value.toFixed(this.decimalLength);
         }
       }
 
