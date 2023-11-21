@@ -157,7 +157,7 @@
       title: 步长
       type: string, number
       default: 1
-      description: 每次点击时改变的值
+      description: 表示点击按钮或按上下键所增加或减少的量
       group: 样式属性
     - name: align
       title: 对齐方式

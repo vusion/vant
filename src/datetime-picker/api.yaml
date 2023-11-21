@@ -9,6 +9,22 @@
       type: string
       description: 左侧文本插槽内容存在时优先展示插槽内容
       advanced: true
+    - name: type
+      title: 时间类型
+      type: string
+      options:
+        - value: time
+          title: 时间选择
+        - value: date
+          title: 日期选择
+        - value: datetime
+          title: 日期时间选择
+      default: datetime
+      toggleclear:
+        - unit
+        - show-formatter
+      group: 主要属性
+      description: 设置时间选择类型
     - name: unit
       title: 最小单位
       type: string
@@ -123,7 +139,7 @@
             - unit: year
               type: date
         - value: HH:mm:ss
-          title: 12:09:09
+          title: "12:09:09"
           dependency:
             - unit: second
               type: time
@@ -133,7 +149,7 @@
             - unit: second
               type: time
         - value: HH:mm
-          title: 12:09
+          title: "12:09"
           dependency:
             - unit: minute
               type: time
@@ -143,7 +159,7 @@
             - unit: minute
               type: time
         - value: YYYY-MM-DD HH:mm:ss
-          title: 2023-07-26 12:09:09
+          title: "2023-07-26 12:09:09"
           dependency:
             - unit: second
               type: datetime
@@ -249,22 +265,6 @@
       dependency:
         - type: time
       group: 数据属性
-    - name: type
-      title: 时间类型
-      type: string
-      options:
-        - value: time
-          title: 时间选择
-        - value: date
-          title: 日期选择
-        - value: datetime
-          title: 日期时间选择
-      default: datetime
-      toggleclear:
-        - unit
-        - show-formatter
-      group: 主要属性
-      description: 设置时间选择类型
     - name: converter
       title: 转换器
       type: string
