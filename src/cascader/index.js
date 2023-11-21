@@ -137,7 +137,7 @@ export default createComponent({
       for (let i = 0; i < options.length; i++) {
         const option = options[i];
 
-        if (_get(option, this.valueKey) === value) {
+        if (_get(option, this.valueKey) === value || String(_get(option, this.valueKey)) === String(value)) {
           return [option];
         }
 
@@ -172,7 +172,7 @@ export default createComponent({
 
             const next = optionsCursor.filter(
               (item) =>
-                _get(item, this.valueKey) === _get(option, this.valueKey)
+                (_get(item, this.valueKey) === _get(option, this.valueKey) || String(_get(item, this.valueKey)) === String(_get(option, this.valueKey)))
             );
             if (next.length) {
               optionsCursor = next[0][this.childrenKey];
@@ -286,7 +286,7 @@ export default createComponent({
     },
 
     // 覆盖mixin
-    filter() {},
+    filter() { },
     onInput(value) {
       this.filterText = value;
 
@@ -356,7 +356,7 @@ export default createComponent({
       const renderOption = (option) => {
         const isSelected =
           selectedOption &&
-          _get(option, this.valueKey) === _get(selectedOption, this.valueKey);
+          (_get(option, this.valueKey) === _get(selectedOption, this.valueKey) || String(_get(option, this.valueKey)) === String(_get(selectedOption, this.valueKey)));
         // option[this.valueKey] === selectedOption[this.valueKey];
         // console.log(option);
         const Text = this.slots('option', { option, selected: isSelected }) || (

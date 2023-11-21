@@ -204,7 +204,10 @@ export default createComponent({
       if (isObject(option) && _get(option, this.textField)) {
         return _get(option, this.textField);
       }
-
+      const isNil = val => val === undefined || val === null;
+      if (isNil(isObject(option) && _get(option, this.textField))) {
+        return null
+      }
       return option;
     },
 
@@ -279,7 +282,6 @@ export default createComponent({
       return this.options.map((option, index) => {
         const text = this.getOptionText(option);
         const disabled = this.disabled || isOptionDisabled(option);
-
         const data = {
           style: optionStyle,
           attrs: {

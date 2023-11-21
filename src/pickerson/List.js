@@ -101,7 +101,7 @@ export default createComponent({
             const checked = this.multiple
               ? this.currentValue.includes(value)
               : // eslint-disable-next-line eqeqeq
-                this.currentValue == value;
+              (this.currentValue == value);
             return (
               <div
                 key={value}
