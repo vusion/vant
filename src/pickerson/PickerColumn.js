@@ -1,5 +1,5 @@
 import { deepClone } from '../utils/deep-clone';
-import { createNamespace, isObject, _get } from '../utils';
+import { createNamespace, isObject, _get, isDef } from '../utils';
 import { range } from '../utils/format/number';
 import { preventDefault } from '../utils/dom/event';
 import { TouchMixin } from '../mixins/touch';
@@ -201,7 +201,7 @@ export default createComponent({
     },
 
     getOptionText(option) {
-      if (isObject(option) && _get(option, this.textField)) {
+      if (isObject(option) && isDef(_get(option, this.textField))) {
         return _get(option, this.textField);
       }
 
