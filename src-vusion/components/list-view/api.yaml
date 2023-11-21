@@ -28,7 +28,6 @@
       type: string
       default: value
       description: 选项值的字段名
-      advanced: true
     - name: cancelable
       title: 可取消
       type: boolean
