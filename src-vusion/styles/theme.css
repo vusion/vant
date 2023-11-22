@@ -423,6 +423,8 @@
   --van-picker-option-disabled-opacity: 0.3;
   --van-picker-loading-icon-color: var(--van-brand-primary); /* @type color */
   --van-picker-loading-mask-color: rgba(255, 255, 255, 0.9);
+  --van-picker-list-item-background-color: transparent; /* @type color */ /* @desc 选项未选中背景色 */
+  --van-picker-list-item-selected-background-color: transparent; /* @type color */ /* @desc 选项选中背景色 */
 
   /* @component van-popup */
   --van-popup-background-color: #fff; /* @type color */ /* @desc 背景色 */
@@ -436,16 +438,26 @@
 
   /* @component van-radio */
   --van-radio-size: 20px; /* @desc 单选项字体大小 */ /* @prefix van-radio */
-  --van-radio-border-color: #c8c9cc; /* @type color */ /* @desc 单选项边框颜色 */ /* @prefix van-radio */
   --van-radio-transition-duration: 0.2s; /* @hidden */
   --van-radio-label-margin: var(--van-padding-xs); /* @desc 单选项label外边距 */ /* @prefix van-radio */
-  --van-radio-label-color: var(--van-component-text-color); /* @type color */ /* @desc 单选项label字体大小 */ /* @prefix van-radio */
-  --van-radio-checked-icon-color: var(--van-brand-primary); /* @type color */ /* @desc 单选项选中颜色 */ /* @prefix van-radio */
+  --van-radio-checked-icon-color: var(--van-brand-primary); /* @type color */ /* @desc 单选项选中图标颜色 */ /* @prefix van-radio */
+  --van-radio-checked-icon-label-color: white; /* @type color */ /* @desc 单选项选中图标文字颜色 */ /* @prefix van-radio */
   --van-radio-disabled-icon-color: #c8c9cc; /* @type color */ /* @desc 单选项禁用边框颜色 */ /* @prefix van-radio */
+  --van-radio-disabled-icon-label-color: #c8c9cc; /* @type color */ /* @desc 单选项禁用图标文字颜色 */ /* @prefix van-radio */
   --van-radio-disabled-label-color: #c8c9cc; /* @type color */ /* @desc 单选项禁用字体颜色 */ /* @prefix van-radio */
   --van-radio-disabled-background-color: var(
     --van-border-color
   ); /* @type color */ /* @desc 单选项禁用背景色 */ /* @prefix van-radio */
+  --van-radio-border-radius: 999999px; /* @desc 圆角大小 */ /* @prefix van-radio */
+  --van-radio-border-width: 0; /* @desc 边框宽度 */ /* @prefix van-radio */
+  --van-radio-icon-border-width: 1px; /* @desc 图标边框宽度 */ /* @prefix van-radio */
+  --van-radio-border-color: #c8c9cc; /* @type color */ /* @desc 单选项未选中边框颜色 */ /* @prefix van-radio */
+  --van-radio-checked-border-color: rgb(150, 151, 153); /* @type color */ /* @desc 单选项选中边框颜色 */ /* @prefix van-radio */
+  --van-radio-background-color: transparent;/* @type color */ /* @desc 单选项未选中背景颜色 */ /* @prefix van-radio */
+  --van-radio-checked-background-color: transparent;/* @type color */ /* @desc 单选项选中背景颜色 */ /* @prefix van-radio */
+  --van-radio-label-color: var(--van-component-text-color);/* @type color */ /* @desc 单选项未选中文字颜色 */ /* @prefix van-radio */
+  --van-radio-checked-label-color: var(--van-component-text-color);/* @type color */ /* @desc 单选项选中文字颜色 */ /* @prefix van-radio */
+  --van-radio-padding: 0; /* @type color */ /* @desc 单选项内边距 */ /* @prefix van-radio */
 
   /* @component van-search */
   --van-search-padding: 10px var(--van-padding-sm); /* @hidden */
@@ -811,4 +823,39 @@
   --popup-background: white; /* @type color */ /* @desc 弹出层的背景色,如 #223325 */ /* @prefix popup */
   --popup-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* @desc 弹出层的阴影效果,如 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */ /* @prefix popup */
   --popup-border-color: var(--border-color-base); /* @type color */ /* @desc 弹出层的边框颜色,如 #223325 */ /* @prefix popup */
+
+  /* @component van-toast */
+  --van-toast-max-width: 70%; /* @desc 弹出消息的最大宽度 */
+  --van-toast-font-size: 14px; /* @desc 弹出消息的字体大小 */
+  --van-toast-text-color: #fff; /* @type color */ /* @desc 弹出消息的字体颜色 */
+  --van-toast-background-color: rgba(0, 0, 0, 0.7); /* @type color */ /* @desc 弹出消息的背景色 */
+  --van-toast-custom-icon-color: white; /* @type color */ /* @desc 弹出消息的自定义图标颜色 */
+  --van-toast-box-shadow: none; /* @desc 弹出消息的阴影效果，如  0px 2px 6px rgba(0, 0, 0, 0.1) */
+
+  /* @component van-capsules */
+  --van-capsules-item-font-size: 12px; /* @desc 胶囊字体大小 */ /* @prefix van-capsules-item */
+  --van-capsules-item-padding: 4px 20px; /* @desc 胶囊内边距 */ /* @prefix van-capsules-item */
+  --van-capsules-item-border-color: #e5e5e5; /* @type color */ /* @desc 胶囊边框颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-background: #fff; /* @type color */ /* @desc 胶囊背景色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-color: #333; /* @type color */ /* @desc 胶囊字体颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-border-radius: 4px; /* @desc 胶囊圆角 */
+
+  --van-capsules-item-active-border-color: #337eff; /* @type color */ /* @desc 胶囊选中时边框颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-active-background: #337eff; /* @type color */ /* @desc 胶囊选中时背景色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-active-color: #fff; /* @type color */ /* @desc 胶囊选中时字体颜色 */ /* @prefix van-capsules-item */
+
+  --van-capsules-item-disabled-border-color: #337eff; /* @type color */ /* @desc 胶囊禁用时边框颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-disabled-background: #f5f5f5; /* @type color */ /* @desc 胶囊禁用时背景色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-disabled-color: #aaa; /* @type color */ /* @desc 胶囊禁用时字体颜色 */ /* @prefix van-capsules-item */
+
+  --van-capsules-item-active-disabled-border-color: #bbd4ff; /* @type color */ /* @desc 胶囊选中时的禁用边框颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-active-disabled-background: #bbd4ff; /* @type color */ /* @desc 胶囊选中时的禁用背景色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-active-disabled-color: #fff; /* @type color */ /* @desc 胶囊选中时的禁用字体颜色 */ /* @prefix van-capsules-item */
+
+  --van-capsules-item-label-font-size: 10px; /* @desc 胶囊标签字体大小 */ /* @prefix van-capsules-item */
+  --van-capsules-item-label-background: #f24957; /* @type color */ /* @desc 胶囊标签背景色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-label-color: #fff; /* @type color */ /* @desc 胶囊标签字体颜色 */ /* @prefix van-capsules-item */
+  --van-capsules-item-label-max-width: 100%; /* @desc 胶囊标签最大宽度 */ /* @prefix van-capsules-item */
+
+  --van-capsules-item-flag-color: #f24957; /* @type color */ /* @desc 胶囊flag颜色 */ /* @prefix van-capsules-item */
 }

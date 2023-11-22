@@ -23,6 +23,15 @@
   text-align: center;
   color: #ccc;
 }
+/* 与主轴同向用 flex，否则用 align-self */
+.van-col--direction-horizontal > [width-stretch="true"],
+.van-col--direction-vertical > [height-stretch="true"] { flex: 1 0 0; }
+.van-col--direction-vertical > [width-stretch="true"],
+.van-col--direction-horizontal > [height-stretch="true"] { align-self: stretch; }
+/* width-stretch 强制 width 为 unset */
+.van-col--flex > [width-stretch="true"] { width: unset !important; }
+/* height-stretch 强制 height 为 unset */
+.van-col--flex > [height-stretch="true"] { height: unset !important; }
 .van-col {
   &--flex {
     display: flex;
@@ -113,23 +122,23 @@
   }
 
   &--align-start {
-    align-items: flex-start;
+    align-items: flex-start; align-content: flex-start; 
   }
 
   &--align-center {
-    align-items: center;
+    align-items: center; align-content: center; 
   }
 
   &--align-end {
-    align-items: flex-end;
+    align-items: flex-end; align-content: flex-end; 
   }
 
   &--align-baseline {
-    align-items: baseline;
+    align-items: baseline; align-content: baseline; 
   }
 
   &--align-stretch {
-    align-items: stretch;
+    align-items: stretch; align-content: stretch; 
   }
   &--nowrap {
     flex-wrap: nowrap

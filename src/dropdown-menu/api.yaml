@@ -12,8 +12,14 @@
       model: true
       advanced: true
       description: 菜单值
+    - name: route
+      title: 是否开启路由模式
+      type: boolean
+      default: false
+      advanced: true
+      description: 是否开启路由模式
     - name: direction
-      title: 菜单展开方向
+      title: 展开方向
       type: string
       options:
         - value: up
@@ -21,23 +27,20 @@
         - value: down
           title: 下
       default: down
-      description: 菜单展开方向
+      description: 设置下拉菜单的展开方向
+      group: 主要属性
     - name: overlay
-      title: 是否显示遮罩层
+      title: 显示遮罩层
       type: boolean
       default: true
-      description: 是否显示遮罩层
+      description: ""
+      group: 交互属性
     - name: close-on-click-overlay
-      title: 是否点击遮罩层后关闭菜单
+      title: 点击遮罩层后关闭
       type: boolean
       default: true
       description: 是否点击遮罩层后关闭菜单
-    - name: route
-      title: 是否开启路由模式
-      type: boolean
-      default: false
-      advanced: true
-      description: 是否开启路由模式
+      group: 交互属性
   slots:
     - concept: Slot
       name: default
@@ -52,27 +55,31 @@
 - name: van-dropdown-item
   title: 菜单项
   attrs:
-    - name: valueprop
-      title: 菜单项值
-      type: string
+    - name: value
+      title: 值
+      type: number,string
       sync: true
       model: true
-      description: 菜单项值
+      description: 用于标识菜单项的值
+      group: 数据属性
     - name: title
       title: 标题
       type: string
       default: 标题
-      description: 标题
+      description: ""
+      group: 主要属性
+    - name: shutself
+      title: 点击菜单子项关闭
+      type: boolean
+      default: true
+      description: 是否通过点击菜单子项关闭
+      group: 交互属性
     - name: disabled
       title: 禁用
       type: boolean
       default: false
-      description: 禁用
-    - name: shutself
-      title: 是否通过点击菜单子项关闭
-      type: boolean
-      default: true
-      description: 是否通过点击菜单子项关闭
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
   slots:
     - concept: Slot
       name: default
@@ -102,11 +109,29 @@
 - name: van-dropdown-item-son
   title: 菜单子项
   attrs:
+    - name: rtitle
+      title: 右侧文本
+      type: string
+      advanced: true
+      description: 右侧文本
+    - name: label
+      title: 标题下方的描述信息
+      type: string
+      default: 这是单元格
+      advanced: true
+      description: 标题下方的描述信息
+    - name: value
+      title: 值
+      type: string, number
+      default2: 内容
+      description: 用于标识菜单子项的值
+      group: 数据属性
     - name: isLink
       title: 箭头
       type: boolean
       default: true
-      description: 是否展示箭头
+      description: 是否显示箭头图标
+      group: 主要属性
     - name: arrow-direction
       title: 箭头方向
       type: string
@@ -120,37 +145,25 @@
         - value: right
           title: 右
       default: right
-      description: 箭头得方向
+      description: 设置箭头方向
+      group: 主要属性
     - name: center
       title: 垂直居中
       type: boolean
       default: true
-      description: 是否垂直居中
+      description: ""
+      group: 主要属性
     - name: title
-      title: 左侧文本
+      title: 文本
       type: string
-      description: 左侧文本
-    - name: value
-      title: 值
-      type: string
-      description: 值
-    - name: rtitle
-      title: 右侧文本
-      type: string
-      advanced: true
-      description: 右侧文本
-    - name: label
-      title: 标题下方的描述信息
-      type: string
-      default: 这是单元格
-      advanced: true
-      description: 标题下方的描述信息
+      description: 菜单子项的左侧文本
+      group: 主要属性
     - name: icon
       title: 图标
-      type: string
+      type: icon
       default: ""
-      description: 图标
-      setter: iconSelect
+      description: 菜单子项的显示图标
+      group: 主要属性
     - name: linkType
       title: 链接类型
       type: string
@@ -160,13 +173,15 @@
         - value: download
           title: 下载链接
       default: destination
-      description: 链接类型
+      description: ""
       compType: linkTypeSelect
+      group: 交互属性
     - name: hrefAndTo
-      title: 链接
+      title: 链接地址
       type: string
-      description: 链接地址
+      description: ""
       compType: linkHrefInput
+      group: 交互属性
     - name: target
       title: 打开方式
       type: string
@@ -183,6 +198,7 @@
           advanced: true
       default: _self
       description: 父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。
+      group: 交互属性
   slots:
     - concept: Slot
       name: default

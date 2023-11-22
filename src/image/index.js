@@ -16,6 +16,12 @@ export default createComponent({
     radius: [Number, String],
     lazyLoad: Boolean,
     iconPrefix: String,
+    loadingType: {
+      type: String,
+      default: 'loading',
+      validator: (value) => ['loading', 'placeholder', 'none'].includes(value),
+    },
+    placeholderSrc: String,
     showError: {
       type: Boolean,
       default: true,
@@ -38,7 +44,7 @@ export default createComponent({
     },
     preview: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
 
@@ -46,13 +52,22 @@ export default createComponent({
     return {
       loading: true,
       error: false,
+      placeholderLoading: true,
+      placeholderError: false,
     };
   },
 
   watch: {
     src() {
-      // this.loading = true;
-      this.error = false;
+      this.loadImage();
+    },
+    placeholderSrc() {
+      this.loadPlaceholderImage();
+    },
+    loadingType(type, oldType) {
+      if (oldType !== type && type === 'placeholder') {
+        this.loadPlaceholderImage();
+      }
     },
   },
 
@@ -75,6 +90,13 @@ export default createComponent({
 
       return style;
     },
+    convertedSrc() {
+      return this.getSrc(this.src);
+    },
+    convertedPlaceholderSrc() {
+      if (this.loadingType !== 'placeholder') return;
+      return this.getSrc(this.placeholderSrc);
+    },
   },
 
   created() {
@@ -84,6 +106,11 @@ export default createComponent({
       $Lazyload.$on('loaded', this.onLazyLoaded);
       $Lazyload.$on('error', this.onLazyLoadError);
     }
+  },
+
+  mounted() {
+    this.loadImage();
+    this.loadPlaceholderImage();
   },
 
   beforeDestroy() {
@@ -108,10 +135,10 @@ export default createComponent({
       // 正则表达式用于匹配以逗号分隔的字符串列表，其中每个字符串都不能包含[]
       const reg = /^([^[\]]+)(,([^[\]]+)){0,}$/g;
       if (typeof src === 'string' && reg.test(src)) {
-          const [a1, a2] = src.split(',');
-          if (/\/\//.test(a2)) {
-              return a1;
-          }
+        const [a1, a2] = src.split(',');
+        if (/\/\//.test(a2)) {
+          return a1;
+        }
       }
 
       try {
@@ -127,6 +154,7 @@ export default createComponent({
     },
     onLoad(event) {
       this.loading = false;
+      this.placeholderLoading = false;
       this.$emit('load', event);
     },
 
@@ -149,28 +177,38 @@ export default createComponent({
     },
 
     onClick(event) {
-      if (this.$parent.$options._componentTag === 'van-cardu') return;
+      // if (this.$parent.$options._componentTag === 'van-cardu') return;
       if (window.top.globalData) return;
+
       if (this.$listeners.click) {
         this.$emit('click', event);
-      } else if (!this.ifDesigner() && this.preview) {
+      }
+
+      if (!this.ifDesigner() && this.preview) {
         ImagePreview([this.getSrc(this.src)]);
       }
     },
 
     genPlaceholder() {
       if (this.loading && this.showLoading) {
-        return (
-          <div class={bem('loading')}>
-            {this.slots('loading') || (
-              <Icon
-                name={this.loadingIcon}
-                class={bem('loading-icon')}
-                classPrefix={this.iconPrefix}
-              />
-            )}
-          </div>
-        );
+        const needLoadingInPlaceholderMode =
+          this.loadingType === 'placeholder' &&
+          !this.error &&
+          (this.placeholderLoading || this.placeholderError);
+        const needLoadingInLoadingMode = this.loadingType === 'loading';
+        if (needLoadingInLoadingMode || needLoadingInPlaceholderMode) {
+          return (
+            <div class={bem('loading')}>
+              {this.slots('loading') || (
+                <Icon
+                  name={this.loadingIcon}
+                  class={bem('loading-icon')}
+                  classPrefix={this.iconPrefix}
+                />
+              )}
+            </div>
+          );
+        }
       }
 
       if (this.error && this.showError) {
@@ -212,14 +250,84 @@ export default createComponent({
       if (this.lazyLoad) {
         return <img ref="image" vLazy={this.getSrc(this.src)} {...imgData} />;
       }
-      return (
-        <img
-          src={this.getSrc(this.src)}
-          onLoad={this.onLoad}
-          onError={this.onError}
-          {...imgData}
-        />
+      if (this.loadingType !== 'placeholder') {
+        return <img src={this.convertedSrc} {...imgData} />;
+      }
+      if (!this.placeholderLoading) {
+        return (
+          <img
+            src={
+              this.loading ? this.convertedPlaceholderSrc : this.convertedSrc
+            }
+            {...imgData}
+          />
+        );
+      }
+      return null;
+    },
+
+    loadImage() {
+      if (this.lazyLoad) {
+        // lazyLoad 不走这段逻辑
+        return;
+      }
+      this.loading = true;
+      this.error = false;
+
+      const [promise] = this.load(this.convertedSrc);
+
+      promise.then(
+        (e) => {
+          this.onLoad(e);
+        },
+        (e) => {
+          this.onError(e);
+        }
       );
+    },
+    loadPlaceholderImage() {
+      if (this.lazyLoad) {
+        // lazyLoad 不走这段逻辑
+        return;
+      }
+      if (!this.loading || this.loadingType !== 'placeholder') {
+        // 模式不匹配或正常的图片已经成功加载，不需要加载占位图片
+        return;
+      }
+      this.placeholderLoading = true;
+      this.placeholderError = false;
+      const [promise] = this.load(this.convertedPlaceholderSrc);
+
+      promise.then(
+        () => {
+          this.placeholderLoading = false;
+          this.placeholderError = false;
+        },
+        () => {
+          this.placeholderLoading = false;
+          this.placeholderError = true;
+        }
+      );
+    },
+    load(src, onTimeout = () => {}, delay = 10000) {
+      const img = new Image();
+      const timer = setTimeout(onTimeout, delay);
+      return [
+        new Promise((res, rej) => {
+          img.onload = (e) => {
+            res(e);
+            img.onload = undefined;
+            img.onerror = undefined;
+          };
+          img.onerror = (e) => {
+            rej(e);
+            img.onload = undefined;
+            img.onerror = undefined;
+          };
+          img.src = src;
+        }),
+        () => clearTimeout(timer),
+      ];
     },
   },
 

@@ -1,19 +1,11 @@
 // Utils
-import { createNamespace, isDef } from '../utils';
-import { lockClick } from './lock-click';
-
-// Mixins
-import { PopupMixin } from '../mixins/popup';
-
-// Components
-import Icon from '../icon';
-import Loading from '../loading';
+import { createNamespace } from '../utils';
 
 const [createComponent, bem] = createNamespace('toast');
 
-export default createComponent({
-  mixins: [PopupMixin()],
+let uid = 0;
 
+export default createComponent({
   props: {
     icon: String,
     className: null,
@@ -38,109 +30,57 @@ export default createComponent({
       type: Boolean,
       default: false,
     },
+    duration: { type: Number, default: 2000 },
+
+    customIcon: String,
   },
 
   data() {
     return {
-      clickable: false,
+      key: `u-toast-${uid++}`,
     };
   },
 
-  mounted() {
-    this.toggleClickable();
-  },
-
-  destroyed() {
-    this.toggleClickable();
-  },
-
-  watch: {
-    value: 'toggleClickable',
-    forbidClick: 'toggleClickable',
-  },
-
   methods: {
-    onClick() {
-      if (this.closeOnClick) {
-        this.close();
-      }
+    open() {
+      const { staticStyle } = this.$vnode.data;
+
+      this.$nextTick(() => {
+        this.$toast.openToast({
+          key: this.key,
+          message: this.message,
+          type: this.type,
+          duration: this.duration,
+          customIcon: this.customIcon,
+          onShow: () => {
+            this.$emit('open');
+          },
+          onHide: () => {
+            this.$emit('close');
+          },
+          staticStyle: this.filterCSSVarInStyle(staticStyle),
+        });
+      })
     },
-
-    toggleClickable() {
-      const clickable = this.value && this.forbidClick;
-
-      if (this.clickable !== clickable) {
-        this.clickable = clickable;
-        lockClick(clickable);
-      }
+    close() {
+      this.$toast.closeToast(this.key);
     },
-
-    /* istanbul ignore next */
-    onAfterEnter() {
-      this.$emit('opened');
-
-      if (this.onOpened) {
-        this.onOpened();
-      }
-    },
-
-    onAfterLeave() {
-      this.$emit('closed');
-    },
-
-    genIcon() {
-      const { icon, type, iconPrefix, loadingType } = this;
-      const hasIcon = icon || type === 'success' || type === 'fail';
-
-      if (hasIcon) {
-        return (
-          <Icon
-            class={bem('icon')}
-            classPrefix={iconPrefix}
-            name={icon || type}
-          />
-        );
+    filterCSSVarInStyle(staticStyle) {
+      const style = {};
+      for (const key in staticStyle) {
+        if (Object.prototype.hasOwnProperty.call(staticStyle, key)) {
+          if (/^--/.test(key)) {
+            const value = staticStyle[key];
+            style[key] = value;
+          }
+        }
       }
 
-      if (type === 'loading') {
-        return <Loading class={bem('loading')} type={loadingType} />;
-      }
-    },
-
-    genMessage() {
-      const { type, message } = this;
-
-      if (!isDef(message) || message === '') {
-        return;
-      }
-
-      if (type === 'html') {
-        return <div class={bem('text')} domPropsInnerHTML={message} />;
-      }
-
-      return <div class={bem('text')}>{message}</div>;
+      return style;
     },
   },
 
   render() {
-    return (
-      <transition
-        name={this.transition}
-        onAfterEnter={this.onAfterEnter}
-        onAfterLeave={this.onAfterLeave}
-      >
-        <div
-          vShow={this.value}
-          class={[
-            bem([this.position, { [this.type]: !this.icon }]),
-            this.className,
-          ]}
-          onClick={this.onClick}
-        >
-          {this.genIcon()}
-          {this.genMessage()}
-        </div>
-      </transition>
-    );
+    return null;
   },
 });

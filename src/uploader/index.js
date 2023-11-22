@@ -1,5 +1,5 @@
 // Utils
-import { createNamespace, addUnit, noop, isPromise, isDef } from '../utils';
+import { createNamespace, addUnit, noop, isPromise, isDef, _template } from '../utils';
 import { toArray, readFile, isOversize, isImageFile } from './utils';
 
 // Mixins
@@ -14,7 +14,7 @@ import Toast from '../toast/index';
 
 import ajax from './ajax';
 
-const [createComponent, bem] = createNamespace('uploader');
+const [createComponent, bem, t] = createNamespace('uploader');
 
 export default createComponent({
   inheritAttrs: false,
@@ -31,7 +31,7 @@ export default createComponent({
     autoUpload: { type: Boolean, default: true },
     withCredentials: { type: Boolean, default: false },
     data: Object,
-    urlField: { type: String, default: 'result' },
+    urlField: { type: String, default: 'filePath' },
     disabled: Boolean,
     readonly: Boolean,
     lazyLoad: Boolean,
@@ -48,13 +48,13 @@ export default createComponent({
     accept: {
       type: String,
     },
-    // fileList: {
-    //   type: Array,
-    //   default: () => [],
-    // },
+    // 废弃
     fileListProp: {
       type: [Array, String],
       default: () => [],
+    },
+    value: {
+      type: [Array, String],
     },
     maxSize: {
       type: [Number, String, Function],
@@ -96,7 +96,7 @@ export default createComponent({
       type: String,
       default: 'json',
     },
-    readonlyy: {
+    readonly: {
       type: Boolean,
       default: false,
     },
@@ -112,10 +112,18 @@ export default createComponent({
       type: Number,
       default: null,
     },
+    lcapIsCompress: {
+      type: Boolean,
+      default: false,
+    },
+    viaOriginURL: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
-      fileList: this.fromValue(this.fileListProp),
+      currentValue: this.fromValue(this.value ?? this.fileListProp),
     };
   },
   computed: {
@@ -124,18 +132,23 @@ export default createComponent({
     },
 
     // for form
-    value() {
-      return this.toValue(this.fileList);
+    fileList() {
+      return this.toValue(this.currentValue);
     },
     canUp() {
-      if (this.fileList.length === 0) return true;
-      const can = this.fileList.every((item) => item.status !== 'uploading');
+      if (this.currentValue.length === 0) return true;
+      const can = this.currentValue.every(
+        (item) => item.status !== 'uploading'
+      );
       return can;
     },
   },
   watch: {
+    value(val) {
+      this.currentValue = this.fromValue(val);
+    },
     fileListProp(val) {
-      this.fileList = this.fromValue(val);
+      this.currentValue = this.fromValue(val);
     },
   },
   methods: {
@@ -150,7 +163,9 @@ export default createComponent({
       else if (this.converter === 'simple')
         try {
           if (!value) return [];
-          return value.split(',').map((x) => ({ url: x }));
+          return value
+            .split(',')
+            .map((x) => ({ url: x, name: this.handleFileName(x) }));
         } catch (err) {
           return [];
         }
@@ -171,7 +186,7 @@ export default createComponent({
     simpleConvert(value) {
       return value.map((x) => x.url).join(',');
     },
-    getDetail(index = this.fileList.length) {
+    getDetail(index = this.currentValue.length) {
       return {
         name: this.name,
         index,
@@ -197,7 +212,8 @@ export default createComponent({
       ).toLowerCase();
       const type = file.type.toLowerCase();
       const baseType = type.replace(/\/.*$/, '').toLowerCase();
-      const valid = accept.split(',')
+      const valid = accept
+        .split(',')
         .map((type) => type.trim())
         .filter((type) => type)
         .some((acceptedType) => {
@@ -214,7 +230,7 @@ export default createComponent({
           return false;
         });
 
-        return valid;
+      return valid;
     },
 
     onChange(event) {
@@ -253,7 +269,7 @@ export default createComponent({
             const valid = this.validateFile(files[i], this.accept);
             if (!valid) {
               this.resetInput();
-              Toast('文件类型不匹配，请上传' + this.accept + '的文件类型');
+              Toast(_template(t('typeError'), { accept: this.accept }));
               return null;
             }
           }
@@ -261,7 +277,7 @@ export default createComponent({
       } else if (this.accept) {
         const valid = this.validateFile(files, this.accept);
         if (!valid) {
-          Toast('文件类型不匹配，请上传' + this.accept + '的文件类型');
+          Toast(_template(t('typeError'), { accept: this.accept }));
           this.resetInput();
           return null;
         }
@@ -272,7 +288,7 @@ export default createComponent({
     readFile(files) {
       const oversize = isOversize(files, this.maxSize);
       if (Array.isArray(files)) {
-        const maxCount = this.maxCount - this.fileList.length;
+        const maxCount = this.maxCount - this.currentValue.length;
 
         if (files.length > maxCount) {
           files = files.slice(0, maxCount);
@@ -280,9 +296,17 @@ export default createComponent({
 
         Promise.all(files.map((file) => readFile(file, this.resultType))).then(
           (contents) => {
-            const fileList = files.map((file, index) => {
-              const result = { file, status: '', message: '' };
-
+            const list = files.map((file, index) => {
+              const result = {
+                file,
+                status: '',
+                message: '',
+                uid:
+                  file.uid !== undefined ? file.uid : Date.now() + files.length,
+                name: file.name,
+                size: file.size,
+                percent: 0,
+              };
               if (contents[index]) {
                 result.content = contents[index];
               }
@@ -290,12 +314,23 @@ export default createComponent({
               return result;
             });
 
-            this.onAfterRead(fileList, oversize);
+            this.onAfterRead(list, oversize);
           }
         );
       } else {
         readFile(files, this.resultType).then((content) => {
-          const result = { file: files, status: '', message: '' };
+          const file = files; // 此时为单文件
+          const result = {
+            file: files,
+            status: '',
+            message: '',
+            uid:
+              file.uid !== undefined
+                ? file.uid
+                : Date.now() + (files?.length || 1),
+            name: file.name,
+            size: file.size,
+          };
 
           if (content) {
             result.content = content;
@@ -319,6 +354,10 @@ export default createComponent({
             if (item.file) {
               if (isOversize(item.file, this.maxSize)) {
                 oversizeFiles.push(item);
+                Toast(_template(t('maxSize'), {
+                  name: item.file.name,
+                  size: this.maxSize,
+                }));
               } else {
                 validFiles.push(item);
               }
@@ -326,6 +365,12 @@ export default createComponent({
           });
         } else {
           validFiles = null;
+          Toast(
+            _template(t('maxSize'), {
+              name: files.file.name,
+              size: this.maxSize,
+            })
+          );
         }
         this.$emit('oversize', oversizeFiles, this.getDetail());
       }
@@ -335,25 +380,21 @@ export default createComponent({
         : Boolean(validFiles);
 
       if (isValidFiles) {
-        const tempArr = [...this.fileList, ...toArray(validFiles)];
-        // this.$emit('input', this.toValue(tempArr));
-        // this.$emit('update:fileListProp', this.toValue(tempArr));
+        const tempArr = [...this.currentValue, ...toArray(validFiles)];
 
-        this.fileList = tempArr;
+        this.currentValue = tempArr;
 
         if (this.afterRead) {
           this.afterRead(validFiles, this.getDetail());
         }
         this.$nextTick(function () {
-          // setTimeout(() => {
-          this.fileList.forEach((file, index) => {
+          this.currentValue.forEach((file, index) => {
             if (!file.url && !file.status) {
               file.status = 'uploading';
-              file.message = '上传中...';
+              file.message = t('uploading');
               this.post(file, index);
             }
           });
-          // }, 100)
         });
       }
     },
@@ -381,11 +422,12 @@ export default createComponent({
     },
 
     deleteFile(file, index) {
-      const fileList = this.fileList.slice(0);
-      fileList.splice(index, 1);
-      this.fileList = fileList;
-      this.$emit('input', this.toValue(this.fileList));
-      this.$emit('update:fileListProp', this.toValue(this.fileList));
+      const list = this.currentValue.slice(0);
+      list.splice(index, 1);
+      this.currentValue = list;
+      this.$emit('input', this.toValue(this.currentValue));
+      this.$emit('update:value', this.toValue(this.currentValue));
+      this.$emit('update:fileListProp', this.toValue(this.currentValue));
       this.$emit('delete', file, this.getDetail(index));
     },
 
@@ -406,7 +448,7 @@ export default createComponent({
         return;
       }
 
-      const imageFiles = this.fileList.filter((item) => isImageFile(item));
+      const imageFiles = this.currentValue.filter((item) => isImageFile(item));
       const imageContents = imageFiles.map(
         (item) => item.content || item.url || item
       );
@@ -464,7 +506,7 @@ export default createComponent({
     genPreviewItem(item, index) {
       const deleteAble = item.deletable ?? this.deletable;
       const showDelete =
-        item.status !== 'uploading' && deleteAble && !this.readonlyy;
+        item.status !== 'uploading' && deleteAble && !this.readonly;
 
       const DeleteIcon = showDelete && (
         <div
@@ -490,35 +532,47 @@ export default createComponent({
       const previewSize = item.previewSize ?? this.previewSize;
       const imageFit = item.imageFit ?? this.imageFit;
 
-      const Preview = isImageFile(item) ? (
-        <Image
-          fit={imageFit}
-          src={item.content || item.url || item}
-          class={bem('preview-image')}
-          width={previewSize}
-          height={previewSize}
-          lazyLoad={this.lazyLoad}
-          onClick={() => {
-            this.onPreviewImage(item);
-          }}
-        >
-          {PreviewCover}
-        </Image>
-      ) : (
-        <div
-          class={bem('file')}
-          style={{
-            width: this.previewSizeWithUnit,
-            height: this.previewSizeWithUnit,
-          }}
-        >
-          <Icon class={bem('file-icon')} name="description" />
-          <div class={[bem('file-name'), 'van-ellipsis']}>
-            {item.file ? item.file.name : item.url}
+      const getUrl = (item) => {
+        let imgUrl = '';
+        if (typeof item === 'object' && item !== null) {
+          if (`${item?.url}` != 'undefined') {
+            imgUrl = item.url;
+          }
+        } else {
+          imgUrl = item || '';
+        }
+        return imgUrl;
+      };
+      const Preview =
+        isImageFile(item) && getUrl(item.content || item.url || item) ? (
+          <Image
+            fit={imageFit}
+            src={getUrl(item.content || item.url || item)}
+            class={bem('preview-image')}
+            width={previewSize}
+            height={previewSize}
+            lazyLoad={this.lazyLoad}
+            onClick={() => {
+              this.onPreviewImage(item);
+            }}
+          >
+            {PreviewCover}
+          </Image>
+        ) : (
+          <div
+            class={bem('file')}
+            style={{
+              width: this.previewSizeWithUnit,
+              height: this.previewSizeWithUnit,
+            }}
+          >
+            <Icon class={bem('file-icon')} name="description" />
+            <div class={[bem('file-name'), 'van-ellipsis']}>
+              {item.file ? item.file.name : item.name ? item.name : item.url}
+            </div>
+            {PreviewCover}
           </div>
-          {PreviewCover}
-        </div>
-      );
+        );
 
       return (
         <div
@@ -536,14 +590,14 @@ export default createComponent({
 
     genPreviewList() {
       if (this.previewImage) {
-        return this.fileList.map(this.genPreviewItem);
+        return this.currentValue.map(this.genPreviewItem);
       }
     },
 
     genUpload() {
       if (!this.canUp) return;
-      if (this.readonlyy && !(this.$env && this.$env.VUE_APP_DESIGNER)) return;
-      if (this.fileList.length >= this.maxCount || !this.showUpload) {
+      if (this.readonly && !(this.$env && this.$env.VUE_APP_DESIGNER)) return;
+      if (this.currentValue.length >= this.maxCount || !this.showUpload) {
         return;
       }
 
@@ -551,7 +605,10 @@ export default createComponent({
 
       const Input = this.readonly ? null : (
         <input
-          {...{ attrs: this.$attrs }}
+          {...{ attrs: {
+            ...this.$attrs,
+            capture: ['camera'].includes(this.$attrs.capture) ? this.$attrs.capture : undefined
+          } }}
           ref="input"
           type="file"
           accept={this.accept}
@@ -560,19 +617,6 @@ export default createComponent({
           onChange={this.onChange}
         />
       );
-
-      if (slot) {
-        return (
-          <div
-            class={bem('input-wrapper')}
-            key="input-wrapper"
-            onClick={this.onClickUpload}
-          >
-            {slot}
-            {Input}
-          </div>
-        );
-      }
 
       let style;
       if (this.previewSize) {
@@ -585,17 +629,26 @@ export default createComponent({
 
       return (
         <div
-          class={bem('upload', { readonly: this.readonly })}
+          class={bem('upload', { readonly: this.readonly, empty: this.currentValue.length === 0 })}
           style={style}
           onClick={this.onClickUpload}
         >
-          <Icon name={this.uploadIcon} class={bem('upload-icon')} />
+          <div
+            class={bem('upload-icon-slot', { designer: this.$env && this.$env.VUE_APP_DESIGNER })}
+            vusion-slot-name="default">
+            { slot || <Icon name={this.uploadIcon} class={bem('upload-icon')} /> }
+          </div>
           {this.uploadText && (
             <span class={bem('upload-text')}>{this.uploadText}</span>
           )}
           {Input}
         </div>
       );
+    },
+
+    handleFileName(url) {
+      const match = url.match(/\/([^/]+)$/);
+      return match ? match[1] : null;
     },
 
     post(file) {
@@ -616,52 +669,63 @@ export default createComponent({
 
       if (window.appInfo && window.appInfo.domainName)
         headers.DomainName = window.appInfo.domainName;
-
-      const xhr = ajax({
+      const formData = {
+        ...this.data,
+        lcapIsCompress: this.lcapIsCompress,
+        viaOriginURL: this.viaOriginURL,
+      };
+      const requestData = {
         url: this.url,
         headers,
         withCredentials: this.withCredentials,
         file,
-        data: this.data,
+        data: formData,
         name: 'file',
+      };
+      const xhr = ajax({
+        ...requestData,
         onStart: () => {
           this.$emit('start');
         },
         onProgress: (e) => {
           // file.status = 'uploading';
           // file.message = e.percent + '%' || '上传中...';
+          file.percent = e.percent;
           this.$emit(
             'progress',
             {
-              ...e,
-              file,
+              e,
+              file: file.file,
+              item: file,
               xhr,
             },
             this
           );
         },
         onSuccess: (res) => {
-          file.status = '';
+          file.status = 'success';
           file.message = '';
+          file.percent = 100;
           if (res[this.urlField]) {
             file.url = res[this.urlField];
           }
+          file.name = file?.url
+            ? this.handleFileName(file?.url)
+            : file?.file?.name;
           file.response = res;
           setTimeout(() => {
-            // const value = [...this.fileList].filter(file => file.url && file.url.length > 0).map(file => {
-            //   return {url: file.url}
-            // })
-
             if (this.canUp) {
-              const value = this.fileList;
+              const value = this.currentValue;
               this.$emit('input', this.toValue(value));
+              this.$emit('update:value', this.toValue(value));
               this.$emit('update:fileListProp', this.toValue(value));
 
               this.$emit(
                 'success',
                 {
                   res,
-                  file,
+                  file: file.file,
+                  item: file,
                   xhr,
                 },
                 this
@@ -671,23 +735,18 @@ export default createComponent({
         },
         onError: (e, res) => {
           file.status = 'failed';
-          file.message = '上传失败';
+          file.message = t('fail');
           this.$emit(
             'error',
             {
               e,
               res,
-              file,
+              file: file.file,
+              item: file,
               xhr,
             },
             this
           );
-
-          // setTimeout(() => {
-          //   const value = this.fileList.filter(file => file.url && file.url.length > 0).map(file => file.url);
-          //   this.$emit('input', this.toValue(value));
-          //   this.$emit('update:fileListProp', this.toValue(value));
-          // }, 500)
         },
       });
     },
@@ -705,8 +764,12 @@ export default createComponent({
 
   render() {
     return (
-      <div class={bem()} {...{ attrs: this.$attrs }}>
-        <div class={bem('wrapper', { disabled: this.disabled })}>
+      <div class={bem('', { uploaded: this.currentValue.length > 0 })}
+        {...{ attrs: this.$attrs }}>
+        <div class={bem('wrapper', {
+          disabled: this.disabled,
+          empty: this.currentValue.length === 0,
+        })}>
           {this.genPreviewList()}
           {this.genUpload()}
         </div>

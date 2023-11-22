@@ -1,4 +1,4 @@
-import { createNamespace , isFunction } from '../utils';
+import { createNamespace, isFunction } from '../utils';
 import { formatResult } from '../utils/format/data-source';
 import { FieldMixin } from '../mixins/field';
 import { ParentMixin } from '../mixins/relation';
@@ -6,12 +6,11 @@ import { ParentMixin } from '../mixins/relation';
 const [createComponent, bem] = createNamespace('radio-group');
 
 export default createComponent({
-  mixins: [
-    ParentMixin('vanRadio'),
-    FieldMixin
-  ],
+  mixins: [ParentMixin('vanRadio'), FieldMixin],
 
   props: {
+    isNew: Boolean,
+    icon: String,
     dataSource: [Array, Object, Function, String],
     value: null,
     disabled: Boolean,
@@ -47,6 +46,9 @@ export default createComponent({
   computed: {
     inDesigner() {
       return this.$env && this.$env.VUE_APP_DESIGNER;
+    },
+    currentIcon() {
+      return this.icon || (this.isNew ? undefined : 'sure');
     },
   },
   methods: {

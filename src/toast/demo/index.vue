@@ -1,7 +1,7 @@
 <template>
   <demo-section>
     <demo-block card :title="t('basicUsage')">
-      <van-cell is-link :title="t('title1')" @click="$toast(t('text'))" />
+      <van-cell is-link :title="t('title1')" @click="$toast({message: t('text'), duration: 1000 })" />
       <van-cell is-link :title="t('title2')" @click="showLoadingToast()" />
       <van-cell is-link :title="t('success')" @click="showSuccessToast" />
       <van-cell is-link :title="t('fail')" @click="showFailToast" />
@@ -28,6 +28,16 @@
         :title="t('updateMessage')"
         @click="showCustomizedToast"
       />
+    </demo-block>
+
+    <demo-block title="调用式">
+      <van-toast style="--van-toast-text-color: red;" ref="toast1" :message="msg" :duration="0" type="custom" custom-icon="info" @open="onShow1" @close="onHide1"></van-toast>
+      <van-button @click="showToast1">打开toast</van-button>
+      <van-button @click="() => $refs.toast1.close()">关闭toast</van-button>
+
+      <van-toast style="--van-toast-text-color: yellow;" ref="toast2" :message="msg" :duration="0" type="custom" custom-icon="info"></van-toast>
+      <van-button @click="() => $refs.toast2.open()">打开toast</van-button>
+      <van-button @click="() => $refs.toast2.close()">关闭toast</van-button>
     </demo-block>
   </demo-section>
 </template>
@@ -71,6 +81,12 @@ export default {
       positionBottom: 'Bottom',
       customPosition: 'Custom Position',
     },
+  },
+
+  data() {
+    return {
+      msg: '弹出消息'
+    }
   },
 
   methods: {
@@ -136,6 +152,29 @@ export default {
         }
       }, 1000);
     },
+
+    showToast1() {
+      this.msg = '弹出消息1'
+      this.$refs.toast1.open()
+
+      // this.$toast.show({
+      //   duration: 0,
+      //   forbidClick: true,
+      //   message: '自定义图标',
+      //   // type: 'custom',
+      //   type: 'warning',
+      //   customIcon: 'fail'
+      // });
+    },
+    hideToast1() {
+      this.$refs.toast1.close()
+    },
+    onShow1() {
+      console.log('show1');
+    },
+    onHide1() {
+      console.log('hide1');
+    }
   },
 };
 </script>

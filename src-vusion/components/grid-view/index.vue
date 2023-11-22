@@ -186,9 +186,13 @@ import USpinner from 'cloud-ui.vusion/src/components/u-spinner.vue/index.vue';
 import ULink from 'cloud-ui.vusion/src/components/u-link.vue/index.vue';
 import VanPullRefresh from '../../../src/pull-refresh';
 import VanEmptyCol from '../../../src/emptycol';
+import { createI18N } from '../../../src/utils/create/i18n'
+
 let loaderCache = {};
 let loaderImg = new Map();
 let time = null;
+
+const t = createI18N('van-grid-view');
 
 export default {
   name: 'van-grid-view',
@@ -374,7 +378,7 @@ export default {
       if (el.scrollHeight <= el.scrollTop + el.clientHeight+30 && this.currentDataSource && this.currentDataSource.hasMore()) {
         if (this.iffall) {
           if (!window.cusloading) {
-              window.cusloading = window.vant.VanToast.loading({duration: 0,forbidClick: true, message: '加载中',});
+              window.cusloading = window.vant.VanToast.loading({duration: 0,forbidClick: true, message: t('loading'),});
           } else {
               window.cusloading.value = true;
           }
@@ -408,7 +412,12 @@ export default {
       this.$forceUpdate();
     },
     getWidth() {
-      return ((this.$refs.root.getBoundingClientRect() || {}).width-20) || 0;
+      let temp = 20;
+      if(this.$env.VUE_APP_DESIGNER && window && window.document && !window.document.querySelector('[root-app]')) {
+        // readme: 在页面编辑器中，有额外的2px的边框。
+        temp = 22;
+      }
+      return ((this.$refs.root.getBoundingClientRect() || {}).width-temp) || 0;
     },
     async resize(start = 0) {
       if (!this.$refs.body) return;
@@ -824,7 +833,7 @@ export default {
   overflow-y: auto;
 }
 .scrollwrapno {
-  overflow-y: unset;
+  /* overflow-y: unset; */
 }
 .scrollwrap::-webkit-scrollbar {
   display: none;

@@ -33,10 +33,10 @@ export default createComponent({
         return this.status;
       }
 
-      if ((this.value ?? this.index) < this.parent.value) {
+      if ((this.value ?? this.index) < this.parent.currentValue) {
         return 'finish';
       }
-      if ((this.value ?? this.index) === +this.parent.value) {
+      if ((this.value ?? this.index) === +this.parent.currentValue) {
         return 'process';
       }
 
@@ -145,18 +145,18 @@ export default createComponent({
 
       this.parent.$emit('click-step', this.index);
       this.$emit('clicktitle', this.index);
-      this.parent.value = this.value ?? this.index;
+      this.parent.currentValue = this.value ?? this.index;
     },
     onClickStepIcon() {
       if (this.isReadonly || this.isDisabled) return;
 
       this.$emit('clickicon', this.index);
-      this.parent.value = this.value ?? this.index;
+      this.parent.currentValue = this.value ?? this.index;
     },
     designerControl() {
       if (this.isReadonly || this.isDisabled) return;
 
-      this.parent.value = this.value ?? this.index;
+      this.parent.currentValue = this.value ?? this.index;
     },
   },
 

@@ -21,7 +21,7 @@ components.forEach((component) => {
         map.push(getUsage(targetFile));
     }
 });
-const vusion = ['van-link', 'van-iframe', 'van-grid-view', 'van-list-view', 'van-linear-layout', 'van-count-down-new', 'van-copy' ];
+const vusion = ['van-link', 'van-iframe', 'van-grid-view', 'van-list-view', 'van-count-down-new', 'van-copy' ];
 const packageJSON = require('../../package.json');
 
 const libInfo = `${packageJSON.name}@${packageJSON.version}`;

@@ -8,8 +8,8 @@
   attrs:
     - name: data-source
       title: 数据源
-      type: nasl.collection.List<T>
-      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑
+      type: Array<Item> | Function
+      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。
       designer-value: "[{}, {}, {}]"
       group: 数据属性
     - name: data-schema
@@ -18,13 +18,13 @@
       description: 集合类型每一元素的数据类型
       compType: dataTypeSelect
       group: 数据属性
-    - name: active
+    - name: value
       title: 当前步骤
       type: number
       sync: true
       model: true
       default: 0
-      description: 指定当前步骤，从 0 开始记数
+      description: 指定当前步骤，从0开始记数。
       group: 数据属性
     - name: direction
       title: 步骤条方向
@@ -35,16 +35,20 @@
         - value: vertical
           title: 垂直
       default: horizontal
+      group: 主要属性
+      description: 设置步骤条方向
     - name: readonly
       title: 只读
       type: boolean
       default: false
-      description: 正常显示，但禁止选择、输入
+      description: 正常显示，但禁止选择/输入
+      group: 状态属性
     - name: disabled
       title: 禁用
       type: boolean
       default: false
-      description: 置灰显示，且禁止任何交互
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
   slots:
     - concept: Slot
       name: default
@@ -76,11 +80,6 @@
 - name: van-step
   title: 步骤条项
   attrs:
-    - name: icon
-      title: 图标
-      type: string
-      description: 步骤自定义图标
-      setter: iconSelect
     - name: status
       title: 状态
       type: string
@@ -93,17 +92,25 @@
           title: 已完成
         - value: error
           title: 错误
-      description: 设置步骤条的状态，分别为等待中、进行中、已完成、错误
+      description: 设置步骤条的状态，分别为等待中、进行中、已完成、错误。
+      group: 主要属性
+    - name: icon
+      title: 图标
+      type: icon
+      description: 自定义步骤的图标
+      group: 主要属性
     - name: readonly
       title: 只读
       type: boolean
       default: false
-      description: 正常显示，但禁止选择、输入
+      description: 正常显示，但禁止选择/输入
+      group: 状态属性
     - name: disabled
       title: 禁用
       type: boolean
       default: false
-      description: 置灰显示，且禁止任何交互
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
   events:
     - name: clicktitle
       title: 点击标题

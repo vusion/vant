@@ -116,18 +116,12 @@ export default {
 };
 ```
 
-### 单例模式
+### 多实例
 
-Toast 默认采用单例模式，即同一时间只会存在一个 Toast，如果需要在同一时间弹出多个 Toast，可以参考下面的示例：
+Toast 的默认行为已变更为多实例模式，多条信息在同一 y 轴上向上堆叠呈现。如果想要恢复单例模式，请使用一下代码
 
 ```js
-Toast.allowMultiple();
-
-const toast1 = Toast('第一个 Toast');
-const toast2 = Toast.success('第二个 Toast');
-
-toast1.clear();
-toast2.clear();
+Toast.allowMultiple(false);
 ```
 
 ### 修改默认配置

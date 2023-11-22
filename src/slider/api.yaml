@@ -6,52 +6,76 @@
   description: 滑动输入条，用于在给定的范围内选择一个值。
   attrs:
     - name: value
-      title: 当前进度百分比
+      title: 值
       type: number
       sync: true
       model: true
+      group: 数据属性
+      description: 用于标识滑块的值
     - name: max
       title: 最大值
       type: number
       default: 100
+      group: 数据属性
+      description: ""
     - name: min
       title: 最小值
       type: number
       default: 0
+      group: 数据属性
+      description: ""
+    - name: range
+      title: 双滑块模式
+      type: boolean
+      default: false
+      group: 主要属性
+      description: 是否开启双滑块模式
+    - name: custom
+      title: 自定义组件
+      type: boolean
+      default: false
+      group: 主要属性
+      description: ""
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      group: 交互属性
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+    - name: vertical
+      title: 垂直展示
+      type: boolean
+      default: false
+      group: 交互属性
+      description: 是否垂直展示
     - name: step
       title: 步长
       type: number | string
       default: 0
+      group: 样式属性
+      description: ""
     - name: bar-height
-      title: 进度条高度(px)
+      title: 进度条高度
       type: number
       default: 2
+      group: 样式属性
+      description: 设置进度条高度，单位为px
     - name: button-size
-      title: 滑块按钮大小(px)
+      title: 滑块按钮大小
       type: number
       default: 24
+      group: 样式属性
+      description: 设置滑块按钮大小，单位为px
     - name: active-color
       title: 进度条激活态颜色
       type: string
+      group: 样式属性
+      description: ""
     - name: inactive-color
       title: 进度条非激活态颜色
       type: string
-    - name: range
-      title: 是否开启双滑块模式
-      type: boolean
-      default: false
-    - name: disabled
-      title: 是否禁用滑块
-      type: boolean
-      default: false
-    - name: vertical
-      title: 是否垂直展示
-      type: boolean
-      default: false
-    - name: custom
-      title: 是否自定义组件
-      type: boolean
-      default: false
+      group: 样式属性
+      description: ""
   slots: false
   events:
     - name: input

@@ -15,7 +15,6 @@ export const CheckboxMixin = ({ parent, bem, role }) => ({
     item: {
       type: [Object,String, Number],
     },
-    name: null,
     value: null,
     title: String,
     disabled: Boolean,
@@ -33,7 +32,6 @@ export const CheckboxMixin = ({ parent, bem, role }) => ({
       default: true,
     },
   },
-
   computed: {
     disableBindRelation() {
       return !this.bindGroup;

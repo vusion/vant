@@ -3,10 +3,33 @@
 .van-radio {
   display: flex;
   align-items: center;
+  min-width: 72px;
+  padding: @radio-padding;
   overflow: hidden;
+  background-color: @radio-background-color;
+  border: @radio-border-width solid @radio-border-color; 
+  border-radius: @radio-border-radius;
   cursor: pointer;
   user-select: none;
   // margin-bottom: 8px;
+
+
+  &--noIcon {
+    justify-content: center;
+
+    .van-radio__label{
+      margin-left: 0;
+    }
+  }
+
+  &--checked {
+    background-color: @radio-checked-background-color;
+    border: @radio-border-width solid @radio-checked-border-color;
+
+    .van-radio__label{
+      color: @radio-checked-label-color;
+    }
+  }
 
   &--disabled {
     cursor: not-allowed;
@@ -21,14 +44,19 @@
   }
 
   &__icon {
+    display: flex;
     flex: none;
+    align-items: center;
+    justify-content: center;
     height: 1em;
     font-size: @radio-size;
     line-height: 1em;
     cursor: pointer;
 
-    .van-icon {
-      display: block;
+    .van-iconv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-sizing: border-box;
       width: 1.25em;
       height: 1.25em;
@@ -36,20 +64,20 @@
       font-size: 0.8em;
       line-height: 1.25;
       text-align: center;
-      border: 1px solid @radio-border-color;
+      border: @radio-icon-border-width solid @radio-border-color;
       transition-duration: @radio-transition-duration;
       transition-property: color, border-color, background-color;
     }
 
     &--round {
-      .van-icon {
+      .van-iconv {
         border-radius: 100%;
       }
     }
 
     &--checked {
-      .van-icon {
-        color: @white;
+      .van-iconv {
+        color: @radio-checked-icon-label-color;
         background-color: @radio-checked-icon-color;
         border-color: @radio-checked-icon-color;
       }
@@ -58,15 +86,15 @@
     &--disabled {
       cursor: not-allowed;
 
-      .van-icon {
+      .van-iconv {
         background-color: @radio-disabled-background-color;
         border-color: @radio-disabled-icon-color;
       }
     }
 
     &--disabled&--checked {
-      .van-icon {
-        color: @radio-disabled-icon-color;
+      .van-iconv {
+        color: @radio-disabled-icon-label-color;
       }
     }
   }
@@ -84,4 +112,9 @@
       color: @radio-disabled-label-color;
     }
   }
+}
+
+// 对于图片形式的图标，强制使其在非选中状态为空
+.van-radio__icon:not(.van-radio__icon--checked) .van-iconv div.icon{
+  background: unset !important;
 }

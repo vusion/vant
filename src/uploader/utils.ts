@@ -42,7 +42,19 @@ export function isOversize(
       if (isFunction(maxSize)) {
         return maxSize(file);
       }
-      return file.size > ((parseInt(String(maxSize), 10)) * 1024 * 1024);
+
+      // 可能出现传入为空字符串的情况
+      if (maxSize === Infinity || maxSize === '') {
+        return false;
+      }
+
+      maxSize = Number(maxSize) * 1024 * 1024;
+
+      if (isNaN(maxSize)) {
+        return false
+      }
+
+      return file.size > maxSize;
     }
     return false;
   });

@@ -33,6 +33,9 @@ export default {
     // treeDisplay: { type: Boolean, default: false }, // 由组件自己定义
     parentField: { type: String, default: 'parentId' },
     childrenField: { type: String, default: 'children' },
+
+    // 其他
+    // needAllRemoteData: { type: Boolean, default: false }, // 由组件自己定义
   },
   data() {
     return {
@@ -47,6 +50,13 @@ export default {
   computed: {
     currentData() {
       return this.currentDataSource && this.currentDataSource.viewData;
+    },
+    allRemoteData() {
+      if (this.currentDataSource?.remote) {
+        return this.currentDataSource?.allData || [];
+      }
+
+      return this.currentDataSource?.data || [];
     },
     paging() {
       if (this.pageable) {
@@ -134,6 +144,8 @@ export default {
         filtering: this.filtering,
         sorting: this.currentSorting,
 
+        needAllData: this.needAllRemoteData,
+
         getExtraParams: this.getExtraParams,
       };
 
@@ -189,14 +201,14 @@ export default {
     },
     load(more) {
       const dataSource = this.currentDataSource;
-      if (!dataSource) return;
+      if (!dataSource) return Promise.reject();
 
       // TODO 加载前
 
       this.currentLoading = true;
       this.currentError = false;
 
-      dataSource[more ? 'loadMore' : 'load']()
+      return dataSource[more ? 'loadMore' : 'load']()
         .then((data) => {
           this.currentLoading = false;
           this.$emit('load', undefined, this);

@@ -1,147 +1,45 @@
 <template>
   <demo-section>
     <demo-block>
+      <div>date: {{ date }}</div>
+      <div>start: {{ start }}</div>
+      <div>end: {{ end }}</div>
       <van-calendar
-      label-field="日历选择"
-      title="选择日期"
-    ></van-calendar >
+        label-field="日历选择"
+        :value.sync="start"
+        :min-date="min"
+        :max-date="end"
+        title="选择日期"
+      ></van-calendar>
       <van-calendar
-      label-field="日历选择"
-      :defaultDate.sync="ddateffff"
-      :min-date="'1990-10-15'"
-      :max-date="'2040-10-15'"
-      title="选择日期"
-    ></van-calendar >
-    <van-calendar
-      label-field="日历选择"
-      :defaultDate.sync="ddateffff"
-      title="选择日期"
-    ></van-calendar >
-    <van-calendar
-      label-field="日历选择"
-      type="multiple"
-      title="选择日期"
-    ></van-calendar >
-    </demo-block>
-    <demo-block card :title="t('basicUsage')">
-      <van-cell
-        is-link
-        :title="t('selectSingle')"
-        :value="formatFullDate(date.selectSingle)"
-        @click="show('single', 'selectSingle')"
-      />
-
-      <van-cell
-        is-link
-        :title="t('selectMultiple')"
-        :value="formatMultiple(date.selectMultiple)"
-        @click="show('multiple', 'selectMultiple')"
-      />
-
-      <van-cell
-        is-link
-        :title="t('selectRange')"
-        :value="formatRange(date.selectRange)"
-        @click="show('range', 'selectRange')"
-      />
+        label-field="日历选择"
+        :value.sync="end"
+        :min-date="start"
+        :max-date="max"
+        title="选择日期"
+      ></van-calendar>
+      <button @click="clear">clear</button>
     </demo-block>
 
-    <demo-block card :title="t('quickSelect')">
-      <van-cell
-        is-link
-        :title="t('selectSingle')"
-        :value="formatFullDate(date.quickSelect1)"
-        @click="show('single', 'quickSelect1')"
-      />
-
-      <van-cell
-        is-link
-        :title="t('selectRange')"
-        :value="formatRange(date.quickSelect2)"
-        @click="show('range', 'quickSelect2')"
-      />
-    </demo-block>
-
-    <demo-block card :title="t('customCalendar')">
-      <van-cell
-        is-link
-        :title="t('customColor')"
-        :value="formatRange(date.customColor)"
-        @click="show('range', 'customColor')"
-      />
-
-      <van-cell
-        is-link
-        :title="t('customRange')"
-        :value="formatFullDate(date.customRange)"
-        @click="show('single', 'customRange')"
-      />
-
-      <van-cell
-        is-link
-        :title="t('customConfirm')"
-        :value="formatRange(date.customConfirm)"
-        @click="show('range', 'customConfirm')"
-      />
-
-      <van-cell
-        is-link
-        :title="t('customDayText')"
-        :value="formatRange(date.customDayText)"
-        @click="show('range', 'customDayText')"
-      />
-
-      <van-cell
-        is-link
-        :title="t('customPosition')"
-        :value="formatFullDate(date.customPosition)"
-        @click="show('single', 'customPosition')"
-      />
-
-      <van-cell
-        is-link
-        :title="t('maxRange')"
-        :value="formatRange(date.maxRange)"
-        @click="show('range', 'maxRange')"
-      />
-
-      <van-cell
-        v-if="!isWeapp"
-        is-link
-        :title="t('firstDayOfWeek')"
-        @click="show('single', 'firstDayOfWeek')"
-      />
-    </demo-block>
-
-    <!-- <demo-block card :title="t('tiledDisplay')">
+    <demo-block title="全量渲染节点">
       <van-calendar
-        :title="t('calendar')"
-        :poppable="false"
-        :show-confirm="false"
-        :min-date="tiledMinDate"
-        :max-date="tiledMaxDate"
-        :default-date.sync="cvalue"
-        :style="{ height: '500px' }"
-      />
-    </demo-block> -->
+        label-field="日历选择"
+        :value.sync="start"
+        :min-date="min"
+        :max-date="end"
+        title="选择日期"
+        :lazyRender="false"
+      ></van-calendar>
+    </demo-block>
 
-    <van-calendar
-      v-model="showCalendar"
-      :type="type"
-      :color="color"
-      :round="round"
-      :position="position"
-      :min-date="minDate"
-      :max-date="maxDate"
-      :max-range="maxRange"
-      :formatter="formatter"
-      :show-confirm="showConfirm"
-      :confirm-text="confirmText"
-      :confirm-disabled-text="confirmDisabledText"
-      :first-day-of-week="firstDayOfWeek"
-      @confirm="onConfirm"
-      :default-date.sync="cvalue"
-    />
+    <demo-block card title="临时测试">
+        <van-calendar
+          label-field="日历选择"
+          title="选择日期"
+          :lazyRender="true"
+          :close-on-click-overlay="true"
+        ></van-calendar>
+    </demo-block>
   </demo-section>
 </template>
 
@@ -200,37 +98,11 @@ export default {
 
   data() {
     return {
-      ddateffff: null,
-      showCalendarTest: false,
-      cvalue: null,
-      date: {
-        maxRange: [],
-        selectSingle: null,
-        selectRange: [],
-        selectMultiple: [],
-        quickSelect1: null,
-        quickSelect2: [],
-        customColor: [],
-        customConfirm: [],
-        customRange: null,
-        customDayText: [],
-        customPosition: null,
-      },
-      type: 'single',
-      round: true,
-      color: undefined,
-      minDate: undefined,
-      maxDate: undefined,
-      maxRange: undefined,
-      position: undefined,
-      formatter: undefined,
-      showConfirm: false,
-      showCalendar: false,
-      tiledMinDate: new Date(2012, 0, 10),
-      tiledMaxDate: new Date(2012, 2, 20),
-      confirmText: undefined,
-      confirmDisabledText: undefined,
-      firstDayOfWeek: 0,
+      date: '2023-10-11',
+      start: null,
+      end: null,
+      min: '1900-01-01',
+      max: '2050-12-31',
     };
   },
 
@@ -341,6 +213,11 @@ export default {
       this.showCalendar = false;
       this.date[this.id] = date;
     },
+    clear() {
+      this.date = null
+      this.start = null
+      this.end = null
+    }
   },
 };
 </script>

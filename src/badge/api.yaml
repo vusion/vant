@@ -9,16 +9,19 @@
       title: 徽章值
       type: nasl.core.Integer
       default: 2
-      description: 徽章值
-    - name: dot
-      title: 是否展示为小红点
-      type: boolean
-      default: false
-      description: 是否展示为小红点
+      description: ""
+      group: 数据属性
     - name: max
       title: 徽章最大值
-      type: nasl.core.Integer
-      description: 徽章最大值
+      type: number
+      description: 徽章内容为数字时显示的最大值
+      group: 数据属性
+    - name: dot
+      title: 显示徽章
+      type: boolean
+      default: false
+      description: ""
+      group: 主要属性
   slots:
     - concept: Slot
       name: default

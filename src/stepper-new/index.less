@@ -1,11 +1,13 @@
 @import '../style/var';
 
 .van-stepper-new {
-  font-size: 0;
+  font-size: @stepper-input-font-size;
   user-select: none;
 
   display: flex;
   flex: 1;
+  flex-direction: row;
+  align-items: center;
 
   &__minus,
   &__plus {
@@ -77,7 +79,7 @@
     margin: 0 2px !important;
     padding: 0;
     color: @stepper-input-text-color;
-    font-size: @stepper-input-font-size;
+    font-size: inherit;// @stepper-input-font-size;
     line-height: @stepper-input-line-height;
     text-align: center;
     vertical-align: middle;
@@ -135,5 +137,16 @@
       background-color: @white;
       border: 1px solid @stepper-button-round-theme-color;
     }
+  }
+
+  &__unit {
+    margin: 0 1px;
+    font-size: @stepper-input-font-size;
+    color: @stepper-input-text-color;
+
+    max-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }

@@ -10,6 +10,7 @@
       type: number
       default: 60
       description: 设置定时时间
+      group: 主要属性
     - name: reverse
       title: 计时方式
       type: string
@@ -20,16 +21,19 @@
           title: 倒计时
       default: positive
       description: 设置计时器计时方式
+      group: 主要属性
     - name: autostart
-      title: 是否自动开始计时
+      title: 自动开始计时
       type: boolean
       default: true
-      description: 设置是否自动开始计时器
+      description: 是否开启自动开始计时
+      group: 主要属性
     - name: hideMinute
       title: 隐藏分钟
       type: boolean
       default: false
       description: 设置是否隐藏分钟
+      group: 主要属性
   events:
     - name: start
       title: 计时器开始

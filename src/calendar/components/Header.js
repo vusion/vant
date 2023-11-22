@@ -19,39 +19,9 @@ export default createComponent({
     minDate: Date,
     maxDate: Date,
     currentDate: null,
-    defaultMonthForSelect: null
-  },
-  data() {
-    return {
-      pickDate: null,
-    }
-  },
-  computed: {
-    currentYear() {
-      if (this.currentDate) {
-        return this.currentDate.getFullYear()
-      }
-      if (this.defaultMonthForSelect) {
-        return this.defaultMonthForSelect.getFullYear()
-      }
-    },
-    currentMonth() {
-      if (this.currentDate) {
-        return this.currentDate.getMonth() + 1
-      }
-      if (this.defaultMonthForSelect) {
-        return this.defaultMonthForSelect.getMonth() + 1
-      }
-    }
+    defaultMonthForSelect: null,
   },
   methods: {
-    onInput(date) {
-      // console.log(date, 888);
-      this.pickDate = `${date.year}/${date.monthIndex}`
-    },
-    togglePick() {
-      this.$refs.popforCalendarHead.togglePModal();
-    },
     genTitle() {
       if (this.showTitle) {
         const title = this.slots('title') || this.title || t('title');
@@ -66,7 +36,9 @@ export default createComponent({
     },
 
     genWeekDays() {
-      const weekdays = t('weekdays');
+      // '日, 一, 二, 三, 四, 五, 六'
+      let weekdays = t('weekdays');
+      weekdays = weekdays.split(',').map((s) => s.trim());
 
       const { firstDayOfWeek } = this;
 
@@ -88,41 +60,6 @@ export default createComponent({
   render() {
     return (
       <div class={bem('header')}>
-        <Popup
-          safe-area-inset-bottom
-          round
-          ref="popforCalendarHead"
-          get-container="body" // 放body下不易出现异常情况
-        >
-          <MonthPicker
-            default-year={this.currentYear}
-            default-month={this.currentMonth}
-            lang="zh"
-            clearable
-            show-year
-            editableYear={false}
-            class={bem('yearmonth')}
-            maxDate={this.maxDate}
-            minDate={this.minDate}
-            onInput={this.onInput}
-          />
-          <div style="margin-top: 10px;margin-bottom: 10px;display: flex;justify-content: space-around;">
-            <Button
-              style="margin-right: 20px;"
-              text={'取消'}
-              onClick={() => {
-                this.$refs.popforCalendarHead.togglePModal();
-              }}
-            />
-            <Button
-              text={'确定'}
-              onClick={() => {
-                this.$refs.popforCalendarHead.togglePModal();
-                this.scrollToDate(new Date(this.pickDate));
-              }}
-            />
-          </div>
-        </Popup>
         {this.genTitle()}
         {this.genSubtitle()}
         {this.genWeekDays()}

@@ -9,7 +9,8 @@ export default createComponent({
 
   props: {
     accordion: Boolean,
-    valueprop: [String, Number, Array],
+    valueprop: [String, Number, Array], // 废弃
+    value: [String, Number, Array],
     border: {
       type: Boolean,
       default: true,
@@ -17,39 +18,47 @@ export default createComponent({
   },
   data() {
     return {
-      value: this.fromValue(this.valueprop) ?? (this.accordion ? 0 : [0])
-    }
+      currentValue: this.fromValue(this.value ?? this.valueprop) ?? (this.accordion ? '' : []),
+    };
   },
   watch: {
+    value(val) {
+      this.currentValue = this.fromValue(val) ?? (this.accordion ? '' : []);
+    },
     valueprop(val) {
-      this.value = this.fromValue(val) ?? (this.accordion ? 0 : [0])
+      this.currentValue = this.fromValue(val) ?? (this.accordion ? '' : []);
     },
     accordion(val) {
-      if ((this.fromValue(this.valueprop))) {
-      } else {
-        this.value = (val ? 0 : [0])
+      if (!this.fromValue(this.value ?? this.valueprop)) {
+        this.currentValue = val ? '' : [];
       }
-    }
+    },
   },
   methods: {
     fromValue(value) {
       try {
-          if (value === null || value === undefined) return null;
-          return value;
+        if (value === null || value === undefined) return null;
+
+        if (!this.accordion && !Array.isArray(value)) {
+          return [value]
+        }
+
+        return value;
       } catch (err) {
-          return null;
+        return null;
       }
     },
     switch(name, expanded) {
       if (!this.accordion) {
         name = expanded
-          ? this.value.concat(name)
-          : this.value.filter((activeName) => activeName !== name);
+          ? this.currentValue.concat(name)
+          : this.currentValue.filter((activeName) => activeName !== name);
       }
       this.$emit('input', name);
+      this.$emit('update:value', name);
       this.$emit('update:valueprop', name);
       this.$emit('change', name);
-      this.value = name;
+      this.currentValue = name;
     },
   },
 

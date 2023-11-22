@@ -14,20 +14,21 @@ import Popup from '../popup';
 const [createComponent, bem] = createNamespace('dropdown-item');
 
 export default createComponent({
-  mixins: [PortalMixin({ ref: 'wrapper' }), ChildrenMixin('vanDropdownMenu'), ParentMixin('vanDropdownMenuItem')],
+  mixins: [
+    PortalMixin({ ref: 'wrapper' }),
+    ChildrenMixin('vanDropdownMenu'),
+    ParentMixin('vanDropdownMenuItem'),
+  ],
 
   props: {
-    valueprop: null,
+    valueprop: null, // 废弃
+    value: null,
     title: {
       type: String,
-      default: '标题'
+      default: '标题',
     },
     disabled: Boolean,
     titleClass: String,
-    optionsprop: {
-      type: Array,
-      default: () => [],
-    },
     options: {
       type: Array,
       default: () => [],
@@ -48,39 +49,23 @@ export default createComponent({
       showPopup: false,
       showWrapper: false,
       bem,
-      value: this.valueprop,
+      currentValue: this.value ?? this.valueprop,
     };
-  },
-
-  computed: {
-    // options() {
-    //   if (this.optionsprop === null || this.optionsprop === undefined) return [];
-    //   if(typeof this.optionsprop === 'string') return JSON.parse(this.optionsprop || '[]');
-    //   if(typeof this.optionsprop === 'object') return this.optionsprop;
-    // },
-    // displayTitle() {
-    //   console.log(1111)
-    //   const match1 = this.children.filter(
-    //     (option) => isDef(option.value) && option.value === this.value
-    //   );
-    //   console.log(match1)
-    //   const match = this.options.filter(
-    //     (option) => isDef(option.value) && option.value === this.value
-    //   );
-    //   return match1.length ? match1[0].title : (match.length ? match[0].text : (this.title ? this.title : ''));
-    // },
   },
 
   watch: {
     showPopup(val) {
       this.bindScroll(val);
     },
-    valueprop(val) {
-      this.value = val;
-    },
     value(val) {
+      this.currentValue = val;
+    },
+    valueprop(val) {
+      this.currentValue = val;
+    },
+    currentValue(val) {
       this.$emit('change', val);
-    }
+    },
   },
 
   beforeCreate() {
@@ -93,14 +78,19 @@ export default createComponent({
 
   methods: {
     displayTitle() {
-      // console.log(this.children, 99, this.value)
       const match1 = this.children.filter(
-        (option) => (option.value ?? option.index) === this.value
+        (option) => (option.value ?? option.index) === this.currentValue
       );
       const match = this.options.filter(
-        (option) => isDef(option.value) && option.value === this.value
+        (option) => isDef(option.value) && option.value === this.currentValue
       );
-      return match1.length ? match1[0].title : (match.length ? match[0].text : (this.title ? this.title : ''));
+      return match1.length
+        ? match1[0].title
+        : match.length
+        ? match[0].text
+        : this.title
+        ? this.title
+        : '';
     },
     // @exposed-api
     toggle(show = !this.showPopup, options = {}) {
@@ -148,9 +138,8 @@ export default createComponent({
 
     const aId = this.$vnode.context.$options._scopeId;
 
-
     const Options = this.options.map((option) => {
-      const active = option.value === this.value;
+      const active = option.value === this.currentValue;
       return (
         <DropdownItemSon
           vusion-scope-id={aId}
@@ -164,9 +153,10 @@ export default createComponent({
           novalue={true}
           onClick={() => {
             this.showPopup = false;
-            if (option.value !== this.value) {
+            if (option.value !== this.currentValue) {
               this.$emit('input', option.value);
               this.$emit('update:value', option.value);
+              this.$emit('update:valueprop', option.value);
               this.$emit('change', option.value);
             }
           }}
@@ -185,8 +175,7 @@ export default createComponent({
       style.bottom = `${offset}px`;
     }
     return (
-      <div
-      >
+      <div>
         <div
           vShow={this.showWrapper}
           ref="wrapper"

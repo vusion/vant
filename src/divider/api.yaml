@@ -5,16 +5,6 @@
     - Display
   description: 用于将内容分隔为多个区域
   attrs:
-    - name: dashed
-      title: 线条类型
-      type: string
-      options:
-        - value: b
-          title: 虚线
-        - value: a
-          title: 实线
-      default: a
-      description: 线条类型
     - name: content-position
       title: 内容位置
       type: string
@@ -26,12 +16,23 @@
         - value: right
           title: 右
       default: center
-      description: 内容位置
+      description: 设置内容位置
     - name: title
       title: 文本
       type: string
       description: 文本
       advanced: true
+    - name: dashed
+      title: 线条类型
+      type: string
+      options:
+        - value: b
+          title: 虚线
+        - value: a
+          title: 实线
+      default: a
+      description: ""
+      group: 主要属性
   slots:
     - concept: Slot
       name: default

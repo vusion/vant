@@ -49,7 +49,7 @@ export default createComponent({
   },
 
   model: {
-    prop: 'active',
+    prop: 'value',
   },
 
   props: {
@@ -78,9 +78,13 @@ export default createComponent({
       type: String,
       default: 'line',
     },
+    // 废弃
     active: {
       type: [Number, String],
       default: 0,
+    },
+    value: {
+      type: [Number, String],
     },
     ellipsis: {
       type: Boolean,
@@ -163,8 +167,14 @@ export default createComponent({
       }
     },
 
+    value(name) {
+      if (name !== this.currentName) {
+        this.setCurrentIndexByName(name);
+      }
+    },
+
     children() {
-      this.setCurrentIndexByName(this.active);
+      this.setCurrentIndexByName(this.value ?? this.active);
       this.setLine();
 
       this.$nextTick(() => {
@@ -281,14 +291,15 @@ export default createComponent({
 
       this.currentIndex = newIndex;
 
-      if (newName !== this.active) {
+      if (newName !== (this.value ?? this.active)) {
         this.$emit('input', newName);
+        this.$emit('update:value', newName);
         this.$emit('update:active', newName);
 
         if (shouldEmitChange) {
+          this.$emit('update:value', newName, newTab.title);
           this.$emit('update:active', newName, newTab.title);
           this.$emit('change', newName, newTab.title);
-
         }
       }
     },
@@ -398,43 +409,46 @@ export default createComponent({
       const aId = item.$vnode.context.$options._scopeId;
       const aIdo = {
         ...item.$attrs,
-        [aId] : ''
-      }
+        [aId]: '',
+      };
       const style = item.titleStyle || {};
-      const vnodeStaticStyle = item.$vnode.data && item.$vnode.data.staticStyle || {};
-      const vnodeStyle = item.$vnode.data && item.$vnode.data.style || {};
+      const vnodeStaticStyle =
+        (item.$vnode.data && item.$vnode.data.staticStyle) || {};
+      const vnodeStyle = (item.$vnode.data && item.$vnode.data.style) || {};
       Object.assign(style, vnodeStaticStyle);
       Object.assign(style, vnodeStyle);
-      return <Title
-        {...{attrs: {...aIdo}}}
-        vusion-slot-name="title"
-        ref="titles"
-        refInFor
-        type={type}
-        dot={item.dot}
-        info={item.badgebtn ? (item.badge ? item.badge : item.info) : null}
-        badgemax={item.badgemax}
-        title={item.title}
-        color={this.color}
-        style={style}
-        class={item.titleClass}
-        isActive={index === this.currentIndex}
-        disabled={disabled || item.disabled}
-        scrollable={scrollable}
-        activeColor={this.titleActiveColor}
-        inactiveColor={this.titleInactiveColor}
-        vusion-scope-id={aId}
-        vusion-node-path={item.$attrs['vusion-node-path']}
-        vusion-node-tag={item.$attrs['vusion-node-tag']}
-        scopedSlots={{
-          default: () => item.slots('title'),
-        }}
-        onClick={() => {
-          if(disabled) return;
-          this.onClick(item, index);
-        }}
-      />
-      });
+      return (
+        <Title
+          {...{ attrs: { ...aIdo } }}
+          vusion-slot-name="title"
+          ref="titles"
+          refInFor
+          type={type}
+          dot={item.dot}
+          info={item.badgebtn ? (item.badge ? item.badge : item.info) : null}
+          badgemax={item.badgemax}
+          title={item.title}
+          color={this.color}
+          style={style}
+          class={item.titleClass}
+          isActive={index === this.currentIndex}
+          disabled={disabled || item.disabled}
+          scrollable={scrollable}
+          activeColor={this.titleActiveColor}
+          inactiveColor={this.titleInactiveColor}
+          vusion-scope-id={aId}
+          vusion-node-path={item.$attrs['vusion-node-path']}
+          vusion-node-tag={item.$attrs['vusion-node-tag']}
+          scopedSlots={{
+            default: () => item.slots('title'),
+          }}
+          onClick={() => {
+            if (disabled) return;
+            this.onClick(item, index);
+          }}
+        />
+      );
+    });
 
     const Wrap = (
       <div

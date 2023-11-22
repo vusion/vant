@@ -1,5 +1,5 @@
 ### 基础用法
 
 ``` html
-   <van-progress percentage="50" />
+   <van-progress value="50" />
 ```

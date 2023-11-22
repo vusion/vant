@@ -8,9 +8,10 @@
     - name: text
       title: 文本
       type: string
-      description: 文本内容
+      description: 默认文本显示内容
+      group: 主要属性
     - name: color
-      title: 颜色
+      title: 主题颜色
       type: string
       options:
         - value: default
@@ -28,21 +29,8 @@
         - value: disabled
           title: 禁用色
       default: default
-      description: 设置颜色
-    - name: size
-      title: 尺寸
-      type: string
-      options:
-        - value: small
-          title: 小
-        - value: normal
-          title: 正常
-        - value: large
-          title: 大
-        - value: huge
-          title: 巨大
-      default: normal
-      description: 尺寸设置
+      description: 设置文本主题颜色
+      group: 主要属性
     - name: display
       title: 展示方式
       type: string
@@ -52,7 +40,8 @@
         - value: block
           title: 块级
       default: inline
-      description: 展示方式
+      description: 选择行内或块级展示
+      group: 主要属性
     - name: overflow
       title: 隐藏处理
       type: string
@@ -66,7 +55,23 @@
         - value: nowrap
           title: 始终不换行
       default: normal
-      description: 文本过长的处理方式
+      description: 设置文本过长时的处理方式
+      group: 主要属性
+    - name: size
+      title: 尺寸
+      type: string
+      options:
+        - value: small
+          title: 小
+        - value: normal
+          title: 正常
+        - value: large
+          title: 大
+        - value: huge
+          title: 巨大
+      default: normal
+      description: 设置文本大小
+      group: 样式属性
   events:
     - name: click
       title: 点击后

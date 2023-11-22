@@ -1,10 +1,9 @@
-import _get from 'lodash/get';
-
 import { deepClone } from '../utils/deep-clone';
-import { createNamespace, isObject } from '../utils';
+import { createNamespace, isObject, _get, isDef } from '../utils';
 import { range } from '../utils/format/number';
 import { preventDefault } from '../utils/dom/event';
 import { TouchMixin } from '../mixins/touch';
+import { EmptyCol } from '../emptycol';
 
 const DEFAULT_DURATION = 200;
 
@@ -14,7 +13,7 @@ const DEFAULT_DURATION = 200;
 const MOMENTUM_LIMIT_TIME = 300;
 const MOMENTUM_LIMIT_DISTANCE = 15;
 
-const [createComponent, bem] = createNamespace('pick-column');
+const [createComponent, bem] = createNamespace('picker-pick-column');
 
 function getElementTranslateY(element) {
   const style = window.getComputedStyle(element);
@@ -202,7 +201,7 @@ export default createComponent({
     },
 
     getOptionText(option) {
-      if (isObject(option) && _get(option, this.textField)) {
+      if (isObject(option) && isDef(_get(option, this.textField))) {
         return _get(option, this.textField);
       }
 
@@ -273,6 +272,7 @@ export default createComponent({
     },
 
     genOptions() {
+      const isInDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
       const optionStyle = {
         height: `${this.itemHeight}px`,
       };
@@ -308,8 +308,9 @@ export default createComponent({
         };
 
         return (
-          <li {...data}>
-            {this.slots('option', option) || <div {...childData} />}
+          <li {...data} vusion-slot-name="option">
+            {this.slots('option', option) ||
+              (isInDesigner ? <EmptyCol></EmptyCol> : <div {...childData} />)}
           </li>
         );
       });

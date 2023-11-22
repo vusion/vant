@@ -1,3 +1,55 @@
+const ConverterUtils = {
+  default: {
+    get(currentValue) {
+      return currentValue;
+    },
+    set(value) {
+      return value;
+    },
+  },
+  json: {
+    get(currentValue) {
+      try {
+        return JSON.stringify(currentValue || []);
+      } catch (err) {
+        return '[]';
+      }
+    },
+    set(value) {
+      try {
+        return JSON.parse(value || '[]');
+      } catch (err) {
+        return [];
+      }
+    },
+  },
+  'join:,': {
+    get(currentValue) {
+      return (currentValue || []).join(',');
+    },
+    set(value) {
+      return value ? value.split(',') : [];
+    },
+  },
+  'join:|': {
+    get(currentValue) {
+      return (currentValue || []).join('|');
+    },
+    set(value) {
+      return value ? value.split('|') : [];
+    },
+  },
+  'join:;': {
+    get(currentValue) {
+      return (currentValue || []).join(';');
+    },
+    set(value) {
+      return value ? value.split(';') : [];
+    },
+  },
+};
+
+
 export const Converter = {
   props: {
     converter: { type: [String, Object], default: undefined },
@@ -70,5 +122,17 @@ export const Converter = {
     return {
       currentConverter,
     };
+  },
+  methods: {
+    // 根据转换器将内部值转成对应格式外部值
+    getOuterValue(value) {
+      const handler = ConverterUtils[this.converter].get || ConverterUtils.default.get;
+      return handler(value);
+    },
+    // 根据转换器将对应格式外部值转成内部值
+    setInnerValue(value) {
+      const handler = ConverterUtils[this.converter].set || ConverterUtils.default.set;
+      return handler(value);
+    },
   },
 };

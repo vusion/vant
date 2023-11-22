@@ -1,4 +1,4 @@
-import { createNamespace, isFunction } from '../utils';
+import { createNamespace, isFunction, _get } from '../utils';
 import { formatResult } from '../utils/format/data-source';
 import Tab from '../tab';
 import Tabs from '../tabs';
@@ -10,9 +10,7 @@ import Search from '../search';
 // Mixins
 import { FieldMixin } from '../mixins/field';
 import DataSourceMixin from '../mixins/DataSource';
-
-
-const _get = require('lodash/get');
+import { EmptyCol } from '../emptycol';
 
 const [createComponent, bem, t] = createNamespace('cascader');
 
@@ -20,10 +18,13 @@ export default createComponent({
   mixins: [FieldMixin, DataSourceMixin],
 
   props: {
+    readonly: Boolean,
+    disabled: Boolean,
     title: String,
     value: [Number, String],
     fieldNamesp: [Object, String],
     placeholder: { type: String, default: '请选择' },
+    tabPlaceholder: { type: String, default: '请选择' },
     activeColor: String,
     converter: {
       type: String,
@@ -56,6 +57,10 @@ export default createComponent({
       default: false,
     },
     treeDisplay: { type: Boolean, default: false }, // 组件内部默认不开启树，兼容老版本
+    isNew: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -64,7 +69,7 @@ export default createComponent({
       activeTab: 0,
       options: [],
       valuepopup: false,
-      curValue: this.value || '',
+      currentValue: this.value || '',
 
       filterData: [],
     };
@@ -101,9 +106,9 @@ export default createComponent({
       handler: 'updateTabs',
     },
     value(val) {
-      this.curValue = val;
+      this.currentValue = val;
     },
-    curValue(value) {
+    currentValue(value) {
       if (value || value === 0) {
         const values = this.tabs.map((tab) => {
           if (tab.selectedOption) {
@@ -121,16 +126,40 @@ export default createComponent({
   },
 
   methods: {
+    designerDbControl() {
+      this.$refs.popforcas.togglePModal();
+    },
+    designerClose() {
+      if (window.parent && this?.$attrs?.['vusion-node-path']) {
+        window.parent?.postMessage(
+          {
+            protocol: 'vusion',
+            sender: 'helper',
+            type: 'send',
+            command: 'setPopupStatusInfo',
+            args: [
+              {
+                nodePath: this?.$attrs?.['vusion-node-path'],
+                visible: false,
+              },
+            ],
+          },
+          '*'
+        );
+      }
+      this.$refs.popforcas.togglePModal();
+    },
     getTitle() {
       const ifDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
       if (ifDesigner) {
         return this.value;
       }
       const selectedOptions =
-        this.getSelectedOptionsByValue(this.options, this.curValue) || [];
+        this.getSelectedOptionsByValue(this.options, this.currentValue) || [];
       const result = selectedOptions
         .map((option) => _get(option, this.textKey))
         .join('/');
+
       return result;
     },
     getSelectedOptionsByValue(options, value) {
@@ -155,10 +184,10 @@ export default createComponent({
     async updateTabs() {
       this.options = formatResult(this.currentData);
 
-      if (this.curValue || this.curValue === 0) {
+      if (this.currentValue || this.currentValue === 0) {
         const selectedOptions = this.getSelectedOptionsByValue(
           this.options,
-          this.curValue
+          this.currentValue
         );
 
         if (selectedOptions) {
@@ -237,7 +266,7 @@ export default createComponent({
         tabIndex,
         selectedOptions,
       };
-      this.curValue = _get(option, this.valueKey);
+      this.currentValue = _get(option, this.valueKey);
       this.$emit('input', _get(option, this.valueKey));
       this.$emit('update:value', _get(option, this.valueKey));
       this.$emit('change', eventParams); // expose
@@ -258,7 +287,7 @@ export default createComponent({
         selectedOptions: [...option.parents, option],
       };
 
-      this.curValue = _get(option, this.valueKey);
+      this.currentValue = _get(option, this.valueKey);
       this.$emit('update:value', _get(option, this.valueKey));
       this.$emit('change', eventParams); // expose
       this.$emit('finish', eventParams); // expose
@@ -277,6 +306,14 @@ export default createComponent({
       this.$refs.popforcas.togglePModal();
     },
 
+    onClickField() {
+      if (this.readonly || this.disabled) {
+        return;
+      }
+
+      this.togglePopup();
+    },
+
     // 覆盖mixin
     filter() {},
     onInput(value) {
@@ -284,7 +321,13 @@ export default createComponent({
 
       // 设置filterData
       this.filterData = this.flattenData.filter((item) => {
-        if (_get(item, this.textKey).indexOf(value) !== -1) {
+        const text = _get(item, this.textField);
+
+        if (!text) {
+          return false;
+        }
+
+        if (text.indexOf(value) !== -1) {
           return true;
         }
 
@@ -324,9 +367,25 @@ export default createComponent({
     },
 
     renderHeader() {
+      if (this.isNew) {
+        let topSlot = this.slots('picker-top');
+        if (this.inDesigner()) {
+          if (!topSlot) {
+            topSlot = <EmptyCol></EmptyCol>;
+          }
+        }
+        if (topSlot) {
+          return <div vusion-slot-name="picker-top">{topSlot}</div>;
+        }
+        return null;
+      }
+
       return (
         <div class={bem('header')}>
-          <h2 class={bem('title')}>{this.slots('title') || this.title}</h2>
+          <h2 class={bem('title')} vusion-slot-name="title">
+            {this.slots('title') ||
+              (this.inDesigner() ? <EmptyCol></EmptyCol> : this.title)}
+          </h2>
           {this.closeable ? (
             <Icon
               name="cross"
@@ -338,16 +397,37 @@ export default createComponent({
       );
     },
 
+    renderBottom() {
+      if (!this.isNew) return null;
+
+      let bottomSlot = this.slots('picker-bottom');
+      if (this.inDesigner()) {
+        if (!bottomSlot) {
+          bottomSlot = <EmptyCol></EmptyCol>;
+        }
+      }
+
+      if (!bottomSlot) return null;
+
+      return <div vusion-slot-name="picker-bottom">{bottomSlot}</div>;
+    },
+
     renderOptions(options, selectedOption, tabIndex) {
+      const isInDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
       const renderOption = (option) => {
         const isSelected =
           selectedOption &&
           _get(option, this.valueKey) === _get(selectedOption, this.valueKey);
         // option[this.valueKey] === selectedOption[this.valueKey];
         // console.log(option);
-        const Text = this.slots('option', { option, selected: isSelected }) || (
-          <span>{_get(option, this.textKey)}</span>
-        );
+
+        const Text =
+          this.slots('option', { option, selected: isSelected, ...option }) ||
+          (isInDesigner ? (
+            <EmptyCol></EmptyCol>
+          ) : (
+            <span>{_get(option, this.textKey)}</span>
+          ));
 
         return (
           <li
@@ -356,6 +436,7 @@ export default createComponent({
             onClick={() => {
               this.onSelect(option, tabIndex);
             }}
+            vusion-slot-name="option"
           >
             {Text}
             {isSelected ? (
@@ -372,7 +453,7 @@ export default createComponent({
       const { options, selectedOption } = item;
       const title = selectedOption
         ? _get(selectedOption, this.textKey)
-        : this.placeholder || t('select');
+        : this.tabPlaceholder || t('select');
 
       return (
         <Tab
@@ -441,17 +522,20 @@ export default createComponent({
         <Field
           label={this.labelField}
           value={this.getTitle()}
+          placeholder={this.placeholder}
           scopedSlots={tempSlot}
           readonly
+          disabled={this.disabled}
           isLink={false}
           input-align={this.inputAlign || 'right'}
-          onClick={this.togglePopup}
+          onClick={this.onClickField}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           notitleblock={this.notitleblock}
           novalue={this.novalue}
           insel={true}
           nofi={true}
+          vusion-click-enabled
         />
         <Popup
           safe-area-inset-bottom
@@ -462,11 +546,25 @@ export default createComponent({
           closeOnClickOverlay={this.closeOnClickOverlay}
           // onClickOverlay={this.togglePopup}
           get-container="body" // 放body下不易出现异常情况
+          vusion-scope-id={this?.$vnode?.context?.$options?._scopeId}
+          {...{
+            attrs: { ...this.$attrs, 'vusion-empty-background': undefined },
+          }}
         >
-          <div class={bem()}>
+          <div class={bem(this.isNew && 'content-wrapper')}>
+            {this.inDesigner() && (
+              <div
+                class={bem('designer-close-button')}
+                vusion-click-enabled="true"
+                onClick={this.designerClose}
+              >
+                点击关闭
+              </div>
+            )}
             {this.renderHeader()}
             {this.renderSearch()}
             {this.renderTabs()}
+            {this.renderBottom()}
           </div>
         </Popup>
       </div>

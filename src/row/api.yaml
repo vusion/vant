@@ -5,6 +5,36 @@
   labels:
     - Layout
   attrs:
+    - name: alignment
+      title: 纵轴对齐
+      type: string
+      display: capsules
+      bindHide: true
+      options:
+        - value: start
+          title: 顶对齐
+          icon: horizontal-alignment-start
+          tooltip: 顶对齐
+        - value: center
+          title: 垂直居中
+          icon: horizontal-alignment-center
+          tooltip: 垂直居中
+        - value: end
+          title: 底对齐
+          icon: horizontal-alignment-end
+          tooltip: 底对齐
+        - value: baseline
+          title: 行内文字基线对齐
+          icon: horizontal-alignment-baseline
+          tooltip: 行内文字基线对齐
+        - value: stretch
+          title: 占满容器高度
+          icon: horizontal-alignment-stretch
+          tooltip: 占满容器高度
+      default: stretch
+      dependency:
+        - type: flex
+      group: 样式属性
     - name: type
       title: 布局模式
       type: string
@@ -22,6 +52,7 @@
       default: flex
       description: 设置布局模式
       tooltipLink: http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/030.%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80.html
+      group: 样式属性
     - name: justify
       title: 横轴对齐
       type: string
@@ -51,35 +82,8 @@
       default: start
       dependency:
         - type: flex
-    - name: align
-      title: 纵轴对齐
-      type: string
-      display: capsules
-      bindHide: true
-      options:
-        - value: start
-          title: 顶对齐
-          icon: horizontal-alignment-start
-          tooltip: 顶对齐
-        - value: center
-          title: 垂直居中
-          icon: horizontal-alignment-center
-          tooltip: 垂直居中
-        - value: end
-          title: 底对齐
-          icon: horizontal-alignment-end
-          tooltip: 底对齐
-        - value: baseline
-          title: 行内文字基线对齐
-          icon: horizontal-alignment-baseline
-          tooltip: 行内文字基线对齐
-        - value: stretch
-          title: 占满容器高度
-          icon: horizontal-alignment-stretch
-          tooltip: 占满容器高度
-      default: stretch
-      dependency:
-        - type: flex
+      group: 样式属性
+      description: ""
     - name: gutter
       title: 列间距
       type: string
@@ -93,7 +97,8 @@
         - value: "30"
           title: 大（30）
       default: "0"
-      description: 列元素之间的间距（单位为 px）
+      description: 列元素之间的间距，单位为 px。
+      group: 样式属性
   slots:
     - concept: Slot
       name: default
@@ -107,28 +112,6 @@
   title: 栅格列
   description: 内部元素行内列布局
   attrs:
-    - name: mode
-      title: 布局模式
-      type: string
-      display: capsules
-      bindHide: true
-      description: 设置布局模式
-      tooltipLink: http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/030.%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80.html
-      options:
-        - value: inline
-          title: 块级
-          icon: layout-inline-block
-          tooltip: 内联布局
-        - value: flex
-          title: 弹性
-          icon: layout-flex
-          tooltip: 弹性布局
-      default: inline
-      toggleclear:
-        - justify
-        - align
-        - wrap
-        - gap
     - name: direction
       title: 主轴方向
       type: string
@@ -146,7 +129,7 @@
       default: horizontal
       toggleclear:
         - justify
-        - align
+        - alignment
       dependency:
         - mode: flex
     - name: justify
@@ -186,7 +169,7 @@
         - value: space-around
           updateData:
             gap: normal
-    - name: _align
+    - name: alignment
       title: 纵轴对齐
       type: string
       display: capsules
@@ -216,7 +199,7 @@
       dependency:
         - mode: flex
           direction: horizontal
-    - name: align
+    - name: alignment
       title: 横轴对齐
       type: string
       display: capsules
@@ -315,13 +298,40 @@
       default: 1
       min: 1
       max: 24
-      description: 栅格列宽度，栅格行最大为24列
+      description: 栅格列宽度，栅格行最大为24列。
+      precision: 1
+      group: 主要属性
     - name: offset
-      title: 偏移
+      title: 偏移数
       type: number
       default: 0
       display: number
       description: 栅格列向右偏移列数
+      precision: 1
+      group: 主要属性
+    - name: mode
+      title: 布局模式
+      type: string
+      display: capsules
+      bindHide: true
+      description: 设置布局模式
+      tooltipLink: http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/030.%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80.html
+      options:
+        - value: inline
+          title: 块级
+          icon: layout-inline-block
+          tooltip: 内联布局
+        - value: flex
+          title: 弹性
+          icon: layout-flex
+          tooltip: 弹性布局
+      default: inline
+      toggleclear:
+        - justify
+        - alignment
+        - wrap
+        - gap
+      group: 主要属性
   slots:
     - concept: Slot
       name: default

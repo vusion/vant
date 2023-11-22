@@ -1,6 +1,36 @@
 @import '../style/var';
 
 .van-field {
+
+  &[label-layout="block"] {
+      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  &[label-layout="block"]:not(:last-child) {
+      margin-bottom: var(--form-item-margin-bottom);
+  }
+
+  &[label-layout="block"]> &__labelhasslots{
+      display: inline-flex;
+      align-items: center;
+      justify-content: start;
+      width: 100% !important;
+      margin-bottom: 4px;
+      padding-right: 0;
+      text-align: left;
+  }
+  
+  &[label-layout="block"]> &__value {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin-right: @field-label-margin-right;
+      margin-left: 6px;
+  }
+
   &__label {
     flex: none;
     box-sizing: border-box;

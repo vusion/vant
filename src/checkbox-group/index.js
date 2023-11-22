@@ -20,6 +20,7 @@ export default createComponent({
       type: Number,
       default: 0,
     },
+    valueField: { type: String, default: 'value' },
     disabled: Boolean,
     direction: String,
     iconSize: [Number, String],
@@ -43,11 +44,15 @@ export default createComponent({
     };
   },
   watch: {
-    value(val) {
+    value(val, oldValue) {
       // 暴露出去的值
+      const value = this.converter !== 'none' ? this.currentConverter.get(val) : val;
+      oldValue = this.converter !== 'none' ? this.currentConverter.get(oldValue) : oldValue;
       this.$emit(
-        'change',
-        this.converter !== 'none' ? this.currentConverter.get(val) : val
+        'change', {
+          value,
+          oldValue,
+        }
       );
 
       this.currentValue =

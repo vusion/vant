@@ -10,7 +10,7 @@ export default createComponent({
   props: {
     activeColor: String,
     inactiveColor: String,
-    active: {
+    value: {
       type: [Number, String],
       default: 0,
     },
@@ -24,7 +24,7 @@ export default createComponent({
 
   data() {
     return {
-      value: this.active,
+      currentValue: this.value,
     };
   },
 
@@ -34,11 +34,11 @@ export default createComponent({
     },
   },
   watch: {
-    active(val) {
-      this.value = val;
-    },
     value(val) {
-      this.$emit('update:active', val);
+      this.currentValue = val;
+    },
+    currentValue(val) {
+      this.$emit('update:value', val);
       this.$emit('changestep', val);
     },
   },

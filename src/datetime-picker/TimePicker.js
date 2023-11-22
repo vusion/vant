@@ -1,3 +1,4 @@
+import dayjs from '../utils/dayjs';
 import { createNamespace } from '../utils';
 import { padZero } from '../utils/format/string';
 import { range } from '../utils/format/number';
@@ -30,11 +31,24 @@ export default createComponent({
       type: [Number, String],
       default: 59,
     },
+    minSecond: {
+      type: [Number, String],
+      default: 0,
+    },
+    maxSecond: {
+      type: [Number, String],
+      default: 59,
+    },
+    unit: {
+      type: String,
+      default: 'minute'
+    },
   },
 
   computed: {
     ranges() {
-      return [
+      // 时:分
+      const columns =  [
         {
           type: 'hour',
           range: [+this.minHour, +this.maxHour],
@@ -44,11 +58,22 @@ export default createComponent({
           range: [+this.minMinute, +this.maxMinute],
         },
       ];
+
+      // 最小单位: 秒
+      if (this.unit === 'second') {
+        columns.push({
+          type: 'second',
+          range: [+this.minSecond, +this.maxSecond],
+        });
+      }
+
+      return columns;
     },
   },
 
   watch: {
     filter: 'updateInnerValue',
+    // 如果最大、最小有变化，需要更新内部值
     minHour() {
       this.$nextTick(() => {
         this.updateInnerValue();
@@ -73,6 +98,8 @@ export default createComponent({
         this.updateInnerValue();
       }
     },
+    // todo second
+
     value(val) {
       val = this.formatValue(val);
 
@@ -84,26 +111,47 @@ export default createComponent({
   },
 
   methods: {
+    // 将外部value转成内部统一格式
     formatValue(value) {
+      // 空值
       if (!value) {
         value = `${padZero(this.minHour)}:${padZero(this.minMinute)}`;
+
+        if (this.unit === 'second') {
+          value += `:${padZero(this.minSecond)}`;
+        }
       }
 
-      let [hour, minute] = value.split(':');
+      let [hour, minute, second] = value.split(':');
+
       hour = padZero(range(hour, this.minHour, this.maxHour));
       minute = padZero(range(minute, this.minMinute, this.maxMinute));
 
-      return `${hour}:${minute}`;
+      value = `${hour}:${minute}`;
+
+      if (this.unit === 'second') {
+        second = padZero(range(second, this.minSecond, this.maxSecond));
+        value += `:${second}`
+      }
+
+      return value;
     },
 
     updateInnerValue() {
-      const [hourIndex, minuteIndex] = this.getPicker().getIndexes();
-      const [hourColumn, minuteColumn] = this.originColumns;
+      const [hourIndex, minuteIndex, secondIndex] = this.getPicker().getIndexes();
+      const [hourColumn, minuteColumn, secondColumn] = this.originColumns;
 
       const hour = hourColumn.values[hourIndex] || hourColumn.values[0];
       const minute = minuteColumn.values[minuteIndex] || minuteColumn.values[0];
 
-      this.innerValue = this.formatValue(`${hour}:${minute}`);
+      let innerValue = `${hour}:${minute}`;
+
+      if (this.unit === 'second') {
+        const second = secondColumn.values[secondIndex] || secondColumn.values[0];
+        innerValue += `:${second}`
+      }
+
+      this.innerValue = this.formatValue(innerValue);
       this.updateColumnValue();
     },
 
@@ -121,6 +169,10 @@ export default createComponent({
       const { formatter } = this;
       const pair = this.innerValue.split(':');
       const values = [formatter('hour', pair[0]), formatter('minute', pair[1])];
+
+      if (this.unit === 'second') {
+        values.push(formatter('second', pair[2]))
+      }
 
       this.$nextTick(() => {
         this.getPicker().setValues(values);

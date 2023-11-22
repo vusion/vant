@@ -12,6 +12,7 @@ export default createComponent({
       default: 'flex',
     },
     align: String,
+    alignment: String,
     justify: String,
     tag: {
       type: String,
@@ -71,14 +72,16 @@ export default createComponent({
   },
 
   render() {
-    const { align, justify } = this;
+    const { align, alignment: alignment_, justify } = this;
+    // 向前兼容
+    const alignment = alignment_ || align;
     const flex = this.type === 'flex';
 
     return (
       <this.tag
         class={bem({
           flex,
-          [`align-${align}`]: flex && align,
+          [`align-${alignment}`]: flex && alignment,
           [`justify-${justify}`]: flex && justify,
         })}
         onClick={this.onClick}

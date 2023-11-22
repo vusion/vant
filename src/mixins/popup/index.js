@@ -45,6 +45,10 @@ export const popupMixinProps = {
 };
 
 export function PopupMixin(options = {}) {
+  // Popup和Dialog组件在编辑状态不应该受value来控制显隐，目前由
+  //  independInDesigner,$env?.VUE_APP_DESIGNER和$attrs?.['vusion-vusion-node-path']
+  // 三个状态来保证当前为编辑页面的直接子组件
+  const independInDesigner = options?.independInDesigner || false;
   return {
     mixins: [
       TouchMixin,
@@ -68,6 +72,16 @@ export function PopupMixin(options = {}) {
 
     data() {
       this.onReopenCallback = [];
+      if (
+        independInDesigner &&
+        this.$env?.VUE_APP_DESIGNER &&
+        this.$attrs?.['vusion-vusion-node-path']
+      ) {
+        return {
+          inited: false,
+          realValue: false,
+        };
+      }
       return {
         inited: this.value,
         realValue: this.value,
@@ -82,6 +96,14 @@ export function PopupMixin(options = {}) {
 
     watch: {
       value(val) {
+        if (
+          independInDesigner &&
+          this.$env?.VUE_APP_DESIGNER &&
+          this.$attrs?.['vusion-vusion-node-path']
+        ) {
+          // 在编辑页面不使用value来控制状态
+          return;
+        }
         this.realValue = val;
         // const type = val ? 'open' : 'close';
         // this.inited = this.inited || this.value;
@@ -110,15 +132,20 @@ export function PopupMixin(options = {}) {
           if (!options.skipToggleEvent) {
             this.$emit('close');
           }
-        }
-        catch (e) {
-
-        }
+        } catch (e) {}
       },
     },
 
     mounted() {
-      if (this.value) {
+      let openFlag = this.value;
+      if (
+        independInDesigner &&
+        this.$env?.VUE_APP_DESIGNER &&
+        this.$attrs?.['vusion-vusion-node-path']
+      ) {
+        openFlag = false;
+      }
+      if (openFlag) {
         this.open();
       }
     },

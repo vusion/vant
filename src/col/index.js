@@ -18,8 +18,12 @@ export default createComponent({
     },
     mode: String,
     align: String,
+    alignment: String,
     justify: String,
-    direction: String,
+    direction: {
+      type: String,
+      default: 'horizontal',
+    },
     wrap: {
       type: Boolean,
       default: true,
@@ -49,14 +53,16 @@ export default createComponent({
   },
 
   render() {
-    const { span, offset, align, justify, direction, wrap, gap } = this;
+    const { span, offset, align, alignment: alignment_, justify, direction, wrap, gap } = this;
+    // 向前兼容
+    const alignment = alignment_ || align;
     const flex = this.mode === 'flex';
     return (
       <this.tag
         style={this.style}
         class={bem({ [span]: span, [`offset-${offset}`]: offset, 
         flex,
-        [`align-${align}`]: flex && align,
+        [`align-${alignment}`]: flex && alignment,
         [`justify-${justify}`]: flex && justify,
         [`direction-${direction}`]: flex && direction,
         nowrap: !wrap,

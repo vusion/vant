@@ -108,21 +108,42 @@
       title: 输入框占位提示文字
       type: string
       advanced: true
+    - name: label-layout
+      title: 标签布局
+      type: string
+      options:
+        - value: inline
+          title: 行内展示
+        - value: block
+          title: 块级展示，标签与表单项分行展示
+      default: inline
+      description: ""
+      group: 主要属性
+      brifeDoc: ""
+      docDescription: 设置标签布局方式。行内展示、块级展示，标签与表单项分行展示。
+      tooltipLink: ""
     - name: required
       title: 必填标记
       type: boolean
       default: false
+      group: 主要属性
+      description: ""
     - name: rules
       title: 验证规则
       type: string | Array
-      description: 验证规则。简写格式为字符串类型，完整格式或混合格式为数组类型
+      description: 设置验证规则，简写格式为字符串类型，完整格式或混合格式为数组类型
       compType: validationRulesSelect
+      group: 主要属性
     - name: border
-      title: 是否显示底边框
+      title: 显示底边框
       type: boolean
       default: true
       description: 是否显示底边框
+      group: 样式属性
   slots:
     - concept: Slot
       name: input
       description: 插入自定义输入框
+  i18n:
+    zh-CN:
+      validateLabel: 字段

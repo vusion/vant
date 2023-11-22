@@ -13,7 +13,7 @@
   </template>
   <van-cell center>
     <template #title> 左侧文本 </template>
-    <template> 右侧文本 </template>
+    右侧文本
   </van-cell>
   <template #right>
     <van-button

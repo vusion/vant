@@ -23,7 +23,7 @@ import VanFieldinput from '../fieldinput/index';
 
 import VusionValidator from '@vusion/validator';
 
-const [createComponent, bem] = createNamespace('field');
+const [createComponent, bem, t] = createNamespace('field');
 const comSet = new Set(['van-fieldinput','van-fieldtextarea','van-fieldnumber']);
 
 export default createComponent({
@@ -55,6 +55,11 @@ export default createComponent({
     readonly: {
       type: Boolean,
       default: null,
+    },
+    labelLayout: {
+      type: String,
+      default: 'inline',
+      validator: (value) => ['inline','block'].includes(value),
     },
     autosize: [Boolean, Object],
     leftIcon: String,
@@ -168,6 +173,12 @@ export default createComponent({
     }
   },
   computed: {
+    currentLabelLayout() {
+      return (
+          this.labelLayout
+          || (this.vanForm && this.vanForm.labelLayout)
+      );
+    },
     currentRules() {
       // return (this.rules || (this.rootVM && this.rootVM.rules && this.rootVM.rules[this.name]));
       return this.rules;
@@ -203,29 +214,69 @@ export default createComponent({
 
     formValue() {
       if (this.children && (this.$scopedSlots.input || this.$slots.input)) {
-        // 输入框
+        // 单行输入
         if (this.children?.$options?._componentTag === 'van-fieldinput') {
-          return this.children.currentValue;
+          return this.children.value;
+        }
+
+        // 多行输入
+        if (this.children?.$options?._componentTag === 'van-fieldtextarea') {
+          return this.children.value;
+        }
+
+        // 数字输入
+        if (this.children?.$options?._componentTag === 'van-stepper-new') {
+          return this.children.value;
+        }
+
+        // 滑块
+        if (this.children?.$options?._componentTag === 'van-slider') {
+          return this.children.value;
+        }
+
+        // 评分
+        if (this.children?.$options?._componentTag === 'van-rate') {
+          return this.children.value;
+        }
+
+        // 选择器
+        if (this.children?.$options?._componentTag === 'van-pickerson') {
+          return this.children.value;
+        }
+
+        // 地区选择
+        if (this.children?.$options?._componentTag === 'van-area') {
+          return this.children.value;
+        }
+
+        // 级联选择
+        if (this.children?.$options?._componentTag === 'van-cascader') {
+          return this.children.value;
+        }
+
+        // 时间选择
+        if (this.children?.$options?._componentTag === 'van-datetime-picker') {
+          return this.children.value;
+        }
+
+        // 日期选择
+        if (this.children?.$options?._componentTag === 'van-calendar') {
+          return this.children.value;
         }
 
         // 单选组
         if (this.children?.$options?._componentTag === 'van-radio-group') {
-          return this.children.datatemp;
+          return this.children.value;
         }
 
         // 多选组
         if (this.children?.$options?._componentTag === 'van-checkbox-group') {
-          return this.children.currentValue;
-        }
-
-        // 日历
-        if (this.children?.$options?._componentTag === 'van-calendar') {
-          return this.children.defaultDate;
+          return this.children.value;
         }
 
         // 文件上传
         if (this.children?.$options?._componentTag === 'van-uploader') {
-          return this.children.fileListProp;
+          return this.children.value;
         }
 
         // 默认使用组件props.value
@@ -308,7 +359,7 @@ export default createComponent({
     runRulesVusion(rules, trigger='') {
       const value = this.formValue;
       const {validatorVuF} = this;
-      return validatorVuF.validate(value, trigger, {label: this.label || '字段',}).then(() => {
+      return validatorVuF.validate(value, trigger, { label: this.label || t('validateLabel') }).then(() => {
       }).catch((error) => {
         this.validateFailed = true;
         this.validateMessage = error;
@@ -808,6 +859,7 @@ export default createComponent({
         notitleblock={this.notitleblock}
         novalue={this.novalue}
         insel={this.insel}
+        label-layout={this.currentLabelLayout}
       >
         <div class={bem('body')}>
           {this.genInput()}

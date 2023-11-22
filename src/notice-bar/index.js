@@ -186,7 +186,7 @@ export default createComponent({
           let to;
           if (props.destination) {
             if (props.destination.startsWith('http')) {
-              location.href = encodeUrl(props.destination);
+              window.location.href = encodeUrl(props.destination);
               return;
             }
             to = props.destination;

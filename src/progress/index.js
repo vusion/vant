@@ -20,16 +20,22 @@ export default createComponent({
     pivotColor: String,
     trackColor: String,
     strokeWidth: [Number, String],
+    // 废弃
     percentage: {
       type: [Number, String],
       required: true,
-      validator: (value) => value >= 0 && value <= 100,
+      validator: (val) => val >= 0 && val <= 100,
+    },
+    value: {
+      type: [Number, String],
+      required: true,
+      validator: (val) => val >= 0 && val <= 100,
     },
     showPivot: {
       type: Boolean,
       default: true,
     },
-    custom:{
+    custom: {
       type: Boolean,
       default: false,
     },
@@ -38,7 +44,7 @@ export default createComponent({
   data() {
     return {
       pivotWidth: 0,
-      customWidth:0,
+      customWidth: 0,
       progressWidth: 0,
     };
   },
@@ -54,7 +60,7 @@ export default createComponent({
   computed: {
     inDesigner() {
       return this.$env && this.$env.VUE_APP_DESIGNER;
-    }
+    },
   },
 
   methods: {
@@ -63,29 +69,33 @@ export default createComponent({
       this.$nextTick(() => {
         this.progressWidth = this.$el.offsetWidth;
         this.pivotWidth = this.$refs.pivot ? this.$refs.pivot.offsetWidth : 0;
-        this.customWidth  = this.$refs.custom ? this.$refs.custom.offsetWidth:0
+        this.customWidth = this.$refs.custom
+          ? this.$refs.custom.offsetWidth
+          : 0;
       });
     },
   },
 
   render() {
-    const { pivotText, percentage } = this;
-    const text = pivotText ?? percentage + '%';
+    const { pivotText, value, percentage } = this;
+    const val = value ?? percentage;
+
+    const text = pivotText ?? val + '%';
     const showPivot = this.showPivot && text;
     const background = this.inactive ? '#cacaca' : this.color;
 
     const pivotStyle = {
       color: this.textColor,
-      left: `${((this.progressWidth - this.pivotWidth) * percentage) / 100}px`,
+      left: `${((this.progressWidth - this.pivotWidth) * val) / 100}px`,
       background: this.pivotColor || background,
     };
     const customStyle = {
-      left: `${((this.progressWidth - this.customWidth) * percentage) / 100}px`,
-    }
+      left: `${((this.progressWidth - this.customWidth) * val) / 100}px`,
+    };
 
     const portionStyle = {
       background,
-      width: (this.progressWidth * percentage) / 100 + 'px',
+      width: (this.progressWidth * val) / 100 + 'px',
     };
 
     const wrapperStyle = {
@@ -97,15 +107,24 @@ export default createComponent({
       <div class="van-progress-room">
         <div class={bem()} style={wrapperStyle}>
           <span class={bem('portion')} style={portionStyle}>
-            {
-              this.custom ? <div ref="custom" style={customStyle} vusion-slot-name="default" class="custom">
-                {this.slots()?this.slots() : this.inDesigner&&< VanEmptyCol ></VanEmptyCol>}
-              </div>:showPivot && (
-              <span ref="pivot" style={pivotStyle} class={bem('pivot')}>
-                {text}
-              </span>
-            )
-            }
+            {this.custom ? (
+              <div
+                ref="custom"
+                style={customStyle}
+                vusion-slot-name="default"
+                class="custom"
+              >
+                {this.slots()
+                  ? this.slots()
+                  : this.inDesigner && <VanEmptyCol></VanEmptyCol>}
+              </div>
+            ) : (
+              showPivot && (
+                <span ref="pivot" style={pivotStyle} class={bem('pivot')}>
+                  {text}
+                </span>
+              )
+            )}
           </span>
         </div>
       </div>

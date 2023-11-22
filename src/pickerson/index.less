@@ -5,6 +5,40 @@
   background-color: @picker-background-color;
   user-select: none;
 
+  &__content-wrapper{
+    padding: 12px;
+  }
+  &__designer-close-button{
+    &::before{
+      margin: 0 4px;
+      content: '✕';
+    }
+
+    position: absolute;
+    top:0;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 4px;
+    color: white;
+    font-size: 12px;
+    line-height: 24px;
+    background: #4E75EC;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    transform: translateY(-100%);
+  }
+  &__picker-top{
+    position: relative; 
+    width:100%; 
+  }
+
+  &__picker-bottom{
+    display:flex; 
+    align-items:center; 
+    justify-content: space-between; 
+  }
+
   &__toolbar {
     display: flex;
     align-items: center;
@@ -46,6 +80,7 @@
     position: relative;
     display: flex;
     cursor: grab;
+    font: inherit;
   }
 
   &__loading {
@@ -120,7 +155,7 @@
 }
 
 
-.van-pick {
+.van-picker-pick {
   position: relative;
   background-color: @picker-background-color;
   user-select: none;
@@ -213,7 +248,7 @@
   &-column {
     flex: 1;
     overflow: hidden;
-    font-size: @picker-option-font-size;
+    font-size: inherit; // @picker-option-font-size
 
     &__wrapper {
       transition-timing-function: cubic-bezier(0.23, 1, 0.68, 1);
@@ -230,6 +265,63 @@
         cursor: not-allowed;
         opacity: @picker-option-disabled-opacity;
       }
+    }
+  }
+}
+
+.van-picker-list {
+  height: 300px;
+  overflow-y: scroll;
+
+  &__item {
+    height: 48px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: var(-van-picker-list-item-background-color);
+
+    &.single {
+      justify-content: space-between;
+
+      .text.checked {
+        color: #337EFF;
+      }
+
+      .icon {
+        font-size: 16px;
+        color: #337EFF;
+      }
+    }
+
+    .text {
+      font-size: 14px;
+      color: #333;
+    }
+
+    &.checked {
+      background-color: var(-van-picker-list-item-selected-background-color);
+    }
+  }
+
+  &__count {
+    border-top: 1px solid #E5E5E5;
+    margin: 0 16px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+
+    .number, .handler {
+      color: #337EFF;
+      margin: 0 4px;
+    }
+
+    .desc {
+      margin-right: 24px;
     }
   }
 }

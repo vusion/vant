@@ -8,30 +8,33 @@
   attrs:
     - name: data-source
       title: 数据源
-      type: nasl.collection.List<T>
-      description: 集合类型变量或者输出参数为集合类型的逻辑
+      type: Array<Item> | Function
+      description: 展示数据的输入源，可设置为集合类型变量（List<T>）或输出参数为集合类型的逻辑。
       designer-value: "[{}, {}, {}]"
+      group: 数据属性
     - name: data-schema
       title: 数据类型
-      type: T
-      description: 集合类型每一元素的数据类型
+      type: schema
+      description: 数据源返回的数据结构的类型，自动识别类型进行展示说明。
       compType: dataTypeSelect
+      group: 数据属性
     - name: value
       title: 值
       type: V
       sync: true
       model: true
-      description: 当前选择的值
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 是否禁用
-    - name: readonly
-      title: 只读
-      type: boolean
-      default: false
-      description: 是否只读
+      description: 用于标识单选组的值
+      group: 数据属性
+    - name: icon
+      title: 单选项图标
+      clearable: true
+      type: icon
+      default: sure
+      description: ""
+      group: 主要属性
+      brifeDoc: ""
+      docDescription: 增加自定义图标显示
+      tooltipLink: ""
     - name: direction
       title: 排列方向
       type: string
@@ -41,13 +44,27 @@
         - value: vertical
           title: 垂直
       default: horizontal
-      description: 排列方向
+      description: 选择水平或垂直排列
+      group: 主要属性
     - name: column
       title: 每行排列数
       type: number
       description: 水平排列时每行展示的选项数量
       dependency:
         - direction: horizontal
+      group: 主要属性
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 正常显示，但禁止选择/输入
+      group: 状态属性
+    - name: readonly
+      title: 只读
+      type: boolean
+      default: false
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
+      group: 状态属性
   slots:
     - concept: Slot
       name: default
@@ -57,7 +74,7 @@
         - name: van-radio
           tsTypeArguments: V
           title: 单选项
-          snippet: <van-radio name="n"><van-text text="节点"></van-text></van-radio>
+          snippet: <van-radio icon="sure"><van-text text="节点"></van-text></van-radio>
     - concept: Slot
       name: item
       description: 自定义选项的结构和样式
@@ -87,15 +104,22 @@
       type: string
       description: 文本
       advanced: true
+      group: 数据属性
     - name: name
-      title: 选中的值
-      type: V
-      description: 选项值
-    - name: disabled
-      title: 禁用
-      type: boolean
-      default: false
-      description: 是否禁用
+      title: 选项值
+      type: string
+      description: 当前选中的值
+      group: 数据属性
+    - name: icon
+      title: 单选项图标
+      clearable: true
+      default: sure
+      type: icon
+      description: ""
+      group: 主要属性
+      brifeDoc: ""
+      docDescription: 增加自定义图标显示
+      tooltipLink: ""
     - name: label-position
       title: 文本位置
       type: string
@@ -105,7 +129,14 @@
         - value: left
           title: 左
       default: right
-      description: 文本位置
+      description: 设置文本居左或居右放置
+      group: 主要属性
+    - name: disabled
+      title: 禁用
+      type: boolean
+      default: false
+      description: 正常显示，但禁止选择/输入
+      group: 状态属性
   slots: false
   events:
     - name: click

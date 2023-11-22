@@ -1,9 +1,5 @@
-// 强制限制只能一列数据
-
-import _get from 'lodash/get';
-
 // Utils
-import { createNamespace } from '../utils';
+import { createNamespace, _get } from '../utils';
 import { preventDefault } from '../utils/dom/event';
 import { BORDER_UNSET_TOP_BOTTOM } from '../utils/constant';
 import { pickerProps, DEFAULT_ITEM_HEIGHT } from './shared';
@@ -13,7 +9,7 @@ import { unitToPx } from '../utils/format/unit';
 import PickerColumn from './PickerColumn';
 
 
-const [createComponent, bem, t] = createNamespace('pick');
+const [createComponent, bem, t] = createNamespace('picker-pick');
 
 export default createComponent({
   props: {
@@ -25,13 +21,9 @@ export default createComponent({
       default: 'top',
     },
     // 值字段
-    valueField: { type: String, default: 'value' },
+    valueField: { type: String },
     // 文本字段
-    textField: { type: String, default: 'text' },
-    converter: {
-      type: String,
-      default: 'json',
-    },
+    textField: { type: String },
   },
 
   data() {
@@ -41,7 +33,7 @@ export default createComponent({
       columns: [],
       defaultIndex: 0,
 
-      curValue: this.value,
+      currentValue: this.value,
     };
   },
 
@@ -67,12 +59,12 @@ export default createComponent({
       handler: 'format',
       immediate: true,
     },
-    curValue: {
+    currentValue: {
       handler: 'setDefaultColumn',
     },
     // 监听props变化
     value(val) {
-      this.curValue = val;
+      this.currentValue = val;
     },
   },
 
@@ -84,10 +76,10 @@ export default createComponent({
     setDefaultColumn() {
       let index;
       if (this.dataType === 'text') {
-        index = (this.columnsprop || []).findIndex((x) => x === this.curValue);
+        index = (this.columnsprop || []).findIndex((x) => x === this.currentValue);
       } else {
         index = (this.columnsprop || []).findIndex(
-          (x) => _get(x, this.valueField) === this.curValue
+          (x) => _get(x, this.valueField) === this.currentValue
         );
       }
       this.defaultIndex = index;
@@ -105,9 +97,18 @@ export default createComponent({
       );
     },
 
+    // 暴露给上层调用
+    getValue() {
+      return [
+        this.getColumnValue(0),
+        this.getColumnIndex(0),
+        this.getColumnText(0),
+      ];
+    },
+
     onChange(idx) {
       const value = this.getColumnValue(0);
-      this.curValue = value;
+      this.currentValue = value;
 
       this.$emit('change', this, value, this.getColumnIndex(0));
 
@@ -206,9 +207,13 @@ export default createComponent({
       });
     },
 
+    stopMomentum() {
+      this.children.forEach((child) => child.stopMomentum());
+    },
+
     // @exposed-api
     confirm() {
-      this.children.forEach((child) => child.stopMomentum());
+      this.stopMomentum();
       this.emit('confirm');
       try {
         this.$parent.closeModal();
@@ -321,11 +326,11 @@ export default createComponent({
   render(h) {
     return (
       <div class={bem()}>
-        {this.toolbarPosition === 'top' ? this.genToolbar() : h()}
+        {/* {this.toolbarPosition === 'top' ? this.genToolbar() : h()} */}
         {this.slots('columns-top')}
         {this.genColumns()}
         {this.slots('columns-bottom')}
-        {this.toolbarPosition === 'bottom' ? this.genToolbar() : h()}
+        {/* {this.toolbarPosition === 'bottom' ? this.genToolbar() : h()} */}
       </div>
     );
   },

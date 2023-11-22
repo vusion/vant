@@ -1,7 +1,12 @@
 import { createNamespace, isDef, addUnit } from '../utils';
 import { resetScroll } from '../utils/dom/reset-scroll';
 import { preventDefault } from '../utils/dom/event';
-import { addNumber, formatNumber } from '../utils/format/number';
+import {
+  addNumber,
+  formatNumber,
+  NumberFormatter,
+  noopFormatter,
+} from '../utils/format/number';
 import { isNaN } from '../utils/validate/number';
 import { FieldMixin } from '../mixins/field';
 
@@ -13,6 +18,8 @@ const LONG_PRESS_INTERVAL = 200;
 function equal(value1, value2) {
   return String(value1) === String(value2);
 }
+
+const isNil = (val) => val === null || val === undefined || val === '';
 
 export default createComponent({
   mixins: [FieldMixin],
@@ -73,36 +80,111 @@ export default createComponent({
       default: true,
     },
     align: String,
+
+    // 高级格式化
+    advancedFormat: {
+      type: Object,
+      default: () => ({
+        enable: false,
+        value: '',
+      }),
+    },
+    thousandths: {
+      type: Boolean,
+      default: false,
+    },
+    decimalPlaces: {
+      type: Object,
+      default: () => ({
+        places: '',
+        omit: false,
+      }),
+    },
+    percentSign: {
+      type: Boolean,
+      default: false,
+    },
+    unit: {
+      type: Object,
+      default: () => ({
+        type: 'prefix',
+        value: '',
+      }),
+    },
   },
 
   data() {
     const defaultValue = this.value;
     const value = this.format(defaultValue);
-    if (this.ifDesigner()) {
-      return {
-        currentValue: this.value,
-      };
+    let currentFormatter = noopFormatter;
+
+    if (this.advancedFormat) {
+      let formatter;
+
+      if (this.advancedFormat.enable) {
+        formatter = this.advancedFormat.value;
+      } else if (
+        this.thousandths ||
+        this.percentSign ||
+        !isNil(this.decimalPlaces.places)
+      ) {
+        formatter = '0';
+        // 千分位
+        if (this.thousandths) {
+          formatter = `#,##0`;
+        }
+
+        // 小数位数
+        if (this.decimalPlaces && this.decimalPlaces.places > 0) {
+          formatter += '.';
+
+          const char = this.decimalPlaces.omit ? '#' : '0';
+          for (let i = 0; i < this.decimalPlaces.places; i++) {
+            formatter += char;
+          }
+        } else if (this.decimalPlaces && isNil(this.decimalPlaces.places)) {
+          formatter += '.*';
+        }
+      }
+
+      if (formatter) {
+        currentFormatter = new NumberFormatter(
+          formatter,
+          !this.advancedFormat.enable && {
+            percentSign: this.percentSign, // 百分比
+          }
+        );
+      }
     }
+
+    const formattedValue = currentFormatter.format(value);
+
     if (!equal(value, this.value)) {
-      this.$emit('input', value);
       this.$emit('update:value', value);
     }
 
     return {
       currentValue: value,
+      formattedValue,
+      currentFormatter,
+
+      focused: false,
     };
   },
 
   computed: {
+    showUnit() {
+      return this.unit.value !== '';
+    },
     minusDisabled() {
       return (
-        (this.disabled) || this.disableMinus || this.currentValue <= +this.min
+        this.disabled || this.disableMinus || this.currentValue <= +this.min
       );
     },
 
     plusDisabled() {
       return (
-        (this.disabled) || this.disablePlus || this.currentValue >= +this.max
+        this.disabled || this.disablePlus || this.currentValue >= +this.max
       );
     },
 
@@ -117,7 +199,7 @@ export default createComponent({
         style.height = addUnit(this.buttonSize);
       }
       if (this.align) {
-        style.textAlign = (this.align);
+        style.textAlign = this.align;
       }
       return style;
     },
@@ -140,24 +222,21 @@ export default createComponent({
     integer: 'check',
     decimalLength: 'check',
 
-    // value(val) {
-    //   if (!equal(val, this.currentValue)) {
-    //     this.currentValue = this.format(val);
-    //   }
-    // },
     value: {
-      handler: function (val, oldVal) {
+      handler(val) {
         if (!equal(val, this.currentValue)) {
-          this.currentValue = this.format(val);
+          const value = this.format(val);
+          this.currentValue = value;
         }
       },
-      immediate: true
+      immediate: true,
     },
     currentValue(val) {
-      this.$emit('input', val);
       this.$emit('update:value', val);
       this.$emit('change', val, { name: this.name });
 
+      console.log('currentValue change', val);
+      this.formattedValue = this.currentFormatter.format(val);
     },
   },
 
@@ -178,7 +257,7 @@ export default createComponent({
     },
 
     format(value) {
-      if (this.allowEmpty && (value === '' || value === undefined)) {
+      if (this.allowEmpty && ['', null, undefined].indexOf(value) !== -1) {
         return value;
       }
 
@@ -190,7 +269,7 @@ export default createComponent({
       value = Math.max(Math.min(this.max, value), this.min);
 
       // format decimal
-      if (isDef(this.decimalLength)) {
+      if (!isNil(this.decimalLength)) {
         value = value.toFixed(this.decimalLength);
       }
 
@@ -200,32 +279,31 @@ export default createComponent({
     onInput(event) {
       const { value } = event.target;
 
-      let formatted = this.formatNumber(value);
+      // const parsedValue = this.currentFormatter.parse(value);
 
-      // limit max decimal length
-      if (isDef(this.decimalLength) && formatted.indexOf('.') !== -1) {
-        const pair = formatted.split('.');
-        formatted = `${pair[0]}.${pair[1].slice(0, this.decimalLength)}`;
-      }
+      // let formatted = this.formatNumber(parsedValue);
 
-      if (!equal(value, formatted)) {
-        event.target.value = formatted;
-      }
+      // if (isDef(this.decimalLength) && formatted.indexOf('.') !== -1) {
+      //   const pair = formatted.split('.');
+      //   formatted = `${pair[0]}.${pair[1].slice(0, this.decimalLength)}`;
+      // }
 
-      // prefer number type
-      if (formatted === String(+formatted)) {
-        formatted = +formatted;
-      }
+      // if (!equal(parsedValue, formatted)) {
+      //   event.target.value = formatted;
+      // }
 
-      this.emitChange(formatted);
+      // if (formatted === String(+formatted)) {
+      //   formatted = +formatted;
+      // }
+
+      // this.emitChange(formatted);
+      this.$emit('input', value);
     },
 
     emitChange(value) {
       if (this.asyncChange) {
-        this.$emit('input', value);
         this.$emit('change', value, { name: this.name });
         this.$emit('update:value', value);
-
       } else {
         this.currentValue = value;
       }
@@ -254,15 +332,31 @@ export default createComponent({
       } else {
         this.$emit('focus', event);
       }
+
+      this.focused = true;
     },
 
     onBlur(event) {
-      const value = this.format(event.target.value);
-      event.target.value = value;
-      this.emitChange(value);
+      const { value } = event.target;
+      // const parsedValue = this.currentFormatter.parse(value);
+      let formatted = this.format(value);
+
+      if (!isNil(this.decimalLength) && formatted.indexOf('.') !== -1) {
+        const pair = formatted.split('.');
+        formatted = `${pair[0]}.${pair[1].slice(0, this.decimalLength)}`;
+      }
+
+      if (formatted === String(+formatted)) {
+        formatted = +formatted;
+      }
+
+      this.emitChange(formatted);
+
       this.$emit('blur', event);
 
       resetScroll();
+
+      this.focused = false;
     },
 
     longPressStep() {
@@ -336,27 +430,30 @@ export default createComponent({
           class={bem('minus', { disabled: this.minusDisabled })}
           {...createListeners('minus')}
         />
+        {this.showUnit && this.unit.type === 'prefix' && (
+          <div class={bem('unit', { prefix: true })}>{this.unit?.value}</div>
+        )}
         <input
           vShow={this.showInput}
           ref="input"
           type={this.integer ? 'tel' : 'text'}
           role="spinbutton"
           class={bem('input')}
-          value={this.currentValue}
+          value={this.focused ? this.currentValue : this.formattedValue}
           style={this.inputStyle}
           disabled={this.disabled}
           readonly={this.disableInput}
           // set keyboard in modern browsers
           inputmode={this.integer ? 'numeric' : 'decimal'}
           placeholder={this.placeholder}
-          aria-valuemax={this.max}
-          aria-valuemin={this.min}
-          aria-valuenow={this.currentValue}
           onInput={this.onInput}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onMousedown={this.onMousedown}
         />
+        {this.showUnit && this.unit.type === 'suffix' && (
+          <div class={bem('unit', { suffix: true })}>{this.unit?.value}</div>
+        )}
         <button
           vShow={this.showPlus}
           type="button"

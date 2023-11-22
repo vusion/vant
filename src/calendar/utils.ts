@@ -1,11 +1,18 @@
-import { createNamespace } from '../utils';
-import { isDate } from '../utils/validate/date'
+import { _template, createNamespace } from '../utils';
+import { isDate } from '../utils/validate/date';
+import dayjs from '../utils/dayjs';
+
 const [createComponent, bem, t] = createNamespace('calendar');
 
 export { createComponent, bem, t };
 
 export function formatMonthTitle(date: Date) {
-  return t('monthTitle', date.getFullYear(), date.getMonth() + 1);
+  const format = t('monthTitle');
+
+  return _template(format, {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+  })
 }
 
 export function compareMonth(date1: Date, date2: Date) {
@@ -89,4 +96,22 @@ export function transErrorDate(date: any, type: any) {
     }
   }
   return fDate;
+}
+
+export function transErrorMinOrMaxDate(date: any, type: 'min' | 'max'): Date {
+  const day = new Date(date);
+
+  // 非空有效值
+  if (![null, undefined].includes(date) && isDate(day)) {
+    return day;
+  }
+
+  // 一年前
+  const today = dayjs();
+  if (type === 'min') {
+    return today.subtract(1, 'year').toDate();
+  }
+
+  // 一年后
+  return today.add(1, 'year').toDate();
 }

@@ -24,6 +24,8 @@ export { default as VanCoupon } from '../../src/coupon';
 export { default as VanCouponCell } from '../../src/coupon-cell';
 export { default as VanCouponList } from '../../src/coupon-list';
 export { default as VanDatetimePicker } from '../../src/datetime-picker';
+export { default as VanDatetimePickerActionSlot } from '../../src/datetime-picker-action-slot';
+export { default as VanActionSlot } from '../../src/picker-action-slot';
 export { default as VanDialog } from '../../src/dialog';
 export { default as VanNotify } from '../../src/notify';
 
@@ -110,13 +112,18 @@ export { default as VanForComponents } from '../../src/for-components';
 export { default as VanGallery } from '../../src/gallery';
 export { default as VanCardu } from '../../src/cardu';
 export { default as VanFieldsonforsearch } from '../../src/fieldsonforsearch';
+export { default as VanLinearLayout } from '../../src/linear-layout';
+
+export { default as VanCapsules } from '../../src/capsules';
+export { default as VanCapsulesItem } from '../../src/capsules-item';
+export { default as VanCapsulesGroup } from '../../src/capsules-group';
 
 export * from './list-view';
 export * from './grid-view';
 export * from './iframe';
 export * from './link';
-export * from './linear-layout';
+// export * from './linear-layout';
 export * from './absolute-layout';
 export * from './count-down-new';
-export * from  './copy';
+export * from './copy';
 export * from './popup-combination';

@@ -74,7 +74,7 @@ export default createComponent({
     activeDropdownItem() {
       const inVanDropdownItem = this.vanDropdownMenuItem;
       if (!inVanDropdownItem) return false;
-      const routeMode = this.routeMode;
+      const {routeMode} = this;
       if (routeMode && '$route' in this) {
         const { to, destination, $route } = this;
         // const config = isObject(to) ? to : { path: to };
@@ -109,17 +109,6 @@ export default createComponent({
     const { icon, size, title, label, value, isLink, infield, novalue, rtitle, notitle, notitleblock, singleslot } = this._props;
     const showTitle = true || slots('title') || isDefB(title);
     const ifDesigner = (parent.$env && parent.$env.VUE_APP_DESIGNER);
-    function Labelb() {
-      const showLabel = slots('lable') || isDef(label);
-
-      if (showLabel) {
-        return (
-          <div class={[bem('label'), props.labelClass]} vusion-slot-name="label" vusion-slot-name-edit="label">
-            {slots('lable') ? slots('lable') : label}
-          </div>
-        );
-      }
-    }
 
     function Title() {
       const ifDesigner = (parent.$env && parent.$env.VUE_APP_DESIGNER);
@@ -146,7 +135,7 @@ export default createComponent({
 
     function Value() {
       const showValue = true || slots() || (isDef(rtitle) && value !== '');
-      //@ts-ignore
+      // @ts-ignore
       const ifDesigner = (parent.$env && parent.$env.VUE_APP_DESIGNER);
       if (!ifDesigner && (!isDef(rtitle) || rtitle === '') && !slots()) return null;
       if (novalue) return null;
@@ -157,7 +146,7 @@ export default createComponent({
             {((!isDef(rtitle) || rtitle === '') && !slots()) ? <van-empty-col></van-empty-col> : null}
           </div>
         );
-      } else {
+      }
         if (showValue) {
           return (
             <div class={[bem('value', { alone: singleslot }), props.valueClass]}>
@@ -165,7 +154,7 @@ export default createComponent({
             </div>
           );
         }
-      }
+
     }
 
     function LeftIcon() {
@@ -206,18 +195,17 @@ export default createComponent({
     function currentHref() {
       if (props.href !== undefined)
         return props.href;
-      else if (parent?.$router && props.to !== undefined)
+      if (parent?.$router && props.to !== undefined)
         return parent?.$router.resolve(props.to, parent?.$route, props.append).href;
-      else
-        return undefined;
+      return undefined;
     }
 
     async function onClick(event) {
       if (that.vanDropdownMenuItem) {
-        if ((that.value ?? that.index) !== that.vanDropdownMenuItem.value) {
-          that.vanDropdownMenuItem.value = that.value ?? that.index;
+        if ((that.value ?? that.index) !== that.vanDropdownMenuItem.currentValue) {
+          that.vanDropdownMenuItem.currentValue = that.value ?? that.index;
           that.vanDropdownMenuItem.$emit('input', that.value);
-          that.vanDropdownMenuItem.$emit('update:valueprop', that.value);
+          that.vanDropdownMenuItem.$emit('update:value', that.value);
         }
         that.vanDropdownMenuItem.shutself && (that.vanDropdownMenuItem.showPopup = false);
       }
@@ -261,7 +249,7 @@ export default createComponent({
         let to;
         if (props.destination) {
           if (props.destination.startsWith('http')) {
-            location.href = encodeUrl(props.destination);
+            window.location.href = encodeUrl(props.destination);
             return;
           }
           to = props.destination;
@@ -271,7 +259,7 @@ export default createComponent({
         const currentTo = to || props.to;
         if (currentTo === undefined)
           return;
-        let cancel = false;
+        const cancel = false;
         // emit(that, 'before-navigate', {
         //   to: currentTo,
         //   replace: props.replace,
@@ -323,7 +311,7 @@ export default createComponent({
     const nocontentforlink = !ifDesigner && ((!isDef(rtitle) || rtitle === '') && !slots()) && ((!isDef(title) || title === '') && !slots('title'));
 
     if (nocontentforlink) {
-      classes['nocontentforlink'] = nocontentforlink;
+      classes.nocontentforlink = nocontentforlink;
     }
 
     let classesnew = bem(classes);
@@ -335,8 +323,8 @@ export default createComponent({
         } else {
           classesnew += ' ' + that.vanDropdownMenuItem.bem('option', { active: false });
         }
-      } else if (isDef(that.vanDropdownMenuItem.value)) {
-        if (that.vanDropdownMenuItem.value === (that.value ?? that.index)) {
+      } else if (isDef(that.vanDropdownMenuItem.currentValue)) {
+        if (that.vanDropdownMenuItem.currentValue === (that.value ?? that.index)) {
           classesnew += ' ' + that.vanDropdownMenuItem.bem('option', { active: true });
         } else {
           classesnew += ' ' + that.vanDropdownMenuItem.bem('option', { active: false });
@@ -354,7 +342,7 @@ export default createComponent({
         // console.log(that.activeDropdownItem, 99999);
         return that.activeDropdownItem;
       }
-      return (inVanDropdownItem && (that.vanDropdownMenuItem?.value === (that.value ?? that.index)));
+      return (inVanDropdownItem && (that.vanDropdownMenuItem?.currentValue === (that.value ?? that.index)));
     }
 
     return (

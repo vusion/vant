@@ -3,116 +3,94 @@
     <demo-block card :title="t('basicUsage')">
       <div>pickerValue: {{ pickerValue }}</div>
       <van-pickerson
+        :multiple="true"
+        :enable-select-all="true"
+        :enable-selected-count="false"
+        type="list"
         ref="pickerson1"
+
         title="标题"
         :show-toolbar="true"
-        labelField="左侧标题"
-        input-align="left"
         :pvalue.sync="pickerValue"
         :data-source="load"
-        :columnsprop="[1, 2, 3, 4]"
         :pageable="true"
         :pageSize="10"
         :filterable="true"
         @confirm="confirm111"
         @change="change111">
-        <template #title ref="template24">
+        <template #title>
             <van-text ref="text19" text="标题"></van-text>
         </template>
       </van-pickerson>
+    </demo-block>
 
-      <!-- <van-pickerson
-        :pvalue.sync="son"
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('textColumns')"
-        @change="onChange1"
-      />
+    <demo-block card title="列表静态数据">
       <van-pickerson
-        :pvalue.sync="son"
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('textColumns')"
-        @change="onChange1"
-      /> -->
-    </demo-block>
-    <!-- <demo-block card :title="t('defaultIndex')">
-      <van-picker
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('textColumns')"
-        :default-index="2"
-        @change="onChange1"
-      />
-    </demo-block>
-
-    <demo-block card :title="t('multipleColumns')">
-      <van-picker
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('dateColumns')"
-        @cancel="onCancel"
-        @confirm="onConfirm"
-      />
+        :ref="`pickerson2`"
+        title="标题"
+        :show-toolbar="true"
+        :data-source="list"
+        :pvalue.sync="pickerValue"
+        :pageable="true"
+        :pageSize="10"
+        :multiple="true"
+        type="list"
+        :enable-select-all="true"
+        :enable-selected-count="true">
+          <template #title>
+                <van-text :ref="`text10`" text="标题"></van-text>
+          </template>
+      </van-pickerson>
     </demo-block>
 
-    <demo-block card v-if="!isWeapp" :title="t('cascade')">
-      <van-picker
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('cascadeColumns')"
-        @cancel="onCancel"
-        @confirm="onConfirm"
-      />
+    <demo-block card title="只读">
+      <van-pickerson
+        title="标题"
+        :show-toolbar="true"
+        :value="1"
+        :data-source="[1, 2, 3, 4, 5]"
+        type="list"
+        :enable-select-all="true"
+        :enable-selected-count="true"
+        :readonly="true">
+          <template #title>
+                <van-text :ref="`text10`" text="标题"></van-text>
+          </template>
+      </van-pickerson>
     </demo-block>
 
-    <demo-block card :title="t('disableOption')">
-      <van-picker
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="t('disabledColumns')"
-        @confirm="onConfirm222"
-      />
+    <demo-block card title="禁用">
+      <van-pickerson
+        title="标题"
+        :show-toolbar="true"
+        :value="1"
+        :data-source="[1, 2, 3, 4, 5]"
+        type="list"
+        :enable-select-all="true"
+        :enable-selected-count="true"
+        :disabled="true">
+          <template #title>
+                <van-text :ref="`text10`" text="标题"></van-text>
+          </template>
+      </van-pickerson>
     </demo-block>
 
-    <demo-block card :title="t('setColumnValues')">
-      <van-picker
-        show-toolbar
-        :title="t('title')"
-        :columnsprop="columns"
-        @change="onChange2"
-      />
+    <demo-block card title="临时测试">
+        <van-pickerson
+        title="标题"
+        :show-toolbar="true"
+        :value="1"
+        :data-source="[1, 2, 3, 4, 5]"
+        :close-on-click-overlay="true">
+          <template #title>
+                <van-text :ref="`text10`" text="标题"></van-text>
+          </template>
+      </van-pickerson>
     </demo-block>
-
-    <demo-block card :title="t('loadingStatus')">
-      <van-picker loading show-toolbar :title="t('title')" :columnsprop="columns" />
-    </demo-block>
-
-    <demo-block card v-if="!isWeapp" :title="t('withPopup')">
-      <van-field
-        readonly
-        clickable
-        :label="t('city')"
-        :value="fieldValue"
-        :placeholder="t('chooseCity')"
-        @click="onClickField"
-      />
-      <van-popup v-model="showPicker" round position="bottom">
-        <van-picker
-          show-toolbar
-          :title="t('title')"
-          :columnsprop="t('textColumns')"
-          @cancel="onCancel2"
-          @confirm="onConfirm2"
-        />
-      </van-popup>
-    </demo-block> -->
   </demo-section>
 </template>
 
 <script>
-import { dateColumns, cascadeColumns } from './data';
-
 const data = [
   { 'text': '浙江省', 'value': '330000' },
   { 'text': '杭州市', 'value': '330100', 'parentId': '330000' },
@@ -144,50 +122,14 @@ const data = [
 ]
 
 export default {
-  i18n: {
-    'zh-CN': {
-      city: '城市',
-      cascade: '级联选择',
-      withPopup: '搭配弹出层使用',
-      chooseCity: '选择城市',
-      showToolbar: '展示顶部栏',
-      dateColumns: dateColumns['zh-CN'],
-      defaultIndex: '默认选中项',
-      disableOption: '禁用选项',
-      cascadeColumns: cascadeColumns['zh-CN'],
-      multipleColumns: '多列选择',
-      setColumnValues: '动态设置选项',
-      textColumns: JSON.stringify([
-        '杭州',
-        '宁波',
-        '温州',
-        '绍兴',
-        '湖州',
-        '嘉兴',
-        '金华',
-        '衢州',
-      ]),
-      disabledColumns: [
-        { text: '杭州', disabled: true },
-        { text: '宁波', value: 7777 },
-        { text: '温州' },
-      ],
-      column3: {
-        浙江: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
-        福建: ['福州', '厦门', '莆田', '三明', '泉州'],
-      },
-      toastContent: (value, index) => `当前值：${value}, 当前索引：${index}`,
-    },
-  },
-
   data() {
     return {
       son: '温州',
       showPicker: false,
       fieldValue: '',
       pupupd: true,
-
-      pickerValue: '330200',
+      list: data,
+      pickerValue: ['32001111100'],
     };
   },
 
