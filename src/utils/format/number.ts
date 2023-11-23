@@ -102,7 +102,7 @@ export class NumberFormatter extends Formatter {
       value *= 100;
     }
 
-    if (fixed) {
+    if (fixed !== null) {
       value = value.toFixed(fixed).padStart(fixed ? fill + 1 + fixed : fill, '0');
       // 是否小数隐藏末尾0
       if (fixed > 0 && /#$/.test(parts[1])) {
