@@ -1,13 +1,10 @@
 const { execSync } = require('child_process');
 const chalk = require('chalk');
 const fs = require('fs-extra');
-const argv = require('minimist')(process.argv.slice(2));
 const pkg = require('../package.json');
 const { docs } = require('../vusion.config');
 
-const version = process.env.LCAP_LIB_VERSION || argv.version || pkg.version;
-
-const distDic = `mobile-ui@${version}`;
+const distDic = `mobile-ui@${pkg.version}`;
 execSync(`rm -rf ${distDic}`);
 console.log(chalk.green(`删除文件夹 ${distDic} 成功！`));
 
@@ -53,14 +50,3 @@ components.forEach((component) => {
     }
 });
 console.log(chalk.green('组件内部图片复制成功！'));
-
-// tgz
-const tgz = `lcap-mobile-ui-${pkg.version}.tgz`;
-// tgz是否存在
-if (!fs.existsSync(tgz)) {
-  console.error(`${tgz} not found`);
-  process.exit(1);
-}
-// 复制tgz到distDic
-fs.copyFileSync(tgz, `${distDic}/zip.tgz`);
-console.log(chalk.green('zip.tgz 复制成功！'));
