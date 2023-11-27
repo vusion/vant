@@ -18,13 +18,12 @@ if (fs.existsSync('zip.tgz')) {
   fs.unlinkSync('zip.tgz');
 }
 
-// rename
-fs.renameSync(tgz, 'zip.tgz');
+// 复制tgz到zip.tgz
+fs.copyFileSync(tgz, 'zip.tgz');
 
 const command = `lcap deploy zip.tgz --platform ${argv.platform}`;
 console.log(command);
 vusion.cli.execSync(command);
 vusion.cli.done(`${tgz}`);
-
-// remove
+// 删除zip.tgz
 fs.unlinkSync('zip.tgz');

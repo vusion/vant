@@ -56,18 +56,11 @@ console.log(chalk.green('组件内部图片复制成功！'));
 
 // tgz
 const tgz = `lcap-mobile-ui-${pkg.version}.tgz`;
-
 // tgz是否存在
 if (!fs.existsSync(tgz)) {
   console.error(`${tgz} not found`);
   process.exit(1);
 }
-// 目标zip.tgz如果存在，先删除
-if (fs.existsSync('zip.tgz')) {
-  fs.unlinkSync('zip.tgz');
-}
-// 重命名
-fs.renameSync(tgz, 'zip.tgz');
-// 复制zip.tgz到distDic
-fs.copyFileSync('zip.tgz', `${distDic}/zip.tgz`);
+// 复制tgz到distDic
+fs.copyFileSync(tgz, `${distDic}/zip.tgz`);
 console.log(chalk.green('zip.tgz 复制成功！'));
