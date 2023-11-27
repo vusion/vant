@@ -20,7 +20,7 @@
       type: boolean
       default: false
       description: ""
-      group: 主要属性
+      group: 交互属性
   slots:
     - concept: Slot
       name: default

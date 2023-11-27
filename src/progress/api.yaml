@@ -6,17 +6,17 @@
   description: 用于展示操作的当前进度。
   attrs:
     - name: value
-      title: 进度百分比
+      title: 值
       type: number | string
       sync: true
       model: true
-      description: ""
+      description: 用于标识进度条的值
       group: 主要属性
     - name: pivot-text
       title: 文字内容
       type: string
       group: 主要属性
-      description: 进度条中的文字内容
+      description: 进度条中的显示文字
     - name: show-pivot
       title: 显示文字
       type: boolean

@@ -31,7 +31,7 @@
         - value: a
           title: 实线
       default: a
-      description: ''
+      description: ""
       group: 主要属性
   slots:
     - concept: Slot

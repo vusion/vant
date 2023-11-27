@@ -479,6 +479,7 @@
     "--van-toast-text-color": "#fff",
     "--van-toast-background-color": "rgba(0, 0, 0, 0.7)",
     "--van-toast-custom-icon-color": "white",
+    "--van-toast-box-shadow": "none",
     "--van-capsules-item-font-size": "12px",
     "--van-capsules-item-padding": "4px 20px",
     "--van-capsules-item-border-color": "#e5e5e5",

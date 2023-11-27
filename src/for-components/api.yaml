@@ -8,7 +8,7 @@
     - name: data-source
       title: 数据源
       type: array
-      description: 一个包含字符串或对象的数组
+      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。
       group: 数据属性
     - name: data-schema
       title: 数据类型
@@ -29,7 +29,7 @@
       title: 自动换行
       type: boolean
       default: true
-      description: 是否自动换行，排列项数为空时生效
+      description: 是否自动换行，排列项数为空时生效。
       dependency:
         - colnum: 0
       group: 主要属性
@@ -37,7 +37,7 @@
       title: 均分宽度
       type: boolean
       default: true
-      description: 是否均分宽度，排列项数不为空时生效
+      description: 是否均分宽度，排列项数不为空时生效。
       group: 主要属性
   slots:
     - concept: Slot

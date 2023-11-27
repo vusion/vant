@@ -8,7 +8,7 @@
     - name: data-source
       title: 数据源
       type: Array<Item> | Function
-      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑
+      description: 展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。
       designer-value: "[{}, {}, {}]"
       group: 数据属性
     - name: data-schema
@@ -91,8 +91,8 @@
           title: 已完成
         - value: error
           title: 错误
-      description: 设置步骤条的状态，分别为等待中、进行中、已完成、错误
-      group: 数据属性
+      description: 设置步骤条的状态，分别为等待中、进行中、已完成、错误。
+      group: 主要属性
     - name: icon
       title: 图标
       type: icon

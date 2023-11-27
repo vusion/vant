@@ -10,7 +10,7 @@
       type: number,string
       sync: true
       model: true
-      description: ""
+      description: 用于标识标签栏的值
       group: 数据属性
     - name: fixed
       title: 固定底部

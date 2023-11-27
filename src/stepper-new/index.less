@@ -6,6 +6,8 @@
 
   display: flex;
   flex: 1;
+  flex-direction: row;
+  align-items: center;
 
   &__minus,
   &__plus {
@@ -135,5 +137,16 @@
       background-color: @white;
       border: 1px solid @stepper-button-round-theme-color;
     }
+  }
+
+  &__unit {
+    margin: 0 1px;
+    font-size: @stepper-input-font-size;
+    color: @stepper-input-text-color;
+
+    max-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }

@@ -26,9 +26,10 @@
     - name: value-field
       title: 值字段名
       type: string
+      display: property-select
       default: value
       description: 选项值的字段名
-      advanced: true
+      group: 数据属性
     - name: cancelable
       title: 可取消
       type: boolean
@@ -117,20 +118,20 @@
       compType: dataTypeSelect
       group: 数据属性
     - name: value
-      title: 选中值
+      title: 值
       type: any
       sync: true
       model: true
       advanced: true
-      description: ""
+      description: 用于标识数据列表的值
       group: 数据属性
     - name: value
-      title: 选中值
+      title: 值
       type: any
       sync: true
       model: true
       group: 数据属性
-      description: ""
+      description: 用于标识数据列表的值
     - name: pageable
       title: 分页
       type: string
@@ -150,6 +151,7 @@
       title: 默认分页大小
       type: number
       default: 20
+      min: 1
       description: 分页过小可能会导致滚动加载更多失效
       dependency:
         - "!pageable": ""
@@ -161,7 +163,7 @@
       description: 是否可以过滤（搜索），开启将会显示搜索框。
       group: 主要属性
     - name: placeholder
-      title: 筛选输入框的占位符
+      title: 筛选输入框显示文字
       type: string
       default: 请输入
       description: ""
@@ -341,7 +343,7 @@
       docDescription: 当列表为空时的提示文字。默认"暂无数据"
       tooltipLink: ""
     - name: striped
-      title: 显示斑马条纹
+      title: 斑马条纹
       type: boolean
       default: false
       description: 是否按斑马线条纹显示

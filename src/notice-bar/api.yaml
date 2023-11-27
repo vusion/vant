@@ -11,7 +11,7 @@
       description: 通知文本内
       advanced: true
     - name: mode
-      title: 通知栏模式
+      title: 类型
       type: string
       options:
         - value: closeable
@@ -21,7 +21,7 @@
         - value: normal
           title: 普通
       default: normal
-      description: 设置通知栏模式
+      description: 设置通知栏类型
       group: 主要属性
     - name: scrollable
       title: 开启滚动播放

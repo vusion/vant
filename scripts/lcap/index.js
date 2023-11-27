@@ -1,6 +1,7 @@
 const components = require('./config');
 const path = require('path');
 const fs = require('fs-extra');
+const argv = require('minimist')(process.argv.slice(2));
 
 const map = [];
 const getUsage = require('vusion/lib/lcap');
@@ -24,7 +25,9 @@ components.forEach((component) => {
 const vusion = ['van-link', 'van-iframe', 'van-grid-view', 'van-list-view', 'van-count-down-new', 'van-copy' ];
 const packageJSON = require('../../package.json');
 
-const libInfo = `${packageJSON.name}@${packageJSON.version}`;
+const version = process.env.LCAP_LIB_VERSION || argv.version || packageJSON.version;
+
+const libInfo = `${packageJSON.name}@${version}`;
 Object.values(map).forEach((item) => {
     let screenShot = JSON.parse(item.screenShot);
     screenShot = screenShot

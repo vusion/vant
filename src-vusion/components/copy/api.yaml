@@ -68,9 +68,9 @@
       description: 提示框显示时长
       advanced: true
     - name: value
-      title: 需要复制的值
+      title: 值
       type: string
-      description: 需要复制的值
+      description: 用于标识的值
       group: 数据属性
     - name: disabled
       title: 禁用

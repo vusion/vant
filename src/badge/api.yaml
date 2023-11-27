@@ -11,17 +11,17 @@
       default: 2
       description: ""
       group: 数据属性
-    - name: dot
-      title: 显示徽章
-      type: boolean
-      default: false
-      description: ""
-      group: 数据属性
     - name: max
       title: 徽章最大值
       type: number
       description: 徽章内容为数字时显示的最大值
       group: 数据属性
+    - name: dot
+      title: 显示徽章
+      type: boolean
+      default: false
+      description: ""
+      group: 主要属性
   slots:
     - concept: Slot
       name: default

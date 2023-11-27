@@ -2122,6 +2122,10 @@
                     "--van-toast-custom-icon-color": {
                         "type": "color",
                         "desc": "弹出消息的自定义图标颜色"
+                    },
+                    "--van-toast-box-shadow": {
+                        "type": "input",
+                        "desc": "弹出消息的阴影效果，如  0px 2px 6px rgba(0, 0, 0, 0.1)"
                     }
                 }
             },

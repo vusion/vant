@@ -27,6 +27,13 @@
           title: 暂无
       default: ""
       description: 后缀图标
+    - name: value
+      title: 值
+      type: string
+      sync: true
+      model: true
+      description: 用于标识输入框的值
+      group: 数据属性
     - name: type
       title: 类型
       type: string
@@ -44,19 +51,12 @@
         - value: card
           title: 身份证
       default: text
-      description: 输入框的类型
+      description: 设置输入框的类型
       group: 主要属性
-    - name: value
-      title: 值
-      type: string
-      sync: true
-      model: true
-      description: 用于标识输入框的值
-      group: 数据属性
     - name: placeholder
       title: 占位符
       type: string
-      description: ""
+      description: 输入框为空的展示文字
       dependency:
         - inputstyle: input
       group: 主要属性
@@ -128,7 +128,7 @@
         - value: password
           title: 格子
       default: input
-      description: ""
+      description: 设置输入框样式
       toggleupdate:
         - value: input
           updateData:

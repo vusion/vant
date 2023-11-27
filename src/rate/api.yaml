@@ -6,16 +6,17 @@
   description: 用于对事物进行评级操作。
   attrs:
     - name: value
-      title: 当前分值
+      title: 值
       type: number
       sync: true
       model: true
       group: 数据属性
+      description: 用于标识评分的值
     - name: count
       title: 图标总数
       type: numer | string
       default: 5
-      group: 主要属性
+      group: 数据属性
       description: 设置评分图标的总数
     - name: icon
       title: 选中时的图标名称或图片链接
@@ -50,13 +51,13 @@
       type: numer
       default: 20
       group: 样式属性
-      description: 设置图标大小，单位为px
+      description: 设置图标大小，单位为px。
     - name: gutter
       title: 图标间距
       type: numer | string
       default: 4
       group: 样式属性
-      description: 设置图标间距，最小值为0
+      description: 设置图标间距，最小值为0。
     - name: color
       title: 选中颜色
       type: string

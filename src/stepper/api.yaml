@@ -10,7 +10,7 @@
       sync: true
       model: true
       default: 1
-      description: ""
+      description: 用于标识步进器的值
       group: 数据属性
     - name: min
       title: 最小值

@@ -16,33 +16,6 @@
       default: block
       description: 行内展示，或块级换行展示
       advanced: true
-    - name: mode
-      title: 布局模式
-      type: string
-      display: capsules
-      bindHide: true
-      description: 设置布局模式
-      tooltipLink: http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/020.%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80.html
-      options:
-        - value: inline
-          title: 行内
-          icon: layout-inline-block
-          tooltip: 内联布局
-        - value: block
-          title: 块级
-          icon: layout-block
-          tooltip: 块级布局
-        - value: flex
-          title: 弹性
-          icon: layout-flex
-          tooltip: 弹性布局
-      default: block
-      toggleclear:
-        - justify
-        - alignment
-        - wrap
-        - layout
-      group: 主要属性
     - name: gap
       title: 内容间隙
       type: string
@@ -99,6 +72,33 @@
       default: ""
       description: 加载状态中显示的文案
       group: 状态属性
+    - name: mode
+      title: 布局模式
+      type: string
+      display: capsules
+      bindHide: true
+      description: 设置布局模式
+      tooltipLink: http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/020.%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80.html
+      options:
+        - value: inline
+          title: 行内
+          icon: layout-inline-block
+          tooltip: 内联布局
+        - value: block
+          title: 块级
+          icon: layout-block
+          tooltip: 块级布局
+        - value: flex
+          title: 弹性
+          icon: layout-flex
+          tooltip: 弹性布局
+      default: block
+      toggleclear:
+        - justify
+        - alignment
+        - wrap
+        - layout
+      group: 样式属性
     - name: direction
       title: 主轴方向
       type: string

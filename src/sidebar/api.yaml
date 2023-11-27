@@ -6,7 +6,7 @@
   description: 侧边导航
   attrs:
     - name: value
-      title: 菜单值
+      title: 值
       type: number,string
       sync: true
       model: true
@@ -36,7 +36,7 @@
   title: 菜单项
   attrs:
     - name: value
-      title: 菜单项值
+      title: 值
       type: number,string
       sync: true
       model: true
@@ -55,7 +55,7 @@
       description: ""
       group: 数据属性
     - name: badgemax
-      title: 徽章最大值
+      title: 请输入徽章最大值
       type: number
       description: ""
       group: 数据属性
@@ -105,7 +105,7 @@
       title: 禁用
       type: boolean
       default: false
-      description: 禁用
+      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
       group: 状态属性
   events:
     - name: click
