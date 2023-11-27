@@ -5023,10 +5023,9 @@
                     "name": "value-field",
                     "title": "值字段名",
                     "type": "string",
-                    "display": "property-select",
                     "default": "value",
                     "description": "选项值的字段名",
-                    "group": "数据属性"
+                    "advanced": true
                 },
                 {
                     "name": "cancelable",
@@ -8189,7 +8188,7 @@
                     "title": "步长",
                     "type": "string, number",
                     "default": 1,
-                    "description": "表示点击按钮或按上下键所增加或减少的量",
+                    "description": "每次点击时改变的值",
                     "group": "样式属性"
                 },
                 {
@@ -10027,32 +10026,6 @@
                     "advanced": true
                 },
                 {
-                    "name": "type",
-                    "title": "时间类型",
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "time",
-                            "title": "时间选择"
-                        },
-                        {
-                            "value": "date",
-                            "title": "日期选择"
-                        },
-                        {
-                            "value": "datetime",
-                            "title": "日期时间选择"
-                        }
-                    ],
-                    "default": "datetime",
-                    "toggleclear": [
-                        "unit",
-                        "show-formatter"
-                    ],
-                    "group": "主要属性",
-                    "description": "设置时间选择类型"
-                },
-                {
                     "name": "unit",
                     "title": "最小单位",
                     "type": "string",
@@ -10282,7 +10255,7 @@
                         },
                         {
                             "value": "HH:mm:ss",
-                            "title": "12:09:09",
+                            "title": 43749,
                             "dependency": [
                                 {
                                     "unit": "second",
@@ -10302,7 +10275,7 @@
                         },
                         {
                             "value": "HH:mm",
-                            "title": "12:09",
+                            "title": 729,
                             "dependency": [
                                 {
                                     "unit": "minute",
@@ -10322,7 +10295,7 @@
                         },
                         {
                             "value": "YYYY-MM-DD HH:mm:ss",
-                            "title": "2023-07-26 12:09:09",
+                            "title": "2023-07-26T12:09:09.000Z",
                             "dependency": [
                                 {
                                     "unit": "second",
@@ -10496,6 +10469,32 @@
                         }
                     ],
                     "group": "数据属性"
+                },
+                {
+                    "name": "type",
+                    "title": "时间类型",
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "time",
+                            "title": "时间选择"
+                        },
+                        {
+                            "value": "date",
+                            "title": "日期选择"
+                        },
+                        {
+                            "value": "datetime",
+                            "title": "日期时间选择"
+                        }
+                    ],
+                    "default": "datetime",
+                    "toggleclear": [
+                        "unit",
+                        "show-formatter"
+                    ],
+                    "group": "主要属性",
+                    "description": "设置时间选择类型"
                 },
                 {
                     "name": "converter",
