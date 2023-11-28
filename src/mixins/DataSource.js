@@ -53,7 +53,7 @@ export default {
     },
     allRemoteData() {
       if (this.currentDataSource?.remote) {
-        return this.currentDataSource?.allData || [];
+        return this.currentDataSource?.allData || this.currentDataSource?.data || [];
       }
 
       return this.currentDataSource?.data || [];
