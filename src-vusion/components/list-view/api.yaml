@@ -20,9 +20,9 @@
     - name: text-field
       title: 文本字段名
       type: string
+      display: property-select
       default: text
       description: 选项文本的字段名
-      advanced: true
     - name: value-field
       title: 值字段名
       type: string
