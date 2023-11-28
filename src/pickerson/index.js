@@ -144,11 +144,8 @@ export default createComponent({
       }
       return val;
     },
-    ifDesigner() {
-      return this.$env && this.$env.VUE_APP_DESIGNER;
-    },
     getTitle() {
-      if (this.ifDesigner()) {
+      if (this.inDesigner()) {
         return this.value ?? this.pvalue;
       }
 
@@ -167,7 +164,7 @@ export default createComponent({
         }
 
         if (this.multiple) {
-          if (this.currentValue.includes(v)) {
+          if ((this.currentValue || []).includes(v)) {
             title.push(t);
           }
         } else if (this.currentValue === v) {
@@ -176,7 +173,10 @@ export default createComponent({
         }
       }
 
-      return this.multiple ? title.join('，') : title;
+      title = this.multiple ? title.join('，') : title;
+      const defaultTitle = this.multiple ? (this.currentValue || []).join('，') : this.currentValue;
+
+      return title || defaultTitle;
     },
     togglePopup() {
       this.popupVisible = !this.popupVisible;
@@ -213,7 +213,6 @@ export default createComponent({
         this.debouncedLoad(true);
       }
     },
-
     genToolBar() {
       if (this.isNew) {
         let topSlot = this.slots('picker-top');
