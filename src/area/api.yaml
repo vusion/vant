@@ -68,8 +68,6 @@
           title: 地区名称
         - value: code
           title: 地区码
-        - value: json
-          title: JSON
       description: 选择地区名称，返回：浙江省/杭州市/滨江区（不加空格）；选择地区码，返回：330108
     - name: close-on-click-overlay
       title: 点击遮罩层后关闭
