@@ -129,7 +129,7 @@ export default {
       this.currentDataSource = this.normalizeDataSource(this.dataSource);
 
       if (this.currentDataSource && this.initialLoad) {
-        if (this.$env.VUE_APP_DESIGNER) return;
+        if (this.$env && this.$env.VUE_APP_DESIGNER) return;
 
         this.load();
       }

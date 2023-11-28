@@ -154,8 +154,11 @@ export default createComponent({
       const [value, index] = this.$refs?.picker?.getValue();
 
       this.currentValue = value;
-      this.$emit('confirm', value, index);
       this.closePopup();
+
+      this.$nextTick(() => {
+        this.$emit('confirm', value, index);
+      });
     },
     onCancel() {
       this.$emit('cancel');
