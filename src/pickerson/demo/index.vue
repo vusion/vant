@@ -11,7 +11,7 @@
 
         title="标题"
         :show-toolbar="true"
-        :pvalue.sync="pickerValue"
+        :value.sync="pickerValue"
         :data-source="load"
         :pageable="true"
         :pageSize="10"
@@ -24,13 +24,16 @@
       </van-pickerson>
     </demo-block>
 
+      <van-button @click="reload">reload</van-button>
+    </demo-block>
+
     <demo-block card title="列表静态数据">
       <van-pickerson
         :ref="`pickerson2`"
         title="标题"
         :show-toolbar="true"
         :data-source="list"
-        :pvalue.sync="pickerValue"
+        :value.sync="pickerValue"
         :pageable="true"
         :pageSize="10"
         :multiple="true"
@@ -190,7 +193,6 @@ export default {
       console.log(`change 当前值：${value}, 当前索引：${index}`);
     },
     load(params) {
-      console.log('load arguments:', arguments);
       const { page, size, filterText } = params;
 
       let arr = data.filter(item => item.text.includes(filterText))
@@ -199,6 +201,9 @@ export default {
         total: arr.length,
         list: arr.slice((page - 1) * size, page * size)
       }
+    },
+    reload() {
+      this.$refs.pickerson1.reload()
     }
   },
 };

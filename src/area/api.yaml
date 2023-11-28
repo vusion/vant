@@ -18,7 +18,7 @@
       description: 是否使用新版外观
     - name: value
       title: 值
-      type: "C extends 'json' ? V : nasl.core.String"
+      type: string
       sync: true
       model: true
       default: ""
@@ -81,8 +81,6 @@
           title: 地区名称
         - value: code
           title: 地区码
-        - value: json
-          title: JSON
       description: 将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式
       group: 主要属性
     - name: close-on-click-overlay

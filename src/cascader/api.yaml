@@ -17,7 +17,8 @@
       description: 将平铺数据转为树形结构数据
     - name: field-namesp
       title: 自定义 options 结构中的字段
-      type: string
+      type: string, object
+      default: "{'text':'','value':'','children':'children'}"
       description: 自定义 options 结构中的字段
       advanced: true
     - name: value

@@ -53,7 +53,7 @@ export default {
     },
     allRemoteData() {
       if (this.currentDataSource?.remote) {
-        return this.currentDataSource?.allData || [];
+        return this.currentDataSource?.allData || this.currentDataSource?.data || [];
       }
 
       return this.currentDataSource?.data || [];
@@ -129,7 +129,7 @@ export default {
       this.currentDataSource = this.normalizeDataSource(this.dataSource);
 
       if (this.currentDataSource && this.initialLoad) {
-        if (this.$env.VUE_APP_DESIGNER) return;
+        if (this.$env && this.$env.VUE_APP_DESIGNER) return;
 
         this.load();
       }

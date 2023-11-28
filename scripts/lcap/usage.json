@@ -5012,22 +5012,6 @@
                     "advanced": true
                 },
                 {
-                    "name": "text-field",
-                    "title": "文本字段名",
-                    "type": "string",
-                    "default": "text",
-                    "description": "选项文本的字段名",
-                    "advanced": true
-                },
-                {
-                    "name": "value-field",
-                    "title": "值字段名",
-                    "type": "string",
-                    "default": "value",
-                    "description": "选项值的字段名",
-                    "advanced": true
-                },
-                {
                     "name": "cancelable",
                     "title": "可取消",
                     "type": "boolean",
@@ -5177,6 +5161,24 @@
                     "model": true,
                     "group": "数据属性",
                     "description": "用于标识数据列表的值"
+                },
+                {
+                    "name": "value-field",
+                    "title": "值字段名",
+                    "type": "string",
+                    "display": "property-select",
+                    "default": "value",
+                    "description": "选项值的字段名",
+                    "group": "数据属性"
+                },
+                {
+                    "name": "text-field",
+                    "title": "文本字段名",
+                    "type": "string",
+                    "display": "property-select",
+                    "default": "text",
+                    "description": "选项文本的字段名，可用于前端筛选时的匹配",
+                    "group": "数据属性"
                 },
                 {
                     "name": "pageable",
@@ -8188,7 +8190,7 @@
                     "title": "步长",
                     "type": "string, number",
                     "default": 1,
-                    "description": "每次点击时改变的值",
+                    "description": "表示点击按钮或按上下键所增加或减少的量",
                     "group": "样式属性"
                 },
                 {
@@ -9681,10 +9683,6 @@
                         {
                             "value": "code",
                             "title": "地区码"
-                        },
-                        {
-                            "value": "json",
-                            "title": "JSON"
                         }
                     ],
                     "description": "将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式",
@@ -10495,6 +10493,451 @@
                     ],
                     "group": "主要属性",
                     "description": "设置时间选择类型"
+                },
+                {
+                    "name": "unit",
+                    "title": "最小单位",
+                    "type": "string",
+                    "options": [
+                        {
+                            "title": "日期",
+                            "value": "date",
+                            "dependency": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "周",
+                            "value": "week",
+                            "dependency": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "月份",
+                            "value": "month",
+                            "dependency": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "季度",
+                            "value": "quarter",
+                            "dependency": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "年份",
+                            "value": "year",
+                            "dependency": [
+                                {
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "分",
+                            "value": "minute",
+                            "dependency": [
+                                {
+                                    "!type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "秒",
+                            "value": "second",
+                            "dependency": [
+                                {
+                                    "!type": "date"
+                                }
+                            ]
+                        }
+                    ],
+                    "toggleclear": [
+                        "show-formatter"
+                    ]
+                },
+                {
+                    "name": "show-formatter",
+                    "title": "展示格式",
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "YYYY年M月D日",
+                            "title": "中国（2023年7月26日）",
+                            "dependency": [
+                                {
+                                    "unit": "date",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY-MM-DD",
+                            "title": "ISO（2023-07-26）",
+                            "dependency": [
+                                {
+                                    "unit": "date",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "M/D/YYYY",
+                            "title": "US（7/26/2023）",
+                            "dependency": [
+                                {
+                                    "unit": "date",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "D/M/YYYY",
+                            "title": "EU（26/7/2023）",
+                            "dependency": [
+                                {
+                                    "unit": "date",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "GGGG-W周",
+                            "title": "2023-28周",
+                            "dependency": [
+                                {
+                                    "unit": "week",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "GGGG年第W周",
+                            "title": "2023年第28周",
+                            "dependency": [
+                                {
+                                    "unit": "week",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "GGGG-WWWW",
+                            "title": "2023-W28",
+                            "dependency": [
+                                {
+                                    "unit": "week",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年M月",
+                            "title": "中国（2023年7月）",
+                            "dependency": [
+                                {
+                                    "unit": "month",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY-MM",
+                            "title": "ISO（2023-07）",
+                            "dependency": [
+                                {
+                                    "unit": "month",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "M/YYYY",
+                            "title": "US/EU（7/2023）",
+                            "dependency": [
+                                {
+                                    "unit": "month",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年第Q季度",
+                            "title": "2023年第3季度",
+                            "dependency": [
+                                {
+                                    "unit": "quarter",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年QQ",
+                            "title": "2023年Q3",
+                            "dependency": [
+                                {
+                                    "unit": "quarter",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY-QQ",
+                            "title": "2023-Q3",
+                            "dependency": [
+                                {
+                                    "unit": "quarter",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年",
+                            "title": "中国（2023年）",
+                            "dependency": [
+                                {
+                                    "unit": "year",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY",
+                            "title": "ISO（2023）",
+                            "dependency": [
+                                {
+                                    "unit": "year",
+                                    "type": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "HH:mm:ss",
+                            "title": "12:09:09",
+                            "dependency": [
+                                {
+                                    "unit": "second",
+                                    "type": "time"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "HH时mm分ss秒",
+                            "title": "12时09分09秒",
+                            "dependency": [
+                                {
+                                    "unit": "second",
+                                    "type": "time"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "HH:mm",
+                            "title": "12:09",
+                            "dependency": [
+                                {
+                                    "unit": "minute",
+                                    "type": "time"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "HH时mm分",
+                            "title": "12时09分",
+                            "dependency": [
+                                {
+                                    "unit": "minute",
+                                    "type": "time"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY-MM-DD HH:mm:ss",
+                            "title": "2023-07-26 12:09:09",
+                            "dependency": [
+                                {
+                                    "unit": "second",
+                                    "type": "datetime"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年M月D日 HH时mm分ss秒",
+                            "title": "2023年7月26日 12时09分09秒",
+                            "dependency": [
+                                {
+                                    "unit": "second",
+                                    "type": "datetime"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY-MM-DD HH:mm HH:mm",
+                            "title": "2023-07-26 12:09",
+                            "dependency": [
+                                {
+                                    "unit": "minute",
+                                    "type": "datetime"
+                                }
+                            ]
+                        },
+                        {
+                            "value": "YYYY年M月D日 HH时mm分",
+                            "title": "2023年7月26日 12时09分",
+                            "dependency": [
+                                {
+                                    "unit": "minute",
+                                    "type": "datetime"
+                                }
+                            ]
+                        }
+                    ],
+                    "dependency": [
+                        {
+                            "advanced-format.enable": false
+                        }
+                    ]
+                },
+                {
+                    "name": "advanced-format",
+                    "title": "高级格式化",
+                    "type": "{ enable: boolean, value: string }",
+                    "default": "{ enable: false, value: '' }",
+                    "description": "",
+                    "brifeDoc": "",
+                    "docDescription": "",
+                    "tooltipLink": "",
+                    "bindHide": true
+                },
+                {
+                    "name": "range",
+                    "title": "区间选择",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "是否支持区间选择"
+                },
+                {
+                    "name": "start-value",
+                    "title": "起始值",
+                    "type": "string,number,Date",
+                    "sync": true,
+                    "model": true,
+                    "dependency": [
+                        {
+                            "range": true
+                        }
+                    ]
+                },
+                {
+                    "name": "end-value",
+                    "title": "结束值",
+                    "type": "string,number,Date",
+                    "sync": true,
+                    "model": true,
+                    "dependency": [
+                        {
+                            "range": true
+                        }
+                    ]
+                },
+                {
+                    "name": "isNew",
+                    "title": "是否使用新版外观",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "是否使用新版外观"
+                },
+                {
+                    "name": "value",
+                    "title": "值",
+                    "type": "string,number,Date",
+                    "sync": true,
+                    "model": true,
+                    "default": null,
+                    "description": "用于标识时间选择的值",
+                    "dependency": [
+                        {
+                            "!range": true
+                        }
+                    ],
+                    "group": "数据属性"
+                },
+                {
+                    "name": "min-date",
+                    "title": "最小日期",
+                    "type": "Date",
+                    "description": "当时间选择类型为datetime时可选的最小时间，精确到分钟, 默认为十年前",
+                    "group": "数据属性"
+                },
+                {
+                    "name": "max-date",
+                    "title": "最大日期",
+                    "type": "Date",
+                    "description": "当时间选择类型为datetime时可选的最大时间，精确到分钟, 默认为十年后",
+                    "group": "数据属性"
+                },
+                {
+                    "name": "max-hour",
+                    "title": "最大小时",
+                    "type": "string, number",
+                    "default": 23,
+                    "description": "当时间选择类型为 time 时",
+                    "dependency": [
+                        {
+                            "type": "time"
+                        }
+                    ],
+                    "group": "数据属性"
+                },
+                {
+                    "name": "min-hour",
+                    "title": "最小小时",
+                    "type": "string, number",
+                    "default": 0,
+                    "description": "当时间选择类型为 time 时",
+                    "dependency": [
+                        {
+                            "type": "time"
+                        }
+                    ],
+                    "group": "数据属性"
+                },
+                {
+                    "name": "max-minute",
+                    "title": "最大分钟",
+                    "type": "string, number",
+                    "default": 59,
+                    "description": "当时间选择类型为 time 时",
+                    "dependency": [
+                        {
+                            "type": "time"
+                        }
+                    ],
+                    "group": "数据属性"
+                },
+                {
+                    "name": "min-minute",
+                    "title": "最小分钟",
+                    "type": "string, number",
+                    "default": 0,
+                    "description": "当时间选择类型为 time 时",
+                    "dependency": [
+                        {
+                            "type": "time"
+                        }
+                    ],
+                    "group": "数据属性"
                 },
                 {
                     "name": "converter",
