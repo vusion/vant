@@ -20,18 +20,9 @@ namespace nasl.ui {
             bindHide: true,
             setter: {
                 type: 'capsules',
-                options: [{
-                  title: '正常',
-                  icon: 'layout-block',
-                  tooltip: '块级布局',
-                }, {
-                  title: '弹性布局',
-                  icon: 'layout-flex',
-                  tooltip: '弹性布局',
-                }],
-                // titles: ['正常', '弹性布局'],
-                // icons: ['layout-block', 'layout-flex'],
-                // tooltips: ['块级布局', '弹性布局'],
+                titles: ['正常', '弹性布局'],
+                icons: ['layout-block', 'layout-flex'],
+                tooltips: ['块级布局', '弹性布局'],
             },
         })
         type: '-' | 'flex' = 'flex';
@@ -41,30 +32,9 @@ namespace nasl.ui {
             bindHide: true,
             setter: {
                 type: 'capsules',
-                options: [{
-                  title: '左对齐',
-                  icon: 'horizontal-justify-start',
-                  tooltip: '左对齐',
-                }, {
-                  title: '居中对齐',
-                  icon: 'horizontal-justify-center',
-                  tooltip: '居中对齐',
-                }, {
-                  title: '右对齐',
-                  icon: 'horizontal-justify-end',
-                  tooltip: '右对齐',
-                }, {
-                  title: '平均分布(两端不留空)',
-                  icon: 'horizontal-justify-space-between',
-                  tooltip: '平均分布(两端不留空)',
-                }, {
-                  title: '平均分布',
-                  icon: 'horizontal-justify-space-around',
-                  tooltip: '平均分布',
-                }],
-                // titles: ['左对齐', '居中对齐', '右对齐', '平均分布(两端不留空)', '水平分布-左右留空'],
-                // icons: ['horizontal-justify-start', 'horizontal-justify-center', 'horizontal-justify-end', 'horizontal-justify-space-between', 'horizontal-justify-space-around'],
-                // tooltips: ['左对齐', '居中对齐', '右对齐', '平均分布(两端不留空)', '平均分布'],
+                titles: ['左对齐', '居中对齐', '右对齐', '平均分布(两端不留空)', '水平分布-左右留空'],
+                icons: ['horizontal-justify-start', 'horizontal-justify-center', 'horizontal-justify-end', 'horizontal-justify-space-between', 'horizontal-justify-space-around'],
+                tooltips: ['左对齐', '居中对齐', '右对齐', '平均分布(两端不留空)', '平均分布'],
             },
             if: _ => _.type === 'flex',
         })
@@ -75,30 +45,9 @@ namespace nasl.ui {
             bindHide: true,
             setter: {
                 type: 'capsules',
-                options: [{
-                  title: '顶对齐',
-                  icon: 'horizontal-alignment-start',
-                  tooltip: '顶对齐',
-                }, {
-                  title: '垂直居中',
-                  icon: 'horizontal-alignment-center',
-                  tooltip: '垂直居中',
-                }, {
-                  title: '底对齐',
-                  icon: 'horizontal-alignment-end',
-                  tooltip: '底对齐',
-                }, {
-                  title: '行内文字基线对齐',
-                  icon: 'horizontal-alignment-baseline',
-                  tooltip: '行内文字基线对齐',
-                }, {
-                  title: '占满容器高度',
-                  icon: 'horizontal-alignment-stretch',
-                  tooltip: '占满容器高度',
-                }],
-                // titles: ['顶对齐', '垂直居中', '底对齐', '行内文字基线对齐', '占满容器高度'],
-                // icons: ['horizontal-alignment-start', 'horizontal-alignment-center', 'horizontal-alignment-end', 'horizontal-alignment-baseline', 'horizontal-alignment-stretch'],
-                // tooltips: ['顶对齐', '垂直居中', '底对齐', '行内文字基线对齐', '占满容器高度'],
+                titles: ['顶对齐', '垂直居中', '底对齐', '行内文字基线对齐', '占满容器高度'],
+                icons: ['horizontal-alignment-start', 'horizontal-alignment-center', 'horizontal-alignment-end', 'horizontal-alignment-baseline', 'horizontal-alignment-stretch'],
+                tooltips: ['顶对齐', '垂直居中', '底对齐', '行内文字基线对齐', '占满容器高度'],
             },
             if: _ => _.type === 'flex',
         })
@@ -259,7 +208,7 @@ namespace nasl.ui {
                 max: 24,
             },
         })
-        span: nasl.core.Decimal = 1;
+        span: nasl.core.Integer = 1;
 
         @Prop<VanColOptions, 'offset'>({
             title: '偏移',
@@ -268,7 +217,7 @@ namespace nasl.ui {
                 type: 'numberInput',
             },
         })
-        offset: nasl.core.Decimal = 0;
+        offset: nasl.core.Integer = 0;
 
         @Slot({
             title: 'undefined',
