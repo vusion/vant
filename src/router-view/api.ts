@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '放置子页面的容器。',
     })
     export class VanRouterView extends VueComponent {
-
         constructor(options?: Partial<VanRouterViewOptions>) { super(); }
     }
 

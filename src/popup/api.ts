@@ -7,7 +7,7 @@ namespace nasl.ui {
         description: '弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。',
     })
     export class VanPopup extends VueComponent {
-
+        constructor(options?: Partial<VanPopupOptions>) { super(); }
 
         @Method({
             title: 'undefined',
@@ -20,7 +20,6 @@ namespace nasl.ui {
             description: '关闭弹窗',
         })
         closeModal(): void {}
-        constructor(options?: Partial<VanPopupOptions>) { super(); }
     }
 
     export class VanPopupOptions {
@@ -51,7 +50,7 @@ namespace nasl.ui {
             title: '点击弹出层',
             description: '点击弹出层时触发',
         })
-        onClick: () => void;
+        onClick: (event: nasl.ui.MouseEvent) => void;
 
         @Event({
             title: '点击遮罩层',
