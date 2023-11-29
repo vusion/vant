@@ -6,18 +6,17 @@ namespace nasl.ui {
         icon: 'list-view',
         description: '用于列举大量数据的列表框，支持单选、多选、过滤（搜索）、分页等功能。',
     })
-    export class VanListView extends VueComponent {
-
+    export class VanListView<T, V, P, M> extends VueComponent {
+        constructor(options?: Partial<VanListViewOptions<T, V, P, M>>) { super(); }
 
         @Method({
             title: 'undefined',
             description: '清除缓存，重新加载',
         })
         reload(): void {}
-        constructor(options?: Partial<VanListViewOptions>) { super(); }
     }
 
-    export class VanListViewOptions {
+    export class VanListViewOptions<T, V, P, M> {
         @Prop({
             title: '只读',
             description: '是否只读',
@@ -69,7 +68,7 @@ namespace nasl.ui {
         })
         private showFoot: nasl.core.Boolean = false;
 
-        @Prop<VanListViewOptions, any>({
+        @Prop<VanListViewOptions<T, V, P, M>, any>({
             title: '后端分页',
             description: '是否使用后端分页',
             setter: {
@@ -79,7 +78,7 @@ namespace nasl.ui {
         })
         private remotePaging: nasl.core.Boolean = false;
 
-        @Prop<VanListViewOptions, any>({
+        @Prop<VanListViewOptions<T, V, P, M>, any>({
             title: '后端筛选',
             description: '是否使用后端过滤',
             setter: {
@@ -89,14 +88,14 @@ namespace nasl.ui {
         })
         private remoteFiltering: nasl.core.Boolean = false;
 
-        @Prop<VanListViewOptions, any>({
+        @Prop<VanListViewOptions<T, V, P, M>, any>({
             title: '匹配方法',
             description: '过滤时的匹配方法',
             if: _ => _.filterable === true,
         })
         private matchMethod: nasl.core.String = 'includes';
 
-        @Prop<VanListViewOptions, any>({
+        @Prop<VanListViewOptions<T, V, P, M>, any>({
             title: '大小写敏感',
             description: '过滤时大小写是否敏感',
             setter: {
@@ -122,24 +121,16 @@ namespace nasl.ui {
             description: '列表的数据源。数组方式表示直接的数据，函数需要返回一个 Promise。',
             designerValue: [{}, {}, {}],
         })
-        dataSource: Array<Item> | Function | object | DataSource;
+        dataSource: nasl.collection.List<T>;
 
         @Prop({
             group: '数据属性',
             title: '数据类型',
             description: '数据源返回的数据结构的类型，自动识别类型进行展示说明。',
         })
-        dataSchema: schema;
+        dataSchema: T;
 
-        @Prop({
-            group: '数据属性',
-            title: '值',
-            description: '用于标识数据列表的值',
-            syncMode: 'both',
-        })
-        private value: nasl.core.Any;
-
-        @Prop<VanListViewOptions, 'valueField'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'valueField'>({
             group: '数据属性',
             title: '值字段名',
             description: '选项值的字段名',
@@ -147,9 +138,9 @@ namespace nasl.ui {
                 type: 'propertySelect',
             },
         })
-        valueField: nasl.core.String = 'value';
+        valueField: (item: T) => V;
 
-        @Prop<VanListViewOptions, 'textField'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'textField'>({
             group: '数据属性',
             title: '文本字段名',
             description: '选项文本的字段名，可用于前端筛选时的匹配',
@@ -157,7 +148,7 @@ namespace nasl.ui {
                 type: 'propertySelect',
             },
         })
-        textField: nasl.core.String = 'text';
+        textField: (item: T) => nasl.core.String;
 
         @Prop({
             group: '数据属性',
@@ -165,7 +156,7 @@ namespace nasl.ui {
             description: '用于标识数据列表的值',
             syncMode: 'both',
         })
-        value: nasl.core.Any;
+        value: M extends true ? nasl.collection.List<V> : V;
 
         @Prop({
             group: '主要属性',
@@ -178,7 +169,7 @@ namespace nasl.ui {
         })
         pageable: '' | 'auto-more' | 'load-more' | 'pagination' = '';
 
-        @Prop<VanListViewOptions, 'pageSize'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'pageSize'>({
             group: '主要属性',
             title: '默认分页大小',
             description: '分页过小可能会导致滚动加载更多失效',
@@ -188,7 +179,7 @@ namespace nasl.ui {
             },
             if: _ => _.pageable !== '',
         })
-        pageSize: nasl.core.Decimal = 20;
+        pageSize: nasl.core.Integer = 20;
 
         @Prop({
             group: '主要属性',
@@ -200,14 +191,14 @@ namespace nasl.ui {
         })
         filterable: nasl.core.Boolean = false;
 
-        @Prop<VanListViewOptions, 'placeholder'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'placeholder'>({
             group: '主要属性',
             title: '筛选输入框显示文字',
             if: _ => _.filterable === true,
         })
         placeholder: nasl.core.String = '请输入';
 
-        @Prop<VanListViewOptions, 'clearable'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'clearable'>({
             group: '主要属性',
             title: '筛选清除按钮',
             description: '搜索框是否展示清除按钮',
@@ -238,21 +229,27 @@ namespace nasl.ui {
         })
         multiple: nasl.core.Boolean = false;
 
-        @Prop<VanListViewOptions, 'selectedIcon'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'selectedIcon'>({
             group: '交互属性',
             title: '已选图标',
+            setter: {
+                type: 'iconSelect',
+            },
             if: _ => _.selectable === true,
         })
-        selectedIcon: icon = '';
+        selectedIcon: nasl.core.String;
 
-        @Prop<VanListViewOptions, 'unselectedIcon'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'unselectedIcon'>({
             group: '交互属性',
             title: '未选图标',
+            setter: {
+              type: 'iconSelect',
+            },
             if: _ => _.selectable === true,
         })
-        unselectedIcon: icon = '';
+        unselectedIcon: nasl.core.String;
 
-        @Prop<VanListViewOptions, 'pullRefresh'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'pullRefresh'>({
             group: '交互属性',
             title: '下拉刷新',
             description: '是否开启下拉刷新',
@@ -263,39 +260,40 @@ namespace nasl.ui {
         })
         pullRefresh: nasl.core.Boolean = true;
 
-        @Prop<VanListViewOptions, 'pullingText'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'pullingText'>({
             group: '交互属性',
             title: '下拉过程中提示文案',
             if: _ => _.pullRefresh === true && _.pageable !== 'pagination',
         })
         pullingText: nasl.core.String = '下拉刷新';
 
-        @Prop<VanListViewOptions, 'loosingText'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'loosingText'>({
             group: '交互属性',
             title: '释放过程中提示文案',
             if: _ => _.pullRefresh === true && _.pageable !== 'pagination',
         })
         loosingText: nasl.core.String = '释放刷新';
 
-        @Prop<VanListViewOptions, 'successText'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'successText'>({
             group: '交互属性',
             title: '刷新成功提示文案',
             if: _ => _.pullRefresh === true && _.pageable !== 'pagination',
         })
         successText: nasl.core.String = '已刷新';
 
-        @Prop<VanListViewOptions, 'successDuration'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'successDuration'>({
             group: '交互属性',
             title: '展示时长',
             description: '设置刷新成功后提示展示时长，单位为ms。',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
             if: _ => _.pullRefresh === true && _.pageable !== 'pagination',
         })
-        successDuration: nasl.core.Decimal = 500;
+        successDuration: nasl.core.Integer = 500;
 
-        @Prop<VanListViewOptions, 'pullDistance'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'pullDistance'>({
             group: '交互属性',
             title: '刷新距离',
             description: '设置触发下拉刷新的距离，单位为px。',
@@ -338,7 +336,7 @@ namespace nasl.ui {
         })
         designerMode: 'success' | 'empty' | 'loading' | 'error' = 'success';
 
-        @Prop<VanListViewOptions, 'loadingText'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'loadingText'>({
             group: '状态属性',
             title: '加载中文案',
             description: '加载中状态显示的文案',
@@ -347,7 +345,7 @@ namespace nasl.ui {
         })
         loadingText: nasl.core.String = '正在加载中...';
 
-        @Prop<VanListViewOptions, 'loading'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'loading'>({
             group: '状态属性',
             title: '加载中触发条件',
             description: '加载中状态的触发条件，未设置则默认为系统定义条件。',
@@ -359,7 +357,7 @@ namespace nasl.ui {
         })
         loading: nasl.core.Boolean;
 
-        @Prop<VanListViewOptions, 'errorText'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'errorText'>({
             group: '状态属性',
             title: '加载失败文案',
             description: '加载失败状态显示的提示文案',
@@ -368,7 +366,7 @@ namespace nasl.ui {
         })
         errorText: nasl.core.String = '加载失败，请重试';
 
-        @Prop<VanListViewOptions, 'error'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'error'>({
             group: '状态属性',
             title: '加载失败触发条件',
             description: '加载失败状态的触发条件，未设置则默认为系统定义条件。',
@@ -381,7 +379,7 @@ namespace nasl.ui {
         })
         error: nasl.core.Boolean;
 
-        @Prop<VanListViewOptions, 'emptyText'>({
+        @Prop<VanListViewOptions<T, V, P, M>, 'emptyText'>({
             group: '状态属性',
             title: '暂无数据文案',
             description: '暂无数据状态显示的提示文案',
@@ -404,31 +402,38 @@ namespace nasl.ui {
             title: '选择时',
             description: '选择某一项时触发',
         })
-        onInput: (event: String) => void;
+        onInput: (event: M extends true ? nasl.collection.List<V> : V) => void;
 
         @Event({
             title: '选择后',
             description: '选择某一项时触发',
         })
-        onSelect: (event: nasl.ui.ChangeItemEvent) => void;
+        onSelect: (event: {
+          selected: nasl.core.Boolean,
+          item: T,
+          value: M extends true ? nasl.collection.List<V> : V,
+        }) => void;
 
         @Event({
             title: '改变后',
             description: '选择值改变时触发。',
         })
-        onChange: (event: nasl.ui.ChangeItemEvent) => void;
+        onChange: (event: {
+          item: T,
+          value: M extends true ? nasl.collection.List<V> : V,
+        }) => void;
 
         @Event({
             title: '加载前',
             description: '加载前触发',
         })
-        onBeforeLoad: (event: EventTarget) => void;
+        onBeforeLoad: () => void;
 
         @Event({
             title: '加载后',
             description: '加载时触发',
         })
-        onLoad: (event: nasl.ui.BaseEvent) => void;
+        onLoad: () => void;
 
         @Slot({
             title: 'undefined',

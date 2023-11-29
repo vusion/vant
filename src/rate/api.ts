@@ -114,6 +114,6 @@ namespace nasl.ui {
             title: '分值变化时',
             description: '分值变化时',
         })
-        onChange: (value: nasl.core.Decimal) => void;
+        onChange: (event: nasl.core.Decimal) => void;
     }
 }

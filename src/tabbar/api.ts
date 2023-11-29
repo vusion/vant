@@ -51,7 +51,7 @@ namespace nasl.ui {
             title: '切换后',
             description: '切换标签时触发',
         })
-        onChange: (name: nasl.core.String) => void;
+        onChange: (event: nasl.core.String) => void;
 
         @Slot({
             title: 'undefined',

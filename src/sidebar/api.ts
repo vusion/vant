@@ -137,7 +137,7 @@ namespace nasl.ui {
             title: '点击菜单项',
             description: '点击选项导致 value 变化时触发',
         })
-        onClick: (index: nasl.core.Integer) => void;
+        onClick: (event: nasl.core.Integer) => void;
 
 
         @Slot({

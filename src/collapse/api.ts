@@ -33,7 +33,7 @@ namespace nasl.ui {
             title: '切换时',
             description: '切换时',
         })
-        onChange: (name: nasl.core.String) => void;
+        onChange: (event: nasl.core.String) => void;
 
         @Slot({
             title: 'undefined',

@@ -123,7 +123,7 @@ namespace nasl.ui {
             title: '点击选项导致 value 变化时触发',
             description: '点击选项导致 value 变化时触发',
         })
-        onChange: (value: nasl.core.String) => void;
+        onChange: (event: nasl.core.String) => void;
 
         @Event({
             title: '打开菜单栏时触发',
