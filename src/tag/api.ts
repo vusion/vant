@@ -13,7 +13,9 @@ namespace nasl.ui {
 
     export class VanTagOptions {
         @Prop({
-            title: '主题颜色',
+            group: '主要属性',
+            title: '样式类型',
+            description: '设置主题颜色与样式类型',
             setter: {
                 type: 'enumSelect',
                 titles: ['默认', '成功', '危险', '警告'],
@@ -22,8 +24,27 @@ namespace nasl.ui {
         type: 'primary' | 'success' | 'danger' | 'warning' = 'primary';
 
         @Prop({
+            group: '主要属性',
+            title: '显示为标记样式',
+            setter: {
+                type: 'switch',
+            },
+        })
+        mark: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '交互属性',
+            title: '可关闭',
+            setter: {
+                type: 'switch',
+            },
+        })
+        closeable: nasl.core.Boolean = false;
+
+        @Prop({
             group: '样式属性',
             title: '尺寸',
+            description: '设置标签大小',
             setter: {
                 type: 'enumSelect',
                 titles: ['大型', '中型', '小型'],
@@ -32,26 +53,22 @@ namespace nasl.ui {
         size: 'large' | 'medium' | 'small' = 'medium';
 
         @Prop({
-            title: '空心',
-        })
-        plain: nasl.core.Boolean = false;
-
-        @Prop({
             group: '样式属性',
-            title: '圆角',
+            title: '显示为圆角',
+            setter: {
+                type: 'switch',
+            },
         })
         round: nasl.core.Boolean = false;
 
         @Prop({
-            title: '标记样式',
+            group: '样式属性',
+            title: '显示为空心',
+            setter: {
+                type: 'switch',
+            },
         })
-        mark: nasl.core.Boolean = false;
-
-        @Prop({
-            group: '交互属性',
-            title: '可关闭',
-        })
-        closeable: nasl.core.Boolean = false;
+        plain: nasl.core.Boolean = false;
 
         @Event({
             title: '点击时',

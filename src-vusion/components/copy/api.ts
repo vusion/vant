@@ -13,12 +13,6 @@ namespace nasl.ui {
 
     export class VanCopyOptions {
         @Prop({
-            title: '需要复制的值',
-            description: '需要复制的值',
-        })
-        value: nasl.core.String;
-
-        @Prop({
             title: '默认显示文本',
             description: '默认显示的文本',
         })
@@ -53,12 +47,26 @@ namespace nasl.ui {
         @Prop({
             title: '提示框显示时长',
             description: '提示框显示时长',
+            setter: {
+                type: 'numberInput',
+            },
         })
         private hideDelay: nasl.core.Decimal = 3000;
 
         @Prop({
+            group: '数据属性',
+            title: '值',
+            description: '用于标识的值',
+        })
+        value: nasl.core.String;
+
+        @Prop({
+            group: '状态属性',
             title: '禁用',
-            description: '禁止复制',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
         })
         disabled: nasl.core.Boolean = false;
 

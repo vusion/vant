@@ -13,22 +13,32 @@ namespace nasl.ui {
 
     export class VanBadgeOptions {
         @Prop({
+            group: '数据属性',
             title: '徽章值',
-            description: '徽章值',
+            setter: {
+              type: 'numberInput',
+            },
         })
-        content: nasl.core.Integer = 2;
+        content: nasl.core.Decimal = 2;
 
         @Prop({
-            title: '是否展示为小红点',
-            description: '是否展示为小红点',
+            group: '数据属性',
+            title: '徽章最大值',
+            description: '徽章内容为数字时显示的最大值',
+            setter: {
+                type: 'numberInput',
+            },
+        })
+        max: nasl.core.Decimal;
+
+        @Prop({
+            group: '主要属性',
+            title: '显示徽章',
+            setter: {
+                type: 'switch',
+            },
         })
         dot: nasl.core.Boolean = false;
-
-        @Prop({
-            title: '徽章最大值',
-            description: '徽章最大值',
-        })
-        max: nasl.core.Integer;
 
         @Slot({
             title: 'undefined',

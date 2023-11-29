@@ -13,17 +13,15 @@ namespace nasl.ui {
 
     export class VanIconvOptions {
         @Prop({
+            group: '主要属性',
             title: '图标',
-            description: '图标',
-            setter: {
-                type: 'iconSelect',
-            },
         })
-        name: nasl.core.String = '';
+        name: icon = '';
 
         @Prop({
-            title: '图标类型',
-            description: '图标类型',
+            group: '主要属性',
+            title: '布局类型',
+            description: '设置图标布局类型',
             setter: {
                 type: 'enumSelect',
                 titles: ['仅图标', '组合图标-上下', '组合图标-左右'],
@@ -32,8 +30,8 @@ namespace nasl.ui {
         icotype: 'only' | 'top' | 'left' = 'top';
 
         @Prop({
+            group: '交互属性',
             title: '链接类型',
-            description: '链接类型',
             setter: {
                 type: 'enumSelect',
                 titles: ['页面跳转', '下载链接'],
@@ -42,12 +40,13 @@ namespace nasl.ui {
         linkType: 'destination' | 'download' = 'destination';
 
         @Prop({
-            title: '链接',
-            description: '链接地址',
+            group: '交互属性',
+            title: '链接地址',
         })
         hrefAndTo: nasl.core.String;
 
         @Prop({
+            group: '交互属性',
             title: '打开方式',
             description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
             setter: {

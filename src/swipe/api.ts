@@ -7,34 +7,47 @@ namespace nasl.ui {
         description: '用于循环播放一组图片或内容',
     })
     export class VanSwipe extends VueComponent {
-
         constructor(options?: Partial<VanSwipeOptions>) { super(); }
     }
 
     export class VanSwipeOptions {
         @Prop({
-            title: '动画时间',
-            description: '单位：毫秒，幻灯片切换时间，如果设置值小于动画时长，会在动画完成后切换',
-        })
-        duration: nasl.core.Decimal = 4000;
-
-        @Prop({
             title: '循环播放',
             description: '是否循环播放',
+            setter: {
+                type: 'switch',
+            },
         })
         private loop: nasl.core.Boolean = true;
 
         @Prop({
-            title: '手势滑动',
-            description: '是否可以通过手势滑动',
-        })
-        touchable: nasl.core.Boolean = true;
-
-        @Prop({
             title: '指示器',
             description: '是否显示指示器',
+            setter: {
+                type: 'switch',
+            },
         })
         private showIndicators: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '主要属性',
+            title: '动画时间',
+            description: '单位：毫秒，幻灯片切换时间，如果设置值小于动画时长，会在动画完成后切换。',
+            setter: {
+                type: 'numberInput',
+            },
+        })
+        duration: nasl.core.Decimal = 4000;
+
+        @Prop({
+            group: '交互属性',
+            title: '手势滑动',
+            description: '是否支持手势滑动',
+            setter: {
+                type: 'switch',
+            },
+        })
+        touchable: nasl.core.Boolean = true;
 
         @Slot({
             title: 'undefined',
@@ -55,18 +68,15 @@ namespace nasl.ui {
         description: '幻灯片选项',
     })
     export class VanSwipeItem extends VueComponent {
-
         constructor(options?: Partial<VanSwipeItemOptions>) { super(); }
     }
 
     export class VanSwipeItemOptions {
-
-
         @Event({
             title: '点击后',
             description: '点击某一项后触发',
         })
-        onClick: () => void;
+        onClick: (event: nasl.ui.MouseEvent) => void;
 
         @Slot({
             title: 'undefined',

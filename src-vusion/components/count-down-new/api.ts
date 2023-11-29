@@ -37,12 +37,17 @@ namespace nasl.ui {
 
     export class VanCountDownNewOptions {
         @Prop({
+            group: '主要属性',
             title: '计时器时长（秒）',
             description: '设置定时时间',
+            setter: {
+                type: 'numberInput',
+            },
         })
         timer: nasl.core.Decimal = 60;
 
         @Prop({
+            group: '主要属性',
             title: '计时方式',
             description: '设置计时器计时方式',
             setter: {
@@ -53,14 +58,22 @@ namespace nasl.ui {
         reverse: 'positive' | 'negative' = 'positive';
 
         @Prop({
-            title: '是否自动开始计时',
-            description: '设置是否自动开始计时器',
+            group: '主要属性',
+            title: '自动开始计时',
+            description: '是否开启自动开始计时',
+            setter: {
+                type: 'switch',
+            },
         })
         autostart: nasl.core.Boolean = true;
 
         @Prop({
+            group: '主要属性',
             title: '隐藏分钟',
             description: '设置是否隐藏分钟',
+            setter: {
+                type: 'switch',
+            },
         })
         hideMinute: nasl.core.Boolean = false;
 

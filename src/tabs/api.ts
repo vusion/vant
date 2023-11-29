@@ -13,21 +13,17 @@ namespace nasl.ui {
 
     export class VanTabsOptions {
         @Prop({
+            group: '数据属性',
             title: '值',
-            description: '选中标签页的值。',
+            description: '用于标识选项卡的值',
             syncMode: 'both',
         })
-        active: nasl.core.String;
+        value: nasl.core.String;
 
         @Prop({
-            title: '禁用',
-            description: '是否禁用。',
-        })
-        disabled: nasl.core.Boolean = false;
-
-        @Prop({
-            title: '展示外观',
-            description: '选项卡样式风格',
+            group: '主要属性',
+            title: '样式类型',
+            description: '设置选项卡为线条类型或胶囊类型',
             setter: {
                 type: 'enumSelect',
                 titles: ['线条', '胶囊'],
@@ -36,20 +32,18 @@ namespace nasl.ui {
         type: 'line' | 'card' = 'line';
 
         @Prop({
+            group: '主要属性',
             title: '自动吸顶',
-            description: '是否自动吸顶',
+            setter: {
+                type: 'switch',
+            },
         })
         sticky: nasl.core.Boolean = false;
 
         @Prop({
-            title: '滑动切换',
-            description: '是否滑动切换',
-        })
-        swipeable: nasl.core.Boolean = false;
-
-        @Prop({
+            group: '主要属性',
             title: '导航模式',
-            description: '导航模式',
+            description: '设置选项卡的导航模式',
             setter: {
                 type: 'enumSelect',
                 titles: ['切换导航', '滚动导航'],
@@ -58,10 +52,32 @@ namespace nasl.ui {
         scrollspystr: 'no' | 'scrollspy' = 'no';
 
         @Prop({
-            title: '切换动画',
-            description: '是否开启转场动画',
+            group: '交互属性',
+            title: '滑动切换',
+            setter: {
+                type: 'switch',
+            },
+        })
+        swipeable: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '交互属性',
+            title: '开启转场动画',
+            setter: {
+                type: 'switch',
+            },
         })
         animated: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
+        })
+        disabled: nasl.core.Boolean = false;
 
         @Event({
             title: '点击标签',
@@ -99,40 +115,52 @@ namespace nasl.ui {
 
     export class VanTabOptions {
         @Prop({
-            title: '值',
-            description: '标签页的值',
-        })
-        name: nasl.core.String;
-
-        @Prop({
             title: '标题',
             description: '自定义标题',
         })
         private title: nasl.core.String = '标题';
 
         @Prop({
-            title: '禁用',
-            description: '是否禁用',
+            group: '数据属性',
+            title: '选项值',
+            description: '用于标识选项的值',
         })
-        disabled: nasl.core.Boolean = false;
+        name: nasl.core.String;
 
         @Prop({
-            title: '徽章',
-            description: '是否显示徽章',
+            group: '数据属性',
+            title: '显示徽章',
+            setter: {
+                type: 'switch',
+            },
         })
         badgebtn: nasl.core.Boolean = false;
 
         @Prop({
+            group: '数据属性',
             title: '徽章值',
-            description: '徽章的内容',
         })
-        badge: nasl.core.String | nasl.core.Decimal;
+        badge: nasl.core.String, nasl.core.Decimal;
 
         @Prop({
-            title: '最大值',
+            group: '数据属性',
+            title: '徽章最大值',
             description: '徽章内容为数字时显示的最大值',
+            setter: {
+                type: 'numberInput',
+            },
         })
         badgemax: nasl.core.Decimal;
+
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
+        })
+        disabled: nasl.core.Boolean = false;
 
         @Slot({
             title: '默认',

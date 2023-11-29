@@ -13,46 +13,62 @@ namespace nasl.ui {
 
     export class VanCheckboxGroupOptions<T, V> {
         @Prop({
+            group: '数据属性',
             title: '数据源',
-            description: '集合类型变量或者输出参数为集合类型的逻辑',
+            description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
             designerValue: [{}, {}, {}],
         })
-        dataSource: nasl.collection.List<T>;
+        dataSource: Array<Item> | Function;
 
         @Prop({
+            group: '数据属性',
             title: '数据类型',
-            description: '集合类型每一元素的数据类型',
+            description: '数据源返回的数据结构的类型，自动识别类型进行展示说明。',
         })
-        dataSchema: T;
+        dataSchema: schema;
 
         @Prop({
+            group: '数据属性',
             title: '值',
-            description: '当前选择的值',
+            description: '用于标识多选组的值',
             syncMode: 'both',
         })
         value: V;
 
         @Prop({
-            title: '最大可选数',
-            description: '最大可选数(0为不限制)',
+            group: '数据属性',
+            title: '最大可选数量',
+            description: '最大可选数量(0为不限制)',
+            setter: {
+                type: 'numberInput',
+            },
         })
         max: nasl.core.Decimal;
 
         @Prop({
-            title: '最小选择数量',
-            description: '最小选择数量',
+            group: '数据属性',
+            title: '最小可选数量',
+            description: '最小可选数量(0为不限制)',
+            setter: {
+                type: 'numberInput',
+            },
         })
         min: nasl.core.Decimal = 0;
 
-        @Prop({
-            title: '禁用',
-            description: '是否禁用',
+        @Prop<VanCheckboxGroupOptions<T, V>, 'valueField'>({
+            group: '数据属性',
+            title: '值字段',
+            description: '用于标识选中值的字段',
+            setter: {
+                type: 'propertySelect',
+            },
         })
-        disabled: nasl.core.Boolean = false;
+        valueField: nasl.core.String = 'value';
 
         @Prop({
+            group: '主要属性',
             title: '排列方向',
-            description: '是否禁用',
+            description: '设置多选组的排列方向',
             setter: {
                 type: 'enumSelect',
                 titles: ['水平', '垂直'],
@@ -61,15 +77,20 @@ namespace nasl.ui {
         direction: 'horizontal' | 'vertical' = 'horizontal';
 
         @Prop<VanCheckboxGroupOptions<T, V>, 'column'>({
-            title: '每行排列数',
+            group: '主要属性',
+            title: '排列数',
             description: '水平排列时每行展示的选项数量',
+            setter: {
+                type: 'numberInput',
+            },
             if: _ => _.direction === 'horizontal',
         })
         column: nasl.core.Decimal;
 
         @Prop({
+            group: '主要属性',
             title: '转换器',
-            description: '将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式',
+            description: '将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式。',
             bindHide: true,
             setter: {
                 type: 'enumSelect',
@@ -78,11 +99,21 @@ namespace nasl.ui {
         })
         converter: 'join' | 'join:|' | 'join:;' | 'json' | 'none' = 'none';
 
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '正常显示，但禁止选择/输入',
+            setter: {
+                type: 'switch',
+            },
+        })
+        disabled: nasl.core.Boolean = false;
+
         @Event({
             title: '值改变',
             description: '选择值改变时触发',
         })
-        onChange: () => void;
+        onChange: (event: nasl.ui.ChangeEvent) => void;
 
         @Slot({
             title: 'undefined',
@@ -90,12 +121,12 @@ namespace nasl.ui {
             emptyBackground: 'add-sub',
             snippets: [
                 {
-                    title: '复选项',
+                    title: '多选项',
                     code: '<van-checkbox name="n" shape="square"><van-text text="节点"></van-text></van-checkbox>',
                 },
             ],
         })
-        slotDefault: () => Array<VanCheckbox<V>>;
+        slotDefault: () => Array<VanCheckbox>;
 
         @Slot({
             title: 'undefined',
@@ -120,21 +151,16 @@ namespace nasl.ui {
         private title: nasl.core.String;
 
         @Prop({
-            title: '选中的值',
-            description: '选中的值',
+            group: '数据属性',
+            title: '选中值',
+            description: '当前选中的值',
         })
-        name: V;
+        label: nasl.core.Any;
 
         @Prop({
-            title: '是否选中',
-            description: '是否选中',
-            syncMode: 'both',
-        })
-        value: nasl.core.Boolean = false;
-
-        @Prop({
+            group: '主要属性',
             title: '形状',
-            description: '形状',
+            description: '选择多选项为方形或圆形',
             setter: {
                 type: 'enumSelect',
                 titles: ['方形', '圆形'],
@@ -143,26 +169,46 @@ namespace nasl.ui {
         shape: 'square' | 'round' = 'square';
 
         @Prop({
-            title: '禁用',
-            description: '是否禁用',
-        })
-        disabled: nasl.core.Boolean = false;
-
-        @Prop({
-            title: '只读',
-            description: '是否只读',
-        })
-        readonly: nasl.core.Boolean = false;
-
-        @Prop({
+            group: '主要属性',
             title: '文本位置',
-            description: '是否禁用',
+            description: '设置文本居左或居右放置',
             setter: {
                 type: 'enumSelect',
                 titles: ['右', '左'],
             },
         })
         labelPosition: 'right' | 'lfet' = 'right';
+
+        @Prop({
+            group: '交互属性',
+            title: '选中',
+            description: '是否选中选项',
+            syncMode: 'both',
+            setter: {
+                type: 'switch',
+            },
+        })
+        value: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '正常显示，但禁止选择/输入',
+            setter: {
+                type: 'switch',
+            },
+        })
+        disabled: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '状态属性',
+            title: '只读',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
+        })
+        readonly: nasl.core.Boolean = false;
 
         @Event({
             title: '点击后',

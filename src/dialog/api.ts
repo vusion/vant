@@ -25,27 +25,39 @@ namespace nasl.ui {
 
     export class VanDialogOptions {
         @Prop({
-            title: '是否展示弹框',
-            description: '是否展示弹框',
-            syncMode: 'both',
-        })
-        value: nasl.core.Boolean = false;
-
-        @Prop({
             title: '是否展示确认按钮',
             description: '是否展示确认按钮',
+            setter: {
+                type: 'switch',
+            },
         })
         private showConfirmButton: nasl.core.Boolean = true;
 
         @Prop({
             title: '是否展示取消按钮',
             description: '是否展示取消按钮',
+            setter: {
+                type: 'switch',
+            },
         })
         private showCancelButton: nasl.core.Boolean = true;
 
         @Prop({
+            group: '主要属性',
+            title: '展示弹框',
+            syncMode: 'both',
+            setter: {
+                type: 'switch',
+            },
+        })
+        value: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '交互属性',
             title: '点击遮罩层后关闭',
-            description: '是否点击遮罩层后关闭',
+            setter: {
+                type: 'switch',
+            },
         })
         closeOnClickOverlay: nasl.core.Boolean = false;
 

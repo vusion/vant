@@ -20,19 +20,24 @@ namespace nasl.ui {
             description: '关闭弹窗',
         })
         closeModal(): void {}
+
     }
 
     export class VanPopupOptions {
         @Prop({
-            title: '是否展示',
-            description: '是否展示弹层',
+            group: '主要属性',
+            title: '展示弹层',
             syncMode: 'onlySync',
+            setter: {
+                type: 'switch',
+            },
         })
         value: nasl.core.Boolean = false;
 
         @Prop({
+            group: '主要属性',
             title: '弹出位置',
-            description: '弹出具体位置',
+            description: '设置弹出位置',
             setter: {
                 type: 'enumSelect',
                 titles: ['上', '下', '右', '左'],
@@ -41,8 +46,11 @@ namespace nasl.ui {
         position: 'top' | 'bottom' | 'right' | 'left' = 'bottom';
 
         @Prop({
+            group: '交互属性',
             title: '点击遮罩层后关闭',
-            description: '是否点击遮罩层后关闭',
+            setter: {
+                type: 'switch',
+            },
         })
         closeOnClickOverlay: nasl.core.Boolean = false;
 
@@ -50,7 +58,7 @@ namespace nasl.ui {
             title: '点击弹出层',
             description: '点击弹出层时触发',
         })
-        onClick: (event: nasl.ui.MouseEvent) => void;
+        onClick: () => void;
 
         @Event({
             title: '点击遮罩层',

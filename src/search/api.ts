@@ -13,43 +13,36 @@ namespace nasl.ui {
 
     export class VanSearchOptions {
         @Prop({
+            title: '按钮文字',
+            description: '按钮文字',
+        })
+        private actiontext: nasl.core.String;
+
+        @Prop({
+            group: '数据属性',
             title: '值',
-            description: '值',
+            description: '用于标识搜索框的值',
             syncMode: 'both',
         })
         value: nasl.core.Any;
 
         @Prop({
-            title: '占位提示文字',
-            description: '占位提示文字',
-        })
-        placeholder: nasl.core.String;
-
-        @Prop({
-            title: '搜索框形状',
-            description: '搜索框形状',
-            setter: {
-                type: 'enumSelect',
-                titles: ['方形', '圆形'],
-            },
-        })
-        shape: 'square' | 'round' = 'square';
-
-        @Prop({
-            title: '输入的最大字符数',
-            description: '输入的最大字符数',
+            group: '数据属性',
+            title: '最大字符数',
+            description: '输入框内输入的最大字符数',
         })
         maxlength: nasl.core.String | nasl.core.Decimal;
 
         @Prop({
-            title: '是否启用清除图标',
-            description: '是否启用清除图标，点击清除图标后会清空输入框',
+            group: '主要属性',
+            title: '占位符',
+            description: '搜索框为空的显示文字',
         })
-        clearable: nasl.core.Boolean;
+        placeholder: nasl.core.String;
 
         @Prop({
+            group: '主要属性',
             title: '显示清除图标',
-            description: '显示清除图标',
             setter: {
                 type: 'enumSelect',
                 titles: ['一直显示', '输入框获取焦点且不为空时展示'],
@@ -58,26 +51,9 @@ namespace nasl.ui {
         cleartrigger: 'always' | 'focus';
 
         @Prop({
-            title: '按钮文字',
-            description: '按钮文字',
-        })
-        private actiontext: nasl.core.String;
-
-        @Prop({
-            title: '只读',
-            description: '只读',
-        })
-        readonly: nasl.core.Boolean;
-
-        @Prop({
-            title: '禁用',
-            description: '禁用',
-        })
-        disabled: nasl.core.Boolean;
-
-        @Prop({
-            title: '内容对齐方式',
-            description: '搜索框形状',
+            group: '主要属性',
+            title: '对齐方式',
+            description: '设置对齐方式',
             setter: {
                 type: 'enumSelect',
                 titles: ['左对齐', '居中对齐', '右对齐'],
@@ -86,14 +62,56 @@ namespace nasl.ui {
         inputAlign: 'left' | 'center' | 'right';
 
         @Prop({
+            group: '主要属性',
             title: '搜索图标位置',
-            description: '搜索图标位置',
+            description: '设置搜索图标位置',
             setter: {
                 type: 'enumSelect',
                 titles: ['左', '右'],
             },
         })
         iconalign: 'left' | 'right';
+
+        @Prop({
+            group: '交互属性',
+            title: '可清除',
+            description: '是否启用清除图标，点击清除图标后会清空输入框',
+            setter: {
+                type: 'switch',
+            },
+        })
+        clearable: nasl.core.Boolean;
+
+        @Prop({
+            group: '状态属性',
+            title: '只读',
+            description: '正常显示，但禁止选择/输入',
+            setter: {
+                type: 'switch',
+            },
+        })
+        readonly: nasl.core.Boolean;
+
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
+        })
+        disabled: nasl.core.Boolean;
+
+        @Prop({
+            group: '样式属性',
+            title: '形状',
+            description: '选择搜索框为方形或圆形',
+            setter: {
+                type: 'enumSelect',
+                titles: ['方形', '圆形'],
+            },
+        })
+        shape: 'square' | 'round' = 'square';
 
         @Event({
             title: '确定搜索时触发',

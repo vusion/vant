@@ -7,14 +7,17 @@ namespace nasl.ui {
         description: '单元格为列表中的单个展示项',
     })
     export class VanCellGroup extends VueComponent {
-
         constructor(options?: Partial<VanCellGroupOptions>) { super(); }
     }
 
     export class VanCellGroupOptions {
         @Prop({
+            group: '主要属性',
             title: '卡片风格',
-            description: '是否是卡片风格',
+            description: '是否显示为卡片风格',
+            setter: {
+                type: 'switch',
+            },
         })
         inset: nasl.core.Boolean = false;
 
@@ -36,44 +39,15 @@ namespace nasl.ui {
         title: '单元格',
     })
     export class VanCell extends VueComponent {
-
         constructor(options?: Partial<VanCellOptions>) { super(); }
     }
 
     export class VanCellOptions {
         @Prop({
-            title: '箭头',
-            description: '是否展示箭头',
-        })
-        isLink: nasl.core.Boolean = true;
-
-        @Prop({
-            title: '箭头方向',
-            description: '箭头得方向',
-            setter: {
-                type: 'enumSelect',
-                titles: ['左', '上', '下', '右'],
-            },
-        })
-        arrowDirection: 'left' | 'up' | 'down' | 'right' = 'right';
-
-        @Prop({
-            title: '垂直居中',
-            description: '是否垂直居中',
-        })
-        center: nasl.core.Boolean = true;
-
-        @Prop({
             title: '左侧文本',
             description: '左侧文本',
         })
         private title: nasl.core.String;
-
-        @Prop({
-            title: '值',
-            description: '值',
-        })
-        value: nasl.core.String;
 
         @Prop({
             title: '右侧文本',
@@ -88,17 +62,54 @@ namespace nasl.ui {
         private label: nasl.core.String = '这是单元格';
 
         @Prop({
-            title: '图标',
-            description: '图标',
-            setter: {
-                type: 'iconSelect',
-            },
+            group: '数据属性',
+            title: '值',
+            description: '用于标识单元格的值',
         })
-        icon: nasl.core.String = '';
+        value: nasl.core.String;
 
         @Prop({
+            group: '主要属性',
+            title: '箭头图标',
+            description: '是否显示箭头图标',
+            setter: {
+                type: 'switch',
+            },
+        })
+        isLink: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '主要属性',
+            title: '箭头方向',
+            setter: {
+                type: 'enumSelect',
+                titles: ['左', '上', '下', '右'],
+            },
+        })
+        arrowDirection: 'left' | 'up' | 'down' | 'right' = 'right';
+
+        @Prop({
+            group: '主要属性',
+            title: '垂直居中',
+            description: '是否垂直居中展示',
+            setter: {
+                type: 'switch',
+            },
+        })
+        center: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '主要属性',
+            title: '图标',
+            setter: {
+              type: 'iconSelect'
+            }
+        })
+        icon: nasl.core.String;
+
+        @Prop({
+            group: '交互属性',
             title: '链接类型',
-            description: '链接类型',
             setter: {
                 type: 'enumSelect',
                 titles: ['页面跳转', '下载链接'],
@@ -107,12 +118,13 @@ namespace nasl.ui {
         linkType: 'destination' | 'download' = 'destination';
 
         @Prop({
-            title: '链接',
-            description: '链接地址',
+            group: '交互属性',
+            title: '链接地址',
         })
         hrefAndTo: nasl.core.String;
 
         @Prop({
+            group: '交互属性',
             title: '打开方式',
             description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
             setter: {
@@ -126,7 +138,7 @@ namespace nasl.ui {
             title: '点击后',
             description: '点击某一项后触发',
         })
-        onClick: () => void;
+        onClick: (event: nasl.ui.MouseEvent) => void;
 
         @Slot({
             title: 'undefined',

@@ -7,10 +7,7 @@ namespace nasl.ui {
         description: '数据网格',
     })
     export class VanGridView<T, V, P extends boolean, M extends boolean, C extends string> extends VueComponent {
-        @Prop({
-            title: '数据',
-        })
-        data: VanGridViewOptions<T, V, P, M, C>['dataSource'];
+
 
         @Method({
             title: 'undefined',
@@ -22,162 +19,11 @@ namespace nasl.ui {
 
     export class VanGridViewOptions<T, V, P extends boolean, M extends boolean, C extends string> {
         @Prop({
-            group: '数据属性',
-            title: '数据源',
-            description: '数据网格的数据源，数据集对象或者返回数据集的逻辑',
-            designerValue: [{}, {}, {}, {}, {}, {}, {}, {}],
-        })
-        dataSource: P extends true ? { list: nasl.collection.List<T>; total: nasl.core.Integer } : nasl.collection.List<T>;
-
-        @Prop({
-            group: '数据属性',
-            title: '数据类型',
-            description: '表格每一行的数据类型',
-        })
-        dataSchema: T;
-
-        @Prop({
-            group: '样式属性',
-            title: '瀑布模式',
-            description: '瀑布模式',
-        })
-        iffall: nasl.core.Boolean = false;
-
-        @Prop({
-            group: '数据属性',
-            title: '初始加载',
-            description: '是否在初始时立即加载',
-        })
-        initialLoad: nasl.core.Boolean = true;
-
-        @Prop({
-            group: '数据属性',
-            title: '分页加载更多',
-            description: '是否需要分页',
-            setter: {
-                type: 'enumSelect',
-                titles: ['不分页', '滚动加载更多', '点击加载更多'],
-            },
-        })
-        pageable: '' | 'auto-more' | 'load-more' = '';
-
-        @Prop({
-            group: '数据属性',
-            title: '分页大小',
-        })
-        pageSize: nasl.core.Decimal = 20;
-
-        @Prop({
-            title: '下拉刷新',
-            description: '是否开启下拉刷新',
-        })
-        pullRefresh: nasl.core.Boolean = true;
-
-        @Prop({
-            title: '下拉过程中提示文字',
-        })
-        pullingText: nasl.core.String = '下拉刷新';
-
-        @Prop({
-            title: '释放过程中提示文字',
-        })
-        loosingText: nasl.core.String = '释放刷新';
-
-        @Prop({
-            title: '刷新成功提示文字',
-        })
-        successText: nasl.core.String = '已刷新';
-
-        @Prop({
-            title: '刷新成功提示展示时长(ms)',
-        })
-        successDuration: nasl.core.Decimal = 500;
-
-        @Prop({
-            title: '触发下拉刷新的距离',
-        })
-        pullDistance: nasl.core.Decimal = 50;
-
-        @Prop({
-            group: '数据属性',
-            title: '可筛选',
-            description: '是否可以过滤（搜索），开启将会显示搜索框。',
-        })
-        filterable: nasl.core.Boolean = false;
-
-        @Prop({
-            group: '数据属性',
-            title: '后端分页',
-        })
-        remotePaging: nasl.core.Boolean = false;
-
-        @Prop({
-            group: '数据属性',
-            title: '后端筛选',
-        })
-        remoteFiltering: nasl.core.Boolean = false;
-
-        @Prop({
-            group: '数据属性',
-            title: '匹配方法',
-            description: '过滤时的匹配方法',
-        })
-        private matchMethod: nasl.core.String = 'includes';
-
-        @Prop({
-            group: '数据属性',
-            title: '大小写敏感',
-            description: '过滤时是否区分大小写',
-        })
-        private caseSensitive: nasl.core.String = 'includes';
-
-        @Prop({
-            group: '样式属性',
-            title: '网格数',
-            description: '每行排列几项',
-        })
-        col: nasl.core.Decimal = 2;
-
-        @Prop({
-            group: '状态属性',
-            title: '加载中文字',
-            description: '加载时的文字。使用分页加载时才会出现',
-        })
-        loadingText: nasl.core.String = '加载中...';
-
-        @Prop({
-            group: '状态属性',
-            title: '是否加载失败',
-            description: '手动设置是否加载失败。',
-        })
-        private error: nasl.core.Boolean;
-
-        @Prop({
-            group: '状态属性',
-            title: '加载失败文字',
-            description: '加载失败时的文字。',
-        })
-        errorText: nasl.core.String = '加载失败，请重试';
-
-        @Prop({
-            group: '状态属性',
-            title: '暂无数据文字',
-            description: '暂无数据时的文字。',
-        })
-        emptyText: nasl.core.String = '暂无数据';
-
-        @Prop({
-            title: '搜索框占位符',
-            description: '搜索框为空时提示文本',
-        })
-        placeholder: nasl.core.String = '请输入';
-
-        @Prop({
             title: '值',
             description: '当前选择的值',
             syncMode: 'both',
         })
-        private value: M extends true ? (C extends '' ? nasl.collection.List<V> : nasl.core.String) : V;
+        private value: nasl.core.Any;
 
         @Prop({
             title: '文本字段名',
@@ -189,39 +35,245 @@ namespace nasl.ui {
             title: '文本字段名',
             description: '选项文本的字段名',
         })
-        private textField: (item: T) => nasl.core.String;
+        private textField: nasl.core.String = 'text';
 
         @Prop({
             title: '值字段名',
             description: '选项值的字段名',
         })
-        private valueField: (item: T) => V;
+        private valueField: nasl.core.String = 'value';
 
         @Prop({
             title: '可取消',
+            setter: {
+                type: 'switch',
+            },
         })
         private cancelable: nasl.core.Boolean = false;
 
         @Prop({
             title: '可多选',
+            setter: {
+                type: 'switch',
+            },
         })
-        private multiple: M;
+        private multiple: nasl.core.Boolean = false;
 
         @Prop({
             title: '筛选清除按钮',
             description: '搜索框是否有清除按钮',
+            setter: {
+                type: 'switch',
+            },
         })
         private clearable: nasl.core.Boolean = false;
 
         @Prop({
+            group: '数据属性',
+            title: '数据源',
+            description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
+            designerValue: [{}, {}, {}, {}, {}, {}, {}, {}],
+        })
+        dataSource: Array<Item> | Function | object | DataSource;
+
+        @Prop({
+            group: '数据属性',
+            title: '数据类型',
+            description: '数据源返回的数据结构的类型，自动识别类型进行展示说明。',
+        })
+        dataSchema: schema;
+
+        @Prop({
+            group: '数据属性',
+            title: '匹配方法',
+            description: '过滤时的匹配方法',
+        })
+        private matchMethod: nasl.core.String, Function = 'includes';
+
+        @Prop({
+            group: '数据属性',
+            title: '大小写敏感',
+            description: '过滤时是否区分大小写',
+        })
+        private caseSensitive: nasl.core.String, Function = 'includes';
+
+        @Prop({
+            group: '主要属性',
+            title: '分页方式',
+            description: '设置分页方式',
+            setter: {
+                type: 'enumSelect',
+                titles: ['不分页', '滚动加载更多', '点击加载更多'],
+            },
+        })
+        pageable: '' | 'auto-more' | 'load-more' = '';
+
+        @Prop({
+            group: '主要属性',
+            title: '分页大小',
+            description: '设置分页大小，单位为px。',
+            setter: {
+                type: 'numberInput',
+            },
+        })
+        pageSize: nasl.core.Decimal = 20;
+
+        @Prop({
+            group: '主要属性',
+            title: '可筛选',
+            description: '是否可以过滤（搜索），开启将会显示搜索框。',
+            setter: {
+                type: 'switch',
+            },
+        })
+        filterable: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '主要属性',
+            title: '后端分页',
+            setter: {
+                type: 'switch',
+            },
+        })
+        remotePaging: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '主要属性',
+            title: '后端筛选',
+            setter: {
+                type: 'switch',
+            },
+        })
+        remoteFiltering: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '交互属性',
+            title: '下拉刷新',
+            description: '是否开启下拉刷新',
+            setter: {
+                type: 'switch',
+            },
+        })
+        pullRefresh: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '交互属性',
+            title: '下拉过程中提示文案',
+        })
+        pullingText: nasl.core.String = '下拉刷新';
+
+        @Prop({
+            group: '交互属性',
+            title: '释放过程中提示文案',
+        })
+        loosingText: nasl.core.String = '释放刷新';
+
+        @Prop({
+            group: '交互属性',
+            title: '刷新成功提示文案',
+        })
+        successText: nasl.core.String = '已刷新';
+
+        @Prop({
+            group: '交互属性',
+            title: '展示时长',
+            description: '设置刷新成功后提示展示时长，单位为ms。',
+            setter: {
+                type: 'numberInput',
+            },
+        })
+        successDuration: nasl.core.Decimal = 500;
+
+        @Prop({
+            group: '交互属性',
+            title: '刷新距离',
+            description: '设置触发下拉刷新的距离，单位为px。',
+            setter: {
+                type: 'numberInput',
+            },
+        })
+        pullDistance: nasl.core.Decimal = 50;
+
+        @Prop({
+            group: '交互属性',
+            title: '搜索框占位符',
+            description: '搜索框为空时的显示文本',
+        })
+        placeholder: nasl.core.String = '请输入';
+
+        @Prop({
+            group: '状态属性',
+            title: '初始加载',
+            description: '设置初始时是否立即加载',
+            setter: {
+                type: 'switch',
+            },
+        })
+        initialLoad: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '状态属性',
+            title: '加载中文案',
+        })
+        loadingText: nasl.core.String = '加载中...';
+
+        @Prop({
+            group: '状态属性',
+            title: '是否加载失败',
+            description: '手动设置是否加载失败。',
+            setter: {
+                type: 'switch',
+            },
+        })
+        private error: nasl.core.Boolean;
+
+        @Prop({
+            group: '状态属性',
+            title: '加载失败文案',
+        })
+        errorText: nasl.core.String = '加载失败，请重试';
+
+        @Prop({
+            group: '状态属性',
+            title: '暂无数据文案',
+        })
+        emptyText: nasl.core.String = '暂无数据';
+
+        @Prop({
+            group: '样式属性',
+            title: '瀑布模式',
+            description: '是否开启瀑布模式',
+            setter: {
+                type: 'switch',
+            },
+        })
+        iffall: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '样式属性',
+            title: '网格数',
+            description: '设置每页排列几项',
+            setter: {
+                type: 'numberInput',
+            },
+        })
+        col: nasl.core.Decimal = 2;
+
+        @Prop({
             group: '状态属性',
             title: '只读',
+            setter: {
+                type: 'switch',
+            },
         })
         private readonly: nasl.core.Boolean = false;
 
         @Prop({
             group: '状态属性',
             title: '禁用',
+            setter: {
+                type: 'switch',
+            },
         })
         private disabled: nasl.core.Boolean = false;
 

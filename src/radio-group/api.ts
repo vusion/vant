@@ -13,40 +13,39 @@ namespace nasl.ui {
 
     export class VanRadioGroupOptions<T, V> {
         @Prop({
+            group: '数据属性',
             title: '数据源',
-            description: '集合类型变量或者输出参数为集合类型的逻辑',
+            description: '展示数据的输入源，可设置为集合类型变量（List<T>）或输出参数为集合类型的逻辑。',
             designerValue: [{}, {}, {}],
         })
-        dataSource: nasl.collection.List<T>;
+        dataSource: Array<Item> | Function;
 
         @Prop({
+            group: '数据属性',
             title: '数据类型',
-            description: '集合类型每一元素的数据类型',
+            description: '数据源返回的数据结构的类型，自动识别类型进行展示说明。',
         })
-        dataSchema: T;
+        dataSchema: schema;
 
         @Prop({
+            group: '数据属性',
             title: '值',
-            description: '当前选择的值',
+            description: '用于标识单选组的值',
             syncMode: 'both',
         })
         value: V;
 
         @Prop({
-            title: '禁用',
-            description: '是否禁用',
+            group: '主要属性',
+            title: '单选项图标',
+            docDescription: '增加自定义图标显示',
         })
-        disabled: nasl.core.Boolean = false;
+        icon: icon = 'sure';
 
         @Prop({
-            title: '只读',
-            description: '是否只读',
-        })
-        readonly: nasl.core.Boolean = false;
-
-        @Prop({
+            group: '主要属性',
             title: '排列方向',
-            description: '排列方向',
+            description: '选择水平或垂直排列',
             setter: {
                 type: 'enumSelect',
                 titles: ['水平', '垂直'],
@@ -55,11 +54,35 @@ namespace nasl.ui {
         direction: 'horizontal' | 'vertical' = 'horizontal';
 
         @Prop<VanRadioGroupOptions<T, V>, 'column'>({
+            group: '主要属性',
             title: '每行排列数',
             description: '水平排列时每行展示的选项数量',
+            setter: {
+                type: 'numberInput',
+            },
             if: _ => _.direction === 'horizontal',
         })
         column: nasl.core.Decimal;
+
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '正常显示，但禁止选择/输入',
+            setter: {
+                type: 'switch',
+            },
+        })
+        disabled: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '状态属性',
+            title: '只读',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
+        })
+        readonly: nasl.core.Boolean = false;
 
         @Event({
             title: '值改变时',
@@ -74,7 +97,7 @@ namespace nasl.ui {
             snippets: [
                 {
                     title: '单选项',
-                    code: '<van-radio name="n"><van-text text="节点"></van-text></van-radio>',
+                    code: '<van-radio icon="sure"><van-text text="节点"></van-text></van-radio>',
                 },
             ],
         })
@@ -97,32 +120,46 @@ namespace nasl.ui {
 
     export class VanRadioOptions<V> {
         @Prop({
+            group: '数据属性',
             title: '文本',
             description: '文本',
         })
         private title: nasl.core.String;
 
         @Prop({
-            title: '选中的值',
-            description: '选项值',
+            group: '数据属性',
+            title: '选项值',
+            description: '当前选中的值',
         })
-        name: V;
+        name: nasl.core.String;
 
         @Prop({
-            title: '禁用',
-            description: '是否禁用',
+            group: '主要属性',
+            title: '单选项图标',
+            docDescription: '增加自定义图标显示',
         })
-        disabled: nasl.core.Boolean = false;
+        icon: icon = 'sure';
 
         @Prop({
+            group: '主要属性',
             title: '文本位置',
-            description: '文本位置',
+            description: '设置文本居左或居右放置',
             setter: {
                 type: 'enumSelect',
                 titles: ['右', '左'],
             },
         })
         labelPosition: 'right' | 'left' = 'right';
+
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '正常显示，但禁止选择/输入',
+            setter: {
+                type: 'switch',
+            },
+        })
+        disabled: nasl.core.Boolean = false;
 
         @Event({
             title: '点击后',

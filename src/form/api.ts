@@ -118,19 +118,39 @@ namespace nasl.ui {
         private placeholder: nasl.core.String;
 
         @Prop({
+            group: '主要属性',
+            title: '标签布局',
+            docDescription: '设置标签布局方式。行内展示、块级展示，标签与表单项分行展示。',
+            setter: {
+                type: 'enumSelect',
+                titles: ['行内展示', '块级展示，标签与表单项分行展示'],
+            },
+        })
+        labelLayout: 'inline' | 'block' = 'inline';
+
+        @Prop({
+            group: '主要属性',
             title: '必填标记',
+            setter: {
+                type: 'switch',
+            },
         })
         required: nasl.core.Boolean = false;
 
         @Prop({
+            group: '主要属性',
             title: '验证规则',
-            description: '验证规则。简写格式为字符串类型，完整格式或混合格式为数组类型',
+            description: '设置验证规则，简写格式为字符串类型，完整格式或混合格式为数组类型',
         })
         rules: nasl.core.String | Array;
 
         @Prop({
-            title: '是否显示底边框',
+            group: '样式属性',
+            title: '显示底边框',
             description: '是否显示底边框',
+            setter: {
+                type: 'switch',
+            },
         })
         border: nasl.core.Boolean = true;
 

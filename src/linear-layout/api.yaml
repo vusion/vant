@@ -154,11 +154,7 @@
       dependency:
         - direction: horizontal
         - mode: inline
-          direction: horizontal
-        - mode: inline
           direction: vertical
-        - mode: block
-          direction: horizontal
         - mode: block
           direction: vertical
       toggleupdate:

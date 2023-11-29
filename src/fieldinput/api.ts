@@ -31,121 +31,6 @@ namespace nasl.ui {
 
     export class VanFieldinputOptions {
         @Prop({
-            title: '类型',
-            description: '输入框的类型',
-            setter: {
-                type: 'enumSelect',
-                titles: ['文本', '密码', '整数', '随机整数', '小数', '身份证'],
-            },
-        })
-        type: 'text' | 'password' | 'integer' | 'rndinteger' | 'point' | 'card' = 'text';
-
-        @Prop({
-            title: '值',
-            description: '输入框的值',
-            syncMode: 'both',
-        })
-        value: nasl.core.String;
-
-        @Prop<VanFieldinputOptions, 'inputstyle'>({
-            title: '输入框样式',
-            description: '输入框样式',
-            setter: {
-                type: 'enumSelect',
-                titles: ['默认', '格子'],
-            },
-            onToggle: [
-                { update: {maxlength:10000}, if: _ => _ === 'input' },
-                { update: {clearable:false,maxlength:6}, if: _ => _ === 'password' },
-            ],
-        })
-        inputstyle: 'input' | 'password' = 'input';
-
-        @Prop<VanFieldinputOptions, 'clearable'>({
-            title: '清除按钮',
-            description: '开启并在输入框有内容时会显示清除按钮。',
-            if: _ => _.inputstyle === 'input',
-        })
-        clearable: nasl.core.Boolean;
-
-        @Prop<VanFieldinputOptions, 'placeholder'>({
-            title: '占位符',
-            description: '原生属性',
-            if: _ => _.inputstyle === 'input',
-        })
-        placeholder: nasl.core.String;
-
-        @Prop({
-            title: '只读',
-            description: '是否只读',
-        })
-        readonly: nasl.core.Boolean = false;
-
-        @Prop({
-            title: '禁用',
-            description: '是否禁用',
-        })
-        disabled: nasl.core.Boolean = false;
-
-        @Prop<VanFieldinputOptions, 'maxlength'>({
-            title: '输入长度',
-            description: '为展示美观，可输入的最大长度限制为6',
-            setter: {
-                type: 'numberInput',
-                min: 1,
-                max: 6,
-            },
-            if: _ => _.inputstyle === 'password',
-        })
-        maxlength: nasl.core.Decimal = 6;
-
-        @Prop({
-            title: '键盘样式',
-            description: '键盘样式',
-            setter: {
-                type: 'enumSelect',
-                titles: ['默认键盘', '定制键盘'],
-            },
-        })
-        keytheme: 'native' | 'custom' = 'native';
-
-        @Prop<VanFieldinputOptions, 'keyboardTitle'>({
-            title: '键盘标题',
-            description: '键盘标题',
-            if: _ => _.keytheme === 'custom',
-        })
-        keyboardTitle: nasl.core.String;
-
-        @Prop<VanFieldinputOptions, 'keyboardTheme'>({
-            title: '定制键盘布局',
-            description: '定制键盘布局',
-            setter: {
-                type: 'enumSelect',
-                titles: ['默认', '右侧栏'],
-            },
-            if: _ => _.keytheme === 'custom',
-        })
-        keyboardTheme: 'default' | 'custom' = 'default';
-
-        @Prop<VanFieldinputOptions, 'confirmText'>({
-            title: '完成按钮内容',
-            description: '设置完成按钮文字内容',
-            if: _ => _.keytheme === 'custom',
-        })
-        confirmText: nasl.core.String = '完成';
-
-        @Prop<VanFieldinputOptions, 'confirmSize'>({
-            title: '完成按钮尺寸',
-            description: '设置完成按钮大小',
-            setter: {
-                type: 'enumSelect',
-                titles: ['默认', '大号'],
-            },
-            if: _ => _.keytheme === 'custom' && _.keyboardTheme === 'custom',
-        })
-        confirmSize: 'default' | 'large' = 'default';
-
-        @Prop({
             title: '前缀图标',
             description: '前缀图标',
             setter: {
@@ -164,6 +49,140 @@ namespace nasl.ui {
             },
         })
         private suffix: 'search' | '' = '';
+
+        @Prop({
+            group: '数据属性',
+            title: '值',
+            description: '用于标识输入框的值',
+            syncMode: 'both',
+        })
+        value: nasl.core.String;
+
+        @Prop({
+            group: '主要属性',
+            title: '类型',
+            description: '设置输入框的类型',
+            setter: {
+                type: 'enumSelect',
+                titles: ['文本', '密码', '整数', '随机整数', '小数', '身份证'],
+            },
+        })
+        type: 'text' | 'password' | 'integer' | 'rndinteger' | 'point' | 'card' = 'text';
+
+        @Prop<VanFieldinputOptions, 'placeholder'>({
+            group: '主要属性',
+            title: '占位符',
+            description: '输入框为空的展示文字',
+            if: _ => _.inputstyle === 'input',
+        })
+        placeholder: nasl.core.String;
+
+        @Prop<VanFieldinputOptions, 'maxlength'>({
+            group: '主要属性',
+            title: '最大输入长度',
+            setter: {
+                type: 'numberInput',
+                min: 1,
+                max: 6,
+            },
+            if: _ => _.inputstyle === 'password',
+        })
+        maxlength: nasl.core.Decimal = 6;
+
+        @Prop<VanFieldinputOptions, 'keyboardTitle'>({
+            group: '主要属性',
+            title: '键盘标题',
+            if: _ => _.keytheme === 'custom',
+        })
+        keyboardTitle: nasl.core.String;
+
+        @Prop<VanFieldinputOptions, 'confirmText'>({
+            group: '主要属性',
+            title: '按钮内容',
+            description: '设置完成按钮文字内容',
+            if: _ => _.keytheme === 'custom',
+        })
+        confirmText: nasl.core.String = '完成';
+
+        @Prop<VanFieldinputOptions, 'confirmSize'>({
+            group: '主要属性',
+            title: '按钮尺寸',
+            description: '设置完成按钮大小',
+            setter: {
+                type: 'enumSelect',
+                titles: ['默认', '大号'],
+            },
+            if: _ => _.keytheme === 'custom' && _.keyboardTheme === 'custom',
+        })
+        confirmSize: 'default' | 'large' = 'default';
+
+        @Prop<VanFieldinputOptions, 'clearable'>({
+            group: '交互属性',
+            title: '可清除',
+            description: '是否在输入框内展示清除按钮',
+            setter: {
+                type: 'switch',
+            },
+            if: _ => _.inputstyle === 'input',
+        })
+        clearable: nasl.core.Boolean;
+
+        @Prop({
+            group: '状态属性',
+            title: '只读',
+            description: '正常显示，但禁止选择/输入。',
+            setter: {
+                type: 'switch',
+            },
+        })
+        readonly: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
+        })
+        disabled: nasl.core.Boolean = false;
+
+        @Prop<VanFieldinputOptions, 'inputstyle'>({
+            group: '样式属性',
+            title: '输入框样式',
+            description: '设置输入框样式',
+            setter: {
+                type: 'enumSelect',
+                titles: ['默认', '格子'],
+            },
+            onToggle: [
+                { update: {maxlength:10000}, if: _ => _ === 'input' },
+                { update: {clearable:false,maxlength:6}, if: _ => _ === 'password' },
+            ],
+        })
+        inputstyle: 'input' | 'password' = 'input';
+
+        @Prop({
+            group: '样式属性',
+            title: '键盘样式',
+            description: '设置键盘样式',
+            setter: {
+                type: 'enumSelect',
+                titles: ['默认键盘', '定制键盘'],
+            },
+        })
+        keytheme: 'native' | 'custom' = 'native';
+
+        @Prop<VanFieldinputOptions, 'keyboardTheme'>({
+            group: '样式属性',
+            title: '定制键盘布局',
+            setter: {
+                type: 'enumSelect',
+                titles: ['默认', '右侧栏'],
+            },
+            if: _ => _.keytheme === 'custom',
+        })
+        keyboardTheme: 'default' | 'custom' = 'default';
 
         @Event({
             title: '输入时',

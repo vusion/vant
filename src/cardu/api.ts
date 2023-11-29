@@ -7,54 +7,13 @@ namespace nasl.ui {
         description: '用于快速布局',
     })
     export class VanCardu extends VueComponent {
-
         constructor(options?: Partial<VanCarduOptions>) { super(); }
     }
 
     export class VanCarduOptions {
         @Prop({
-            group: '样式属性',
-            title: '宽度',
-            description: '卡片宽度：像素或百分比',
-        })
-        private width: nasl.core.String;
-
-        @Prop({
-            group: '样式属性',
-            title: '风格',
-            description: '图片风格',
-            setter: {
-                type: 'enumSelect',
-                titles: ['方角', '圆角'],
-            },
-        })
-        sr: 's' | 'r' = 'r';
-
-        @Prop({
-            group: '样式属性',
-            title: '阴影',
-            description: '卡片阴影',
-        })
-        shadow: nasl.core.Boolean = true;
-
-        @Prop({
-            group: '样式属性',
-            title: '显示边框',
-            description: '是否显示卡片边框',
-        })
-        border: nasl.core.Boolean = true;
-
-        @Prop({
-            group: '样式属性',
-            title: '分割线',
-            description: '是否显示分割线',
-        })
-        split: nasl.core.Boolean = false;
-
-        @Prop({
-            group: '主要属性',
+            group: '交互属性',
             title: '链接类型',
-            description: '链接类型',
             setter: {
                 type: 'enumSelect',
                 titles: ['页面跳转', '下载链接'],
@@ -63,14 +22,13 @@ namespace nasl.ui {
         linkType: 'destination' | 'download' = 'destination';
 
         @Prop({
-            group: '主要属性',
-            title: '链接',
-            description: '链接地址',
+            group: '交互属性',
+            title: '链接地址',
         })
         hrefAndTo: nasl.core.String;
 
         @Prop({
-            group: '主要属性',
+            group: '交互属性',
             title: '打开方式',
             description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
             setter: {
@@ -80,11 +38,55 @@ namespace nasl.ui {
         })
         target: '_blank' | '_self' | '_parent' | '_top' = '_self';
 
+        @Prop({
+            group: '样式属性',
+            title: '宽度',
+            description: '卡片宽度：像素或百分比',
+        })
+        private width: nasl.core.String;
+
+        @Prop({
+            group: '样式属性',
+            title: '图片风格',
+            setter: {
+                type: 'enumSelect',
+                titles: ['方角', '圆角'],
+            },
+        })
+        sr: 's' | 'r' = 'r';
+
+        @Prop({
+            group: '样式属性',
+            title: '卡片阴影',
+            setter: {
+                type: 'switch',
+            },
+        })
+        shadow: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '样式属性',
+            title: '卡片边框',
+            setter: {
+                type: 'switch',
+            },
+        })
+        border: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '样式属性',
+            title: '分割线',
+            setter: {
+                type: 'switch',
+            },
+        })
+        split: nasl.core.Boolean = false;
+
         @Event({
             title: '点击后',
             description: '点击事件',
         })
-        onClick: () => void;
+        onClick: (event: nasl.ui.MouseEvent) => void;
 
         @Slot({
             title: 'undefined',
@@ -104,7 +106,6 @@ namespace nasl.ui {
         description: '卡片组',
     })
     class VanCarduGroup extends VueComponent {
-
         constructor(options?: Partial<VanCarduGroupOptions>) { super(); }
     }
 

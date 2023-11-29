@@ -13,46 +13,60 @@ namespace nasl.ui {
 
     export class VanCircleOptions {
         @Prop({
-            title: '当前进度',
-            syncMode: 'both',
-        })
-        value: nasl.core.Decimal = 50;
-
-        @Prop({
-            title: '圆环直径(px)',
-        })
-        size: nasl.core.Decimal = 100;
-
-        @Prop({
-            title: '进度条颜色',
-        })
-        color: nasl.core.String;
-
-        @Prop({
-            title: '轨道颜色',
-        })
-        layerColor: nasl.core.String;
-
-        @Prop({
-            title: '填充颜色',
-        })
-        fill: nasl.core.String;
-
-        @Prop({
             title: '文字',
         })
         private text: nasl.core.String;
 
         @Prop({
+            group: '主要属性',
+            title: '当前进度',
+            syncMode: 'both',
+            setter: {
+                type: 'numberInput',
+            },
+        })
+        value: nasl.core.Decimal;
+
+        @Prop({
+            group: '交互属性',
+            title: '顺时针增加',
+            description: '是否按照顺时针顺序增加',
+            setter: {
+                type: 'switch',
+            },
+        })
+        clockwise: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '样式属性',
+            title: '圆环直径',
+            description: '设置圆环直径，单位为px。',
+        })
+        size: numer = 100;
+
+        @Prop({
+            group: '样式属性',
+            title: '进度条颜色',
+        })
+        color: nasl.core.String;
+
+        @Prop({
+            group: '样式属性',
+            title: '轨道颜色',
+        })
+        layerColor: nasl.core.String;
+
+        @Prop({
+            group: '样式属性',
+            title: '填充颜色',
+        })
+        fill: nasl.core.String;
+
+        @Prop({
+            group: '样式属性',
             title: '进度条宽度',
         })
         strokeWidth: nasl.core.Decimal | nasl.core.String = 40;
-
-        @Prop({
-            title: '是否顺时针增加',
-            description: '是否顺时针增加',
-        })
-        clockwise: nasl.core.Boolean = true;
 
         @Slot({
             title: '默认',

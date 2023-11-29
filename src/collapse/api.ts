@@ -12,17 +12,20 @@ namespace nasl.ui {
 
     export class VanCollapseOptions {
         @Prop({
+            group: '数据属性',
             title: '值',
-            description: '值',
+            description: '用于标识折叠面板的值',
             syncMode: 'both',
-            group: '数据属性'
         })
         value: nasl.core.String;
 
         @Prop({
-            title: '是否开启手风琴模式',
+            group: '交互属性',
+            title: '手风琴模式',
             description: '是否开启手风琴模式',
-            group: '交互属性'
+            setter: {
+                type: 'switch',
+            },
         })
         accordion: nasl.core.Boolean = false;
 
@@ -50,23 +53,15 @@ namespace nasl.ui {
         title: '面板项',
     })
     export class VanCollapseItem extends VueComponent {
-        constructor(options?: Partial<VanCollapseItemOptions>) { super(); }
-
         @Method({
             title: '切换展开状态，传 true 为展开，false 为收起，不传参为切换',
             description: '切换展开状态，传 true 为展开，false 为收起，不传参为切换',
         })
         toggle(expanded?: nasl.core.Boolean): void {}
+        constructor(options?: Partial<VanCollapseItemOptions>) { super(); }
     }
 
     export class VanCollapseItemOptions {
-        @Prop({
-            title: '值',
-            description: '用于标识面板项的值',
-            group: '数据属性'
-        })
-        name: nasl.core.String;
-
         @Prop({
             title: '标题',
             description: '标题',
@@ -74,15 +69,29 @@ namespace nasl.ui {
         private title: nasl.core.String;
 
         @Prop({
+            group: '数据属性',
+            title: '值',
+            description: '用于标识面板项的值',
+        })
+        name: nasl.core.String;
+
+        @Prop({
+            group: '主要属性',
             title: '箭头图标',
             description: '是否显示箭头图标',
+            setter: {
+                type: 'switch',
+            },
         })
         isLink: nasl.core.Boolean = true;
 
         @Prop({
+            group: '状态属性',
             title: '禁用',
             description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
-            group: '状态属性'
+            setter: {
+                type: 'switch',
+            },
         })
         disabled: nasl.core.Boolean = false;
 
@@ -90,12 +99,12 @@ namespace nasl.ui {
             title: '展开',
             description: '展开',
         })
-        onOpen: (name: nasl.core.String) => void;
+        onOpen: () => void;
 
         @Event({
             title: '收起',
             description: '收起',
         })
-        onClose: (name: nasl.core.String) => void;
+        onClose: () => void;
     }
 }

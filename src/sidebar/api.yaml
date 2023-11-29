@@ -50,8 +50,7 @@
       group: 数据属性
     - name: badge
       title: 徽章值
-      type: string, number
-      default: ""
+      type: number
       description: ""
       group: 数据属性
     - name: badgemax

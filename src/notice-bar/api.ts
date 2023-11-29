@@ -13,8 +13,15 @@ namespace nasl.ui {
 
     export class VanNoticeBarOptions {
         @Prop({
-            title: '通知栏模式',
-            description: '通知栏模式',
+            title: '通知文本内容',
+            description: '通知文本内',
+        })
+        private text: nasl.core.String;
+
+        @Prop({
+            group: '主要属性',
+            title: '类型',
+            description: '设置通知栏类型',
             setter: {
                 type: 'enumSelect',
                 titles: ['可关闭', '链接', '普通'],
@@ -23,26 +30,27 @@ namespace nasl.ui {
         mode: 'closeable' | 'link' | 'normal' = 'normal';
 
         @Prop({
-            title: '通知文本内容',
-            description: '通知文本内',
-        })
-        private text: nasl.core.String;
-
-        @Prop({
-            title: '是否开启滚动播放',
-            description: '是否开启滚动播放',
+            group: '主要属性',
+            title: '开启滚动播放',
+            setter: {
+                type: 'switch',
+            },
         })
         scrollable: nasl.core.Boolean = true;
 
         @Prop({
-            title: '是否开启文本换行',
-            description: '是否开启文本换行（当关闭滚动播放时，该属性才生效）',
+            group: '主要属性',
+            title: '开启文本换行',
+            description: '关闭滚动播放时该属性即可生效',
+            setter: {
+                type: 'switch',
+            },
         })
         wrapable: nasl.core.Boolean = false;
 
         @Prop({
+            group: '交互属性',
             title: '链接类型',
-            description: '链接类型',
             setter: {
                 type: 'enumSelect',
                 titles: ['页面跳转', '下载链接'],
@@ -51,12 +59,13 @@ namespace nasl.ui {
         linkType: 'destination' | 'download' = 'destination';
 
         @Prop({
-            title: '链接',
-            description: '链接地址',
+            group: '交互属性',
+            title: '链接地址',
         })
         hrefAndTo: nasl.core.String;
 
         @Prop({
+            group: '交互属性',
             title: '打开方式',
             description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
             setter: {

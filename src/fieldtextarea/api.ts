@@ -31,25 +31,6 @@ namespace nasl.ui {
 
     export class VanFieldtextareaOptions {
         @Prop({
-            title: '值',
-            description: '输入框的值',
-            syncMode: 'both',
-        })
-        value: nasl.core.String;
-
-        @Prop({
-            title: '清除按钮',
-            description: '开启并在输入框有内容时会显示清除按钮。',
-        })
-        clearable: nasl.core.Boolean;
-
-        @Prop({
-            title: '占位符',
-            description: '原生属性',
-        })
-        placeholder: nasl.core.String;
-
-        @Prop({
             title: '前缀图标',
             description: '前缀图标',
             setter: {
@@ -69,9 +50,25 @@ namespace nasl.ui {
         })
         private suffix: 'search' | '' = '';
 
+        @Prop({
+            group: '数据属性',
+            title: '值',
+            description: '用于标识多行输入的值',
+            syncMode: 'both',
+        })
+        value: nasl.core.String;
+
+        @Prop({
+            group: '主要属性',
+            title: '占位符',
+            description: '输入框为空的显示文字',
+        })
+        placeholder: nasl.core.String;
+
         @Prop<VanFieldtextareaOptions, 'maxlength'>({
-            title: '可输入最大字符数',
-            description: '输入框内可输入的最大字符数，超过时不支持输入',
+            group: '主要属性',
+            title: '最大字符数',
+            description: '输入框内可输入的最大字符数，超过时不支持输入。',
             setter: {
                 type: 'numberInput',
                 placeholder: '不限制',
@@ -83,15 +80,20 @@ namespace nasl.ui {
         maxlength: nasl.core.Decimal;
 
         @Prop<VanFieldtextareaOptions, 'showWordLimit'>({
+            group: '主要属性',
             title: '显示字数统计',
             description: '设置是否显示「可输入最大字符数」的字数统计',
+            setter: {
+                type: 'switch',
+            },
             if: _ => _.maxlength !== '',
         })
         showWordLimit: nasl.core.Boolean;
 
         @Prop({
+            group: '主要属性',
             title: '自适应内容高度',
-            description: '可输入如{maxHeight:100,minHeight:50}，单位默认为px',
+            description: '可输入如{maxHeight:100,minHeight:50}，单位默认为px。',
             setter: {
                 type: 'input',
                 placeholder: '不设置则根据输入内容自适应',
@@ -100,12 +102,32 @@ namespace nasl.ui {
         autosize: nasl.core.Boolean | object;
 
         @Prop({
+            group: '交互属性',
+            title: '可清除',
+            description: '是否在输入框内展示清除按钮',
+            setter: {
+                type: 'switch',
+            },
+        })
+        clearable: nasl.core.Boolean;
+
+        @Prop({
+            group: '状态属性',
             title: '只读',
+            description: '正常显示，但禁止选择/输入',
+            setter: {
+                type: 'switch',
+            },
         })
         readonly: nasl.core.Boolean = false;
 
         @Prop({
+            group: '状态属性',
             title: '禁用',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
         })
         disabled: nasl.core.Boolean = false;
 

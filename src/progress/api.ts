@@ -13,57 +13,82 @@ namespace nasl.ui {
 
     export class VanProgressOptions {
         @Prop({
-            title: '进度百分比',
+            group: '主要属性',
+            title: '值',
+            description: '用于标识进度条的值',
             syncMode: 'both',
         })
-        percentage: nasl.core.Decimal;
+        value: nasl.core.Decimal | nasl.core.String;
 
         @Prop({
-            title: '进度条粗细(px)',
+            group: '主要属性',
+            title: '文字内容',
+            description: '进度条中的显示文字',
+        })
+        pivotText: nasl.core.String;
+
+        @Prop({
+            group: '主要属性',
+            title: '显示文字',
+            description: '是否显示进度条中的文字',
+            setter: {
+                type: 'switch',
+            },
+        })
+        showPivot: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '主要属性',
+            title: '自定义',
+            setter: {
+                type: 'switch',
+            },
+        })
+        custom: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
+        })
+        inactive: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '样式属性',
+            title: '进度条粗细',
+            description: '设置进度条粗细，单位为px。',
+            setter: {
+                type: 'numberInput',
+            },
         })
         strokeWidth: nasl.core.Decimal = 4;
 
         @Prop({
+            group: '样式属性',
             title: '进度条颜色',
         })
         color: nasl.core.String;
 
         @Prop({
+            group: '样式属性',
             title: '轨道颜色',
         })
         trackColor: nasl.core.String;
 
         @Prop({
-            title: '进度文字颜色',
+            group: '样式属性',
+            title: '文字颜色',
         })
         textColor: nasl.core.String;
 
         @Prop({
-            title: '进度文字内容',
-        })
-        pivotText: nasl.core.String;
-
-        @Prop({
-            title: '进度文字背景色',
+            group: '样式属性',
+            title: '文字背景色',
         })
         pivotColor: nasl.core.String;
-
-        @Prop({
-            title: '是否置灰',
-        })
-        inactive: nasl.core.Boolean = false;
-
-        @Prop({
-            title: '是否显示进度文字',
-            description: '是否显示进度文字',
-        })
-        showPivot: nasl.core.Boolean = true;
-
-        @Prop({
-            title: '是否自定义',
-            description: '是否自定义',
-        })
-        custom: nasl.core.Boolean = false;
 
         @Slot({
             title: '默认',

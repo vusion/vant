@@ -7,9 +7,7 @@ namespace nasl.ui {
         description: '向下弹出的菜单列表。',
     })
     export class VanDropdownMenu extends VueComponent {
-      constructor(options?: Partial<VanDropdownMenuOptions>) {
-        super();
-      }
+        constructor(options?: Partial<VanDropdownMenuOptions>) { super(); }
     }
 
     export class VanDropdownMenuOptions {
@@ -21,8 +19,18 @@ namespace nasl.ui {
         private value: nasl.core.String;
 
         @Prop({
-            title: '菜单展开方向',
-            description: '菜单展开方向',
+            title: '是否开启路由模式',
+            description: '是否开启路由模式',
+            setter: {
+                type: 'switch',
+            },
+        })
+        private route: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '主要属性',
+            title: '展开方向',
+            description: '设置下拉菜单的展开方向',
             setter: {
                 type: 'enumSelect',
                 titles: ['上', '下'],
@@ -31,22 +39,23 @@ namespace nasl.ui {
         direction: 'up' | 'down' = 'down';
 
         @Prop({
-            title: '是否显示遮罩层',
-            description: '是否显示遮罩层',
+            group: '交互属性',
+            title: '显示遮罩层',
+            setter: {
+                type: 'switch',
+            },
         })
         overlay: nasl.core.Boolean = true;
 
         @Prop({
-            title: '是否点击遮罩层后关闭菜单',
+            group: '交互属性',
+            title: '点击遮罩层后关闭',
             description: '是否点击遮罩层后关闭菜单',
+            setter: {
+                type: 'switch',
+            },
         })
         closeOnClickOverlay: nasl.core.Boolean = true;
-
-        @Prop({
-            title: '是否开启路由模式',
-            description: '是否开启路由模式',
-        })
-        private route: nasl.core.Boolean = false;
 
         @Slot({
             title: 'undefined',
@@ -66,45 +75,49 @@ namespace nasl.ui {
         title: '菜单项',
     })
     export class VanDropdownItem extends VueComponent {
-        constructor(options?: Partial<VanDropdownItemOptions>) {
-          super();
-        }
+        constructor(options?: Partial<VanDropdownItemOptions>) { super(); }
 
         @Method({
             title: 'undefined',
             description: '切换菜单展示状态',
         })
-        toggle(show: nasl.core.Boolean, options?: { immediate: nasl.core.Boolean } ): void {}
+        toggle(show?: nasl.core.Boolean, options?: { immediate: nasl.core.Boolean }): void {}
     }
 
     export class VanDropdownItemOptions {
         @Prop({
-            title: '菜单项值',
-            description: '菜单项值',
+            group: '数据属性',
+            title: '值',
+            description: '用于标识菜单项的值',
             syncMode: 'both',
-            group: '数据属性'
         })
         value: nasl.core.String;
 
         @Prop({
+            group: '主要属性',
             title: '标题',
-            description: '标题',
         })
         title: nasl.core.String = '标题';
 
         @Prop({
-            title: '禁用',
-            description: '禁用',
-            group: '状态属性'
-        })
-        disabled: nasl.core.Boolean = false;
-
-        @Prop({
-            title: '是否通过点击菜单子项关闭',
+            group: '交互属性',
+            title: '点击菜单子项关闭',
             description: '是否通过点击菜单子项关闭',
-            group: '交互属性'
+            setter: {
+                type: 'switch',
+            },
         })
         shutself: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
+        })
+        disabled: nasl.core.Boolean = false;
 
         @Event({
             title: '点击选项导致 value 变化时触发',
@@ -142,47 +155,10 @@ namespace nasl.ui {
         title: '菜单子项',
     })
     export class VanDropdownItemSon extends VueComponent {
-        constructor(options?: Partial<VanDropdownItemSonOptions>) {
-          super();
-        }
+        constructor(options?: Partial<VanDropdownItemSonOptions>) { super(); }
     }
 
     export class VanDropdownItemSonOptions {
-        @Prop({
-            title: '箭头',
-            description: '是否展示箭头',
-        })
-        isLink: nasl.core.Boolean = true;
-
-        @Prop({
-            title: '箭头方向',
-            description: '箭头得方向',
-            setter: {
-                type: 'enumSelect',
-                titles: ['左', '上', '下', '右'],
-            },
-        })
-        arrowDirection: 'left' | 'up' | 'down' | 'right' = 'right';
-
-        @Prop({
-            title: '垂直居中',
-            description: '是否垂直居中',
-        })
-        center: nasl.core.Boolean = true;
-
-        @Prop({
-            title: '左侧文本',
-            description: '左侧文本',
-        })
-        title: nasl.core.String;
-
-        @Prop({
-            title: '值',
-            description: '值',
-            group: '数据属性'
-        })
-        value: nasl.core.String;
-
         @Prop({
             title: '右侧文本',
             description: '右侧文本',
@@ -196,18 +172,62 @@ namespace nasl.ui {
         private label: nasl.core.String = '这是单元格';
 
         @Prop({
-            title: '图标',
-            description: '图标',
-            setter: {
-                type: 'iconSelect',
-            },
+            group: '数据属性',
+            title: '值',
+            description: '用于标识菜单子项的值',
         })
-        icon: nasl.core.String = '';
+        value: nasl.core.String;
 
         @Prop({
-            title: '链接类型',
-            description: '链接类型',
+            group: '主要属性',
+            title: '箭头',
+            description: '是否显示箭头图标',
+            setter: {
+                type: 'switch',
+            },
+        })
+        isLink: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '主要属性',
+            title: '箭头方向',
+            description: '设置箭头方向',
+            setter: {
+                type: 'enumSelect',
+                titles: ['左', '上', '下', '右'],
+            },
+        })
+        arrowDirection: 'left' | 'up' | 'down' | 'right' = 'right';
+
+        @Prop({
+            group: '主要属性',
+            title: '垂直居中',
+            setter: {
+                type: 'switch',
+            },
+        })
+        center: nasl.core.Boolean = true;
+
+        @Prop({
+            group: '主要属性',
+            title: '文本',
+            description: '菜单子项的左侧文本',
+        })
+        title: nasl.core.String;
+
+        @Prop({
+            group: '主要属性',
+            title: '图标',
+            description: '菜单子项的显示图标',
+            setter: {
+              type: 'iconSelect'
+            }
+        })
+        icon: nasl.core.String;
+
+        @Prop({
             group: '交互属性',
+            title: '链接类型',
             setter: {
                 type: 'enumSelect',
                 titles: ['页面跳转', '下载链接'],
@@ -216,16 +236,15 @@ namespace nasl.ui {
         linkType: 'destination' | 'download' = 'destination';
 
         @Prop({
-            title: '链接',
-            description: '链接地址',
             group: '交互属性',
+            title: '链接地址',
         })
         hrefAndTo: nasl.core.String;
 
         @Prop({
+            group: '交互属性',
             title: '打开方式',
             description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
-            group: '交互属性',
             setter: {
                 type: 'enumSelect',
                 titles: ['新窗口', '当前窗口', '父级窗口', '顶级窗口'],

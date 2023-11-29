@@ -19,40 +19,6 @@ namespace nasl.ui {
 
     export class VanUploaderOptions {
         @Prop({
-            title: '值',
-            description: '已上传的文件列表',
-            syncMode: 'both',
-        })
-        fileListProp: Array;
-
-        @Prop({
-            title: '上传的文件字段名',
-            description: '上传的文件字段名，后端需要这个字段获取',
-        })
-        name: nasl.core.String = 'file';
-
-        @Prop({
-            title: '支持上传的文件类型',
-            description: '若要限制上传文件类型，请输入类型名称，格式为“.后缀名”，多个文件类型时使用英文逗号隔开。例如“.jpeg,.png,.gif”',
-            tooltipLink: 'https://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/06.%E8%A1%A8%E5%8D%95/150.%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html',
-            setter: {
-                type: 'input',
-                placeholder: '所有类型',
-            },
-        })
-        accept: nasl.core.String;
-
-        @Prop({
-            title: '转换器',
-            description: '转换器',
-            setter: {
-                type: 'enumSelect',
-                titles: ['JSON', 'URL字符串'],
-            },
-        })
-        converter: 'json' | 'simple' = 'json';
-
-        @Prop({
             title: '文件读取结果的类型',
             description: '文件读取结果的类型，上传大文件时，建议使用 file 类型，避免卡顿',
             setter: {
@@ -63,68 +29,114 @@ namespace nasl.ui {
         private resultType: 'dataUrl' | 'text' | 'file' = 'dataUrl';
 
         @Prop({
-            title: '上传地址',
-            description: '文件上传的地址',
+            group: '数据属性',
+            title: '值',
+            description: '用于标识文件上传的值',
+            syncMode: 'both',
+        })
+        value: Array;
+
+        @Prop({
+            group: '数据属性',
+            title: '字段名',
+            description: '当前上传的文件字段名',
+        })
+        name: nasl.core.String = 'file';
+
+        @Prop({
+            group: '数据属性',
+            title: '支持上传文件类型',
+            description: '若要限制上传文件类型，请输入类型名称，格式为“.后缀名”，多个文件类型时使用英文逗号隔开。例如“.jpeg,.png,.gif”',
+            tooltipLink: 'https://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/06.%E8%A1%A8%E5%8D%95/150.%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html',
+            setter: {
+                type: 'input',
+                placeholder: '所有类型',
+            },
+        })
+        accept: nasl.core.String;
+
+        @Prop({
+            group: '数据属性',
+            title: '文件上传地址',
         })
         url: nasl.core.String;
 
         @Prop({
+            group: '数据属性',
             title: '请求 headers',
-            description: '请求 headers',
         })
         headers: Object;
 
         @Prop({
+            group: '数据属性',
             title: '附加数据',
-            description: '附加数据',
         })
         data: object;
 
         @Prop({
-            title: '是否只读',
-            description: '是否自动上传',
-        })
-        readonlyy: nasl.core.Boolean = false;
-
-        @Prop({
+            group: '数据属性',
             title: '设置cookie值',
             description: '通过设置 withCredentials 为 true 获得的第三方 cookies，将会依旧享受同源策略',
+            setter: {
+                type: 'switch',
+            },
         })
         withCredentials: nasl.core.Boolean = false;
 
         @Prop({
+            group: '数据属性',
             title: 'URL 字段名',
             description: '请求返回的 URL 字段名',
         })
-        urlField: nasl.core.String = 'result';
+        urlField: nasl.core.String = 'filePath';
 
         @Prop({
-            title: '是否自动上传',
-            description: '是否自动上传',
+            group: '主要属性',
+            title: '转换器',
+            description: '将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式。',
+            setter: {
+                type: 'enumSelect',
+                titles: ['JSON', 'URL字符串'],
+            },
+        })
+        converter: 'json' | 'simple' = 'json';
+
+        @Prop({
+            group: '主要属性',
+            title: '自动上传',
+            setter: {
+                type: 'switch',
+            },
         })
         autoUpload: nasl.core.Boolean = true;
 
         @Prop({
+            group: '主要属性',
             title: '多文件上传',
-            description: '多文件上传',
+            description: '是否支持多文件上传',
+            setter: {
+                type: 'switch',
+            },
         })
         multiple: nasl.core.Boolean = false;
 
         @Prop({
+            group: '主要属性',
             title: '列表数量上限',
-            description: '列表数量上限',
         })
         maxCount: nasl.core.Decimal | nasl.core.String = 999;
 
         @Prop({
-            title: '最大文件大小,单位为MB',
-            description: '文件大小限制，默认为50MB',
+            group: '主要属性',
+            title: '最大文件大小',
+            description: '设置最大文件大小,单位为MB，默认为50MB',
         })
-        maxSize: nasl.core.Decimal | nasl.core.String = 50;
+        maxSize: nasl.core.Decimal,nasl.core.String = 50;
 
         @Prop({
+            group: '主要属性',
             title: '图片选择模式',
-            description: '图片选择模式',
+            description: '设置图片选择模式',
             setter: {
                 type: 'enumSelect',
                 titles: ['图库', '相机'],
@@ -133,12 +145,7 @@ namespace nasl.ui {
         capture: 'waga' | 'camera' = 'waga';
 
         @Prop({
-            title: '禁用',
-            description: '是否禁用',
-        })
-        disabled: nasl.core.Boolean = false;
-
-        @Prop({
+            group: '主要属性',
             title: '文件访问策略',
             setter: {
                 type: 'enumSelect',
@@ -148,17 +155,66 @@ namespace nasl.ui {
         access: 'public' | 'private';
 
         @Prop({
+            group: '主要属性',
             title: '文件有效期',
             description: '是否开启文件有效期控制',
+            setter: {
+                type: 'switch',
+            },
         })
         ttl: nasl.core.Boolean;
 
         @Prop<VanUploaderOptions, 'ttlValue'>({
-            title: '上传后有效天数',
-            description: '文件有效期天数',
+            group: '主要属性',
+            title: '文件有效期天数',
+            setter: {
+                type: 'numberInput',
+            },
             if: _ => _.ttl === true,
         })
         ttlValue: nasl.core.Decimal;
+
+        @Prop({
+            group: '主要属性',
+            title: '源地址访问',
+            description: '开启后支持通过文件存储源地址访问文件',
+            docDescription: '开启后支持通过文件存储源地址访问文件',
+            setter: {
+                type: 'switch',
+            },
+        })
+        viaOriginURL: nasl.core.Boolean;
+
+        @Prop({
+            group: '主要属性',
+            title: '启用压缩',
+            description: '启用压缩后上传的文件按压缩规则进行压缩后上传，压缩规则可在自定义配置参数管理',
+            docDescription: '启用压缩后上传的文件按压缩规则进行压缩后上传，压缩规则可在自定义配置参数管理',
+            setter: {
+                type: 'switch',
+            },
+        })
+        lcapIsCompress: nasl.core.Boolean;
+
+        @Prop({
+            group: '状态属性',
+            title: '只读',
+            description: '正常显示，但禁止选择/输入',
+            setter: {
+                type: 'switch',
+            },
+        })
+        readonly: nasl.core.Boolean = false;
+
+        @Prop({
+            group: '状态属性',
+            title: '禁用',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
+        })
+        disabled: nasl.core.Boolean = false;
 
         @Event({
             title: '点击',
@@ -194,12 +250,17 @@ namespace nasl.ui {
             title: '上传成功时',
             description: '上传成功时触发',
         })
-        onSuccess: () => void;
+        onSuccess: (event: nasl.ui.UploadEvent) => void;
 
         @Event({
             title: '上传错误时',
             description: '上传报错时触发',
         })
-        onError: () => void;
+        onError: (event: nasl.ui.UploadErrorEvent) => void;
+
+        @Slot({
+            title: '配置文件上传图标',
+        })
+        slotDefault: () => Array<VueComponent>;
     }
 }

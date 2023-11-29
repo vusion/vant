@@ -17,6 +17,7 @@
   "include": [
     "types/**/*",
     "src/**/*",
+    "src-vusion/**/*"
   ],
   "exclude": [
     "**/*.spec.ts",

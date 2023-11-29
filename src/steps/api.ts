@@ -15,10 +15,10 @@ namespace nasl.ui {
         @Prop({
             group: '数据属性',
             title: '数据源',
-            description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑',
+            description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
             designerValue: [{}, {}, {}],
         })
-        dataSource: nasl.collection.List<T>;
+        dataSource: Array<Item> | Function;
 
         @Prop({
             group: '数据属性',
@@ -30,13 +30,18 @@ namespace nasl.ui {
         @Prop({
             group: '数据属性',
             title: '当前步骤',
-            description: '指定当前步骤，从 0 开始记数',
+            description: '指定当前步骤，从0开始记数。',
             syncMode: 'both',
+            setter: {
+                type: 'numberInput',
+            },
         })
-        active: nasl.core.Decimal = 0;
+        value: nasl.core.Decimal = 0;
 
         @Prop({
+            group: '主要属性',
             title: '步骤条方向',
+            description: '设置步骤条方向',
             setter: {
                 type: 'enumSelect',
                 titles: ['横向', '垂直'],
@@ -45,14 +50,22 @@ namespace nasl.ui {
         direction: 'horizontal' | 'vertical' = 'horizontal';
 
         @Prop({
+            group: '状态属性',
             title: '只读',
-            description: '正常显示，但禁止选择、输入',
+            description: '正常显示，但禁止选择/输入',
+            setter: {
+                type: 'switch',
+            },
         })
         readonly: nasl.core.Boolean = false;
 
         @Prop({
+            group: '状态属性',
             title: '禁用',
-            description: '置灰显示，且禁止任何交互',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
         })
         disabled: nasl.core.Boolean = false;
 
@@ -92,17 +105,9 @@ namespace nasl.ui {
 
     export class VanStepOptions {
         @Prop({
-            title: '图标',
-            description: '步骤自定义图标',
-            setter: {
-                type: 'iconSelect',
-            },
-        })
-        icon: nasl.core.String;
-
-        @Prop({
+            group: '主要属性',
             title: '状态',
-            description: '设置步骤条的状态，分别为等待中、进行中、已完成、错误',
+            description: '设置步骤条的状态，分别为等待中、进行中、已完成、错误。',
             setter: {
                 type: 'enumSelect',
                 titles: ['等待中', '进行中', '已完成', '错误'],
@@ -111,14 +116,29 @@ namespace nasl.ui {
         status: 'wait' | 'process' | 'finish' | 'error';
 
         @Prop({
+            group: '主要属性',
+            title: '图标',
+            description: '自定义步骤的图标',
+        })
+        icon: icon;
+
+        @Prop({
+            group: '状态属性',
             title: '只读',
-            description: '正常显示，但禁止选择、输入',
+            description: '正常显示，但禁止选择/输入',
+            setter: {
+                type: 'switch',
+            },
         })
         readonly: nasl.core.Boolean = false;
 
         @Prop({
+            group: '状态属性',
             title: '禁用',
-            description: '置灰显示，且禁止任何交互',
+            description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
+            setter: {
+                type: 'switch',
+            },
         })
         disabled: nasl.core.Boolean = false;
 
