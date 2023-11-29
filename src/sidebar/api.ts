@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '侧边导航',
     })
     export class VanSidebar extends VueComponent {
-
         constructor(options?: Partial<VanSidebarOptions>) { super(); }
     }
 
@@ -16,6 +15,7 @@ namespace nasl.ui {
             title: '菜单值',
             description: '菜单值',
             syncMode: 'both',
+            group: '数据属性'
         })
         value: nasl.core.String;
 
@@ -29,7 +29,7 @@ namespace nasl.ui {
             title: '切换导航时',
             description: '切换导航时',
         })
-        onChange: () => void;
+        onChange: (index: nasl.core.Integer) => void;
 
         @Slot({
             title: 'undefined',
@@ -49,7 +49,6 @@ namespace nasl.ui {
         title: '菜单项',
     })
     export class VanSidebarItem extends VueComponent {
-
         constructor(options?: Partial<VanSidebarItemOptions>) { super(); }
     }
 
@@ -58,6 +57,7 @@ namespace nasl.ui {
             title: '菜单项值',
             description: '菜单项值',
             syncMode: 'both',
+            group: '数据属性'
         })
         value: nasl.core.String;
 
@@ -70,30 +70,35 @@ namespace nasl.ui {
         @Prop({
             title: '是否显示徽章',
             description: '是否显示徽章',
+            group: '数据属性'
         })
         showbaget: nasl.core.Boolean = true;
 
         @Prop({
             title: '徽章值',
             description: '徽章值',
+            group: '数据属性'
         })
         badge: nasl.core.Integer;
 
         @Prop({
             title: '徽章最大值',
             description: '徽章最大值',
+            group: '数据属性'
         })
         badgemax: nasl.core.Integer;
 
         @Prop({
             title: '禁用',
             description: '禁用',
+            group: '状态属性'
         })
         disabled: nasl.core.Boolean = false;
 
         @Prop({
             title: '链接类型',
             description: '链接类型',
+            group: '交互属性',
             setter: {
                 type: 'enumSelect',
                 titles: ['页面跳转', '下载链接'],
@@ -110,6 +115,7 @@ namespace nasl.ui {
         @Prop({
             title: '打开方式',
             description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
+            group: '交互属性',
             setter: {
                 type: 'enumSelect',
                 titles: ['新窗口', '当前窗口', '父级窗口', '顶级窗口'],
@@ -121,6 +127,12 @@ namespace nasl.ui {
             title: '点击菜单项',
             description: '点击选项导致 value 变化时触发',
         })
-        onClick: () => void;
+        onClick: (index: nasl.core.Integer) => void;
+
+        @Slot({
+          title: 'undefined',
+          description: '插入内容',
+        })
+        slotTitle: () => Array<VueComponent>;
     }
 }
