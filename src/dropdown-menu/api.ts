@@ -256,7 +256,7 @@ namespace nasl.ui {
             title: '点击后',
             description: '点击某一项后触发',
         })
-        onClick: (event: nasl.ui.MouseEvent) => void;
+        onClick: (event: MouseEvent) => void;
 
         @Slot({
             title: 'undefined',

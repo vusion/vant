@@ -97,7 +97,7 @@ namespace nasl.ui {
             group: '数据属性',
             title: '徽章值',
         })
-        badge: nasl.core.Integer;
+        badge: nasl.core.Decimal;
 
         @Prop({
             group: '数据属性',
@@ -149,6 +149,6 @@ namespace nasl.ui {
             title: '点击标签项',
             description: '点击选项导致 value 变化时触发',
         })
-        onClick: (event: nasl.ui.MouseEvent) => void;
+        onClick: (event: MouseEvent) => void;
     }
 }

@@ -79,7 +79,7 @@ namespace nasl.ui {
             group: '数据属性',
             title: '徽章值',
         })
-        badge: nasl.core.Integer;
+        badge: nasl.core.Decimal;
 
         @Prop({
             group: '数据属性',
@@ -88,7 +88,7 @@ namespace nasl.ui {
                 type: 'numberInput',
             },
         })
-        badgemax: nasl.core.Integer;
+        badgemax: nasl.core.Decimal;
 
         @Prop({
             group: '主要属性',

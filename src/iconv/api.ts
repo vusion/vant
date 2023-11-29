@@ -15,8 +15,11 @@ namespace nasl.ui {
         @Prop({
             group: '主要属性',
             title: '图标',
+            setter: {
+                type: 'iconSelect',
+            },
         })
-        name: icon = '';
+        name: nasl.core.String;
 
         @Prop({
             group: '主要属性',
@@ -60,7 +63,7 @@ namespace nasl.ui {
             title: '点击后',
             description: '点击此项时触发',
         })
-        onClick: () => void;
+        onClick: (event: MouseEvent) => void;
 
         @Slot({
             title: 'undefined',

@@ -7,8 +7,6 @@ namespace nasl.ui {
         description: '用于计时',
     })
     export class VanCountDownNew extends VueComponent {
-
-
         @Method({
             title: 'undefined',
             description: '开始计时器',
@@ -42,9 +40,11 @@ namespace nasl.ui {
             description: '设置定时时间',
             setter: {
                 type: 'numberInput',
+                precision: 0,
+                min: 0,
             },
         })
-        timer: nasl.core.Decimal = 60;
+        timer: nasl.core.Integer = 60;
 
         @Prop({
             group: '主要属性',

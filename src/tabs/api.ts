@@ -140,7 +140,7 @@ namespace nasl.ui {
             group: '数据属性',
             title: '徽章值',
         })
-        badge: nasl.core.String, nasl.core.Decimal;
+        badge: nasl.core.Decimal;
 
         @Prop({
             group: '数据属性',

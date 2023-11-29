@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '用于展示操作的当前进度。',
     })
     export class VanProgress extends VueComponent {
-
         constructor(options?: Partial<VanProgressOptions>) { super(); }
     }
 
@@ -17,8 +16,12 @@ namespace nasl.ui {
             title: '值',
             description: '用于标识进度条的值',
             syncMode: 'both',
+            setter: {
+                type: 'numberInput',
+                min: 0,
+            }
         })
-        value: nasl.core.Decimal | nasl.core.String;
+        value: nasl.core.Decimal;
 
         @Prop({
             group: '主要属性',

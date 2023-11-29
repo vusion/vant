@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '用于循环播放展示一组消息通知。',
     })
     export class VanNoticeBar extends VueComponent {
-
         constructor(options?: Partial<VanNoticeBarOptions>) { super(); }
     }
 
@@ -79,7 +78,7 @@ namespace nasl.ui {
             title: '点击通知栏时触发',
             description: '点击通知栏时触发',
         })
-        onClick: () => void;
+        onClick: (event: MouseEvent) => void;
 
         @Event({
             title: '关闭通知栏时触发',

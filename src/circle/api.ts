@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '圆环形的进度条组件',
     })
     export class VanCircle extends VueComponent {
-
         constructor(options?: Partial<VanCircleOptions>) { super(); }
     }
 
@@ -23,6 +22,7 @@ namespace nasl.ui {
             syncMode: 'both',
             setter: {
                 type: 'numberInput',
+                min: 0,
             },
         })
         value: nasl.core.Decimal;
@@ -41,8 +41,11 @@ namespace nasl.ui {
             group: '样式属性',
             title: '圆环直径',
             description: '设置圆环直径，单位为px。',
+            setter: {
+                type: 'numberInput',
+            }
         })
-        size: numer = 100;
+        size: nasl.core.Decimal = 100;
 
         @Prop({
             group: '样式属性',
@@ -65,8 +68,12 @@ namespace nasl.ui {
         @Prop({
             group: '样式属性',
             title: '进度条宽度',
+            setter: {
+                type: 'numberInput',
+                min: 0,
+            }
         })
-        strokeWidth: nasl.core.Decimal | nasl.core.String = 40;
+        strokeWidth: nasl.core.Decimal = 40;
 
         @Slot({
             title: '默认',

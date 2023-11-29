@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '用于标记关键词和概括主要内容。',
     })
     export class VanTag extends VueComponent {
-
         constructor(options?: Partial<VanTagOptions>) { super(); }
     }
 
@@ -74,7 +73,7 @@ namespace nasl.ui {
             title: '点击时',
             description: '点击时触发',
         })
-        onClick: () => void;
+        onClick: (event: MouseEvent) => void;
 
         @Event({
             title: '关闭前',

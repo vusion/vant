@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '滑动输入条，用于在给定的范围内选择一个值。',
     })
     export class VanSlider extends VueComponent {
-
         constructor(options?: Partial<VanSliderOptions>) { super(); }
     }
 
@@ -122,13 +121,13 @@ namespace nasl.ui {
             title: '改变时',
             description: '进度变化时实时触发',
         })
-        onInput: () => void;
+        onInput: (value: nasl.core.Decimal) => void;
 
         @Event({
             title: '改变后',
             description: '进度变化且结束拖动后触发',
         })
-        onChange: () => void;
+        onChange: (value: nasl.core.Decimal) => void;
 
         @Event({
             title: '开始拖动时触发',

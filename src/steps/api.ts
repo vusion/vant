@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。',
     })
     export class VanSteps<T> extends VueComponent {
-
         constructor(options?: Partial<VanStepsOptions<T>>) { super(); }
     }
 
@@ -18,7 +17,7 @@ namespace nasl.ui {
             description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
             designerValue: [{}, {}, {}],
         })
-        dataSource: Array<Item> | Function;
+        dataSource: nasl.collection.List<T>;
 
         @Prop({
             group: '数据属性',
@@ -34,9 +33,11 @@ namespace nasl.ui {
             syncMode: 'both',
             setter: {
                 type: 'numberInput',
+                precision: 0,
+                min: 0,
             },
         })
-        value: nasl.core.Decimal = 0;
+        value: nasl.core.Integer = 0;
 
         @Prop({
             group: '主要属性',
@@ -73,7 +74,7 @@ namespace nasl.ui {
             title: '切换步骤时',
             description: '切换步骤时',
         })
-        onChangestep: () => void;
+        onChangestep: (step: nasl.core.Integer) => void;
 
         @Slot({
             title: 'undefined',
@@ -99,7 +100,6 @@ namespace nasl.ui {
         title: '步骤条项',
     })
     export class VanStep extends VueComponent {
-
         constructor(options?: Partial<VanStepOptions>) { super(); }
     }
 
@@ -119,8 +119,11 @@ namespace nasl.ui {
             group: '主要属性',
             title: '图标',
             description: '自定义步骤的图标',
+            setter: {
+                type: 'iconSelect',
+            },
         })
-        icon: icon;
+        icon: nasl.core.String;
 
         @Prop({
             group: '状态属性',
@@ -146,12 +149,12 @@ namespace nasl.ui {
             title: '点击标题',
             description: '点击标题',
         })
-        onClicktitle: () => void;
+        onClicktitle: (index: nasl.core.Integer) => void;
 
         @Event({
             title: '点击图标',
             description: '点击图标',
         })
-        onClickicon: () => void;
+        onClickicon: (index: nasl.core.Integer) => void;
     }
 }

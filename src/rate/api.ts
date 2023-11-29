@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '用于对事物进行评级操作。',
     })
     export class VanRate extends VueComponent {
-
         constructor(options?: Partial<VanRateOptions>) { super(); }
     }
 
@@ -19,6 +18,7 @@ namespace nasl.ui {
             syncMode: 'both',
             setter: {
                 type: 'numberInput',
+                min: 0,
             },
         })
         value: nasl.core.Decimal;
@@ -33,14 +33,20 @@ namespace nasl.ui {
         @Prop({
             group: '主要属性',
             title: '选中时的图标名称或图片链接',
+            setter: {
+                type: 'iconSelect',
+            }
         })
-        icon: icon;
+        icon: nasl.core.String;
 
         @Prop({
             group: '主要属性',
             title: '未选中时的图标名称或图片链接',
+            setter: {
+                type: 'iconSelect',
+            }
         })
-        voidIcon: icon;
+        voidIcon: nasl.core.String;
 
         @Prop({
             group: '交互属性',
@@ -77,14 +83,14 @@ namespace nasl.ui {
             title: '图标大小',
             description: '设置图标大小，单位为px。',
         })
-        size: numer = 20;
+        size: nasl.core.Decimal = 20;
 
         @Prop({
             group: '样式属性',
             title: '图标间距',
             description: '设置图标间距，最小值为0。',
         })
-        gutter: numer | nasl.core.String = 4;
+        gutter: nasl.core.Decimal = 4;
 
         @Prop({
             group: '样式属性',
@@ -108,6 +114,6 @@ namespace nasl.ui {
             title: '分值变化时',
             description: '分值变化时',
         })
-        onChange: () => void;
+        onChange: (value: nasl.core.Decimal) => void;
     }
 }
