@@ -7,7 +7,9 @@ namespace nasl.ui {
         description: '内部元素按照一定的规则布局',
     })
     export class VanLinearLayout extends VueComponent {
-
+        constructor(options?: Partial<VanLinearLayoutOptions>) {
+          super();
+        }
 
         @Method({
             title: '打开加载中',
@@ -20,7 +22,6 @@ namespace nasl.ui {
             description: '关闭加载中',
         })
         closeLoading(): void {}
-        constructor(options?: Partial<VanLinearLayoutOptions>) { super(); }
     }
 
     export class VanLinearLayoutOptions {
@@ -176,16 +177,16 @@ namespace nasl.ui {
         })
         loadingText: nasl.core.String = '';
 
-        @Event({
-            title: '点击后',
-            description: '点击此项时触发',
-        })
-        onClick: () => void;
-
         @Slot({
             title: 'undefined',
             description: '内容',
         })
         slotDefault: () => Array<VueComponent>;
+
+        @Event({
+          title: '点击后',
+          description: '点击此项时触发',
+        })
+        onClick: () => void;
     }
 }
