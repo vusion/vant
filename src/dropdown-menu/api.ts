@@ -74,7 +74,7 @@ namespace nasl.ui {
             title: 'undefined',
             description: '切换菜单展示状态',
         })
-        toggle(): void {}
+        toggle(show: nasl.core.Boolean, options?: { immediate: nasl.core.Boolean } ): void {}
     }
 
     export class VanDropdownItemOptions {
@@ -110,7 +110,7 @@ namespace nasl.ui {
             title: '点击选项导致 value 变化时触发',
             description: '点击选项导致 value 变化时触发',
         })
-        onChange: () => void;
+        onChange: (value: nasl.core.String) => void;
 
         @Event({
             title: '打开菜单栏时触发',
@@ -237,7 +237,7 @@ namespace nasl.ui {
             title: '点击后',
             description: '点击某一项后触发',
         })
-        onClick: () => void;
+        onClick: (event: nasl.ui.MouseEvent) => void;
 
         @Slot({
             title: 'undefined',
