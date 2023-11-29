@@ -7,8 +7,9 @@ namespace nasl.ui {
         description: '内部元素按照一定的规则布局',
     })
     export class VanRow extends VueComponent {
-
-        constructor(options?: Partial<VanRowOptions>) { super(); }
+        constructor(options?: Partial<VanRowOptions>) {
+          super();
+        }
     }
 
     export class VanRowOptions {
@@ -19,9 +20,18 @@ namespace nasl.ui {
             bindHide: true,
             setter: {
                 type: 'capsules',
-                titles: ['正常', '弹性布局'],
-                icons: ['layout-block', 'layout-flex'],
-                tooltips: ['块级布局', '弹性布局'],
+                options: [{
+                  title: '正常',
+                  icon: 'layout-block',
+                  tooltip: '块级布局',
+                }, {
+                  title: '弹性布局',
+                  icon: 'layout-flex',
+                  tooltip: '弹性布局',
+                }],
+                // titles: ['正常', '弹性布局'],
+                // icons: ['layout-block', 'layout-flex'],
+                // tooltips: ['块级布局', '弹性布局'],
             },
         })
         type: '-' | 'flex' = 'flex';
@@ -31,9 +41,30 @@ namespace nasl.ui {
             bindHide: true,
             setter: {
                 type: 'capsules',
-                titles: ['左对齐', '居中对齐', '右对齐', '平均分布(两端不留空)', '水平分布-左右留空'],
-                icons: ['horizontal-justify-start', 'horizontal-justify-center', 'horizontal-justify-end', 'horizontal-justify-space-between', 'horizontal-justify-space-around'],
-                tooltips: ['左对齐', '居中对齐', '右对齐', '平均分布(两端不留空)', '平均分布'],
+                options: [{
+                  title: '左对齐',
+                  icon: 'horizontal-justify-start',
+                  tooltip: '左对齐',
+                }, {
+                  title: '居中对齐',
+                  icon: 'horizontal-justify-center',
+                  tooltip: '居中对齐',
+                }, {
+                  title: '右对齐',
+                  icon: 'horizontal-justify-end',
+                  tooltip: '右对齐',
+                }, {
+                  title: '平均分布(两端不留空)',
+                  icon: 'horizontal-justify-space-between',
+                  tooltip: '平均分布(两端不留空)',
+                }, {
+                  title: '平均分布',
+                  icon: 'horizontal-justify-space-around',
+                  tooltip: '平均分布',
+                }],
+                // titles: ['左对齐', '居中对齐', '右对齐', '平均分布(两端不留空)', '水平分布-左右留空'],
+                // icons: ['horizontal-justify-start', 'horizontal-justify-center', 'horizontal-justify-end', 'horizontal-justify-space-between', 'horizontal-justify-space-around'],
+                // tooltips: ['左对齐', '居中对齐', '右对齐', '平均分布(两端不留空)', '平均分布'],
             },
             if: _ => _.type === 'flex',
         })
@@ -44,9 +75,30 @@ namespace nasl.ui {
             bindHide: true,
             setter: {
                 type: 'capsules',
-                titles: ['顶对齐', '垂直居中', '底对齐', '行内文字基线对齐', '占满容器高度'],
-                icons: ['horizontal-alignment-start', 'horizontal-alignment-center', 'horizontal-alignment-end', 'horizontal-alignment-baseline', 'horizontal-alignment-stretch'],
-                tooltips: ['顶对齐', '垂直居中', '底对齐', '行内文字基线对齐', '占满容器高度'],
+                options: [{
+                  title: '顶对齐',
+                  icon: 'horizontal-alignment-start',
+                  tooltip: '顶对齐',
+                }, {
+                  title: '垂直居中',
+                  icon: 'horizontal-alignment-center',
+                  tooltip: '垂直居中',
+                }, {
+                  title: '底对齐',
+                  icon: 'horizontal-alignment-end',
+                  tooltip: '底对齐',
+                }, {
+                  title: '行内文字基线对齐',
+                  icon: 'horizontal-alignment-baseline',
+                  tooltip: '行内文字基线对齐',
+                }, {
+                  title: '占满容器高度',
+                  icon: 'horizontal-alignment-stretch',
+                  tooltip: '占满容器高度',
+                }],
+                // titles: ['顶对齐', '垂直居中', '底对齐', '行内文字基线对齐', '占满容器高度'],
+                // icons: ['horizontal-alignment-start', 'horizontal-alignment-center', 'horizontal-alignment-end', 'horizontal-alignment-baseline', 'horizontal-alignment-stretch'],
+                // tooltips: ['顶对齐', '垂直居中', '底对齐', '行内文字基线对齐', '占满容器高度'],
             },
             if: _ => _.type === 'flex',
         })
@@ -81,8 +133,9 @@ namespace nasl.ui {
         description: '内部元素行内列布局',
     })
     export class VanCol extends VueComponent {
-
-        constructor(options?: Partial<VanColOptions>) { super(); }
+        constructor(options?: Partial<VanColOptions>) {
+          super();
+        }
     }
 
     export class VanColOptions {
