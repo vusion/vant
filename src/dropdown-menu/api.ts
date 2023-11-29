@@ -7,8 +7,9 @@ namespace nasl.ui {
         description: '向下弹出的菜单列表。',
     })
     export class VanDropdownMenu extends VueComponent {
-
-        constructor(options?: Partial<VanDropdownMenuOptions>) { super(); }
+      constructor(options?: Partial<VanDropdownMenuOptions>) {
+        super();
+      }
     }
 
     export class VanDropdownMenuOptions {
@@ -65,14 +66,15 @@ namespace nasl.ui {
         title: '菜单项',
     })
     export class VanDropdownItem extends VueComponent {
-
+        constructor(options?: Partial<VanDropdownItemOptions>) {
+          super();
+        }
 
         @Method({
             title: 'undefined',
             description: '切换菜单展示状态',
         })
         toggle(): void {}
-        constructor(options?: Partial<VanDropdownItemOptions>) { super(); }
     }
 
     export class VanDropdownItemOptions {
@@ -80,8 +82,9 @@ namespace nasl.ui {
             title: '菜单项值',
             description: '菜单项值',
             syncMode: 'both',
+            group: '数据属性'
         })
-        valueprop: nasl.core.String;
+        value: nasl.core.String;
 
         @Prop({
             title: '标题',
@@ -92,12 +95,14 @@ namespace nasl.ui {
         @Prop({
             title: '禁用',
             description: '禁用',
+            group: '状态属性'
         })
         disabled: nasl.core.Boolean = false;
 
         @Prop({
             title: '是否通过点击菜单子项关闭',
             description: '是否通过点击菜单子项关闭',
+            group: '交互属性'
         })
         shutself: nasl.core.Boolean = true;
 
@@ -137,8 +142,9 @@ namespace nasl.ui {
         title: '菜单子项',
     })
     export class VanDropdownItemSon extends VueComponent {
-
-        constructor(options?: Partial<VanDropdownItemSonOptions>) { super(); }
+        constructor(options?: Partial<VanDropdownItemSonOptions>) {
+          super();
+        }
     }
 
     export class VanDropdownItemSonOptions {
@@ -173,6 +179,7 @@ namespace nasl.ui {
         @Prop({
             title: '值',
             description: '值',
+            group: '数据属性'
         })
         value: nasl.core.String;
 
@@ -200,6 +207,7 @@ namespace nasl.ui {
         @Prop({
             title: '链接类型',
             description: '链接类型',
+            group: '交互属性',
             setter: {
                 type: 'enumSelect',
                 titles: ['页面跳转', '下载链接'],
@@ -210,12 +218,14 @@ namespace nasl.ui {
         @Prop({
             title: '链接',
             description: '链接地址',
+            group: '交互属性',
         })
         hrefAndTo: nasl.core.String;
 
         @Prop({
             title: '打开方式',
             description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
+            group: '交互属性',
             setter: {
                 type: 'enumSelect',
                 titles: ['新窗口', '当前窗口', '父级窗口', '顶级窗口'],
