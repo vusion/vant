@@ -39,8 +39,13 @@ namespace nasl.ui {
             group: '数据属性',
             title: '数据源',
             description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
+            // { "province_list": { "110000": "北京市" }, "city_list": { "110100": "北京市" }, "county_list": { "110101": "东城区", "110102": "西城区", "110105": "朝阳区", "110106": "丰台区", "110107": "石景山区", "110108": "海淀区", "110109": "门头沟区", "110111": "房山区", "110112": "通州区", "110113": "顺义区", "110114": "昌平区", "110115": "大兴区", "110116": "怀柔区", "110117": "平谷区", "110118": "密云区", "110119": "延庆区" } };
         })
-        areaListprop: array = {"province_list":{"110000":"北京市"},"city_list":{"110100":"北京市"},"county_list":{"110101":"东城区","110102":"西城区","110105":"朝阳区","110106":"丰台区","110107":"石景山区","110108":"海淀区","110109":"门头沟区","110111":"房山区","110112":"通州区","110113":"顺义区","110114":"昌平区","110115":"大兴区","110116":"怀柔区","110117":"平谷区","110118":"密云区","110119":"延庆区"}};
+        areaListprop: {
+            province_list: { [key: string]: string };
+            city_list: { [key: string]: string };
+            county_list: { [key: string]: string };
+        }
 
         @Prop({
             group: '主要属性',
@@ -65,9 +70,10 @@ namespace nasl.ui {
             title: '可见选项个数',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
         })
-        visibleItemCount: nasl.core.Decimal = 6;
+        visibleItemCount: nasl.core.Integer = 6;
 
         @Prop({
             group: '主要属性',
@@ -75,9 +81,10 @@ namespace nasl.ui {
             description: '显示列数，3-省市区，2-省市，1-省',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
         })
-        columnsNum: nasl.core.Decimal = 3;
+        columnsNum: nasl.core.Integer = 3;
 
         @Prop({
             group: '主要属性',
@@ -134,7 +141,11 @@ namespace nasl.ui {
             title: '点击右上方完成按钮',
             description: '点击右上方完成按钮',
         })
-        onConfirm: () => void;
+        onConfirm: (
+          values: nasl.collection.List<{ code: nasl.core.String, name: nasl.core.String }>,
+          index: nasl.collection.List<nasl.core.Integer>,
+          value: nasl.core.String,
+        ) => void;
 
         @Event({
             title: '点击取消按钮时',

@@ -7,14 +7,13 @@ namespace nasl.ui {
         description: '提供多个选项集合供用户选择，支持单列选择和多列级联。',
     })
     export class VanPickerson<T, V, M extends boolean, P extends boolean> extends VueComponent {
-
+        constructor(options?: Partial<VanPickersonOptions<T, V, M, P>>) { super(); }
 
         @Method({
             title: 'undefined',
             description: '重新加载数据',
         })
         reload(): void {}
-        constructor(options?: Partial<VanPickersonOptions<T, V, M, P>>) { super(); }
     }
 
     export class VanPickersonOptions<T, V, M extends boolean, P extends boolean> {
@@ -23,18 +22,6 @@ namespace nasl.ui {
             description: '左侧标题',
         })
         private labelField: nasl.core.String;
-
-        @Prop({
-            title: '数据源(一维数组)',
-            description: '一个包含字符串或对象的数组',
-        })
-        private columnsprop: array;
-
-        @Prop({
-            title: '选项对象中，选项文字对应的键名',
-            description: '选项对象中，选项文字对应的键名',
-        })
-        private valueKey: nasl.core.String = 'text';
 
         @Prop({
             title: '默认选中项的索引',
@@ -59,7 +46,7 @@ namespace nasl.ui {
             description: '用于标识选择器的值',
             syncMode: 'both',
         })
-        value: nasl.core.String, nasl.core.Decimal = '';
+        value: M extends true ? nasl.collection.List<V> : V;
 
         @Prop({
             group: '数据属性',
@@ -67,28 +54,28 @@ namespace nasl.ui {
             description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑',
             designerValue: [{}, {}, {}, {}, {}, {}],
         })
-        dataSource: Array<Item> | Function | object | DataSource;
+        dataSource: nasl.collection.List<T>;
 
         @Prop({
             group: '数据属性',
             title: '数据类型',
             description: '集合类型每一元素的数据类型',
         })
-        dataSchema: schema;
+        dataSchema: T;
 
         @Prop({
             group: '数据属性',
             title: '值字段',
             description: '选项值的字段名',
         })
-        valueField: nasl.core.String = 'value';
+        valueField: (item: T) => V;
 
         @Prop({
             group: '数据属性',
             title: '文本字段',
             description: '选项文本的字段名',
         })
-        textField: nasl.core.String = 'text';
+        textField: (item: T) => nasl.core.String;
 
         @Prop<VanPickersonOptions<T, V, M, P>, 'pageSize'>({
             group: '数据属性',
@@ -106,7 +93,10 @@ namespace nasl.ui {
             title: '初始化排序规则',
             description: '设置数据初始化时的排序字段和顺序规则',
         })
-        sorting: { field: nasl.core.String, order: nasl.core.String, compare: Function } = { field: undefined, order: 'desc' };
+        sorting: {
+          field: nasl.core.String,
+          order: nasl.core.String,
+        } = { field: '', order: 'desc' };
 
         @Prop<VanPickersonOptions<T, V, M, P>, 'matchMethod'>({
             group: '数据属性',
@@ -173,10 +163,11 @@ namespace nasl.ui {
             description: '设置可见选项个数',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
             if: _ => _.type === 'picker',
         })
-        visibleItemCount: nasl.core.Decimal = 6;
+        visibleItemCount: nasl.core.Integer = 6;
 
         @Prop({
             group: '主要属性',
@@ -281,7 +272,7 @@ namespace nasl.ui {
             title: '点击完成按钮时触发',
             description: '回调参数：选中值，选中值对应的索引',
         })
-        onConfirm: () => void;
+        onConfirm: (event: M extends true ? nasl.collection.List<V> : V) => void;
 
         @Event({
             title: '点击取消按钮时触发',
