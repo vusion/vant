@@ -7,7 +7,7 @@ namespace nasl.ui {
         description: '时间选择，支持日期、年月、时分等维度',
     })
     export class VanDatetimePicker extends VueComponent {
-
+        constructor(options?: Partial<VanDatetimePickerOptions>) { super(); }
 
         @Method({
             title: 'undefined',
@@ -20,7 +20,6 @@ namespace nasl.ui {
             description: '关闭',
         })
         close(): void {}
-        constructor(options?: Partial<VanDatetimePickerOptions>) { super(); }
     }
 
     export class VanDatetimePickerOptions {
@@ -86,14 +85,14 @@ namespace nasl.ui {
             syncMode: 'both',
             if: _ => _.range === true,
         })
-        startValue: nasl.core.String,nasl.core.Decimal,Date;
+        startValue: nasl.core.String;
 
         @Prop<VanDatetimePickerOptions, 'endValue'>({
             title: '结束值',
             syncMode: 'both',
             if: _ => _.range === true,
         })
-        endValue: nasl.core.String,nasl.core.Decimal,Date;
+        endValue: nasl.core.String;
 
         @Prop({
             title: '是否使用新版外观',
@@ -111,53 +110,69 @@ namespace nasl.ui {
             syncMode: 'both',
             if: _ => _.range !== true,
         })
-        value: nasl.core.String,nasl.core.Decimal,Date;
+        value: nasl.core.String;
 
         @Prop({
             group: '数据属性',
             title: '最小日期',
             description: '当时间选择类型为datetime时可选的最小时间，精确到分钟, 默认为十年前',
         })
-        minDate: Date;
+        minDate: nasl.core.String;
 
         @Prop({
             group: '数据属性',
             title: '最大日期',
             description: '当时间选择类型为datetime时可选的最大时间，精确到分钟, 默认为十年后',
         })
-        maxDate: Date;
+        maxDate: nasl.core.String;
 
         @Prop<VanDatetimePickerOptions, 'maxHour'>({
             group: '数据属性',
             title: '最大小时',
             description: '当时间选择类型为 time 时',
             if: _ => _.type === 'time',
+            setter: {
+                type: 'numberInput',
+                precision: 0,
+            },
         })
-        maxHour: nasl.core.String, nasl.core.Decimal = 23;
+        maxHour: nasl.core.Integer = 23;
 
         @Prop<VanDatetimePickerOptions, 'minHour'>({
             group: '数据属性',
             title: '最小小时',
             description: '当时间选择类型为 time 时',
             if: _ => _.type === 'time',
+            setter: {
+              type: 'numberInput',
+              precision: 0,
+            },
         })
-        minHour: nasl.core.String, nasl.core.Decimal = 0;
+        minHour: nasl.core.Integer = 0;
 
         @Prop<VanDatetimePickerOptions, 'maxMinute'>({
             group: '数据属性',
             title: '最大分钟',
             description: '当时间选择类型为 time 时',
             if: _ => _.type === 'time',
+            setter: {
+              type: 'numberInput',
+              precision: 0,
+            },
         })
-        maxMinute: nasl.core.String, nasl.core.Decimal = 59;
+        maxMinute: nasl.core.Integer = 59;
 
         @Prop<VanDatetimePickerOptions, 'minMinute'>({
             group: '数据属性',
             title: '最小分钟',
             description: '当时间选择类型为 time 时',
             if: _ => _.type === 'time',
+            setter: {
+              type: 'numberInput',
+              precision: 0,
+            },
         })
-        minMinute: nasl.core.String, nasl.core.Decimal = 0;
+        minMinute: nasl.core.Integer = 0;
 
         @Prop<VanDatetimePickerOptions, 'converter'>({
             group: '主要属性',
@@ -167,7 +182,7 @@ namespace nasl.ui {
                 type: 'enumSelect',
                 titles: ['yyyy/MM/dd HH:mm:ss', 'Unix 时间戳', 'JSON', 'Date 对象'],
             },
-            if: _ => _.type === 'datetime' || _.type === 'date' || _.type === 'year-month',
+            if: _ => _.type === 'datetime' || _.type === 'date',
         })
         converter: 'format' | 'timestamp' | 'json' | 'date' = 'format';
 
@@ -228,7 +243,7 @@ namespace nasl.ui {
             title: '确认',
             description: '点击完成按钮时触发的事件',
         })
-        onConfirm: () => void;
+        onConfirm: (event: nasl.core.String) => void;
 
         @Event({
             title: '取消',
@@ -253,7 +268,6 @@ namespace nasl.ui {
         title: '时间选择事件插槽',
     })
     export class VanDatetimePickerActionSlot extends VueComponent {
-
         constructor(options?: Partial<VanDatetimePickerActionSlotOptions>) { super(); }
     }
 
@@ -272,7 +286,6 @@ namespace nasl.ui {
         title: '事件插槽',
     })
     export class VanPickerActionSlot extends VueComponent {
-
         constructor(options?: Partial<VanPickerActionSlotOptions>) { super(); }
     }
 
