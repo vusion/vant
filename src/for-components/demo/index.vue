@@ -1,37 +1,92 @@
 <template>
   <demo-section>
+
+    <demo-block title="自适应宽度，换行（老模板）">
+      <van-for-components :data-source="[1,2,3,4,5,6,7,8,9,0]" :colnum="0">
+        <template #default="current">
+          <van-row gutter="0" :vusion-disabled-copy="current" :vusion-disabled-addslot="current" :vusion-disabled-cut="current">
+            <van-col span="24" :vusion-disabled-copy="current" :vusion-disabled-cut="current">
+              <div style="width: 100px;">{{ current.item }}</div>
+            </van-col>
+          </van-row>
+        </template>
+      </van-for-components>
+    </demo-block>
     <demo-block title="自适应宽度，换行">
       <van-for-components :data-source="[1,2,3,4,5,6,7,8,9,0]" :colnum="0">
-        <template #default="scope">
-            <van-row gutter="0"  vusion-disabled-copy vusion-disabled-addslot vusion-disabled-cut>
-              <van-col span="24" vusion-disabled-copy vusion-disabled-cut>
-                <div style="width: 100px;">{{ scope.item }}</div>
+        <template #default="current">
+          <van-row gutter="0" :vusion-disabled-copy="current" :vusion-disabled-addslot="current" :vusion-disabled-cut="current">
+            <van-col span="24" :vusion-disabled-copy="current" :vusion-disabled-cut="current">
+              <div style="width: 100px;">{{ current.item }}</div>
+            </van-col>
+          </van-row>
+        </template>
+        <template #item="current">
+          <van-row gutter="0"  vusion-disabled-copy vusion-disabled-addslot vusion-disabled-cut>
+            <van-col span="24" vusion-disabled-copy vusion-disabled-cut>
+              <div style="width: 100px;">{{ current.item }}</div>
+            </van-col>
+          </van-row>
+        </template>
+      </van-for-components>
+    </demo-block>
+
+    <demo-block title="自适应宽度，不换行（老模板）">
+      <van-for-components :data-source="[1,2,3,4,5,6,7,8,9,0]" :colnum="0" :wrap="false">
+        <template #default="current">
+            <van-row gutter="0" :vusion-disabled-copy="current" :vusion-disabled-addslot="current" :vusion-disabled-cut="current">
+              <van-col span="24" :vusion-disabled-copy="current" :vusion-disabled-cut="current">
+                <div style="width: 100px;">{{ current.item }}</div>
               </van-col>
             </van-row>
         </template>
       </van-for-components>
     </demo-block>
-
     <demo-block title="自适应宽度，不换行">
       <van-for-components :data-source="[1,2,3,4,5,6,7,8,9,0]" :colnum="0" :wrap="false">
-        <template #default="scope">
-            <van-row gutter="0"  vusion-disabled-copy vusion-disabled-addslot vusion-disabled-cut>
-              <van-col span="24" vusion-disabled-copy vusion-disabled-cut>
-                <div style="width: 100px;">{{ scope.item }}</div>
+        <template #default="current">
+            <van-row gutter="0" :vusion-disabled-copy="current" :vusion-disabled-addslot="current" :vusion-disabled-cut="current">
+              <van-col span="24" :vusion-disabled-copy="current" :vusion-disabled-cut="current">
+                <div style="width: 100px;">{{ current.item }}</div>
+              </van-col>
+            </van-row>
+        </template>
+        <template #item="current">
+          <van-row gutter="0"  vusion-disabled-copy vusion-disabled-addslot vusion-disabled-cut>
+            <van-col span="24" vusion-disabled-copy vusion-disabled-cut>
+              <div style="width: 100px;">{{ current.item }}</div>
+            </van-col>
+          </van-row>
+        </template>
+      </van-for-components>
+    </demo-block>
+
+    <demo-block title="2列，换行（老模板）">
+      <van-for-components :data-source="[1,2,3,4,5,6,7,8,9,0]" :colnum="2" :wrap="true">
+        <template #default="current">
+            <van-row gutter="0" :vusion-disabled-copy="current" :vusion-disabled-addslot="current" :vusion-disabled-cut="current">
+              <van-col span="24" :vusion-disabled-copy="current" :vusion-disabled-cut="current">
+                <div style="width: 100px;">{{ current.item }}</div>
               </van-col>
             </van-row>
         </template>
       </van-for-components>
     </demo-block>
-
     <demo-block title="2列，换行">
       <van-for-components :data-source="[1,2,3,4,5,6,7,8,9,0]" :colnum="2" :wrap="true">
-        <template #default="scope">
-            <van-row gutter="0"  vusion-disabled-copy vusion-disabled-addslot vusion-disabled-cut>
-              <van-col span="24" vusion-disabled-copy vusion-disabled-cut>
-                <div style="width: 100px;">{{ scope.item }}</div>
+        <template #default="current">
+            <van-row gutter="0" :vusion-disabled-copy="current" :vusion-disabled-addslot="current" :vusion-disabled-cut="current">
+              <van-col span="24" :vusion-disabled-copy="current" :vusion-disabled-cut="current">
+                <div style="width: 100px;">{{ current.item }}</div>
               </van-col>
             </van-row>
+        </template>
+        <template #item="current">
+          <van-row gutter="0"  vusion-disabled-copy vusion-disabled-addslot vusion-disabled-cut>
+            <van-col span="24" vusion-disabled-copy vusion-disabled-cut>
+              <div style="width: 100px;">{{ current.item }}</div>
+            </van-col>
+          </van-row>
         </template>
       </van-for-components>
     </demo-block>

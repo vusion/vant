@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '组件列表',
     })
     export class VanForComponents<T> extends VueComponent {
-
         constructor(options?: Partial<VanForComponentsOptions<T>>) { super(); }
     }
 
@@ -17,14 +16,14 @@ namespace nasl.ui {
             title: '数据源',
             description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
         })
-        dataSource: array;
+        dataSource: nasl.collection.List<T>;
 
         @Prop({
             group: '数据属性',
             title: '数据类型',
             description: '数据源返回的数据结构的类型，自动识别类型进行展示说明。',
         })
-        dataSchema: schema;
+        dataSchema: T;
 
         @Prop({
             group: '主要属性',
@@ -63,6 +62,12 @@ namespace nasl.ui {
             title: 'undefined',
             description: '内容自定义',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: (current?: Current<T>) => Array<VueComponent>;
+
+        @Slot({
+          title: 'undefined',
+          description: '内容自定义',
+        })
+        slotItem: (current: Current<T>) => Array<VueComponent>;
     }
 }

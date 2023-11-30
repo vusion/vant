@@ -333,6 +333,10 @@ module.exports = {
                 className: 'hide-in-weapp',
               },
               {
+                path: 'for-components',
+                title: 'ForComponents 组件列表',
+              },
+              {
                 path: 'notice-bar',
                 title: 'NoticeBar 通知栏',
               },
@@ -370,10 +374,6 @@ module.exports = {
               {
                 path: 'tag',
                 title: 'Tag 标签',
-              },
-              {
-                path: 'for-components',
-                title: '组件列表',
               },
               {
                 path: 'gallery',
