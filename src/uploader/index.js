@@ -294,15 +294,15 @@ export default createComponent({
           files = files.slice(0, maxCount);
         }
 
-        Promise.all(files.map((file) => readFile(file, this.resultType))).then(
-          (contents) => {
+        Promise.all(
+          files.map((file) => readFile(file, this.resultType))
+        ).then((contents) => {
             const list = files.map((file, index) => {
               const result = {
                 file,
                 status: '',
                 message: '',
-                uid:
-                  file.uid !== undefined ? file.uid : Date.now() + files.length,
+                uid: file.uid !== undefined ? file.uid : Date.now() + files.length,
                 name: file.name,
                 size: file.size,
                 percent: 0,
@@ -324,10 +324,7 @@ export default createComponent({
             file: files,
             status: '',
             message: '',
-            uid:
-              file.uid !== undefined
-                ? file.uid
-                : Date.now() + (files?.length || 1),
+            uid: file.uid !== undefined ? file.uid : Date.now() + (files?.length || 1),
             name: file.name,
             size: file.size,
           };
@@ -428,7 +425,7 @@ export default createComponent({
       this.$emit('input', this.toValue(this.currentValue));
       this.$emit('update:value', this.toValue(this.currentValue));
       this.$emit('update:fileListProp', this.toValue(this.currentValue));
-      this.$emit('delete', file, this.getDetail(index));
+      this.$emit('delete', { ...file, index }, this.getDetail(index));
     },
 
     resetInput() {
@@ -684,8 +681,12 @@ export default createComponent({
       };
       const xhr = ajax({
         ...requestData,
-        onStart: () => {
-          this.$emit('start');
+        onStart: (e) => {
+          this.$emit('start', {
+            e,
+            file: file.file,
+            item: file,
+          });
         },
         onProgress: (e) => {
           // file.status = 'uploading';

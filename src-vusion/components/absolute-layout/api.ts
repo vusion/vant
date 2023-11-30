@@ -15,7 +15,10 @@ namespace nasl.ui {
             title: '点击后',
             description: '点击此项时触发',
         })
-        onClick: (event: MouseEvent) => void;
+        onClick: (event: {
+            stopPropagation: () => void,
+            preventDefault: () => void,
+        }) => void;
 
         @Slot({
             title: 'undefined',

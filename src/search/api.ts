@@ -122,7 +122,10 @@ namespace nasl.ui {
             title: '点击搜索图标时触发',
             description: '点击搜索图标时触发',
         })
-        onIconsearch: (event: MouseEvent) => void;
+        onIconsearch: (event: {
+            stopPropagation: () => void,
+            preventDefault: () => void,
+        }) => void;
 
         @Event({
             title: '输入框内容变化时触发',

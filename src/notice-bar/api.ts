@@ -78,7 +78,10 @@ namespace nasl.ui {
             title: '点击通知栏时触发',
             description: '点击通知栏时触发',
         })
-        onClick: (event: MouseEvent) => void;
+        onClick: (event: {
+            stopPropagation: () => void,
+            preventDefault: () => void,
+        }) => void;
 
         @Event({
             title: '关闭通知栏时触发',

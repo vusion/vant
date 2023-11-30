@@ -149,6 +149,9 @@ namespace nasl.ui {
             title: '点击标签项',
             description: '点击选项导致 value 变化时触发',
         })
-        onClick: (event: MouseEvent) => void;
+        onClick: (event: {
+            stopPropagation: () => void,
+            preventDefault: () => void,
+        }) => void;
     }
 }

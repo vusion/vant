@@ -7,14 +7,13 @@ namespace nasl.ui {
         description: '上传文件。',
     })
     export class VanUploader extends VueComponent {
-
+        constructor(options?: Partial<VanUploaderOptions>) { super(); }
 
         @Method({
             title: 'undefined',
             description: '主动调起文件选择，由于浏览器安全限制，只在触发操作的上下文中调用才有效',
         })
         chooseFile(): void {}
-        constructor(options?: Partial<VanUploaderOptions>) { super(); }
     }
 
     export class VanUploaderOptions {
@@ -34,7 +33,11 @@ namespace nasl.ui {
             description: '用于标识文件上传的值',
             syncMode: 'both',
         })
-        value: Array;
+        value: nasl.collection.List<{
+            name: nasl.core.String,
+            url: nasl.core.String,
+            size: nasl.core.Integer,
+        }> | nasl.core.String;
 
         @Prop({
             group: '数据属性',
@@ -71,7 +74,7 @@ namespace nasl.ui {
             group: '数据属性',
             title: '附加数据',
         })
-        data: object;
+        data: Object;
 
         @Prop({
             group: '数据属性',
@@ -123,15 +126,24 @@ namespace nasl.ui {
         @Prop({
             group: '主要属性',
             title: '列表数量上限',
+            setter: {
+                type: 'numberInput',
+                precision: 0,
+                min: 0,
+            },
         })
-        maxCount: nasl.core.Decimal | nasl.core.String = 999;
+        maxCount: nasl.core.Integer = 999;
 
         @Prop({
             group: '主要属性',
             title: '最大文件大小',
             description: '设置最大文件大小,单位为MB，默认为50MB',
+            setter: {
+                type: 'numberInput',
+                min: 0,
+            },
         })
-        maxSize: nasl.core.Decimal,nasl.core.String = 50;
+        maxSize: nasl.core.Decimal = 50;
 
         @Prop({
             group: '主要属性',
@@ -169,10 +181,11 @@ namespace nasl.ui {
             title: '文件有效期天数',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
             if: _ => _.ttl === true,
         })
-        ttlValue: nasl.core.Decimal;
+        ttlValue: nasl.core.Integer;
 
         @Prop({
             group: '主要属性',
@@ -220,43 +233,142 @@ namespace nasl.ui {
             title: '点击',
             description: '点击上传区域时触发',
         })
-        onClickUpload: () => void;
+        onClickUpload: (event: {
+            stopPropagation: () => void,
+            preventDefault: () => void,
+        }) => void;
 
         @Event({
             title: '文件大小超额',
             description: '文件大小超额时触发',
         })
-        onOversize: () => void;
+        onOversize: (event: {
+            file: {
+              name: nasl.core.String,
+              size: nasl.core.Integer,
+              type: nasl.core.String,
+            },
+            message: nasl.core.String,
+            name: nasl.core.String,
+            size: nasl.core.Integer,
+            status: nasl.core.String,
+            uid: nasl.core.Integer,
+        }) => void;
 
         @Event({
             title: '删除预览',
             description: '删除文件预览时触发',
         })
-        onDelete: () => void;
+        onDelete: (event: {
+          massage: nasl.core.String,
+          name: nasl.core.String,
+          size: nasl.core.Integer,
+          uid: nasl.core.Integer,
+          url: nasl.core.String,
+          index: nasl.core.Integer,
+        }) => void;
 
         @Event({
             title: '上传开始时',
             description: '上传开始时触发',
         })
-        onStart: () => void;
+        onStart: (event: {
+            file: {
+              name: nasl.core.String,
+              size: nasl.core.Integer,
+              type: nasl.core.String,
+            },
+            item: {
+              message: nasl.core.String,
+              name: nasl.core.String,
+              percent: nasl.core.Integer,
+              size: nasl.core.Integer,
+              status: nasl.core.String,
+              uid: nasl.core.Integer,
+              url: nasl.core.String,
+            },
+        }) => void;
 
         @Event({
             title: '上传中',
             description: '上传中进度',
         })
-        onProgress: () => void;
+        onProgress: (event: {
+          file: {
+            name: nasl.core.String,
+            size: nasl.core.Integer,
+            type: nasl.core.String,
+          },
+          item: {
+            message: nasl.core.String,
+            name: nasl.core.String,
+            percent: nasl.core.Integer,
+            size: nasl.core.Integer,
+            status: nasl.core.String,
+            uid: nasl.core.Integer,
+            url: nasl.core.String,
+            response: {
+              filePath: nasl.core.String,
+              msg: nasl.core.String,
+              result: nasl.core.String,
+              success: nasl.core.Boolean,
+            },
+          },
+        }) => void;
 
         @Event({
             title: '上传成功时',
             description: '上传成功时触发',
         })
-        onSuccess: (event: nasl.ui.UploadEvent) => void;
+        onSuccess: (event: {
+            file: {
+              name: nasl.core.String,
+              size: nasl.core.Integer,
+              type: nasl.core.String,
+            },
+            item: {
+              message: nasl.core.String,
+              name: nasl.core.String,
+              percent: nasl.core.Integer,
+              size: nasl.core.Integer,
+              status: nasl.core.String,
+              uid: nasl.core.Integer,
+              url: nasl.core.String,
+              response: {
+                filePath: nasl.core.String,
+                msg: nasl.core.String,
+                result: nasl.core.String,
+                success: nasl.core.Boolean,
+              },
+            }
+        }) => void;
 
         @Event({
             title: '上传错误时',
             description: '上传报错时触发',
         })
-        onError: (event: nasl.ui.UploadErrorEvent) => void;
+        onError: (event: {
+            file: {
+              name: nasl.core.String,
+              size: nasl.core.Integer,
+              type: nasl.core.String,
+            },
+            item: {
+              message: nasl.core.String,
+              name: nasl.core.String,
+              percent: nasl.core.Integer,
+              size: nasl.core.Integer,
+              status: nasl.core.String,
+              uid: nasl.core.Integer,
+              url: nasl.core.String,
+              response: {
+                filePath: nasl.core.String,
+                msg: nasl.core.String,
+                result: nasl.core.String,
+                success: nasl.core.Boolean,
+              },
+            }
+        }) => void;
 
         @Slot({
             title: '配置文件上传图标',

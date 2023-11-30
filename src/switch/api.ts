@@ -46,7 +46,10 @@ namespace nasl.ui {
             title: '点击',
             description: '点击时触发',
         })
-        onClick: (event: MouseEvent) => void;
+        onClick: (event: {
+            stopPropagation: () => void,
+            preventDefault: () => void,
+        }) => void;
 
         @Event({
             title: '状态切换',

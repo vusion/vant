@@ -73,7 +73,10 @@ namespace nasl.ui {
             title: '点击时',
             description: '点击时触发',
         })
-        onClick: (event: MouseEvent) => void;
+        onClick: (event: {
+            stopPropagation: () => void,
+            preventDefault: () => void,
+        }) => void;
 
         @Event({
             title: '关闭前',
