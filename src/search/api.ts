@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '内部元素按照一定的规则布局',
     })
     export class VanSearch extends VueComponent {
-
         constructor(options?: Partial<VanSearchOptions>) { super(); }
     }
 
@@ -24,14 +23,14 @@ namespace nasl.ui {
             description: '用于标识搜索框的值',
             syncMode: 'both',
         })
-        value: nasl.core.Any;
+        value: nasl.core.String;
 
         @Prop({
             group: '数据属性',
             title: '最大字符数',
             description: '输入框内输入的最大字符数',
         })
-        maxlength: nasl.core.String | nasl.core.Decimal;
+        maxlength: nasl.core.Integer;
 
         @Prop({
             group: '主要属性',
@@ -117,37 +116,37 @@ namespace nasl.ui {
             title: '确定搜索时触发',
             description: '确定搜索时触发',
         })
-        onSearch: () => void;
+        onSearch: (event: nasl.core.String) => void;
 
         @Event({
             title: '点击搜索图标时触发',
             description: '点击搜索图标时触发',
         })
-        onIconsearch: () => void;
+        onIconsearch: (event: MouseEvent) => void;
 
         @Event({
             title: '输入框内容变化时触发',
             description: '输入框内容变化时触发',
         })
-        onInput: () => void;
+        onInput: (event: nasl.core.String) => void;
 
         @Event({
             title: '输入框获得焦点时触发',
             description: '输入框获得焦点时触发',
         })
-        onFocus: () => void;
+        onFocus: (event: FocusEvent) => void;
 
         @Event({
             title: '输入框失去焦点时触发',
             description: '输入框失去焦点时触发',
         })
-        onBlur: () => void;
+        onBlur: (event: FocusEvent) => void;
 
         @Event({
             title: '点击输入区域时触发',
             description: '点击输入区域时触发',
         })
-        onClickinput: () => void;
+        onClickinput: (event: FocusEvent) => void;
 
         @Event({
             title: '点击清除图标时触发',
