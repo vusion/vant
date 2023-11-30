@@ -6,12 +6,11 @@ namespace nasl.ui {
         icon: 'cascade-select',
         description: '级联选择框，用于多层级数据的选择，典型场景为省市区选择',
     })
-    export class VanCascader extends VueComponent {
-
-        constructor(options?: Partial<VanCascaderOptions>) { super(); }
+    export class VanCascader<T, V> extends VueComponent {
+        constructor(options?: Partial<VanCascaderOptions<T, V>>) { super(); }
     }
 
-    export class VanCascaderOptions {
+    export class VanCascaderOptions<T, V> {
         @Prop({
             title: '左侧标题',
             description: '左侧标题',
@@ -28,18 +27,12 @@ namespace nasl.ui {
         treeDisplay: nasl.core.Boolean = false;
 
         @Prop({
-            title: '自定义 options 结构中的字段',
-            description: '自定义 options 结构中的字段',
-        })
-        private fieldNamesp: nasl.core.String, object = {'text':'','value':'','children':'children'};
-
-        @Prop({
             group: '数据属性',
             title: '值',
             description: '用于标识级联选择的值',
             syncMode: 'both',
         })
-        value: nasl.core.String, nasl.core.Decimal = '';
+        value: V;
 
         @Prop({
             group: '数据属性',
@@ -47,33 +40,33 @@ namespace nasl.ui {
             description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
             designerValue: [{}],
         })
-        dataSource: array;
+        dataSource: nasl.collection.List<T>;
 
         @Prop({
             group: '数据属性',
             title: '文本字段名',
             description: '文本的字段名',
         })
-        textField: nasl.core.String = 'text';
+        textField: (item: T) => nasl.core.String;
 
         @Prop({
             group: '数据属性',
             title: '值字段名',
             description: '选项值的字段名',
         })
-        valueField: nasl.core.String = 'value';
+        valueField: (item: T) => V;
 
         @Prop({
             group: '数据属性',
             title: '父级值字段名',
         })
-        parentField: nasl.core.String = 'parentId';
+        parentField: (item: T) => nasl.core.String;
 
         @Prop({
             group: '数据属性',
             title: '子级值字段名',
         })
-        childrenField: nasl.core.String = 'children';
+        childrenField: (item: T) => nasl.core.String;
 
         @Prop({
             group: '主要属性',
@@ -148,13 +141,17 @@ namespace nasl.ui {
             title: '全部选项选择完成后触发',
             description: '全部选项选择完成后触发',
         })
-        onFinish: () => void;
+        onFinish: (event: {
+          value: V;
+        }) => void;
 
         @Event({
             title: '选中项变化时触发',
             description: '选中项变化时触发',
         })
-        onChange: () => void;
+        onChange: (event: {
+          value: V;
+        }) => void;
 
         @Slot({
             title: 'option',

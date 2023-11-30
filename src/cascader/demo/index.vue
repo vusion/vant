@@ -12,6 +12,7 @@
           :closeOnClickOverlay="true"
           @close="base.show = false"
           @finish="onFinish1('base', $event)"
+          @change="onChange"
         >
         <template #title><van-text text="地区"></van-text></template>
       </van-cascader>
@@ -181,6 +182,9 @@ export default {
         value,
         result,
       };
+    },
+    onChange(value) {
+      console.log('onChange', arguments);
     },
   },
 };
