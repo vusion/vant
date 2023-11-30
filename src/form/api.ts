@@ -7,14 +7,13 @@ namespace nasl.ui {
         description: '具有数据收集、校验和提交功能的表单，包含输入框、选择框、复选框、单选框等元素。',
     })
     export class VanForm extends VueComponent {
-
+        constructor(options?: Partial<VanFormOptions>) { super(); }
 
         @Method({
             title: 'undefined',
             description: '验证表单，支持传入 name 来验证单个或部分表单项',
         })
-        validate(): void {}
-        constructor(options?: Partial<VanFormOptions>) { super(); }
+        validate(name?: nasl.core.String | nasl.collection.List<nasl.core.String>): void {}
     }
 
     export class VanFormOptions {
@@ -42,13 +41,13 @@ namespace nasl.ui {
             title: '验证通过',
             description: '提交表单且验证通过后触发',
         })
-        onSubmit: () => void;
+        onSubmit: (event: {}) => void;
 
         @Event({
             title: '验证不通过',
             description: '提交表单且验证不通过后触发',
         })
-        onFailed: () => void;
+        onFailed: (event: { values: {} }) => void;
 
         @Slot({
             title: 'undefined',
@@ -68,7 +67,6 @@ namespace nasl.ui {
         title: '表单项',
     })
     export class VanField extends VueComponent {
-
         constructor(options?: Partial<VanFieldOptions>) { super(); }
     }
 
@@ -141,8 +139,9 @@ namespace nasl.ui {
             group: '主要属性',
             title: '验证规则',
             description: '设置验证规则，简写格式为字符串类型，完整格式或混合格式为数组类型',
+            bindHide: true,
         })
-        rules: nasl.core.String | Array;
+        rules: nasl.collection.List<nasl.core.String>;
 
         @Prop({
             group: '样式属性',

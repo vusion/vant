@@ -7,7 +7,7 @@ namespace nasl.ui {
         description: '基本的表单输入组件',
     })
     export class VanFieldinput extends VueComponent {
-
+        constructor(options?: Partial<VanFieldinputOptions>) { super(); }
 
         @Method({
             title: 'undefined',
@@ -26,7 +26,6 @@ namespace nasl.ui {
             description: '清空输入框。',
         })
         clear(): void {}
-        constructor(options?: Partial<VanFieldinputOptions>) { super(); }
     }
 
     export class VanFieldinputOptions {
@@ -87,7 +86,7 @@ namespace nasl.ui {
             },
             if: _ => _.inputstyle === 'password',
         })
-        maxlength: nasl.core.Decimal = 6;
+        maxlength: nasl.core.Integer = 6;
 
         @Prop<VanFieldinputOptions, 'keyboardTitle'>({
             group: '主要属性',
@@ -188,25 +187,25 @@ namespace nasl.ui {
             title: '输入时',
             description: '输入时触发。',
         })
-        onInput: () => void;
+        onInput: (event: Event) => void;
 
         @Event({
             title: '改变后',
             description: '值变化时触发。（注意：与原生事件不同）',
         })
-        onChange: () => void;
+        onChange: (event: nasl.core.String) => void;
 
         @Event({
             title: '获得焦点',
             description: '获得焦点时触发。',
         })
-        onFocus: () => void;
+        onFocus: (event: FocusEvent) => void;
 
         @Event({
             title: '失去焦点',
             description: '失去焦点时触发。',
         })
-        onBlur: () => void;
+        onBlur: (event: FocusEvent) => void;
 
         @Event({
             title: '清空后',
@@ -218,14 +217,12 @@ namespace nasl.ui {
             title: '输入完成时',
             description: '输入完成时后触发。',
         })
-        onEnoughkey: () => void;
+        onEnoughkey: (event: nasl.core.String) => void;
 
         @Event({
             title: '点击完成按钮时',
             description: '点击定制键盘完成按钮时触发。',
         })
-        onClickConfirm: () => void;
-
-
+        onClickConfirm: (event: nasl.core.String) => void;
     }
 }
