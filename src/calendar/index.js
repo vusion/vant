@@ -431,7 +431,7 @@ export default createComponent({
       const { date } = item;
 
       this.tempValue = date;
-      this.$emit('select', dayjs(date).toDate());
+      this.$emit('select', dayjs(date).format('YYYY-MM-DD'));
 
       if (!this.showConfirm) {
         this.onConfirm();

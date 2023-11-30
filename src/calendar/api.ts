@@ -7,14 +7,13 @@ namespace nasl.ui {
         description: '日历组件用于选择日期或日期区间',
     })
     export class VanCalendar extends VueComponent {
-
+        constructor(options?: Partial<VanCalendarOptions>) { super(); }
 
         @Method({
             title: '日期重置',
             description: '将选中的日期重置到指定日期，未传参时会重置到默认日期',
         })
         reset(): void {}
-        constructor(options?: Partial<VanCalendarOptions>) { super(); }
     }
 
     export class VanCalendarOptions {
@@ -49,21 +48,21 @@ namespace nasl.ui {
             description: '用于标识日期选择的值',
             syncMode: 'both',
         })
-        value: nasl.core.String, Date, Array;
+        value: nasl.core.String;
 
         @Prop({
             group: '数据属性',
             title: '最小日期',
             description: '最小日期，默认为一年前。',
         })
-        minDate: Date,String;
+        minDate: nasl.core.String;
 
         @Prop({
             group: '数据属性',
             title: '最大日期',
             description: '最大日期，默认为一年后。',
         })
-        maxDate: Date,String;
+        maxDate: nasl.core.String;
 
         @Prop({
             group: '主要属性',
@@ -115,13 +114,13 @@ namespace nasl.ui {
             title: '确认',
             description: '点击完成按钮时触发的事件',
         })
-        onConfirm: () => void;
+        onConfirm: (event: nasl.core.Date) => void;
 
         @Event({
             title: '点击',
             description: '点击并选中任意日期时触发',
         })
-        onSelect: () => void;
+        onSelect: (event: nasl.core.Date) => void;
 
         @Event({
             title: '取消',
