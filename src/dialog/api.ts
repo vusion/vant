@@ -7,7 +7,7 @@ namespace nasl.ui {
         description: '弹出框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。',
     })
     export class VanDialog extends VueComponent {
-
+        constructor(options?: Partial<VanDialogOptions>) { super(); }
 
         @Method({
             title: 'undefined',
@@ -20,7 +20,6 @@ namespace nasl.ui {
             description: '关闭弹窗',
         })
         closeModal(): void {}
-        constructor(options?: Partial<VanDialogOptions>) { super(); }
     }
 
     export class VanDialogOptions {

@@ -7,7 +7,7 @@ namespace nasl.ui {
         description: '点击，弹出气泡式的卡片浮层。',
     })
     export class VanPopupCombination extends VueComponent {
-
+        constructor(options?: Partial<VanPopupCombinationOptions>) { super(); }
 
         @Method({
             title: 'undefined',
@@ -44,7 +44,7 @@ namespace nasl.ui {
             description: '在下次 UI 渲染时一块更新 popper 实例，比`update()`性能要好。参考 [Popper.scheduleUpdate()](https://popper.js.org/popper-documentation.html#Popper.scheduleUpdate)。',
         })
         scheduleUpdate(): void {}
-        constructor(options?: Partial<VanPopupCombinationOptions>) { super(); }
+
     }
 
     export class VanPopupCombinationOptions {
@@ -60,7 +60,7 @@ namespace nasl.ui {
 
         @Prop({
             title: '弹出层偏移',
-            description: `弹出层偏移，如：'10', '10px 10px', '10% 10%', 第一个值表示水平偏移，第二个值表示垂直位移, 默认单位是`px``,
+            description: `弹出层偏移，如：'10', '10px 10px', '10% 10%', 第一个值表示水平偏移，第二个值表示垂直位移, 默认单位是'px'`,
         })
         private offset: nasl.core.String = '0';
 
@@ -116,9 +116,10 @@ namespace nasl.ui {
             description: '当触发方式为“悬浮”时，提示内容消失延迟时间，单位为ms。',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
         })
-        hideDelay: nasl.core.Decimal = 200;
+        hideDelay: nasl.core.Integer = 200;
 
         @Prop({
             group: '主要属性',
@@ -155,37 +156,29 @@ namespace nasl.ui {
             title: '弹出前',
             description: '弹出前触发。',
         })
-        private onBeforeOpen: (event: EventTarget) => void;
+        onBeforeOpen: (event: {
+            preventDefault: () => void,
+        }) => void;
 
         @Event({
             title: '弹出时',
             description: '弹出时触发。',
         })
-        onOpen: (event: nasl.ui.BaseEvent) => void;
+        onOpen: () => void;
 
         @Event({
             title: '隐藏前',
             description: '隐藏前触发。',
         })
-        private onBeforeClose: (event: EventTarget) => void;
+        onBeforeClose: (event: {
+            preventDefault: () => void,
+        }) => void;
 
         @Event({
             title: '隐藏后',
             description: '隐藏时触发。',
         })
-        onClose: (event: nasl.ui.BaseEvent) => void;
-
-        @Event({
-            title: '展开折叠前',
-            description: '@deprecated',
-        })
-        private onBeforeToggle: () => void;
-
-        @Event({
-            title: '展开折叠后',
-            description: '@deprecated',
-        })
-        private onToggle: () => void;
+        onClose: () => void;
 
         @Slot({
             title: 'undefined',

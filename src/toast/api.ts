@@ -7,7 +7,7 @@ namespace nasl.ui {
         description: '在页面中间弹出黑色半透明提示，用于消息通知、加载提示、操作结果提示等场景。',
     })
     export class VanToast extends VueComponent {
-
+        constructor(options?: Partial<VanToastOptions>) { super(); }
 
         @Method({
             title: 'undefined',
@@ -20,7 +20,7 @@ namespace nasl.ui {
             description: '关闭弹出消息',
         })
         close(): void {}
-        constructor(options?: Partial<VanToastOptions>) { super(); }
+
     }
 
     export class VanToastOptions {
@@ -53,17 +53,21 @@ namespace nasl.ui {
         @Prop<VanToastOptions, 'customIcon'>({
             title: '自定义图标',
             if: _ => _.type === 'custom',
+            setter: {
+              type: 'iconSelect',
+            }
         })
-        customIcon: icon;
+        customIcon: nasl.core.String;
 
         @Prop({
             title: '停留时间',
             description: '自动关闭的延时，单位毫秒。设为 0 时不自动关闭',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
         })
-        duration: nasl.core.Decimal = 2000;
+        duration: nasl.core.Integer = 2000;
 
         @Prop({
             title: '位置',
