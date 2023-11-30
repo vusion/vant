@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '多项中选择一个或多个时使用',
     })
     export class VanCheckboxGroup<T, V> extends VueComponent {
-
         constructor(options?: Partial<VanCheckboxGroupOptions<T, V>>) { super(); }
     }
 
@@ -18,14 +17,14 @@ namespace nasl.ui {
             description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
             designerValue: [{}, {}, {}],
         })
-        dataSource: Array<Item> | Function;
+        dataSource: nasl.collection.List<T>;
 
         @Prop({
             group: '数据属性',
             title: '数据类型',
             description: '数据源返回的数据结构的类型，自动识别类型进行展示说明。',
         })
-        dataSchema: schema;
+        dataSchema: T;
 
         @Prop({
             group: '数据属性',
@@ -33,7 +32,7 @@ namespace nasl.ui {
             description: '用于标识多选组的值',
             syncMode: 'both',
         })
-        value: V;
+        value: nasl.collection.List<V>;
 
         @Prop({
             group: '数据属性',
@@ -41,9 +40,10 @@ namespace nasl.ui {
             description: '最大可选数量(0为不限制)',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
         })
-        max: nasl.core.Decimal;
+        max: nasl.core.Integer;
 
         @Prop({
             group: '数据属性',
@@ -51,9 +51,10 @@ namespace nasl.ui {
             description: '最小可选数量(0为不限制)',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
         })
-        min: nasl.core.Decimal = 0;
+        min: nasl.core.Integer = 0;
 
         @Prop<VanCheckboxGroupOptions<T, V>, 'valueField'>({
             group: '数据属性',
@@ -63,7 +64,7 @@ namespace nasl.ui {
                 type: 'propertySelect',
             },
         })
-        valueField: nasl.core.String = 'value';
+        valueField: (item: T) => V;
 
         @Prop({
             group: '主要属性',
@@ -82,10 +83,11 @@ namespace nasl.ui {
             description: '水平排列时每行展示的选项数量',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
             if: _ => _.direction === 'horizontal',
         })
-        column: nasl.core.Decimal;
+        column: nasl.core.Integer;
 
         @Prop({
             group: '主要属性',
@@ -113,7 +115,7 @@ namespace nasl.ui {
             title: '值改变',
             description: '选择值改变时触发',
         })
-        onChange: (event: nasl.ui.ChangeEvent) => void;
+        onChange: (event: { value: nasl.collection.List<V> }) => void;
 
         @Slot({
             title: 'undefined',
@@ -126,7 +128,7 @@ namespace nasl.ui {
                 },
             ],
         })
-        slotDefault: () => Array<VanCheckbox>;
+        slotDefault: () => Array<VanCheckbox<V>>;
 
         @Slot({
             title: 'undefined',
@@ -155,7 +157,7 @@ namespace nasl.ui {
             title: '选中值',
             description: '当前选中的值',
         })
-        label: nasl.core.Any;
+        label: V;
 
         @Prop({
             group: '主要属性',
@@ -214,6 +216,6 @@ namespace nasl.ui {
             title: '点击后',
             description: '点击某一项后触发',
         })
-        onClick: () => void;
+        onClick: (event: MouseEvent) => void;
     }
 }
