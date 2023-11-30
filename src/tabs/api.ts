@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '选项卡切换组件，常用于平级区域大块内容的收纳和展现',
     })
     export class VanTabs extends VueComponent {
-
         constructor(options?: Partial<VanTabsOptions>) { super(); }
     }
 
@@ -83,13 +82,13 @@ namespace nasl.ui {
             title: '点击标签',
             description: '点击标签时触发',
         })
-        onClick: () => void;
+        onClick: (event: nasl.core.String) => void;
 
         @Event({
             title: '标签改变',
             description: '当前激活的标签改变时触发',
         })
-        onChange: () => void;
+        onChange: (event: nasl.core.String) => void;
 
         @Slot({
             title: '默认',
@@ -109,7 +108,6 @@ namespace nasl.ui {
         title: '标签页',
     })
     export class VanTab extends VueComponent {
-
         constructor(options?: Partial<VanTabOptions>) { super(); }
     }
 
@@ -139,6 +137,9 @@ namespace nasl.ui {
         @Prop({
             group: '数据属性',
             title: '徽章值',
+            setter: {
+              type: 'numberInput',
+            },
         })
         badge: nasl.core.Decimal;
 
