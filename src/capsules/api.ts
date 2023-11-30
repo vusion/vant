@@ -171,6 +171,6 @@ namespace nasl.ui {
                 },
             ],
         })
-        slotDefault: () => Array<UCapsulesItem>;
+        slotDefault: () => Array<VanCapsulesItem>;
     }
 }

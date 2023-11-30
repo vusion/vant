@@ -17,7 +17,7 @@
         "baseUrl": ".",
         "declaration": true,
         "emitDeclarationOnly": true,
-        "outFile": "../../low-code-fe/packages/nasl/sandbox/stdlib/nasl.ui.h5.ts",
+        "outFile": "./dist-theme/nasl.ui.h5.ts",
         "lib": [
             "esnext",
             "dom"
@@ -27,7 +27,7 @@
             "@/*": ["*"]
         }
     },
-    "include": [                
+    "include": [
         "./src/*/api.ts",
         "./src-vusion/component/*/api.ts",
     ]
