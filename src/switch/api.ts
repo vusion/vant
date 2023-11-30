@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '开关',
     })
     export class VanSwitch extends VueComponent {
-
         constructor(options?: Partial<VanSwitchOptions>) { super(); }
     }
 
@@ -47,12 +46,12 @@ namespace nasl.ui {
             title: '点击',
             description: '点击时触发',
         })
-        onClick: () => void;
+        onClick: (event: MouseEvent) => void;
 
         @Event({
             title: '状态切换',
             description: '开关状态切换时触发',
         })
-        onChange: () => void;
+        onChange: (event: nasl.core.Boolean) => void;
     }
 }
