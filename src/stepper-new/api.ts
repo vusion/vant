@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '数字输入框',
     })
     export class VanStepperNew extends VueComponent {
-
         constructor(options?: Partial<VanStepperNewOptions>) { super(); }
     }
 
@@ -21,19 +20,25 @@ namespace nasl.ui {
                 type: 'numberInput',
             },
         })
-        value: nasl.core.Decimal;
+        value: nasl.core.Decimal | nasl.core.Integer;
 
         @Prop({
             group: '数据属性',
             title: '最小值',
+            setter: {
+                type: 'numberInput',
+            }
         })
-        min: nasl.core.String, nasl.core.Decimal;
+        min: nasl.core.Decimal;
 
         @Prop({
             group: '数据属性',
             title: '最大值',
+            setter: {
+                type: 'numberInput',
+            }
         })
-        max: nasl.core.String, nasl.core.Decimal;
+        max: nasl.core.Decimal;
 
         @Prop({
             group: '数据属性',
@@ -41,10 +46,11 @@ namespace nasl.ui {
             description: '固定显示的小数位数',
             setter: {
                 type: 'numberInput',
+                precision: 0,
                 min: 0,
             },
         })
-        decimalLength: nasl.core.Decimal;
+        decimalLength: nasl.core.Integer;
 
         @Prop<VanStepperNewOptions, 'decimalPlaces'>({
             group: '主要属性',
@@ -53,7 +59,10 @@ namespace nasl.ui {
             bindHide: true,
             if: _ => _.advancedFormat.enable === false,
         })
-        decimalPlaces: { places: nasl.core.Decimal, omit: nasl.core.Boolean } = { places: '', omit: true };
+        decimalPlaces: {
+          places: nasl.core.Integer | nasl.core.String,
+          omit: nasl.core.Boolean
+        } = { places: '', omit: true };
 
         @Prop<VanStepperNewOptions, 'thousandths'>({
             group: '主要属性',
@@ -83,7 +92,10 @@ namespace nasl.ui {
             description: '输入框中显示的单位',
             bindHide: true,
         })
-        unit: { type: nasl.core.String, value: nasl.core.String } = { type: 'prefix', value: '' };
+        unit: {
+          type: nasl.core.String,
+          value: nasl.core.String
+        } = { type: 'prefix', value: '' };
 
         @Prop({
             group: '主要属性',
@@ -91,7 +103,10 @@ namespace nasl.ui {
             description: '用来控制数字的展示格式',
             bindHide: true,
         })
-        advancedFormat: { enable: nasl.core.Boolean, value: nasl.core.String } = { enable: false, value: '' };
+        advancedFormat: {
+          enable: nasl.core.Boolean,
+          value: nasl.core.String
+        } = { enable: false, value: '' };
 
         @Prop({
             group: '主要属性',
@@ -185,7 +200,7 @@ namespace nasl.ui {
         align: 'left' | 'center' | 'right' = 'center';
 
         @Event({
-            title: '点击按钮',
+            title: '点击加减按钮',
             description: '点击加减按钮时触发',
         })
         onClick: () => void;
@@ -194,6 +209,6 @@ namespace nasl.ui {
             title: '值改变',
             description: '值改变时触发',
         })
-        onChange: () => void;
+        onChange: (event: nasl.core.Decimal | nasl.core.Integer) => void;
     }
 }
