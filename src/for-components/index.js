@@ -37,10 +37,6 @@ export default createComponent({
   },
   methods: {
     divide(arr) {
-      if (this.inDesigner()) {
-        arr = Array.from({ length: 10 }, (v, k) => k + 1);
-      }
-
       if (!this.colnum) return [...arr];
 
       const num = this.colnum;

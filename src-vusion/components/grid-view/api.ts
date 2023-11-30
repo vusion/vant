@@ -6,18 +6,17 @@ namespace nasl.ui {
         icon: 'grid-view',
         description: '数据网格',
     })
-    export class VanGridView<T, V, P extends boolean, M extends boolean, C extends string> extends VueComponent {
-
+    export class VanGridView<T, V, P extends boolean, M extends boolean> extends VueComponent {
+        constructor(options?: Partial<VanGridViewOptions<T, V, P, M>>) { super(); }
 
         @Method({
             title: 'undefined',
             description: '清除缓存，重新加载',
         })
         reload(): void {}
-        constructor(options?: Partial<VanGridViewOptions<T, V, P, M, C>>) { super(); }
     }
 
-    export class VanGridViewOptions<T, V, P extends boolean, M extends boolean, C extends string> {
+    export class VanGridViewOptions<T, V, P extends boolean, M extends boolean> {
         @Prop({
             title: '值',
             description: '当前选择的值',
@@ -29,19 +28,13 @@ namespace nasl.ui {
             title: '文本字段名',
             description: '选项文本的字段名',
         })
-        private field: nasl.core.String = 'text';
-
-        @Prop({
-            title: '文本字段名',
-            description: '选项文本的字段名',
-        })
-        private textField: nasl.core.String = 'text';
+        private textField: (item: T) => nasl.core.String;
 
         @Prop({
             title: '值字段名',
             description: '选项值的字段名',
         })
-        private valueField: nasl.core.String = 'value';
+        private valueField: (item: T) => V;
 
         @Prop({
             title: '可取消',
@@ -74,28 +67,14 @@ namespace nasl.ui {
             description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
             designerValue: [{}, {}, {}, {}, {}, {}, {}, {}],
         })
-        dataSource: Array<Item> | Function | object | DataSource;
+        dataSource: nasl.collection.List<T>;
 
         @Prop({
             group: '数据属性',
             title: '数据类型',
             description: '数据源返回的数据结构的类型，自动识别类型进行展示说明。',
         })
-        dataSchema: schema;
-
-        @Prop({
-            group: '数据属性',
-            title: '匹配方法',
-            description: '过滤时的匹配方法',
-        })
-        private matchMethod: nasl.core.String, Function = 'includes';
-
-        @Prop({
-            group: '数据属性',
-            title: '大小写敏感',
-            description: '过滤时是否区分大小写',
-        })
-        private caseSensitive: nasl.core.String, Function = 'includes';
+        dataSchema: T;
 
         @Prop({
             group: '主要属性',
@@ -114,9 +93,10 @@ namespace nasl.ui {
             description: '设置分页大小，单位为px。',
             setter: {
                 type: 'numberInput',
+                precision: 0,
             },
         })
-        pageSize: nasl.core.Decimal = 20;
+        pageSize: nasl.core.Integer = 20;
 
         @Prop({
             group: '主要属性',
@@ -182,7 +162,7 @@ namespace nasl.ui {
                 type: 'numberInput',
             },
         })
-        successDuration: nasl.core.Decimal = 500;
+        successDuration: nasl.core.Integer = 500;
 
         @Prop({
             group: '交互属性',
@@ -257,7 +237,7 @@ namespace nasl.ui {
                 type: 'numberInput',
             },
         })
-        col: nasl.core.Decimal = 2;
+        col: nasl.core.Integer = 2;
 
         @Prop({
             group: '状态属性',
@@ -281,7 +261,7 @@ namespace nasl.ui {
             title: '加载后',
             description: '加载时触发',
         })
-        onLoad: (event: nasl.ui.BaseEvent) => void;
+        onLoad: () => void;
 
         @Slot({
             title: 'undefined',
