@@ -7,7 +7,6 @@ namespace nasl.ui {
         description: '多项中选择一个时使用',
     })
     export class VanRadioGroup<T, V> extends VueComponent {
-
         constructor(options?: Partial<VanRadioGroupOptions<T, V>>) { super(); }
     }
 
@@ -18,14 +17,14 @@ namespace nasl.ui {
             description: '展示数据的输入源，可设置为集合类型变量（List<T>）或输出参数为集合类型的逻辑。',
             designerValue: [{}, {}, {}],
         })
-        dataSource: Array<Item> | Function;
+        dataSource: nasl.collection.List<T>;
 
         @Prop({
             group: '数据属性',
             title: '数据类型',
             description: '数据源返回的数据结构的类型，自动识别类型进行展示说明。',
         })
-        dataSchema: schema;
+        dataSchema: T;
 
         @Prop({
             group: '数据属性',
@@ -39,8 +38,11 @@ namespace nasl.ui {
             group: '主要属性',
             title: '单选项图标',
             docDescription: '增加自定义图标显示',
+            setter: {
+                type: 'iconSelect'
+            },
         })
-        icon: icon = 'sure';
+        icon: nasl.core.String = 'sure';
 
         @Prop({
             group: '主要属性',
@@ -62,7 +64,7 @@ namespace nasl.ui {
             },
             if: _ => _.direction === 'horizontal',
         })
-        column: nasl.core.Decimal;
+        column: nasl.core.Integer;
 
         @Prop({
             group: '状态属性',
@@ -88,7 +90,7 @@ namespace nasl.ui {
             title: '值改变时',
             description: '选择值改变时触发',
         })
-        onChange: () => void;
+        onChange: (event: V) => void;
 
         @Slot({
             title: 'undefined',
@@ -114,7 +116,6 @@ namespace nasl.ui {
         title: '单选项',
     })
     export class VanRadio<V> extends VueComponent {
-
         constructor(options?: Partial<VanRadioOptions<V>>) { super(); }
     }
 
@@ -137,8 +138,11 @@ namespace nasl.ui {
             group: '主要属性',
             title: '单选项图标',
             docDescription: '增加自定义图标显示',
+            setter: {
+                type: 'iconSelect'
+            }
         })
-        icon: icon = 'sure';
+        icon: nasl.core.String = 'sure';
 
         @Prop({
             group: '主要属性',
@@ -165,6 +169,6 @@ namespace nasl.ui {
             title: '点击后',
             description: '点击某一项后触发',
         })
-        onClick: () => void;
+        onClick: (event: MouseEvent) => void;
     }
 }
