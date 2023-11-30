@@ -69,13 +69,17 @@ namespace nasl.ui {
             title: '选择后',
             description: '选择某一项时触发',
         })
-        onSelect: (event: nasl.ui.ChangeItemEvent) => void;
+        onSelect: (event: {
+          value: nasl.core.Any,
+        }) => void;
 
         @Event({
             title: '改变后',
             description: '选择值改变时触发',
         })
-        onChange: (event: nasl.ui.ChangeItemEvent) => void;
+        onChange: (event: {
+            value: nasl.core.Any,
+        }) => void;
 
         @Slot({
             title: 'undefined',
