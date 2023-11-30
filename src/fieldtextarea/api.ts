@@ -7,7 +7,7 @@ namespace nasl.ui {
         description: '多行输入组件',
     })
     export class VanFieldtextarea extends VueComponent {
-
+        constructor(options?: Partial<VanFieldtextareaOptions>) { super(); }
 
         @Method({
             title: 'undefined',
@@ -26,7 +26,6 @@ namespace nasl.ui {
             description: '清空输入框。',
         })
         clear(): void {}
-        constructor(options?: Partial<VanFieldtextareaOptions>) { super(); }
     }
 
     export class VanFieldtextareaOptions {
@@ -74,10 +73,13 @@ namespace nasl.ui {
                 placeholder: '不限制',
             },
             onToggle: [
-                { update: {'show-word-limit':false}, if: _ => _ === '' },
+                {
+                  update: {'show-word-limit':false},
+                  if: _ => _ === 0
+                },
             ],
         })
-        maxlength: nasl.core.Decimal;
+        maxlength: nasl.core.Integer;
 
         @Prop<VanFieldtextareaOptions, 'showWordLimit'>({
             group: '主要属性',
@@ -86,7 +88,7 @@ namespace nasl.ui {
             setter: {
                 type: 'switch',
             },
-            if: _ => _.maxlength !== '',
+            if: _ => _.maxlength > 0,
         })
         showWordLimit: nasl.core.Boolean;
 
@@ -99,7 +101,7 @@ namespace nasl.ui {
                 placeholder: '不设置则根据输入内容自适应',
             },
         })
-        autosize: nasl.core.Boolean | object;
+        autosize: nasl.core.Boolean | { maxHeight: nasl.core.Integer, minHeight: nasl.core.Integer };
 
         @Prop({
             group: '交互属性',
@@ -135,32 +137,30 @@ namespace nasl.ui {
             title: '输入时',
             description: '输入时触发。',
         })
-        onInput: () => void;
+        onInput: (event: Event) => void;
 
         @Event({
             title: '改变后',
             description: '值变化时触发。（注意：与原生事件不同）',
         })
-        onChange: () => void;
+        onChange: (event: nasl.core.String) => void;
 
         @Event({
             title: '获得焦点',
             description: '获得焦点时触发。',
         })
-        onFocus: () => void;
+        onFocus: (event: FocusEvent) => void;
 
         @Event({
             title: '失去焦点',
             description: '失去焦点时触发。',
         })
-        onBlur: () => void;
+        onBlur: (event: FocusEvent) => void;
 
         @Event({
             title: '清空后',
             description: '清空后触发。',
         })
         onClear: () => void;
-
-
     }
 }
