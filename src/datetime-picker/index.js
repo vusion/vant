@@ -56,16 +56,16 @@ export default createComponent({
   computed: {
     realType() {
       if (validType.includes(this.type)) {
-        return this.type
+        return this.type;
       }
       return validType[0];
     },
     realUnit() {
       if (validUnit[this.realType].includes(this.unit)) {
-        return this.unit
+        return this.unit;
       }
       return validUnit[this.realType][0];
-    }
+    },
   },
   watch: {
     currentValue(val) {
@@ -95,21 +95,37 @@ export default createComponent({
     // 展示格式
     getDisplayFormatter() {
       // 高级格式化开启
-      if (this.advancedFormat && this.advancedFormat.enable && this.advancedFormat.value) {
+      if (
+        this.advancedFormat &&
+        this.advancedFormat.enable &&
+        this.advancedFormat.value
+      ) {
         return this.advancedFormat.value;
       }
 
       const formatters = validDisplayFormatters[this.realType][this.realUnit];
 
       if (formatters.includes(this.showFormatter)) {
-        return this.showFormatter
+        return this.showFormatter;
       }
 
       // 兼容之前displayFormat配置
       return this.displayFormat || formatters[0];
     },
-    designerDbControl() {
-      this.$refs.popup.togglePModal();
+    designerOpen(e) {
+      let currentElement = e.target;
+      let nodePath = false;
+      while (currentElement) {
+        const np = currentElement.getAttribute('vusion-node-path');
+        if (np) {
+          nodePath = np;
+          break;
+        }
+        currentElement = currentElement.parentElement;
+      }
+      if (this?.$attrs?.['vusion-node-path'] === nodePath) {
+        this.$refs.popup.togglePModal();
+      }
     },
     designerClose() {
       if (window.parent && this?.$attrs?.['vusion-node-path']) {
@@ -134,8 +150,12 @@ export default createComponent({
     getTitle() {
       if (this.inDesigner()) {
         const value = isValidDate(this.value, this.realType) ? this.value : '';
-        const start = isValidDate(this.startValue, this.realType) ? this.startValue : '';
-        const end = isValidDate(this.endValue, this.realType) ? this.endValue : '';
+        const start = isValidDate(this.startValue, this.realType)
+          ? this.startValue
+          : '';
+        const end = isValidDate(this.endValue, this.realType)
+          ? this.endValue
+          : '';
 
         return this.range ? `${start} - ${end}` : value;
       }
@@ -165,10 +185,10 @@ export default createComponent({
 
       if (isValidDate(this.currentValue, this.realType, this.realUnit)) {
         return showFormat(this.currentValue, {
-            type: this.realType,
-            unit: this.realUnit,
-            formatter: this.getDisplayFormatter(),
-          });
+          type: this.realType,
+          unit: this.realUnit,
+          formatter: this.getDisplayFormatter(),
+        });
       }
 
       return '';
@@ -373,7 +393,7 @@ export default createComponent({
     };
 
     return (
-      <div class={bem('wrapppdtpicker')}>
+      <div class={bem('wrapppdtpicker')} vusion-click-enabled="true">
         <Field
           label={this.labelField}
           value={this.getTitle()}
@@ -382,7 +402,7 @@ export default createComponent({
           readonly
           disabled={this.disabled}
           isLink
-          onClick={this.open}
+          onClick={this.inDesigner() ? this.designerOpen : this.open}
           input-align={this.inputAlign || 'right'}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
