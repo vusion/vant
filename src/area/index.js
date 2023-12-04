@@ -141,14 +141,27 @@ export default createComponent({
   },
 
   methods: {
-    designerDbControl() {
-      this.valuepopup = true;
-      this.$refs.popforcas.togglePModal();
-      this.$nextTick(function () {
-        this.setValues(true);
-      });
+    designerOpen(e) {
+      let currentElement = e.target;
+      let nodePath = false;
+      while (currentElement) {
+        const np = currentElement.getAttribute('vusion-node-path');
+        if (np) {
+          nodePath = np;
+          break;
+        }
+        currentElement = currentElement.parentElement;
+      }
+      if (this?.$attrs?.['vusion-node-path'] === nodePath) {
+        this.valuepopup = true;
+        this.$refs.popforcas.togglePModal();
+        this.$nextTick(function () {
+          this.setValues(true);
+        });
+      }
     },
     designerClose() {
+      // readme:ide会记录通过designerDbControl打开的浮窗，需要通过该命令清除，在触发方式双击变单击后，暂无作用
       if (window.parent && this?.$attrs?.['vusion-node-path']) {
         window.parent?.postMessage(
           {
@@ -592,7 +605,7 @@ export default createComponent({
       );
     }
     return (
-      <div class={bem('wrappparea')}>
+      <div class={bem('wrappparea')} vusion-click-enabled="true">
         <Field
           label={this.labelField}
           value={this.getTitle}
@@ -601,7 +614,7 @@ export default createComponent({
           disabled={this.disabled}
           isLink
           input-align={this.inputAlign || 'right'}
-          onClick={this.onClickField}
+          onClick={this.inDesigner() ? this.designerOpen : this.onClickField}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           insel={true}
