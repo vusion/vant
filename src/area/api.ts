@@ -6,12 +6,12 @@ namespace nasl.ui {
         icon: 'region-select',
         description: '省市区三级联动选择',
     })
-    export class VanArea<T, V, C extends string> extends VueComponent {
+    export class VanArea extends VueComponent {
 
-        constructor(options?: Partial<VanAreaOptions<T, V, C>>) { super(); }
+        constructor(options?: Partial<VanAreaOptions>) { super(); }
     }
 
-    export class VanAreaOptions<T, V, C extends string> {
+    export class VanAreaOptions {
         @Prop({
             title: '左侧标题',
             description: '左侧标题',
@@ -170,10 +170,5 @@ namespace nasl.ui {
             ],
         })
         slotDefault: () => Array<VanPickerActionSlot>;
-
-        @Slot({
-            title: 'option',
-        })
-        slotOption: (current: Current<T>) => Array<VueComponent>;
     }
 }
