@@ -253,6 +253,9 @@
     - name: change
       title: 选项改变时触发
       description: 回调参数：Picker 实例，选中值，选中值对应的索引
+  methods:
+    - name: reload
+      description: 重新加载数据
   i18n:
     zh-CN:
       vanPickerson_confirm: 确定

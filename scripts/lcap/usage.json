@@ -5012,23 +5012,6 @@
                     "advanced": true
                 },
                 {
-                    "name": "text-field",
-                    "title": "文本字段名",
-                    "type": "string",
-                    "default": "text",
-                    "description": "选项文本的字段名",
-                    "advanced": true
-                },
-                {
-                    "name": "value-field",
-                    "title": "值字段名",
-                    "type": "string",
-                    "display": "property-select",
-                    "default": "value",
-                    "description": "选项值的字段名",
-                    "group": "数据属性"
-                },
-                {
                     "name": "cancelable",
                     "title": "可取消",
                     "type": "boolean",
@@ -5178,6 +5161,24 @@
                     "model": true,
                     "group": "数据属性",
                     "description": "用于标识数据列表的值"
+                },
+                {
+                    "name": "value-field",
+                    "title": "值字段名",
+                    "type": "string",
+                    "display": "property-select",
+                    "default": "value",
+                    "description": "选项值的字段名",
+                    "group": "数据属性"
+                },
+                {
+                    "name": "text-field",
+                    "title": "文本字段名",
+                    "type": "string",
+                    "display": "property-select",
+                    "default": "text",
+                    "description": "选项文本的字段名，可用于前端筛选时的匹配",
+                    "group": "数据属性"
                 },
                 {
                     "name": "pageable",
@@ -9682,10 +9683,6 @@
                         {
                             "value": "code",
                             "title": "地区码"
-                        },
-                        {
-                            "value": "json",
-                            "title": "JSON"
                         }
                     ],
                     "description": "将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式",

@@ -106,10 +106,23 @@ export default createComponent({
   },
 
   methods: {
-    designerDbControl() {
-      this.$refs.popup.togglePModal();
+    designerOpen(e) {
+      let currentElement = e.target;
+      let nodePath = false;
+      while (currentElement) {
+        const np = currentElement.getAttribute('vusion-node-path');
+        if (np) {
+          nodePath = np;
+          break;
+        }
+        currentElement = currentElement.parentElement;
+      }
+      if (this?.$attrs?.['vusion-node-path'] === nodePath) {
+        this.$refs.popup.togglePModal();
+      }
     },
     designerClose() {
+      // readme:ide会记录通过designerDbControl打开的浮窗，需要通过该命令清除，在触发方式双击变单击后，暂无作用
       if (window.parent && this?.$attrs?.['vusion-node-path']) {
         window.parent?.postMessage(
           {
@@ -144,11 +157,8 @@ export default createComponent({
       }
       return val;
     },
-    ifDesigner() {
-      return this.$env && this.$env.VUE_APP_DESIGNER;
-    },
     getTitle() {
-      if (this.ifDesigner()) {
+      if (this.inDesigner()) {
         return this.value ?? this.pvalue;
       }
 
@@ -167,7 +177,7 @@ export default createComponent({
         }
 
         if (this.multiple) {
-          if (this.currentValue.includes(v)) {
+          if ((this.currentValue || []).includes(v)) {
             title.push(t);
           }
         } else if (this.currentValue === v) {
@@ -176,7 +186,12 @@ export default createComponent({
         }
       }
 
-      return this.multiple ? title.join('，') : title;
+      title = this.multiple ? title.join('，') : title;
+      const defaultTitle = this.multiple
+        ? (this.currentValue || []).join('，')
+        : this.currentValue;
+
+      return title || defaultTitle;
     },
     togglePopup() {
       this.popupVisible = !this.popupVisible;
@@ -213,7 +228,6 @@ export default createComponent({
         this.debouncedLoad(true);
       }
     },
-
     genToolBar() {
       if (this.isNew) {
         let topSlot = this.slots('picker-top');
@@ -307,7 +321,7 @@ export default createComponent({
     };
 
     return (
-      <div class={bem('wrap')}>
+      <div class={bem('wrap')} vusion-click-enabled="true">
         <Field
           label={this.labelField}
           value={this.getTitle()}
@@ -317,7 +331,7 @@ export default createComponent({
           disabled={this.disabled}
           isLink
           input-align={this.inputAlign || 'right'}
-          onClick={this.onClickField}
+          onClick={this.inDesigner() ? this.designerOpen : this.onClickField}
           // eslint-disable-next-line no-prototype-builtins
           notitle={!this.$slots.hasOwnProperty('title')}
           insel={true}
