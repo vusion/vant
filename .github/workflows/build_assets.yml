@@ -31,14 +31,14 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: LCAP_LIB_VERSION=${{ env.VERSION }} yarn build:theme-local
+        run: LCAP_LIB_VERSION=${{ env.VERSION }} yarn build:theme
 
       # 创建一个临时目录
-      - name: Create temp dir
-        run: mkdir temp && cp -r ./dist-theme ./temp/dist-theme && cp -r ./assets-package/src ./temp/src && cp -r ./assets-package/src-vusion ./temp/src-vusion
+      - name: Create Assets
+        run: LCAP_LIB_VERSION=${{ env.VERSION }} node bin/asset.js
 
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          name: 'mobile-ui@${{ env.VERSION }}'
-          path: temp
+          name: mobile-ui@${{ env.VERSION }}
+          path: mobile-ui@${{ env.VERSION }}
