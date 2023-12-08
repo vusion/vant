@@ -5154,15 +5154,6 @@
                     "group": "数据属性"
                 },
                 {
-                    "name": "value",
-                    "title": "值",
-                    "type": "any",
-                    "sync": true,
-                    "model": true,
-                    "group": "数据属性",
-                    "description": "用于标识数据列表的值"
-                },
-                {
                     "name": "value-field",
                     "title": "值字段名",
                     "type": "string",
@@ -5179,6 +5170,15 @@
                     "default": "text",
                     "description": "选项文本的字段名，可用于前端筛选时的匹配",
                     "group": "数据属性"
+                },
+                {
+                    "name": "value",
+                    "title": "值",
+                    "type": "any",
+                    "sync": true,
+                    "model": true,
+                    "group": "数据属性",
+                    "description": "用于标识数据列表的值"
                 },
                 {
                     "name": "pageable",
@@ -8266,14 +8266,18 @@
                     "type": "number",
                     "sync": true,
                     "model": true,
+                    "min": 0,
+                    "max": 20,
                     "group": "数据属性",
                     "description": "用于标识评分的值"
                 },
                 {
                     "name": "count",
                     "title": "图标总数",
-                    "type": "numer | string",
+                    "type": "number",
                     "default": 5,
+                    "min": 0,
+                    "max": 20,
                     "group": "数据属性",
                     "description": "设置评分图标的总数"
                 },
@@ -8318,7 +8322,7 @@
                 {
                     "name": "size",
                     "title": "图标大小",
-                    "type": "numer",
+                    "type": "number",
                     "default": 20,
                     "group": "样式属性",
                     "description": "设置图标大小，单位为px。"
@@ -8326,7 +8330,7 @@
                 {
                     "name": "gutter",
                     "title": "图标间距",
-                    "type": "numer | string",
+                    "type": "number | string",
                     "default": 4,
                     "group": "样式属性",
                     "description": "设置图标间距，最小值为0。"
@@ -9519,6 +9523,12 @@
                             ]
                         }
                     }
+                }
+            ],
+            "methods": [
+                {
+                    "name": "reload",
+                    "description": "重新加载数据"
                 }
             ],
             "events": [
