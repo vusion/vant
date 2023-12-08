@@ -1,4 +1,7 @@
 export default {
+  confirm: '确定',
+  cancel: '取消',
+
   // 日历
   vanCalendar_title: '日期选择',
   vanCalendar_confirm: '确定',
@@ -22,9 +25,11 @@ export default {
   vanPickerson_confirm: '确定',
   vanPickerson_cancel: '取消',
   vanPickerson_searchPlaceholder: '请输入搜索关键词',
-  vanPickerson_selected: '当前已选中',
-  vanPickerson_selectAll: '全选',
-  vanPickerson_cancelSelectAll: '取消全选',
+  vanPickerPick_confirm: '确定',
+  vanPickerPick_cancel: '取消',
+  vanPickerList_selected: '当前已选中',
+  vanPickerList_selectAll: '全选',
+  vanPickerList_cancelSelectAll: '取消全选',
 
   // 表单项
   validateLabel: '字段',
