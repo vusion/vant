@@ -108,6 +108,7 @@ export default {
         border: { type: Boolean, default: false },
         readonly: { type: Boolean, default: false },
         readonlyMode: { type: String, default: 'initial' },
+        pageable: { type: String, default: '' },
         pageSize: { type: Number, default: 20 },
         pullRefresh: { type: Boolean, default: true },
         pullingText: { type: String, default: '下拉刷新' },
