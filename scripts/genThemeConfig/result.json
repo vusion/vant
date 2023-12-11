@@ -1276,6 +1276,27 @@
                 }
             },
             {
+                "id": "593a4765-b91a-4de1-94d1-de98abb638a1",
+                "name": "van-pickerson",
+                "title": "选择器",
+                "toPosition": "pickerson",
+                "type": [],
+                "preview": {
+                    "template": "\n<van-pickerson  :show-toolbar=\"true\"      title=\"请选择\"       labelField=\"选择器\"        :data-source=\"['选项一', '选项二', '选项三']\">     </van-pickerson>\n"
+                },
+                "cssProperty": {
+                    "--field-placeholder-text-color": {
+                        "type": "color",
+                        "desc": "占位提示文字颜色",
+                        "prefix": "field"
+                    },
+                    "--van-component-text-color": {
+                        "type": "color",
+                        "prefix": "van-component"
+                    }
+                }
+            },
+            {
                 "id": "593a4765-b91a-4de1-94d1-de98abb638a2",
                 "name": "van-cascader",
                 "title": "级联选择器",
@@ -1309,6 +1330,15 @@
                     "--van-cascader-options-height": {
                         "type": "input",
                         "desc": "选项区域高度"
+                    },
+                    "--field-placeholder-text-color": {
+                        "type": "color",
+                        "desc": "占位提示文字颜色",
+                        "prefix": "field"
+                    },
+                    "--van-component-text-color": {
+                        "type": "color",
+                        "prefix": "van-component"
                     }
                 },
                 "preview": {

@@ -77,6 +77,19 @@
       </van-pickerson>
     </demo-block>
 
+    <demo-block card title="主题色">
+        <van-pickerson
+        title="标题"
+        :show-toolbar="true"
+        :data-source="[1, 2, 3, 4, 5]"
+        :close-on-click-overlay="true"
+        style="--field-placeholder-text-color: red; --van-component-text-color: green;">
+          <template #title>
+                <van-text :ref="`text10`" text="标题"></van-text>
+          </template>
+      </van-pickerson>
+    </demo-block>
+
     <demo-block card title="临时测试">
         <van-pickerson
         title="标题"

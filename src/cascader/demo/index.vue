@@ -52,6 +52,25 @@
         <template #title><van-text text="地区"></van-text></template>
       </van-cascader>
     </demo-block>
+
+    <demo-block card title="主题色">
+        <van-cascader
+          v-model="base.value2"
+          :title="t('selectArea')"
+          :dataSource="[{ 'text': '浙江省', 'value': '330000' }, { 'text': '杭州市', 'value': '330100', 'parentId': '330000' }, { 'text': '宁波市', 'value': '330200', 'parentId': '330000' },  { 'text': '江苏省', 'value': '320000' }]"
+
+          :tree-display="true"
+
+          :filterable="true"
+          :closeOnClickOverlay="true"
+          @close="base.show = false"
+          @finish="onFinish1('base', $event)"
+          style="--field-placeholder-text-color: red; --van-component-text-color: green;"
+        >
+        <template #title><van-text text="地区"></van-text></template>
+      </van-cascader>
+    </demo-block>
+
   </demo-section>
 </template>
 

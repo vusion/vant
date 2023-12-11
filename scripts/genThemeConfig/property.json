@@ -133,6 +133,7 @@
     "--van-cascader-options-height": "384px",
     "--van-cascader-tab-color": "var(\n    --van-component-text-color\n  )",
     "--van-cascader-unselected-tab-color": "#969799",
+    "--field-placeholder-text-color": "#c8c9cc",
     "--van-cell-group-background-color": "#fff",
     "--van-cell-group-title-color": "#969799",
     "--van-cell-group-title-padding": "var(--van-padding-md) var(var(--padding-md))\n    var(--van-padding-xs)",

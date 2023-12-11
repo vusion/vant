@@ -266,6 +266,8 @@
     --van-component-text-color
   ); /* @type color */ /* @hidden */
   --van-cascader-unselected-tab-color: #969799; /* @type color */ /* @hidden */
+  --field-placeholder-text-color: #c8c9cc; /* @type color */ /* @desc 占位提示文字颜色 */ /* @prefix field */
+  --van-component-text-color: #333; /* @type color */ /* @des 文字颜色 */ /* @prefix van-component */
 
   /* @component van-cell-group */
   --van-cell-group-background-color: #fff; /* @type color */ /* @desc 单元格组背景色 */ /* @hidden */
@@ -425,6 +427,10 @@
   --van-picker-loading-mask-color: rgba(255, 255, 255, 0.9);
   --van-picker-list-item-background-color: transparent; /* @type color */ /* @desc 选项未选中背景色 */
   --van-picker-list-item-selected-background-color: transparent; /* @type color */ /* @desc 选项选中背景色 */
+
+  /* @component van-pickerson */
+  --field-placeholder-text-color: #c8c9cc; /* @type color */ /* @desc 占位提示文字颜色 */ /* @prefix field */
+  --van-component-text-color: #333; /* @type color */ /* @des 文字颜色 */ /* @prefix van-component */
 
   /* @component van-popup */
   --van-popup-background-color: #fff; /* @type color */ /* @desc 背景色 */
