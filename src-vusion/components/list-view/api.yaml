@@ -19,6 +19,20 @@
       description: 表格每一行的数据类型
       compType: dataTypeSelect
       group: 数据属性
+    - name: value-field
+      title: 值字段名
+      type: string
+      display: property-select
+      default: value
+      description: 选项值的字段名
+      group: 数据属性
+    - name: text-field
+      title: 文本字段名
+      type: string
+      display: property-select
+      default: text
+      description: 选项文本的字段名
+      group: 数据属性
     - name: initial-load
       type: boolean
       title: 初始加载
@@ -114,18 +128,6 @@
       model: true
       advanced: true
       description: 当前选择的值
-    - name: text-field
-      title: 文本字段名
-      type: string
-      default: text
-      description: 选项文本的字段名
-      advanced: true
-    - name: value-field
-      title: 值字段名
-      type: string
-      default: value
-      description: 选项值的字段名
-      advanced: true
     - name: cancelable
       title: 可取消
       type: boolean
