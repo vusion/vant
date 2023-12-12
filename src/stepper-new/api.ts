@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'numberh5',
         description: '数字输入框',
     })
-    export class VanStepperNew extends VueComponent {
+    export class VanStepperNew extends ViewComponent {
         constructor(options?: Partial<VanStepperNewOptions>) { super(); }
     }
 

@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'forcom',
         description: '组件列表',
     })
-    export class VanForComponents<T> extends VueComponent {
+    export class VanForComponents<T> extends ViewComponent {
         constructor(options?: Partial<VanForComponentsOptions<T>>) { super(); }
     }
 
@@ -63,12 +63,12 @@ namespace nasl.ui {
             title: 'undefined',
             description: '内容自定义',
         })
-        slotDefault: (current?: Current<T>) => Array<VueComponent>;
+        slotDefault: (current?: Current<T>) => Array<ViewComponent>;
 
         @Slot({
           title: 'undefined',
           description: '内容自定义',
         })
-        slotItem: (current: Current<T>) => Array<VueComponent>;
+        slotItem: (current: Current<T>) => Array<ViewComponent>;
     }
 }

@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'cell-group',
         description: '单元格为列表中的单个展示项',
     })
-    export class VanCellGroup extends VueComponent {
+    export class VanCellGroup extends ViewComponent {
         constructor(options?: Partial<VanCellGroupOptions>) { super(); }
     }
 
@@ -38,7 +38,7 @@ namespace nasl.ui {
     @Component({
         title: '单元格',
     })
-    export class VanCell extends VueComponent {
+    export class VanCell extends ViewComponent {
         constructor(options?: Partial<VanCellOptions>) { super(); }
     }
 
@@ -147,12 +147,12 @@ namespace nasl.ui {
             title: 'undefined',
             description: '插入文本或 HTML。',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
 
         @Slot({
             title: 'undefined',
             description: '右侧图标。',
         })
-        private slotRightIcon: () => Array<VueComponent>;
+        private slotRightIcon: () => Array<ViewComponent>;
     }
 }

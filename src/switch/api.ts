@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'switch',
         description: '开关',
     })
-    export class VanSwitch extends VueComponent {
+    export class VanSwitch extends ViewComponent {
         constructor(options?: Partial<VanSwitchOptions>) { super(); }
     }
 

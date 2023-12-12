@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'list-view',
         description: '用于列举大量数据的列表框，支持单选、多选、过滤（搜索）、分页等功能。',
     })
-    export class VanListView<T, V, P, M> extends VueComponent {
+    export class VanListView<T, V, P, M> extends ViewComponent {
         constructor(options?: Partial<VanListViewOptions<T, V, P, M>>) { super(); }
 
         @Method({
@@ -452,18 +452,18 @@ namespace nasl.ui {
             title: 'undefined',
             description: '自定义选项的结构和样式',
         })
-        slotItem: (current: Current<T>) => Array<VueComponent>;
+        slotItem: (current: Current<T>) => Array<ViewComponent>;
 
         @Slot({
             title: 'undefined',
             description: '自定义上一页',
         })
-        slotPrev: () => Array<VueComponent>;
+        slotPrev: () => Array<ViewComponent>;
 
         @Slot({
             title: 'undefined',
             description: '自定义下一页',
         })
-        slotNext: () => Array<VueComponent>;
+        slotNext: () => Array<ViewComponent>;
     }
 }

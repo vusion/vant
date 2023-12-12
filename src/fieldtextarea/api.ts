@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'textarea',
         description: '多行输入组件',
     })
-    export class VanFieldtextarea extends VueComponent {
+    export class VanFieldtextarea extends ViewComponent {
         constructor(options?: Partial<VanFieldtextareaOptions>) { super(); }
 
         @Method({

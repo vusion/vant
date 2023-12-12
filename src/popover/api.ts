@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'popup',
         description: '将弹出式的气泡菜单.',
     })
-    export class VanPopover extends VueComponent {
+    export class VanPopover extends ViewComponent {
 
 
         @Method({
@@ -98,7 +98,7 @@ namespace nasl.ui {
     @Component({
         title: '面板项',
     })
-    export class VanPopoverItem extends VueComponent {
+    export class VanPopoverItem extends ViewComponent {
 
         constructor(options?: Partial<VanPopoverItemOptions>) { super(); }
     }

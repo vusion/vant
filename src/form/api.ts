@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'form',
         description: '具有数据收集、校验和提交功能的表单，包含输入框、选择框、复选框、单选框等元素。',
     })
-    export class VanForm extends VueComponent {
+    export class VanForm extends ViewComponent {
         constructor(options?: Partial<VanFormOptions>) { super(); }
 
         @Method({
@@ -66,7 +66,7 @@ namespace nasl.ui {
     @Component({
         title: '表单项',
     })
-    export class VanField extends VueComponent {
+    export class VanField extends ViewComponent {
         constructor(options?: Partial<VanFieldOptions>) { super(); }
     }
 
@@ -157,6 +157,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '插入自定义输入框',
         })
-        slotInput: () => Array<VueComponent>;
+        slotInput: () => Array<ViewComponent>;
     }
 }

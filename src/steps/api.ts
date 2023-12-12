@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'steps',
         description: '用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。',
     })
-    export class VanSteps<T> extends VueComponent {
+    export class VanSteps<T> extends ViewComponent {
         constructor(options?: Partial<VanStepsOptions<T>>) { super(); }
     }
 
@@ -93,13 +93,13 @@ namespace nasl.ui {
             title: 'undefined',
             description: '自定义选项的结构和样式',
         })
-        slotItem: (current: Current<T>) => Array<VueComponent>;
+        slotItem: (current: Current<T>) => Array<ViewComponent>;
     }
 
     @Component({
         title: '步骤条项',
     })
-    export class VanStep extends VueComponent {
+    export class VanStep extends ViewComponent {
         constructor(options?: Partial<VanStepOptions>) { super(); }
     }
 

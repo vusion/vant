@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'card',
         description: '用于快速布局',
     })
-    export class VanCardu extends VueComponent {
+    export class VanCardu extends ViewComponent {
         constructor(options?: Partial<VanCarduOptions>) { super(); }
     }
 
@@ -87,28 +87,28 @@ namespace nasl.ui {
             description: '点击事件',
         })
         onClick: (event: {
-            stopPropagation: () => void,
-            preventDefault: () => void,
+            stopPropagation: () => void;
+            preventDefault: () => void;
         }) => void;
 
         @Slot({
             title: 'undefined',
             description: '插入默认的元素',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
 
         @Slot({
             title: 'undefined',
             description: '插入图片',
         })
-        slotCover: () => Array<VueComponent>;
+        slotCover: () => Array<ViewComponent>;
     }
 
     @Component({
         title: '卡片组',
         description: '卡片组',
     })
-    class VanCarduGroup extends VueComponent {
+    class VanCarduGroup extends ViewComponent {
         constructor(options?: Partial<VanCarduGroupOptions>) { super(); }
     }
 
@@ -123,12 +123,12 @@ namespace nasl.ui {
             title: 'undefined',
             description: '插入默认的元素',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
 
         @Slot({
             title: 'undefined',
             description: '插入图片',
         })
-        slotCover: () => Array<VueComponent>;
+        slotCover: () => Array<ViewComponent>;
     }
 }

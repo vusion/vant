@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'swipe-cell',
         description: '滑动条',
     })
-    export class VanSwipeCell extends VueComponent {
+    export class VanSwipeCell extends ViewComponent {
         constructor(options?: Partial<VanSwipeCellOptions>) { super(); }
 
         @Method({
@@ -54,18 +54,18 @@ namespace nasl.ui {
             title: 'undefined',
             description: '插入文本或 HTML。',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
 
         @Slot({
             title: 'undefined',
             description: '右侧。',
         })
-        slotRight: () => Array<VueComponent>;
+        slotRight: () => Array<ViewComponent>;
 
         @Slot({
             title: 'undefined',
             description: '左侧。',
         })
-        slotLeft: () => Array<VueComponent>;
+        slotLeft: () => Array<ViewComponent>;
     }
 }

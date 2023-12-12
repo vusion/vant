@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'slider',
         description: '滑动输入条，用于在给定的范围内选择一个值。',
     })
-    export class VanSlider extends VueComponent {
+    export class VanSlider extends ViewComponent {
         constructor(options?: Partial<VanSliderOptions>) { super(); }
     }
 

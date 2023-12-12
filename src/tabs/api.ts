@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'tabsh5',
         description: '选项卡切换组件，常用于平级区域大块内容的收纳和展现',
     })
-    export class VanTabs extends VueComponent {
+    export class VanTabs extends ViewComponent {
         constructor(options?: Partial<VanTabsOptions>) { super(); }
     }
 
@@ -107,7 +107,7 @@ namespace nasl.ui {
     @Component({
         title: '标签页',
     })
-    export class VanTab extends VueComponent {
+    export class VanTab extends ViewComponent {
         constructor(options?: Partial<VanTabOptions>) { super(); }
     }
 
@@ -167,6 +167,6 @@ namespace nasl.ui {
             title: '默认',
             description: '显示的内容',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
     }
 }

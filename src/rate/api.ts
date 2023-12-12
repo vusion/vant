@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'rate',
         description: '用于对事物进行评级操作。',
     })
-    export class VanRate extends VueComponent {
+    export class VanRate extends ViewComponent {
         constructor(options?: Partial<VanRateOptions>) { super(); }
     }
 

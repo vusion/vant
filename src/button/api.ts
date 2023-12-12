@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'button',
         description: '按钮用于触发一个操作，如提交表单。',
     })
-    export class VanButton extends VueComponent {
+    export class VanButton extends ViewComponent {
         constructor(options?: Partial<VanButtonOptions>) { super(); }
     }
 

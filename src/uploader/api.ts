@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'uploader',
         description: '上传文件。',
     })
-    export class VanUploader extends VueComponent {
+    export class VanUploader extends ViewComponent {
         constructor(options?: Partial<VanUploaderOptions>) { super(); }
 
         @Method({
@@ -373,6 +373,6 @@ namespace nasl.ui {
         @Slot({
             title: '配置文件上传图标',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
     }
 }

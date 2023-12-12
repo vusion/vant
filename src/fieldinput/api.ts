@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'input',
         description: '基本的表单输入组件',
     })
-    export class VanFieldinput extends VueComponent {
+    export class VanFieldinput extends ViewComponent {
         constructor(options?: Partial<VanFieldinputOptions>) { super(); }
 
         @Method({

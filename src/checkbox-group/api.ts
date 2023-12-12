@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'checkboxes',
         description: '多项中选择一个或多个时使用',
     })
-    export class VanCheckboxGroup<T, V> extends VueComponent {
+    export class VanCheckboxGroup<T, V> extends ViewComponent {
         constructor(options?: Partial<VanCheckboxGroupOptions<T, V>>) { super(); }
     }
 
@@ -134,13 +134,13 @@ namespace nasl.ui {
             title: 'undefined',
             description: '自定义选项的结构和样式',
         })
-        slotItem: (current: Current<T>) => Array<VueComponent>;
+        slotItem: (current: Current<T>) => Array<ViewComponent>;
     }
 
     @Component({
         title: '多选项',
     })
-    export class VanCheckbox<V> extends VueComponent {
+    export class VanCheckbox<V> extends ViewComponent {
 
         constructor(options?: Partial<VanCheckboxOptions<V>>) { super(); }
     }

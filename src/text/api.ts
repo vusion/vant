@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'text',
         description: '用于展示文字或表达式',
     })
-    export class VanText extends VueComponent {
+    export class VanText extends ViewComponent {
         constructor(options?: Partial<VanTextOptions>) { super(); }
     }
 

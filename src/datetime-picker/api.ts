@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'time-picker',
         description: '时间选择，支持日期、年月、时分等维度',
     })
-    export class VanDatetimePicker extends VueComponent {
+    export class VanDatetimePicker extends ViewComponent {
         constructor(options?: Partial<VanDatetimePickerOptions>) { super(); }
 
         @Method({
@@ -267,7 +267,7 @@ namespace nasl.ui {
     @Component({
         title: '时间选择事件插槽',
     })
-    export class VanDatetimePickerActionSlot extends VueComponent {
+    export class VanDatetimePickerActionSlot extends ViewComponent {
         constructor(options?: Partial<VanDatetimePickerActionSlotOptions>) { super(); }
     }
 
@@ -285,7 +285,7 @@ namespace nasl.ui {
     @Component({
         title: '事件插槽',
     })
-    export class VanPickerActionSlot extends VueComponent {
+    export class VanPickerActionSlot extends ViewComponent {
         constructor(options?: Partial<VanPickerActionSlotOptions>) { super(); }
     }
 

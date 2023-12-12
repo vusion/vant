@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'capsules',
         description: '多项中选择一项',
     })
-    export class VanCapsules extends VueComponent {
+    export class VanCapsules extends ViewComponent {
 
         constructor(options?: Partial<VanCapsulesOptions>) { super(); }
     }
@@ -102,7 +102,7 @@ namespace nasl.ui {
         title: '胶囊选项',
         description: '胶囊选项',
     })
-    export class VanCapsulesItem extends VueComponent {
+    export class VanCapsulesItem extends ViewComponent {
 
         constructor(options?: Partial<VanCapsulesItemOptions>) { super(); }
     }
@@ -150,14 +150,14 @@ namespace nasl.ui {
             title: 'undefined',
             description: '插入文本或 HTML。',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
     }
 
     @Component({
         title: '胶囊选项组',
         description: '胶囊选项组',
     })
-    export class VanCapsulesGroup extends VueComponent {
+    export class VanCapsulesGroup extends ViewComponent {
 
         constructor(options?: Partial<VanCapsulesGroupOptions>) { super(); }
     }

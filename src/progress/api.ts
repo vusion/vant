@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'linear-progress',
         description: '用于展示操作的当前进度。',
     })
-    export class VanProgress extends VueComponent {
+    export class VanProgress extends ViewComponent {
         constructor(options?: Partial<VanProgressOptions>) { super(); }
     }
 
@@ -97,6 +97,6 @@ namespace nasl.ui {
             title: '默认',
             description: '显示的文本',
         })
-        private slotDefault: () => Array<VueComponent>;
+        private slotDefault: () => Array<ViewComponent>;
     }
 }

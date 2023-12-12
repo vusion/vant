@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'icon',
         description: '图标',
     })
-    export class VanIconv extends VueComponent {
+    export class VanIconv extends ViewComponent {
 
         constructor(options?: Partial<VanIconvOptions>) { super(); }
     }
@@ -72,6 +72,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '插入文本或HTML',
         })
-        private slotDefault: () => Array<VueComponent>;
+        private slotDefault: () => Array<ViewComponent>;
     }
 }

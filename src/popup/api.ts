@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'popuph5',
         description: '弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。',
     })
-    export class VanPopup extends VueComponent {
+    export class VanPopup extends ViewComponent {
         constructor(options?: Partial<VanPopupOptions>) { super(); }
 
         @Method({
@@ -82,6 +82,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '内容自定义',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
     }
 }

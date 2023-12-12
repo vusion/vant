@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'dialog',
         description: '弹出框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。',
     })
-    export class VanDialog extends VueComponent {
+    export class VanDialog extends ViewComponent {
         constructor(options?: Partial<VanDialogOptions>) { super(); }
 
         @Method({
@@ -76,6 +76,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '内容自定义',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
     }
 }

@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'circular-progress',
         description: '圆环形的进度条组件',
     })
-    export class VanCircle extends VueComponent {
+    export class VanCircle extends ViewComponent {
         constructor(options?: Partial<VanCircleOptions>) { super(); }
     }
 
@@ -79,6 +79,6 @@ namespace nasl.ui {
             title: '默认',
             description: '显示的文本',
         })
-        private slotDefault: () => Array<VueComponent>;
+        private slotDefault: () => Array<ViewComponent>;
     }
 }

@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'divider',
         description: '用于将内容分隔为多个区域',
     })
-    export class VanDivider extends VueComponent {
+    export class VanDivider extends ViewComponent {
         constructor(options?: Partial<VanDividerOptions>) { super(); }
     }
 
@@ -41,6 +41,6 @@ namespace nasl.ui {
             title: '默认',
             description: '显示的文本',
         })
-        private slotDefault: () => Array<VueComponent>;
+        private slotDefault: () => Array<ViewComponent>;
     }
 }

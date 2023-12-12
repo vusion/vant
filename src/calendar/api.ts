@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'date-time-picker',
         description: '日历组件用于选择日期或日期区间',
     })
-    export class VanCalendar extends VueComponent {
+    export class VanCalendar extends ViewComponent {
         constructor(options?: Partial<VanCalendarOptions>) { super(); }
 
         @Method({

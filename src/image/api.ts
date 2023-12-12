@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'image',
         description: '可以用来展示一张图片，支持设置图片地址。',
     })
-    export class VanImage extends VueComponent {
+    export class VanImage extends ViewComponent {
         constructor(options?: Partial<VanImageOptions>) { super(); }
     }
 

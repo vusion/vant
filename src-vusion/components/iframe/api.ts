@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'iframe',
         description: '用于嵌入其他网页的容器。',
     })
-    export class VanIframe extends VueComponent {
+    export class VanIframe extends ViewComponent {
 
         constructor(options?: Partial<VanIframeOptions>) { super(); }
     }

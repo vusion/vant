@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'badge',
         description: '在右上角展示徽标数字或小红点。',
     })
-    export class VanBadge extends VueComponent {
+    export class VanBadge extends ViewComponent {
 
         constructor(options?: Partial<VanBadgeOptions>) { super(); }
     }
@@ -44,6 +44,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '插入徽章内容',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
     }
 }

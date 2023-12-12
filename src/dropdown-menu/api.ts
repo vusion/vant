@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'dropdown-menu',
         description: '向下弹出的菜单列表。',
     })
-    export class VanDropdownMenu extends VueComponent {
+    export class VanDropdownMenu extends ViewComponent {
         constructor(options?: Partial<VanDropdownMenuOptions>) { super(); }
     }
 
@@ -74,7 +74,7 @@ namespace nasl.ui {
     @Component({
         title: '菜单项',
     })
-    export class VanDropdownItem extends VueComponent {
+    export class VanDropdownItem extends ViewComponent {
         constructor(options?: Partial<VanDropdownItemOptions>) { super(); }
 
         @Method({
@@ -154,7 +154,7 @@ namespace nasl.ui {
     @Component({
         title: '菜单子项',
     })
-    export class VanDropdownItemSon extends VueComponent {
+    export class VanDropdownItemSon extends ViewComponent {
         constructor(options?: Partial<VanDropdownItemSonOptions>) { super(); }
     }
 
@@ -265,12 +265,12 @@ namespace nasl.ui {
             title: 'undefined',
             description: '插入文本或 HTML。',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
 
         @Slot({
             title: 'undefined',
             description: '右侧图标。',
         })
-        private slotRightIcon: () => Array<VueComponent>;
+        private slotRightIcon: () => Array<ViewComponent>;
     }
 }

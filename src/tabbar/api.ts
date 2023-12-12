@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'tabbar',
         description: '标签栏',
     })
-    export class VanTabbar extends VueComponent {
+    export class VanTabbar extends ViewComponent {
         constructor(options?: Partial<VanTabbarOptions>) { super(); }
     }
 
@@ -70,7 +70,7 @@ namespace nasl.ui {
     @Component({
         title: '标签项',
     })
-    export class VanTabbarItem extends VueComponent {
+    export class VanTabbarItem extends ViewComponent {
 
         constructor(options?: Partial<VanTabbarItemOptions>) { super(); }
     }

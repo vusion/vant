@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'collapse',
         description: '将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。',
     })
-    export class VanCollapse extends VueComponent {
+    export class VanCollapse extends ViewComponent {
         constructor(options?: Partial<VanCollapseOptions>) { super(); }
     }
 
@@ -52,7 +52,7 @@ namespace nasl.ui {
     @Component({
         title: '面板项',
     })
-    export class VanCollapseItem extends VueComponent {
+    export class VanCollapseItem extends ViewComponent {
         @Method({
             title: '切换展开状态，传 true 为展开，false 为收起，不传参为切换',
             description: '切换展开状态，传 true 为展开，false 为收起，不传参为切换',

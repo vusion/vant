@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'region-select',
         description: '省市区三级联动选择',
     })
-    export class VanArea extends VueComponent {
+    export class VanArea extends ViewComponent {
 
         constructor(options?: Partial<VanAreaOptions>) { super(); }
     }

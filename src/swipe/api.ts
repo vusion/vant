@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'swipe',
         description: '用于循环播放一组图片或内容',
     })
-    export class VanSwipe extends VueComponent {
+    export class VanSwipe extends ViewComponent {
         constructor(options?: Partial<VanSwipeOptions>) { super(); }
     }
 
@@ -67,7 +67,7 @@ namespace nasl.ui {
         title: '幻灯片选项',
         description: '幻灯片选项',
     })
-    export class VanSwipeItem extends VueComponent {
+    export class VanSwipeItem extends ViewComponent {
         constructor(options?: Partial<VanSwipeItemOptions>) { super(); }
     }
 
@@ -85,6 +85,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '插入幻灯片内容，如图片',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
     }
 }

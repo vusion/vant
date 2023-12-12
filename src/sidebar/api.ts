@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'sidebarh5',
         description: '侧边导航',
     })
-    export class VanSidebar extends VueComponent {
+    export class VanSidebar extends ViewComponent {
         constructor(options?: Partial<VanSidebarOptions>) { super(); }
     }
 
@@ -52,7 +52,7 @@ namespace nasl.ui {
     @Component({
         title: '菜单项',
     })
-    export class VanSidebarItem extends VueComponent {
+    export class VanSidebarItem extends ViewComponent {
         constructor(options?: Partial<VanSidebarItemOptions>) { super(); }
     }
 
@@ -144,6 +144,6 @@ namespace nasl.ui {
           title: 'undefined',
           description: '内容',
         })
-        slotTitle: () => Array<VueComponent>;
+        slotTitle: () => Array<ViewComponent>;
     }
 }

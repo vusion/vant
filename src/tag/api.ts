@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'label',
         description: '用于标记关键词和概括主要内容。',
     })
-    export class VanTag extends VueComponent {
+    export class VanTag extends ViewComponent {
         constructor(options?: Partial<VanTagOptions>) { super(); }
     }
 

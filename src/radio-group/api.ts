@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'radios',
         description: '多项中选择一个时使用',
     })
-    export class VanRadioGroup<T, V> extends VueComponent {
+    export class VanRadioGroup<T, V> extends ViewComponent {
         constructor(options?: Partial<VanRadioGroupOptions<T, V>>) { super(); }
     }
 
@@ -109,13 +109,13 @@ namespace nasl.ui {
             title: 'undefined',
             description: '自定义选项的结构和样式',
         })
-        slotItem: (current: Current<T>) => Array<VueComponent>;
+        slotItem: (current: Current<T>) => Array<ViewComponent>;
     }
 
     @Component({
         title: '单选项',
     })
-    export class VanRadio<V> extends VueComponent {
+    export class VanRadio<V> extends ViewComponent {
         constructor(options?: Partial<VanRadioOptions<V>>) { super(); }
     }
 

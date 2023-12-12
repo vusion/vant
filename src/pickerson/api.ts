@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'picker',
         description: '提供多个选项集合供用户选择，支持单列选择和多列级联。',
     })
-    export class VanPickerson<T, V, M extends boolean, P extends boolean> extends VueComponent {
+    export class VanPickerson<T, V, M extends boolean, P extends boolean> extends ViewComponent {
         constructor(options?: Partial<VanPickersonOptions<T, V, M, P>>) { super(); }
 
         @Method({
@@ -301,6 +301,6 @@ namespace nasl.ui {
         @Slot({
             title: 'option',
         })
-        slotOption: (current: Current<T>) => Array<VueComponent>;
+        slotOption: (current: Current<T>) => Array<ViewComponent>;
     }
 }

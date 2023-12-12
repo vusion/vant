@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'copy',
         description: '复制文本到剪切板',
     })
-    export class VanCopy extends VueComponent {
+    export class VanCopy extends ViewComponent {
         constructor(options?: Partial<VanCopyOptions>) { super(); }
     }
 
@@ -81,6 +81,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '修改默认触发元素',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
     }
 }

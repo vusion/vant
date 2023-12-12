@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'popup',
         description: '点击，弹出气泡式的卡片浮层。',
     })
-    export class VanPopupCombination extends VueComponent {
+    export class VanPopupCombination extends ViewComponent {
         constructor(options?: Partial<VanPopupCombinationOptions>) { super(); }
 
         @Method({
@@ -184,12 +184,12 @@ namespace nasl.ui {
             title: 'undefined',
             description: '自定义弹出的内容。',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
 
         @Slot({
             title: 'undefined',
             description: '弹出层触发节点。',
         })
-        slotReference: () => Array<VueComponent>;
+        slotReference: () => Array<ViewComponent>;
     }
 }

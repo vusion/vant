@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'notice-bar',
         description: '用于循环播放展示一组消息通知。',
     })
-    export class VanNoticeBar extends VueComponent {
+    export class VanNoticeBar extends ViewComponent {
         constructor(options?: Partial<VanNoticeBarOptions>) { super(); }
     }
 
@@ -99,6 +99,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '文本插槽',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
     }
 }

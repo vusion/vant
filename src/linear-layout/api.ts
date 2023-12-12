@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'linear-layout',
         description: '内部元素按照一定的规则布局',
     })
-    export class VanLinearLayout extends VueComponent {
+    export class VanLinearLayout extends ViewComponent {
         constructor(options?: Partial<VanLinearLayoutOptions>) { super(); }
 
         @Method({
@@ -208,6 +208,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '内容',
         })
-        slotDefault: () => Array<VueComponent>;
+        slotDefault: () => Array<ViewComponent>;
     }
 }

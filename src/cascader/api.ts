@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'cascade-select',
         description: '级联选择框，用于多层级数据的选择，典型场景为省市区选择',
     })
-    export class VanCascader<T, V> extends VueComponent {
+    export class VanCascader<T, V> extends ViewComponent {
         constructor(options?: Partial<VanCascaderOptions<T, V>>) { super(); }
     }
 
@@ -156,6 +156,6 @@ namespace nasl.ui {
         @Slot({
             title: 'option',
         })
-        slotOption: (current: Current<T>) => Array<VueComponent>;
+        slotOption: (current: Current<T>) => Array<ViewComponent>;
     }
 }

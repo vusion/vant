@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'grid-view',
         description: '数据网格',
     })
-    export class VanGridView<T, V, P extends boolean, M extends boolean> extends VueComponent {
+    export class VanGridView<T, V, P extends boolean, M extends boolean> extends ViewComponent {
         constructor(options?: Partial<VanGridViewOptions<T, V, P, M>>) { super(); }
 
         @Method({
@@ -280,6 +280,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '自定义选项的结构和样式',
         })
-        slotItem: (current: Current<T>) => Array<VueComponent>;
+        slotItem: (current: Current<T>) => Array<ViewComponent>;
     }
 }

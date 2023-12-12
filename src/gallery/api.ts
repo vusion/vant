@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'gallery',
         description: '画廊',
     })
-    export class VanGallery<T> extends VueComponent {
+    export class VanGallery<T> extends ViewComponent {
         constructor(options?: Partial<VanGalleryOptions<T>>) { super(); }
     }
 

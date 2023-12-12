@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'link',
         description: '文字超链接',
     })
-    export class VanLink extends VueComponent {
+    export class VanLink extends ViewComponent {
         constructor(options?: Partial<VanLinkOptions>) { super(); }
     }
 

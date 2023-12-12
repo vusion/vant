@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'countdown',
         description: '用于计时',
     })
-    export class VanCountDownNew extends VueComponent {
+    export class VanCountDownNew extends ViewComponent {
         @Method({
             title: 'undefined',
             description: '开始计时器',

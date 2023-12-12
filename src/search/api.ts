@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'search',
         description: '内部元素按照一定的规则布局',
     })
-    export class VanSearch extends VueComponent {
+    export class VanSearch extends ViewComponent {
         constructor(options?: Partial<VanSearchOptions>) { super(); }
     }
 
@@ -161,6 +161,6 @@ namespace nasl.ui {
             title: 'undefined',
             description: '内容',
         })
-        private slotDefault: () => Array<VueComponent>;
+        private slotDefault: () => Array<ViewComponent>;
     }
 }

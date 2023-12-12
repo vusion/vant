@@ -6,7 +6,7 @@ namespace nasl.ui {
         icon: 'router-view',
         description: '放置子页面的容器。',
     })
-    export class VanRouterView extends VueComponent {
+    export class VanRouterView extends ViewComponent {
         constructor(options?: Partial<VanRouterViewOptions>) { super(); }
     }
 
