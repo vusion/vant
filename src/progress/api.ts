@@ -15,7 +15,7 @@ namespace nasl.ui {
             group: '主要属性',
             title: '值',
             description: '用于标识进度条的值',
-            syncMode: 'both',
+            sync: true,
             setter: {
                 type: 'numberInput',
                 min: 0,

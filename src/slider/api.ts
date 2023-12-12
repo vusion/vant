@@ -15,7 +15,7 @@ namespace nasl.ui {
             group: '数据属性',
             title: '值',
             description: '用于标识滑块的值',
-            syncMode: 'both',
+            sync: true,
             setter: {
                 type: 'numberInput',
             },

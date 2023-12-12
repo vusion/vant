@@ -27,7 +27,7 @@ namespace nasl.ui {
         @Prop({
             title: '是否展示气泡弹出层',
             description: '是否展示气泡弹出层',
-            syncMode: 'onlySync',
+            sync: true,
         })
         value: nasl.core.Boolean = false;
 
@@ -48,7 +48,14 @@ namespace nasl.ui {
             description: '风格',
             setter: {
                 type: 'enumSelect',
-                titles: ['深色', '浅色'],
+                options: [
+                  {
+                    title: '深色',
+                  },
+                  {
+                    title: '浅色',
+                  }
+                ]
             },
         })
         theme: 'dark' | 'light' = 'light';
@@ -58,7 +65,44 @@ namespace nasl.ui {
             description: '弹出位置',
             setter: {
                 type: 'enumSelect',
-                titles: ['上', '下', '左', '右', '上左', '上右', '下左', '下右', '左上', '左下', '右上', '右下'],
+                options: [
+                  {
+                    title: '上',
+                  },
+                  {
+                    title: '下',
+                  },
+                  {
+                    title: '左',
+                  },
+                  {
+                    title: '右',
+                  },
+                  {
+                    title: '上左',
+                  },
+                  {
+                    title: '上右',
+                  },
+                  {
+                    title: '下左',
+                  },
+                  {
+                    title: '下右',
+                  },
+                  {
+                    title: '左上',
+                  },
+                  {
+                    title: '左下',
+                  },
+                  {
+                    title: '右上',
+                  },
+                  {
+                    title: '右下',
+                  },
+                ]
             },
         })
         placement: 'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end' | 'right-start' | 'right-end' = 'top';

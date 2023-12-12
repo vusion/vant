@@ -19,7 +19,7 @@ namespace nasl.ui {
         @Prop({
             group: '主要属性',
             title: '当前进度',
-            syncMode: 'both',
+            sync: true,
             setter: {
                 type: 'numberInput',
                 min: 0,

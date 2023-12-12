@@ -44,7 +44,7 @@ namespace nasl.ui {
         @Prop({
             group: '主要属性',
             title: '展示弹框',
-            syncMode: 'both',
+            sync: true,
             setter: {
                 type: 'switch',
             },

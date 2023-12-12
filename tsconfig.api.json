@@ -17,7 +17,7 @@
         "baseUrl": ".",
         "declaration": true,
         "emitDeclarationOnly": true,
-        "outFile": "./dist-theme/nasl.ui.h5.ts",
+        "outFile": "./dist-theme/nasl.ui.d.ts",
         "lib": [
             "esnext",
             "dom"

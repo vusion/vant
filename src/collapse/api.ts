@@ -15,7 +15,7 @@ namespace nasl.ui {
             group: '数据属性',
             title: '值',
             description: '用于标识折叠面板的值',
-            syncMode: 'both',
+            sync: true,
         })
         value: nasl.core.String;
 
