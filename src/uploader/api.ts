@@ -111,7 +111,7 @@ namespace nasl.ui {
                 type: 'switch',
             },
         })
-        autoUpload: nasl.core.Boolean = true;
+        private autoUpload: nasl.core.Boolean = true;
 
         @Prop({
             group: '主要属性',

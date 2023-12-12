@@ -157,7 +157,7 @@
       options:
         - value: right
           title: 右
-        - value: lfet
+        - value: left
           title: 左
       default: right
       description: 设置文本居左或居右放置

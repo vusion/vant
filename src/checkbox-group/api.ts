@@ -179,7 +179,7 @@ namespace nasl.ui {
                 titles: ['右', '左'],
             },
         })
-        labelPosition: 'right' | 'lfet' = 'right';
+        labelPosition: 'right' | 'left' = 'right';
 
         @Prop({
             group: '交互属性',

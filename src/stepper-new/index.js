@@ -263,16 +263,16 @@ export default createComponent({
       value = this.formatNumber(value);
 
       // format range
-      value = value === '' ? 1 : +value;
-      value = isNaN(value) ? this.min : value;
-      value = Math.max(Math.min(this.max, value), this.min);
+      value = value === '' ? 1 : +value; // 转换为数字
+      value = isNaN(value) ? this.min : value; // 非数字转换为最小值
+      value = Math.max(Math.min(this.max, value), this.min); // 超出范围转换为范围值
 
       // format decimal
-      if (!isNil(this.decimalLength)) {
+      if (!isNil(this.decimalLength)) { // 保留小数位数
         value = value.toFixed(this.decimalLength);
       }
 
-      return value;
+      return +value; // 转换为数字
     },
 
     onInput(event) {
@@ -336,20 +336,8 @@ export default createComponent({
     },
 
     onBlur(event) {
-      const { value } = event.target;
-      // const parsedValue = this.currentFormatter.parse(value);
-      let formatted = this.format(value);
-
-      if (!isNil(this.decimalLength) && formatted.indexOf('.') !== -1) {
-        const pair = formatted.split('.');
-        formatted = `${pair[0]}.${pair[1].slice(0, this.decimalLength)}`;
-      }
-
-      if (formatted === String(+formatted)) {
-        formatted = +formatted;
-      }
-
-      this.emitChange(formatted);
+      const value = this.format(event.target.value);
+      this.emitChange(value);
 
       this.$emit('blur', event);
 
