@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -7,6 +7,7 @@ namespace nasl.ui {
         description: '将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。',
     })
     export class VanCollapse extends ViewComponent {
+
         constructor(options?: Partial<VanCollapseOptions>) { super(); }
     }
 
@@ -24,7 +25,7 @@ namespace nasl.ui {
             title: '手风琴模式',
             description: '是否开启手风琴模式',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         accordion: nasl.core.Boolean = false;
@@ -33,7 +34,7 @@ namespace nasl.ui {
             title: '切换时',
             description: '切换时',
         })
-        onChange: (event: nasl.core.String) => void;
+        onChange: () => void;
 
         @Slot({
             title: 'undefined',
@@ -53,11 +54,13 @@ namespace nasl.ui {
         title: '面板项',
     })
     export class VanCollapseItem extends ViewComponent {
+
+
         @Method({
             title: '切换展开状态，传 true 为展开，false 为收起，不传参为切换',
             description: '切换展开状态，传 true 为展开，false 为收起，不传参为切换',
         })
-        toggle(expanded?: nasl.core.Boolean): void {}
+        toggle(): void {}
         constructor(options?: Partial<VanCollapseItemOptions>) { super(); }
     }
 
@@ -73,14 +76,14 @@ namespace nasl.ui {
             title: '值',
             description: '用于标识面板项的值',
         })
-        name: nasl.core.String;
+        name: nasl.core.Decimal,nasl.core.String;
 
         @Prop({
             group: '主要属性',
             title: '箭头图标',
             description: '是否显示箭头图标',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         isLink: nasl.core.Boolean = true;
@@ -90,7 +93,7 @@ namespace nasl.ui {
             title: '禁用',
             description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         disabled: nasl.core.Boolean = false;

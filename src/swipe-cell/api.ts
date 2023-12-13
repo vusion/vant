@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -7,13 +7,14 @@ namespace nasl.ui {
         description: '滑动条',
     })
     export class VanSwipeCell extends ViewComponent {
-        constructor(options?: Partial<VanSwipeCellOptions>) { super(); }
+
 
         @Method({
             title: '收起单元格侧边栏',
             description: '收起单元格侧边栏',
         })
-        close(position: nasl.core.String): void {}
+        close(): void {}
+        constructor(options?: Partial<VanSwipeCellOptions>) { super(); }
     }
 
     export class VanSwipeCellOptions {
@@ -21,34 +22,34 @@ namespace nasl.ui {
             group: '主要属性',
             title: '左侧滑动区域宽度',
             setter: {
-                type: 'numberInput',
+                concept: 'NumberInputSetter',
             },
         })
-        leftWidth: nasl.core.String;
+        leftWidth: nasl.core.Decimal;
 
         @Prop({
             group: '主要属性',
             title: '右侧滑动区域宽度',
             setter: {
-                type: 'numberInput',
+                concept: 'NumberInputSetter',
             },
         })
-        rightWidth: nasl.core.String;
+        rightWidth: nasl.core.Decimal;
 
         @Prop({
             group: '交互属性',
             title: '禁止滑动',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         disabled: nasl.core.Boolean = false;
 
         @Event({
-            title: '点击',
+            title: '点击后',
             description: '点击后触发',
         })
-        onClick: (event: nasl.core.String) => void;
+        onClick: () => void;
 
         @Slot({
             title: 'undefined',

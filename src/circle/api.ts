@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -7,6 +7,7 @@ namespace nasl.ui {
         description: '圆环形的进度条组件',
     })
     export class VanCircle extends ViewComponent {
+
         constructor(options?: Partial<VanCircleOptions>) { super(); }
     }
 
@@ -21,8 +22,7 @@ namespace nasl.ui {
             title: '当前进度',
             sync: true,
             setter: {
-                type: 'numberInput',
-                min: 0,
+                concept: 'NumberInputSetter',
             },
         })
         value: nasl.core.Decimal;
@@ -32,7 +32,7 @@ namespace nasl.ui {
             title: '顺时针增加',
             description: '是否按照顺时针顺序增加',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         clockwise: nasl.core.Boolean = true;
@@ -41,11 +41,8 @@ namespace nasl.ui {
             group: '样式属性',
             title: '圆环直径',
             description: '设置圆环直径，单位为px。',
-            setter: {
-                type: 'numberInput',
-            }
         })
-        size: nasl.core.Decimal = 100;
+        size: numer = 100;
 
         @Prop({
             group: '样式属性',
@@ -68,12 +65,8 @@ namespace nasl.ui {
         @Prop({
             group: '样式属性',
             title: '进度条宽度',
-            setter: {
-                type: 'numberInput',
-                min: 0,
-            }
         })
-        strokeWidth: nasl.core.Decimal = 40;
+        strokeWidth: nasl.core.Decimal | nasl.core.String = 40;
 
         @Slot({
             title: '默认',

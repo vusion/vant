@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -7,7 +7,7 @@ namespace nasl.ui {
         description: '弹出框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。',
     })
     export class VanDialog extends ViewComponent {
-        constructor(options?: Partial<VanDialogOptions>) { super(); }
+
 
         @Method({
             title: 'undefined',
@@ -20,6 +20,7 @@ namespace nasl.ui {
             description: '关闭弹窗',
         })
         closeModal(): void {}
+        constructor(options?: Partial<VanDialogOptions>) { super(); }
     }
 
     export class VanDialogOptions {
@@ -27,7 +28,7 @@ namespace nasl.ui {
             title: '是否展示确认按钮',
             description: '是否展示确认按钮',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         private showConfirmButton: nasl.core.Boolean = true;
@@ -36,7 +37,7 @@ namespace nasl.ui {
             title: '是否展示取消按钮',
             description: '是否展示取消按钮',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         private showCancelButton: nasl.core.Boolean = true;
@@ -46,7 +47,7 @@ namespace nasl.ui {
             title: '展示弹框',
             sync: true,
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         value: nasl.core.Boolean = false;
@@ -55,7 +56,7 @@ namespace nasl.ui {
             group: '交互属性',
             title: '点击遮罩层后关闭',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         closeOnClickOverlay: nasl.core.Boolean = false;

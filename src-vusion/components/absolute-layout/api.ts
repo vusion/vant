@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -7,18 +7,18 @@ namespace nasl.ui {
         description: '拖拽内部元素到任意位置',
     })
     export class VanAbsoluteLayout extends ViewComponent {
+
         constructor(options?: Partial<VanAbsoluteLayoutOptions>) { super(); }
     }
 
     export class VanAbsoluteLayoutOptions {
+
+
         @Event({
             title: '点击后',
             description: '点击此项时触发',
         })
-        onClick: (event: {
-            stopPropagation: () => void,
-            preventDefault: () => void,
-        }) => void;
+        onClick: () => void;
 
         @Slot({
             title: 'undefined',

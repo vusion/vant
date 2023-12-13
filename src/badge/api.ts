@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -15,18 +15,15 @@ namespace nasl.ui {
         @Prop({
             group: '数据属性',
             title: '徽章值',
-            setter: {
-              type: 'numberInput',
-            },
         })
-        content: nasl.core.Decimal = 2;
+        content: nasl.core.Integer = 2;
 
         @Prop({
             group: '数据属性',
             title: '徽章最大值',
             description: '徽章内容为数字时显示的最大值',
             setter: {
-                type: 'numberInput',
+                concept: 'NumberInputSetter',
             },
         })
         max: nasl.core.Decimal;
@@ -35,7 +32,7 @@ namespace nasl.ui {
             group: '主要属性',
             title: '显示徽章',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         dot: nasl.core.Boolean = false;

@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -7,6 +7,7 @@ namespace nasl.ui {
         description: '用于展示操作的当前进度。',
     })
     export class VanProgress extends ViewComponent {
+
         constructor(options?: Partial<VanProgressOptions>) { super(); }
     }
 
@@ -16,12 +17,8 @@ namespace nasl.ui {
             title: '值',
             description: '用于标识进度条的值',
             sync: true,
-            setter: {
-                type: 'numberInput',
-                min: 0,
-            }
         })
-        value: nasl.core.Decimal;
+        value: nasl.core.Decimal | nasl.core.String;
 
         @Prop({
             group: '主要属性',
@@ -35,7 +32,7 @@ namespace nasl.ui {
             title: '显示文字',
             description: '是否显示进度条中的文字',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         showPivot: nasl.core.Boolean = true;
@@ -44,7 +41,7 @@ namespace nasl.ui {
             group: '主要属性',
             title: '自定义',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         custom: nasl.core.Boolean = false;
@@ -54,7 +51,7 @@ namespace nasl.ui {
             title: '禁用',
             description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         inactive: nasl.core.Boolean = false;
@@ -64,7 +61,7 @@ namespace nasl.ui {
             title: '进度条粗细',
             description: '设置进度条粗细，单位为px。',
             setter: {
-                type: 'numberInput',
+                concept: 'NumberInputSetter',
             },
         })
         strokeWidth: nasl.core.Decimal = 4;

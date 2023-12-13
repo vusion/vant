@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -7,6 +7,7 @@ namespace nasl.ui {
         description: '画廊',
     })
     export class VanGallery<T> extends ViewComponent {
+
         constructor(options?: Partial<VanGalleryOptions<T>>) { super(); }
     }
 
@@ -16,6 +17,6 @@ namespace nasl.ui {
             title: '数据源',
             description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
         })
-        dataSource: nasl.collection.List<T>;
+        dataSource: Array<Item> | Function | object;
     }
 }

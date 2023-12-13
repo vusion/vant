@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -7,6 +7,7 @@ namespace nasl.ui {
         description: '开关',
     })
     export class VanSwitch extends ViewComponent {
+
         constructor(options?: Partial<VanSwitchOptions>) { super(); }
     }
 
@@ -17,7 +18,7 @@ namespace nasl.ui {
             description: '用于标识开关的值',
             sync: true,
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         value: nasl.core.Boolean = false;
@@ -27,7 +28,7 @@ namespace nasl.ui {
             title: '禁用',
             description: '正常显示，但禁止选择/输入',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         disabled: nasl.core.Boolean = false;
@@ -37,7 +38,7 @@ namespace nasl.ui {
             title: '只读',
             description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         readonly: nasl.core.Boolean = false;
@@ -46,15 +47,12 @@ namespace nasl.ui {
             title: '点击',
             description: '点击时触发',
         })
-        onClick: (event: {
-            stopPropagation: () => void,
-            preventDefault: () => void,
-        }) => void;
+        onClick: () => void;
 
         @Event({
             title: '状态切换',
             description: '开关状态切换时触发',
         })
-        onChange: (event: nasl.core.Boolean) => void;
+        onChange: () => void;
     }
 }

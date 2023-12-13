@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -7,6 +7,7 @@ namespace nasl.ui {
         description: '滑动输入条，用于在给定的范围内选择一个值。',
     })
     export class VanSlider extends ViewComponent {
+
         constructor(options?: Partial<VanSliderOptions>) { super(); }
     }
 
@@ -17,7 +18,7 @@ namespace nasl.ui {
             description: '用于标识滑块的值',
             sync: true,
             setter: {
-                type: 'numberInput',
+                concept: 'NumberInputSetter',
             },
         })
         value: nasl.core.Decimal;
@@ -26,7 +27,7 @@ namespace nasl.ui {
             group: '数据属性',
             title: '最大值',
             setter: {
-                type: 'numberInput',
+                concept: 'NumberInputSetter',
             },
         })
         max: nasl.core.Decimal = 100;
@@ -35,7 +36,7 @@ namespace nasl.ui {
             group: '数据属性',
             title: '最小值',
             setter: {
-                type: 'numberInput',
+                concept: 'NumberInputSetter',
             },
         })
         min: nasl.core.Decimal = 0;
@@ -45,7 +46,7 @@ namespace nasl.ui {
             title: '双滑块模式',
             description: '是否开启双滑块模式',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         range: nasl.core.Boolean = false;
@@ -54,7 +55,7 @@ namespace nasl.ui {
             group: '主要属性',
             title: '自定义组件',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         custom: nasl.core.Boolean = false;
@@ -64,7 +65,7 @@ namespace nasl.ui {
             title: '禁用',
             description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         disabled: nasl.core.Boolean = false;
@@ -74,7 +75,7 @@ namespace nasl.ui {
             title: '垂直展示',
             description: '是否垂直展示',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         vertical: nasl.core.Boolean = false;
@@ -90,7 +91,7 @@ namespace nasl.ui {
             title: '进度条高度',
             description: '设置进度条高度，单位为px',
             setter: {
-                type: 'numberInput',
+                concept: 'NumberInputSetter',
             },
         })
         barHeight: nasl.core.Decimal = 2;
@@ -100,7 +101,7 @@ namespace nasl.ui {
             title: '滑块按钮大小',
             description: '设置滑块按钮大小，单位为px',
             setter: {
-                type: 'numberInput',
+                concept: 'NumberInputSetter',
             },
         })
         buttonSize: nasl.core.Decimal = 24;
@@ -121,13 +122,13 @@ namespace nasl.ui {
             title: '改变时',
             description: '进度变化时实时触发',
         })
-        onInput: (event: nasl.core.Decimal) => void;
+        onInput: () => void;
 
         @Event({
             title: '改变后',
             description: '进度变化且结束拖动后触发',
         })
-        onChange: (event: nasl.core.Decimal) => void;
+        onChange: () => void;
 
         @Event({
             title: '开始拖动时触发',

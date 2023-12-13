@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
     @Component({
@@ -27,7 +27,7 @@ namespace nasl.ui {
             description: '是否可以取消选择',
             docDescription: '是否可以取消选择',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         cancelable: nasl.core.Boolean = false;
@@ -38,7 +38,7 @@ namespace nasl.ui {
             description: '是否可以多选',
             docDescription: '是否可以多选',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         multiple: nasl.core.Boolean = false;
@@ -49,7 +49,7 @@ namespace nasl.ui {
             description: '正常显示，但禁止选择/输入',
             docDescription: '正常显示，但禁止选择或输入。',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         readonly: nasl.core.Boolean = false;
@@ -60,7 +60,7 @@ namespace nasl.ui {
             description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
             docDescription: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         disabled: nasl.core.Boolean = false;
@@ -69,17 +69,13 @@ namespace nasl.ui {
             title: '选择后',
             description: '选择某一项时触发',
         })
-        onSelect: (event: {
-          value: nasl.core.Any,
-        }) => void;
+        onSelect: (event: nasl.ui.ChangeItemEvent) => void;
 
         @Event({
             title: '改变后',
             description: '选择值改变时触发',
         })
-        onChange: (event: {
-            value: nasl.core.Any,
-        }) => void;
+        onChange: (event: nasl.ui.ChangeItemEvent) => void;
 
         @Slot({
             title: 'undefined',
@@ -130,7 +126,7 @@ namespace nasl.ui {
             description: '是否右上角有flag标志',
             docDescription: '是否右上角有flag标志',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         flag: nasl.core.Boolean = false;
@@ -141,7 +137,7 @@ namespace nasl.ui {
             description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
             docDescription: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
             setter: {
-                type: 'switch',
+                concept: 'SwitchSetter',
             },
         })
         disabled: nasl.core.Boolean = false;
@@ -175,6 +171,6 @@ namespace nasl.ui {
                 },
             ],
         })
-        slotDefault: () => Array<VanCapsulesItem>;
+        slotDefault: () => Array<UCapsulesItem>;
     }
 }
