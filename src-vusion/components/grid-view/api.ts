@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -36,14 +36,14 @@ namespace nasl.ui {
     @Prop({
       title: '可取消',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private cancelable: nasl.core.Boolean = false;
     @Prop({
       title: '可多选',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private multiple: nasl.core.Boolean = false;
@@ -51,7 +51,7 @@ namespace nasl.ui {
       title: '筛选清除按钮',
       description: '搜索框是否有清除按钮',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private clearable: nasl.core.Boolean = false;
@@ -73,7 +73,7 @@ namespace nasl.ui {
       title: '分页方式',
       description: '设置分页方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '不分页'
         }, {
@@ -89,7 +89,7 @@ namespace nasl.ui {
       title: '分页大小',
       description: '设置分页大小，单位为px。',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -99,7 +99,7 @@ namespace nasl.ui {
       title: '可筛选',
       description: '是否可以过滤（搜索），开启将会显示搜索框。',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     filterable: nasl.core.Boolean = false;
@@ -107,7 +107,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '后端分页',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     remotePaging: nasl.core.Boolean = false;
@@ -115,7 +115,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '后端筛选',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     remoteFiltering: nasl.core.Boolean = false;
@@ -124,7 +124,7 @@ namespace nasl.ui {
       title: '下拉刷新',
       description: '是否开启下拉刷新',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     pullRefresh: nasl.core.Boolean = true;
@@ -148,7 +148,7 @@ namespace nasl.ui {
       title: '展示时长',
       description: '设置刷新成功后提示展示时长，单位为ms。',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       }
     })
     successDuration: nasl.core.Integer = 500;
@@ -157,7 +157,7 @@ namespace nasl.ui {
       title: '刷新距离',
       description: '设置触发下拉刷新的距离，单位为px。',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       }
     })
     pullDistance: nasl.core.Decimal = 50;
@@ -172,7 +172,7 @@ namespace nasl.ui {
       title: '初始加载',
       description: '设置初始时是否立即加载',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     initialLoad: nasl.core.Boolean = true;
@@ -186,7 +186,7 @@ namespace nasl.ui {
       title: '是否加载失败',
       description: '手动设置是否加载失败。',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private error: nasl.core.Boolean;
@@ -205,7 +205,7 @@ namespace nasl.ui {
       title: '瀑布模式',
       description: '是否开启瀑布模式',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     iffall: nasl.core.Boolean = false;
@@ -214,7 +214,7 @@ namespace nasl.ui {
       title: '网格数',
       description: '设置每页排列几项',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       }
     })
     col: nasl.core.Integer = 2;
@@ -222,7 +222,7 @@ namespace nasl.ui {
       group: '状态属性',
       title: '只读',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private readonly: nasl.core.Boolean = false;
@@ -230,7 +230,7 @@ namespace nasl.ui {
       group: '状态属性',
       title: '禁用',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private disabled: nasl.core.Boolean = false;

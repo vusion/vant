@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -37,7 +37,7 @@ namespace nasl.ui {
       title: '单选项图标',
       docDescription: '增加自定义图标显示',
       setter: {
-        type: 'iconSelect'
+        concept: "IconSetter"
       }
     })
     icon: nasl.core.String = 'sure';
@@ -46,7 +46,7 @@ namespace nasl.ui {
       title: '排列方向',
       description: '选择水平或垂直排列',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '水平'
         }, {
@@ -60,7 +60,7 @@ namespace nasl.ui {
       title: '每行排列数',
       description: '水平排列时每行展示的选项数量',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       },
       if: _ => _.direction === 'horizontal'
     })
@@ -70,7 +70,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;
@@ -79,7 +79,7 @@ namespace nasl.ui {
       title: '只读',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
@@ -130,7 +130,7 @@ namespace nasl.ui {
       title: '单选项图标',
       docDescription: '增加自定义图标显示',
       setter: {
-        type: 'iconSelect'
+        concept: "IconSetter"
       }
     })
     icon: nasl.core.String = 'sure';
@@ -139,7 +139,7 @@ namespace nasl.ui {
       title: '文本位置',
       description: '设置文本居左或居右放置',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '右'
         }, {
@@ -153,7 +153,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

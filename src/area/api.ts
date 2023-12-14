@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -21,7 +21,7 @@ namespace nasl.ui {
       title: '是否使用新版外观',
       description: '是否使用新版外观',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     isNew: nasl.core.Boolean = false;
@@ -68,7 +68,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '可见选项个数',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -78,7 +78,7 @@ namespace nasl.ui {
       title: '显示列数',
       description: '显示列数，3-省市区，2-省市，1-省',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -88,7 +88,7 @@ namespace nasl.ui {
       title: '对齐方式',
       description: '设置右侧内容的对齐方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '左'
         }, {
@@ -104,7 +104,7 @@ namespace nasl.ui {
       title: '转换器',
       description: '将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '地区名称'
         }, {
@@ -117,7 +117,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '点击遮罩层后关闭',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     closeOnClickOverlay: nasl.core.Boolean = false;
@@ -126,7 +126,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
@@ -135,7 +135,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

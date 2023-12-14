@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -19,7 +19,7 @@ namespace nasl.ui {
       tooltipLink: 'http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/030.%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80.html',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '正常',
           icon: 'layout-block',
@@ -37,7 +37,7 @@ namespace nasl.ui {
       title: '横轴对齐',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '左对齐',
           icon: 'horizontal-justify-start',
@@ -68,7 +68,7 @@ namespace nasl.ui {
       title: '纵轴对齐',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '顶对齐',
           icon: 'horizontal-alignment-start',
@@ -99,7 +99,7 @@ namespace nasl.ui {
       title: '列间距',
       description: '列元素之间的间距，单位为 px。',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '无（0）'
         }, {
@@ -137,7 +137,7 @@ namespace nasl.ui {
       title: '主轴方向',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '横向排列',
           icon: 'flex-horizontal',
@@ -149,7 +149,7 @@ namespace nasl.ui {
         }]
       },
       if: _ => _.mode === 'flex',
-      onToggle: [{
+      onChange: [{
         clear: ['justify', 'alignment']
       }]
     })
@@ -160,7 +160,7 @@ namespace nasl.ui {
       docDescription: '主轴方向为横向时：支持左对齐、居中对齐、右对齐、平均分布（两端不留空）、平均分布。主轴方向为纵向时：支持左对齐、居中对齐、右对齐、占满容器宽度。',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '左对齐',
           icon: 'horizontal-justify-start',
@@ -184,7 +184,7 @@ namespace nasl.ui {
         }]
       },
       if: _ => _.mode === 'flex' && _.direction === 'horizontal',
-      onToggle: [{
+      onChange: [{
         update: {
           gap: 'normal'
         },
@@ -203,7 +203,7 @@ namespace nasl.ui {
       docDescription: '主轴方向为横向时：支持顶对齐、垂直居中、底对齐、行内文字基线对齐、占满容器高度。主轴方向为纵向时：支持顶对齐、垂直居中、底对齐、平均分布（两端不留空）、平均分布。',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '顶对齐',
           icon: 'horizontal-alignment-start',
@@ -235,7 +235,7 @@ namespace nasl.ui {
       docDescription: '主轴方向为横向时：支持顶对齐、垂直居中、底对齐、行内文字基线对齐、占满容器高度。主轴方向为纵向时：支持顶对齐、垂直居中、底对齐、平均分布（两端不留空）、平均分布。',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '左对齐',
           icon: 'vertical-alignment-start',
@@ -263,7 +263,7 @@ namespace nasl.ui {
       docDescription: '主轴方向为横向时：支持左对齐、居中对齐、右对齐、平均分布（两端不留空）、平均分布。 主轴方向为纵向时：支持左对齐、居中对齐、右对齐、占满容器宽度。',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '顶对齐',
           icon: 'vertical-justify-start',
@@ -287,7 +287,7 @@ namespace nasl.ui {
         }]
       },
       if: _ => _.mode === 'flex' && _.direction === 'vertical',
-      onToggle: [{
+      onChange: [{
         update: {
           gap: 'normal'
         },
@@ -304,7 +304,7 @@ namespace nasl.ui {
       title: '是否换行',
       description: '弹性布局下子元素总宽度超出父级时子元素是否换行展示',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.mode === 'flex'
     })
@@ -313,7 +313,7 @@ namespace nasl.ui {
       title: '内容间隙',
       description: '内容块间隙大小',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '收缩'
         }, {
@@ -334,7 +334,7 @@ namespace nasl.ui {
       title: '占据列数',
       description: '栅格列宽度，栅格行最大为24列。',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         min: 1,
         max: 24,
         precision: 1
@@ -346,7 +346,7 @@ namespace nasl.ui {
       title: '偏移数',
       description: '栅格列向右偏移列数',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 1
       }
     })
@@ -358,7 +358,7 @@ namespace nasl.ui {
       tooltipLink: 'http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/030.%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80.html',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '块级',
           icon: 'layout-inline-block',
@@ -369,7 +369,7 @@ namespace nasl.ui {
           tooltip: '弹性布局'
         }]
       },
-      onToggle: [{
+      onChange: [{
         clear: ['justify', 'alignment', 'wrap', 'gap']
       }]
     })

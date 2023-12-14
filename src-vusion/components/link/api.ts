@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -21,7 +21,7 @@ namespace nasl.ui {
       title: '替换',
       description: '需要 vue-router，与`<router-link>`的`replace`属性相同。如果为`true`，当点击时，会调用`router.replace()`而不是`router.push()`，于是导航后不会留下`history `记录。',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private replace: nasl.core.Boolean = false;
@@ -29,7 +29,7 @@ namespace nasl.ui {
       title: '追加路径',
       description: '需要 vue-router，与`<router-link>`的`append`属性相同。如果为`true`，则在当前路径后追加`to`的路径。',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private append: nasl.core.Boolean = false;
@@ -37,7 +37,7 @@ namespace nasl.ui {
       title: '下划线',
       description: '是否显示下划线',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private decoration: nasl.core.Boolean = true;
@@ -52,7 +52,7 @@ namespace nasl.ui {
       title: '主题颜色',
       description: '设置链接主题颜色',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '默认'
         }, {
@@ -72,7 +72,7 @@ namespace nasl.ui {
       title: '展示方式',
       description: '选择行内或块级展示',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '行内展示'
         }, {
@@ -85,7 +85,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '链接类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '页面跳转'
         }, {
@@ -104,7 +104,7 @@ namespace nasl.ui {
       title: '打开方式',
       description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '新窗口'
         }, {
@@ -122,7 +122,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

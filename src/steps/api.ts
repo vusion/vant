@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -31,7 +31,7 @@ namespace nasl.ui {
       description: '指定当前步骤，从0开始记数。',
       sync: true,
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0,
         min: 0
       }
@@ -42,7 +42,7 @@ namespace nasl.ui {
       title: '步骤条方向',
       description: '设置步骤条方向',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '横向'
         }, {
@@ -56,7 +56,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
@@ -65,7 +65,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;
@@ -104,7 +104,7 @@ namespace nasl.ui {
       title: '状态',
       description: '设置步骤条的状态，分别为等待中、进行中、已完成、错误。',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '等待中'
         }, {
@@ -122,7 +122,7 @@ namespace nasl.ui {
       title: '图标',
       description: '自定义步骤的图标',
       setter: {
-        type: 'iconSelect'
+        concept: "IconSetter"
       }
     })
     icon: nasl.core.String;
@@ -131,7 +131,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
@@ -140,7 +140,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

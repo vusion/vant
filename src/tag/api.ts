@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -17,7 +17,7 @@ namespace nasl.ui {
       title: '样式类型',
       description: '设置主题颜色与样式类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '默认'
         }, {
@@ -34,7 +34,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '显示为标记样式',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     mark: nasl.core.Boolean = false;
@@ -42,7 +42,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '可关闭',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     closeable: nasl.core.Boolean = false;
@@ -51,7 +51,7 @@ namespace nasl.ui {
       title: '尺寸',
       description: '设置标签大小',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '大型'
         }, {
@@ -66,7 +66,7 @@ namespace nasl.ui {
       group: '样式属性',
       title: '显示为圆角',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     round: nasl.core.Boolean = false;
@@ -74,7 +74,7 @@ namespace nasl.ui {
       group: '样式属性',
       title: '显示为空心',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     plain: nasl.core.Boolean = false;

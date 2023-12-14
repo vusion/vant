@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -45,7 +45,7 @@ namespace nasl.ui {
       title: '触发方式',
       description: '弹出框的触发方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '点击'
         }, {
@@ -69,7 +69,7 @@ namespace nasl.ui {
       title: '跟随鼠标',
       description: '是否跟随鼠标',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private followCursor: nasl.core.Boolean = false;
@@ -77,7 +77,7 @@ namespace nasl.ui {
       title: '合并边框',
       description: '是否自动合并内外边框',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private mergeBorders: nasl.core.Boolean = true;
@@ -92,7 +92,7 @@ namespace nasl.ui {
       description: '弹出状态分为“True(弹出)/False(关闭)”，默认为“弹出”',
       sync: true,
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     opened: nasl.core.Boolean = false;
@@ -101,7 +101,7 @@ namespace nasl.ui {
       title: '弹出位置',
       description: '设置弹出位置',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '上'
         }, {
@@ -119,7 +119,7 @@ namespace nasl.ui {
       title: '消失延迟时间',
       description: '当触发方式为“悬浮”时，提示内容消失延迟时间，单位为ms。',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -129,7 +129,7 @@ namespace nasl.ui {
       title: '展示方式',
       description: '设置展示方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '行内展示'
         }, {
@@ -143,7 +143,7 @@ namespace nasl.ui {
       title: '省略显示',
       description: '文字过长时是否省略显示',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private ellipsis: nasl.core.Boolean = false;
@@ -152,7 +152,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

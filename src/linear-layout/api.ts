@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -26,7 +26,7 @@ namespace nasl.ui {
       title: '展示方式',
       description: '行内展示，或块级换行展示',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '行内'
         }, {
@@ -40,7 +40,7 @@ namespace nasl.ui {
       title: '内容间隙',
       description: '内容块间隙大小',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '收缩'
         }, {
@@ -61,7 +61,7 @@ namespace nasl.ui {
       title: '子元素展示方式',
       description: '设置子元素行内展示或块级换行展示',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '子元素默认布局'
         }, {
@@ -84,7 +84,7 @@ namespace nasl.ui {
       title: '加载中图标旋转',
       description: '设置加载中图标是否旋转，默认开启。',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     loadingIconRotate: nasl.core.Boolean = true;
@@ -101,7 +101,7 @@ namespace nasl.ui {
       tooltipLink: 'http://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/01.%E5%B8%83%E5%B1%80/020.%E7%BA%BF%E6%80%A7%E5%B8%83%E5%B1%80.html',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '行内',
           icon: 'layout-inline-block',
@@ -116,7 +116,7 @@ namespace nasl.ui {
           tooltip: '弹性布局'
         }]
       },
-      onToggle: [{
+      onChange: [{
         clear: ['justify', 'alignment', 'wrap', 'layout']
       }]
     })
@@ -126,7 +126,7 @@ namespace nasl.ui {
       title: '主轴方向',
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '横向排列',
           icon: 'flex-horizontal',
@@ -137,7 +137,7 @@ namespace nasl.ui {
           tooltip: '纵向'
         }]
       },
-      onToggle: [{
+      onChange: [{
         clear: ['justify', 'alignment']
       }]
     })
@@ -149,7 +149,7 @@ namespace nasl.ui {
 主轴方向为纵向时：支持左对齐、居中对齐、右对齐、占满容器宽度，其中占满容器宽度仅在弹性布局模式下展示。`,
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '左对齐',
           icon: 'horizontal-justify-start',
@@ -173,7 +173,7 @@ namespace nasl.ui {
         }]
       },
       if: _ => _.direction === 'horizontal' || _.mode === 'inline' && _.direction === 'vertical' || _.mode === 'block' && _.direction === 'vertical',
-      onToggle: [{
+      onChange: [{
         update: {
           gap: 'normal'
         },
@@ -193,7 +193,7 @@ namespace nasl.ui {
 主轴方向为纵向时：支持顶对齐、垂直居中、底对齐、平均分布（两端不留空）、平均分布。`,
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '顶对齐',
           icon: 'horizontal-alignment-start',
@@ -226,7 +226,7 @@ namespace nasl.ui {
 主轴方向为纵向时：支持顶对齐、垂直居中、底对齐、平均分布（两端不留空）、平均分布。`,
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '左对齐',
           icon: 'vertical-alignment-start',
@@ -255,7 +255,7 @@ namespace nasl.ui {
 主轴方向为纵向时：支持左对齐、居中对齐、右对齐、占满容器宽度，其中占满容器宽度仅在弹性布局模式下展示。`,
       bindHide: true,
       setter: {
-        type: 'capsules',
+        concept: "CapsulesSetter",
         options: [{
           title: '顶对齐',
           icon: 'vertical-justify-start',
@@ -279,7 +279,7 @@ namespace nasl.ui {
         }]
       },
       if: _ => _.mode === 'flex' && _.direction === 'vertical',
-      onToggle: [{
+      onChange: [{
         update: {
           gap: 'normal'
         },
@@ -297,7 +297,7 @@ namespace nasl.ui {
       title: '换行',
       description: '弹性布局下子元素总宽度超出父级时子元素是否换行展示',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.mode === 'flex'
     })

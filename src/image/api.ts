@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -15,7 +15,7 @@ namespace nasl.ui {
     @Prop({
       title: '加载样式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: 'Loading'
         }, {
@@ -35,7 +35,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '图片地址',
       setter: {
-        type: 'imageSelect'
+        concept: "ImageSetter"
       }
     })
     src: nasl.core.String = '';
@@ -44,7 +44,7 @@ namespace nasl.ui {
       title: '填充方式',
       description: '设置图片的填充方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '适应'
         }, {
@@ -64,7 +64,7 @@ namespace nasl.ui {
       title: '图片风格',
       description: '选择图片为方形或圆形',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '方形'
         }, {
@@ -78,7 +78,7 @@ namespace nasl.ui {
       title: '点击放大',
       description: '是否支持点击放大全屏展示',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     preview: nasl.core.Boolean = false;

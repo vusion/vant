@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -16,7 +16,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '图标',
       setter: {
-        type: 'iconSelect'
+        concept: "IconSetter"
       }
     })
     name: nasl.core.String;
@@ -25,7 +25,7 @@ namespace nasl.ui {
       title: '布局类型',
       description: '设置图标布局类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '仅图标'
         }, {
@@ -40,7 +40,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '链接类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '页面跳转'
         }, {
@@ -59,7 +59,7 @@ namespace nasl.ui {
       title: '打开方式',
       description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '新窗口'
         }, {

@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -21,7 +21,7 @@ namespace nasl.ui {
       title: '只读',
       description: '是否只读',
       setter: {
-        type: 'switch'
+        concept: 'SwitchSetter'
       }
     })
     private readonly: nasl.core.Boolean = false;
@@ -29,7 +29,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '是否禁用',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private disabled: nasl.core.Boolean = false;
@@ -37,7 +37,7 @@ namespace nasl.ui {
       title: '可取消',
       description: '是否可以取消选择',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private cancelable: nasl.core.Boolean = false;
@@ -45,7 +45,7 @@ namespace nasl.ui {
       title: '显示头部',
       description: '是否显示头部',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private showHead: nasl.core.Boolean = false;
@@ -58,7 +58,7 @@ namespace nasl.ui {
       title: '显示底部',
       description: '是否显示底部',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private showFoot: nasl.core.Boolean = false;
@@ -66,7 +66,7 @@ namespace nasl.ui {
       title: '后端分页',
       description: '是否使用后端分页',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.pageable !== ''
     })
@@ -75,7 +75,7 @@ namespace nasl.ui {
       title: '后端筛选',
       description: '是否使用后端过滤',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.filterable === true
     })
@@ -90,7 +90,7 @@ namespace nasl.ui {
       title: '大小写敏感',
       description: '过滤时大小写是否敏感',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.filterable === true
     })
@@ -99,7 +99,7 @@ namespace nasl.ui {
       title: '尺寸',
       description: '大小扩展，支持一个值或两个值的组合，前者表示高度，后者表示宽度',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '占满'
         }, {
@@ -132,7 +132,7 @@ namespace nasl.ui {
       title: '值字段名',
       description: '选项值的字段名',
       setter: {
-        type: 'propertySelect'
+        concept: "PropertySelectSetter"
       }
     })
     valueField: (item: T) => V;
@@ -141,7 +141,7 @@ namespace nasl.ui {
       title: '文本字段名',
       description: '选项文本的字段名，可用于前端筛选时的匹配',
       setter: {
-        type: 'propertySelect'
+        concept: "PropertySelectSetter"
       }
     })
     textField: (item: T) => nasl.core.String;
@@ -157,7 +157,7 @@ namespace nasl.ui {
       title: '分页',
       description: '设置分页类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '不分页'
         }, {
@@ -175,7 +175,7 @@ namespace nasl.ui {
       title: '默认分页大小',
       description: '分页过小可能会导致滚动加载更多失效',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         min: 1
       },
       if: _ => _.pageable !== ''
@@ -186,7 +186,7 @@ namespace nasl.ui {
       title: '可筛选',
       description: '是否可以过滤（搜索），开启将会显示搜索框。',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     filterable: nasl.core.Boolean = false;
@@ -201,7 +201,7 @@ namespace nasl.ui {
       title: '筛选清除按钮',
       description: '搜索框是否展示清除按钮',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.filterable === true
     })
@@ -211,7 +211,7 @@ namespace nasl.ui {
       title: '可选择',
       description: '是否可以选择',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private selectable: nasl.core.Boolean = true;
@@ -220,7 +220,7 @@ namespace nasl.ui {
       title: '多选',
       description: '设置是否可以多选行，不开启则为单选。',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     multiple: nasl.core.Boolean = false;
@@ -228,7 +228,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '已选图标',
       setter: {
-        type: 'iconSelect'
+        concept: "IconSetter"
       },
       if: _ => _.selectable === true
     })
@@ -237,7 +237,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '未选图标',
       setter: {
-        type: 'iconSelect'
+        concept: "IconSetter"
       },
       if: _ => _.selectable === true
     })
@@ -247,7 +247,7 @@ namespace nasl.ui {
       title: '下拉刷新',
       description: '是否开启下拉刷新',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.pageable !== 'pagination'
     })
@@ -275,7 +275,7 @@ namespace nasl.ui {
       title: '展示时长',
       description: '设置刷新成功后提示展示时长，单位为ms。',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       },
       if: _ => _.pullRefresh === true && _.pageable !== 'pagination'
@@ -286,7 +286,7 @@ namespace nasl.ui {
       title: '刷新距离',
       description: '设置触发下拉刷新的距离，单位为px。',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       },
       if: _ => _.pullRefresh === true && _.pageable !== 'pagination'
     })
@@ -296,7 +296,7 @@ namespace nasl.ui {
       title: '隐藏空态文案',
       description: '是否隐藏表格末尾“没有更多了”文案',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     hiddenempty: nasl.core.Boolean = false;
@@ -305,7 +305,7 @@ namespace nasl.ui {
       title: '初始加载',
       description: '是否在初始时立即加载',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     initialLoad: nasl.core.Boolean = true;
@@ -315,7 +315,7 @@ namespace nasl.ui {
       description: '设置加载状态',
       bindHide: true,
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '加载完成-有数据'
         }, {
@@ -342,7 +342,7 @@ namespace nasl.ui {
       description: '加载中状态的触发条件，未设置则默认为系统定义条件。',
       bindOpen: true,
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.designerMode === 'loading'
     })
@@ -362,7 +362,7 @@ namespace nasl.ui {
       docDescription: '控制表格加载失败的展示时机。默认关闭。',
       bindOpen: true,
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.designerMode === 'error'
     })
@@ -380,7 +380,7 @@ namespace nasl.ui {
       title: '斑马条纹',
       description: '是否按斑马线条纹显示',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     striped: nasl.core.Boolean = false;

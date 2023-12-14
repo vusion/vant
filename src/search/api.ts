@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -40,7 +40,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '显示清除图标',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '一直显示'
         }, {
@@ -54,7 +54,7 @@ namespace nasl.ui {
       title: '对齐方式',
       description: '设置对齐方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '左对齐'
         }, {
@@ -70,7 +70,7 @@ namespace nasl.ui {
       title: '搜索图标位置',
       description: '设置搜索图标位置',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '左'
         }, {
@@ -84,7 +84,7 @@ namespace nasl.ui {
       title: '可清除',
       description: '是否启用清除图标，点击清除图标后会清空输入框',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     clearable: nasl.core.Boolean;
@@ -93,7 +93,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean;
@@ -102,7 +102,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean;
@@ -111,7 +111,7 @@ namespace nasl.ui {
       title: '形状',
       description: '选择搜索框为方形或圆形',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '方形'
         }, {

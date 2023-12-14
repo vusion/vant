@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -21,7 +21,7 @@ namespace nasl.ui {
       title: '文件读取结果的类型',
       description: '文件读取结果的类型，上传大文件时，建议使用 file 类型，避免卡顿',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: 'dataUrl'
         }, {
@@ -55,7 +55,7 @@ namespace nasl.ui {
       description: '若要限制上传文件类型，请输入类型名称，格式为“.后缀名”，多个文件类型时使用英文逗号隔开。例如“.jpeg,.png,.gif”',
       tooltipLink: 'https://help.lcap.163yun.com/1.%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8/2.%E9%A1%B5%E9%9D%A2/10.H5%E9%A1%B5%E9%9D%A2%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/06.%E8%A1%A8%E5%8D%95/150.%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html',
       setter: {
-        type: 'input',
+        concept: "InputSetter",
         placeholder: '所有类型'
       }
     })
@@ -80,7 +80,7 @@ namespace nasl.ui {
       title: '设置cookie值',
       description: '通过设置 withCredentials 为 true 获得的第三方 cookies，将会依旧享受同源策略',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     withCredentials: nasl.core.Boolean = false;
@@ -95,7 +95,7 @@ namespace nasl.ui {
       title: '转换器',
       description: '将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式。',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: 'JSON'
         }, {
@@ -108,7 +108,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '自动上传',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private autoUpload: nasl.core.Boolean = true;
@@ -117,7 +117,7 @@ namespace nasl.ui {
       title: '多文件上传',
       description: '是否支持多文件上传',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     multiple: nasl.core.Boolean = false;
@@ -125,7 +125,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '列表数量上限',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0,
         min: 0
       }
@@ -136,7 +136,7 @@ namespace nasl.ui {
       title: '最大文件大小',
       description: '设置最大文件大小,单位为MB，默认为50MB',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         min: 0
       }
     })
@@ -146,7 +146,7 @@ namespace nasl.ui {
       title: '图片选择模式',
       description: '设置图片选择模式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '图库'
         }, {
@@ -159,7 +159,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '文件访问策略',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '任何人可访问'
         }, {
@@ -173,7 +173,7 @@ namespace nasl.ui {
       title: '文件有效期',
       description: '是否开启文件有效期控制',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     ttl: nasl.core.Boolean;
@@ -181,7 +181,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '文件有效期天数',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       },
       if: _ => _.ttl === true
@@ -193,7 +193,7 @@ namespace nasl.ui {
       description: '开启后支持通过文件存储源地址访问文件',
       docDescription: '开启后支持通过文件存储源地址访问文件',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     viaOriginURL: nasl.core.Boolean;
@@ -203,7 +203,7 @@ namespace nasl.ui {
       description: '启用压缩后上传的文件按压缩规则进行压缩后上传，压缩规则可在自定义配置参数管理',
       docDescription: '启用压缩后上传的文件按压缩规则进行压缩后上传，压缩规则可在自定义配置参数管理',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     lcapIsCompress: nasl.core.Boolean;
@@ -212,7 +212,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
@@ -221,7 +221,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -27,7 +27,7 @@ namespace nasl.ui {
       title: '展示弹层',
       sync: true,
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     value: nasl.core.Boolean = false;
@@ -36,7 +36,7 @@ namespace nasl.ui {
       title: '弹出位置',
       description: '设置弹出位置',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '上'
         }, {
@@ -53,7 +53,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '点击遮罩层后关闭',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     closeOnClickOverlay: nasl.core.Boolean = false;

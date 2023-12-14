@@ -1471,6 +1471,11 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@nasl/types@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@nasl/types/-/types-0.1.0.tgz#5bf9e01fcc296a9d79125241f2a5e75f6d09955a"
+  integrity sha512-jfzoAozSskFnZXMM/eqy+kU3AClH2TzrExWRD5qB5pi0rRZyOG5cHmYX3hmyqI6cKNTlujWtRUES2/Jf0qkTCg==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -6044,11 +6049,6 @@ decamelize@^1.1.0, decamelize@^1.1.2, decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/decamelize/-/decamelize-1.2.0.tgz"
   integrity "sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA== sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA=="
-
-decimal.js@^10.4.3:
-  version "10.4.3"
-  resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.4.3.tgz#1044092884d245d1b7f65725fa4ad4c6f781cc23"
-  integrity sha512-VBBaLc1MgL5XpzgIP7ny5Z6Nx3UrRkIViUkPUdtl9aya5amy3De1gsUUSB1g3+3sExYNjCAsAznmukyxCb1GRA==
 
 decode-uri-component@^0.2.0:
   version "0.2.0"
@@ -14505,6 +14505,15 @@ postcss-variables@^1.1.1:
   integrity sha512-a9b2ZXoy60xl28m+jedXYvbXLdYSLPXOqvgkLUHhOUbhIRlVoSHRGhGtpMLkcgVc05lu3JUBEypLVcTYNcltMw==
   dependencies:
     postcss "^6.0.9"
+
+postcss@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.0.tgz#163f70d2fe2715c6d4a4b3d300051c1ea9594aa9"
+  integrity sha512-ACgL/mXREjfCothsspfbxdiXIQowQeEyW7TJgsvAgCK8igWa2ZNCsbGNGnasbEF1++L9xb7qYpo23Aa3rGmiCg==
+  dependencies:
+    chalk "^2.4.1"
+    source-map "^0.6.1"
+    supports-color "^5.4.0"
 
 postcss@^6.0.16, postcss@^6.0.23, postcss@^6.0.9:
   version "6.0.23"

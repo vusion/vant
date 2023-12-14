@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -26,14 +26,14 @@ namespace nasl.ui {
       title: '默认选中项的索引',
       description: '默认选中项的索引',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       }
     })
     private defaultIndex: nasl.core.Decimal = 0;
     @Prop({
       title: '是否使用新版外观',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     isNew: nasl.core.Boolean = false;
@@ -73,7 +73,7 @@ namespace nasl.ui {
       group: '数据属性',
       title: '默认每页条数',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         min: 10
       },
       if: _ => _.pageable === true
@@ -96,7 +96,7 @@ namespace nasl.ui {
       title: '匹配方法',
       description: '设置过滤时的匹配方法',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '包括'
         }, {
@@ -113,7 +113,7 @@ namespace nasl.ui {
       title: '分页加载更多',
       description: '设置是否分页加载更多',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     pageable: nasl.core.Boolean = false;
@@ -122,7 +122,7 @@ namespace nasl.ui {
       title: '列表样式',
       description: '设置列表样式，仅列表展示时支持多选',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '选择器'
         }, {
@@ -158,7 +158,7 @@ namespace nasl.ui {
       title: '可见选项个数',
       description: '设置可见选项个数',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       },
       if: _ => _.type === 'picker'
@@ -169,7 +169,7 @@ namespace nasl.ui {
       title: '对齐方式',
       description: '设置右侧内容的对齐方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '左'
         }, {
@@ -184,7 +184,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '显示工具栏',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     showToolbar: nasl.core.Boolean = true;
@@ -193,7 +193,7 @@ namespace nasl.ui {
       title: '支持筛选',
       description: '设置是否支持筛选，开启将会支持搜索。',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     filterable: nasl.core.Boolean = false;
@@ -201,7 +201,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '可多选',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     multiple: nasl.core.Boolean = false;
@@ -209,7 +209,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '全选',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.multiple === true
     })
@@ -219,7 +219,7 @@ namespace nasl.ui {
       title: '已选中项数',
       description: '是否显示当前已选中项数',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.multiple === true
     })
@@ -228,7 +228,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '点击遮罩层后关闭',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     closeOnClickOverlay: nasl.core.Boolean = false;
@@ -237,7 +237,7 @@ namespace nasl.ui {
       title: '初始加载',
       description: '是否在初始时立即加载',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     initialLoad: nasl.core.Boolean = true;
@@ -246,7 +246,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
@@ -255,7 +255,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

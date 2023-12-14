@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -26,7 +26,7 @@ namespace nasl.ui {
       title: '复制提示反馈方式',
       description: '复制提示反馈方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '工具提示'
         }, {
@@ -41,7 +41,7 @@ namespace nasl.ui {
       title: '提示框位置',
       description: 'tooltip 提示框位置',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '上'
         }, {
@@ -74,7 +74,7 @@ namespace nasl.ui {
       title: '提示框显示时长',
       description: '提示框显示时长',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       }
     })
     private hideDelay: nasl.core.Decimal = 3000;
@@ -89,7 +89,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

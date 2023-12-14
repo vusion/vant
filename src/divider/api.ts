@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -16,7 +16,7 @@ namespace nasl.ui {
       title: '内容位置',
       description: '设置内容位置',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '居中'
         }, {
@@ -36,7 +36,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '线条类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '虚线'
         }, {

@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -31,7 +31,7 @@ namespace nasl.ui {
       title: '前缀图标',
       description: '前缀图标',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '搜索'
         }, {
@@ -44,7 +44,7 @@ namespace nasl.ui {
       title: '后缀图标',
       description: '后缀图标',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '搜索'
         }, {
@@ -65,7 +65,7 @@ namespace nasl.ui {
       title: '类型',
       description: '设置输入框的类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '文本'
         }, {
@@ -93,7 +93,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '最大输入长度',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         min: 1,
         max: 6
       },
@@ -118,7 +118,7 @@ namespace nasl.ui {
       title: '按钮尺寸',
       description: '设置完成按钮大小',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '默认'
         }, {
@@ -133,7 +133,7 @@ namespace nasl.ui {
       title: '可清除',
       description: '是否在输入框内展示清除按钮',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.inputstyle === 'input'
     })
@@ -143,7 +143,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入。',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
@@ -152,7 +152,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;
@@ -161,14 +161,14 @@ namespace nasl.ui {
       title: '输入框样式',
       description: '设置输入框样式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '默认'
         }, {
           title: '格子'
         }]
       },
-      onToggle: [{
+      onChange: [{
         update: {
           maxlength: 10000
         },
@@ -187,7 +187,7 @@ namespace nasl.ui {
       title: '键盘样式',
       description: '设置键盘样式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '默认键盘'
         }, {
@@ -200,7 +200,7 @@ namespace nasl.ui {
       group: '样式属性',
       title: '定制键盘布局',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '默认'
         }, {

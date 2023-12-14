@@ -85,6 +85,7 @@
     "vue": ">= 2.6.0"
   },
   "devDependencies": {
+    "@nasl/types": "^0.1.0",
     "@vant/area-data": "^1.1.1",
     "@vant/cli": "2.10.3",
     "@vant/eslint-config": "2.2.3",

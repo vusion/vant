@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -27,7 +27,7 @@ namespace nasl.ui {
       description: '是否展示弹出消息',
       sync: true,
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private value: nasl.core.Boolean = false;
@@ -40,7 +40,7 @@ namespace nasl.ui {
       title: '消息类型',
       description: '提示的类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '成功'
         }, {
@@ -59,7 +59,7 @@ namespace nasl.ui {
       title: '自定义图标',
       if: _ => _.type === 'custom',
       setter: {
-        type: 'iconSelect'
+        concept: "IconSetter"
       }
     })
     customIcon: nasl.core.String;
@@ -67,7 +67,7 @@ namespace nasl.ui {
       title: '停留时间',
       description: '自动关闭的延时，单位毫秒。设为 0 时不自动关闭',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -75,7 +75,7 @@ namespace nasl.ui {
     @Prop({
       title: '位置',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '顶部'
         }, {

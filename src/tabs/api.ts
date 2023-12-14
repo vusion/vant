@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -24,7 +24,7 @@ namespace nasl.ui {
       title: '样式类型',
       description: '设置选项卡为线条类型或胶囊类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '线条'
         }, {
@@ -37,7 +37,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '自动吸顶',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     sticky: nasl.core.Boolean = false;
@@ -46,7 +46,7 @@ namespace nasl.ui {
       title: '导航模式',
       description: '设置选项卡的导航模式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '切换导航'
         }, {
@@ -59,7 +59,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '滑动切换',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     swipeable: nasl.core.Boolean = false;
@@ -67,7 +67,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '开启转场动画',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     animated: nasl.core.Boolean = false;
@@ -76,7 +76,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;
@@ -125,7 +125,7 @@ namespace nasl.ui {
       group: '数据属性',
       title: '显示徽章',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     badgebtn: nasl.core.Boolean = false;
@@ -133,7 +133,7 @@ namespace nasl.ui {
       group: '数据属性',
       title: '徽章值',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       }
     })
     badge: nasl.core.Decimal;
@@ -142,7 +142,7 @@ namespace nasl.ui {
       title: '徽章最大值',
       description: '徽章内容为数字时显示的最大值',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       }
     })
     badgemax: nasl.core.Decimal;
@@ -151,7 +151,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

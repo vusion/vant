@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -37,7 +37,7 @@ namespace nasl.ui {
       title: '计时器时长（秒）',
       description: '设置定时时间',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0,
         min: 0
       }
@@ -48,7 +48,7 @@ namespace nasl.ui {
       title: '计时方式',
       description: '设置计时器计时方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '正计时'
         }, {
@@ -62,7 +62,7 @@ namespace nasl.ui {
       title: '自动开始计时',
       description: '是否开启自动开始计时',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     autostart: nasl.core.Boolean = true;
@@ -71,7 +71,7 @@ namespace nasl.ui {
       title: '隐藏分钟',
       description: '设置是否隐藏分钟',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     hideMinute: nasl.core.Boolean = false;

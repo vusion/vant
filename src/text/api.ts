@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -23,7 +23,7 @@ namespace nasl.ui {
       title: '主题颜色',
       description: '设置文本主题颜色',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '默认'
         }, {
@@ -47,7 +47,7 @@ namespace nasl.ui {
       title: '展示方式',
       description: '选择行内或块级展示',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '行内'
         }, {
@@ -61,7 +61,7 @@ namespace nasl.ui {
       title: '隐藏处理',
       description: '设置文本过长时的处理方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '默认不处理'
         }, {
@@ -79,7 +79,7 @@ namespace nasl.ui {
       title: '尺寸',
       description: '设置文本大小',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '小'
         }, {

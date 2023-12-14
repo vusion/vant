@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -31,7 +31,7 @@ namespace nasl.ui {
       title: '前缀图标',
       description: '前缀图标',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '搜索'
         }, {
@@ -44,7 +44,7 @@ namespace nasl.ui {
       title: '后缀图标',
       description: '后缀图标',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '搜索'
         }, {
@@ -71,10 +71,10 @@ namespace nasl.ui {
       title: '最大字符数',
       description: '输入框内可输入的最大字符数，超过时不支持输入。',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         placeholder: '不限制'
       },
-      onToggle: [{
+      onChange: [{
         update: {
           'show-word-limit': false
         },
@@ -87,7 +87,7 @@ namespace nasl.ui {
       title: '显示字数统计',
       description: '设置是否显示「可输入最大字符数」的字数统计',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.maxlength > 0
     })
@@ -97,7 +97,7 @@ namespace nasl.ui {
       title: '自适应内容高度',
       description: '可输入如{maxHeight:100,minHeight:50}，单位默认为px。',
       setter: {
-        type: 'input',
+        concept: "InputSetter",
         placeholder: '不设置则根据输入内容自适应'
       }
     })
@@ -110,7 +110,7 @@ namespace nasl.ui {
       title: '可清除',
       description: '是否在输入框内展示清除按钮',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     clearable: nasl.core.Boolean;
@@ -119,7 +119,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
@@ -128,7 +128,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

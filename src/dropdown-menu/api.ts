@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -22,7 +22,7 @@ namespace nasl.ui {
       title: '是否开启路由模式',
       description: '是否开启路由模式',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     private route: nasl.core.Boolean = false;
@@ -31,7 +31,7 @@ namespace nasl.ui {
       title: '展开方向',
       description: '设置下拉菜单的展开方向',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '上'
         }, {
@@ -44,7 +44,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '显示遮罩层',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     overlay: nasl.core.Boolean = true;
@@ -53,7 +53,7 @@ namespace nasl.ui {
       title: '点击遮罩层后关闭',
       description: '是否点击遮罩层后关闭菜单',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     closeOnClickOverlay: nasl.core.Boolean = true;
@@ -101,7 +101,7 @@ namespace nasl.ui {
       title: '点击菜单子项关闭',
       description: '是否通过点击菜单子项关闭',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     shutself: nasl.core.Boolean = true;
@@ -110,7 +110,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;
@@ -170,7 +170,7 @@ namespace nasl.ui {
       title: '箭头',
       description: '是否显示箭头图标',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     isLink: nasl.core.Boolean = true;
@@ -179,7 +179,7 @@ namespace nasl.ui {
       title: '箭头方向',
       description: '设置箭头方向',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '左'
         }, {
@@ -196,7 +196,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '垂直居中',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     center: nasl.core.Boolean = true;
@@ -211,7 +211,7 @@ namespace nasl.ui {
       title: '图标',
       description: '菜单子项的显示图标',
       setter: {
-        type: 'iconSelect'
+        concept: "IconSetter"
       }
     })
     icon: nasl.core.String;
@@ -219,7 +219,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '链接类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '页面跳转'
         }, {
@@ -238,7 +238,7 @@ namespace nasl.ui {
       title: '打开方式',
       description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '新窗口'
         }, {

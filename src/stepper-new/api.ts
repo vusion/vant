@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -18,7 +18,7 @@ namespace nasl.ui {
       description: '用于标识数字输入的值',
       sync: true,
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       }
     })
     value: nasl.core.Decimal | nasl.core.Integer;
@@ -26,7 +26,7 @@ namespace nasl.ui {
       group: '数据属性',
       title: '最小值',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       }
     })
     min: nasl.core.Decimal;
@@ -34,7 +34,7 @@ namespace nasl.ui {
       group: '数据属性',
       title: '最大值',
       setter: {
-        type: 'numberInput'
+        concept: "NumberInputSetter"
       }
     })
     max: nasl.core.Decimal;
@@ -43,7 +43,7 @@ namespace nasl.ui {
       title: '精度',
       description: '固定显示的小数位数',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0,
         min: 0
       }
@@ -68,7 +68,7 @@ namespace nasl.ui {
       title: '千位符',
       bindHide: true,
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.advancedFormat.enable === false
     })
@@ -78,7 +78,7 @@ namespace nasl.ui {
       title: '百分号',
       bindHide: true,
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       },
       if: _ => _.advancedFormat.enable === false
     })
@@ -119,7 +119,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '显示增加按钮',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     showPlus: nasl.core.Boolean = true;
@@ -127,7 +127,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '显示减少按钮',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     showMinus: nasl.core.Boolean = true;
@@ -135,7 +135,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '禁用增加按钮',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disablePlus: nasl.core.Boolean = false;
@@ -143,7 +143,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '禁用减少按钮',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disableMinus: nasl.core.Boolean = false;
@@ -152,7 +152,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入。',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disableInput: nasl.core.Boolean = false;
@@ -161,7 +161,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;
@@ -169,7 +169,7 @@ namespace nasl.ui {
       group: '样式属性',
       title: '风格',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '默认'
         }, {
@@ -189,7 +189,7 @@ namespace nasl.ui {
       title: '对齐方式',
       description: '设置对齐方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '左对齐'
         }, {

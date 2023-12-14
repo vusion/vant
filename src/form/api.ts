@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -21,7 +21,7 @@ namespace nasl.ui {
       title: '标签对齐方式',
       description: '标签对齐方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '左'
         }, {
@@ -36,7 +36,7 @@ namespace nasl.ui {
       title: '输入框对齐方式',
       description: '输入框对齐方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '左'
         }, {
@@ -94,7 +94,7 @@ namespace nasl.ui {
       title: '输入框类型',
       description: 'input输入框类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: 'text'
         }, {
@@ -120,7 +120,7 @@ namespace nasl.ui {
       title: '标签大小',
       description: '输入框左侧文本大小',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '正常'
         }, {
@@ -138,7 +138,7 @@ namespace nasl.ui {
       title: '标签布局',
       docDescription: '设置标签布局方式。行内展示、块级展示，标签与表单项分行展示。',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '行内展示'
         }, {
@@ -151,7 +151,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '必填标记',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     required: nasl.core.Boolean = false;
@@ -167,7 +167,7 @@ namespace nasl.ui {
       title: '显示底边框',
       description: '是否显示底边框',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     border: nasl.core.Boolean = true;

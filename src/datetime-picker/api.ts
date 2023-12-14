@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -32,7 +32,7 @@ namespace nasl.ui {
       title: '时间类型',
       description: '设置时间选择类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '时间选择'
         }, {
@@ -41,7 +41,7 @@ namespace nasl.ui {
           title: '日期时间选择'
         }]
       },
-      onToggle: [{
+      onChange: [{
         clear: ['unit', 'show-formatter']
       }]
     })
@@ -49,7 +49,7 @@ namespace nasl.ui {
     @Prop<VanDatetimePickerOptions, 'unit'>({
       title: '最小单位',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '日期'
         }, {
@@ -66,7 +66,7 @@ namespace nasl.ui {
           title: '秒'
         }]
       },
-      onToggle: [{
+      onChange: [{
         clear: ['show-formatter']
       }]
     })
@@ -74,7 +74,7 @@ namespace nasl.ui {
     @Prop<VanDatetimePickerOptions, 'showFormatter'>({
       title: '展示格式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '中国（2023年7月26日）'
         }, {
@@ -141,7 +141,7 @@ namespace nasl.ui {
       title: '区间选择',
       description: '是否支持区间选择',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     range: nasl.core.Boolean = false;
@@ -161,7 +161,7 @@ namespace nasl.ui {
       title: '是否使用新版外观',
       description: '是否使用新版外观',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     isNew: nasl.core.Boolean = false;
@@ -191,7 +191,7 @@ namespace nasl.ui {
       description: '当时间选择类型为 time 时',
       if: _ => _.type === 'time',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -202,7 +202,7 @@ namespace nasl.ui {
       description: '当时间选择类型为 time 时',
       if: _ => _.type === 'time',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -213,7 +213,7 @@ namespace nasl.ui {
       description: '当时间选择类型为 time 时',
       if: _ => _.type === 'time',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -224,7 +224,7 @@ namespace nasl.ui {
       description: '当时间选择类型为 time 时',
       if: _ => _.type === 'time',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -234,7 +234,7 @@ namespace nasl.ui {
       title: '转换器',
       description: '将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: 'yyyy/MM/dd HH:mm:ss'
         }, {
@@ -264,7 +264,7 @@ namespace nasl.ui {
       title: '对齐方式',
       description: '设置右侧内容的对齐方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '左'
         }, {
@@ -279,7 +279,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '点击遮罩层后关闭',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     closeOnClickOverlay: nasl.core.Boolean = false;
@@ -288,7 +288,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
@@ -297,7 +297,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;
@@ -333,7 +333,7 @@ namespace nasl.ui {
     @Prop({
       title: '触发的事件名称',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '确认'
         }, {
@@ -355,7 +355,7 @@ namespace nasl.ui {
     @Prop({
       title: '触发的事件名称',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '确认'
         }, {

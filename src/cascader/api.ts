@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -21,7 +21,7 @@ namespace nasl.ui {
       title: '树形模式',
       description: '将平铺数据转为树形结构数据',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     treeDisplay: nasl.core.Boolean = false;
@@ -81,7 +81,7 @@ namespace nasl.ui {
       title: '对齐方式',
       description: '设置右侧内容的对齐方式',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '左'
         }, {
@@ -97,7 +97,7 @@ namespace nasl.ui {
       title: '开启搜索框',
       description: '是否开启搜索框进行过滤',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     filterable: nasl.core.Boolean = false;
@@ -106,7 +106,7 @@ namespace nasl.ui {
       title: '点击遮罩层后关闭',
       description: '是否开启点击遮罩层后关闭',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     closeOnClickOverlay: nasl.core.Boolean = false;
@@ -115,7 +115,7 @@ namespace nasl.ui {
       title: '只读',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
@@ -124,7 +124,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;

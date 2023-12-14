@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -22,7 +22,7 @@ namespace nasl.ui {
       title: '类型',
       description: '设置通知栏类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '可关闭'
         }, {
@@ -37,7 +37,7 @@ namespace nasl.ui {
       group: '主要属性',
       title: '开启滚动播放',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     scrollable: nasl.core.Boolean = true;
@@ -46,7 +46,7 @@ namespace nasl.ui {
       title: '开启文本换行',
       description: '关闭滚动播放时该属性即可生效',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     wrapable: nasl.core.Boolean = false;
@@ -54,7 +54,7 @@ namespace nasl.ui {
       group: '交互属性',
       title: '链接类型',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '页面跳转'
         }, {
@@ -73,7 +73,7 @@ namespace nasl.ui {
       title: '打开方式',
       description: '父级窗口和顶级窗口仅适用于iframe组件嵌套的情况，若不存在嵌套，则打开方式同当前窗口。',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '新窗口'
         }, {

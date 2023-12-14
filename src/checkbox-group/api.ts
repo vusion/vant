@@ -1,4 +1,4 @@
-/// <reference types="nasl" />
+/// <reference types="@nasl/types" />
 
 namespace nasl.ui {
   @Component({
@@ -37,7 +37,7 @@ namespace nasl.ui {
       title: '最大可选数量',
       description: '最大可选数量(0为不限制)',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -47,7 +47,7 @@ namespace nasl.ui {
       title: '最小可选数量',
       description: '最小可选数量(0为不限制)',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       }
     })
@@ -57,7 +57,7 @@ namespace nasl.ui {
       title: '值字段',
       description: '用于标识选中值的字段',
       setter: {
-        type: 'propertySelect'
+        concept: "PropertySelectSetter"
       }
     })
     valueField: (item: T) => V;
@@ -66,7 +66,7 @@ namespace nasl.ui {
       title: '排列方向',
       description: '设置多选组的排列方向',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '水平'
         }, {
@@ -80,7 +80,7 @@ namespace nasl.ui {
       title: '排列数',
       description: '水平排列时每行展示的选项数量',
       setter: {
-        type: 'numberInput',
+        concept: "NumberInputSetter",
         precision: 0
       },
       if: _ => _.direction === 'horizontal'
@@ -92,7 +92,7 @@ namespace nasl.ui {
       description: '将选中的值以选择的符号作为连接符，转为字符串格式；选择“json”则转为JSON字符串格式。',
       bindHide: true,
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: "以','连接"
         }, {
@@ -112,7 +112,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;
@@ -164,7 +164,7 @@ namespace nasl.ui {
       title: '形状',
       description: '选择多选项为方形或圆形',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '方形'
         }, {
@@ -178,7 +178,7 @@ namespace nasl.ui {
       title: '文本位置',
       description: '设置文本居左或居右放置',
       setter: {
-        type: 'enumSelect',
+        concept: "EnumSelectSetter",
         options: [{
           title: '右'
         }, {
@@ -193,7 +193,7 @@ namespace nasl.ui {
       description: '是否选中选项',
       sync: true,
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     value: nasl.core.Boolean = false;
@@ -202,7 +202,7 @@ namespace nasl.ui {
       title: '禁用',
       description: '正常显示，但禁止选择/输入',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     disabled: nasl.core.Boolean = false;
@@ -211,7 +211,7 @@ namespace nasl.ui {
       title: '只读',
       description: '置灰显示，且禁止任何交互（焦点、点击、选择、输入等）',
       setter: {
-        type: 'switch'
+        concept: "SwitchSetter"
       }
     })
     readonly: nasl.core.Boolean = false;
