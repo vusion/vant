@@ -96,6 +96,8 @@
       default: 20
       description: 设置分页大小，单位为px。
       group: 主要属性
+      dependency:
+        - "!pageable": ""
     - name: filterable
       title: 可筛选
       type: boolean
