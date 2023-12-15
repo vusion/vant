@@ -231,14 +231,8 @@
         - title: Date 对象
           value: date
       default: format
-      # 此属性依赖的属性
-      depProp:
-        - name: type
-          value: datetime
-        - name: type
-          value: date
-        - name: type
-          value: year-month
+      dependency:
+        - "!type": datetime
     - name: min-date
       title: 最小日期
       type: Date

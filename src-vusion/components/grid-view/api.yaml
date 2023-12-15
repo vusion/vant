@@ -48,6 +48,8 @@
       default: 20
       description: ""
       group: 数据属性
+      dependency:
+        - "!pageable": ""
     - name: pull-refresh
       title: 下拉刷新
       type: boolean
