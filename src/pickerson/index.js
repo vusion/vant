@@ -369,7 +369,7 @@ export default createComponent({
                   option: this.$scopedSlots.option,
                 }}
                 value={this.currentValue}
-                style={this.style}
+                style={{fontSize: this.style?.fontSize || "inherit"}}
                 {...{ on }}
               ></Picker>
             )}
