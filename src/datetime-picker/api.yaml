@@ -279,14 +279,9 @@
         - title: Date 对象
           value: date
       default: format
-      depProp:
-        - name: type
-          value: datetime
-        - name: type
-          value: date
-        - name: type
-          value: year-month
       group: 主要属性
+      dependency:
+        - "!type": datetime
     - name: displayFormat
       title: 自定义展示格式
       type: string
