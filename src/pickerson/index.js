@@ -84,7 +84,7 @@ export default createComponent({
     };
   },
   mounted() {
-    this.style = `font-size: 16px;${this.$el.style.cssText}`;
+    this.style = `font-size: ${this.$el.style.fontSize || '16px'};`;
   },
   computed: {
     data() {
@@ -369,7 +369,7 @@ export default createComponent({
                   option: this.$scopedSlots.option,
                 }}
                 value={this.currentValue}
-                style={{fontSize: this.style?.fontSize || "inherit"}}
+                style={this.style}
                 {...{ on }}
               ></Picker>
             )}
