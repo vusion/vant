@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '文本',
     icon: 'text',
-    description: '用于展示文字或表达式'
+    description: '用于展示文字或表达式',
+    group: "Display"
   })
   export class VanText extends ViewComponent {
     constructor(options?: Partial<VanTextOptions>) {

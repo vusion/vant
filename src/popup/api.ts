@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '弹出层',
     icon: 'popuph5',
-    description: '弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。'
+    description: '弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。',
+    group: "Container"
   })
   export class VanPopup extends ViewComponent {
     constructor(options?: Partial<VanPopupOptions>) {

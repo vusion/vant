@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '单元格组',
     icon: 'cell-group',
-    description: '单元格为列表中的单个展示项'
+    description: '单元格为列表中的单个展示项',
+    group: "Display"
   })
   export class VanCellGroup extends ViewComponent {
     constructor(options?: Partial<VanCellGroupOptions>) {
@@ -33,7 +34,8 @@ namespace nasl.ui {
     slotDefault: () => Array<VanCell>;
   }
   @Component({
-    title: '单元格'
+    title: '单元格',
+    group: "Display"
   })
   export class VanCell extends ViewComponent {
     constructor(options?: Partial<VanCellOptions>) {

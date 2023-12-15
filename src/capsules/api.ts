@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '胶囊',
     icon: 'capsules',
-    description: '多项中选择一项'
+    description: '多项中选择一项',
+    group: "Form"
   })
   export class VanCapsules extends ViewComponent {
     constructor(options?: Partial<VanCapsulesOptions>) {
@@ -89,7 +90,8 @@ namespace nasl.ui {
   }
   @Component({
     title: '胶囊选项',
-    description: '胶囊选项'
+    description: '胶囊选项',
+    group: "Form"
   })
   export class VanCapsulesItem extends ViewComponent {
     constructor(options?: Partial<VanCapsulesItemOptions>) {
@@ -139,7 +141,8 @@ namespace nasl.ui {
   }
   @Component({
     title: '胶囊选项组',
-    description: '胶囊选项组'
+    description: '胶囊选项组',
+    group: "Form"
   })
   export class VanCapsulesGroup extends ViewComponent {
     constructor(options?: Partial<VanCapsulesGroupOptions>) {

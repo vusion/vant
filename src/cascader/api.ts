@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '级联选择',
     icon: 'cascade-select',
-    description: '级联选择框，用于多层级数据的选择，典型场景为省市区选择'
+    description: '级联选择框，用于多层级数据的选择，典型场景为省市区选择',
+    group: "Selector"
   })
   export class VanCascader<T, V> extends ViewComponent {
     constructor(options?: Partial<VanCascaderOptions<T, V>>) {

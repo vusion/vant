@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '文件上传',
     icon: 'uploader',
-    description: '上传文件。'
+    description: '上传文件。',
+    group: "Form"
   })
   export class VanUploader extends ViewComponent {
     constructor(options?: Partial<VanUploaderOptions>) {

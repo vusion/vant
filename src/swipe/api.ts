@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '幻灯片',
     icon: 'swipe',
-    description: '用于循环播放一组图片或内容'
+    description: '用于循环播放一组图片或内容',
+    group: "Display"
   })
   export class VanSwipe extends ViewComponent {
     constructor(options?: Partial<VanSwipeOptions>) {
@@ -59,7 +60,8 @@ namespace nasl.ui {
   }
   @Component({
     title: '幻灯片选项',
-    description: '幻灯片选项'
+    description: '幻灯片选项',
+    group: "Display"
   })
   export class VanSwipeItem extends ViewComponent {
     constructor(options?: Partial<VanSwipeItemOptions>) {

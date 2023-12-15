@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '评分',
     icon: 'rate',
-    description: '用于对事物进行评级操作。'
+    description: '用于对事物进行评级操作。',
+    group: "Display"
   })
   export class VanRate extends ViewComponent {
     constructor(options?: Partial<VanRateOptions>) {

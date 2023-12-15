@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '时间选择',
     icon: 'time-picker',
-    description: '时间选择，支持日期、年月、时分等维度'
+    description: '时间选择，支持日期、年月、时分等维度',
+    group: "Selector"
   })
   export class VanDatetimePicker extends ViewComponent {
     constructor(options?: Partial<VanDatetimePickerOptions>) {
@@ -322,7 +323,8 @@ namespace nasl.ui {
     slotDefault: () => Array<VanPickerActionSlot>;
   }
   @Component({
-    title: '时间选择事件插槽'
+    title: '时间选择事件插槽',
+    group: "Selector"
   })
   export class VanDatetimePickerActionSlot extends ViewComponent {
     constructor(options?: Partial<VanDatetimePickerActionSlotOptions>) {
@@ -344,7 +346,8 @@ namespace nasl.ui {
     targetMethod: 'confirm' | 'cancel';
   }
   @Component({
-    title: '事件插槽'
+    title: '事件插槽',
+    group: "Selector"
   })
   export class VanPickerActionSlot extends ViewComponent {
     constructor(options?: Partial<VanPickerActionSlotOptions>) {

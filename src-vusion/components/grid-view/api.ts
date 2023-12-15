@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '数据网格',
     icon: 'grid-view',
-    description: '数据网格'
+    description: '数据网格',
+    group: "Table"
   })
   export class VanGridView<T, V, P extends boolean, M extends boolean> extends ViewComponent {
     constructor(options?: Partial<VanGridViewOptions<T, V, P, M>>) {

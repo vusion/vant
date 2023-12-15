@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '地区选择',
     icon: 'region-select',
-    description: '省市区三级联动选择'
+    description: '省市区三级联动选择',
+    group: "Selector"
   })
   export class VanArea extends ViewComponent {
     constructor(options?: Partial<VanAreaOptions>) {

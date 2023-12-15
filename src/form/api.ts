@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '表单',
     icon: 'form',
-    description: '具有数据收集、校验和提交功能的表单，包含输入框、选择框、复选框、单选框等元素。'
+    description: '具有数据收集、校验和提交功能的表单，包含输入框、选择框、复选框、单选框等元素。',
+    group: "Form"
   })
   export class VanForm extends ViewComponent {
     constructor(options?: Partial<VanFormOptions>) {
@@ -71,7 +72,8 @@ namespace nasl.ui {
     slotDefault: () => Array<VanField>;
   }
   @Component({
-    title: '表单项'
+    title: '表单项',
+    group: "Form"
   })
   export class VanField extends ViewComponent {
     constructor(options?: Partial<VanFieldOptions>) {

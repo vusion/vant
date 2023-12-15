@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '标签',
     icon: 'label',
-    description: '用于标记关键词和概括主要内容。'
+    description: '用于标记关键词和概括主要内容。',
+    group: "Display"
   })
   export class VanTag extends ViewComponent {
     constructor(options?: Partial<VanTagOptions>) {

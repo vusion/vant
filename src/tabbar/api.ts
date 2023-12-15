@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '标签栏',
     icon: 'tabbar',
-    description: '标签栏'
+    description: '标签栏',
+    group: "Navigation"
   })
   export class VanTabbar extends ViewComponent {
     constructor(options?: Partial<VanTabbarOptions>) {
@@ -61,7 +62,8 @@ namespace nasl.ui {
     slotDefault: () => Array<VanTabbarItem>;
   }
   @Component({
-    title: '标签项'
+    title: '标签项',
+    group: "Navigation"
   })
   export class VanTabbarItem extends ViewComponent {
     constructor(options?: Partial<VanTabbarItemOptions>) {

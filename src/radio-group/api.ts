@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '单选组',
     icon: 'radios',
-    description: '多项中选择一个时使用'
+    description: '多项中选择一个时使用',
+    group: "Form"
   })
   export class VanRadioGroup<T, V> extends ViewComponent {
     constructor(options?: Partial<VanRadioGroupOptions<T, V>>) {
@@ -105,7 +106,8 @@ namespace nasl.ui {
     slotItem: (current: Current<T>) => Array<ViewComponent>;
   }
   @Component({
-    title: '单选项'
+    title: '单选项',
+    group: "Form"
   })
   export class VanRadio<V> extends ViewComponent {
     constructor(options?: Partial<VanRadioOptions<V>>) {

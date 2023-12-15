@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '栅格布局',
     icon: 'row',
-    description: '内部元素按照一定的规则布局'
+    description: '内部元素按照一定的规则布局',
+    group: "Layout"
   })
   export class VanRow extends ViewComponent {
     constructor(options?: Partial<VanRowOptions>) {
@@ -125,7 +126,8 @@ namespace nasl.ui {
   }
   @Component({
     title: '栅格列',
-    description: '内部元素行内列布局'
+    description: '内部元素行内列布局',
+    group: "Layout"
   })
   export class VanCol extends ViewComponent {
     constructor(options?: Partial<VanColOptions>) {

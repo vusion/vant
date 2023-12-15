@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '搜索框',
     icon: 'search',
-    description: '内部元素按照一定的规则布局'
+    description: '内部元素按照一定的规则布局',
+    group: "Form"
   })
   export class VanSearch extends ViewComponent {
     constructor(options?: Partial<VanSearchOptions>) {

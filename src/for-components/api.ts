@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '组件列表',
     icon: 'forcom',
-    description: '组件列表'
+    description: '组件列表',
+    group: "Table"
   })
   export class VanForComponents<T> extends ViewComponent {
     constructor(options?: Partial<VanForComponentsOptions<T>>) {

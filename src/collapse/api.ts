@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '折叠面板',
     icon: 'collapse',
-    description: '将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。'
+    description: '将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。',
+    group: "Container"
   })
   export class VanCollapse extends ViewComponent {
     constructor(options?: Partial<VanCollapseOptions>) {
@@ -45,7 +46,8 @@ namespace nasl.ui {
     slotDefault: () => Array<VanCollapseItem>;
   }
   @Component({
-    title: '面板项'
+    title: '面板项',
+    group: "Container"
   })
   export class VanCollapseItem extends ViewComponent {
     @Method({

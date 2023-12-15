@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '步骤条',
     icon: 'steps',
-    description: '用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。'
+    description: '用于展示操作流程的各个环节，让用户了解当前的操作在整体流程中的位置。',
+    group: "Display"
   })
   export class VanSteps<T> extends ViewComponent {
     constructor(options?: Partial<VanStepsOptions<T>>) {
@@ -91,7 +92,8 @@ namespace nasl.ui {
     slotItem: (current: Current<T>) => Array<ViewComponent>;
   }
   @Component({
-    title: '步骤条项'
+    title: '步骤条项',
+    group: "Display"
   })
   export class VanStep extends ViewComponent {
     constructor(options?: Partial<VanStepOptions>) {

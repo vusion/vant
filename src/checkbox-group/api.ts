@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '多选组',
     icon: 'checkboxes',
-    description: '多项中选择一个或多个时使用'
+    description: '多项中选择一个或多个时使用',
+    group: "Form"
   })
   export class VanCheckboxGroup<T, V> extends ViewComponent {
     constructor(options?: Partial<VanCheckboxGroupOptions<T, V>>) {
@@ -140,7 +141,8 @@ namespace nasl.ui {
     slotItem: (current: Current<T>) => Array<ViewComponent>;
   }
   @Component({
-    title: '多选项'
+    title: '多选项',
+    group: "Form"
   })
   export class VanCheckbox<V> extends ViewComponent {
     constructor(options?: Partial<VanCheckboxOptions<V>>) {

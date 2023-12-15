@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '数据列表',
     icon: 'list-view',
-    description: '用于列举大量数据的列表框，支持单选、多选、过滤（搜索）、分页等功能。'
+    description: '用于列举大量数据的列表框，支持单选、多选、过滤（搜索）、分页等功能。',
+    group: "Table"
   })
   export class VanListView<T, V, P, M> extends ViewComponent {
     constructor(options?: Partial<VanListViewOptions<T, V, P, M>>) {

@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '环形进度条',
     icon: 'circular-progress',
-    description: '圆环形的进度条组件'
+    description: '圆环形的进度条组件',
+    group: "Display"
   })
   export class VanCircle extends ViewComponent {
     constructor(options?: Partial<VanCircleOptions>) {

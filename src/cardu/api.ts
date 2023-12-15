@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '卡片',
     icon: 'card',
-    description: '用于快速布局'
+    description: '用于快速布局',
+    group: "Container"
   })
   export class VanCardu extends ViewComponent {
     constructor(options?: Partial<VanCarduOptions>) {
@@ -112,7 +113,8 @@ namespace nasl.ui {
   }
   @Component({
     title: '卡片组',
-    description: '卡片组'
+    description: '卡片组',
+    group: "Container"
   })
   class VanCarduGroup extends ViewComponent {
     constructor(options?: Partial<VanCarduGroupOptions>) {

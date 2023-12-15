@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '开关',
     icon: 'switch',
-    description: '开关'
+    description: '开关',
+    group: "Form"
   })
   export class VanSwitch extends ViewComponent {
     constructor(options?: Partial<VanSwitchOptions>) {

@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '按钮',
     icon: 'button',
-    description: '按钮用于触发一个操作，如提交表单。'
+    description: '按钮用于触发一个操作，如提交表单。',
+    group: "Display"
   })
   export class VanButton extends ViewComponent {
     constructor(options?: Partial<VanButtonOptions>) {

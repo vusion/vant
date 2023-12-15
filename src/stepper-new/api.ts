@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '数字输入',
     icon: 'numberh5',
-    description: '数字输入框'
+    description: '数字输入框',
+    group: "Form"
   })
   export class VanStepperNew extends ViewComponent {
     constructor(options?: Partial<VanStepperNewOptions>) {

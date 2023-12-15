@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '下拉菜单',
     icon: 'dropdown-menu',
-    description: '向下弹出的菜单列表。'
+    description: '向下弹出的菜单列表。',
+    group: "Navigation"
   })
   export class VanDropdownMenu extends ViewComponent {
     constructor(options?: Partial<VanDropdownMenuOptions>) {
@@ -69,7 +70,8 @@ namespace nasl.ui {
     slotDefault: () => Array<VanDropdownMenu>;
   }
   @Component({
-    title: '菜单项'
+    title: '菜单项',
+    group: "Navigation"
   })
   export class VanDropdownItem extends ViewComponent {
     constructor(options?: Partial<VanDropdownItemOptions>) {
@@ -141,7 +143,8 @@ namespace nasl.ui {
     slotDefault: () => Array<VanDropdownItemSon>;
   }
   @Component({
-    title: '菜单子项'
+    title: '菜单子项',
+    group: "Navigation"
   })
   export class VanDropdownItemSon extends ViewComponent {
     constructor(options?: Partial<VanDropdownItemSonOptions>) {

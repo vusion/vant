@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '日期选择',
     icon: 'date-time-picker',
-    description: '日历组件用于选择日期或日期区间'
+    description: '日历组件用于选择日期或日期区间',
+    group: "Selector"
   })
   export class VanCalendar extends ViewComponent {
     constructor(options?: Partial<VanCalendarOptions>) {

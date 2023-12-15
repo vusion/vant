@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '徽标',
     icon: 'badge',
-    description: '在右上角展示徽标数字或小红点。'
+    description: '在右上角展示徽标数字或小红点。',
+    group: "Display"
   })
   export class VanBadge extends ViewComponent {
     constructor(options?: Partial<VanBadgeOptions>) {

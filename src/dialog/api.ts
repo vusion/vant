@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '弹出框',
     icon: 'dialog',
-    description: '弹出框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。'
+    description: '弹出框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。',
+    group: "Feedback"
   })
   export class VanDialog extends ViewComponent {
     constructor(options?: Partial<VanDialogOptions>) {

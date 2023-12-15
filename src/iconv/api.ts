@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '图标',
     icon: 'icon',
-    description: '图标'
+    description: '图标',
+    group: "Display"
   })
   export class VanIconv extends ViewComponent {
     constructor(options?: Partial<VanIconvOptions>) {

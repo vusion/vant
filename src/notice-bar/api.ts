@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '通知栏',
     icon: 'notice-bar',
-    description: '用于循环播放展示一组消息通知。'
+    description: '用于循环播放展示一组消息通知。',
+    group: "Display"
   })
   export class VanNoticeBar extends ViewComponent {
     constructor(options?: Partial<VanNoticeBarOptions>) {

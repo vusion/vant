@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '进度条',
     icon: 'linear-progress',
-    description: '用于展示操作的当前进度。'
+    description: '用于展示操作的当前进度。',
+    group: "Display"
   })
   export class VanProgress extends ViewComponent {
     constructor(options?: Partial<VanProgressOptions>) {

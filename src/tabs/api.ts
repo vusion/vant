@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '选项卡',
     icon: 'tabsh5',
-    description: '选项卡切换组件，常用于平级区域大块内容的收纳和展现'
+    description: '选项卡切换组件，常用于平级区域大块内容的收纳和展现',
+    group: "Selector"
   })
   export class VanTabs extends ViewComponent {
     constructor(options?: Partial<VanTabsOptions>) {
@@ -102,7 +103,8 @@ namespace nasl.ui {
     slotDefault: () => Array<VanTab>;
   }
   @Component({
-    title: '标签页'
+    title: '标签页',
+    group: "Selector"
   })
   export class VanTab extends ViewComponent {
     constructor(options?: Partial<VanTabOptions>) {

@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '计时器',
     icon: 'countdown',
-    description: '用于计时'
+    description: '用于计时',
+    group: "Display"
   })
   export class VanCountDownNew extends ViewComponent {
     @Method({

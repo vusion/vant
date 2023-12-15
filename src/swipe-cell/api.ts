@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '滑动条',
     icon: 'swipe-cell',
-    description: '滑动条'
+    description: '滑动条',
+    group: "Container"
   })
   export class VanSwipeCell extends ViewComponent {
     constructor(options?: Partial<VanSwipeCellOptions>) {

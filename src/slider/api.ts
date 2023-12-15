@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '滑块',
     icon: 'slider',
-    description: '滑动输入条，用于在给定的范围内选择一个值。'
+    description: '滑动输入条，用于在给定的范围内选择一个值。',
+    group: "Display"
   })
   export class VanSlider extends ViewComponent {
     constructor(options?: Partial<VanSliderOptions>) {

@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '侧边导航',
     icon: 'sidebarh5',
-    description: '侧边导航'
+    description: '侧边导航',
+    group: "Navigation"
   })
   export class VanSidebar extends ViewComponent {
     constructor(options?: Partial<VanSidebarOptions>) {
@@ -45,7 +46,8 @@ namespace nasl.ui {
     slotDefault: () => Array<VanSidebarItem>;
   }
   @Component({
-    title: '菜单项'
+    title: '菜单项',
+    group: "Navigation"
   })
   export class VanSidebarItem extends ViewComponent {
     constructor(options?: Partial<VanSidebarItemOptions>) {

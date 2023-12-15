@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '复制',
     icon: 'copy',
-    description: '复制文本到剪切板'
+    description: '复制文本到剪切板',
+    group: "Effects"
   })
   export class VanCopy extends ViewComponent {
     constructor(options?: Partial<VanCopyOptions>) {

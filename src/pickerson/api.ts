@@ -4,7 +4,8 @@ namespace nasl.ui {
   @Component({
     title: '选择器',
     icon: 'picker',
-    description: '提供多个选项集合供用户选择，支持单列选择和多列级联。'
+    description: '提供多个选项集合供用户选择，支持单列选择和多列级联。',
+    group: "Selector"
   })
   export class VanPickerson<T, V, M extends boolean, P extends boolean> extends ViewComponent {
     constructor(options?: Partial<VanPickersonOptions<T, V, M, P>>) {
