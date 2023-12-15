@@ -69,7 +69,7 @@ export default createComponent({
     };
   },
   mounted() {
-    this.style = `font-size: 16px;${this.$el.style.cssText}`;
+    this.style = `font-size: ${this.$el.style.fontSize || '16px'};`;
   },
   computed: {
     data() {
