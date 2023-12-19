@@ -25,11 +25,13 @@ namespace nasl.ui {
       title: 'undefined',
       description: '切换弹出/关闭状态。'
     })
-    toggle(@Param({
-      title: 'undefined',
-      description: '可选。弹出/关闭状态'
-    })
-    opened?: nasl.core.Boolean): void {}
+    toggle(
+      @Param({
+        title: 'undefined',
+        description: '可选。弹出/关闭状态'
+      })
+      opened?: nasl.core.Boolean
+    ): void {}
     @Method({
       title: 'undefined',
       description: '更新 popper 实例。参考 [Popper.update()](https://popper.js.org/popper-documentation.html#Popper.update)。'

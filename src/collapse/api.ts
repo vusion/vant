@@ -54,7 +54,13 @@ namespace nasl.ui {
       title: '切换展开状态，传 true 为展开，false 为收起，不传参为切换',
       description: '切换展开状态，传 true 为展开，false 为收起，不传参为切换'
     })
-    toggle(expanded?: nasl.core.Boolean): void {}
+    toggle(
+      @Param({
+        title: '展开',
+        description: '展开'
+      })
+      expanded?: nasl.core.Boolean
+    ): void {}
     constructor(options?: Partial<VanCollapseItemOptions>) {
       super();
     }

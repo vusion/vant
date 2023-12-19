@@ -81,9 +81,13 @@ namespace nasl.ui {
       title: 'undefined',
       description: '切换菜单展示状态'
     })
-    toggle(show?: nasl.core.Boolean, options?: {
-      immediate: nasl.core.Boolean;
-    }): void {}
+    toggle(
+      @Param({
+        title: '展示',
+        description: '展示'
+      })
+      show?: nasl.core.Boolean
+    ): void {}
   }
   export class VanDropdownItemOptions {
     @Prop({

@@ -15,7 +15,13 @@ namespace nasl.ui {
       title: 'undefined',
       description: '验证表单，支持传入 name 来验证单个或部分表单项'
     })
-    validate(name?: nasl.core.String | nasl.collection.List<nasl.core.String>): void {}
+    validate(
+      @Param({
+        title: 'undefined',
+        description: '可选。需要验证的表单项 name'
+      })
+      name?: nasl.core.String | nasl.collection.List<nasl.core.String>
+    ): void {}
   }
   export class VanFormOptions {
     @Prop({

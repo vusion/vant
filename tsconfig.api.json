@@ -28,6 +28,6 @@
     },
     "include": [
         "./src/*/api.ts",
-        "./src-vusion/component/*/api.ts",
+        "./src-vusion/components/*/api.ts",
     ]
 }
