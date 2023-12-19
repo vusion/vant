@@ -1,10 +1,10 @@
 ### 基础用法
 
 ``` html
-<van-popup design-title="双击编辑选择器" round position="bottom" safe-area-inset-bottom evn="picker">
+<van-popup designTitle="双击编辑选择器" round position="bottom" safeAreaInsetBottom evn="picker">
   <van-picker
     title="标题"
-    show-toolbar
+    showToolbar
   >
   </van-picker>
 </van-popup>

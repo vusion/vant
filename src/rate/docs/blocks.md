@@ -1,5 +1,5 @@
 ### 基础用法
 
 ```html
-<van-rate void-icon="star1" icon="star1" />
+<van-rate voidIcon="star1" icon="star1" />
 ```

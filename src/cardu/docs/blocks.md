@@ -23,7 +23,7 @@
 ### 带图片样式
 
 ``` html
-<van-cardu title="卡片" cover-slot>
+<van-cardu title="卡片" coverSlot>
   <template #cover>
     <van-image :preview="false" src="https://static-vusion.163yun.com/assets/cloud-ui/1.jpg"></van-image>
   </template>

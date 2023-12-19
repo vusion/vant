@@ -1,7 +1,7 @@
 ### 基础用法
 
 ```html
-<van-calendar title="选择日期" input-align="left">
+<van-calendar title="选择日期" inputAlign="left">
   <template #title>
     <van-text text="标题"></van-text>
   </template>
@@ -9,13 +9,13 @@
     <van-text text="标题"></van-text>
   </template>
   <template #picker-top>
-    <van-picker-action-slot target-method="cancel">
+    <van-picker-action-slot targetMethod="cancel">
       <van-iconv name="left-arrow" icotype="only"></van-iconv>
     </van-picker-action-slot>
-    <van-picker-action-slot target-method="confirm"></van-picker-action-slot>
+    <van-picker-action-slot targetMethod="confirm"></van-picker-action-slot>
   </template>
   <template #picker-bottom>
-    <van-picker-action-slot target-method="cancel">
+    <van-picker-action-slot targetMethod="cancel">
       <van-button
         type="info_secondary"
         size="normal"
@@ -23,7 +23,7 @@
         squareroud="round"
       ></van-button>
     </van-picker-action-slot>
-    <van-picker-action-slot target-method="confirm">
+    <van-picker-action-slot targetMethod="confirm">
       <van-button
         type="info"
         size="normal"
