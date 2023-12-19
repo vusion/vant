@@ -15,7 +15,7 @@
       <van-text text="单选框"></van-text>
     </template>
     <template #input>
-      <van-radio-group direction="horizontal" is-new icon="sure">
+      <van-radio-group direction="horizontal" isNew icon="sure">
         <van-radio name="1" icon="sure">
           <van-text text="单选框 1"></van-text>
         </van-radio>
@@ -34,7 +34,7 @@
       round
       block="blockb"
       type="info"
-      native-type="submit"
+      nativeType="submit"
       text="提交"
     >
     </van-button>
