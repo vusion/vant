@@ -7,6 +7,8 @@ import { FieldMixin } from '../mixins/field';
 
 // Components
 import Icon from '../icon';
+import PopoverCombination from '../popover-combination';
+import PopoverCombinationItem from '../popover-combination-item';
 import Image from '../image';
 import Loading from '../loading';
 import ImagePreview from '../image-preview';
@@ -20,7 +22,6 @@ export default createComponent({
   inheritAttrs: false,
 
   mixins: [FieldMixin],
-
   // model: {
   //   prop: 'fileListprop',
   // },
@@ -482,6 +483,7 @@ export default createComponent({
     },
 
     genPreviewMask(item) {
+      console.log('item', item)
       const { status, message } = item;
 
       if (status === 'uploading' || status === 'failed') {
@@ -573,9 +575,13 @@ export default createComponent({
             {PreviewCover}
           </div>
         );
-
+      const getErrMsg = (errMsg) => {
+        console.log('errMsg', errMsg)
+        return (JSON.parse(errMsg)?.Message || '')
+      }
       return (
-        <div
+        <div>
+          <div
           class={bem('preview')}
           onClick={() => {
             this.$emit('click-preview', item, this.getDetail(index));
@@ -584,8 +590,21 @@ export default createComponent({
           {Preview}
           {this.genPreviewMask(item)}
           {DeleteIcon}
+         
         </div>
-      );
+         {item.errorMsg && getErrMsg(item.errorMsg) && <div class={bem("err-info")}>
+          <Icon class={bem('err-info-icon')} name="info" />
+          <PopoverCombination placement="bottom-start"  class={[bem('err-info-msg'), 'van-ellipsis', bem('title')]}>
+            <template slot="reference" >
+                {getErrMsg(item.errorMsg) || ''}
+            </template>
+            <PopoverCombinationItem slot="default">
+              <van-text text={getErrMsg(item.errorMsg)}></van-text>
+            </PopoverCombinationItem>
+          </PopoverCombination>
+        </div>}
+        </div>
+      ); 
     },
 
     genPreviewList() {
@@ -626,7 +645,7 @@ export default createComponent({
           height: size,
         };
       }
-
+      console.log('this.currentValue', this.currentValue)
       return (
         <div
           class={bem('upload', { readonly: this.readonly, empty: this.currentValue.length === 0 })}
@@ -641,6 +660,7 @@ export default createComponent({
           {this.uploadText && (
             <span class={bem('upload-text')}>{this.uploadText}</span>
           )}
+          
           {Input}
         </div>
       );
@@ -734,12 +754,14 @@ export default createComponent({
           }, 100);
         },
         onError: (e, res) => {
+          console.log('e, res', e)
           file.status = 'failed';
           file.message = t('fail');
+          file.errorMsg = e.errorMsg;
           this.$emit(
             'error',
             {
-              e,
+              e: e.err,
               res,
               file: file.file,
               item: file,
