@@ -483,7 +483,6 @@ export default createComponent({
     },
 
     genPreviewMask(item) {
-      console.log('item', item)
       const { status, message } = item;
 
       if (status === 'uploading' || status === 'failed') {
@@ -576,7 +575,6 @@ export default createComponent({
           </div>
         );
       const getErrMsg = (errMsg) => {
-        console.log('errMsg', errMsg)
         return (JSON.parse(errMsg)?.Message || '')
       }
       return (
@@ -645,7 +643,6 @@ export default createComponent({
           height: size,
         };
       }
-      console.log('this.currentValue', this.currentValue)
       return (
         <div
           class={bem('upload', { readonly: this.readonly, empty: this.currentValue.length === 0 })}
@@ -754,7 +751,6 @@ export default createComponent({
           }, 100);
         },
         onError: (e, res) => {
-          console.log('e, res', e)
           file.status = 'failed';
           file.message = t('fail');
           file.errorMsg = e.errorMsg;
