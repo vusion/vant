@@ -38,7 +38,11 @@ jobs:
         run: LCAP_LIB_VERSION=${{ env.VERSION }} node bin/asset.js
 
       - name: Upload
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mobile-ui@${{ env.VERSION }}
           path: mobile-ui@${{ env.VERSION }}
+  call-wexler:
+    needs: build
+    uses: vusion/wexler/.github/workflows/release-vant.yml@master
+    secrets: inherit
