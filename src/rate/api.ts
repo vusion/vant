@@ -76,13 +76,19 @@ namespace nasl.ui {
     @Prop({
       group: '样式属性',
       title: '图标大小',
-      description: '设置图标大小，单位为px。'
+      description: '设置图标大小，单位为px。',
+      setter: {
+        concept: "NumberInputSetter",
+      }
     })
     size: nasl.core.Decimal = 20;
     @Prop({
       group: '样式属性',
       title: '图标间距',
-      description: '设置图标间距，最小值为0。'
+      description: '设置图标间距，最小值为0。',
+      setter: {
+        concept: "NumberInputSetter",
+      }
     })
     gutter: nasl.core.Decimal = 4;
     @Prop({

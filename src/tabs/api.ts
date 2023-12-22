@@ -128,24 +128,29 @@ namespace nasl.ui {
       title: '显示徽章',
       setter: {
         concept: "SwitchSetter"
-      }
+      },
+      onChange: [{
+        clear: ['badge', 'badgemax']
+      }]
     })
     badgebtn: nasl.core.Boolean = false;
-    @Prop({
+    @Prop<VanTabOptions, 'badge'>({
       group: '数据属性',
       title: '徽章值',
       setter: {
         concept: "NumberInputSetter"
-      }
+      },
+      if: _ => _.badgebtn === true,
     })
     badge: nasl.core.Decimal;
-    @Prop({
+    @Prop<VanTabOptions, 'badgemax'>({
       group: '数据属性',
       title: '徽章最大值',
       description: '徽章内容为数字时显示的最大值',
       setter: {
         concept: "NumberInputSetter"
-      }
+      },
+      if: _ => _.badgebtn === true,
     })
     badgemax: nasl.core.Decimal;
     @Prop({

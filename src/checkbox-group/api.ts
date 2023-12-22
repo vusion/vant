@@ -61,7 +61,7 @@ namespace nasl.ui {
         concept: "PropertySelectSetter"
       }
     })
-    valueField: (item: T) => V;
+    valueField: (item: T) => V = ((item: any)  => item.value) as any;
     @Prop({
       group: '主要属性',
       title: '排列方向',

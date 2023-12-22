@@ -136,7 +136,7 @@ namespace nasl.ui {
         concept: "PropertySelectSetter"
       }
     })
-    valueField: (item: T) => V;
+    valueField: (item: T) => V = ((item: any)  => item.value) as any;
     @Prop<VanListViewOptions<T, V, P, M>, 'textField'>({
       group: '数据属性',
       title: '文本字段名',
@@ -145,7 +145,7 @@ namespace nasl.ui {
         concept: "PropertySelectSetter"
       }
     })
-    textField: (item: T) => nasl.core.String;
+    textField: (item: T) => nasl.core.String = ((item: any)  => item.text) as any;
     @Prop({
       group: '数据属性',
       title: '值',
