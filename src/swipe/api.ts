@@ -74,9 +74,22 @@ namespace nasl.ui {
       description: '点击某一项后触发'
     })
     onClick: (event: {
-      stopPropagation: () => void;
-      preventDefault: () => void;
-    }) => void;
+      altKey: nasl.core.Boolean;
+      button: nasl.core.Integer;
+      clientX: nasl.core.Integer;
+      clientY: nasl.core.Integer;
+      ctrlKey: nasl.core.Boolean;
+      metaKey: nasl.core.Boolean;
+      movementX: nasl.core.Integer;
+      movementY: nasl.core.Integer;
+      offsetX: nasl.core.Integer;
+      offsetY: nasl.core.Integer;
+      pageX: nasl.core.Integer;
+      pageY: nasl.core.Integer;
+      screenX: nasl.core.Integer;
+      screenY: nasl.core.Integer;
+      which: nasl.core.Integer;
+  }) => void;
     @Slot({
       title: 'undefined',
       description: '插入幻灯片内容，如图片'
