@@ -163,9 +163,7 @@ namespace nasl.ui {
       title: '弹出前',
       description: '弹出前触发。'
     })
-    onBeforeOpen: (event: {
-      preventDefault: () => void;
-    }) => void;
+    onBeforeOpen: () => void;
     @Event({
       title: '弹出时',
       description: '弹出时触发。'
@@ -175,9 +173,7 @@ namespace nasl.ui {
       title: '隐藏前',
       description: '隐藏前触发。'
     })
-    onBeforeClose: (event: {
-      preventDefault: () => void;
-    }) => void;
+    onBeforeClose: () => void;
     @Event({
       title: '隐藏后',
       description: '隐藏时触发。'

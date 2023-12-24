@@ -231,9 +231,22 @@ namespace nasl.ui {
       description: '点击上传区域时触发'
     })
     onClickUpload: (event: {
-      stopPropagation: () => void;
-      preventDefault: () => void;
-    }) => void;
+      altKey: nasl.core.Boolean;
+      button: nasl.core.Integer;
+      clientX: nasl.core.Integer;
+      clientY: nasl.core.Integer;
+      ctrlKey: nasl.core.Boolean;
+      metaKey: nasl.core.Boolean;
+      movementX: nasl.core.Integer;
+      movementY: nasl.core.Integer;
+      offsetX: nasl.core.Integer;
+      offsetY: nasl.core.Integer;
+      pageX: nasl.core.Integer;
+      pageY: nasl.core.Integer;
+      screenX: nasl.core.Integer;
+      screenY: nasl.core.Integer;
+      which: nasl.core.Integer;
+  }) => void;
     @Event({
       title: '文件大小超额',
       description: '文件大小超额时触发'

@@ -58,25 +58,37 @@ namespace nasl.ui {
     @Prop({
       group: '数据属性',
       title: '文本字段名',
-      description: '文本的字段名'
+      description: '文本的字段名',
+      setter: {
+        concept: "PropertySelectSetter"
+      }
     })
-    textField: (item: T) => nasl.core.String;
+    textField: (item: T) => nasl.core.String = ((item: any)  => item.text) as any;
     @Prop({
       group: '数据属性',
       title: '值字段名',
-      description: '选项值的字段名'
+      description: '选项值的字段名',
+      setter: {
+        concept: "PropertySelectSetter"
+      }
     })
-    valueField: (item: T) => V;
+    valueField: (item: T) => V = ((item: any)  => item.value) as any;
     @Prop({
       group: '数据属性',
-      title: '父级值字段名'
+      title: '父级值字段名',
+      setter: {
+        concept: "PropertySelectSetter"
+      }
     })
-    parentField: (item: T) => nasl.core.String;
+    parentField: (item: T) => nasl.core.String = ((item: any)  => item.prentid) as any;
     @Prop({
       group: '数据属性',
-      title: '子级值字段名'
+      title: '子级值字段名',
+      setter: {
+        concept: "PropertySelectSetter"
+      }
     })
-    childrenField: (item: T) => nasl.core.String;
+    childrenField: (item: T) => nasl.core.String = ((item: any)  => item.children) as any;
     @Prop({
       group: '主要属性',
       title: '占位提示'

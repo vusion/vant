@@ -77,7 +77,10 @@ namespace nasl.ui {
     @Prop({
       group: '状态属性',
       title: '加载中图标',
-      description: '加载状态中显示的图标'
+      description: '加载状态中显示的图标',
+      setter: {
+        concept: 'IconSetter',
+      },
     })
     loadingIcon: nasl.core.String = 'loading';
     @Prop({
@@ -166,11 +169,13 @@ namespace nasl.ui {
         }, {
           title: '平均分布(两端不留空)',
           icon: 'horizontal-justify-space-between',
-          tooltip: '平均分布(两端不留空)'
+          tooltip: '平均分布(两端不留空)',
+          if: _  => _.mode === 'flex' || _.direction === 'horizontal'
         }, {
           title: '平均分布',
           icon: 'horizontal-justify-space-around',
-          tooltip: '平均分布'
+          tooltip: '平均分布',
+          if: _  => _.mode === 'flex'
         }]
       },
       if: _ => _.direction === 'horizontal' || _.mode === 'inline' && _.direction === 'vertical' || _.mode === 'block' && _.direction === 'vertical',
@@ -184,7 +189,8 @@ namespace nasl.ui {
           gap: 'normal'
         },
         if: _ => _ === 'space-around'
-      }]
+      }],
+      tabKind: 'style'
     })
     justify: 'start' | 'center' | 'end' | 'space-between' | 'space-around' = 'start';
     @Prop<VanLinearLayoutOptions, 'alignment'>({
