@@ -11,6 +11,27 @@ namespace nasl.ui {
     constructor(options?: Partial<VanGridViewOptions<T, V, P, M>>) {
       super();
     }
+
+    @Prop({
+      title: '数据',
+    })
+    data: VanGridViewOptions<T, V, P, M>['dataSource'];
+
+    @Prop({
+      title: '当前页数',
+    })
+    page: nasl.core.Integer;
+
+    @Prop({
+      title: '当前页数',
+    })
+    size: nasl.core.Integer;
+
+    @Prop({
+      title: '过滤文本',
+    })
+    filterText: nasl.core.String;
+
     @Method({
       title: 'undefined',
       description: '清除缓存，重新加载'
@@ -62,7 +83,7 @@ namespace nasl.ui {
       description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
       designerValue: [{}, {}, {}, {}, {}, {}, {}, {}]
     })
-    dataSource: nasl.collection.List<T>;
+    dataSource: nasl.collection.List<T> | { total: nasl.core.Integer; list: nasl.collection.List<T> };
     @Prop({
       group: '数据属性',
       title: '数据类型',
@@ -95,6 +116,14 @@ namespace nasl.ui {
       }
     })
     pageSize: nasl.core.Integer = 20;
+
+    @Prop({
+      group: '主要属性',
+      title: '当前页数',
+      description: '当前页数',
+    })
+    private pageNumber: nasl.core.Integer = 1;
+
     @Prop({
       group: '主要属性',
       title: '可筛选',

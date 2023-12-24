@@ -11,6 +11,16 @@ namespace nasl.ui {
     constructor(options?: Partial<VanRadioGroupOptions<T, V>>) {
       super();
     }
+
+    @Prop({
+      title: '选中值',
+    })
+    value: VanRadioGroupOptions<T, V>['value'];
+
+    @Prop({
+      title: '数据',
+    })
+    data: VanRadioGroupOptions<T, V>['dataSource'];
   }
   export class VanRadioGroupOptions<T, V> {
     @Prop({
@@ -19,7 +29,7 @@ namespace nasl.ui {
       description: '展示数据的输入源，可设置为集合类型变量（List<T>）或输出参数为集合类型的逻辑。',
       designerValue: [{}, {}, {}]
     })
-    dataSource: nasl.collection.List<T>;
+    dataSource: nasl.collection.List<T> | { total: nasl.core.Integer; list: nasl.collection.List<T> };
     @Prop({
       group: '数据属性',
       title: '数据类型',

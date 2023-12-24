@@ -11,6 +11,16 @@ namespace nasl.ui {
     constructor(options?: Partial<VanCheckboxGroupOptions<T, V>>) {
       super();
     }
+
+    @Prop({
+      title: '选中值',
+    })
+    value: VanCheckboxGroupOptions<T, V>['value'];
+
+    @Prop({
+      title: '数据',
+    })
+    data: VanCheckboxGroupOptions<T, V>['dataSource'];
   }
   export class VanCheckboxGroupOptions<T, V> {
     @Prop({
@@ -19,7 +29,7 @@ namespace nasl.ui {
       description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑。',
       designerValue: [{}, {}, {}]
     })
-    dataSource: nasl.collection.List<T>;
+    dataSource: nasl.collection.List<T> | { total: nasl.core.Integer; list: nasl.collection.List<T> };
     @Prop({
       group: '数据属性',
       title: '数据类型',

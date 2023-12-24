@@ -11,6 +11,27 @@ namespace nasl.ui {
     constructor(options?: Partial<VanListViewOptions<T, V, P, M>>) {
       super();
     }
+
+    @Prop({
+      title: '数据',
+    })
+    data: VanListViewOptions<T, V, P, M>['dataSource'];
+
+    @Prop({
+      title: '当前页数',
+    })
+    page: nasl.core.Integer;
+
+    @Prop({
+      title: '当前页数',
+    })
+    size: nasl.core.Integer;
+
+    @Prop({
+      title: '过滤文本',
+    })
+    filterText: nasl.core.String;
+
     @Method({
       title: 'undefined',
       description: '清除缓存，重新加载'
@@ -121,7 +142,7 @@ namespace nasl.ui {
       description: '列表的数据源。数组方式表示直接的数据，函数需要返回一个 Promise。',
       designerValue: [{}, {}, {}]
     })
-    dataSource: nasl.collection.List<T>;
+    dataSource: nasl.collection.List<T> | { total: nasl.core.Integer; list: nasl.collection.List<T> };
     @Prop({
       group: '数据属性',
       title: '数据类型',
@@ -182,6 +203,14 @@ namespace nasl.ui {
       if: _ => _.pageable !== ''
     })
     pageSize: nasl.core.Integer = 20;
+
+    @Prop({
+      group: '主要属性',
+      title: '当前页数',
+      description: '当前页数',
+    })
+    private pageNumber: nasl.core.Integer = 1;
+
     @Prop({
       group: '主要属性',
       title: '可筛选',

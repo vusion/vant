@@ -11,6 +11,32 @@ namespace nasl.ui {
     constructor(options?: Partial<VanPickersonOptions<T, V, M, P>>) {
       super();
     }
+
+    @Prop({
+      title: '选中值',
+    })
+    value: VanPickersonOptions<T, V, M, P>['value'];
+
+    @Prop({
+      title: '数据',
+    })
+    data: VanPickersonOptions<T, V, M, P>['dataSource'];
+
+    @Prop({
+      title: '当前页数',
+    })
+    page: nasl.core.Integer;
+
+    @Prop({
+      title: '当前页数',
+    })
+    size: nasl.core.Integer;
+
+    @Prop({
+      title: '过滤文本',
+    })
+    filterText: nasl.core.String;
+
     @Method({
       title: 'undefined',
       description: '重新加载数据'
@@ -51,7 +77,7 @@ namespace nasl.ui {
       description: '展示数据的输入源，可设置为数据集对象或者返回数据集的逻辑',
       designerValue: [{}, {}, {}, {}, {}, {}]
     })
-    dataSource: nasl.collection.List<T>;
+    dataSource: nasl.collection.List<T> | { total: nasl.core.Integer; list: nasl.collection.List<T> };
     @Prop({
       group: '数据属性',
       title: '数据类型',
@@ -288,5 +314,26 @@ namespace nasl.ui {
       title: 'option'
     })
     slotOption: (current: Current<T>) => Array<ViewComponent>;
+
+    @Slot({
+      title: 'undefined',
+      description: '自定义标题',
+    })
+    slotTitle: () => Array<ViewComponent>;
+    @Slot({
+      title: 'undefined',
+      description: '自定义',
+    })
+    slotPannelTitle: () => Array<ViewComponent>;
+    @Slot({
+      title: 'undefined',
+      description: '自定义选择器顶部内容',
+    })
+    slotPickerTop: () => Array<VanPickerActionSlot>;
+    @Slot({
+      title: 'undefined',
+      description: '自定义选择器底部内容',
+    })
+    slotPickerBottom: () => Array<VanPickerActionSlot>;
   }
 }

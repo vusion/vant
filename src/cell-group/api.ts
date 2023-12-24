@@ -158,6 +158,11 @@ namespace nasl.ui {
     slotDefault: () => Array<ViewComponent>;
     @Slot({
       title: 'undefined',
+      description: '插入文本或 HTML。'
+    })
+    slotTitle: () => Array<ViewComponent>;
+    @Slot({
+      title: 'undefined',
       description: '右侧图标。'
     })
     private slotRightIcon: () => Array<ViewComponent>;

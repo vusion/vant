@@ -104,14 +104,6 @@
       description: 数据源返回的数据结构的类型，自动识别类型进行展示说明。
       compType: dataTypeSelect
       group: 数据属性
-    - name: value
-      title: 值
-      type: any
-      sync: true
-      model: true
-      advanced: true
-      description: 用于标识数据列表的值
-      group: 数据属性
     - name: value-field
       title: 值字段名
       type: string
