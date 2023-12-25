@@ -12,7 +12,7 @@ function getError(url, options, xhr) {
   err.status = xhr.status;
   err.method = 'post';
   err.url = url;
-  return err;
+  return { err, errorMsg: xhr.response.error || xhr.response };
 }
 
 function getBody(xhr) {
