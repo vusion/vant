@@ -62,22 +62,22 @@ namespace nasl.ui {
       title: '点击弹出层',
       description: '点击弹出层时触发'
     })
-    onClick: () => void;
+    onClick: () => any ;
     @Event({
       title: '点击遮罩层',
       description: '点击遮罩层时触发'
     })
-    onClickOverlay: () => void;
+    onClickOverlay: () => any ;
     @Event({
       title: '打开弹出层后',
       description: '打开弹出层时触发'
     })
-    onOpen: () => void;
+    onOpen: () => any ;
     @Event({
       title: '关闭弹出层后',
       description: '关闭弹出层时触发'
     })
-    onClose: () => void;
+    onClose: () => any ;
     @Slot({
       title: 'undefined',
       description: '内容自定义'

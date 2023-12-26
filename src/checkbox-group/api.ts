@@ -133,7 +133,7 @@ namespace nasl.ui {
     })
     onChange: (event: {
       value: nasl.collection.List<V>;
-    }) => void;
+    }) => any ;
     @Slot({
       title: 'undefined',
       description: '插入`<van-checkbox>`子组件。',
@@ -247,6 +247,6 @@ namespace nasl.ui {
       screenX: nasl.core.Integer;
       screenY: nasl.core.Integer;
       which: nasl.core.Integer;
-  }) => void;
+  }) => any ;
   }
 }

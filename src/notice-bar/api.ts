@@ -107,17 +107,17 @@ namespace nasl.ui {
       screenX: nasl.core.Integer;
       screenY: nasl.core.Integer;
       which: nasl.core.Integer;
-  }) => void;
+  }) => any ;
     @Event({
       title: '关闭通知栏时触发',
       description: '关闭通知栏时触发'
     })
-    onClose: () => void;
+    onClose: () => any ;
     @Event({
       title: '点击链接',
       description: '点击链接'
     })
-    onRout: () => void;
+    onRout: () => any ;
     @Slot({
       title: 'undefined',
       description: '文本插槽'

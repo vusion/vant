@@ -33,7 +33,7 @@ namespace nasl.ui {
       title: '切换导航时',
       description: '切换导航时'
     })
-    onChange: () => void;
+    onChange: () => any ;
     @Slot({
       title: 'undefined',
       description: '插入`<van-sidebar-item>`子组件。',
@@ -138,7 +138,7 @@ namespace nasl.ui {
       title: '点击菜单项',
       description: '点击选项导致 value 变化时触发'
     })
-    onClick: (event: nasl.core.Integer) => void;
+    onClick: (event: nasl.core.Integer) => any ;
     @Slot({
       title: 'undefined',
       description: '内容'

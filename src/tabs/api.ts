@@ -85,12 +85,12 @@ namespace nasl.ui {
       title: '点击标签',
       description: '点击标签时触发'
     })
-    onClick: (event: nasl.core.String) => void;
+    onClick: (event: nasl.core.String) => any ;
     @Event({
       title: '标签改变',
       description: '当前激活的标签改变时触发'
     })
-    onChange: (event: nasl.core.String) => void;
+    onChange: (event: nasl.core.String) => any ;
     @Slot({
       title: '默认',
       description: '插入`<van-tab>`子组件。',

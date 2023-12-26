@@ -78,9 +78,9 @@ namespace nasl.ui {
       description: '点击此项时触发'
     })
     onClick: (event: {
-      stopPropagation: () => void;
-      preventDefault: () => void;
-    }) => void;
+      stopPropagation: () => any ;
+      preventDefault: () => any ;
+    }) => any ;
     @Slot({
       title: 'undefined',
       description: '插入文本或HTML'

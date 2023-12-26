@@ -306,12 +306,12 @@ namespace nasl.ui {
       title: '确认',
       description: '点击完成按钮时触发的事件'
     })
-    onConfirm: (event: nasl.core.String) => void;
+    onConfirm: (event: nasl.core.String) => any ;
     @Event({
       title: '取消',
       description: '点击完成取消时触发的事件'
     })
-    onCancel: () => void;
+    onCancel: () => any ;
     @Slot({
       title: 'undefined',
       description: '插入`<van-picker-action-slot>`子组件',

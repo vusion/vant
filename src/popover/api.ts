@@ -111,19 +111,19 @@ namespace nasl.ui {
             title: '点击选项时触发',
             description: '点击选项时触发',
         })
-        onSelect: () => void;
+        onSelect: () => any ;
 
         @Event({
             title: '展开',
             description: '展开',
         })
-        onOpen: () => void;
+        onOpen: () => any ;
 
         @Event({
             title: '收起',
             description: '收起',
         })
-        onClose: () => void;
+        onClose: () => any ;
 
         @Slot({
             title: 'undefined',
@@ -164,6 +164,6 @@ namespace nasl.ui {
             title: '点击选项时触发',
             description: '点击选项时触发',
         })
-        onClick: () => void;
+        onClick: () => any ;
     }
 }

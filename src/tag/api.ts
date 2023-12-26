@@ -99,16 +99,16 @@ namespace nasl.ui {
       screenX: nasl.core.Integer;
       screenY: nasl.core.Integer;
       which: nasl.core.Integer;
-  }) => void;
+  }) => any ;
     @Event({
       title: '关闭前',
       description: '点击标签删除图标前触发，使用event.preventDefault可以阻止删除事件触发'
     })
-    onBeforeClose: () => void;
+    onBeforeClose: () => any ;
     @Event({
       title: '关闭时',
       description: '点击标签删除图标时触发'
     })
-    onClose: () => void;
+    onClose: () => any ;
   }
 }

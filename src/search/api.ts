@@ -125,7 +125,7 @@ namespace nasl.ui {
       title: '确定搜索时触发',
       description: '确定搜索时触发'
     })
-    onSearch: (event: nasl.core.String) => void;
+    onSearch: (event: nasl.core.String) => any ;
     @Event({
       title: '点击搜索图标时触发',
       description: '点击搜索图标时触发'
@@ -146,32 +146,32 @@ namespace nasl.ui {
       screenX: nasl.core.Integer;
       screenY: nasl.core.Integer;
       which: nasl.core.Integer;
-  }) => void;
+  }) => any ;
     @Event({
       title: '输入框内容变化时触发',
       description: '输入框内容变化时触发'
     })
-    onInput: (event: nasl.core.String) => void;
+    onInput: (event: nasl.core.String) => any ;
     @Event({
       title: '输入框获得焦点时触发',
       description: '输入框获得焦点时触发'
     })
-    onFocus: (event: FocusEvent) => void;
+    onFocus: (event: FocusEvent) => any ;
     @Event({
       title: '输入框失去焦点时触发',
       description: '输入框失去焦点时触发'
     })
-    onBlur: (event: FocusEvent) => void;
+    onBlur: (event: FocusEvent) => any ;
     @Event({
       title: '点击输入区域时触发',
       description: '点击输入区域时触发'
     })
-    onClickinput: (event: FocusEvent) => void;
+    onClickinput: (event: FocusEvent) => any ;
     @Event({
       title: '点击清除图标时触发',
       description: '点击清除图标时触发'
     })
-    onClear: () => void;
+    onClear: () => any ;
     @Slot({
       title: 'undefined',
       description: '内容'

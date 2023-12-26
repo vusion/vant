@@ -33,7 +33,7 @@ namespace nasl.ui {
       title: '切换时',
       description: '切换时'
     })
-    onChange: (event: nasl.core.String) => void;
+    onChange: (event: nasl.core.String) => any ;
     @Slot({
       title: 'undefined',
       description: '插入`<van-collapse-item>`子组件。',
@@ -99,11 +99,11 @@ namespace nasl.ui {
       title: '展开',
       description: '展开'
     })
-    onOpen: () => void;
+    onOpen: () => any ;
     @Event({
       title: '收起',
       description: '收起'
     })
-    onClose: () => void;
+    onClose: () => any ;
   }
 }

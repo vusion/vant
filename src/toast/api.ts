@@ -91,11 +91,11 @@ namespace nasl.ui {
       title: '打开弹出消息后',
       description: '打开弹出消息时触发'
     })
-    onOpen: () => void;
+    onOpen: () => any ;
     @Event({
       title: '关闭弹出消息后',
       description: '关闭弹出消息时触发'
     })
-    onClose: () => void;
+    onClose: () => any ;
   }
 }

@@ -112,7 +112,7 @@ namespace nasl.ui {
       screenX: nasl.core.Integer;
       screenY: nasl.core.Integer;
       which: nasl.core.Integer;
-  }) => void;
+  }) => any ;
     @Slot({
       title: 'undefined',
       description: '插入默认的元素'

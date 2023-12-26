@@ -205,11 +205,11 @@ namespace nasl.ui {
       title: '点击加减按钮',
       description: '点击加减按钮时触发'
     })
-    onClick: () => void;
+    onClick: () => any ;
     @Event({
       title: '值改变',
       description: '值改变时触发'
     })
-    onChange: (event: nasl.core.Decimal | nasl.core.Integer) => void;
+    onChange: (event: nasl.core.Decimal | nasl.core.Integer) => any ;
   }
 }

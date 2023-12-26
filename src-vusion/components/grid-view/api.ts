@@ -268,7 +268,7 @@ namespace nasl.ui {
       title: '加载后',
       description: '加载时触发'
     })
-    onLoad: () => void;
+    onLoad: () => any ;
     @Slot({
       title: 'undefined',
       description: '插入<van-cardu />',

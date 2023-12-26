@@ -111,21 +111,21 @@ namespace nasl.ui {
       title: '改变时',
       description: '进度变化时实时触发'
     })
-    onInput: (event: nasl.core.Decimal) => void;
+    onInput: (event: nasl.core.Decimal) => any ;
     @Event({
       title: '改变后',
       description: '进度变化且结束拖动后触发'
     })
-    onChange: (event: nasl.core.Decimal) => void;
+    onChange: (event: nasl.core.Decimal) => any ;
     @Event({
       title: '开始拖动时触发',
       description: '开始拖动时触发'
     })
-    onDragStart: () => void;
+    onDragStart: () => any ;
     @Event({
       title: '结束拖动时触发',
       description: '结束拖动时触发'
     })
-    onDragEnd: () => void;
+    onDragEnd: () => any ;
   }
 }

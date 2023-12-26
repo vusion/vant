@@ -98,7 +98,7 @@ namespace nasl.ui {
       title: '值改变时',
       description: '选择值改变时触发'
     })
-    onChange: (event: V) => void;
+    onChange: (event: V) => any ;
     @Slot({
       title: 'undefined',
       description: '插入`<van-radio>`子组件。',
@@ -189,6 +189,6 @@ namespace nasl.ui {
       screenX: nasl.core.Integer;
       screenY: nasl.core.Integer;
       which: nasl.core.Integer;
-  }) => void;
+  }) => any ;
   }
 }

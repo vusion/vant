@@ -147,17 +147,17 @@ namespace nasl.ui {
     onConfirm: (values: nasl.collection.List<{
       code: nasl.core.String;
       name: nasl.core.String;
-    }>, index: nasl.collection.List<nasl.core.Integer>, value: nasl.core.String) => void;
+    }>, index: nasl.collection.List<nasl.core.Integer>, value: nasl.core.String) => any ;
     @Event({
       title: '点击取消按钮时',
       description: '点击取消按钮时'
     })
-    onCancel: () => void;
+    onCancel: () => any ;
     @Event({
       title: '选项改变时触发',
       description: '选项改变时触发'
     })
-    onChange: () => void;
+    onChange: () => any ;
     @Slot({
       title: 'undefined',
       description: '插入`<van-picker-action-slot>`子组件',

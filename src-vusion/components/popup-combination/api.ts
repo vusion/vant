@@ -163,22 +163,22 @@ namespace nasl.ui {
       title: '弹出前',
       description: '弹出前触发。'
     })
-    onBeforeOpen: () => void;
+    onBeforeOpen: () => any ;
     @Event({
       title: '弹出时',
       description: '弹出时触发。'
     })
-    onOpen: () => void;
+    onOpen: () => any ;
     @Event({
       title: '隐藏前',
       description: '隐藏前触发。'
     })
-    onBeforeClose: () => void;
+    onBeforeClose: () => any ;
     @Event({
       title: '隐藏后',
       description: '隐藏时触发。'
     })
-    onClose: () => void;
+    onClose: () => any ;
     @Slot({
       title: 'undefined',
       description: '自定义弹出的内容。'

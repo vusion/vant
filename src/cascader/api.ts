@@ -162,14 +162,14 @@ namespace nasl.ui {
     })
     onFinish: (event: {
       value: V;
-    }) => void;
+    }) => any ;
     @Event({
       title: '选中项变化时触发',
       description: '选中项变化时触发'
     })
     onChange: (event: {
       value: V;
-    }) => void;
+    }) => any ;
     @Slot({
       title: 'option'
     })
