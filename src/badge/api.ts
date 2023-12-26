@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanBadgeOptions {
+  export class VanBadgeOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '徽章值',

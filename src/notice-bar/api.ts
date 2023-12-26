@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanNoticeBarOptions {
+  export class VanNoticeBarOptions extends ViewComponentOptions {
     @Prop({
       title: '通知文本内容',
       description: '通知文本内'

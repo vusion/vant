@@ -12,5 +12,5 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanRouterViewOptions {}
+  export class VanRouterViewOptions extends ViewComponentOptions {}
 }

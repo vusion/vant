@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanRowOptions {
+  export class VanRowOptions extends ViewComponentOptions {
     @Prop<VanRowOptions, 'type'>({
       group: '样式属性',
       title: '布局模式',
@@ -134,7 +134,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanColOptions {
+  export class VanColOptions extends ViewComponentOptions {
     @Prop<VanColOptions, 'direction'>({
       title: '主轴方向',
       bindHide: true,

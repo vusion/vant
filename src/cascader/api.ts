@@ -27,7 +27,7 @@ namespace nasl.ui {
     })
     filterText: nasl.core.String;
   }
-  export class VanCascaderOptions<T, V> {
+  export class VanCascaderOptions<T, V> extends ViewComponentOptions {
     @Prop({
       title: '左侧标题',
       description: '左侧标题'

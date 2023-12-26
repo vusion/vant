@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCapsulesOptions {
+  export class VanCapsulesOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '选中值',
@@ -98,7 +98,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCapsulesItemOptions {
+  export class VanCapsulesItemOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '值',
@@ -149,7 +149,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCapsulesGroupOptions {
+  export class VanCapsulesGroupOptions extends ViewComponentOptions {
     @Slot({
       title: 'undefined',
       description: '插入`<van-capsules-item>`子组件。',

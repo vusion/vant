@@ -23,7 +23,7 @@ namespace nasl.ui {
         constructor(options?: Partial<VanPopoverOptions>) { super(); }
     }
 
-    export class VanPopoverOptions {
+    export class VanPopoverOptions extends ViewComponentOptions {
         @Prop({
             title: '是否展示气泡弹出层',
             description: '是否展示气泡弹出层',
@@ -147,7 +147,7 @@ namespace nasl.ui {
         constructor(options?: Partial<VanPopoverItemOptions>) { super(); }
     }
 
-    export class VanPopoverItemOptions {
+    export class VanPopoverItemOptions extends ViewComponentOptions {
         @Prop({
             title: '标题',
             description: '标题',

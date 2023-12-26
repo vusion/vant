@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanAreaOptions {
+  export class VanAreaOptions extends ViewComponentOptions {
     @Prop({
       title: '左侧标题',
       description: '左侧标题'

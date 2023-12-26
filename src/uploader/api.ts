@@ -17,7 +17,7 @@ namespace nasl.ui {
     })
     chooseFile(): void {}
   }
-  export class VanUploaderOptions {
+  export class VanUploaderOptions extends ViewComponentOptions {
     @Prop({
       title: '文件读取结果的类型',
       description: '文件读取结果的类型，上传大文件时，建议使用 file 类型，避免卡顿',

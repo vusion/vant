@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanRateOptions {
+  export class VanRateOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '值',

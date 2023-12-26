@@ -43,7 +43,7 @@ namespace nasl.ui {
     })
     scheduleUpdate(): void {}
   }
-  export class VanPopupCombinationOptions {
+  export class VanPopupCombinationOptions extends ViewComponentOptions {
     @Prop({
       title: '触发方式',
       description: '弹出框的触发方式',

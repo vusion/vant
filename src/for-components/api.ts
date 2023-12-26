@@ -17,7 +17,7 @@ namespace nasl.ui {
     })
     data: VanForComponentsOptions<T>['dataSource'];
   }
-  export class VanForComponentsOptions<T> {
+  export class VanForComponentsOptions<T> extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '数据源',

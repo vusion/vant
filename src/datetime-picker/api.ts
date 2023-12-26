@@ -22,7 +22,7 @@ namespace nasl.ui {
     })
     close(): void {}
   }
-  export class VanDatetimePickerOptions {
+  export class VanDatetimePickerOptions extends ViewComponentOptions {
     @Prop({
       title: '左侧标题',
       description: '左侧文本插槽内容存在时优先展示插槽内容'
@@ -347,7 +347,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanDatetimePickerActionSlotOptions {
+  export class VanDatetimePickerActionSlotOptions extends ViewComponentOptions {
     @Prop({
       title: '触发的事件名称',
       setter: {
@@ -370,7 +370,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanPickerActionSlotOptions {
+  export class VanPickerActionSlotOptions extends ViewComponentOptions {
     @Prop({
       title: '触发的事件名称',
       setter: {

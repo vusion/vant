@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanStepperNewOptions {
+  export class VanStepperNewOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '值',

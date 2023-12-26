@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanTextOptions {
+  export class VanTextOptions extends ViewComponentOptions {
     @Prop({
       group: '主要属性',
       title: '文本',

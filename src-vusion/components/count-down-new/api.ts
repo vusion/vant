@@ -32,7 +32,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCountDownNewOptions {
+  export class VanCountDownNewOptions extends ViewComponentOptions {
     @Prop({
       group: '主要属性',
       title: '计时器时长（秒）',

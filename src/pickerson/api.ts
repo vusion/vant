@@ -43,7 +43,7 @@ namespace nasl.ui {
     })
     reload(): void {}
   }
-  export class VanPickersonOptions<T, V, M extends boolean, P extends boolean> {
+  export class VanPickersonOptions<T, V, M extends boolean, P extends boolean> extends ViewComponentOptions {
     @Prop({
       title: '左侧标题',
       description: '左侧标题'

@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanSwipeOptions {
+  export class VanSwipeOptions extends ViewComponentOptions {
     @Prop({
       title: '循环播放',
       description: '是否循环播放',
@@ -68,7 +68,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanSwipeItemOptions {
+  export class VanSwipeItemOptions extends ViewComponentOptions {
     @Event({
       title: '点击后',
       description: '点击某一项后触发'

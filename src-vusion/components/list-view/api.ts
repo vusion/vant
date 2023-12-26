@@ -38,7 +38,7 @@ namespace nasl.ui {
     })
     reload(): void {}
   }
-  export class VanListViewOptions<T, V, P, M> {
+  export class VanListViewOptions<T, V, P, M> extends ViewComponentOptions {
     @Prop({
       title: '只读',
       description: '是否只读',

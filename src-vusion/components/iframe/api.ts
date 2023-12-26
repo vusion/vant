@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanIframeOptions {
+  export class VanIframeOptions extends ViewComponentOptions {
     @Prop({
       group: '主要属性',
       title: '地址',

@@ -22,7 +22,7 @@ namespace nasl.ui {
     })
     closeModal(): void {}
   }
-  export class VanPopupOptions {
+  export class VanPopupOptions extends ViewComponentOptions {
     @Prop({
       group: '主要属性',
       title: '展示弹层',

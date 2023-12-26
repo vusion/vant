@@ -22,7 +22,7 @@ namespace nasl.ui {
     })
     closeLoading(): void {}
   }
-  export class VanLinearLayoutOptions {
+  export class VanLinearLayoutOptions extends ViewComponentOptions {
     @Prop({
       title: '展示方式',
       description: '行内展示，或块级换行展示',

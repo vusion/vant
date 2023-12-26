@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCopyOptions {
+  export class VanCopyOptions extends ViewComponentOptions {
     @Prop({
       title: '默认显示文本',
       description: '默认显示的文本'

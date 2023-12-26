@@ -17,7 +17,7 @@ namespace nasl.ui {
     })
     reset(): void {}
   }
-  export class VanCalendarOptions {
+  export class VanCalendarOptions extends ViewComponentOptions {
     @Prop({
       title: '左侧标题',
       description: '左侧标题'

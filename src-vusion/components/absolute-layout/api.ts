@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanAbsoluteLayoutOptions {
+  export class VanAbsoluteLayoutOptions extends ViewComponentOptions {
     @Event({
       title: '点击后',
       description: '点击此项时触发'

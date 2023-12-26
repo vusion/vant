@@ -1471,10 +1471,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nasl/types@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@nasl/types/-/types-0.1.2.tgz#a295daeaf28c19b4ebd1f9fcba9ad920a842c2c0"
-  integrity sha512-6yRhCa4WaNG3pQh0SjbICBoKxWb8gyJfEKnjqM64Z9msZ4fbDNLX5Ee8P6hfbo0/o9ywQitZ/ROB0yMwmdW05Q==
+"@nasl/types@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@nasl/types/-/types-0.1.6.tgz#6af45bbb9b205fa76161ca7e3941a67d40b16551"
+  integrity sha512-h6Yh57U1jEbvgWh8A1XxsWAW61JLjshq35sT1G57qZ3D6539v2hxEUe8TjOL0c501lz7gCm4WLlowf/wgypBRA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

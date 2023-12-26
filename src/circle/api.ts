@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCircleOptions {
+  export class VanCircleOptions extends ViewComponentOptions {
     @Prop({
       title: '文字'
     })

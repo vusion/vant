@@ -22,7 +22,7 @@ namespace nasl.ui {
     })
     closeModal(): void {}
   }
-  export class VanDialogOptions {
+  export class VanDialogOptions extends ViewComponentOptions {
     @Prop({
       title: '是否展示确认按钮',
       description: '是否展示确认按钮',

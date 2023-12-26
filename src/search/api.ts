@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanSearchOptions {
+  export class VanSearchOptions extends ViewComponentOptions {
     @Prop({
       title: '按钮文字',
       description: '按钮文字'

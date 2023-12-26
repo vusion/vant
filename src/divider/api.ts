@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanDividerOptions {
+  export class VanDividerOptions extends ViewComponentOptions {
     @Prop({
       title: '内容位置',
       description: '设置内容位置',

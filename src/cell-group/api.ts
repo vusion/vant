@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCellGroupOptions {
+  export class VanCellGroupOptions extends ViewComponentOptions {
     @Prop({
       group: '主要属性',
       title: '卡片风格',
@@ -42,7 +42,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCellOptions {
+  export class VanCellOptions extends ViewComponentOptions {
     @Prop({
       title: '左侧文本',
       description: '左侧文本'

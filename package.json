@@ -27,9 +27,9 @@
     "lint": "vant-cli lint",
     "test": "vant-cli test",
     "copyimg": "node bin/copy-lcp-images ",
-    "build:vusion": "npm run check && npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap && npm pack",
-    "build:theme": "npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap && npm pack",
-    "build:theme-local": "npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap && npm pack",
+    "build:vusion": "npm run check && npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap && node ./scripts/ui-json/index.js --dest ./dist-theme/nasl.ui.json && npm run check:api && npm pack",
+    "build:theme": "npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap && node ./scripts/ui-json/index.js --dest ./dist-theme/nasl.ui.json && npm run check:api && npm pack",
+    "build:theme-local": "npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap && node ./scripts/ui-json/index.js --dest ./dist-theme/nasl.ui.json && npm run check:api && npm pack",
     "build2": "vant-cli build",
     "build": "cross-env scene=desktop vant-cli build",
     "release": "vant-cli release",
@@ -47,8 +47,7 @@
     "deploy:online": "lcap deploy dist-theme --platform http://netease-template.lcap.163yun.com &&  node bin/deploy-lcp-images --platform=http://netease-template.lcap.163yun.com",
     "prepublishOnly": "npm run build:vusion && git add .",
     "deploy:qz": "lcap deploy dist-theme --platform=https://defaulttenant.lcap.qz.163yun.com --username=admin --password=Netease123 && node bin/deploy-lcp-images --platform=https://defaulttenant.lcap.qz.163yun.com",
-    "check:api": "tsc -p tsconfig.api.json",
-    "prepack": "npm run build:theme"
+    "check:api": "tsc -p tsconfig.api.json"
   },
   "repository": {
     "type": "git",
@@ -84,7 +83,7 @@
     "vue": ">= 2.6.0"
   },
   "devDependencies": {
-    "@nasl/types": "^0.1.2",
+    "@nasl/types": "^0.1.6",
     "@vant/area-data": "^1.1.1",
     "@vant/cli": "2.10.3",
     "@vant/eslint-config": "2.2.3",

@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanProgressOptions {
+  export class VanProgressOptions extends ViewComponentOptions {
     @Prop({
       group: '主要属性',
       title: '值',

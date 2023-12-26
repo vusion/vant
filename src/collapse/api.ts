@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCollapseOptions {
+  export class VanCollapseOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '值',
@@ -65,7 +65,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCollapseItemOptions {
+  export class VanCollapseItemOptions extends ViewComponentOptions {
     @Prop({
       title: '标题',
       description: '标题'

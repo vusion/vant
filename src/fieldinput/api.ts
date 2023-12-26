@@ -27,7 +27,7 @@ namespace nasl.ui {
     })
     clear(): void {}
   }
-  export class VanFieldinputOptions {
+  export class VanFieldinputOptions extends ViewComponentOptions {
     @Prop({
       title: '前缀图标',
       description: '前缀图标',

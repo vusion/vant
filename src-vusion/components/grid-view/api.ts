@@ -38,7 +38,7 @@ namespace nasl.ui {
     })
     reload(): void {}
   }
-  export class VanGridViewOptions<T, V, P extends boolean, M extends boolean> {
+  export class VanGridViewOptions<T, V, P extends boolean, M extends boolean> extends ViewComponentOptions {
     @Prop({
       title: '值',
       description: '当前选择的值',

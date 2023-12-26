@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanTabbarOptions {
+  export class VanTabbarOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '值',
@@ -70,7 +70,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanTabbarItemOptions {
+  export class VanTabbarItemOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '标签项值',

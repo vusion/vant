@@ -22,7 +22,7 @@ namespace nasl.ui {
     })
     data: VanCheckboxGroupOptions<T, V>['dataSource'];
   }
-  export class VanCheckboxGroupOptions<T, V> {
+  export class VanCheckboxGroupOptions<T, V> extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '数据源',
@@ -159,7 +159,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCheckboxOptions<V> {
+  export class VanCheckboxOptions<V> extends ViewComponentOptions {
     @Prop({
       title: '文本',
       description: '文本'

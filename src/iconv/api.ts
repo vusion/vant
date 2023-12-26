@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanIconvOptions {
+  export class VanIconvOptions extends ViewComponentOptions {
     @Prop({
       group: '主要属性',
       title: '图标',

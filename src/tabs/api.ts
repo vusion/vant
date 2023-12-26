@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanTabsOptions {
+  export class VanTabsOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '值',
@@ -111,7 +111,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanTabOptions {
+  export class VanTabOptions extends ViewComponentOptions {
     @Prop({
       title: '标题',
       description: '自定义标题'

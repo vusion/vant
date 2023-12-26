@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanGalleryOptions<T> {
+  export class VanGalleryOptions<T> extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '数据源',

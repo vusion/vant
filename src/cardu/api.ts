@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanCarduOptions {
+  export class VanCarduOptions extends ViewComponentOptions {
     @Prop({
       group: '交互属性',
       title: '链接类型',
@@ -134,7 +134,7 @@ namespace nasl.ui {
       super();
     }
   }
-  class VanCarduGroupOptions {
+  class VanCarduGroupOptions extends ViewComponentOptions {
     @Prop({
       title: '标题',
       description: '卡片组的标题'

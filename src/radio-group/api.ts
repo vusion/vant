@@ -22,7 +22,7 @@ namespace nasl.ui {
     })
     data: VanRadioGroupOptions<T, V>['dataSource'];
   }
-  export class VanRadioGroupOptions<T, V> {
+  export class VanRadioGroupOptions<T, V> extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '数据源',
@@ -124,7 +124,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanRadioOptions<V> {
+  export class VanRadioOptions<V> extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '文本',

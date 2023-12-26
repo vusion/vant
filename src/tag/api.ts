@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanTagOptions {
+  export class VanTagOptions extends ViewComponentOptions {
     @Prop({
       group: '主要属性',
       title: '样式类型',

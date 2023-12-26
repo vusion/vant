@@ -17,7 +17,7 @@ namespace nasl.ui {
     })
     close(): void {}
   }
-  export class VanSwipeCellOptions {
+  export class VanSwipeCellOptions extends ViewComponentOptions {
     @Prop({
       group: '主要属性',
       title: '左侧滑动区域宽度',

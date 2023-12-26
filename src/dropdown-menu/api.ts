@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanDropdownMenuOptions {
+  export class VanDropdownMenuOptions extends ViewComponentOptions {
     @Prop({
       title: '菜单值',
       description: '菜单值',
@@ -89,7 +89,7 @@ namespace nasl.ui {
       show?: nasl.core.Boolean
     ): void {}
   }
-  export class VanDropdownItemOptions {
+  export class VanDropdownItemOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '值',
@@ -155,7 +155,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanDropdownItemSonOptions {
+  export class VanDropdownItemSonOptions extends ViewComponentOptions {
     @Prop({
       title: '右侧文本',
       description: '右侧文本'

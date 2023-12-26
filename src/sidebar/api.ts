@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanSidebarOptions {
+  export class VanSidebarOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '值',
@@ -54,7 +54,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanSidebarItemOptions {
+  export class VanSidebarItemOptions extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '值',

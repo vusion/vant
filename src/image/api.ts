@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanImageOptions {
+  export class VanImageOptions extends ViewComponentOptions {
     @Prop({
       title: '加载样式',
       setter: {

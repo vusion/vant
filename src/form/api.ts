@@ -23,7 +23,7 @@ namespace nasl.ui {
       name?: nasl.core.String | nasl.collection.List<nasl.core.String>
     ): void {}
   }
-  export class VanFormOptions {
+  export class VanFormOptions extends ViewComponentOptions {
     @Prop({
       title: '标签对齐方式',
       description: '标签对齐方式',
@@ -86,7 +86,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanFieldOptions {
+  export class VanFieldOptions extends ViewComponentOptions {
     @Prop({
       title: '表单项值',
       description: '表单项值',

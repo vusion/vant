@@ -22,7 +22,7 @@ namespace nasl.ui {
     })
     close(): void {}
   }
-  export class VanToastOptions {
+  export class VanToastOptions extends ViewComponentOptions {
     @Prop({
       title: '是否展示',
       description: '是否展示弹出消息',

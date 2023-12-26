@@ -12,7 +12,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanStepsOptions<T> {
+  export class VanStepsOptions<T> extends ViewComponentOptions {
     @Prop({
       group: '数据属性',
       title: '数据源',
@@ -100,7 +100,7 @@ namespace nasl.ui {
       super();
     }
   }
-  export class VanStepOptions {
+  export class VanStepOptions extends ViewComponentOptions {
     @Prop({
       group: '主要属性',
       title: '状态',
