@@ -151,9 +151,7 @@ function ToastForMulitple(options) {
   const toast = createInstanceForMultiple();
 
   // should add z-index if previous toast has not disappeared
-  if (toast.value) {
-    toast.updateZIndex();
-  }
+  toast.updateZIndex();
 
   options = parseOptions(options);
   options = {
