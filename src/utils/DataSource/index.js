@@ -186,6 +186,10 @@ const VueDataSource = Vue.extend({
             this.initialLoaded = true;
             this.originTotal = this.data.length;
             this.arrange(this.data.slice(this.offset, this.offset + this.limit));
+        } else if (this.needAllData) {
+          this.loadAll().then((data) => {
+            this.allData = data;
+          });
         }
     },
     methods: {

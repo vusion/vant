@@ -1,7 +1,7 @@
 ### 基本用法
 
 ``` html
-<van-dialog safe-area-inset-bottom>
+<van-dialog safeAreaInsetBottom>
   <div class="dialogchild" vusion-slot-name="default" vusion-disabled-copy style="min-height: 100px;" :vusion-disabled-cut="true" env="alone">内容</div>
   <template #footer>
     <van-linear-layout type="flex" style="width: 100%;" :vusion-disabled-cut="true">

@@ -4,7 +4,6 @@ import defaultMessages from './lang/zh-CN';
 
 
 const proto = Vue.prototype;
- // @ts-ignore：官方炸了
 const { defineReactive } = (Vue as any).util;
 
 defineReactive(proto, '$vantLang', 'zh-CN');

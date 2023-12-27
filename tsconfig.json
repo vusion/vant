@@ -5,15 +5,19 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
+    "strictPropertyInitialization": false,
     "allowJs": true,
     "noEmit": true,
     "noImplicitThis": true,
     "esModuleInterop": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     "types/**/*",
     "src/**/*",
+    "src-vusion/**/*"
   ],
   "exclude": [
     "**/*.spec.ts",

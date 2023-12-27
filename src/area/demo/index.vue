@@ -1,23 +1,21 @@
 <template>
   <demo-section>
-    <demo-block card :title="t('basicUsage')">
+
+    <demo-block card title="选中省市区">
       <div>value: {{ sarea }}</div>
       <van-area
-        :title="t('title')"
-        :area-list="t('areaList')"
-        converter="json"
         label-field="地区选择"
         :value.sync="sarea"
-        :columns-num="2"
+        @confirm="onConfirm"
+        @change="onChange"
       />
-      <van-area :title="t('title')" :area-list="t('areaList')"  converter="json" label-field="地区选择" :value.sync="sarea"/>
-      <van-area :title="t('title')" :area-list="t('areaList')"  converter="json" label-field="地区选择" :value.sync="sarea2"/>
-       <van-area :title="t('title')" :area-list="t('areaList')" converter="json" label-field="地区选择" :value.sync="sarea2"/>
-       <van-area :title="t('title')" :area-list="t('areaList')" converter="json" label-field="地区选择" :value.sync="sarea"/>
     </demo-block>
-    <demo-block card :title="t('advancedUsage')">
+
+    <demo-block card title="传名称">
+      <div>value: {{ sareaName }}</div>
         <van-area converter="name" label-field="地区名称" :value.sync="sareaName" @change="onChange"/>
     </demo-block>
+
     <demo-block card title="只读">
         <van-area :readonly="true"  converter="name" :value.sync="sareaName" @change="onChange">
           <template #title>标题</template>
@@ -66,6 +64,9 @@ export default {
   methods: {
     onChange(...event) {
       console.log('onChange', ...event)
+    },
+    onConfirm(...event) {
+      console.log('onConfirm', ...event)
     }
   }
 };

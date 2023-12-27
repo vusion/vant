@@ -22,6 +22,7 @@
             <van-text ref="text19" text="标题"></van-text>
         </template>
       </van-pickerson>
+    </demo-block>
 
       <van-button @click="reload">reload</van-button>
     </demo-block>

@@ -1471,6 +1471,11 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@nasl/types@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@nasl/types/-/types-0.1.6.tgz#6af45bbb9b205fa76161ca7e3941a67d40b16551"
+  integrity sha512-h6Yh57U1jEbvgWh8A1XxsWAW61JLjshq35sT1G57qZ3D6539v2hxEUe8TjOL0c501lz7gCm4WLlowf/wgypBRA==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -14500,6 +14505,15 @@ postcss-variables@^1.1.1:
   integrity sha512-a9b2ZXoy60xl28m+jedXYvbXLdYSLPXOqvgkLUHhOUbhIRlVoSHRGhGtpMLkcgVc05lu3JUBEypLVcTYNcltMw==
   dependencies:
     postcss "^6.0.9"
+
+postcss@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.0.tgz#163f70d2fe2715c6d4a4b3d300051c1ea9594aa9"
+  integrity sha512-ACgL/mXREjfCothsspfbxdiXIQowQeEyW7TJgsvAgCK8igWa2ZNCsbGNGnasbEF1++L9xb7qYpo23Aa3rGmiCg==
+  dependencies:
+    chalk "^2.4.1"
+    source-map "^0.6.1"
+    supports-color "^5.4.0"
 
 postcss@^6.0.16, postcss@^6.0.23, postcss@^6.0.9:
   version "6.0.23"

@@ -235,7 +235,6 @@ export default createComponent({
       this.$emit('update:value', val);
       this.$emit('change', val, { name: this.name });
 
-      console.log('currentValue change', val);
       this.formattedValue = this.currentFormatter.format(val);
     },
   },

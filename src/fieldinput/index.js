@@ -111,6 +111,8 @@ export default createComponent({
         return this.vanForm[key];
       }
     },
+
+    // @exposed-api
     focus() {
       if (this.$refs.input) {
         this.$refs.input.focus();
@@ -123,10 +125,13 @@ export default createComponent({
         this.$refs.input.blur();
       }
     },
+
+    // @exposed-api
     clear() {
       this.currentValue = '';
       this.$emit('clear', this);
     },
+
     updateValue(value, trigger = 'onChange') {
       value = isDef(value) ? String(value) : '';
       const { maxlength } = this;
@@ -147,11 +152,11 @@ export default createComponent({
       }
     },
 
-    onCompositionStart (e) {
+    onCompositionStart(e) {
       e.target.composing = true;
     },
 
-    onCompositionEnd (e) {
+    onCompositionEnd(e) {
       // prevent triggering an input event for no reason
       if (!e.target.composing) return;
 
@@ -259,7 +264,6 @@ export default createComponent({
           if (/^--/.test(key)) {
             const value = staticStyle[key];
             style += `${key}: ${value};`;
-
           }
         }
       }
@@ -345,7 +349,6 @@ export default createComponent({
           onCompositionstart={this.onCompositionStart}
           onCompositionend={this.onCompositionEnd}
         />
-
 
         {this.showClear() && (
           <Icon name="clear" class={bem('clear')} onTouchstart={this.onClear} />
