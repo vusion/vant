@@ -40,7 +40,7 @@
     "move-docs": "node bin/move-docs",
     "screenshot": "node bin/screenshot",
     "genThemeConfig": "node ./scripts/genThemeConfig/index.js",
-    "deploy:dev": "node bin/deploy-lcp-tgz --platform=http://defaulttenant.lcap.dev.env.com && lcap deploy dist-theme --platform http://defaulttenant.lcap.dev.env.com && node bin/deploy-lcp-images --platform=http://defaulttenant.lcap.dev.env.com",
+    "deploy:dev": "node bin/deploy-lcp-tgz --platform=http://defaulttenant.lcap.codewave-dev.163yun.com && lcap deploy dist-theme --platform http://defaulttenant.lcap.codewave-dev.163yun.com && node bin/deploy-lcp-images --platform=http://defaulttenant.lcap.codewave-dev.163yun.com",
     "deploy:test": "node bin/deploy-lcp-tgz --platform=http://defaulttenant.lcap.ha.test.com && lcap deploy dist-theme --platform http://defaulttenant.lcap.ha.test.com && node bin/deploy-lcp-images --platform=http://defaulttenant.lcap.ha.test.com",
     "deploy:test-3.4": "node bin/deploy-lcp-tgz --platform=http://defaulttenant.lcap.test33x-lowcode.163yun.com && lcap deploy dist-theme --platform http://defaulttenant.lcap.test33x-lowcode.163yun.com && node bin/deploy-lcp-images --platform=http://defaulttenant.lcap.test33x-lowcode.163yun.com",
     "deploy:pre": "lcap deploy dist-theme --platform https://defaulttenant.lcap.hadri.163yun.com && node bin/deploy-lcp-images --platform=https://defaulttenant.lcap.hadri.163yun.com",
