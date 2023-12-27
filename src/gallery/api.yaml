@@ -4,7 +4,6 @@
   labels:
     - Display
   description: 画廊
-  tsTypeParams: T
   attrs:
     - name: data-source
       title: 数据源

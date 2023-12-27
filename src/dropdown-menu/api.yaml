@@ -7,7 +7,7 @@
   attrs:
     - name: value
       title: 菜单值
-      type: string
+      type: number,string
       sync: true
       model: true
       advanced: true

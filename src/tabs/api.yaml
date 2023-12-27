@@ -7,7 +7,7 @@
   attrs:
     - name: value
       title: 值
-      type: string
+      type: any
       sync: true
       model: true
       description: 用于标识选项卡的值

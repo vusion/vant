@@ -4,7 +4,6 @@
     - Form
   icon: checkboxes
   description: 多项中选择一个或多个时使用
-  tsTypeParams: T, V
   attrs:
     - name: data-source
       title: 数据源
@@ -20,7 +19,7 @@
       group: 数据属性
     - name: value
       title: 值
-      type: V
+      type: any
       sync: true
       model: true
       description: 用于标识多选组的值
@@ -128,7 +127,7 @@
           description: 旧的选中状态
 - name: van-checkbox
   title: 多选项
-  tsTypeParams: V
+  is-sub: true
   attrs:
     - name: title
       title: 文本

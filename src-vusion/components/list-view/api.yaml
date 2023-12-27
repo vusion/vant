@@ -59,7 +59,7 @@
       advanced: true
     - name: match-method
       title: 匹配方法
-      type: string
+      type: string, Function
       default: includes
       advanced: true
       description: 过滤时的匹配方法
@@ -103,6 +103,14 @@
       type: schema
       description: 数据源返回的数据结构的类型，自动识别类型进行展示说明。
       compType: dataTypeSelect
+      group: 数据属性
+    - name: value
+      title: 值
+      type: any
+      sync: true
+      model: true
+      advanced: true
+      description: 用于标识数据列表的值
       group: 数据属性
     - name: value-field
       title: 值字段名
@@ -382,7 +390,7 @@
           type: any
           description: 选择项的值
           schema:
-            $ref: '#/basicTypes/String'
+            $ref: "#/basicTypes/String"
         - name: senderVM
           type: UListView
           description: 发送事件实例
@@ -394,7 +402,7 @@
           type: object
           description: 自定义事件对象
           schema:
-            $ref: '#/systemTypes/ChangeItemEvent'
+            $ref: "#/systemTypes/ChangeItemEvent"
         - name: $event.value
           type: any
           description: 改变后的值
@@ -424,7 +432,7 @@
           type: object
           description: 自定义事件对象
           schema:
-            $ref: '#/systemTypes/ChangeItemEvent'
+            $ref: "#/systemTypes/ChangeItemEvent"
         - name: $event.value
           type: any
           description: 选择项的值
@@ -454,7 +462,7 @@
           type: object
           description: 自定义事件对象
           schema:
-            $ref: '#/systemTypes/EventTarget'
+            $ref: "#/systemTypes/EventTarget"
         - name: $event.preventDefault
           type: Function
           description: 阻止加载流程
@@ -466,7 +474,7 @@
       description: 加载时触发
       params:
         - name: $event
-          type: ''
+          type: ""
           description: 空
         - name: senderVM
           type: UTableView

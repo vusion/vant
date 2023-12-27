@@ -59,7 +59,7 @@
       group: 主要属性
     - name: autosize
       title: 自适应内容高度
-      type: boolean | object
+      type: boolean, object
       place: 不设置则根据输入内容自适应
       description: 可输入如{maxHeight:100,minHeight:50}，单位默认为px。
       group: 主要属性

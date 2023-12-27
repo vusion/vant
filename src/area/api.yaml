@@ -4,7 +4,6 @@
   labels:
     - Selector
   description: 省市区三级联动选择
-  tsTypeParams: T, V, C extends string
   attrs:
     - name: labelField
       title: 左侧标题

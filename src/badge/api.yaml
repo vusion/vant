@@ -7,7 +7,7 @@
   attrs:
     - name: content
       title: 徽章值
-      type: nasl.core.Integer
+      type: string, number
       default: 2
       description: ""
       group: 数据属性

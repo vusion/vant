@@ -8,6 +8,11 @@
     - name: inset
       title: 卡片风格
       type: boolean
+      options:
+        - value: false
+          title: 否
+        - value: true
+          title: 是
       default: false
       description: 是否显示为卡片风格
       group: 主要属性

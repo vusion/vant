@@ -96,7 +96,7 @@
       group: 主要属性
     - name: max-count
       title: 列表数量上限
-      type: number | string
+      type: number,string
       default: 999
       description: ""
       group: 主要属性

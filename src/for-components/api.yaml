@@ -4,7 +4,6 @@
   labels:
     - Table
   description: 组件列表
-  tsTypeParams: T
   attrs:
     - name: data-source
       title: 数据源

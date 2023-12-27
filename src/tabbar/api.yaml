@@ -7,7 +7,7 @@
   attrs:
     - name: value
       title: 值
-      type: string
+      type: number,string
       sync: true
       model: true
       description: 用于标识标签栏的值

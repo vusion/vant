@@ -155,7 +155,7 @@
       group: 样式属性
     - name: step
       title: 步长
-      type: string | number
+      type: string, number
       default: 1
       description: 表示点击按钮或按上下键所增加或减少的量
       group: 样式属性

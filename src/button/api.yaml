@@ -14,10 +14,12 @@
       title: 替换
       type: boolean
       default: false
-      description: 置灰显示，且禁止任何交互（焦点、点击、选择、输入等）
-      group: 状态属性
-    - name: loading
-      title: 加载中
+      description: 需要
+        vue-router，与`<router-link>`的`replace`属性相同。如果为`true`，当点击时，会调用`router.replace()`而不是`router.push()`，于是导航后不会留下`history
+        `记录。
+      advanced: true
+    - name: append
+      title: 追加路径
       type: boolean
       default: false
       description: 需要 vue-router，与`<router-link>`的`append`属性相同。如果为`true`，则在当前路径后追加`to`的路径。

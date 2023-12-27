@@ -5,6 +5,36 @@
   labels:
     - Layout
   attrs:
+    - name: alignment
+      title: 纵轴对齐
+      type: string
+      display: capsules
+      bindHide: true
+      options:
+        - value: start
+          title: 顶对齐
+          icon: horizontal-alignment-start
+          tooltip: 顶对齐
+        - value: center
+          title: 垂直居中
+          icon: horizontal-alignment-center
+          tooltip: 垂直居中
+        - value: end
+          title: 底对齐
+          icon: horizontal-alignment-end
+          tooltip: 底对齐
+        - value: baseline
+          title: 行内文字基线对齐
+          icon: horizontal-alignment-baseline
+          tooltip: 行内文字基线对齐
+        - value: stretch
+          title: 占满容器高度
+          icon: horizontal-alignment-stretch
+          tooltip: 占满容器高度
+      default: stretch
+      dependency:
+        - type: flex
+      group: 样式属性
     - name: type
       title: 布局模式
       type: string
@@ -54,36 +84,6 @@
         - type: flex
       group: 样式属性
       description: ""
-    - name: alignment
-      title: 纵轴对齐
-      type: string
-      display: capsules
-      bindHide: true
-      options:
-        - value: start
-          title: 顶对齐
-          icon: horizontal-alignment-start
-          tooltip: 顶对齐
-        - value: center
-          title: 垂直居中
-          icon: horizontal-alignment-center
-          tooltip: 垂直居中
-        - value: end
-          title: 底对齐
-          icon: horizontal-alignment-end
-          tooltip: 底对齐
-        - value: baseline
-          title: 行内文字基线对齐
-          icon: horizontal-alignment-baseline
-          tooltip: 行内文字基线对齐
-        - value: stretch
-          title: 占满容器高度
-          icon: horizontal-alignment-stretch
-          tooltip: 占满容器高度
-      default: stretch
-      dependency:
-        - type: flex
-      group: 样式属性
     - name: gutter
       title: 列间距
       type: string
@@ -225,7 +225,7 @@
       dependency:
         - mode: flex
           direction: vertical
-    - name: _justify
+    - name: justify
       title: 纵轴对齐
       type: string
       display: capsules

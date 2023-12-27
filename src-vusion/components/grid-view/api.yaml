@@ -4,7 +4,6 @@
   description: 数据网格
   labels:
     - Table
-  tsTypeParams: T, V, P extends boolean, M extends boolean, C extends string
   attrs:
     - name: value
       title: 值
@@ -204,16 +203,16 @@
       title: 只读
       type: boolean
       default: false
-      description: ''
+      description: ""
       advanced: true
-      group: 状态属性
+      group: 选择属性
     - name: disabled
       title: 禁用
       type: boolean
       default: false
-      description: ''
+      description: ""
       advanced: true
-      group: 状态属性
+      group: 选择属性
   slots:
     - concept: Slot
       name: default
@@ -245,7 +244,7 @@
       description: 加载时触发
       params:
         - name: $event
-          type: ''
+          type: ""
           description: 空
         - name: senderVM
           type: UTableView
