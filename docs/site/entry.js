@@ -3,14 +3,9 @@ import Locale from '../../src/locale';
 import Lazyload from '../../src/lazyload';
 import { get } from '../../src/utils';
 import { camelize } from '../../src/utils/format/string';
-import enUS from '../../src/locale/lang/en-US';
 
 Vue.use(Lazyload, {
   lazyComponent: true,
-});
-
-Locale.add({
-  'en-US': enUS,
 });
 
 // flag for vant-weapp demos
