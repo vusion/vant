@@ -24,7 +24,7 @@ export default createComponent({
   },
   data() {
     return {
-      datatemp: this.value || null,
+      datatemp: this.value ?? null,
       options: [],
     };
   },
