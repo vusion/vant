@@ -44,3 +44,8 @@ jobs:
         with:
           name: 'mobile-ui@${{ env.VERSION }}'
           path: temp
+
+  call-wexler:
+    needs: build
+    uses: vusion/wexler/.github/workflows/release-vant.yml@master
+    secrets: inherit
