@@ -164,6 +164,6 @@ namespace nasl.ui {
             title: '点击选项时触发',
             description: '点击选项时触发',
         })
-        onClick: () => any ;
+        onClick: (event: any) => any;
     }
 }
