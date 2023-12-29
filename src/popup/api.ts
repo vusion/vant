@@ -62,7 +62,7 @@ namespace nasl.ui {
       title: '点击弹出层',
       description: '点击弹出层时触发'
     })
-    onClick: () => any ;
+    onClick: (event: any) => any ;
     @Event({
       title: '点击遮罩层',
       description: '点击遮罩层时触发'

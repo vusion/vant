@@ -205,7 +205,7 @@ namespace nasl.ui {
       title: '点击加减按钮',
       description: '点击加减按钮时触发'
     })
-    onClick: () => any ;
+    onClick: (event: any) => any ;
     @Event({
       title: '值改变',
       description: '值改变时触发'
