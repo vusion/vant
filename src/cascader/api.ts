@@ -55,6 +55,14 @@ namespace nasl.ui {
       designerValue: [{}]
     })
     dataSource: nasl.collection.List<T> | { total: nasl.core.Integer; list: nasl.collection.List<T> };
+
+    @Prop({
+      group: '数据属性',
+      title: '数据类型',
+      description: '数据源返回的数据结构的类型，自动识别类型进行展示说明。'
+    })
+    dataSchema: T;
+
     @Prop({
       group: '数据属性',
       title: '文本字段名',
