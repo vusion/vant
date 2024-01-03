@@ -1,11 +1,12 @@
 <template>
   <demo-section>
     <demo-block>
+      <div>value1: {{value1}}</div>
       <van-checkbox-group
         :data-source="[1, 2, 3, 4, 5, 6, 700, 8, 9, 10000]"
         @change="onGroupChange"
         v-model="value1"
-        converter=""
+        converter="none"
         direction="horizontal"
         column=""
       >
