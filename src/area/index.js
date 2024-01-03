@@ -137,7 +137,10 @@ export default createComponent({
         this.getTitle = this.value;
         return
       }
-      if (!this.value && !this.code) return '';
+      if (!this.value && !this.code) {
+        this.getTitle = '';
+        return;
+      }
       // 有转换器的时候，需要用 code
       const tcode = this.value && this.converter !== 'name' ? this.value : this.code;
       const provincet = this.getListTempNew('province', tcode.slice(0, 2) + '0000');
