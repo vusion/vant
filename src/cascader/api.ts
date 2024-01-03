@@ -63,7 +63,7 @@ namespace nasl.ui {
         concept: "PropertySelectSetter"
       }
     })
-    textField: (item: T) => nasl.core.String = ((item: any)  => item.text) as any;
+    textField: (item: T) => any = ((item: any)  => item.text) as any;
     @Prop({
       group: '数据属性',
       title: '值字段名',
@@ -80,7 +80,7 @@ namespace nasl.ui {
         concept: "PropertySelectSetter"
       }
     })
-    parentField: (item: T) => nasl.core.String = ((item: any)  => item.prentid) as any;
+    parentField: (item: T) => any = ((item: any) => item.parentId) as any;
     @Prop({
       group: '数据属性',
       title: '子级值字段名',
@@ -88,7 +88,7 @@ namespace nasl.ui {
         concept: "PropertySelectSetter"
       }
     })
-    childrenField: (item: T) => nasl.core.String = ((item: any)  => item.children) as any;
+    childrenField: (item: T) => any = ((item: any)  => item.children) as any;
     @Prop({
       group: '主要属性',
       title: '占位提示'

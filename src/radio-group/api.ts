@@ -190,5 +190,11 @@ namespace nasl.ui {
       screenY: nasl.core.Integer;
       which: nasl.core.Integer;
     }) => any ;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotDefault: () => Array<ViewComponent>;
   }
 }

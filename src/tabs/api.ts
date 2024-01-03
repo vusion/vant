@@ -167,5 +167,11 @@ namespace nasl.ui {
       description: '显示的内容'
     })
     slotDefault: () => Array<ViewComponent>;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotTitle: () => Array<ViewComponent>;
   }
 }

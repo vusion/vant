@@ -320,6 +320,12 @@ namespace nasl.ui {
     slotTitle: () => Array<ViewComponent>;
 
     @Slot({
+      title: '',
+      description: ''
+    })
+    slotBottom: () => Array<ViewComponent>;
+
+    @Slot({
       title: 'undefined',
       description: '插入`<van-picker-action-slot>`子组件',
       snippets: [{
@@ -328,6 +334,8 @@ namespace nasl.ui {
       }]
     })
     slotDefault: () => Array<VanPickerActionSlot>;
+
+
 
     @Slot({
       title: 'undefined',
