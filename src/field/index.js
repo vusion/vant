@@ -42,7 +42,7 @@ export default createComponent({
   },
   components: {
     VanEmptyCol,
-    VanFieldinput
+    VanFieldinput,
   },
   props: {
     ...cellProps,
@@ -59,7 +59,7 @@ export default createComponent({
     labelLayout: {
       type: String,
       default: 'inline',
-      validator: (value) => ['inline','block'].includes(value),
+      validator: (value) => ['inline', 'block'].includes(value),
     },
     autosize: [Boolean, Object],
     leftIcon: String,
@@ -127,8 +127,8 @@ export default createComponent({
     },
     nofi: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   data() {
@@ -149,15 +149,16 @@ export default createComponent({
     },
   },
   created() {
-    try {
-      this.validatorVuF = new VusionValidator(
-        this.$options.validators,
-        this.$options.rules,
-        this.rules || [],
-        this,
-      );
-    } catch (e) {
-    }
+    // try {
+    //   this.validatorVuF = new VusionValidator(
+    //     this.$options.validators,
+    //     this.$options.rules,
+    //     this.rules || [],
+    //     this
+    //   );
+    // } catch (e) {
+    //   console.log('初始化validator失败');
+    // }
   },
   mounted() {
     this.updateValue(this.value, this.formatTrigger);
@@ -173,11 +174,24 @@ export default createComponent({
     }
   },
   computed: {
+    validatorVuF() {
+      let validator;
+      try {
+        validator = new VusionValidator(
+          this.$options.validators,
+          this.$options.rules,
+          this.rules || [],
+          this
+        );
+        console.log('更新validator成功');
+      } catch (e) {
+        console.log('更新validator失败');
+      }
+
+      return validator;
+    },
     currentLabelLayout() {
-      return (
-          this.labelLayout
-          || (this.vanForm && this.vanForm.labelLayout)
-      );
+      return this.labelLayout || (this.vanForm && this.vanForm.labelLayout);
     },
     currentRules() {
       // return (this.rules || (this.rootVM && this.rootVM.rules && this.rootVM.rules[this.name]));
@@ -282,14 +296,16 @@ export default createComponent({
         // 默认使用组件props.value
         return this.children.value;
       }
-      return (this.type === 'number' || this.type === 'digit') ? Number(this.value) : this.value;
+      return this.type === 'number' || this.type === 'digit'
+        ? Number(this.value)
+        : this.value;
     },
   },
   methods: {
     showClear() {
       const readonly = this.getProp('readonly');
       const frompara = this.getProp('frompara');
-      if ((this.clearable && !readonly)) {
+      if (this.clearable && !readonly) {
         const hasValue = isDef(this.value) && this.value !== '';
         const trigger =
           this.clearTrigger === 'always' ||
@@ -356,14 +372,15 @@ export default createComponent({
 
       return message;
     },
-    runRulesVusion(rules, trigger='') {
+    runRulesVusion(rules, trigger = '') {
       const value = this.formValue;
-      const {validatorVuF} = this;
-      return validatorVuF.validate(value, trigger, { label: this.label || t('validateLabel') }).then(() => {
-      }).catch((error) => {
-        this.validateFailed = true;
-        this.validateMessage = error;
-      });
+      return this.validatorVuF
+        .validate(value, trigger, { label: this.label || t('validateLabel') })
+        .then(() => {})
+        .catch((error) => {
+          this.validateFailed = true;
+          this.validateMessage = error;
+        });
     },
     runRules(rules) {
       return rules.reduce(
@@ -507,8 +524,18 @@ export default createComponent({
       }
 
       if (value !== this.value) {
-        this.$emit('input', (this.type === 'number' || this.type === 'digit') ? Number(value) : value);
-        this.$emit('update:value', (this.type === 'number' || this.type === 'digit') ? Number(value) : value);
+        this.$emit(
+          'input',
+          this.type === 'number' || this.type === 'digit'
+            ? Number(value)
+            : value
+        );
+        this.$emit(
+          'update:value',
+          this.type === 'number' || this.type === 'digit'
+            ? Number(value)
+            : value
+        );
       }
     },
 
@@ -525,8 +552,7 @@ export default createComponent({
       this.focused = true;
       this.$emit('focus', event);
 
-
-      this.$emit('clickinput', event);// 点击搜索框输入区域追加事件
+      this.$emit('clickinput', event); // 点击搜索框输入区域追加事件
 
       // https://github.com/youzan/vant/issues/9715
       this.$nextTick(this.adjustSize);
@@ -560,13 +586,13 @@ export default createComponent({
     onClickLeftIcon(event) {
       this.$emit('click-left-icon', event);
 
-      this.$emit('iconsearch', event);// 点击搜索框搜索按钮时触发
+      this.$emit('iconsearch', event); // 点击搜索框搜索按钮时触发
     },
 
     onClickRightIcon(event) {
       this.$emit('click-right-icon', event);
 
-      this.$emit('iconsearch', event);// 点击搜索框搜索按钮时触发
+      this.$emit('iconsearch', event); // 点击搜索框搜索按钮时触发
     },
 
     onClear(event) {
@@ -595,17 +621,16 @@ export default createComponent({
     },
 
     adjustSize() {
-      let {input} = this.$refs;
+      let { input } = this.$refs;
       const inputn = this.children;
       if (inputn && comSet.has(inputn.$options._componentTag)) {
         if (inputn.type === 'textarea') {
           return;
         }
-          input = inputn.$refs.input;
-
+        input = inputn.$refs.input;
       } else if (!(this.type === 'textarea' && this.autosize) || !input) {
-          return;
-        }
+        return;
+      }
 
       const scrollTop = getRootScrollTop();
       input.style.height = 'auto';
@@ -636,10 +661,12 @@ export default createComponent({
       const inputSlot = this.slots('input');
       const inputAlign = this.getProp('inputAlign');
       // const hasInputSlot = this.$slots.hasOwnProperty('input');
-      const ifDesigner = (this.$env && this.$env.VUE_APP_DESIGNER);
+      const ifDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
       if (inputSlot) {
         const ifInput = comSet.has(inputSlot[0]?.componentOptions?.tag);
-        return ifInput ? (inputSlot) : (
+        return ifInput ? (
+          inputSlot
+        ) : (
           <div
             class={bem(!ifInput ? 'control' : '', [inputAlign, 'custom'])}
             onClick={this.onClickInput}
@@ -648,7 +675,7 @@ export default createComponent({
           </div>
         );
       }
-      if ((!inputSlot && drole && ifDesigner)) {
+      if (!inputSlot && drole && ifDesigner) {
         return (
           <div
             class={bem('control', [inputAlign, 'custom'])}
@@ -723,15 +750,20 @@ export default createComponent({
       const ifEye = this.eye === 'yes';
       const { slots } = this;
       const showRightIcon = slots('right-icon') || this.rightIcon;
-      const openEye = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANwSURBVHgB7VfJURtBFP0S4sBykCPwOAMcAeMIgGI7IkUgEQFDBEYRSD6xVokMGCJAZDDOQAeWA5vfk3rkrtZ0z2ixL/Srmpqll/nv7y3i4eHh4eHh4fF5UZI54eLiYh23NV4fHx9hqVSq4rmqhvv4luCelMvlHp7jvb29W5kDZiLQbrery8vLDTzWIHAwyVoSwpp4YWEh2t7e/i1TYioCqeAQoCl/tTwLOtMSmZjA2dnZBtygI4bgINPHdf3+/k7X6D0+Pib1er3PMRJeWVkJsC7A+AY+hbgCY2u62cn+/v6x/AsCSutHSuu64DFuJw8PD7epwEVweXkZQmC636b+Hd+uK5VKs6g1ChFQwt9A2DXtM324vru7G8sMUETaolmE8QESYRESuQROT09p+hs9SGnqp6en4yyNa/ERytBVOL+HG93jl9iJHGFeJBOSyCVwfn5+Z2i+iRTYypqbRVZHnlD41wHWn2BeNZ0PRX13uWZZ3MIf6cJj85pNeDV+40qnHHt9fY1ppaxxWghCb+rzGXfigJUAtYkNIm2zaGdnx+oC1J4uPOcjE33hBWJNXajV1dWGbR8WOGN+UxXJTFRsA8jLOvMOgtWZ3ozs1MR83VIt+Hg19XFWatys+0FRLQjNOak1uO5H1tyyQ6CRKVlkJB8jV4PWxywF39cJhZKP46y9TThjIMXb21sg/xn4Z6GaYiWgUl+KSPIRpw9ZPv7y8nKgvfYkB4YLX9vmWWNAhkLH6jlkRnKVeVZk5dskH6Hl6D8/Pw9cSTV8UTqXqVIc4L9wq6XvLhd21gEE3k8IMwpOPNdsxajb7Vah5TsZ73FMJMg032yDKpt1RgIim7kSiDMGsPBQNHNzY6WdMWxtbfXht8wUiWPLBNoMbYPIPA1deP47N/tJDrI062oliKurqwNaDtcge6iGL0bD13K0H2ajOCA7cytBsKhhs65o6UydsCJXf1MELFLYq2NU8B7+tzmXZk6HGRPEtERUdY1kvCZ0UEcOi7bmEx9o6B44lERiBGt6ROR5F/cEQtzrB5qlpaWv7KtUl8oiOXYgYvZy9VpzIUDQpVBZG6Y1pkVeTLkw06GeRBYXFzdgERIJJllLjcvwJNeaRvDRPjInwKfXUKDWQSZUARmkfb1yDwrZwxy62f2sJzkPDw8PDw8PDw+RP5uQ0RzrnQ+WAAAAAElFTkSuQmCC';
-      const closeEye = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKNSURBVHgB7ZbdbRpBEMeHAx5AQiEV5FKBSQXBFSQRAsSTQwV2B+AOoALwEwIkSCoIqQBcgS8VhCBAQnzlP+QWLeju9mIwfpmfdNqbvb2dmd2Z2SUSBEEQBEEQBEEQXoeI34dut/t7u92mXTFbKBR+0gVptVp2NBp9csUx9L/1Gmf5TQDjR5pYpQsD4yua+M1vnK8DdGh0tt1uV+hCuLq+KhnOVP3G+jrAIROJRGpKxnsVE9/QC8M6WJeuN5fL/fIbHyEDnU5niCajZIRWtVgs3tMLAF23aGpa1wgL+SHonxgZiMfj18vlkp2wWXZ3Ij2fz+/L5fKYzkCj0Ugnk0kOmzut20HofDb9a9wBxq0IfTrcCQcN78YDnQBW/SPmamJhbK17xMYHhY7CohCUSiUHSg4qASvE08RuPD0nN9hwPD/wOjgynheHJpPJnzDzhNoBrgpHiTXWzgil1EH/AC0b5Mxms0cVYhwiiUTiHfozeLLo4tA4+P94Ti7jCNNrU5gaHfAwvrparR5isdgtlNzRGcA8Nc6pVCp1s9ls9CRuIonLQf8GOuBlfD6f31cgzg0k+ScoZUds+g94xdHUptNpXV9l3AAqXOkopBOBVciyrF08ehnPcG6gqSOW+Zox1AzjfluFhBseY7Rp1Ye5M15JyjrgBCknOBwpgEAH1GTq3W8clF1B0e4duzFAZfriNQ6ONsg9YdfrNedB/RS9RgfCTMDA+H29Rvnzv7dY1ggOKjFDJ+rdzUlnADuwN2axWDz6jcOB+F0TjYdUGEKV0SAQFmz80BUdJNz7oPH6NR27ZYc5rII4xw68oX9Je3wF90Q7EJ3jA+xV4ZLKj2lcr9e76vf7xnGCIAiCIAiCmb/8EzBWv90CKwAAAABJRU5ErkJggg==';
+      const openEye =
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANwSURBVHgB7VfJURtBFP0S4sBykCPwOAMcAeMIgGI7IkUgEQFDBEYRSD6xVokMGCJAZDDOQAeWA5vfk3rkrtZ0z2ixL/Srmpqll/nv7y3i4eHh4eHh4fF5UZI54eLiYh23NV4fHx9hqVSq4rmqhvv4luCelMvlHp7jvb29W5kDZiLQbrery8vLDTzWIHAwyVoSwpp4YWEh2t7e/i1TYioCqeAQoCl/tTwLOtMSmZjA2dnZBtygI4bgINPHdf3+/k7X6D0+Pib1er3PMRJeWVkJsC7A+AY+hbgCY2u62cn+/v6x/AsCSutHSuu64DFuJw8PD7epwEVweXkZQmC636b+Hd+uK5VKs6g1ChFQwt9A2DXtM324vru7G8sMUETaolmE8QESYRESuQROT09p+hs9SGnqp6en4yyNa/ERytBVOL+HG93jl9iJHGFeJBOSyCVwfn5+Z2i+iRTYypqbRVZHnlD41wHWn2BeNZ0PRX13uWZZ3MIf6cJj85pNeDV+40qnHHt9fY1ppaxxWghCb+rzGXfigJUAtYkNIm2zaGdnx+oC1J4uPOcjE33hBWJNXajV1dWGbR8WOGN+UxXJTFRsA8jLOvMOgtWZ3ozs1MR83VIt+Hg19XFWatys+0FRLQjNOak1uO5H1tyyQ6CRKVlkJB8jV4PWxywF39cJhZKP46y9TThjIMXb21sg/xn4Z6GaYiWgUl+KSPIRpw9ZPv7y8nKgvfYkB4YLX9vmWWNAhkLH6jlkRnKVeVZk5dskH6Hl6D8/Pw9cSTV8UTqXqVIc4L9wq6XvLhd21gEE3k8IMwpOPNdsxajb7Vah5TsZ73FMJMg032yDKpt1RgIim7kSiDMGsPBQNHNzY6WdMWxtbfXht8wUiWPLBNoMbYPIPA1deP47N/tJDrI062oliKurqwNaDtcge6iGL0bD13K0H2ajOCA7cytBsKhhs65o6UydsCJXf1MELFLYq2NU8B7+tzmXZk6HGRPEtERUdY1kvCZ0UEcOi7bmEx9o6B44lERiBGt6ROR5F/cEQtzrB5qlpaWv7KtUl8oiOXYgYvZy9VpzIUDQpVBZG6Y1pkVeTLkw06GeRBYXFzdgERIJJllLjcvwJNeaRvDRPjInwKfXUKDWQSZUARmkfb1yDwrZwxy62f2sJzkPDw8PDw8PDw+RP5uQ0RzrnQ+WAAAAAElFTkSuQmCC';
+      const closeEye =
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKNSURBVHgB7ZbdbRpBEMeHAx5AQiEV5FKBSQXBFSQRAsSTQwV2B+AOoALwEwIkSCoIqQBcgS8VhCBAQnzlP+QWLeju9mIwfpmfdNqbvb2dmd2Z2SUSBEEQBEEQBEEQXoeI34dut/t7u92mXTFbKBR+0gVptVp2NBp9csUx9L/1Gmf5TQDjR5pYpQsD4yua+M1vnK8DdGh0tt1uV+hCuLq+KhnOVP3G+jrAIROJRGpKxnsVE9/QC8M6WJeuN5fL/fIbHyEDnU5niCajZIRWtVgs3tMLAF23aGpa1wgL+SHonxgZiMfj18vlkp2wWXZ3Ij2fz+/L5fKYzkCj0Ugnk0kOmzut20HofDb9a9wBxq0IfTrcCQcN78YDnQBW/SPmamJhbK17xMYHhY7CohCUSiUHSg4qASvE08RuPD0nN9hwPD/wOjgynheHJpPJnzDzhNoBrgpHiTXWzgil1EH/AC0b5Mxms0cVYhwiiUTiHfozeLLo4tA4+P94Ti7jCNNrU5gaHfAwvrparR5isdgtlNzRGcA8Nc6pVCp1s9ls9CRuIonLQf8GOuBlfD6f31cgzg0k+ScoZUds+g94xdHUptNpXV9l3AAqXOkopBOBVciyrF08ehnPcG6gqSOW+Zox1AzjfluFhBseY7Rp1Ye5M15JyjrgBCknOBwpgEAH1GTq3W8clF1B0e4duzFAZfriNQ6ONsg9YdfrNedB/RS9RgfCTMDA+H29Rvnzv7dY1ggOKjFDJ+rdzUlnADuwN2axWDz6jcOB+F0TjYdUGEKV0SAQFmz80BUdJNz7oPH6NR27ZYc5rII4xw68oX9Je3wF90Q7EJ3jA+xV4ZLKj2lcr9e76vf7xnGCIAiCIAiCmb/8EzBWv90CKwAAAABJRU5ErkJggg==';
 
-      if(ifEye) {
+      if (ifEye) {
         return (
           <div class={bem('right-icon')} onClick={this.onClickRightIcon}>
-            {(
-              <Icon name={!ifPwd ? openEye : closeEye} classPrefix={this.iconPrefix} />
-            )}
+            {
+              <Icon
+                name={!ifPwd ? openEye : closeEye}
+                classPrefix={this.iconPrefix}
+              />
+            }
           </div>
         );
       }
@@ -748,7 +780,7 @@ export default createComponent({
     },
 
     genWordLimit() {
-      if ((this.showWordLimit && this.maxlength)) {
+      if (this.showWordLimit && this.maxlength) {
         const count = (this.value || '').length;
 
         return (
@@ -837,7 +869,11 @@ export default createComponent({
         clickable={this.clickable}
         titleStyle={this.labelStyle}
         valueClass={bem('value')}
-        titleClass={[bem('label', labelAlign), this.labelClass, stitle ? bem('labelhasslots') : '']}
+        titleClass={[
+          bem('label', labelAlign),
+          this.labelClass,
+          stitle ? bem('labelhasslots') : '',
+        ]}
         scopedSlots={scopedSlots}
         arrowDirection={this.arrowDirection}
         title={Label}
