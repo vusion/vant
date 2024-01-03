@@ -12,22 +12,22 @@ namespace nasl.ui {
       title: 'undefined',
       description: '开始计时器'
     })
-    start(): void {}
+    start(): any {}
     @Method({
       title: 'undefined',
       description: '暂停计时器'
     })
-    pause(): void {}
+    pause(): any {}
     @Method({
       title: 'undefined',
       description: '继续计时器'
     })
-    continue(): void {}
+    continue(): any {}
     @Method({
       title: 'undefined',
       description: '停止计时器'
     })
-    stop(): void {}
+    stop(): any {}
     constructor(options?: Partial<VanCountDownNewOptions>) {
       super();
     }
@@ -80,21 +80,21 @@ namespace nasl.ui {
       title: '计时器开始',
       description: '计时器开始时触发'
     })
-    onStart: () => any ;
+    onStart: (event: any) => any ;
     @Event({
       title: '计时器暂停',
       description: '计时器暂停时触发'
     })
-    onPause: () => any ;
+    onPause: (event: any) => any ;
     @Event({
       title: '计时器继续',
       description: '计时器继续时触发'
     })
-    onContinue: () => any ;
+    onContinue: (event: any) => any ;
     @Event({
       title: '计时器结束',
       description: '计时器结束时触发'
     })
-    onStop: () => any ;
+    onStop: (event: any) => any ;
   }
 }

@@ -89,6 +89,6 @@ namespace nasl.ui {
       title: '默认',
       description: '显示的文本'
     })
-    private slotDefault: () => Array<ViewComponent>;
+    slotDefault: () => Array<ViewComponent>;
   }
 }

@@ -15,7 +15,7 @@ namespace nasl.ui {
       title: '日期重置',
       description: '将选中的日期重置到指定日期，未传参时会重置到默认日期'
     })
-    reset(): void {}
+    reset(): any {}
   }
   export class VanCalendarOptions extends ViewComponentOptions {
     @Prop({
@@ -126,7 +126,14 @@ namespace nasl.ui {
       title: '取消',
       description: '点击完成取消时触发的事件'
     })
-    onCancel: () => any ;
+    onCancel: (event: any) => any ;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotTitle: () => Array<ViewComponent>;
+
     @Slot({
       title: 'undefined',
       description: '插入`<van-picker-action-slot>`子组件',

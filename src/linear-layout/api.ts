@@ -15,12 +15,12 @@ namespace nasl.ui {
       title: '打开加载中',
       description: '打开加载中'
     })
-    openLoading(): void {}
+    openLoading(): any {}
     @Method({
       title: '关闭加载中',
       description: '关闭加载中'
     })
-    closeLoading(): void {}
+    closeLoading(): any {}
   }
   export class VanLinearLayoutOptions extends ViewComponentOptions {
     @Prop({

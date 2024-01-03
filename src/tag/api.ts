@@ -104,11 +104,17 @@ namespace nasl.ui {
       title: '关闭前',
       description: '点击标签删除图标前触发，使用event.preventDefault可以阻止删除事件触发'
     })
-    onBeforeClose: () => any ;
+    onBeforeClose: (event: any) => any ;
     @Event({
       title: '关闭时',
       description: '点击标签删除图标时触发'
     })
-    onClose: () => any ;
+    onClose: (event: any) => any ;
+
+    @Slot({
+      title: 'undefined',
+      description: '内容自定义'
+    })
+    slotDefault: () => Array<ViewComponent>;
   }
 }

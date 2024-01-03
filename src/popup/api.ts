@@ -15,12 +15,12 @@ namespace nasl.ui {
       title: 'undefined',
       description: '打开弹窗'
     })
-    openModal(): void {}
+    openModal(): any {}
     @Method({
       title: 'undefined',
       description: '关闭弹窗'
     })
-    closeModal(): void {}
+    closeModal(): any {}
   }
   export class VanPopupOptions extends ViewComponentOptions {
     @Prop({
@@ -67,17 +67,17 @@ namespace nasl.ui {
       title: '点击遮罩层',
       description: '点击遮罩层时触发'
     })
-    onClickOverlay: () => any ;
+    onClickOverlay: (event: any) => any ;
     @Event({
       title: '打开弹出层后',
       description: '打开弹出层时触发'
     })
-    onOpen: () => any ;
+    onOpen: (event: any) => any ;
     @Event({
       title: '关闭弹出层后',
       description: '关闭弹出层时触发'
     })
-    onClose: () => any ;
+    onClose: (event: any) => any ;
     @Slot({
       title: 'undefined',
       description: '内容自定义'

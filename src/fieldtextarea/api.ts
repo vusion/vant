@@ -15,17 +15,17 @@ namespace nasl.ui {
       title: 'undefined',
       description: '让输入框获取焦点。'
     })
-    focus(): void {}
+    focus(): any {}
     @Method({
       title: 'undefined',
       description: '让输入框失去焦点。'
     })
-    blur(): void {}
+    blur(): any {}
     @Method({
       title: 'undefined',
       description: '清空输入框。'
     })
-    clear(): void {}
+    clear(): any {}
   }
   export class VanFieldtextareaOptions extends ViewComponentOptions {
     @Prop({
@@ -157,6 +157,6 @@ namespace nasl.ui {
       title: '清空后',
       description: '清空后触发。'
     })
-    onClear: () => any ;
+    onClear: (event: any) => any ;
   }
 }

@@ -171,11 +171,11 @@ namespace nasl.ui {
       title: '点击清除图标时触发',
       description: '点击清除图标时触发'
     })
-    onClear: () => any ;
+    onClear: (event: any) => any ;
     @Slot({
       title: 'undefined',
       description: '内容'
     })
-    private slotDefault: () => Array<ViewComponent>;
+    slotDefault: () => Array<ViewComponent>;
   }
 }

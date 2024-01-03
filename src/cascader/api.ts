@@ -174,5 +174,11 @@ namespace nasl.ui {
       title: 'option'
     })
     slotOption: (current: Current<T>) => Array<ViewComponent>;
+
+    @Slot({
+      title: '',
+      description: '',
+    })
+    slotTitle: () => Array<ViewComponent>;
   }
 }

@@ -7,7 +7,7 @@ namespace nasl.ui {
     description: '数据网格',
     group: "Table"
   })
-  export class VanGridView<T, V, P extends boolean, M extends boolean> extends ViewComponent {
+  export class VanGridView<T, V, P extends nasl.core.Boolean, M extends nasl.core.Boolean> extends ViewComponent {
     constructor(options?: Partial<VanGridViewOptions<T, V, P, M>>) {
       super();
     }
@@ -36,9 +36,9 @@ namespace nasl.ui {
       title: 'undefined',
       description: '清除缓存，重新加载'
     })
-    reload(): void {}
+    reload(): any {}
   }
-  export class VanGridViewOptions<T, V, P extends boolean, M extends boolean> extends ViewComponentOptions {
+  export class VanGridViewOptions<T, V, P extends nasl.core.Boolean, M extends nasl.core.Boolean> extends ViewComponentOptions {
     @Prop({
       title: '值',
       description: '当前选择的值',
@@ -268,7 +268,7 @@ namespace nasl.ui {
       title: '加载后',
       description: '加载时触发'
     })
-    onLoad: () => any ;
+    onLoad: (event: any) => any ;
     @Slot({
       title: 'undefined',
       description: '插入<van-cardu />',

@@ -15,12 +15,12 @@ namespace nasl.ui {
       title: 'undefined',
       description: '打开'
     })
-    open(): void {}
+    open(): any {}
     @Method({
       title: 'undefined',
       description: '关闭'
     })
-    close(): void {}
+    close(): any {}
   }
   export class VanDatetimePickerOptions extends ViewComponentOptions {
     @Prop({
@@ -311,7 +311,14 @@ namespace nasl.ui {
       title: '取消',
       description: '点击完成取消时触发的事件'
     })
-    onCancel: () => any ;
+    onCancel: (event: any) => any ;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotTitle: () => Array<ViewComponent>;
+
     @Slot({
       title: 'undefined',
       description: '插入`<van-picker-action-slot>`子组件',
@@ -360,6 +367,12 @@ namespace nasl.ui {
       }
     })
     targetMethod: 'confirm' | 'cancel';
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotDefault: () => Array<ViewComponent>;
   }
   @Component({
     title: '事件插槽',
