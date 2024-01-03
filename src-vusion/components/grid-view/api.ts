@@ -106,14 +106,15 @@ namespace nasl.ui {
       }
     })
     pageable: '' | 'auto-more' | 'load-more' = '';
-    @Prop({
+    @Prop<VanGridViewOptions<T, V, P, M>, any>({
       group: '主要属性',
       title: '分页大小',
       description: '设置分页大小，单位为px。',
       setter: {
         concept: "NumberInputSetter",
         precision: 0
-      }
+      },
+      if: _ => !!_.pageable
     })
     pageSize: nasl.core.Integer = 20;
 
