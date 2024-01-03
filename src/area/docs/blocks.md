@@ -30,6 +30,7 @@
         text="确认"
         squareroud="round"
       ></van-button>
-    </van-picker-action-slot> </template
-></van-area>
+    </van-picker-action-slot> 
+  </template>
+</van-area>
 ```

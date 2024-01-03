@@ -112,12 +112,12 @@ namespace nasl.ui {
       title: '关闭通知栏时触发',
       description: '关闭通知栏时触发'
     })
-    onClose: () => any ;
+    onClose: (event: any) => any ;
     @Event({
       title: '点击链接',
       description: '点击链接'
     })
-    onRout: () => any ;
+    onRout: (event: any) => any ;
     @Slot({
       title: 'undefined',
       description: '文本插槽'

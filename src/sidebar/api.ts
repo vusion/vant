@@ -33,7 +33,7 @@ namespace nasl.ui {
       title: '切换导航时',
       description: '切换导航时'
     })
-    onChange: () => any ;
+    onChange: (event: any) => any ;
     @Slot({
       title: 'undefined',
       description: '插入`<van-sidebar-item>`子组件。',

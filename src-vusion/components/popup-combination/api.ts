@@ -15,12 +15,12 @@ namespace nasl.ui {
       title: 'undefined',
       description: '弹出实例。'
     })
-    open(): void {}
+    open(): any {}
     @Method({
       title: 'undefined',
       description: '关闭实例。'
     })
-    close(): void {}
+    close(): any {}
     @Method({
       title: 'undefined',
       description: '切换弹出/关闭状态。'
@@ -31,17 +31,17 @@ namespace nasl.ui {
         description: '可选。弹出/关闭状态'
       })
       opened?: nasl.core.Boolean
-    ): void {}
+    ): any {}
     @Method({
       title: 'undefined',
       description: '更新 popper 实例。参考 [Popper.update()](https://popper.js.org/popper-documentation.html#Popper.update)。'
     })
-    update(): void {}
+    update(): any {}
     @Method({
       title: 'undefined',
       description: '在下次 UI 渲染时一块更新 popper 实例，比`update()`性能要好。参考 [Popper.scheduleUpdate()](https://popper.js.org/popper-documentation.html#Popper.scheduleUpdate)。'
     })
-    scheduleUpdate(): void {}
+    scheduleUpdate(): any {}
   }
   export class VanPopupCombinationOptions extends ViewComponentOptions {
     @Prop({
@@ -163,22 +163,22 @@ namespace nasl.ui {
       title: '弹出前',
       description: '弹出前触发。'
     })
-    onBeforeOpen: () => any ;
+    onBeforeOpen: (event: any) => any ;
     @Event({
       title: '弹出时',
       description: '弹出时触发。'
     })
-    onOpen: () => any ;
+    onOpen: (event: any) => any ;
     @Event({
       title: '隐藏前',
       description: '隐藏前触发。'
     })
-    onBeforeClose: () => any ;
+    onBeforeClose: (event: any) => any ;
     @Event({
       title: '隐藏后',
       description: '隐藏时触发。'
     })
-    onClose: () => any ;
+    onClose: (event: any) => any ;
     @Slot({
       title: 'undefined',
       description: '自定义弹出的内容。'

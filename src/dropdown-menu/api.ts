@@ -87,7 +87,7 @@ namespace nasl.ui {
         description: '展示'
       })
       show?: nasl.core.Boolean
-    ): void {}
+    ): any {}
   }
   export class VanDropdownItemOptions extends ViewComponentOptions {
     @Prop({
@@ -129,12 +129,12 @@ namespace nasl.ui {
       title: '打开菜单栏时触发',
       description: '打开菜单栏时触发'
     })
-    onOpen: () => any ;
+    onOpen: (event: any) => any ;
     @Event({
       title: '关闭菜单栏时触发',
       description: '关闭菜单栏时触发'
     })
-    onClose: () => any ;
+    onClose: (event: any) => any ;
     @Slot({
       title: 'undefined',
       description: '插入`<van-dropdown-item-son>`子组件。',

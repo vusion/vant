@@ -15,7 +15,7 @@ namespace nasl.ui {
       title: '收起单元格侧边栏',
       description: '收起单元格侧边栏'
     })
-    close(): void {}
+    close(): any {}
   }
   export class VanSwipeCellOptions extends ViewComponentOptions {
     @Prop({

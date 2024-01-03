@@ -156,5 +156,11 @@ namespace nasl.ui {
       description: '点击图标'
     })
     onClickicon: (event: nasl.core.Integer) => any ;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotDefault: () => Array<ViewComponent>;
   }
 }

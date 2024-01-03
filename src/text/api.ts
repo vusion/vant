@@ -113,6 +113,12 @@ namespace nasl.ui {
       screenX: nasl.core.Integer;
       screenY: nasl.core.Integer;
       which: nasl.core.Integer;
-  }) => any ;
+    }) => any ;
+
+    @Slot({
+      title: 'undefined',
+      description: '内容自定义'
+    })
+    slotDefault: () => Array<ViewComponent>;
   }
 }

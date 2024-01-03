@@ -121,11 +121,17 @@ namespace nasl.ui {
       title: '开始拖动时触发',
       description: '开始拖动时触发'
     })
-    onDragStart: () => any ;
+    onDragStart: (event: any) => any ;
     @Event({
       title: '结束拖动时触发',
       description: '结束拖动时触发'
     })
-    onDragEnd: () => any ;
+    onDragEnd: (event: any) => any ;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotButton: () => Array<ViewComponent>
   }
 }

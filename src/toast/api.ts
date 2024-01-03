@@ -15,12 +15,12 @@ namespace nasl.ui {
       title: 'undefined',
       description: '打开弹出消息'
     })
-    open(): void {}
+    open(): any {}
     @Method({
       title: 'undefined',
       description: '关闭弹出消息'
     })
-    close(): void {}
+    close(): any {}
   }
   export class VanToastOptions extends ViewComponentOptions {
     @Prop({
@@ -91,11 +91,11 @@ namespace nasl.ui {
       title: '打开弹出消息后',
       description: '打开弹出消息时触发'
     })
-    onOpen: () => any ;
+    onOpen: (event: any) => any ;
     @Event({
       title: '关闭弹出消息后',
       description: '关闭弹出消息时触发'
     })
-    onClose: () => any ;
+    onClose: (event: any) => any ;
   }
 }

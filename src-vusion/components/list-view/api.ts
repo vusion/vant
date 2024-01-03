@@ -36,7 +36,7 @@ namespace nasl.ui {
       title: 'undefined',
       description: '清除缓存，重新加载'
     })
-    reload(): void {}
+    reload(): any {}
   }
   export class VanListViewOptions<T, V, P, M> extends ViewComponentOptions {
     @Prop({
@@ -440,12 +440,12 @@ namespace nasl.ui {
       title: '加载前',
       description: '加载前触发'
     })
-    onBeforeLoad: () => any ;
+    onBeforeLoad: (event: any) => any ;
     @Event({
       title: '加载后',
       description: '加载时触发'
     })
-    onLoad: () => any ;
+    onLoad: (event: any) => any ;
     @Slot({
       title: 'undefined',
       description: '插入<van-cell />',
@@ -455,7 +455,7 @@ namespace nasl.ui {
         code: '<template #item="current"><van-cell isLink><template #title>文本</template></van-cell></template>'
       }]
     })
-    private slotDefault: () => Array<VanCell>;
+    slotDefault: () => Array<VanCell>;
     @Slot({
       title: 'undefined',
       description: '自定义选项的结构和样式'

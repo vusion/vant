@@ -152,12 +152,19 @@ namespace nasl.ui {
       title: '点击取消按钮时',
       description: '点击取消按钮时'
     })
-    onCancel: () => any ;
+    onCancel: (event: any) => any ;
     @Event({
       title: '选项改变时触发',
       description: '选项改变时触发'
     })
-    onChange: () => any ;
+    onChange: (event: any) => any ;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotTitle: () => Array<ViewComponent>;
+
     @Slot({
       title: 'undefined',
       description: '插入`<van-picker-action-slot>`子组件',

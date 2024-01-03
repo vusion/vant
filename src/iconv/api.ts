@@ -77,14 +77,11 @@ namespace nasl.ui {
       title: '点击后',
       description: '点击此项时触发'
     })
-    onClick: (event: {
-      stopPropagation: () => any ;
-      preventDefault: () => any ;
-    }) => any ;
+    onClick: (event: any) => any ;
     @Slot({
       title: 'undefined',
       description: '插入文本或HTML'
     })
-    private slotDefault: () => Array<ViewComponent>;
+    slotDefault: () => Array<ViewComponent>;
   }
 }

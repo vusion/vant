@@ -13,13 +13,13 @@ namespace nasl.ui {
             title: '展开',
             description: '展开',
         })
-        openModal(): void {}
+        openModal(): any {}
 
         @Method({
             title: '关闭',
             description: '关闭',
         })
-        closeModal(): void {}
+        closeModal(): any {}
         constructor(options?: Partial<VanPopoverOptions>) { super(); }
     }
 
@@ -111,19 +111,19 @@ namespace nasl.ui {
             title: '点击选项时触发',
             description: '点击选项时触发',
         })
-        onSelect: () => any ;
+        onSelect: (event: any) => any ;
 
         @Event({
             title: '展开',
             description: '展开',
         })
-        onOpen: () => any ;
+        onOpen: (event: any) => any ;
 
         @Event({
             title: '收起',
             description: '收起',
         })
-        onClose: () => any ;
+        onClose: (event: any) => any ;
 
         @Slot({
             title: 'undefined',

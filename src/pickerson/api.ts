@@ -7,7 +7,7 @@ namespace nasl.ui {
     description: '提供多个选项集合供用户选择，支持单列选择和多列级联。',
     group: "Selector"
   })
-  export class VanPickerson<T, V, M extends boolean, P extends boolean> extends ViewComponent {
+  export class VanPickerson<T, V, M extends nasl.core.Boolean, P extends nasl.core.Boolean> extends ViewComponent {
     constructor(options?: Partial<VanPickersonOptions<T, V, M, P>>) {
       super();
     }
@@ -41,9 +41,9 @@ namespace nasl.ui {
       title: 'undefined',
       description: '重新加载数据'
     })
-    reload(): void {}
+    reload(): any {}
   }
-  export class VanPickersonOptions<T, V, M extends boolean, P extends boolean> extends ViewComponentOptions {
+  export class VanPickersonOptions<T, V, M extends nasl.core.Boolean, P extends nasl.core.Boolean> extends ViewComponentOptions {
     @Prop({
       title: '左侧标题',
       description: '左侧标题'
@@ -301,12 +301,12 @@ namespace nasl.ui {
       title: '点击取消按钮时触发',
       description: '回调参数：选中值，选中值对应的索引'
     })
-    onCancel: () => any ;
+    onCancel: (event: any) => any ;
     @Event({
       title: '选项改变时触发',
       description: '回调参数：Picker 实例，选中值，选中值对应的索引'
     })
-    onChange: () => any ;
+    onChange: (event: any) => any ;
     @Slot({
       title: 'undefined',
       description: '插入`<van-picker-action-slot>`子组件',

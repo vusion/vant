@@ -21,7 +21,7 @@ namespace nasl.ui {
         description: '可选。需要验证的表单项 name'
       })
       name?: nasl.core.String | nasl.collection.List<nasl.core.String>
-    ): void {}
+    ): any {}
   }
   export class VanFormOptions extends ViewComponentOptions {
     @Prop({
@@ -184,5 +184,11 @@ namespace nasl.ui {
       description: '插入自定义输入框'
     })
     slotInput: () => Array<ViewComponent>;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotTitle: () => Array<ViewComponent>
   }
 }

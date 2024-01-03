@@ -60,7 +60,7 @@ namespace nasl.ui {
         description: '展开'
       })
       expanded?: nasl.core.Boolean
-    ): void {}
+    ): any {}
     constructor(options?: Partial<VanCollapseItemOptions>) {
       super();
     }
@@ -99,11 +99,23 @@ namespace nasl.ui {
       title: '展开',
       description: '展开'
     })
-    onOpen: () => any ;
+    onOpen: (event: any) => any ;
     @Event({
       title: '收起',
       description: '收起'
     })
-    onClose: () => any ;
+    onClose: (event: any) => any ;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotTitle: () => Array<ViewComponent>;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
+    slotDefault: () => Array<ViewComponent>;
   }
 }
