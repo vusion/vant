@@ -216,7 +216,9 @@ export default createComponent({
       return this.$refs.root.getPicker();
     },
     onConfirm(value) {
-      this.$emit('confirm', value);
+      this.$nextTick(() => {
+        this.$emit('confirm', value);
+      })
     },
     confirm() {
       if (this.range) {

@@ -33,7 +33,6 @@ export default createComponent({
       },
     },
     name() {
-      console.log('this', this)
       try {
         if(!this.parent.options || this.parent.options.length === 0 || (this.parent.options.length < this.parent.children.length && this.index >= this.parent.options.length )) {
           return this.label
@@ -89,7 +88,8 @@ export default createComponent({
         /* istanbul ignore else */
         if (value.indexOf(this.name) === -1) {
           value.push(this.name);
-          parent.currentValue = value;
+          parent.updateCurrentValue(value);
+          // parent.currentValue = value;
           // parent.$emit('input', value);
           // parent.$emit('update:value', value);
         }
@@ -101,8 +101,8 @@ export default createComponent({
         /* istanbul ignore else */
         if (index !== -1) {
           value.splice(index, 1);
-          parent.currentValue = value;
-
+          parent.updateCurrentValue(value);
+          // parent.currentValue = value;
           // parent.$emit('input', value);
           // parent.$emit('update:value', value);
         }

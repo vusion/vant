@@ -7,11 +7,7 @@ import { Converter } from '../mixins/convertor';
 const [createComponent, bem] = createNamespace('checkbox-group');
 
 export default createComponent({
-  mixins: [
-    ParentMixin('vanCheckbox'),
-    FieldMixin,
-    Converter
-  ],
+  mixins: [ParentMixin('vanCheckbox'), FieldMixin, Converter],
 
   props: {
     dataSource: [Array, Object, Function, String],
@@ -44,29 +40,22 @@ export default createComponent({
     };
   },
   watch: {
-    value(val, oldValue) {
-      // 暴露出去的值
-      const value = this.converter !== 'none' ? this.currentConverter.get(val) : val;
-      oldValue = this.converter !== 'none' ? this.currentConverter.get(oldValue) : oldValue;
-      this.$emit(
-        'change', {
-          value,
-          oldValue,
-        }
-      );
-
+    value(val) {
       this.currentValue =
-        this.converter !== 'none' ? this.currentConverter.set(val) : val;
+        this.hasConverter ? this.currentConverter.set(val) : val;
     },
-    currentValue(val) {
-      let temp = val;
-      if (this.converter !== 'none') {
-        temp = this.currentConverter.get(val);
-      }
+    // currentValue(val) {
+    //   let temp = val;
+    //   if (this.hasConverter) {
+    //     temp = this.currentConverter.get(val);
+    //   }
 
-      this.$emit('input', temp);
-      this.$emit('update:value', temp);
-    },
+    //   this.$emit('input', temp);
+    //   this.$emit('update:value', temp);
+    //   this.$emit('change', {
+    //     value: temp,
+    //   });
+    // },
     dataSource: {
       deep: true,
       handler: 'update',
@@ -77,11 +66,15 @@ export default createComponent({
     inDesigner() {
       return this.$env && this.$env.VUE_APP_DESIGNER;
     },
+
+    hasConverter() {
+      return this.converter && this.converter !== 'none';
+    },
   },
 
   mounted() {
     this.currentValue =
-      this.converter !== 'none'
+      this.hasConverter
         ? this.currentConverter.set(this.value)
         : this.value || [];
   },
@@ -120,7 +113,8 @@ export default createComponent({
       });
 
       const names = children.map((item) => item.name);
-      this.currentValue = names;
+      // this.currentValue = names;
+      this.updateCurrentValue(names);
     },
     async update() {
       if (this.ifDesigner() && this.dataSource) {
@@ -142,13 +136,26 @@ export default createComponent({
         this.options = formatResult(this.dataSource);
       }
     },
+    updateCurrentValue(value) {
+      if (this.hasConverter) {
+        value = this.currentConverter.get(value);
+      }
+
+      this.currentValue = value;
+
+      this.$emit('input', value);
+      this.$emit('update:value', value);
+      this.$emit('change', {
+        value,
+      });
+    },
   },
 
   render() {
     // 水平排列时
     let itemWidth = 'auto';
     if (this.column > 0) {
-      itemWidth = (100 / this.column) + '%';
+      itemWidth = 100 / this.column + '%';
     }
 
     return (

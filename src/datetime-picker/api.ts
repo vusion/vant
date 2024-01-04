@@ -323,6 +323,12 @@ namespace nasl.ui {
       title: '',
       description: ''
     })
+    slotTop: () => Array<ViewComponent>;
+
+    @Slot({
+      title: '',
+      description: ''
+    })
     slotBottom: () => Array<ViewComponent>;
 
     @Slot({

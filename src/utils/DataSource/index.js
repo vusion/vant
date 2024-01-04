@@ -440,8 +440,14 @@ const VueDataSource = Vue.extend({
 
         },
         reload() {
-            this.clearLocalData();
-            this.load();
+          this.remote = !!this._load;
+          this.clearLocalData();
+          this.page({
+            ...(this.paging || {}),
+            number: 1,
+          });
+
+          this.load();
         },
         page(paging) {
             this.paging = paging;

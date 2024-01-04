@@ -339,7 +339,7 @@ namespace nasl.ui {
         concept: "NumberInputSetter",
         min: 1,
         max: 24,
-        precision: 1
+        precision: 0
       }
     })
     span: nasl.core.Integer = 1;
@@ -349,7 +349,7 @@ namespace nasl.ui {
       description: '栅格列向右偏移列数',
       setter: {
         concept: "NumberInputSetter",
-        precision: 1
+        precision: 0
       }
     })
     offset: nasl.core.Integer = 0;
