@@ -32,6 +32,16 @@ namespace nasl.ui {
     })
     filterText: nasl.core.String;
 
+    // 由于之前误开放出去了，有历史数据，防止ts报错临时补上
+    @Prop({
+      title: '排序属性'
+    })
+    sort: nasl.core.String;
+    @Prop({
+      title: '排序方式'
+    })
+    order: nasl.core.String;
+
     @Method({
       title: 'undefined',
       description: '清除缓存，重新加载'
