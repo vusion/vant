@@ -182,24 +182,32 @@
 
 /* 与主轴同向用 flex，否则用 align-self */
 .van-linear-layout[mode="flex"][direction="horizontal"]>[width-stretch="true"],
+.van-linear-layout[mode="flex"][direction="horizontal"]>[widthstretch="true"],
 .van-linear-layout[mode="flex"]:not([direction])>[width-stretch="true"],
-.van-linear-layout[mode="flex"][direction="vertical"]>[height-stretch="true"] {
+.van-linear-layout[mode="flex"]:not([direction])>[widthstretch="true"],
+.van-linear-layout[mode="flex"][direction="vertical"]>[height-stretch="true"],
+.van-linear-layout[mode="flex"][direction="vertical"]>[heightstretch="true"] {
   flex: 1 0 0;
 }
 
 .van-linear-layout[mode="flex"][direction="vertical"]>[width-stretch="true"],
+.van-linear-layout[mode="flex"][direction="vertical"]>[widthstretch="true"],
 .van-linear-layout[mode="flex"]:not([direction])>[height-stretch="true"],
-.van-linear-layout[mode="flex"][direction="horizontal"]>[height-stretch="true"] {
+.van-linear-layout[mode="flex"]:not([direction])>[heightstretch="true"],
+.van-linear-layout[mode="flex"][direction="horizontal"]>[height-stretch="true"],
+.van-linear-layout[mode="flex"][direction="horizontal"]>[heightstretch="true"] {
   align-self: stretch;
 }
 
 /* width-stretch 强制 width 为 unset */
-.van-linear-layout[mode="flex"]>[width-stretch="true"] {
+.van-linear-layout[mode="flex"]>[width-stretch="true"],
+.van-linear-layout[mode="flex"]>[widthstretch="true"] {
   width: unset !important;
 }
 
 /* height-stretch 强制 height 为 unset */
-.van-linear-layout[mode="flex"]>[height-stretch="true"] {
+.van-linear-layout[mode="flex"]>[height-stretch="true"],
+.van-linear-layout[mode="flex"]>[heightstretch="true"] {
   height: unset !important;
 }
 
