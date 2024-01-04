@@ -251,7 +251,7 @@ export default createComponent({
       this.shownumber = false;
     },
     handleConfirm() {
-      this.$emit('clickConfirm', this.currentValue);
+      this.$emit('click-confirm', this.currentValue);
     },
     onNumberKeyboardInput(value) {
       this.currentValue = value;
@@ -393,7 +393,7 @@ export default createComponent({
             hideOnClickOutside={!this.inDesigner()}
             onBlur={this.closeNumber}
             onInput={this.onNumberKeyboardInput}
-            onHandleConfirm={this.handleConfirm}
+            onConfirm={this.handleConfirm}
           />
         ) : null}
       </div>
