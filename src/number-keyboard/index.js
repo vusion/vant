@@ -142,7 +142,7 @@ export default createComponent({
 
     onClose() {
       this.$emit('close');
-      this.$emit('handleConfirm');
+      this.$emit('confirm');
       this.onBlur();
     },
 
