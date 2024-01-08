@@ -68,23 +68,14 @@ export default createComponent({
     },
   },
   watch: {
-    currentValue(val) {
-      this.$emit('update:value', val);
-    },
     value(val) {
       this.currentValue = val;
     },
 
     // range value
-    currentStartValue(val) {
-      this.$emit('update:startValue', val);
-    },
     startValue(val) {
       this.currentStartValue = val;
       this.tempStartValue = val;
-    },
-    currentEndValue(val) {
-      this.$emit('update:endValue', val);
     },
     endValue(val) {
       this.currentEndValue = val;
@@ -216,9 +207,7 @@ export default createComponent({
       return this.$refs.root.getPicker();
     },
     onConfirm(value) {
-      this.$nextTick(() => {
-        this.$emit('confirm', value);
-      })
+      this.$emit('confirm', value);
     },
     confirm() {
       if (this.range) {
@@ -229,6 +218,9 @@ export default createComponent({
 
         this.currentStartValue = startValue;
         this.currentEndValue = endValue;
+        this.$emit('update:startValue', startValue);
+        this.$emit('update:endValue', endValue);
+
         this.onConfirm({
           start: startValue,
           end: endValue,
@@ -237,6 +229,7 @@ export default createComponent({
         const { root } = this.$refs;
         const value = root.onConfirm();
         this.currentValue = value;
+        this.$emit('update:value', value);
         this.onConfirm(value);
       }
 

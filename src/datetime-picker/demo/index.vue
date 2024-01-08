@@ -13,8 +13,9 @@
               :value.sync="date"
               :startValue.sync="startDate"
               :endValue.sync="endDate"
-              :range="true"
+              :range="false"
               :advanced-format="{enable: true, value: 'YYYY年MM月DD日'}"
+              @confirm="onConfirm"
           >
               <template #title>
                   <van-text text="顶部标题"></van-text>
@@ -219,6 +220,9 @@ export default {
           this.startTime = null;
           this.endTime = null;
       },
+      onConfirm() {
+        console.log('onConfirm', this.date);
+      }
   },
 };
 </script>
