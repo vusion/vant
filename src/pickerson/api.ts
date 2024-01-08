@@ -307,15 +307,15 @@ namespace nasl.ui {
       description: '回调参数：Picker 实例，选中值，选中值对应的索引'
     })
     onChange: (event: any) => any ;
-    @Slot({
-      title: 'undefined',
-      description: '插入`<van-picker-action-slot>`子组件',
-      snippets: [{
-        title: '事件插槽',
-        code: '<van-picker-action-slot target-method="confirm"></van-picker-action-slot>'
-      }]
-    })
-    slotDefault: () => Array<VanPickerActionSlot>;
+    // @Slot({
+    //   title: 'undefined',
+    //   description: '插入`<van-picker-action-slot>`子组件',
+    //   snippets: [{
+    //     title: '事件插槽',
+    //     code: '<van-picker-action-slot target-method="confirm"></van-picker-action-slot>'
+    //   }]
+    // })
+    // slotDefault: () => Array<VanPickerActionSlot>;
     @Slot({
       title: 'option'
     })
