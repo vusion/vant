@@ -1,4 +1,4 @@
-<p align="center">
+<p align="center"> 
     <img alt="logo" src="https://img01.yzcdn.cn/vant/logo.png" width="120" height="120" style="margin-bottom: 10px;">
 </p>
 
