@@ -44,18 +44,11 @@ export default createComponent({
       this.currentValue =
         this.hasConverter ? this.currentConverter.set(val) : val;
     },
-    // currentValue(val) {
-    //   let temp = val;
-    //   if (this.hasConverter) {
-    //     temp = this.currentConverter.get(val);
-    //   }
-
-    //   this.$emit('input', temp);
-    //   this.$emit('update:value', temp);
-    //   this.$emit('change', {
-    //     value: temp,
-    //   });
-    // },
+    currentValue(val) {
+      if (process.env.NODE_ENV === 'development') {
+        console.log('多选组 内部值:', val);
+      }
+    },
     dataSource: {
       deep: true,
       handler: 'update',
@@ -137,11 +130,13 @@ export default createComponent({
       }
     },
     updateCurrentValue(value) {
+      // 内部使用Array类型
+      this.currentValue = value;
+
+      // 对外使用converter转换
       if (this.hasConverter) {
         value = this.currentConverter.get(value);
       }
-
-      this.currentValue = value;
 
       this.$emit('input', value);
       this.$emit('update:value', value);
