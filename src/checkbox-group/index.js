@@ -44,11 +44,6 @@ export default createComponent({
       this.currentValue =
         this.hasConverter ? this.currentConverter.set(val) : val;
     },
-    currentValue(val) {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('多选组 内部值:', val);
-      }
-    },
     dataSource: {
       deep: true,
       handler: 'update',
