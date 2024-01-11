@@ -140,7 +140,7 @@ namespace nasl.ui {
       emptyBackground: 'add-sub',
       snippets: [{
         title: '多选项',
-        code: '<van-checkbox name="n" shape="square"><van-text text="节点"></van-text></van-checkbox>'
+        code: '<van-checkbox shape="square"><van-text text="节点"></van-text></van-checkbox>'
       }]
     })
     slotDefault: () => Array<VanCheckbox<V>>;
