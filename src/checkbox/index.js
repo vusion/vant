@@ -13,7 +13,7 @@ export default createComponent({
     }),
   ],
   props: {
-    label: { type: String, default: '' },
+    label: { type: String },
   },
   computed: {
     checked: {
