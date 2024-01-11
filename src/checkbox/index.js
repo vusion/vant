@@ -1,3 +1,4 @@
+import _get from 'lodash/get';
 import { createNamespace } from '../utils';
 import { CheckboxMixin } from '../mixins/checkbox';
 
@@ -34,15 +35,16 @@ export default createComponent({
     },
     name() {
       try {
-        if(!this.parent.options || this.parent.options.length === 0 || (this.parent.options.length < this.parent.children.length && this.index >= this.parent.options.length )) {
-          return this.label
-        } else {
-          let name = this.parent.options[this.index]?.[this.parent.valueField] ?? this.parent.options[this.index];
-          this.parent.valueField.split('.').forEach(key => {
-            name = name[key] || name
-          });
-          return name
+        // 非数据源渲染出来的checkbox，使用label或者index作为name
+        if(!this.parent.options?.length || (this.index >= this.parent.options?.length)) {
+          return this.label ?? this.index;
         }
+        // 从数据源渲染出来的checkbox，优先使用valueField
+        const name = _get(
+          this.parent.options[this.index],
+          this.parent.valueField
+        );
+        return name ?? this.label ?? this.index;
       } catch (err) {
         console.log('checkbox获取name出错，', err)
         return ''
