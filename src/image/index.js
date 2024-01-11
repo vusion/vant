@@ -154,6 +154,7 @@ export default createComponent({
     },
     onLoad(event) {
       this.loading = false;
+      this.error = false;
       this.placeholderLoading = false;
       this.$emit('load', event);
     },
