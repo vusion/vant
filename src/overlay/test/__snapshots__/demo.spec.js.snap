@@ -2,19 +2,17 @@
 
 exports[`renders demo correctly 1`] = `
 <div>
-  <div><button class="van-button van-button--primary van-button--normal" style="margin-left: 16px;">
-      <div class="van-button__content"><span class="van-button__text">显示遮罩层</span></div>
-    </button>
-    <div class="van-overlay" style="display: none;" name="van-fade"></div>
+  <div>
+    <van-button type="primary" text="显示遮罩层" style="margin-left: 16px;"></van-button>
+    <van-overlay></van-overlay>
   </div>
-  <div><button class="van-button van-button--primary van-button--normal" style="margin-left: 16px;">
-      <div class="van-button__content"><span class="van-button__text">嵌入内容</span></div>
-    </button>
-    <div class="van-overlay" style="display: none;" name="van-fade">
+  <div>
+    <van-button type="primary" text="嵌入内容" style="margin-left: 16px;"></van-button>
+    <van-overlay>
       <div class="wrapper">
         <div class="block"></div>
       </div>
-    </div>
+    </van-overlay>
   </div>
 </div>
 `;

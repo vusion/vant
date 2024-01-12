@@ -3,32 +3,20 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>显示分享面板</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <!---->
+    <van-cell is-link="" title="显示分享面板"></van-cell>
+    <van-share-sheet title="立即分享给好友" options="[object Object],[object Object],[object Object],[object Object],[object Object]"></van-share-sheet>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>显示分享面板</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <!---->
+    <van-cell is-link="" title="显示分享面板"></van-cell>
+    <van-share-sheet title="立即分享给好友" options="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"></van-share-sheet>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>显示分享面板</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <!---->
+    <van-cell is-link="" title="显示分享面板"></van-cell>
+    <van-share-sheet options="[object Object],[object Object],[object Object]"></van-share-sheet>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>显示分享面板</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <!---->
+    <van-cell is-link="" title="显示分享面板"></van-cell>
+    <van-share-sheet title="立即分享给好友" options="[object Object],[object Object],[object Object],[object Object],[object Object]" description="描述信息"></van-share-sheet>
   </div>
 </div>
 `;

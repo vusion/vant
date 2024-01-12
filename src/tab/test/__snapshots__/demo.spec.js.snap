@@ -3,347 +3,224 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div class="van-tabs__wrap">
-        <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 1</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 2</span></div>
-          <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis">标签 3</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 4</span></div>
-          <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="">
-          内容 3
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-      </div>
-    </div>
+    <van-tabs type="line">
+      <van-tab title="标签 1" name="a"></van-tab>
+      <van-tab title="标签 2" name="b">
+        <van-text text="内容 2"></van-text>
+      </van-tab>
+      <van-tab title="标签 3" name="c">
+        <van-text text="内容 3"></van-text>
+      </van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div class="van-tabs__wrap">
-        <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 1</span></div>
-          <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis">标签 2</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 3</span></div>
-          <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style=""> 内容 2 </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-      </div>
-    </div>
+    <van-tabs class="u-code-example_demo_">
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2">
+        内容 2
+      </van-tab>
+      <van-tab title="标签 3">
+        内容 3
+      </van-tab>
+      <van-tab title="标签 4">
+        内容 4
+      </van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div class="van-tabs__wrap van-tabs__wrap--scrollable">
-        <div role="tablist" class="van-tabs__nav van-tabs__nav--line van-tabs__nav--complete">
-          <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text">标签 1</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text">标签 2</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text">标签 3</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text">标签 4</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text">标签 5</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text">标签 6</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text">标签 7</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text">标签 8</span></div>
-          <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane" style="">
-          内容 1
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-      </div>
-    </div>
+    <van-tabs type="line">
+      <van-tab title="标签 1" name="1">内容 1</van-tab>
+      <van-tab title="标签 2" name="2">内容 2</van-tab>
+      <van-tab title="标签 3" name="3">内容 3</van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div class="van-tabs__wrap">
-        <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
-          <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis">标签 1</span></div>
-          <div role="tab" class="van-tab van-tab--disabled"><span class="van-tab__text van-tab__text--ellipsis">标签 2</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 3</span></div>
-          <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane" style="">
-          内容 1
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-      </div>
-    </div>
+    <van-tabs>
+      <van-tab name="a" title="标签 1" badgebtn="true" badge="50" badgemax="48"> 内容 1 </van-tab>
+      <van-tab name="b" title="标签 2"> 内容 2 </van-tab>
+      <van-tab name="c" title="标签 3"> 内容 3 </van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--card">
-      <div class="van-tabs__wrap">
-        <div role="tablist" class="van-tabs__nav van-tabs__nav--card">
-          <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis">标签 1</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 2</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 3</span></div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane" style="">
-          内容 1
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-      </div>
-    </div>
+    <van-tabs>
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2">
+        内容 2
+      </van-tab>
+      <van-tab title="标签 3">
+        内容 3
+      </van-tab>
+      <van-tab title="标签 4">
+        内容 4
+      </van-tab>
+      <van-tab title="标签 5">
+        内容 5
+      </van-tab>
+      <van-tab title="标签 6">
+        内容 6
+      </van-tab>
+      <van-tab title="标签 7">
+        内容 7
+      </van-tab>
+      <van-tab title="标签 8">
+        内容 8
+      </van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div class="van-tabs__wrap">
-        <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
-          <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis">标签 1</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 2</span></div>
-          <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane" style="">
-          内容 1
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-      </div>
-    </div>
+    <van-tabs>
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2" disabled="true">
+        内容 2
+      </van-tab>
+      <van-tab title="标签 3">
+        内容 3
+      </van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div>
-        <div class="van-sticky">
-          <div class="van-tabs__wrap">
-            <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
-              <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 1</span></div>
-              <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 2</span></div>
-              <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis">标签 3</span></div>
-              <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 4</span></div>
-              <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="">
-          内容 3
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-      </div>
-    </div>
+    <van-tabs type="line" class="u-code-example_demo_">
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2">
+        内容 2
+      </van-tab>
+      <van-tab title="标签 3">
+        内容 3
+      </van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div class="van-tabs__wrap">
-        <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
-          <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis"><i class="van-icon van-icon-more-o"><!----></i>标签  </span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis"><i class="van-icon van-icon-more-o"><!----></i>标签  </span></div>
-          <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane" style="">
-          内容 1
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-      </div>
-    </div>
+    <van-tabs type="card" class="u-code-example_demo_">
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2">
+        内容 2
+      </van-tab>
+      <van-tab title="标签 3">
+        内容 3
+      </van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div class="van-tabs__wrap">
-        <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
-          <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis">标签 1</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 2</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 3</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 4</span></div>
-          <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-        </div>
-      </div>
-      <div class="van-tabs__content van-tabs__content--animated">
-        <div class="van-tabs__track" style="transform: translate3d(0%, 0, 0); transition-duration: 0.3s;">
-          <div role="tabpanel" class="van-tab__pane-wrapper">
-            <div class="van-tab__pane">
-              内容 1
-            </div>
-          </div>
-          <div role="tabpanel" aria-hidden="true" class="van-tab__pane-wrapper van-tab__pane-wrapper--inactive">
-            <div class="van-tab__pane">
-              <!---->
-            </div>
-          </div>
-          <div role="tabpanel" aria-hidden="true" class="van-tab__pane-wrapper van-tab__pane-wrapper--inactive">
-            <div class="van-tab__pane">
-              <!---->
-            </div>
-          </div>
-          <div role="tabpanel" aria-hidden="true" class="van-tab__pane-wrapper van-tab__pane-wrapper--inactive">
-            <div class="van-tab__pane">
-              <!---->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <van-tabs>
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2">
+        内容 2
+      </van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div class="van-tabs__wrap">
-        <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 1</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 2</span></div>
-          <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis">标签 3</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 4</span></div>
-          <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="">
-          内容 3
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-      </div>
-    </div>
+    <van-tabs active="2" sticky="">
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2">
+        内容 2
+      </van-tab>
+      <van-tab title="标签 3">
+        内容 3
+      </van-tab>
+      <van-tab title="标签 4">
+        内容 4
+      </van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div>
-        <div class="van-sticky">
-          <div class="van-tabs__wrap van-tabs__wrap--scrollable">
-            <div role="tablist" class="van-tabs__nav van-tabs__nav--line van-tabs__nav--complete">
-              <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text">标签 1</span></div>
-              <div role="tab" class="van-tab"><span class="van-tab__text">标签 2</span></div>
-              <div role="tab" class="van-tab"><span class="van-tab__text">标签 3</span></div>
-              <div role="tab" class="van-tab"><span class="van-tab__text">标签 4</span></div>
-              <div role="tab" class="van-tab"><span class="van-tab__text">标签 5</span></div>
-              <div role="tab" class="van-tab"><span class="van-tab__text">标签 6</span></div>
-              <div role="tab" class="van-tab"><span class="van-tab__text">标签 7</span></div>
-              <div role="tab" class="van-tab"><span class="van-tab__text">标签 8</span></div>
-              <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane">
-          内容 1
-        </div>
-        <div role="tabpanel" class="van-tab__pane">
-          内容 2
-        </div>
-        <div role="tabpanel" class="van-tab__pane">
-          内容 3
-        </div>
-        <div role="tabpanel" class="van-tab__pane">
-          内容 4
-        </div>
-        <div role="tabpanel" class="van-tab__pane">
-          内容 5
-        </div>
-        <div role="tabpanel" class="van-tab__pane">
-          内容 6
-        </div>
-        <div role="tabpanel" class="van-tab__pane">
-          内容 7
-        </div>
-        <div role="tabpanel" class="van-tab__pane">
-          内容 8
-        </div>
-      </div>
-    </div>
+    <van-tabs active="2">
+      <van-tab>
+        内容 1
+      </van-tab>
+      <van-tab>
+        内容 2
+      </van-tab>
+    </van-tabs>
   </div>
   <div>
-    <div class="van-tabs van-tabs--line">
-      <div class="van-tabs__wrap">
-        <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
-          <div role="tab" aria-selected="true" class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis">标签 1</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 2</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 3</span></div>
-          <div role="tab" class="van-tab"><span class="van-tab__text van-tab__text--ellipsis">标签 4</span></div>
-          <div class="van-tabs__line" style="transform: translateX(0px) translateX(-50%);"></div>
-        </div>
-      </div>
-      <div class="van-tabs__content">
-        <div role="tabpanel" class="van-tab__pane" style="">
-          内容 1
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-        <div role="tabpanel" class="van-tab__pane" style="display: none;">
-          <!---->
-        </div>
-      </div>
-    </div>
+    <van-tabs animated="">
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2">
+        内容 2
+      </van-tab>
+      <van-tab title="标签 3">
+        内容 3
+      </van-tab>
+      <van-tab title="标签 4">
+        内容 4
+      </van-tab>
+    </van-tabs>
+  </div>
+  <div>
+    <van-tabs active="2" swipeable="" class="u-code-example_demo_">
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2">
+        内容 2
+      </van-tab>
+      <van-tab title="标签 3">
+        内容 3
+      </van-tab>
+      <van-tab title="标签 4">
+        内容 4
+      </van-tab>
+    </van-tabs>
+  </div>
+  <div>
+    <van-tabs scrollspy="" sticky="" class="u-code-example_demo_">
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2">
+        内容 2
+      </van-tab>
+      <van-tab title="标签 3">
+        内容 3
+      </van-tab>
+      <van-tab title="标签 4">
+        内容 4
+      </van-tab>
+      <van-tab title="标签 5">
+        内容 5
+      </van-tab>
+      <van-tab title="标签 6">
+        内容 6
+      </van-tab>
+      <van-tab title="标签 7">
+        内容 7
+      </van-tab>
+      <van-tab title="标签 8">
+        内容 8
+      </van-tab>
+    </van-tabs>
+  </div>
+  <div>
+    <van-tabs before-change="function () { [native code] }">
+      <van-tab title="标签 1">
+        内容 1
+      </van-tab>
+      <van-tab title="标签 2">
+        内容 2
+      </van-tab>
+      <van-tab title="标签 3">
+        内容 3
+      </van-tab>
+      <van-tab title="标签 4">
+        内容 4
+      </van-tab>
+    </van-tabs>
   </div>
 </div>
 `;

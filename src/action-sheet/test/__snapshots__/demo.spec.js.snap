@@ -3,35 +3,22 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>基础用法</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>展示取消按钮</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>展示描述信息</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
+    <van-cell is-link="" title="基础用法"></van-cell>
+    <van-cell is-link="" title="展示取消按钮"></van-cell>
+    <van-cell is-link="" title="展示描述信息"></van-cell>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>选项状态</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
+    <van-cell is-link="" title="选项状态"></van-cell>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>自定义面板</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
+    <van-cell is-link="" title="自定义面板"></van-cell>
   </div>
-  <!---->
-  <!---->
-  <!---->
-  <!---->
-  <!---->
+  <van-action-sheet actions="[object Object],[object Object],[object Object]"></van-action-sheet>
+  <van-action-sheet actions="[object Object],[object Object],[object Object]" close-on-click-action="" cancel-text="取消"></van-action-sheet>
+  <van-action-sheet actions="[object Object],[object Object],[object Object]" close-on-click-action="" cancel-text="取消" description="这是一段描述信息"></van-action-sheet>
+  <van-action-sheet close-on-click-action="" actions="[object Object],[object Object],[object Object]" cancel-text="取消"></van-action-sheet>
+  <van-action-sheet title="标题">
+    <div class="demo-action-sheet-content">内容</div>
+  </van-action-sheet>
 </div>
 `;

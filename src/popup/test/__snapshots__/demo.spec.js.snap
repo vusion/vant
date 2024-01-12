@@ -3,63 +3,42 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>展示弹出层</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <!---->
+    <van-cell title="展示弹出层" is-link=""></van-cell>
+    <van-popup design-title="怎么说" style="padding: 30px 50px;">
+      内容
+    </van-popup>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>顶部弹出</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>底部弹出</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>左侧弹出</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>右侧弹出</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <!---->
-    <!---->
-    <!---->
-    <!---->
+    <van-cell title="展示弹出层" is-link=""></van-cell>
+    <van-popup style="padding: 30px 50px;">
+      <div class="van-popup-default"></div>
+    </van-popup>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>关闭图标</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>自定义图标</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>图标位置</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <!---->
-    <!---->
-    <!---->
+    <van-cell title="顶部弹出" is-link=""></van-cell>
+    <van-cell title="底部弹出" is-link=""></van-cell>
+    <van-cell title="左侧弹出" is-link=""></van-cell>
+    <van-cell title="右侧弹出" is-link=""></van-cell>
+    <van-popup position="top" style="height: 30%;">内容</van-popup>
+    <van-popup position="bottom" style="height: 30%;"></van-popup>
+    <van-popup position="left" style="width: 30%; height: 100%;"></van-popup>
+    <van-popup position="right" style="width: 30%; height: 100%;"></van-popup>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>圆角弹窗</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <!---->
+    <van-cell title="关闭图标" is-link=""></van-cell>
+    <van-cell title="自定义图标" is-link=""></van-cell>
+    <van-cell title="图标位置" is-link=""></van-cell>
+    <van-popup closeable="" position="bottom" style="height: 30%;"></van-popup>
+    <van-popup closeable="" close-icon="close" position="bottom" style="height: 30%;"></van-popup>
+    <van-popup closeable="" close-icon-position="top-left" position="bottom" style="height: 30%;"></van-popup>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>指定挂载节点</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
+    <van-cell title="圆角弹窗" is-link=""></van-cell>
+    <van-popup round="" position="bottom" style="height: 30%;"></van-popup>
+  </div>
+  <div>
+    <van-cell title="指定挂载节点" is-link=""></van-cell>
+    <van-popup get-container="body" style="padding: 30px 50px;"></van-popup>
   </div>
 </div>
 `;

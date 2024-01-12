@@ -3,12 +3,10 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable van-coupon-cell">
-      <div class="van-cell__title"><span>优惠券</span></div>
-      <div class="van-cell__value van-coupon-cell__value"><span>2张可用</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <!---->
+    <van-coupon-cell coupons="[object Object],[object Object]" chosen-coupon="-1"></van-coupon-cell>
+    <van-popup round="" position="bottom" style="height: 90%; padding-top: 4px;">
+      <van-coupon-list coupons="[object Object],[object Object]" chosen-coupon="-1" disabled-coupons="[object Object],[object Object]"></van-coupon-list>
+    </van-popup>
   </div>
 </div>
 `;

@@ -2,56 +2,21 @@
 
 exports[`renders demo correctly 1`] = `
 <div>
+  <van-circle stroke-linecap="sqaure" value="40" rate="30" speed="200" text="70%"></van-circle>
   <div>
-    <div class="van-circle"><svg viewBox="0 0 1040 1040">
-        <path d="M 520 520 m 0, -500 a 500, 500 0 1, 1 0, 1000 a 500, 500 0 1, 1 0, -1000" class="van-circle__layer" style="fill: none; stroke: undefined; stroke-width: 40px;"></path>
-        <path d="M 520 520 m 0, -500 a 500, 500 0 1, 1 0, 1000 a 500, 500 0 1, 1 0, -1000" class="van-circle__hover" style="stroke: undefined; stroke-width: 41px; stroke-dasharray: 2198px 3140px;"></path>
-      </svg>
-      <div class="van-circle__text">70%</div>
-    </div>
+    <van-circle stroke-linecap="sqaure" rate="400" speed="100" text="70%"></van-circle>
+    <van-circle value="70" rate="200" speed="100" text="70%"></van-circle>
   </div>
   <div>
-    <div class="van-circle"><svg viewBox="0 0 1060 1060">
-        <path d="M 530 530 m 0, -500 a 500, 500 0 1, 1 0, 1000 a 500, 500 0 1, 1 0, -1000" class="van-circle__layer" style="fill: none; stroke: undefined; stroke-width: 60px;"></path>
-        <path d="M 530 530 m 0, -500 a 500, 500 0 1, 1 0, 1000 a 500, 500 0 1, 1 0, -1000" class="van-circle__hover" style="stroke: undefined; stroke-width: 61px; stroke-dasharray: 2198px 3140px;"></path>
-      </svg>
-      <div class="van-circle__text">宽度定制</div>
-    </div>
-    <div class="van-circle"><svg viewBox="0 0 1040 1040">
-        <path d="M 520 520 m 0, -500 a 500, 500 0 1, 1 0, 1000 a 500, 500 0 1, 1 0, -1000" class="van-circle__layer" style="fill: none; stroke: #ebedf0; stroke-width: 40px;"></path>
-        <path d="M 520 520 m 0, -500 a 500, 500 0 1, 1 0, 1000 a 500, 500 0 1, 1 0, -1000" class="van-circle__hover" style="stroke: #ee0a24; stroke-width: 41px; stroke-dasharray: 2198px 3140px;"></path>
-      </svg>
-      <div class="van-circle__text">颜色定制</div>
-    </div>
-    <div class="van-circle"><svg viewBox="0 0 1040 1040">
-        <defs>
-          <linearGradient id="van-circle-gradient-3" x1="100%" y1="0%" x2="0%" y2="0%">
-            <stop offset="0%" stop-color="#3fecff"></stop>
-            <stop offset="100%" stop-color="#6149f6"></stop>
-          </linearGradient>
-        </defs>
-        <path d="M 520 520 m 0, -500 a 500, 500 0 1, 1 0, 1000 a 500, 500 0 1, 1 0, -1000" class="van-circle__layer" style="fill: none; stroke: undefined; stroke-width: 40px;"></path>
-        <path d="M 520 520 m 0, -500 a 500, 500 0 1, 1 0, 1000 a 500, 500 0 1, 1 0, -1000" class="van-circle__hover" style="stroke: url(#van-circle-gradient-3); stroke-width: 41px; stroke-dasharray: 2198px 3140px;"></path>
-      </svg>
-      <div class="van-circle__text">渐变色</div>
-    </div>
-    <div class="van-circle" style="margin-top: 15px;"><svg viewBox="0 0 1040 1040">
-        <path d="M 520 520 m 0, -500 a 500, 500 0 1, 0 0, 1000 a 500, 500 0 1, 0 0, -1000" class="van-circle__layer" style="fill: none; stroke: undefined; stroke-width: 40px;"></path>
-        <path d="M 520 520 m 0, -500 a 500, 500 0 1, 0 0, 1000 a 500, 500 0 1, 0 0, -1000" class="van-circle__hover" style="stroke: #07c160; stroke-width: 41px; stroke-dasharray: 2198px 3140px;"></path>
-      </svg>
-      <div class="van-circle__text">逆时针</div>
-    </div>
-    <div class="van-circle" style="width: 120px; height: 120px; margin-top: 15px;"><svg viewBox="0 0 1040 1040">
-        <path d="M 520 520 m 0, -500 a 500, 500 0 1, 0 0, 1000 a 500, 500 0 1, 0 0, -1000" class="van-circle__layer" style="fill: none; stroke: undefined; stroke-width: 40px;"></path>
-        <path d="M 520 520 m 0, -500 a 500, 500 0 1, 0 0, 1000 a 500, 500 0 1, 0 0, -1000" class="van-circle__hover" style="stroke: #7232dd; stroke-width: 41px; stroke-dasharray: 2198px 3140px;"></path>
-      </svg>
-      <div class="van-circle__text">大小定制</div>
-    </div>
+    <van-circle rate="70" speed="100" stroke-width="60" text="宽度定制"></van-circle>
+    <van-circle color="#ee0a24" rate="70" layer-color="#ebedf0" speed="100" text="颜色定制"></van-circle>
+    <van-circle rate="70" speed="100" color="[object Object]" text="渐变色"></van-circle>
+    <van-circle color="#07c160" rate="70" speed="100" text="逆时针" style="margin-top: 15px;"></van-circle>
+    <van-circle color="#7232dd" rate="70" speed="100" size="120px" text="大小定制" style="margin-top: 15px;"></van-circle>
   </div>
-  <div style="margin-top: 15px;"><button class="van-button van-button--primary van-button--small">
-      <div class="van-button__content"><span class="van-button__text">增加</span></div>
-    </button> <button class="van-button van-button--danger van-button--small">
-      <div class="van-button__content"><span class="van-button__text">减少</span></div>
-    </button></div>
+  <div style="margin-top: 15px;">
+    <van-button text="增加" type="primary" size="small"></van-button>
+    <van-button text="减少" type="danger" size="small"></van-button>
+  </div>
 </div>
 `;

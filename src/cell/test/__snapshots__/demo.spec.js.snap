@@ -3,122 +3,62 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div class="van-cell-group van-hairline--top-bottom">
-      <div class="van-cell">
-        <div class="van-cell__title"><span>单元格</span></div>
-        <div class="van-cell__value"><span>内容</span></div>
-      </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>单元格</span>
-          <div class="van-cell__label">描述信息</div>
-        </div>
-        <div class="van-cell__value"><span>内容</span></div>
-      </div>
-    </div>
+    <van-cell-group></van-cell-group>
+    <van-cell-group>
+      <van-cell title="单元格" value="内容" islink=""></van-cell>
+      <van-cell title="单元格" value="内容" label="描述信息"></van-cell>
+    </van-cell-group>
   </div>
   <div>
-    <div class="van-cell-group van-cell-group--inset van-hairline--top-bottom">
-      <div class="van-cell">
-        <div class="van-cell__title"><span>单元格</span></div>
-        <div class="van-cell__value"><span>内容</span></div>
-      </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>单元格</span>
-          <div class="van-cell__label">描述信息</div>
-        </div>
-        <div class="van-cell__value"><span>内容</span></div>
-      </div>
-    </div>
+    <van-cell-group inset="">
+      <van-cell title="单元格" value="内容"></van-cell>
+      <van-cell title="单元格" value="内容" label="描述信息"></van-cell>
+    </van-cell-group>
   </div>
   <div>
-    <div class="van-cell van-cell--large">
-      <div class="van-cell__title"><span>单元格</span></div>
-      <div class="van-cell__value"><span>内容</span></div>
-    </div>
-    <div class="van-cell van-cell--large">
-      <div class="van-cell__title"><span>单元格</span>
-        <div class="van-cell__label">描述信息</div>
-      </div>
-      <div class="van-cell__value"><span>内容</span></div>
-    </div>
+    <van-cell title="单元格" value="内容" size="large"></van-cell>
+    <van-cell title="单元格" value="内容" size="large" label="描述信息"></van-cell>
   </div>
   <div>
-    <div class="van-cell"><i class="van-icon van-icon-location-o van-cell__left-icon">
-        <!----></i>
-      <div class="van-cell__title"><span>单元格</span></div>
-      <div class="van-cell__value"><span>内容</span></div>
-    </div>
+    <van-cell title="单元格" value="内容" icon="location-o"></van-cell>
   </div>
   <div>
-    <div class="van-cell">
-      <div class="van-cell__value van-cell__value--alone"><span>内容</span></div>
-    </div>
+    <van-cell value="内容"></van-cell>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>单元格</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>单元格</span></div>
-      <div class="van-cell__value"><span>内容</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>单元格</span></div>
-      <div class="van-cell__value"><span>内容</span></div><i class="van-icon van-icon-arrow-down van-cell__right-icon">
-        <!----></i>
-    </div>
+    <van-cell title="单元格" is-link=""></van-cell>
+    <van-cell title="单元格" is-link="" value="内容"></van-cell>
+    <van-cell title="单元格" is-link="" arrow-direction="down" value="内容"></van-cell>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>URL 跳转</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>路由跳转</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
+    <van-cell title="URL 跳转" is-link="" url="/vant/mobile.html"></van-cell>
+    <van-cell title="路由跳转" is-link="" to="index"></van-cell>
   </div>
   <div>
-    <div>
-      <div class="van-cell-group__title">分组 1</div>
-      <div class="van-cell-group van-hairline--top-bottom">
-        <div class="van-cell">
-          <div class="van-cell__title"><span>单元格</span></div>
-          <div class="van-cell__value"><span>内容</span></div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="van-cell-group__title">分组 2</div>
-      <div class="van-cell-group van-hairline--top-bottom">
-        <div class="van-cell">
-          <div class="van-cell__title"><span>单元格</span></div>
-          <div class="van-cell__value"><span>内容</span></div>
-        </div>
-      </div>
-    </div>
+    <van-cell-group title="分组 1">
+      <van-cell title="单元格" value="内容"></van-cell>
+    </van-cell-group>
+    <van-cell-group title="分组 2">
+      <van-cell title="单元格" value="内容"></van-cell>
+    </van-cell-group>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span class="custom-title">单元格</span> <span class="van-tag van-tag--danger">标签</span></div>
-      <div class="van-cell__value"><span>内容</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div class="van-cell"><i class="van-icon van-icon-shop-o van-cell__left-icon">
-        <!----></i>
-      <div class="van-cell__title"><span>单元格</span></div><i class="search-icon van-icon van-icon-search">
-        <!----></i>
-    </div>
+    <van-cell value="内容" is-link=""></van-cell>
+    <van-cell icon="shop-o" title="单元格"></van-cell>
+    <van-cell value="内容" is-link="" center="">
+      <van-image src="https://static-vusion.163yun.com/assets/cloud-ui/1.jpg"></van-image>
+    </van-cell>
   </div>
   <div>
-    <div class="van-cell van-cell--center">
-      <div class="van-cell__title"><span>单元格</span>
-        <div class="van-cell__label">描述信息</div>
-      </div>
-      <div class="van-cell__value"><span>内容</span></div>
-    </div>
+    <van-cell center="" title="单元格" value="内容" label="描述信息"></van-cell>
+  </div>
+  <div>
+    <van-cell-group>
+      <van-cell title="垂直居中" is-link="" vusion-slot-name="default">内容</van-cell>
+    </van-cell-group>
+  </div>
+  <div>
+    <van-cell title="垂直居中" is-link="" vusion-slot-name="default" href="https://www.baidu.com">内容</van-cell>
   </div>
 </div>
 `;
