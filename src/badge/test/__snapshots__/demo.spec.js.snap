@@ -3,56 +3,75 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-badge dot=""></van-badge>
-    <van-badge content="5">
+    <div class="van-badge van-badge--dot"></div>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
-    <van-badge content="10">
+      <div class="van-badge van-badge--fixed">5</div>
+    </div>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
-    <van-badge content="Hot">
+      <div class="van-badge van-badge--fixed">10</div>
+    </div>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
-    <van-badge dot="">
+      <div class="van-badge van-badge--fixed">Hot</div>
+    </div>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
+      <div class="van-badge van-badge--dot van-badge--fixed"></div>
+    </div>
   </div>
   <div>
-    <van-badge content="20" max="9">
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
-    <van-badge content="50" max="20">
+      <div class="van-badge van-badge--fixed">9+</div>
+    </div>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
-    <van-badge content="200" max="99">
+      <div class="van-badge van-badge--fixed">20+</div>
+    </div>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
+      <div class="van-badge van-badge--fixed">99+</div>
+    </div>
   </div>
   <div>
-    <van-badge content="5" color="#1989fa">
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
-    <van-badge content="10" color="#1989fa">
+      <div class="van-badge van-badge--fixed" style="background: rgb(25, 137, 250);">5</div>
+    </div>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
-    <van-badge dot="" color="#1989fa">
+      <div class="van-badge van-badge--fixed" style="background: rgb(25, 137, 250);">10</div>
+    </div>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
+      <div class="van-badge van-badge--dot van-badge--fixed" style="background: rgb(25, 137, 250);"></div>
+    </div>
   </div>
   <div>
-    <van-badge>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
-    <van-badge>
+      <div class="van-badge van-badge--fixed">
+        <van-icon name="success" class="badge-icon"></van-icon>
+      </div>
+    </div>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
-    <van-badge>
+      <div class="van-badge van-badge--fixed">
+        <van-icon name="cross" class="badge-icon"></van-icon>
+      </div>
+    </div>
+    <div class="van-badge__wrapper">
       <div class="child"></div>
-    </van-badge>
+      <div class="van-badge van-badge--fixed">
+        <van-icon name="down" class="badge-icon"></van-icon>
+      </div>
+    </div>
   </div>
   <div>
-    <van-badge content="20" style="margin-left: 16px;"></van-badge>
-    <van-badge content="200" max="99" style="margin-left: 12px;"></van-badge>
+    <div class="van-badge" style="margin-left: 16px;">20</div>
+    <div class="van-badge" style="margin-left: 12px;">99+</div>
   </div>
 </div>
 `;

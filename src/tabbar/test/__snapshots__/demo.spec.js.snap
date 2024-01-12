@@ -3,69 +3,266 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-tabbar>
-      <van-tabbar-item icon="home-o" badge="77" text="标签" destination="/zh-CN/tabbar"></van-tabbar-item>
-      <van-tabbar-item icon="search" text="标签" destination="/tabbar"></van-tabbar-item>
-      <van-tabbar-item icon="friends-o" text="标签"></van-tabbar-item>
-      <van-tabbar-item icon="setting-o" text="标签"></van-tabbar-item>
-    </van-tabbar>
+    <div class="van-hairline--top-bottom van-tabbar van-tabbar--unfit">
+      <div class="van-tabbar-item van-tabbar-item--active">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text">标签</div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text">标签</div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text">标签</div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text">标签</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-tabbar>
-      <van-tabbar-item icon="home-o"></van-tabbar-item>
-      <van-tabbar-item icon="search"></van-tabbar-item>
-      <van-tabbar-item icon="friends-o"></van-tabbar-item>
-      <van-tabbar-item icon="setting-o"></van-tabbar-item>
-    </van-tabbar>
+    <div class="van-hairline--top-bottom van-tabbar van-tabbar--unfit">
+      <div class="van-tabbar-item van-tabbar-item--active">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-tabbar>
-      <van-tabbar-item name="home" icon="home-o"></van-tabbar-item>
-      <van-tabbar-item name="search" icon="search"></van-tabbar-item>
-      <van-tabbar-item name="friends" icon="friends-o"></van-tabbar-item>
-      <van-tabbar-item name="setting" icon="setting-o"></van-tabbar-item>
-    </van-tabbar>
+    <div class="van-hairline--top-bottom van-tabbar van-tabbar--unfit">
+      <div class="van-tabbar-item van-tabbar-item--active">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-tabbar>
-      <van-tabbar-item icon="home-o"></van-tabbar-item>
-      <van-tabbar-item icon="search" dot=""></van-tabbar-item>
-      <van-tabbar-item icon="friends-o" badge="5"></van-tabbar-item>
-      <van-tabbar-item icon="setting-o" badge="20"></van-tabbar-item>
-    </van-tabbar>
+    <div class="van-hairline--top-bottom van-tabbar van-tabbar--unfit">
+      <div class="van-tabbar-item van-tabbar-item--active">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-tabbar>
-      <van-tabbar-item badge="3"><span>自定义</span></van-tabbar-item>
-      <van-tabbar-item icon="search"></van-tabbar-item>
-      <van-tabbar-item icon="setting-o"></van-tabbar-item>
-    </van-tabbar>
+    <div class="van-hairline--top-bottom van-tabbar van-tabbar--unfit">
+      <div class="van-tabbar-item van-tabbar-item--active">
+        <div class="van-tabbar-item__icon"><img src="https://img01.yzcdn.cn/vant/user-active.png"></div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"><span>自定义</span></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-tabbar active-color="#ee0a24" inactive-color="#000">
-      <van-tabbar-item icon="home-o"></van-tabbar-item>
-      <van-tabbar-item icon="search"></van-tabbar-item>
-      <van-tabbar-item icon="friends-o"></van-tabbar-item>
-      <van-tabbar-item icon="setting-o"></van-tabbar-item>
-    </van-tabbar>
+    <div class="van-hairline--top-bottom van-tabbar van-tabbar--unfit">
+      <div class="van-tabbar-item van-tabbar-item--active" style="color: rgb(238, 10, 36);">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item" style="color: rgb(0, 0, 0);">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item" style="color: rgb(0, 0, 0);">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item" style="color: rgb(0, 0, 0);">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-tabbar>
-      <van-tabbar-item icon="home-o">标签1</van-tabbar-item>
-      <van-tabbar-item icon="search">标签2</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">标签3</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">标签4</van-tabbar-item>
-    </van-tabbar>
+    <div class="van-hairline--top-bottom van-tabbar van-tabbar--unfit">
+      <div class="van-tabbar-item van-tabbar-item--active">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text">标签1</div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text">标签2</div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text">标签3</div>
+        </div>
+      </div>
+      <div class="van-tabbar-item">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text">标签4</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-tabbar>
-      <van-tabbar-item icon="frontpage" style="font-size: 24px;">
-        <van-text text="标签"></van-text>
-      </van-tabbar-item>
-      <van-tabbar-item icon="contact" destination="https://www.baidu.com" style="font-size: 24px;">
-        <van-text text="标签"></van-text>
-      </van-tabbar-item>
-    </van-tabbar>
+    <div class="van-hairline--top-bottom van-tabbar van-tabbar--unfit">
+      <div class="van-tabbar-item van-tabbar-item--active" style="font-size: 24px;">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"><span vusion-slot-name-edit="text" class="root">标签</span></div>
+        </div>
+      </div>
+      <div class="van-tabbar-item" style="font-size: 24px;">
+        <div class="van-tabbar-item__icon">
+          <!---->
+        </div>
+        <div vusion-slot-name="default">
+          <div vusion-slot-name-edit="text" class="van-tabbar-item__text"><span vusion-slot-name-edit="text" class="root">标签</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

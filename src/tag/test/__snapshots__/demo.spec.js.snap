@@ -3,20 +3,28 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-cell title="空心样式">
-      <van-tag plain="" type="primary">标签</van-tag>
-    </van-cell>
-    <van-cell title="圆角样式">
-      <van-tag round="" type="primary">标签</van-tag>
-    </van-cell>
-    <van-cell title="标记样式">
-      <van-tag mark="" type="primary">标签</van-tag>
-    </van-cell>
-    <van-cell title="可关闭标签">
-      <van-tag size="medium" closeable="" type="primary">
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">空心样式</div>
+      <div class="van-cell__value"><span class="van-tag van-tag--plain van-tag--primary">标签</span></div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">圆角样式</div>
+      <div class="van-cell__value"><span class="van-tag van-tag--round van-tag--primary">标签</span></div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">标记样式</div>
+      <div class="van-cell__value"><span class="van-tag van-tag--mark van-tag--primary">标签</span></div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">可关闭标签</div>
+      <div class="van-cell__value"><span class="van-tag van-tag--medium van-tag--primary" name="van-fade">
         标签
-      </van-tag>
-    </van-cell>
+      <!----></span></div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
   </div>
 </div>
 `;

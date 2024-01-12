@@ -3,30 +3,108 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-slider></van-slider>
+    <div class="van-slider-room ">
+      <div class="van-slider">
+        <div class="van-slider__bar" style="width: 50%;">
+          <div role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="50" aria-valuemax="100" aria-orientation="horizontal" class="van-slider__button-wrapper">
+            <div class="van-slider__button"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-slider range=""></van-slider>
+    <div class="van-slider-room ">
+      <div class="van-slider">
+        <div class="van-slider__bar" style="width: 40%; left: 20%;">
+          <div role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="20,60" aria-valuemax="100" aria-orientation="horizontal" class="van-slider__button-wrapper-left">
+            <div class="van-slider__button"></div>
+          </div>
+          <div role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="20,60" aria-valuemax="100" aria-orientation="horizontal" class="van-slider__button-wrapper-right">
+            <div class="van-slider__button"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-slider min="-50" max="50"></van-slider>
+    <div class="van-slider-room ">
+      <div class="van-slider">
+        <div class="van-slider__bar" style="width: 50%;">
+          <div role="slider" tabindex="0" aria-valuemin="-50" aria-valuenow="0" aria-valuemax="50" aria-orientation="horizontal" class="van-slider__button-wrapper">
+            <div class="van-slider__button"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-slider disabled=""></van-slider>
+    <div class="van-slider-room ">
+      <div class="van-slider van-slider--disabled">
+        <div class="van-slider__bar" style="width: 50%;">
+          <div role="slider" tabindex="-1" aria-valuemin="0" aria-valuenow="50" aria-valuemax="100" aria-orientation="horizontal" class="van-slider__button-wrapper">
+            <div class="van-slider__button"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-slider step="10"></van-slider>
+    <div class="van-slider-room ">
+      <div class="van-slider">
+        <div class="van-slider__bar" style="width: 50%;">
+          <div role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="50" aria-valuemax="100" aria-orientation="horizontal" class="van-slider__button-wrapper">
+            <div class="van-slider__button"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-slider bar-height="4px" active-color="#ee0a24"></van-slider>
+    <div class="van-slider-room ">
+      <div class="van-slider" style="height: 4px;">
+        <div class="van-slider__bar" style="width: 50%; background: rgb(238, 10, 36);">
+          <div role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="50" aria-valuemax="100" aria-orientation="horizontal" class="van-slider__button-wrapper">
+            <div class="van-slider__button"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-slider active-color="#ee0a24" custom=""></van-slider>
+    <div class="van-slider-room ">
+      <div class="van-slider">
+        <div class="van-slider__bar" style="width: 50%; background: rgb(238, 10, 36);">
+          <div role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="50" aria-valuemax="100" aria-orientation="horizontal" vusion-slot-name="button" class="van-slider__button-wrapper">
+            <div class="custom-button">50</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div style="height: 150px; padding-left: 30px; display: flex;">
-      <van-slider vertical="" custom=""></van-slider>
-      <van-slider range="" vertical=""></van-slider>
+      <div class="van-slider-room vertical">
+        <div class="van-slider van-slider--vertical">
+          <div class="van-slider__bar" style="height: 50%;">
+            <div role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="50" aria-valuemax="100" aria-orientation="vertical" vusion-slot-name="button" class="van-slider__button-wrapper">
+              <div s-empty="true" class="empty empty">+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="van-slider-room vertical">
+        <div class="van-slider van-slider--vertical">
+          <div class="van-slider__bar" style="height: 40%; top: 20%;">
+            <div role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="20,60" aria-valuemax="100" aria-orientation="vertical" class="van-slider__button-wrapper-left">
+              <div class="van-slider__button"></div>
+            </div>
+            <div role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="20,60" aria-valuemax="100" aria-orientation="vertical" class="van-slider__button-wrapper-right">
+              <div class="van-slider__button"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

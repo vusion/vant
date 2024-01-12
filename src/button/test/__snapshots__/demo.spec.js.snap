@@ -3,56 +3,62 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div>
-      <van-button size="middle" type="info" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="middle" type="info" disabled="true" squareroud="round" class="u-code-example_demo_">确定</van-button>
-    </div>
-    <div style="margin-top: 10px;">
-      <van-button size="normal" type="info_secondary" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="normal" disabled="true" type="info_secondary" squareroud="round" class="u-code-example_demo_">确定</van-button>
-    </div>
-    <div style="margin-top: 10px;">
-      <van-button size="normal" type="default" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="normal" disabled="true" type="default" squareroud="round" class="u-code-example_demo_">确定</van-button>
-    </div>
-    <div style="margin-top: 10px;">
-      <van-button size="normal" type="warning" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="normal" disabled="true" type="warning" squareroud="round" class="u-code-example_demo_">确定</van-button>
-    </div>
-    <div style="margin-top: 10px;">
-      <van-button size="normal" type="warning_secondary" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="normal" disabled="true" type="warning_secondary" squareroud="round" class="u-code-example_demo_">确定</van-button>
-    </div>
-    <div style="margin-top: 10px;">
-      <van-button size="normal" type="danger" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="normal" disabled="true" type="danger" squareroud="round" class="u-code-example_demo_">确定</van-button>
-    </div>
-    <div style="margin-top: 10px;">
-      <van-button size="normal" type="danger_secondary" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button disabled="true" size="normal" type="danger_secondary" squareroud="round" class="u-code-example_demo_">确定</van-button>
-    </div>
+    <div><button class="u-code-example_demo_ van-button van-button--info van-button--middle van-button--round">
+        <div class="van-button__content"><span class="van-button__text">确定</span></div>
+      </button> <span disabled="disabled" class="u-code-example_demo_ van-button van-button--info van-button--middle van-button--disabled van-button--round"><div class="van-button__content"><span class="van-button__text">确定</span></div></span>
   </div>
-  <div>
-    <div class="demo-button-row">
-      <van-button size="normal" type="info" squareroud="square" class="u-code-example_demo_">确定</van-button>
-      <van-button size="normal" type="info_secondary" squareroud="square" class="u-code-example_demo_">确定</van-button>
-      <van-button size="normal" type="default" squareroud="square" class="u-code-example_demo_">确定</van-button>
-    </div>
-    <div class="demo-button-row">
-      <van-button size="normal" type="info" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="normal" type="info_secondary" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="normal" type="default" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="middle" icon="sure" type="default" squareroud="round" class="u-code-example_demo_">确定</van-button>
-    </div>
-  </div>
-  <div>
-    <div class="demo-button-row">
-      <van-button size="mini" type="info" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="small" type="info" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="normal" type="info" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="middle" type="info" squareroud="round" class="u-code-example_demo_">确定</van-button>
-      <van-button size="large" type="info" squareroud="round" class="u-code-example_demo_">确定</van-button>
-    </div>
-  </div>
+  <div style="margin-top: 10px;"><button class="u-code-example_demo_ van-button van-button--info_secondary van-button--normal van-button--round">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button> <span disabled="disabled" class="u-code-example_demo_ van-button van-button--info_secondary van-button--normal van-button--disabled van-button--round"><div class="van-button__content"><span class="van-button__text">确定</span></div></span>
+</div>
+<div style="margin-top: 10px;"><button class="u-code-example_demo_ van-button van-button--default van-button--normal van-button--round">
+    <div class="van-button__content"><span class="van-button__text">确定</span></div>
+  </button> <span disabled="disabled" class="u-code-example_demo_ van-button van-button--default van-button--normal van-button--disabled van-button--round"><div class="van-button__content"><span class="van-button__text">确定</span></div></span></div>
+<div style="margin-top: 10px;"><button class="u-code-example_demo_ van-button van-button--warning van-button--normal van-button--round">
+    <div class="van-button__content"><span class="van-button__text">确定</span></div>
+  </button> <span disabled="disabled" class="u-code-example_demo_ van-button van-button--warning van-button--normal van-button--disabled van-button--round"><div class="van-button__content"><span class="van-button__text">确定</span></div></span></div>
+<div style="margin-top: 10px;"><button class="u-code-example_demo_ van-button van-button--warning_secondary van-button--normal van-button--round">
+    <div class="van-button__content"><span class="van-button__text">确定</span></div>
+  </button> <span disabled="disabled" class="u-code-example_demo_ van-button van-button--warning_secondary van-button--normal van-button--disabled van-button--round"><div class="van-button__content"><span class="van-button__text">确定</span></div></span></div>
+<div style="margin-top: 10px;"><button class="u-code-example_demo_ van-button van-button--danger van-button--normal van-button--round">
+    <div class="van-button__content"><span class="van-button__text">确定</span></div>
+  </button> <span disabled="disabled" class="u-code-example_demo_ van-button van-button--danger van-button--normal van-button--disabled van-button--round"><div class="van-button__content"><span class="van-button__text">确定</span></div></span></div>
+<div style="margin-top: 10px;"><button class="u-code-example_demo_ van-button van-button--danger_secondary van-button--normal van-button--round">
+    <div class="van-button__content"><span class="van-button__text">确定</span></div>
+  </button> <span disabled="disabled" class="u-code-example_demo_ van-button van-button--danger_secondary van-button--normal van-button--disabled van-button--round"><div class="van-button__content"><span class="van-button__text">确定</span></div></span></div>
+</div>
+<div>
+  <div class="demo-button-row"><button class="u-code-example_demo_ van-button van-button--info van-button--normal van-button--square">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button> <button class="u-code-example_demo_ van-button van-button--info_secondary van-button--normal van-button--square">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button> <button class="u-code-example_demo_ van-button van-button--default van-button--normal van-button--square">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button></div>
+  <div class="demo-button-row"><button class="u-code-example_demo_ van-button van-button--info van-button--normal van-button--round">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button> <button class="u-code-example_demo_ van-button van-button--info_secondary van-button--normal van-button--round">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button> <button class="u-code-example_demo_ van-button van-button--default van-button--normal van-button--round">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button> <button class="u-code-example_demo_ van-button van-button--default van-button--middle van-button--round">
+      <div class="van-button__content">
+        <!----><span class="van-button__text">确定</span>
+      </div>
+    </button></div>
+</div>
+<div>
+  <div class="demo-button-row"><button class="u-code-example_demo_ van-button van-button--info van-button--mini van-button--round">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button> <button class="u-code-example_demo_ van-button van-button--info van-button--small van-button--round">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button> <button class="u-code-example_demo_ van-button van-button--info van-button--normal van-button--round">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button> <button class="u-code-example_demo_ van-button van-button--info van-button--middle van-button--round">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button> <button class="u-code-example_demo_ van-button van-button--info van-button--large van-button--round">
+      <div class="van-button__content"><span class="van-button__text">确定</span></div>
+    </button></div>
+</div>
 </div>
 `;

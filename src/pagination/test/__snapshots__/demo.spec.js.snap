@@ -3,16 +3,36 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-pagination total-items="24" items-per-page="5" prev-text="上一页" next-text="下一页"></van-pagination>
+    <ul class="van-pagination van-pagination--simple">
+      <li class="van-pagination__item van-pagination__item--disabled van-pagination__prev"></li>
+      <li class="van-pagination__page-desc">1/5</li>
+      <li class="van-pagination__item van-pagination__next"></li>
+    </ul>
   </div>
   <div>
-    <van-pagination page-count="12" prev-text="上一页" next-text="下一页" mode="simple" size="small"></van-pagination>
+    <ul class="van-pagination van-pagination--simple" size="small">
+      <li class="van-pagination__item van-pagination__item--disabled van-pagination__prev"></li>
+      <li class="van-pagination__page-desc">1/12</li>
+      <li class="van-pagination__item van-pagination__next"></li>
+    </ul>
   </div>
   <div>
-    <van-pagination force-ellipses="" total-items="125" show-page-size="3" prev-text="上一页" next-text="下一页"></van-pagination>
+    <ul class="van-pagination van-pagination--simple">
+      <li class="van-pagination__item van-pagination__item--disabled van-pagination__prev"></li>
+      <li class="van-pagination__page-desc">1/13</li>
+      <li class="van-pagination__item van-pagination__next"></li>
+    </ul>
   </div>
   <div>
-    <van-pagination total-items="125" show-page-size="5"></van-pagination>
+    <ul class="van-pagination van-pagination--simple">
+      <li class="van-pagination__item van-pagination__item--disabled van-pagination__prev">
+        <van-icon name="arrow-left"></van-icon>
+      </li>
+      <li class="van-pagination__page-desc">1/13</li>
+      <li class="van-pagination__item van-pagination__next">
+        <van-icon name="arrow"></van-icon>
+      </li>
+    </ul>
   </div>
 </div>
 `;

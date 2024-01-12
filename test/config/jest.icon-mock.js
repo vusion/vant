@@ -1,2 +1,2 @@
 
-module.exports = "icon mock"
+module.exports = "";

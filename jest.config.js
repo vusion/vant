@@ -1,3 +1,10 @@
+const path = require('path');
+const { genPackageEntry } = require('@vant/cli/lib/compiler/gen-package-entry');
+
+genPackageEntry({
+  outputPath: path.join(__dirname, './dist/package-entry.js')
+});
+
 
 module.exports = {
   moduleNameMapper: {
@@ -15,7 +22,7 @@ module.exports = {
     '\\.(vue)$': 'vue-jest',
     '\\.(js|jsx|ts|tsx)$': 'babel-jest',
   },
-  transformIgnorePatterns: ['/node_modules/(?!(@vant/cli))/', 'api.ts'],
+  transformIgnorePatterns: ['api.ts'],
   snapshotSerializers: ['jest-serializer-vue'],
   collectCoverage: true,
   collectCoverageFrom: [

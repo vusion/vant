@@ -6,52 +6,128 @@ exports[`renders demo correctly 1`] = `
     <div>value: 2021-01-13 00:00:00</div>
     <div>start: asdfsadf-asdf</div>
     <div>end: asdfasdf</div>
-    <van-datetime-picker type="date" title="选择date" input-align="left" value="2021-01-13 00:00:00" startvalue="asdfsadf-asdf" endvalue="asdfasdf" advanced-format="[object Object]"></van-datetime-picker>
-    <van-button>clear</van-button>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">顶部标题</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--left"></div>
+        </div>
+      </div>
+    </div> <button class="van-button van-button--default van-button--normal van-button--square">
+      <div class="van-button__content"><span class="van-button__text">clear</span></div>
+    </button>
     <div>time: </div>
     <div>start: </div>
     <div>end: </div>
-    <van-datetime-picker type="time" title="选择time" input-align="left" range="true"></van-datetime-picker>
-    <van-button>clear</van-button>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">顶部标题</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--left"></div>
+        </div>
+      </div>
+    </div> <button class="van-button van-button--default van-button--normal van-button--square">
+      <div class="van-button__content"><span class="van-button__text">clear</span></div>
+    </button>
   </div>
   <div>
     <div>value: 2021-01-13 00:00:00</div>
-    <van-datetime-picker value="2021-01-13 00:00:00" type="date" unit="date" displayformat="YYYY年M月D日"></van-datetime-picker>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div>value: </div>
-    <van-datetime-picker type="date" unit="week"></van-datetime-picker>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div>value: </div>
-    <van-datetime-picker type="date" unit="month"></van-datetime-picker>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div>value: </div>
-    <van-datetime-picker type="date" unit="quarter"></van-datetime-picker>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div>value: </div>
-    <van-datetime-picker type="date" unit="year"></van-datetime-picker>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div>value: 2022-03-31T07:21:52.066Z</div>
-    <van-datetime-picker value="2022-03-31T07:21:52.066Z" type="datetime" title="选择完整时间"></van-datetime-picker>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div>value: 2022-03-31T07:21:52.066Z</div>
-    <van-datetime-picker value="2022-03-31T07:21:52.066Z" type="datetime" unit="minute" title="选择完整时间"></van-datetime-picker>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div>value: 12:00</div>
-    <van-datetime-picker value="12:00" type="time" title="选择时间"></van-datetime-picker>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div>value: 12:11:11</div>
-    <van-datetime-picker value="12:11:11" type="time" unit="second" title="选择时间"></van-datetime-picker>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-datetime-picker close-on-click-overlay="true" type="date"></van-datetime-picker>
+    <div vusion-click-enabled="true" class="van-datetime-picker__wrapppdtpicker">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

@@ -3,13 +3,34 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-cascader title="请选择所在地区" datasource="[object Object],[object Object],[object Object],[object Object]" tree-display="true" filterable="true" closeonclickoverlay="true"></van-cascader>
+    <div vusion-click-enabled="true" class="van-cascader__wrapppcascader">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">地区</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" placeholder="请选择" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-cascader title="请选择所在地区" datasource="[object Object],[object Object],[object Object],[object Object]" tree-display="true" filterable="true" closeonclickoverlay="true" readonly=""></van-cascader>
+    <div vusion-click-enabled="true" class="van-cascader__wrapppcascader">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">地区</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" placeholder="请选择" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-cascader title="请选择所在地区" datasource="[object Object],[object Object],[object Object],[object Object]" tree-display="true" filterable="true" closeonclickoverlay="true" disabled=""></van-cascader>
+    <div vusion-click-enabled="true" class="van-cascader__wrapppcascader">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field van-field--disabled">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">地区</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" disabled="disabled" readonly="readonly" placeholder="请选择" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

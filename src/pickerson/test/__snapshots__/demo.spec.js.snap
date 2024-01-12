@@ -6,20 +6,56 @@ exports[`renders demo correctly 1`] = `
     <div>pickerValue: [
       "32001111100"
       ]</div>
-    <van-pickerson multiple="true" enable-select-all="true" type="list" title="标题" show-toolbar="true" value="32001111100" data-source="function () { [native code] }" pageable="true" pagesize="10" filterable="true"></van-pickerson>
-  </div>
-  <van-button>reload</van-button>
+    <div vusion-click-enabled="true" class="van-pickerson__wrap">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">标题</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" placeholder="请选择" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
+  </div> <button class="van-button van-button--default van-button--normal van-button--square">
+    <div class="van-button__content"><span class="van-button__text">reload</span></div>
+  </button>
   <div>
-    <van-pickerson title="标题" show-toolbar="true" data-source="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" value="32001111100" pageable="true" pagesize="10" multiple="true" type="list" enable-select-all="true" enable-selected-count="true"></van-pickerson>
+    <div vusion-click-enabled="true" class="van-pickerson__wrap">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">标题</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" placeholder="请选择" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-pickerson title="标题" show-toolbar="true" value="1" data-source="1,2,3,4,5" type="list" enable-select-all="true" enable-selected-count="true" readonly="true"></van-pickerson>
+    <div vusion-click-enabled="true" class="van-pickerson__wrap">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">标题</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" placeholder="请选择" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-pickerson title="标题" show-toolbar="true" value="1" data-source="1,2,3,4,5" type="list" enable-select-all="true" enable-selected-count="true" disabled="true"></van-pickerson>
+    <div vusion-click-enabled="true" class="van-pickerson__wrap">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field van-field--disabled">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">标题</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" disabled="disabled" readonly="readonly" placeholder="请选择" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-pickerson title="标题" show-toolbar="true" value="1" data-source="1,2,3,4,5" close-on-click-overlay="true"></van-pickerson>
+    <div vusion-click-enabled="true" class="van-pickerson__wrap">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">标题</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" placeholder="请选择" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

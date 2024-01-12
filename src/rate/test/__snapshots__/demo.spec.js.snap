@@ -3,29 +3,181 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-rate></van-rate>
+    <div tabindex="0" role="radiogroup" class="van-rate">
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="1" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="2" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="3" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="4" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="5" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+    </div>
   </div>
-  <van-rate value="2"></van-rate>
-  <div>
-    <van-rate icon="like" void-icon="like-o"></van-rate>
+  <div tabindex="0" role="radiogroup" class="van-rate">
+    <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="1" aria-checked="true" class="van-rate__item">
+      <!---->
+    </div>
+    <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="2" aria-checked="true" class="van-rate__item">
+      <!---->
+    </div>
+    <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="3" aria-checked="false" class="van-rate__item">
+      <!---->
+    </div>
+    <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="4" aria-checked="false" class="van-rate__item">
+      <!---->
+    </div>
+    <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="5" aria-checked="false" class="van-rate__item">
+      <!---->
+    </div>
   </div>
   <div>
-    <van-rate size="25" color="#ffd21e" void-icon="star" void-color="#eee"></van-rate>
+    <div tabindex="0" role="radiogroup" class="van-rate">
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="1" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="2" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="3" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="4" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="5" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+    </div>
   </div>
   <div>
-    <van-rate size="25" allow-half="" void-icon="star" void-color="#eee"></van-rate>
+    <div tabindex="0" role="radiogroup" class="van-rate">
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="1" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="2" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="3" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="4" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="5" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+    </div>
   </div>
   <div>
-    <van-rate count="6"></van-rate>
+    <div tabindex="0" role="radiogroup" class="van-rate">
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="1" aria-checked="true" class="van-rate__item">
+        <!---->
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="2" aria-checked="true" class="van-rate__item">
+        <!---->
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="3" aria-checked="true" class="van-rate__item">
+        <!---->
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="4" aria-checked="false" class="van-rate__item">
+        <!---->
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="5" aria-checked="false" class="van-rate__item">
+        <!---->
+        <!---->
+      </div>
+    </div>
   </div>
   <div>
-    <van-rate disabled=""></van-rate>
+    <div tabindex="0" role="radiogroup" class="van-rate">
+      <div role="radio" tabindex="0" aria-setsize="6" aria-posinset="1" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="6" aria-posinset="2" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="6" aria-posinset="3" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="6" aria-posinset="4" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="6" aria-posinset="5" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="6" aria-posinset="6" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+    </div>
   </div>
   <div>
-    <van-rate readonly=""></van-rate>
+    <div tabindex="0" role="radiogroup" class="van-rate van-rate--disabled">
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="1" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="2" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="3" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="4" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="5" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+    </div>
   </div>
   <div>
-    <van-rate></van-rate>
+    <div tabindex="0" role="radiogroup" class="van-rate van-rate--readonly">
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="1" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="2" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="3" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="4" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="5" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+    </div>
+  </div>
+  <div>
+    <div tabindex="0" role="radiogroup" class="van-rate">
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="1" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="2" aria-checked="true" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="3" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="4" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+      <div role="radio" tabindex="0" aria-setsize="5" aria-posinset="5" aria-checked="false" class="van-rate__item">
+        <!---->
+      </div>
+    </div>
   </div>
 </div>
 `;

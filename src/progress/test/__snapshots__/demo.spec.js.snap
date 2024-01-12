@@ -3,23 +3,46 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-progress percentage="50"></van-progress>
+    <div class="van-progress-room">
+      <div class="van-progress"><span class="van-progress__portion" style="width: 0px;"><span class="van-progress__pivot" style="left: 0px;">50%</span></span></div>
+    </div>
   </div>
   <div>
-    <van-progress percentage="50" stroke-width="8"></van-progress>
+    <div class="van-progress-room">
+      <div class="van-progress" style="height: 8px;"><span class="van-progress__portion" style="width: 0px;"><span class="van-progress__pivot" style="left: 0px;">50%</span></span></div>
+    </div>
   </div>
   <div>
-    <van-progress inactive="" percentage="50"></van-progress>
+    <div class="van-progress-room">
+      <div class="van-progress"><span class="van-progress__portion" style="background: rgb(202, 202, 202); width: 0px;"><span class="van-progress__pivot" style="left: 0px; background: rgb(202, 202, 202);">50%</span></span></div>
+    </div>
   </div>
   <div>
-    <van-progress color="#f2826a" percentage="25" pivot-text="橙色"></van-progress>
-    <van-progress color="#ee0a24" percentage="50" pivot-text="红色"></van-progress>
-    <van-progress percentage="75" pivot-text="紫色" pivot-color="#7232dd" color="linear-gradient(to right, #be99ff, #7232dd)"></van-progress>
+    <div class="van-progress-room">
+      <div class="van-progress"><span class="van-progress__portion" style="background: rgb(242, 130, 106); width: 0px;"><span class="van-progress__pivot" style="left: 0px; background: rgb(242, 130, 106);">橙色</span></span></div>
+    </div>
+    <div class="van-progress-room">
+      <div class="van-progress"><span class="van-progress__portion" style="background: rgb(238, 10, 36); width: 0px;"><span class="van-progress__pivot" style="left: 0px; background: rgb(238, 10, 36);">红色</span></span></div>
+    </div>
+    <div class="van-progress-room">
+      <div class="van-progress"><span class="van-progress__portion" style="width: 0px;"><span class="van-progress__pivot" style="left: 0px; background: rgb(114, 50, 221);">紫色</span></span></div>
+    </div>
   </div>
   <div>
-    <van-form>
-      <van-field required="true" drole="other"></van-field>
-    </van-form>
+    <form class="van-form">
+      <div label-layout="inline" is-sub="" class="van-cellson van-cellson--center van-cellson--required van-field">
+        <div vusion-slot-name="title" class="van-cellson__title van-field__label van-field__labelhasslots"><span vusion-slot-name-edit="text" class="root">名称</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body">
+            <div class="van-field__control van-field__control--custom">
+              <div class="van-progress-room">
+                <div class="van-progress"><span class="van-progress__portion" style="width: 0px;"><span class="van-progress__pivot" style="left: 0px;">50%</span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 `;

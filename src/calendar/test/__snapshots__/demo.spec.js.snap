@@ -6,14 +6,42 @@ exports[`renders demo correctly 1`] = `
     <div>date: 2023-10-11</div>
     <div>start: </div>
     <div>end: </div>
-    <van-calendar label-field="日历选择" min-date="1900-01-01" title="选择日期"></van-calendar>
-    <van-calendar label-field="日历选择" max-date="2050-12-31" title="选择日期"></van-calendar> <button>clear</button>
+    <div vusion-click-enabled="true" class="van-calendar__wrapppcalendar">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__title van-field__label"><span>日历选择</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
+    <div vusion-click-enabled="true" class="van-calendar__wrapppcalendar">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__title van-field__label"><span>日历选择</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div> <button>clear</button>
   </div>
   <div>
-    <van-calendar label-field="日历选择" min-date="1900-01-01" title="选择日期"></van-calendar>
+    <div vusion-click-enabled="true" class="van-calendar__wrapppcalendar">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__title van-field__label"><span>日历选择</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <van-calendar label-field="日历选择" title="选择日期" lazyrender="true" close-on-click-overlay="true"></van-calendar>
+    <div vusion-click-enabled="true" class="van-calendar__wrapppcalendar">
+      <div label-layout="inline" noallow="" class="van-cellson van-cellson--center van-cellson--insel van-field">
+        <div class="van-cellson__title van-field__label"><span>日历选择</span></div>
+        <div class="van-cellson__value van-field__value">
+          <div class="van-field__body"><input type="text" readonly="readonly" class="van-field__control van-field__control--right"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

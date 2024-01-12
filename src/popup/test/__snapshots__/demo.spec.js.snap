@@ -3,42 +3,70 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-cell title="展示弹出层" is-link=""></van-cell>
-    <van-popup design-title="怎么说" style="padding: 30px 50px;">
-      内容
-    </van-popup>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">展示弹出层</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <!---->
   </div>
   <div>
-    <van-cell title="展示弹出层" is-link=""></van-cell>
-    <van-popup style="padding: 30px 50px;">
-      <div class="van-popup-default"></div>
-    </van-popup>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">展示弹出层</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <!---->
   </div>
   <div>
-    <van-cell title="顶部弹出" is-link=""></van-cell>
-    <van-cell title="底部弹出" is-link=""></van-cell>
-    <van-cell title="左侧弹出" is-link=""></van-cell>
-    <van-cell title="右侧弹出" is-link=""></van-cell>
-    <van-popup position="top" style="height: 30%;">内容</van-popup>
-    <van-popup position="bottom" style="height: 30%;"></van-popup>
-    <van-popup position="left" style="width: 30%; height: 100%;"></van-popup>
-    <van-popup position="right" style="width: 30%; height: 100%;"></van-popup>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">顶部弹出</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">底部弹出</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">左侧弹出</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">右侧弹出</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <!---->
+    <!---->
+    <!---->
+    <!---->
   </div>
   <div>
-    <van-cell title="关闭图标" is-link=""></van-cell>
-    <van-cell title="自定义图标" is-link=""></van-cell>
-    <van-cell title="图标位置" is-link=""></van-cell>
-    <van-popup closeable="" position="bottom" style="height: 30%;"></van-popup>
-    <van-popup closeable="" close-icon="close" position="bottom" style="height: 30%;"></van-popup>
-    <van-popup closeable="" close-icon-position="top-left" position="bottom" style="height: 30%;"></van-popup>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">关闭图标</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">自定义图标</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">图标位置</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <!---->
+    <!---->
+    <!---->
   </div>
   <div>
-    <van-cell title="圆角弹窗" is-link=""></van-cell>
-    <van-popup round="" position="bottom" style="height: 30%;"></van-popup>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">圆角弹窗</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <!---->
   </div>
   <div>
-    <van-cell title="指定挂载节点" is-link=""></van-cell>
-    <van-popup get-container="body" style="padding: 30px 50px;"></van-popup>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">指定挂载节点</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
   </div>
 </div>
 `;

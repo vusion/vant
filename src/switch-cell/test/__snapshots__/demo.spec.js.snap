@@ -3,19 +3,45 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-cell-group>
-      <van-switch-cell title="标题"></van-switch-cell>
-    </van-cell-group>
+    <div class="van-cell-group van-hairline--top-bottom">
+      <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-switch-cell">
+        <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">标题</div>
+        <div class="van-cell__value">
+          <div role="switch" aria-checked="true" class="van-switch van-switch--on" style="font-size: 24px;">
+            <div class="van-switch__node"></div>
+          </div>
+        </div>
+        <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+      </div>
+    </div>
   </div>
   <div>
-    <van-cell-group>
-      <van-switch-cell disabled="" title="标题"></van-switch-cell>
-    </van-cell-group>
+    <div class="van-cell-group van-hairline--top-bottom">
+      <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-switch-cell">
+        <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">标题</div>
+        <div class="van-cell__value">
+          <div role="switch" aria-checked="true" class="van-switch van-switch--on van-switch--disabled" style="font-size: 24px;">
+            <div class="van-switch__node"></div>
+          </div>
+        </div>
+        <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+      </div>
+    </div>
   </div>
   <div>
-    <van-cell-group>
-      <van-switch-cell loading="" title="标题"></van-switch-cell>
-    </van-cell-group>
+    <div class="van-cell-group van-hairline--top-bottom">
+      <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-switch-cell">
+        <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">标题</div>
+        <div class="van-cell__value">
+          <div role="switch" aria-checked="true" class="van-switch van-switch--on van-switch--loading" style="font-size: 24px;">
+            <div class="van-switch__node">
+              <div class="van-loading van-loading--circular van-switch__loading"><span class="van-loading__spinner van-loading__spinner--circular van-loading__rotate"><svg viewBox="25 25 50 50" class="van-loading__circular"><circle cx="50" cy="50" r="20" fill="none"></circle></svg></span></div>
+            </div>
+          </div>
+        </div>
+        <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+      </div>
+    </div>
   </div>
 </div>
 `;

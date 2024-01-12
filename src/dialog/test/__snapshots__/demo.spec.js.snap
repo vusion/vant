@@ -3,12 +3,11 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-cell is-link="" title="组件调用"></van-cell>
-    <van-dialog title="退下2" show-cancel-button="">
-      <div>
-        <van-calendar></van-calendar>
-      </div>
-    </van-dialog>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">组件调用</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <!---->
   </div>
 </div>
 `;

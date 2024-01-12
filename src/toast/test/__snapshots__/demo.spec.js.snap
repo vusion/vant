@@ -3,30 +3,64 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-cell is-link="" title="文字提示"></van-cell>
-    <van-cell is-link="" title="加载提示"></van-cell>
-    <van-cell is-link="" title="成功提示"></van-cell>
-    <van-cell is-link="" title="失败提示"></van-cell>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">文字提示</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">加载提示</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">成功提示</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">失败提示</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
   </div>
   <div>
-    <van-cell is-link="" title="自定义图标"></van-cell>
-    <van-cell is-link="" title="自定义图片"></van-cell>
-    <van-cell is-link="" title="自定义加载图标"></van-cell>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">自定义图标</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">自定义图片</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">自定义加载图标</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
   </div>
   <div>
-    <van-cell is-link="" title="顶部展示"></van-cell>
-    <van-cell is-link="" title="底部展示"></van-cell>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">顶部展示</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">底部展示</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
   </div>
   <div>
-    <van-cell is-link="" title="动态更新提示"></van-cell>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">动态更新提示</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
   </div>
   <div>
-    <van-toast message="弹出消息" duration="0" type="custom" custom-icon="info" style="--van-toast-text-color: red;"></van-toast>
-    <van-button>打开toast</van-button>
-    <van-button>关闭toast</van-button>
-    <van-toast message="弹出消息" duration="0" type="custom" custom-icon="info" style="--van-toast-text-color: yellow;"></van-toast>
-    <van-button>打开toast</van-button>
-    <van-button>关闭toast</van-button>
+    <!----> <button class="van-button van-button--default van-button--normal van-button--square">
+      <div class="van-button__content"><span class="van-button__text">打开toast</span></div>
+    </button> <button class="van-button van-button--default van-button--normal van-button--square">
+      <div class="van-button__content"><span class="van-button__text">关闭toast</span></div>
+    </button>
+    <!----> <button class="van-button van-button--default van-button--normal van-button--square">
+      <div class="van-button__content"><span class="van-button__text">打开toast</span></div>
+    </button> <button class="van-button van-button--default van-button--normal van-button--square">
+      <div class="van-button__content"><span class="van-button__text">关闭toast</span></div>
+    </button>
   </div>
 </div>
 `;

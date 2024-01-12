@@ -3,13 +3,29 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-contact-card type="add"></van-contact-card>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-cell--borderless van-cell--nocontentforlink van-contact-card van-contact-card--add">
+      <van-iconv name="add-square" notext="true" class="van-cell__left-icon"></van-iconv>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
   </div>
   <div>
-    <van-contact-card type="edit" name="张三" tel="13000000000"></van-contact-card>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-cell--borderless van-contact-card van-contact-card--edit">
+      <van-iconv name="contact" notext="true" class="van-cell__left-icon"></van-iconv>
+      <div class="van-cell__value van-contact-card__value">
+        <div>张三：张三</div>
+        <div>电话：13000000000</div>
+      </div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
   </div>
   <div>
-    <van-contact-card type="edit" name="张三" tel="13000000000"></van-contact-card>
+    <div noallow="" class="van-cell van-cell--center van-cell--borderless van-contact-card van-contact-card--edit">
+      <van-iconv name="contact" notext="true" class="van-cell__left-icon"></van-iconv>
+      <div class="van-cell__value van-contact-card__value">
+        <div>张三：张三</div>
+        <div>电话：13000000000</div>
+      </div>
+    </div>
   </div>
 </div>
 `;

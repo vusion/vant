@@ -3,38 +3,67 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <van-goods-action>
-      <van-goods-action-icon icon="chat-o" text="客服"></van-goods-action-icon>
-      <van-goods-action-icon icon="cart-o" text="购物车"></van-goods-action-icon>
-      <van-goods-action-icon icon="shop-o" text="店铺"></van-goods-action-icon>
-      <van-goods-action-button type="danger" text="立即购买"></van-goods-action-button>
-    </van-goods-action>
+    <div class="van-goods-action">
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->客服
+      </div>
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->购物车
+      </div>
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->店铺
+      </div> <button class="van-button van-button--danger van-button--large van-button--square van-goods-action-button van-goods-action-button--first van-goods-action-button--last van-goods-action-button--danger">
+        <div class="van-button__content"><span class="van-button__text">立即购买</span></div>
+      </button>
+    </div>
   </div>
   <div>
-    <van-goods-action>
-      <van-goods-action-icon icon="chat-o" dot="" text="客服"></van-goods-action-icon>
-      <van-goods-action-icon icon="cart-o" badge="5" text="购物车"></van-goods-action-icon>
-      <van-goods-action-icon icon="shop-o" badge="12" text="店铺"></van-goods-action-icon>
-      <van-goods-action-button type="warning" text="加入购物车"></van-goods-action-button>
-      <van-goods-action-button type="danger" text="立即购买"></van-goods-action-button>
-    </van-goods-action>
+    <div class="van-goods-action">
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->客服
+      </div>
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->购物车
+      </div>
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->店铺
+      </div> <button class="van-button van-button--warning van-button--large van-button--square van-goods-action-button van-goods-action-button--first van-goods-action-button--warning">
+        <div class="van-button__content"><span class="van-button__text">加入购物车</span></div>
+      </button> <button class="van-button van-button--danger van-button--large van-button--square van-goods-action-button van-goods-action-button--last van-goods-action-button--danger">
+        <div class="van-button__content"><span class="van-button__text">立即购买</span></div>
+      </button>
+    </div>
   </div>
   <div>
-    <van-goods-action>
-      <van-goods-action-icon icon="chat-o" text="客服" color="#ee0a24"></van-goods-action-icon>
-      <van-goods-action-icon icon="cart-o" text="购物车"></van-goods-action-icon>
-      <van-goods-action-icon icon="star" text="已收藏" color="#ff5000"></van-goods-action-icon>
-      <van-goods-action-button type="warning" text="加入购物车"></van-goods-action-button>
-      <van-goods-action-button type="danger" text="立即购买"></van-goods-action-button>
-    </van-goods-action>
+    <div class="van-goods-action">
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->客服
+      </div>
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->购物车
+      </div>
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->已收藏
+      </div> <button class="van-button van-button--warning van-button--large van-button--square van-goods-action-button van-goods-action-button--first van-goods-action-button--warning">
+        <div class="van-button__content"><span class="van-button__text">加入购物车</span></div>
+      </button> <button class="van-button van-button--danger van-button--large van-button--square van-goods-action-button van-goods-action-button--last van-goods-action-button--danger">
+        <div class="van-button__content"><span class="van-button__text">立即购买</span></div>
+      </button>
+    </div>
   </div>
   <div>
-    <van-goods-action>
-      <van-goods-action-icon icon="chat-o" text="客服"></van-goods-action-icon>
-      <van-goods-action-icon icon="cart-o" text="购物车"></van-goods-action-icon>
-      <van-goods-action-button color="#be99ff" type="warning" text="加入购物车"></van-goods-action-button>
-      <van-goods-action-button color="#7232dd" type="danger" text="立即购买"></van-goods-action-button>
-    </van-goods-action>
+    <div class="van-goods-action">
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->客服
+      </div>
+      <div role="button" tabindex="0" class="van-goods-action-icon">
+        <!---->购物车
+      </div> <button class="van-button van-button--warning van-button--large van-button--square van-goods-action-button van-goods-action-button--first van-goods-action-button--warning" style="color: white; background: rgb(190, 153, 255); border-color: #be99ff;">
+        <div class="van-button__content"><span class="van-button__text">加入购物车</span></div>
+      </button> <button class="van-button van-button--danger van-button--large van-button--square van-goods-action-button van-goods-action-button--last van-goods-action-button--danger" style="color: white; background: rgb(114, 50, 221); border-color: #7232dd;">
+        <div class="van-button__content"><span class="van-button__text">立即购买</span></div>
+      </button>
+    </div>
   </div>
 </div>
 `;
