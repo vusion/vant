@@ -61,6 +61,11 @@
   --van-space-base: var(
     --van-space-baset
   ); /* @desc 布局内各元素之间的外间距, 如：1px */ /* @prefix van */
+  --van-space-shrink: -1px;
+  --van-space-mini: 4px;
+  --van-space-small: 10px;
+  --van-space-large: 30px;
+
 
   /* @component van-panel */
   --van-panel-background-color: #fff; /* @type color */ /* @desc panel背景色 */ /* @depStaticStyles ["background-color"] */
