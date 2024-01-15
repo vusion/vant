@@ -2,8 +2,8 @@
   <demo-section>
     <demo-block>
       <van-checkbox-group :data-source="[1,2,3]">
-        <template #default="scope">
-          <van-checkbox :name="scope.item.item" :title="'选框'+scope.item.item"></van-checkbox>
+        <template #item="scope">
+          <van-checkbox :name="scope.item" :title="'选框'+scope.item"></van-checkbox>
         </template>
       </van-checkbox-group>
     </demo-block>

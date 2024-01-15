@@ -3,121 +3,137 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
+    <div class="van-cell-group van-hairline--top-bottom"></div>
     <div class="van-cell-group van-hairline--top-bottom">
-      <div class="van-cell">
-        <div class="van-cell__title"><span>单元格</span></div>
-        <div class="van-cell__value"><span>内容</span></div>
+      <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+        <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+        <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
       </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>单元格</span>
-          <div class="van-cell__label">描述信息</div>
-        </div>
-        <div class="van-cell__value"><span>内容</span></div>
+      <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+        <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+        <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
       </div>
     </div>
   </div>
   <div>
     <div class="van-cell-group van-cell-group--inset van-hairline--top-bottom">
-      <div class="van-cell">
-        <div class="van-cell__title"><span>单元格</span></div>
-        <div class="van-cell__value"><span>内容</span></div>
+      <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+        <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+        <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
       </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>单元格</span>
-          <div class="van-cell__label">描述信息</div>
-        </div>
-        <div class="van-cell__value"><span>内容</span></div>
+      <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+        <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+        <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
       </div>
     </div>
   </div>
   <div>
-    <div class="van-cell van-cell--large">
-      <div class="van-cell__title"><span>单元格</span></div>
-      <div class="van-cell__value"><span>内容</span></div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-cell--large">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
-    <div class="van-cell van-cell--large">
-      <div class="van-cell__title"><span>单元格</span>
-        <div class="van-cell__label">描述信息</div>
-      </div>
-      <div class="van-cell__value"><span>内容</span></div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-cell--large">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
   </div>
   <div>
-    <div class="van-cell"><i class="van-icon van-icon-location-o van-cell__left-icon">
-        <!----></i>
-      <div class="van-cell__title"><span>单元格</span></div>
-      <div class="van-cell__value"><span>内容</span></div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <van-iconv name="location-o" notext="true" class="van-cell__left-icon"></van-iconv>
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
   </div>
   <div>
-    <div class="van-cell">
-      <div class="van-cell__value van-cell__value--alone"><span>内容</span></div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-cell--nocontentforlink">
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>单元格</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>单元格</span></div>
-      <div class="van-cell__value"><span>内容</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>单元格</span></div>
-      <div class="van-cell__value"><span>内容</span></div><i class="van-icon van-icon-arrow-down van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+      <van-icon name="arrow-down" class="van-cell__right-icon"></van-icon>
     </div>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>URL 跳转</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">URL 跳转</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>路由跳转</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">路由跳转</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
   </div>
   <div>
     <div>
       <div class="van-cell-group__title">分组 1</div>
       <div class="van-cell-group van-hairline--top-bottom">
-        <div class="van-cell">
-          <div class="van-cell__title"><span>单元格</span></div>
-          <div class="van-cell__value"><span>内容</span></div>
+        <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+          <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+          <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
         </div>
       </div>
     </div>
     <div>
       <div class="van-cell-group__title">分组 2</div>
       <div class="van-cell-group van-hairline--top-bottom">
-        <div class="van-cell">
-          <div class="van-cell__title"><span>单元格</span></div>
-          <div class="van-cell__value"><span>内容</span></div>
+        <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+          <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+          <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
         </div>
       </div>
     </div>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span class="custom-title">单元格</span> <span class="van-tag van-tag--danger">标签</span></div>
-      <div class="van-cell__value"><span>内容</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title"><span class="custom-title">单元格</span> <span class="van-tag van-tag--danger">标签</span></div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
-    <div class="van-cell"><i class="van-icon van-icon-shop-o van-cell__left-icon">
-        <!----></i>
-      <div class="van-cell__title"><span>单元格</span></div><i class="search-icon van-icon van-icon-search">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <van-iconv name="shop-o" notext="true" class="van-cell__left-icon"></van-iconv>
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+      <van-icon name="search" class="search-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div class="van-cell__value">
+        <div class="van-image"><img src="https://static-vusion.163yun.com/assets/cloud-ui/1.jpg" class="van-image__img">
+          <div class="van-image__loading">
+            <!---->
+          </div>
+        </div>
+      </div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
   </div>
   <div>
-    <div class="van-cell van-cell--center">
-      <div class="van-cell__title"><span>单元格</span>
-        <div class="van-cell__label">描述信息</div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">单元格</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+  </div>
+  <div>
+    <div class="van-cell-group van-hairline--top-bottom">
+      <div vusion-slot-name="default" noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+        <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">垂直居中</div>
+        <div class="van-cell__value">内容</div>
+        <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
       </div>
-      <div class="van-cell__value"><span>内容</span></div>
+    </div>
+  </div>
+  <div>
+    <div vusion-slot-name="default" noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">垂直居中</div>
+      <div class="van-cell__value">内容</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
   </div>
 </div>

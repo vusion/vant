@@ -3,6 +3,7 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
+    <div class="van-badge van-badge--dot"></div>
     <div class="van-badge__wrapper">
       <div class="child"></div>
       <div class="van-badge van-badge--fixed">5</div>
@@ -51,18 +52,21 @@ exports[`renders demo correctly 1`] = `
   <div>
     <div class="van-badge__wrapper">
       <div class="child"></div>
-      <div class="van-badge van-badge--fixed"><i class="badge-icon van-icon van-icon-success">
-          <!----></i></div>
+      <div class="van-badge van-badge--fixed">
+        <van-icon name="success" class="badge-icon"></van-icon>
+      </div>
     </div>
     <div class="van-badge__wrapper">
       <div class="child"></div>
-      <div class="van-badge van-badge--fixed"><i class="badge-icon van-icon van-icon-cross">
-          <!----></i></div>
+      <div class="van-badge van-badge--fixed">
+        <van-icon name="cross" class="badge-icon"></van-icon>
+      </div>
     </div>
     <div class="van-badge__wrapper">
       <div class="child"></div>
-      <div class="van-badge van-badge--fixed"><i class="badge-icon van-icon van-icon-down">
-          <!----></i></div>
+      <div class="van-badge van-badge--fixed">
+        <van-icon name="down" class="badge-icon"></van-icon>
+      </div>
     </div>
   </div>
   <div>

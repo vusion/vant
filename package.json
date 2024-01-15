@@ -5,7 +5,6 @@
   "lcapversion": "0.6.3",
   "description": "Mobile UI Components built on Vue",
   "main": "dist-theme/index.js",
-  "module22": "es/index.js",
   "style": "dist-theme/index.css",
   "typings": "types/index.d.ts",
   "files": [
@@ -25,7 +24,7 @@
     "dev": "cross-env scene=desktop vant-cli dev",
     "dev:mobile": "cross-env scene=mobile vant-cli dev",
     "lint": "vant-cli lint",
-    "test": "vant-cli test",
+    "test": "jest",
     "copyimg": "node bin/copy-lcp-images ",
     "build:vusion": "npm run check && npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap && node scripts/i18n/index.js && node ./scripts/ui-json/index.js --dest ./dist-theme/nasl.ui.json && npm run check:api && npm pack",
     "build:theme": "npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap && node scripts/i18n/index.js && node ./scripts/ui-json/index.js --dest ./dist-theme/nasl.ui.json && npm run check:api && npm pack",

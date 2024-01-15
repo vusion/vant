@@ -56,7 +56,7 @@ namespace nasl.ui {
       },
       if: _ => _.justify !== 'space-between' && _.justify !== 'space-around'
     })
-    gap: 'shrink' | 'none' | 'small' | 'normal' | 'large' = 'normal';
+    gap: 'shrink' | 'none' | 'mini' | 'small' | 'large' = 'none';
     @Prop<VanLinearLayoutOptions, 'layout'>({
       group: '主要属性',
       title: '子元素展示方式',

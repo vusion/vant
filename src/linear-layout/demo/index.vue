@@ -1,43 +1,62 @@
 <template>
   <demo-section>
-    <demo-block>
-      <div>单行排布</div>
-
-      <van-linear-layout ref="linear1" direction="horizontal" mode="flex" justify="start" alignment="start">
-          <van-text :ref="`text2`" text="普通文本"></van-text>
-          <van-button :ref="`button1`" type="default" size="middle" text="确定" squareroud="round"></van-button>
-      </van-linear-layout>
-    </demo-block>
-
-    <demo-block>
-      <div>多行排布</div>
-      <van-linear-layout direction="vertical">
-          <van-linear-layout>
+    <demo-block title="行内">
+      <div style="height: 100px; background-color: red;">
+          <van-linear-layout mode="inline" style="width: 100px; height: 50px; background-color: blue;">
           </van-linear-layout>
-          <van-linear-layout>
+          <van-linear-layout mode="inline" style="width: 100px; height: 50px; background-color: green;">
           </van-linear-layout>
+        </div>
+    </demo-block>
+
+    <demo-block title="块级">
+      <div style="height: 100px; background-color: red;">
+          <van-linear-layout mode="block" style="width: 100px; height: 50px; background-color: blue;">
+          </van-linear-layout>
+          <van-linear-layout mode="block" style="width: 100px; height: 50px; background-color: green;">
+          </van-linear-layout>
+        </div>
+    </demo-block>
+
+    <demo-block title="弹性--单行排布">
+      <van-linear-layout mode="flex" direction="horizontal" gap="small" justify="center" alignment="center" style="height: 100px; background-color: red;">
+          <div style="width: 100px; height: 50px; background-color: blue;">
+          </div>
+          <div style="width: 100px; height: 50px; background-color: green;">
+          </div>
       </van-linear-layout>
     </demo-block>
 
-    <demo-block>
-      <div>两端排布</div>
-
-      <van-linear-layout justify="space-between">
-        <van-linear-layout>
-        </van-linear-layout>
-        <van-linear-layout>
-        </van-linear-layout>
+    <demo-block title="多行排布">
+      <van-linear-layout mode="flex" direction="vertical" gap="small" justify="center" alignment="center" style="background-color: red;">
+          <div style="width: 100px; height: 50px; background-color: blue;">
+          </div>
+          <div style="width: 100px; height: 50px; background-color: green;">
+          </div>
       </van-linear-layout>
     </demo-block>
 
+    <demo-block title="两端排布">
+      <van-linear-layout mode="flex" direction="horizontal" justify="space-between" alignment="center" style="height: 100px; background-color: red;">
+        <div style="width: 100px; height: 50px; background-color: blue;">
+          </div>
+          <div style="width: 100px; height: 50px; background-color: green;">
+          </div>
+      </van-linear-layout>
+    </demo-block>
+
+    <demo-block title="平均排布">
+      <van-linear-layout mode="flex" direction="horizontal" justify="space-around" alignment="center" style="height: 100px; background-color: red;">
+        <div style="width: 100px; height: 50px; background-color: blue;">
+          </div>
+          <div style="width: 100px; height: 50px; background-color: green;">
+          </div>
+      </van-linear-layout>
+    </demo-block>
   </demo-section>
-
 </template>
 
 <script>
 export default {
-  mounted() {
-    this.$refs.linear1.openLoading()
-  }
 }
 </script>

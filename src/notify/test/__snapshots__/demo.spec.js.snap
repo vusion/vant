@@ -3,43 +3,43 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>基础用法</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">基础用法</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>主要通知</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">主要通知</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>成功通知</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">成功通知</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>危险通知</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">危险通知</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>警告通知</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-  </div>
-  <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>自定义颜色</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
-    </div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>自定义时长</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">警告通知</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>组件调用</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">自定义颜色</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">自定义时长</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
+    </div>
+  </div>
+  <div>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">组件调用</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
     <!---->
   </div>

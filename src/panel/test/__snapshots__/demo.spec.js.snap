@@ -4,11 +4,9 @@ exports[`renders demo correctly 1`] = `
 <div>
   <div>
     <div class="van-cell-group van-hairline--top-bottom van-panel">
-      <div class="van-cell van-panel__header">
-        <div class="van-cell__title"><span>标题</span>
-          <div class="van-cell__label">描述信息</div>
-        </div>
-        <div class="van-cell__value van-panel__header-value"><span>状态</span></div>
+      <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-panel__header">
+        <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">标题</div>
+        <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
       </div>
       <div class="van-panel__content">
         <div>内容</div>
@@ -17,18 +15,16 @@ exports[`renders demo correctly 1`] = `
   </div>
   <div>
     <div class="van-cell-group van-hairline--top-bottom van-panel">
-      <div class="van-cell van-panel__header">
-        <div class="van-cell__title"><span>标题</span>
-          <div class="van-cell__label">描述信息</div>
-        </div>
-        <div class="van-cell__value van-panel__header-value"><span>状态</span></div>
+      <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center van-panel__header">
+        <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">标题</div>
+        <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
       </div>
       <div class="van-panel__content">
         <div>内容</div>
       </div>
-      <div class="van-panel__footer van-hairline--top"><button class="van-button van-button--default van-button--small">
+      <div class="van-panel__footer van-hairline--top"><button class="van-button van-button--default van-button--small van-button--square">
           <div class="van-button__content"><span class="van-button__text">按钮</span></div>
-        </button> <button class="van-button van-button--danger van-button--small">
+        </button> <button class="van-button van-button--danger van-button--small van-button--square">
           <div class="van-button__content"><span class="van-button__text">
           按钮
         </span></div>

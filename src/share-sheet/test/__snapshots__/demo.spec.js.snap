@@ -3,30 +3,30 @@
 exports[`renders demo correctly 1`] = `
 <div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>显示分享面板</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">显示分享面板</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
     <!---->
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>显示分享面板</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">显示分享面板</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
     <!---->
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>显示分享面板</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">显示分享面板</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
     <!---->
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable">
-      <div class="van-cell__title"><span>显示分享面板</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-        <!----></i>
+    <div noallow="" role="button" tabindex="0" class="van-cell van-cell--clickable van-cell--center">
+      <div vusion-slot-name="title" vusion-slot-name-edit="title" class="van-cell__title">显示分享面板</div>
+      <van-icon name="arrow" class="van-cell__right-icon"></van-icon>
     </div>
     <!---->
   </div>

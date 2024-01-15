@@ -44,21 +44,21 @@ exports[`renders demo correctly 1`] = `
     </div>
   </div>
   <div>
-    <div class="van-picker">
+    <div class="van-picker" default-index="2">
       <div class="van-picker__toolbar"><button type="button" class="van-picker__cancel">取消</button>
         <div class="van-ellipsis van-picker__title">标题</div><button type="button" class="van-picker__confirm">确认</button>
       </div>
       <!---->
       <div class="van-picker__columns" style="height: 264px;">
         <div class="van-picker-column">
-          <ul class="van-picker-column__wrapper" style="transform: translate3d(0, 22px, 0); transition-duration: 0ms; transition-property: none;">
-            <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
+          <ul class="van-picker-column__wrapper" style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;">
+            <li role="button" tabindex="0" class="van-picker-column__item van-picker-column__item--selected" style="height: 44px;">
               <div class="van-ellipsis">杭州</div>
             </li>
             <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
               <div class="van-ellipsis">宁波</div>
             </li>
-            <li role="button" tabindex="0" class="van-picker-column__item van-picker-column__item--selected" style="height: 44px;">
+            <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
               <div class="van-ellipsis">温州</div>
             </li>
             <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
@@ -245,7 +245,7 @@ exports[`renders demo correctly 1`] = `
       <div class="van-picker__toolbar"><button type="button" class="van-picker__cancel">取消</button>
         <div class="van-ellipsis van-picker__title">标题</div><button type="button" class="van-picker__confirm">确认</button>
       </div>
-      <div class="van-loading van-loading--circular van-picker__loading"><span class="van-loading__spinner van-loading__spinner--circular"><svg viewBox="25 25 50 50" class="van-loading__circular"><circle cx="50" cy="50" r="20" fill="none"></circle></svg></span></div>
+      <div class="van-loading van-loading--circular van-picker__loading"><span class="van-loading__spinner van-loading__spinner--circular van-loading__rotate"><svg viewBox="25 25 50 50" class="van-loading__circular"><circle cx="50" cy="50" r="20" fill="none"></circle></svg></span></div>
       <div class="van-picker__columns" style="height: 264px;">
         <div class="van-picker-column column1">
           <ul class="van-picker-column__wrapper" style="transform: translate3d(0, 110px, 0); transition-duration: 0ms; transition-property: none;">
@@ -283,9 +283,9 @@ exports[`renders demo correctly 1`] = `
     </div>
   </div>
   <div>
-    <div role="button" tabindex="0" class="van-cell van-cell--clickable van-field">
-      <div class="van-cell__title van-field__label"><span>城市</span></div>
-      <div class="van-cell__value van-field__value">
+    <div label-layout="inline" noallow="" role="button" tabindex="0" class="van-cellson van-cellson--clickable van-cellson--center van-field">
+      <div vusion-slot-name="title" class="van-cellson__title van-field__label"><span>城市</span></div>
+      <div class="van-cellson__value van-field__value">
         <div class="van-field__body"><input type="text" readonly="readonly" placeholder="选择城市" class="van-field__control"></div>
       </div>
     </div>
