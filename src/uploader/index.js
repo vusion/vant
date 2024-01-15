@@ -352,10 +352,14 @@ export default createComponent({
             if (item.file) {
               if (isOversize(item.file, this.maxSize)) {
                 oversizeFiles.push(item);
-                Toast(_template(t('maxSize'), {
+                // Toast(_template(t('maxSize'), {
+                //   name: item.file.name,
+                //   size: this.maxSize,
+                // }));
+                item.errMsg = _template(t('maxSize'), {
                   name: item.file.name,
                   size: this.maxSize,
-                }));
+                });
               } else {
                 validFiles.push(item);
               }
@@ -363,12 +367,16 @@ export default createComponent({
           });
         } else {
           validFiles = null;
-          Toast(
-            _template(t('maxSize'), {
-              name: files.file.name,
-              size: this.maxSize,
-            })
-          );
+          // Toast(
+          //   _template(t('maxSize'), {
+          //     name: files.file.name,
+          //     size: this.maxSize,
+          //   })
+          // );
+          item.errMsg = _template(t('maxSize'), {
+            name: files.file.name,
+            size: this.maxSize,
+          });
         }
         this.$emit('oversize', oversizeFiles, this.getDetail());
       }
