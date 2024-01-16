@@ -1,5 +1,9 @@
 <template>
-<div :class="[$style.root, 'list-view']" :readonly="readonly" :readonly-mode="readonlyMode" :disabled="disabled"
+<div
+  :class="[$style.root, 'list-view']"
+  :readonly="readonly"
+  :readonly-mode="readonlyMode"
+  :disabled="disabled"
     :tabindex="readonly || disabled ? '' : 0"
     :vusion-designer="$env.VUE_APP_DESIGNER">
     <u-input
@@ -15,8 +19,15 @@
     </u-input>
 
     <div :class="$style.scrollwrap" @scroll="onScroll">
-      <van-pull-refresh :value="$env.VUE_APP_DESIGNER ? false : refreshing" :disabled="!pullRefresh || pageable === 'pagination'"
-        :pulling-text="pullingText" :loosing-text="loosingText" :loading-text="loadingText" :success-text="successText" :success-duration="successDuration" :pull-distance="pullDistance"
+      <van-pull-refresh
+        :value="$env.VUE_APP_DESIGNER ? false : refreshing"
+        :disabled="!pullRefresh || pageable === 'pagination'"
+        :pulling-text="pullingText"
+        :loosing-text="loosingText"
+        :loading-text="loadingText"
+        :success-text="successText"
+        :success-duration="successDuration"
+        :pull-distance="pullDistance"
         @refresh="refresh">
         <div ref="body" :class="$style.body">
             <slot></slot>
@@ -36,7 +47,14 @@
                     :item="item"
                     :index="index"
                     vusion-slot-name="item">
-                    <slot name="item" :item="item" :index="index" :text="$at(item, field || textField)" :value="$at(item, valueField)" :disabled="item.disabled || disabled">{{ $at(item, field || textField) }}
+                    <slot
+                      name="item"
+                      :item="item"
+                      :index="index"
+                      :text="$at(item, field || textField)"
+                      :value="$at(item, valueField)"
+                      :disabled="item.disabled || disabled">
+                        {{ $at(item, field || textField) }}
                         <van-empty-col v-if="(!$slots.item) && $env.VUE_APP_DESIGNER"></van-empty-col>
                     </slot>
                 </component>

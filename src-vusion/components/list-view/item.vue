@@ -1,7 +1,9 @@
 <template>
-  <div :class="[$style.root]"
+  <div
+    :class="[$style.root]"
       :selected="parentVM.selectable ? (parentVM.multiple ? currentSelected : isSelected) : false"
-      :readonly="parentVM.readonly" :readonly-mode="parentVM.readonlyMode"
+      :readonly="parentVM.readonly"
+      :readonly-mode="parentVM.readonlyMode"
       :disabled="disabled || parentVM.disabled"
       @click="onTap"
       v-ellipsis-title="ellipsisTitle"

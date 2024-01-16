@@ -333,6 +333,10 @@ module.exports = {
                 className: 'hide-in-weapp',
               },
               {
+                path: 'list-view',
+                title: 'ListView 列表',
+              },
+              {
                 path: 'for-components',
                 title: 'ForComponents 组件列表',
               },
