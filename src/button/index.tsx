@@ -150,9 +150,6 @@ function Button(
           to = props.destination;
         }
 
-        if (window.__wxjs_environment === 'miniprogram') {
-         return  window.appVue.prototype.$destination(props.destination)
-        }
 
         const currentTo = to || props.to;
         if (currentTo === undefined)
