@@ -1,21 +1,26 @@
 import _get from 'lodash/get';
+import BScroll from '@better-scroll/core';
+import PullDown from '@better-scroll/pull-down';
+import PullUp from '@better-scroll/pull-up';
 
 import { createNamespace } from '../utils';
-import DataSourceMixin from '../mixins/DataSource';
+import DataSourceMixin from '../mixins/DataSourceNew';
 import { ParentMixin } from '../mixins/relation';
 
 import EmptyCol from '../emptycol';
-import PullRefresh from '../pull-refresh';
-import List from '../list';
-import ListViewItem from './item';
+import Search from '../search';
+import ListViewItem from '../list-view-item';
 
-const [createComponent, bem] = createNamespace('list-view');
+BScroll.use(PullDown);
+BScroll.use(PullUp);
+
+const [createComponent, bem, t] = createNamespace('list-view');
+
+const THRESHOLD = 70;
+const STOP = 56;
 
 export default createComponent({
-  mixins: [
-    ParentMixin('vanListView'),
-    DataSourceMixin
-  ],
+  mixins: [ParentMixin('vanListView'), DataSourceMixin],
   props: {
     value: [Array, String, Number],
     pageable: { type: [Boolean, String], default: false },
@@ -45,67 +50,148 @@ export default createComponent({
     selectedIcon: { type: String },
     unselectedIcon: { type: String },
   },
-  data: {
-    refreshing: false,
+  data() {
+    return {
+      pullDownTip: '',
+    };
+  },
+  watch: {
+    data() {
+      this.$nextTick(() => {
+        this.bscroll.refresh();
+      });
+    },
+  },
+  computed: {
+    pullUpTip() {
+      if (this.currentLoading) {
+        return this.loadingText;
+      }
+
+      if (this.currentError) {
+        return this.errorText;
+      }
+
+      if (this.hasMore && this.pageable === 'load-more') {
+        return t('loadMore');
+      }
+
+      if (!this.hasMore && ['auto-more', 'load-more'].includes(this.pageable)) {
+        return t('noMore');
+      }
+
+      if (!this.data?.length) {
+        return t('empty');
+      }
+    },
+  },
+  mounted() {
+    this.initBscroll();
+  },
+  beforeDestroy() {
+    this.bscroll.destroy();
   },
   methods: {
-    onLoad() {
-      this.load(true);
+    initBscroll() {
+      this.bscroll = new BScroll(this.$refs.scroll, {
+        scrollY: true,
+        bounceTime: 500,
+        useTransition: false,
+
+        pullDownRefresh: this.pullRefresh
+          ? {
+              threshold: THRESHOLD,
+              stop: STOP,
+            }
+          : false,
+        pullUpLoad: true,
+      });
+
+      if (this.pullRefresh) {
+        this.bscroll.on('pullingDown', this.pullingDownHandler);
+        this.bscroll.on('enterThreshold', this.pullDownEnterThresholdHandler);
+        this.bscroll.on('leaveThreshold', this.pullDownLeaveThresholdHandler);
+      }
+
+      this.bscroll.on('pullingUp', this.pullingUpHandler);
     },
 
-    renderScrollList() {
-      console.log(this.currentData);
-      return (
-        <List
-          value={this.currentLoading}
-          error={this.currentError}
-          finished={false}
-          onLoad={this.onLoad}
-        >
-          {this.currentData.map((item, index) => {
-            if (!item) return null;
+    pullDownEnterThresholdHandler() {
+      this.pullDownTip = this.pullingText;
+    },
+    pullDownLeaveThresholdHandler() {
+      this.pullDownTip = this.loosingText;
+    },
 
-            return (
-              <ListViewItem
-                key={_get(item, this.valueField)}
-                value={_get(item, this.valueField)}
-                disabled={item.disabled}
-                item={item}
-                index={index}
-                selected={
-                  this.multiple
-                    ? this.value?.includes(_get(item, this.valueField))
-                    : this.value === _get(item, this.valueField)
-                }
-              >
-                {this.slots('item', {
-                  item,
-                  index,
-                }) || _get(item, this.textField)}
-              </ListViewItem>
-            );
-          })}
-        </List>
+    async pullingDownHandler() {
+      this.pullDownTip = '正在刷新...';
+      await this.reload();
+      this.pullDownTip = this.successText;
+
+      this.bscroll.finishPullDown();
+    },
+
+    async pullingUpHandler() {
+      if (this.hasMore && this.pageable === 'auto-more') {
+        await this.loadMore();
+      }
+      this.bscroll.finishPullUp();
+    },
+
+    renderSearch() {
+      if (!this.filterable) return null;
+
+      return (
+        <Search shape="round" vModel={this.filterText} />
       );
     },
   },
   render() {
     return (
       <div class={bem()}>
-        {this.slots()}
+        {this.renderSearch()}
 
-        <PullRefresh
-          value={this.inDesigner() ? false : this.refreshing}
-          disabled={!this.pullRefresh || this.pageable === 'pagination'}
-          pullingText={this.pullingText}
-          loosingText={this.loosingText}
-          loadingText={this.loadingText}
-          successText={this.successText}
-          successDuration={this.successDuration}
-          pullDistance={this.pullDistance}
-        >
-          {this.renderScrollList()}
-        </PullRefresh>
+        <div ref="scroll" class={bem('scroll-wrap')}>
+          <div class={bem('scroll-content')}>
+            {/* 下拉刷新文案 */}
+            {this.pullRefresh ? (
+              <div class={bem('pulldown-tips')}>
+                <span>{this.pullDownTip}</span>
+              </div>
+            ) : null}
+
+            {/* 列表 */}
+            <div class={bem('scroll-list')}>
+              {this.data.map((item, index) => {
+                if (!item) return null;
+                return (
+                  <ListViewItem
+                    key={_get(item, this.valueField)}
+                    value={_get(item, this.valueField)}
+                    disabled={item.disabled}
+                    item={item}
+                    index={index}
+                    selected={
+                      this.multiple
+                        ? this.value?.includes(_get(item, this.valueField))
+                        : this.value === _get(item, this.valueField)
+                    }
+                  >
+                    {this.slots('item', {
+                      item,
+                      index,
+                    }) || _get(item, this.textField)}
+                  </ListViewItem>
+                );
+              })}
+            </div>
+
+            {/* 加载更多文案 */}
+            <div class={bem('pullup-tips')}>
+              <span>{this.pullUpTip}</span>
+            </div>
+          </div>
+        </div>
       </div>
     );
   },

@@ -2,9 +2,29 @@
   display: flex;
   flex-direction: column;
   background: var(--van-list-view-bgcolor);
-  /* border: 1px solid var(--list-view-border-color); */
   border-radius: 4px;
   height: var(--van-list-view-height);
   min-width: 280px;
   max-width: 100%;
+}
+
+.van-list-view__scroll-wrap {
+  height: 100%;
+  overflow: hidden;
+}
+
+.van-list-view__pulldown-tips {
+  position: absolute;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  transform: translateY(-100%) translateZ(0);
+  text-align: center;
+}
+
+.van-list-view__pullup-tips {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
 }

@@ -160,6 +160,7 @@ const VueDataSource = Vue.extend({
             return totalPage;
         },
         viewData() {
+          console.log(11);
             if (this.pageable) {
               let data;
               if (this.viewMode === 'more') {
@@ -247,7 +248,7 @@ const VueDataSource = Vue.extend({
             return data;
         },
         clearLocalData() {
-            this.data = [];
+            // this.data = [];
             this.arrangedData = [];
             this.originTotal = Infinity; // originTotal 必须清空，否则空列表不会更新
             this.arranged = false;
@@ -307,10 +308,7 @@ const VueDataSource = Vue.extend({
             return this.arrangedData.slice(offset, newOffset);
         },
         // _load(params)
-        load(offset, limit, newPageNumber) {
-          if (offset === undefined) offset = this.offset;
-          if (limit === undefined) limit = this.limit;
-
+        load(offset = this.offset, limit = this.limit, newPageNumber) {
           // reload 或 query变化
           if (this.cleared || this.queryChanged) {
             if (this.paging) {
@@ -442,10 +440,13 @@ const VueDataSource = Vue.extend({
         reload() {
           this.remote = !!this._load;
           this.clearLocalData();
-          this.page({
-            ...(this.paging || {}),
-            number: 1,
-          });
+
+          if (this.pageable) {
+            this.page({
+              ...(this.paging || {}),
+              number: 1,
+            });
+          }
 
           this.load();
         },
