@@ -40,8 +40,8 @@ export default {
     return {
       data: [],
 
-      currentLoading: false,
-      currentError: false,
+      loading: false,
+      error: false,
 
       currentDataSource: undefined,
       currentPageNumer: this.pageNumber,
@@ -82,26 +82,38 @@ export default {
       },
     },
 
-    currentSorting: {
-      deep: true,
-      handler(sorting) {
-        this.setSort(sorting.field, sorting.order, sorting.compare);
-      }
-    },
+    // currentSorting: {
+    //   deep: true,
+    //   handler(sorting) {
+    //     this.setSort(sorting.field, sorting.order, sorting.compare);
+    //   }
+    // },
 
-    filtering: {
-      deep: true,
-      handler(filtering) {
-        this.setFilter(filtering);
-      },
-    },
+    // filtering: {
+    //   deep: true,
+    //   handler(filtering) {
+    //     this.setFilter(filtering);
+    //   },
+    // },
 
-    paging: {
-      deep: true,
-      handler(paging) {
-        this.setPage(paging.page, paging.size);
+    // paging: {
+    //   deep: true,
+    //   handler(paging) {
+    //     this.setPage(paging.page, paging.size);
+    //   }
+    // },
+
+    viewMode() {
+      if (!this.pageable) {
+        return false
       }
-    },
+
+      if (this.viewMode === 'pagination') {
+        return 'page'
+      }
+
+      return 'more'
+    }
   },
   computed: {
     inDesigner() {
@@ -172,7 +184,6 @@ export default {
     },
     getDataSourceOptions() {
       const options = {
-        viewMode: this.viewMode || 'more', // 'more' | 'page'
         needAllData: this.needAllRemoteData,
 
         sort: this.currentSorting,
@@ -226,18 +237,21 @@ export default {
         this.data = list;
       })
     },
-    setPage(page, size) {
-      this.currentDataSource.setPage(page, size).then(list => {
-        this.data = list;
+    setPage(paging = this.paging) {
+      this.currentDataSource.setPage(paging?.page, paging?.size).then(list => {
+        if(this.viewMode === 'page') {
+          this.data = list;
+        } else {
+          this.data = [...this.data, ...list];
+        }
       });
     },
-    setSort(field, order, compare) {
-      const sorting = { field, order, compare };
+    setSort(sorting = this.sorting) {
       this.currentDataSource.setSort(sorting).then((list) => {
         this.data = list;
       });
     },
-    setFilter(filtering) {
+    setFilter(filtering = this.filtering) {
       this.currentDataSource
         .setFilter(filtering, this.filterText)
         .then((list) => {
@@ -256,11 +270,11 @@ export default {
     },
 
     onLoadingChange(loading) {
-      this.currentLoading = loading;
+      this.loading = loading;
     },
 
     onErrorChange(error) {
-      this.currentError = error;
+      this.error = error;
     }
   },
 };

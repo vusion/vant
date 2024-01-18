@@ -803,6 +803,8 @@
   --van-list-view-striped-background: #f4f6f9; /* @type color */ /* @desc 斑马纹颜色 */
   --van-list-view-item-unselected-backgroud: transparent; /* @desc 列表项未选中背景 */ /* @prefix van-list-view-item */
   --van-list-view-item-selected-backgroud: transparent; /* @desc 列表项选中背景 */ /* @prefix van-list-view-item */
+  --van-list-view-item-unselected-icon-color: transparent; /* @type color */ /* @desc 列表项未选中图标颜色 */ /* @prefix van-list-view-item */
+  --van-list-view-item-selected-icon-color: transparent; /* @type color */ /* @desc 列表项选中图标颜色 */ /* @prefix van-list-view-item */
 
   /* @component van-fieldinput */
   --van-fieldinput-text-color: #333; /* @type color */ /* @desc 输入框文字颜色 */

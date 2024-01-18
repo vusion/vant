@@ -8,16 +8,31 @@ const [createComponent, bem] = createNamespace('list-view-item');
 export default createComponent({
   mixins: [ChildrenMixin('vanListView')],
   props: {
+    value: [String, Number],
     selected: { type: Boolean, default: false },
+    striped: { type: Boolean, default: false },
+  },
+  methods: {
+    onTap() {
+      this.$emit('select', {
+        value: this.value,
+        selected: this.selected,
+      });
+    },
   },
   render() {
     return (
-      <div class={bem()} selected={this.selected}>
+      <div
+        class={bem()}
+        selected={this.selected}
+        onClick={this.onTap}
+        striped={this.striped}
+      >
         <div class={bem('icon')}>
-          {this.parent.selectedIcon && this.selected && (
+          {this.selected && this.parent.selectedIcon && (
             <Iconv name={this.parent.selectedIcon} icotype="only" />
           )}
-          {this.parent.unselectedIcon && !this.selected && (
+          {!this.selected && this.parent.unselectedIcon && (
             <Iconv name={this.parent.unselectedIcon} icotype="only" />
           )}
         </div>

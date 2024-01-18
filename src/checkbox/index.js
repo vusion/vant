@@ -1,5 +1,4 @@
-import _get from 'lodash/get';
-import { createNamespace } from '../utils';
+import { createNamespace, _get } from '../utils';
 import { CheckboxMixin } from '../mixins/checkbox';
 
 const [createComponent, bem] = createNamespace('checkbox');
