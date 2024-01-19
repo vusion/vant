@@ -65,7 +65,7 @@
     </demo-block>
 
     <demo-block :title="t('title4')">
-      <van-tabs type="card" class="u-code-example_demo_">
+      <van-tabs type="card" class="u-code-example_demo_" style="--van-tabs-card-nav-margin: 0;">
         <van-tab v-for="index in 3" :title="t('tab') + index" :key="index">
           {{ t('content') }} {{ index }}
         </van-tab>
