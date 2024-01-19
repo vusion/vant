@@ -1,3 +1,4 @@
+import _debounce from 'lodash/debounce';
 // Utils
 import { createNamespace } from '../utils';
 import { emit, inherit } from '../utils/functional';
@@ -98,17 +99,14 @@ function Button(
     }
   }
 
-  async function onClick(event: Event) {
+  const onClick = _debounce(async (event: Event) => {
     if (props.loading) {
       event.preventDefault();
     }
+
     if (!loading && !disabled) {
-      // console.log(ctx, 'button ctx');
-      // console.log(ctx.parent.$router);
-      // console.log(ctx.parent.$route);
       emit(ctx, 'click', event);
       const hrefR = currentHref();
-      // console.log(hrefR, ctx.props)
       if (!ctx.props.nativeType && !hrefR && !ctx.listeners.click) {
         event.preventDefault();
       }
@@ -136,9 +134,6 @@ function Button(
         linkpao();
         return;
       }
-      // @ts-ignore：没办法
-      // if (props.target !== '_self')
-      //   return;
 
       if (hrefR === undefined) {
         let to;
@@ -193,10 +188,8 @@ function Button(
         }
         downloadClick();
       }
-
-      // functionalRoute(ctx);
     }
-  }
+  }, 300, { leading: true, trailing: false });
 
   function onTouchstart(event: TouchEvent) {
     emit(ctx, 'touchstart', event);
