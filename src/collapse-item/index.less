@@ -11,6 +11,12 @@
   }
 
   &__title {
+    &--hideLink {
+      .van-cell__right-icon {
+        opacity: 0;
+      }
+    }
+
     .van-cell__right-icon::before {
       // using translateZ to fix safari rendering issues
       // see: https://github.com/youzan/vant/issues/8608
