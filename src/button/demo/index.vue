@@ -217,6 +217,17 @@
         >
       </div>
     </demo-block>
+
+    <demo-block title="点击防抖">
+      <van-button
+        size="normal"
+        type="info"
+        class="u-code-example_demo_"
+        squareroud="round"
+        @click="onClick"
+        >{{ t('info') }}</van-button
+      >
+    </demo-block>
   </demo-section>
 </template>
 
@@ -285,6 +296,11 @@ export default {
       pure: 'Pure',
       gradient: 'Gradient',
       blockElement: 'Block Element'
+    }
+  },
+  methods: {
+    onClick() {
+      console.log('click');
     }
   }
 };
