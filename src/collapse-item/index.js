@@ -66,6 +66,14 @@ export default createComponent({
       }
 
     },
+
+    hasLinkSibling() {
+      if (this.parent) {
+        return this.parent.hasLinkChild;
+      }
+
+      return false;
+    }
   },
 
   created() {
@@ -156,12 +164,17 @@ export default createComponent({
         <Cell
           novalue={true}
           role="button"
-          class={bem('title', { disabled, expanded, borderless: !border })}
+          class={bem('title', {
+            disabled,
+            expanded,
+            borderless: !border,
+            hideLink: !this.isLink,
+          })}
           onClick={this.onClick}
           scopedSlots={titleSlots}
           tabindex={disabled ? -1 : 0}
           aria-expanded={String(expanded)}
-          {...{ props: this.$props }}
+          {...{ props: { ...this.$props, isLink: this.hasLinkSibling } }}
         />
       );
     },
