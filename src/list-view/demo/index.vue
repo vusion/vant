@@ -44,7 +44,7 @@
       </van-list-view>
     </demo-block>
 
-    <demo-block title="基础用法--加载更多">
+    <demo-block title="基础用法--自动加载更多">
       <van-list-view
         :data-source="fetchData"
         :pull-refresh="true"
@@ -57,6 +57,46 @@
               <div>{{ current.item }}</div>
             </template>
           </van-cell>
+        </template>
+      </van-list-view>
+    </demo-block>
+
+    <demo-block title="基础用法--点击加载更多">
+      <van-list-view
+        :data-source="fetchData"
+        :pull-refresh="true"
+        pageable="load-more"
+        :pageSize="20"
+      >
+        <template #item="current">
+          <van-cell :is-link="false">
+            <template #title>
+              <div>{{ current.item }}</div>
+            </template>
+          </van-cell>
+        </template>
+      </van-list-view>
+    </demo-block>
+
+    <demo-block title="基础用法--分页器">
+      <van-list-view
+        :data-source="fetchData"
+        pageable="pagination"
+        :pageSize="20"
+      >
+        <template #item="current">
+          <van-cell :is-link="false">
+            <template #title>
+              <div>{{ current.item }}</div>
+            </template>
+          </van-cell>
+        </template>
+
+        <template #prev>
+            上一页
+        </template>
+        <template #next>
+            下一页
         </template>
       </van-list-view>
     </demo-block>
@@ -136,7 +176,7 @@ export default {
       console.log('result', result);
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve([])
+          resolve(result)
         }, 1000)
       })
     }

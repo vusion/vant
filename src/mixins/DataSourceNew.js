@@ -34,14 +34,15 @@ export default {
     childrenField: { type: String, default: 'children' },
 
     // 其他
-    // needAllRemoteData: { type: Boolean, default: false }, // 由组件自己定义
+    // needAllData: { type: Boolean, default: false }, // 由组件自己定义
   },
   data() {
     return {
       data: [],
+      allData: [], // 用于分页查询时选中的回显
 
-      loading: false,
-      error: false,
+      fetchLoading: false,
+      fetchError: false,
 
       currentDataSource: undefined,
       currentPageNumer: this.pageNumber,
@@ -81,51 +82,18 @@ export default {
 
       },
     },
-
-    // currentSorting: {
-    //   deep: true,
-    //   handler(sorting) {
-    //     this.setSort(sorting.field, sorting.order, sorting.compare);
-    //   }
-    // },
-
-    // filtering: {
-    //   deep: true,
-    //   handler(filtering) {
-    //     this.setFilter(filtering);
-    //   },
-    // },
-
-    // paging: {
-    //   deep: true,
-    //   handler(paging) {
-    //     this.setPage(paging.page, paging.size);
-    //   }
-    // },
-
+  },
+  computed: {
     viewMode() {
       if (!this.pageable) {
         return false
       }
 
-      if (this.viewMode === 'pagination') {
-        return 'page'
+      if (this.pageable === 'pagination') {
+        return 'page';
       }
 
       return 'more'
-    }
-  },
-  computed: {
-    inDesigner() {
-      return this.$env && this.$env.VUE_APP_DESIGNER;
-    },
-
-    currentData() {
-      return this.currentDataSource?.list || [];
-    },
-
-    allData() {
-      return this.currentDataSource?.allData || [];
     },
 
     paging() {
@@ -152,6 +120,10 @@ export default {
     hasMore() {
       return this.currentDataSource?.hasMore;
     },
+
+    total() {
+      return this.currentDataSource?.total;
+    }
   },
 
   created() {
@@ -172,7 +144,6 @@ export default {
   },
   methods: {
     initData() {
-      if (this.inDesigner) return;
       this.currentDataSource = normalizeDataSource(
         this.dataSource,
         this.getDataSourceOptions()
@@ -181,11 +152,13 @@ export default {
       if (this.currentDataSource && this.initialLoad) {
         this.load();
       }
+
+      if (this.needAllData) {
+        this.loadAllData();
+      }
     },
     getDataSourceOptions() {
       const options = {
-        needAllData: this.needAllRemoteData,
-
         sort: this.currentSorting,
         filter: this.filtering,
         ...(this.paging || {}),
@@ -239,6 +212,7 @@ export default {
     },
     setPage(paging = this.paging) {
       this.currentDataSource.setPage(paging?.page, paging?.size).then(list => {
+        console.log('this.viewMode', this.viewMode);
         if(this.viewMode === 'page') {
           this.data = list;
         } else {
@@ -259,6 +233,14 @@ export default {
         });
     },
 
+    loadAllData() {
+      if (!this.currentDataSource) return Promise.reject();
+
+      return this.currentDataSource.load(1, null).then(list => {
+        this.allData = list;
+      })
+    },
+
     onPageChange(page) {
       this.currentPageNumer = page;
 
@@ -270,11 +252,11 @@ export default {
     },
 
     onLoadingChange(loading) {
-      this.loading = loading;
+      this.fetchLoading = loading;
     },
 
     onErrorChange(error) {
-      this.error = error;
+      this.fetchError = error;
     }
   },
 };

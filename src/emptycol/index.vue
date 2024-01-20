@@ -3,8 +3,17 @@
 </template>
 
 <script>
+
+import { SlotsMixin } from '../mixins/slots';
+
 export default {
-  name: 'VanEmptyCol',
+  name: 'van-empty-col',
+  mixins: [SlotsMixin],
+  computed: {
+    visible() {
+      return this.inDesigner();
+    },
+  }
 };
 </script>
 

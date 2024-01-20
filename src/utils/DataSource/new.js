@@ -99,7 +99,7 @@ export default class DataSource extends EventEmitter {
     }
   }
 
-  load(page = this.page) {
+  load(page = this.page, size = this.size) {
     if (this.loading) {
       return Promise.reject();
     }
@@ -119,7 +119,7 @@ export default class DataSource extends EventEmitter {
 
     const params = {
       page,
-      size: this.size,
+      size,
       sort: this.sort?.sort,
       order: this.sort?.order,
       filterText: this.filterText,
@@ -181,15 +181,15 @@ export default class DataSource extends EventEmitter {
   }
 
   setFilter(filter, text = '') {
-    this.filterText = text;
     this.filter = filter;
-    console.log('筛选', filter, text);
+    this.filterText = text;
     return this.reload();
   }
 
   setPage(page = this.page, size = this.size) {
     this.page = page;
     this.size = size;
+    this.emit('pageUpdate', page);
     return this.load();
   }
 
