@@ -184,7 +184,7 @@ exports[`renders demo correctly 1`] = `
     </div>
   </div>
   <div>
-    <div class="u-code-example_demo_ van-tabs van-tabs--card">
+    <div class="u-code-example_demo_ van-tabs van-tabs--card" style="--van-tabs-card-nav-margin: 0;">
       <div class="van-tabs__wrap">
         <div role="tablist" class="van-tabs__nav van-tabs__nav--card">
           <div role="tab" aria-selected="true" class="van-tab van-tab--active" undefined="" vusion-slot-name="title"><span vusion-slot-name-edit="title" class="van-tab__text van-tab__text--ellipsis">标签 1</span></div>

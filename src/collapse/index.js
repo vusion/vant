@@ -34,6 +34,11 @@ export default createComponent({
       }
     },
   },
+  computed: {
+    hasLinkChild() {
+      return this.children.some((child) => child.isLink);
+    }
+  },
   methods: {
     fromValue(value) {
       try {

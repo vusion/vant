@@ -200,16 +200,6 @@ export default createComponent({
     },
     currentValue(val) {
       this.tempValue = val;
-
-      const date = dayjs(val);
-      this.$emit(
-        'update:value',
-        date.isValid() ? date.format('YYYY-MM-DD') : val
-      );
-      this.$emit(
-        'update:default-date',
-        date.isValid() ? date.format('YYYY-MM-DD') : val
-      );
     },
     defaultDate: {
       handler(val) {
@@ -292,8 +282,13 @@ export default createComponent({
 
       return '';
     },
-    setCurrentDate(date) {
-      this.currentValue = date;
+    setCurrentDate(val) {
+      this.currentValue = val;
+
+      const date = dayjs(this.currentValue);
+      const value = date.isValid() ? date.format('YYYY-MM-DD') : this.currentValue;
+      this.$emit('update:value', value);
+      this.$emit('update:default-date', value);
     },
     ifDesigner() {
       return this.$env && this.$env.VUE_APP_DESIGNER;
@@ -308,8 +303,13 @@ export default createComponent({
       }
     },
     // @exposed-api
-    reset(date = this.getInitialDate()) {
-      this.currentValue = date;
+    reset(val = this.getInitialDate()) {
+      this.currentValue = val;
+
+      const date = dayjs(this.currentValue);
+      const value = date.isValid() ? date.format('YYYY-MM-DD') : this.currentValue;
+      this.$emit('update:value', value);
+      this.$emit('update:default-date', value);
       this.scrollIntoView();
     },
 
@@ -453,7 +453,13 @@ export default createComponent({
 
     onConfirm() {
       this.currentValue = this.currentDate;
-      this.$emit('confirm', dayjs(this.currentValue).format('YYYY-MM-DD'));
+
+      const date = dayjs(this.currentValue);
+      const value = date.isValid() ? date.format('YYYY-MM-DD') : this.currentValue;
+      this.$emit('update:value', value);
+      this.$emit('update:default-date', value);
+
+      this.$emit('confirm', value);
 
       this.togglePopup();
     },
