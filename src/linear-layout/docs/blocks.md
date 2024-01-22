@@ -8,7 +8,7 @@
 ### 多行排布
 
 ``` html
-<van-linear-layout direction="vertical">
+<van-linear-layout direction="vertical" gap="none">
     <van-linear-layout>
     </van-linear-layout>
     <van-linear-layout>
