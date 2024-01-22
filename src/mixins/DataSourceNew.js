@@ -211,7 +211,7 @@ export default {
       })
     },
     setPage(paging = this.paging) {
-      this.currentDataSource.setPage(paging?.page, paging?.size).then(list => {
+      return this.currentDataSource.setPage(paging?.page, paging?.size).then(list => {
         console.log('this.viewMode', this.viewMode);
         if(this.viewMode === 'page') {
           this.data = list;
@@ -221,12 +221,12 @@ export default {
       });
     },
     setSort(sorting = this.sorting) {
-      this.currentDataSource.setSort(sorting).then((list) => {
+      return this.currentDataSource.setSort(sorting).then((list) => {
         this.data = list;
       });
     },
     setFilter(filtering = this.filtering) {
-      this.currentDataSource
+      return this.currentDataSource
         .setFilter(filtering, this.filterText)
         .then((list) => {
           this.data = list;

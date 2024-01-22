@@ -184,6 +184,10 @@ export default createComponent({
       this.setPage({
         page,
         size: this.currentPageSize,
+      }).then(() => {
+        this.$nextTick(() => {
+          this.bscroll && this.bscroll.scrollTo(0, 0);
+        });
       })
     },
 
