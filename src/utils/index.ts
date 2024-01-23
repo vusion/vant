@@ -105,3 +105,11 @@ export function _template(template: string, data: any): string {
 
   return compiled(data);
 }
+
+export function delay(timeout: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, timeout);
+  });
+}

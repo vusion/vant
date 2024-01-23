@@ -48,6 +48,10 @@
       <van-list-view
         :data-source="fetchData"
         :pull-refresh="true"
+        pulling-text="自定义下拉刷新文案"
+        loosing-text="自定义释放刷新文案"
+        success-text="自定义刷新成功文案"
+        :success-duration="1000"
         pageable="auto-more"
         :pageSize="20"
         @before-load="onBeforeLoad"
@@ -159,6 +163,8 @@
       </van-list-view>
     </demo-block>
 
+
+
   </demo-section>
 </template>
 
@@ -190,7 +196,8 @@ export default {
       })
     },
     onBeforeLoad(event) {
-      event.preventDefault();
+      console.log('onBeforeLoad');
+      // event.preventDefault();
     },
     onLoad(event) {
       console.log('onLoad');

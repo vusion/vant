@@ -55,9 +55,16 @@
 
 .van-list-view__pullup-tips {
   width: 100%;
-  padding: 20px;
   box-sizing: border-box;
   text-align: center;
+  padding: 20px;
+  transition: padding 0.5s;
+  height: 20px;
+
+  &--hide {
+    padding: 0px;
+    height: 0px;
+  }
 }
 
 // .van-list-view__empty {

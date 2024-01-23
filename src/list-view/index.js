@@ -3,7 +3,7 @@ import BScroll from '@better-scroll/core';
 import PullDown from '@better-scroll/pull-down';
 import PullUp from '@better-scroll/pull-up';
 
-import { createNamespace, _get } from '../utils';
+import { createNamespace, _get, delay } from '../utils';
 import DataSourceMixin from '../mixins/DataSourceNew';
 import { ParentMixin } from '../mixins/relation';
 
@@ -16,8 +16,9 @@ BScroll.use(PullUp);
 
 const [createComponent, bem, t] = createNamespace('list-view');
 
-const THRESHOLD = 70;
-const STOP = 56;
+const LOADING_TEXT = '正在加载中...';
+const ERROR_TEXT = '加载失败，请重试';
+const EMPTY_TEXT = '暂无数据';
 
 export default createComponent({
   mixins: [ParentMixin('vanListView'), DataSourceMixin],
@@ -37,11 +38,11 @@ export default createComponent({
     pullDistance: { type: Number, default: 50 },
 
     designerMode: { type: String, default: 'success' },
-    loading: { type: Boolean },
-    loadingText: { type: String, default: '正在加载中...' },
-    error: { type: Boolean },
-    errorText: { type: String, default: '加载失败，请重试' },
-    emptyText: { type: String, default: '暂无数据' },
+    loading: { type: Boolean, default: false },
+    loadingText: { type: String, default: LOADING_TEXT },
+    error: { type: Boolean, default: false },
+    errorText: { type: String, default: ERROR_TEXT },
+    emptyText: { type: String, default: EMPTY_TEXT },
 
     striped: { type: Boolean, default: false },
 
@@ -65,12 +66,29 @@ export default createComponent({
         this.bscroll && this.bscroll.refresh();
       });
     },
+
+    loading(val) {
+      this.fetchLoading = val;
+    },
+    error(val) {
+      this.fetchError = val;
+    }
   },
   computed: {
-    pullUpTipVisible() {
-      return ['auto-more', 'load-more'].includes(this.pageable);
-    },
     pullUpTip() {
+      if (this.inDesigner()) {
+        switch (this.designerMode) {
+          case 'empty':
+            return this.emptyText;
+          case 'loading':
+            return this.loadingText;
+          case 'error':
+            return this.errorText;
+          default:
+            break;
+        }
+      }
+
       if (this.fetchLoading) {
         return this.loadingText;
       }
@@ -92,7 +110,7 @@ export default createComponent({
       }
 
       if (!this.data?.length) {
-        return t('empty');
+        return this.emptyText;
       }
     },
   },
@@ -105,7 +123,7 @@ export default createComponent({
   },
   methods: {
     initBscroll() {
-      if (this.inDesigner()) return;
+      // if (this.inDesigner()) return;
 
       this.bscroll = new BScroll(this.$refs.scroll, {
         scrollY: true,
@@ -115,8 +133,8 @@ export default createComponent({
 
         pullDownRefresh: this.pullRefresh
           ? {
-              threshold: THRESHOLD,
-              stop: STOP,
+              threshold: this.pullDistance,
+              stop: this.pullDistance,
             }
           : false,
         pullUpLoad: true,
@@ -139,10 +157,11 @@ export default createComponent({
     },
 
     async pullingDownHandler() {
-      this.pullDownTip = '正在刷新...';
+      this.pullDownTip = '加载中...';
       await this.reload();
       this.pullDownTip = this.successText;
 
+      await delay(this.successDuration);
       this.bscroll.finishPullDown();
     },
 
@@ -199,7 +218,7 @@ export default createComponent({
         this.$nextTick(() => {
           this.bscroll && this.bscroll.scrollTo(0, 0);
         });
-      })
+      });
     },
 
     renderSearch() {
@@ -228,10 +247,7 @@ export default createComponent({
         });
 
         if (!slot) {
-          slot = [
-            _get(item, this.textField),
-            <EmptyCol></EmptyCol>
-          ]
+          slot = [_get(item, this.textField), <EmptyCol></EmptyCol>];
         }
 
         return (
@@ -273,7 +289,11 @@ export default createComponent({
             </div>
 
             {/* 加载更多文案 */}
-            <div vShow={this.pullUpTipVisible} class={bem('pullup-tips')}>
+            <div
+              class={bem('pullup-tips', {
+                hide: !this.pullUpTip,
+              })}
+            >
               <span>{this.pullUpTip}</span>
             </div>
           </div>
