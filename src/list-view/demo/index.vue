@@ -50,6 +50,8 @@
         :pull-refresh="true"
         pageable="auto-more"
         :pageSize="20"
+        @before-load="onBeforeLoad"
+        @load="onLoad"
       >
         <template #item="current">
           <van-cell :is-link="false">
@@ -122,6 +124,9 @@
         :value.sync="value"
         selectedIcon="success"
         style="--van-list-view-item-selected-backgroud: red; --van-list-view-item-selected-icon-color: white;"
+        @input="onInput"
+        @select="onSelect"
+        @change="onChange"
       >
         <template #item="current">
           <van-cell :is-link="false">
@@ -140,6 +145,9 @@
         multiple
         selectedIcon="success"
         style="--van-list-view-item-selected-backgroud: red; --van-list-view-item-selected-icon-color: white;"
+        @input="onInput"
+        @select="onSelect"
+        @change="onChange"
       >
         <template #item="current">
           <van-cell :is-link="false">
@@ -150,6 +158,7 @@
         </template>
       </van-list-view>
     </demo-block>
+
   </demo-section>
 </template>
 
@@ -179,6 +188,21 @@ export default {
           resolve(result)
         }, 1000)
       })
+    },
+    onBeforeLoad(event) {
+      event.preventDefault();
+    },
+    onLoad(event) {
+      console.log('onLoad');
+    },
+    onInput(value) {
+      console.log('onInput', value);
+    },
+    onSelect(value) {
+      console.log('onSelect', value);
+    },
+    onChange(value) {
+      console.log('onChange', value);
     }
   }
 }

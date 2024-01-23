@@ -5,6 +5,7 @@ import '../../locale';
 import { isFunction } from '..';
 import { camelize } from '../format/string';
 import { SlotsMixin } from '../../mixins/slots';
+import { EmitMixin } from '../../mixins/emit'
 import Vue, {
   VNode,
   VueConstructor,
@@ -76,6 +77,7 @@ export function createComponent(name: string) {
     if (!sfc.functional) {
       sfc.mixins = sfc.mixins || [];
       sfc.mixins.push(SlotsMixin);
+      sfc.mixins.push(EmitMixin);
     }
 
     sfc.name = name;

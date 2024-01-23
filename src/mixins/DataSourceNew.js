@@ -188,31 +188,48 @@ export default {
     load() {
       if (!this.currentDataSource) return Promise.reject();
 
+      // 加载前
+      if (this.emitPrevent('before-load')) {
+        return Promise.resolve();
+      }
+
       return this.currentDataSource.load().then(list => {
         this.data = list;
-        this.$emit('load', undefined, this);
+        this.$emit('load');
       })
     },
 
     loadMore() {
       if (!this.currentDataSource) return Promise.reject();
 
-      return this.currentDataSource.loadMore().then(list => {
+      // 加载前
+      if (this.emitPrevent('before-load')) {
+        return Promise.resolve();
+      }
+
+      return this.currentDataSource.loadMore().then((list) => {
         this.data = [...this.data, ...list];
-      })
+        this.$emit('load');
+      });
     },
 
     // 对外暴露的API
     reload() {
       if (!this.currentDataSource) return Promise.reject();
 
-      return this.currentDataSource.reload().then(list => {
+      // 加载前
+      if (this.emitPrevent('before-load')) {
+        return Promise.resolve();
+      }
+
+      return this.currentDataSource.reload().then((list) => {
         this.data = list;
-      })
+        this.$emit('load');
+      });
     },
     setPage(paging = this.paging) {
       return this.currentDataSource.setPage(paging?.page, paging?.size).then(list => {
-        console.log('this.viewMode', this.viewMode);
+
         if(this.viewMode === 'page') {
           this.data = list;
         } else {

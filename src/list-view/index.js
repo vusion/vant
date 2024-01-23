@@ -175,10 +175,17 @@ export default createComponent({
         this.currentValue = value;
       }
 
+      this.$emit('input', this.currentValue);
       this.$emit('update:value', this.currentValue);
-      this.$emit('change', {
+      this.$emit('select', {
+        value: this.currentValue,
         item,
-        value,
+        selected: !selected,
+      });
+
+      this.$emit('change', {
+        value: this.currentValue,
+        item,
       });
     },
 
