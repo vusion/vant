@@ -8,6 +8,7 @@ const [createComponent, bem] = createNamespace('list-view-item');
 export default createComponent({
   mixins: [ChildrenMixin('vanListView')],
   props: {
+    item: Object,
     value: [String, Number],
     selected: { type: Boolean, default: false },
     striped: { type: Boolean, default: false },
@@ -17,6 +18,7 @@ export default createComponent({
       this.$emit('select', {
         value: this.value,
         selected: this.selected,
+        item: this.item,
       });
     },
   },

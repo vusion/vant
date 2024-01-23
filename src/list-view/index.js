@@ -158,7 +158,7 @@ export default createComponent({
     },
 
     onSelectItem(event) {
-      const { value, selected } = event;
+      const { value, selected, item } = event;
 
       // 当前选中，需要取消选中
       if (selected) {
@@ -176,6 +176,10 @@ export default createComponent({
       }
 
       this.$emit('update:value', this.currentValue);
+      this.$emit('change', {
+        item,
+        value,
+      });
     },
 
     onPaginationChange(page) {
@@ -232,6 +236,7 @@ export default createComponent({
                 ? this.value?.includes(_get(item, this.valueField))
                 : this.value === _get(item, this.valueField)
             }
+            item={item}
             onSelect={this.onSelectItem}
             striped={this.striped}
           >
