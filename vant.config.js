@@ -428,6 +428,15 @@ module.exports = {
             ],
           },
           {
+            title: '流程组件',
+            items: [
+              {
+                path: 'my-process',
+                title: 'MyProcess 流程',
+              }
+            ]
+          },
+          {
             title: '业务组件',
             items: [
               {
