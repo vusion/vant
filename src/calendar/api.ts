@@ -120,7 +120,7 @@ namespace nasl.ui {
         concept: "InputSetter"
       }
     })
-    placeholder: nasl.core.String = '请选择';
+    placeholder: nasl.core.String;
     @Event({
       title: '确认',
       description: '点击完成按钮时触发的事件'

@@ -328,7 +328,6 @@
     - name: placeholder
       title: 占位提示
       type: string
-      default: 请选择
       group: 主要属性
       description: ""
   slots:
