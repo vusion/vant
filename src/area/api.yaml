@@ -82,6 +82,11 @@
       title: 禁用
       type: boolean
       default: false
+    - name: placeholder
+      title: 占位提示
+      type: string
+      group: 主要属性
+      description: ""
   slots: false
   events:
     - name: confirm

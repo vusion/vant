@@ -67,6 +67,11 @@
       type: boolean
       default: false
       description: 是否点击遮罩层后关闭
+    - name: placeholder
+      title: 占位提示
+      type: string
+      group: 主要属性
+      description: ""
   slots: false
   events:
     - name: confirm

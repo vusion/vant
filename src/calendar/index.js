@@ -41,6 +41,9 @@ export default createComponent({
     rowHeight: [Number, String],
     confirmText: String,
     rangePrompt: String,
+    placeholder: {
+      type: String,
+    },
     labelField: {
       type: String,
       default: '',
@@ -509,6 +512,7 @@ export default createComponent({
             scopedSlots={tempSlot}
             readonly
             disabled={this.disabled}
+            placeholder={this.placeholder}
             isLink
             input-align={this.inputAlign || 'right'}
             onClick={this.togglePopup}

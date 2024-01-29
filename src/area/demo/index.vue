@@ -29,6 +29,11 @@
         </van-area>
     </demo-block>
 
+    <demo-block card title="占位符">
+        <van-area placeholder="请选择">
+          <template #title>标题</template>
+        </van-area>
+    </demo-block>
   </demo-section>
 </template>
 
