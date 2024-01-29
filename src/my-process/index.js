@@ -4,7 +4,6 @@ import { createNamespace } from '../utils';
 
 import Tabs from '../tabs';
 import Tab from '../tab';
-// import ListView from '../list-view';
 import PullRefresh from '../pull-refresh';
 import List from '../list';
 
@@ -98,24 +97,28 @@ export default createComponent({
         result = {
           list: mockData[type].slice((page - 1) * size, page * size),
           total: mockData[type].length,
-        }
+        };
       }
 
       return result;
     },
 
-    onLoad: _debounce(async function (type) {
-      if (this[`${type}Refresh`]) return;
-      console.log('onLoad', type);
+    onLoad: _debounce(
+      async function (type) {
+        if (this[`${type}Refresh`]) return;
+        console.log('onLoad', type);
 
-      const result = await this.fetchData(type);
-      const { list, total } = result;
+        const result = await this.fetchData(type);
+        const { list, total } = result;
 
-      this[type].push(...list);
-      this[`${type}Total`] = total;
-      this[`${type}Finished`] = this[type].length >= total;
-      this[`${type}Filter`].page += 1;
-    }, 500, { leading: true, trailing: false }),
+        this[type].push(...list);
+        this[`${type}Total`] = total;
+        this[`${type}Finished`] = this[type].length >= total;
+        this[`${type}Filter`].page += 1;
+      },
+      500,
+      { leading: true, trailing: false }
+    ),
 
     async reload(type) {
       console.log('reload', type);
@@ -140,26 +143,39 @@ export default createComponent({
       }
     },
 
+    async onGotoDetail(taskId) {
+      const result = await this.$processV2.getTaskDestinationUrl({
+          body: {
+              taskId,
+          },
+      });
+      const url = window.location.origin + result.data;
+      window.location.href = url;
+    },
+
     // 筛选工具区
     toolbarRender() {
-      return (
-        <Toolbar tab={this.currentTab} onChange={this.onToolbarChange} />
-      );
+      return <Toolbar tab={this.currentTab} onChange={this.onToolbarChange} />;
     },
 
     cardRender(data) {
       const {
+        taskId,
         processType: type,
         currentNodeList,
         startBy: initiator,
         processStartTime: startTime,
       } = data || {};
 
-      const nodes = (currentNodeList || []).map((item) => item.currentNode).join('，');
-      const assignees = (currentNodeList || []).map((item) => item.currentAssignees.join('，')).join('，');
+      const nodes = (currentNodeList || [])
+        .map((item) => item.currentNode)
+        .join('，');
+      const assignees = (currentNodeList || [])
+        .map((item) => item.currentAssignees.join('，'))
+        .join('，');
 
       return (
-        <div class={bem('item-card')}>
+        <div class={bem('item-card')} onClick={() => this.onGotoDetail(taskId)}>
           <div class={bem('item-card-line')}>
             <div class={bem('item-card-title')}>{t('type')}</div>
             <div class={bem('item-card-content')}>{type || '-'}</div>

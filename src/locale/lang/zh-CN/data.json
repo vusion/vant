@@ -48,5 +48,12 @@
 
   "vanMyProcessToolbar_process": "流程",
   "vanMyProcessToolbar_initiator": "发起人",
-  "vanMyProcessToolbar_startTime": "发起时间"
+  "vanMyProcessToolbar_startTime": "发起时间",
+
+  "vanProcessButton_submit": "提交",
+  "vanProcessButton_reject": "回退",
+  "vanProcessButton_transmit": "转交",
+  "vanProcessButton_more": "更多",
+  "vanProcessButton_agree": "同意",
+  "vanProcessButton_disagree": "不同意"
 }

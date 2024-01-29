@@ -433,8 +433,16 @@ module.exports = {
               {
                 path: 'my-process',
                 title: 'MyProcess 流程',
-              }
-            ]
+              },
+              {
+                path: 'process-button',
+                title: 'ProcessButton 流程按钮',
+              },
+              {
+                path: 'process-info',
+                title: 'ProcessInfo 流程信息',
+              },
+            ],
           },
           {
             title: '业务组件',
