@@ -29,6 +29,18 @@
         ></van-calendar>
       </van-cell>
     </demo-block>
+
+    <demo-block title="占位符">
+      <van-cell>
+        <template #title>
+          <span>日期选择</span>
+        </template>
+        <van-calendar
+          title="选择日期"
+          placeholder="请选择日期"
+        ></van-calendar>
+      </van-cell>
+    </demo-block>
   </demo-section>
 </template>
 

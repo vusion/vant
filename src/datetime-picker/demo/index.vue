@@ -117,8 +117,8 @@
           <van-datetime-picker :value.sync="value.secondTime" type="time" unit="second" :title="t('timeType')" />
       </demo-block>
 
-      <demo-block card title="临时测试">
-          <van-datetime-picker :close-on-click-overlay="true" type="date" />
+      <demo-block card title="占位符">
+          <van-datetime-picker :close-on-click-overlay="true" type="date" placeholder="请选择日期时间" />
       </demo-block>
   </demo-section>
 </template>
