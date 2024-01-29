@@ -6,6 +6,7 @@ import Tabs from '../tabs';
 import Tab from '../tab';
 import PullRefresh from '../pull-refresh';
 import List from '../list';
+import Iconv from '../iconv';
 
 import Toolbar from './toolbar';
 
@@ -14,10 +15,6 @@ import mockData from './mock.json';
 const [createComponent, bem, t] = createNamespace('my-process');
 
 export default createComponent({
-  props: {
-    taskId: [String, Number],
-  },
-
   data() {
     return {
       currentTab: 'myPendingTaskList',
@@ -67,10 +64,29 @@ export default createComponent({
     };
   },
 
+  created() {
+    location.search
+      .replace('?', '')
+      .split('&')
+      .forEach((item) => {
+        const [key, value] = item.split('=');
+        if (key === 'taskId') {
+          this.taskId = value;
+        }
+      });
+  },
+
+  mounted() {
+    if (this.inDesigner()) {
+      this.myPendingTaskList = mockData.myPendingTaskList;
+    }
+  },
+
   methods: {
     async fetchData(type) {
+      if (this.inDesigner()) return;
+
       const filter = this[`${type}Filter`];
-      console.log('filter: ', filter);
       const { page, size, ...rest } = filter;
 
       let result;
@@ -105,8 +121,9 @@ export default createComponent({
 
     onLoad: _debounce(
       async function (type) {
+        if (this.inDesigner()) return;
+
         if (this[`${type}Refresh`]) return;
-        console.log('onLoad', type);
 
         const result = await this.fetchData(type);
         const { list, total } = result;
@@ -121,8 +138,6 @@ export default createComponent({
     ),
 
     async reload(type) {
-      console.log('reload', type);
-
       // 重置分页
       this[`${type}Filter`].page = 1;
 
@@ -145,9 +160,9 @@ export default createComponent({
 
     async onGotoDetail(taskId) {
       const result = await this.$processV2.getTaskDestinationUrl({
-          body: {
-              taskId,
-          },
+        body: {
+          taskId,
+        },
       });
       const url = window.location.origin + result.data;
       window.location.href = url;
@@ -161,6 +176,7 @@ export default createComponent({
     cardRender(data) {
       const {
         taskId,
+        processTitle: title,
         processType: type,
         currentNodeList,
         startBy: initiator,
@@ -176,24 +192,29 @@ export default createComponent({
 
       return (
         <div class={bem('item-card')} onClick={() => this.onGotoDetail(taskId)}>
+          <div class={bem('item-card-title')}>
+            {title}
+            <Iconv name="right-arrow" size={12}></Iconv>
+          </div>
+
           <div class={bem('item-card-line')}>
-            <div class={bem('item-card-title')}>{t('type')}</div>
+            <div class={bem('item-card-label')}>{t('type')}</div>
             <div class={bem('item-card-content')}>{type || '-'}</div>
           </div>
           <div class={bem('item-card-line')}>
-            <div class={bem('item-card-title')}>{t('currentNode')}</div>
+            <div class={bem('item-card-label')}>{t('currentNode')}</div>
             <div class={bem('item-card-content')}>{nodes || '-'}</div>
           </div>
           <div class={bem('item-card-line')}>
-            <div class={bem('item-card-title')}>{t('currentAssignee')}</div>
+            <div class={bem('item-card-label')}>{t('currentAssignee')}</div>
             <div class={bem('item-card-content')}>{assignees || '-'}</div>
           </div>
           <div class={bem('item-card-line')}>
-            <div class={bem('item-card-title')}>{t('initiator')}</div>
+            <div class={bem('item-card-label')}>{t('initiator')}</div>
             <div class={bem('item-card-content')}>{initiator || '-'}</div>
           </div>
           <div class={bem('item-card-line')}>
-            <div class={bem('item-card-title')}>{t('startTime')}</div>
+            <div class={bem('item-card-label')}>{t('startTime')}</div>
             <div class={bem('item-card-content')}>
               {dayjs(startTime).format('YYYY-MM-DD HH:mm:ss')}
             </div>

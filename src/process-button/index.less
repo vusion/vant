@@ -1,3 +1,5 @@
+@import '../style/var';
+
 .van-process-button__wrap {
   padding: 8px 16px;
 
@@ -24,6 +26,8 @@
 }
 
 .van-process-button__dialog {
+  padding: 10px 24px !important;
+
   &-message {
 
   }
@@ -37,4 +41,32 @@
     text-align: left;
   }
 
+  &-picker {
+    box-sizing: border-box;
+    padding: 0 8px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #DADEE8;
+    text-align: left;
+  }
+
+}
+
+.van-process-button__link {
+  display: none;
+}
+
+
+.van-process-button__popover-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: @popover-action-width;
+  height: @popover-action-height;
+  padding: 0 @padding-md;
+  font-size: @popover-action-font-size;
+  line-height: @line-height-md;
+  cursor: pointer;
 }

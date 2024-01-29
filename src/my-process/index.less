@@ -56,6 +56,32 @@
 
 }
 
+.van-my-process__item-card-title {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #333333;
+  position: relative;
+  height: 30px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left bottom;
+    border-bottom: 1px solid #E5E5E5;
+  }
+}
+
 .van-my-process__item-card-line {
   display: flex;
   flex-direction: row;
@@ -64,7 +90,7 @@
   gap: 8px;
 }
 
-.van-my-process__item-card-title {
+.van-my-process__item-card-label {
   color: #999999;
   flex-shrink: 0;
 

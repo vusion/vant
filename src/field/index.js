@@ -255,6 +255,7 @@ export default createComponent({
 
         // 选择器
         if (this.children?.$options?._componentTag === 'van-pickerson') {
+          console.log(11, this.children.value);
           return this.children.value;
         }
 
