@@ -55,5 +55,11 @@
   "vanProcessButton_transmit": "转交",
   "vanProcessButton_more": "更多",
   "vanProcessButton_agree": "同意",
-  "vanProcessButton_disagree": "不同意"
+  "vanProcessButton_disagree": "不同意",
+
+  "vanProcessInfo_initiator": "发起人",
+  "vanProcessInfo_startTime": "发起时间",
+  "vanProcessInfo_status": "当前状态",
+  "vanProcessInfo_node": "当前节点",
+  "vanProcessInfo_assignee": "参与人"
 }
