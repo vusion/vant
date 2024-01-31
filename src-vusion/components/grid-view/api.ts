@@ -59,7 +59,7 @@ namespace nasl.ui {
       title: '文本字段名',
       description: '选项文本的字段名'
     })
-    private textField: (item: T) => nasl.core.String;
+    private textField: (item: T) => any;
     @Prop({
       title: '值字段名',
       description: '选项值的字段名'
