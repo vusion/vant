@@ -85,10 +85,6 @@ export default createComponent({
   },
 
   created() {
-    if (this.inDesigner()) {
-      return;
-    }
-
     location.search
       .replace('?', '')
       .split('&')
@@ -99,9 +95,7 @@ export default createComponent({
         }
       });
 
-    if (this.taskId) {
-      this.getOperationPermissionDetail(this.taskId);
-    }
+    this.getOperationPermissionDetail(this.taskId);
   },
 
   methods: {
