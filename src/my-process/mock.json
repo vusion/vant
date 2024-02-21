@@ -2,14 +2,14 @@
   "myPendingTaskList": [
     {
         "taskId": "ac3809cb-ba69-11ee-bb3f-fa9450476323",
-        "processTitle": "张三申请事假1天",
-        "processType": "请假流程",
-        "startBy": "张三",
-        "processStartTime": "2024-01-24T03:35:52.000Z",
-        "currentNodeList": [
+        "procInstTitle": "张三申请事假1天",
+        "procDefTitle": "请假流程",
+        "procInstStartBy": "张三",
+        "procInstStartTime": "2024-01-24T03:35:52.000Z",
+        "procInstCurNodes": [
             {
-                "currentNode": "主管审批",
-                "currentAssignees": [
+                "curNodeTitle": "主管审批",
+                "curNodeParticipants": [
                     "主管A"
                 ]
             }
@@ -17,14 +17,14 @@
     },
     {
         "taskId": "ac3809cb-ba69-11ee-bb3f-fa9450476323",
-        "processTitle": "张三申请事假1天",
-        "processType": "请假流程",
-        "startBy": "张三",
-        "processStartTime": "2024-01-24T03:35:52.000Z",
-        "currentNodeList": [
+        "procInstTitle": "张三申请事假1天",
+        "procDefTitle": "请假流程",
+        "procInstStartBy": "张三",
+        "procInstStartTime": "2024-01-24T03:35:52.000Z",
+        "procInstCurNodes": [
             {
-                "currentNode": "主管审批",
-                "currentAssignees": [
+                "curNodeTitle": "主管审批",
+                "curNodeParticipants": [
                     "主管A"
                 ]
             }
@@ -32,59 +32,14 @@
     },
     {
         "taskId": "ac3809cb-ba69-11ee-bb3f-fa9450476323",
-        "processTitle": "张三申请事假1天",
-        "processType": "请假流程",
-        "startBy": "张三",
-        "processStartTime": "2024-01-24T03:35:52.000Z",
-        "currentNodeList": [
+        "procInstTitle": "张三申请事假1天",
+        "procDefTitle": "请假流程",
+        "procInstStartBy": "张三",
+        "procInstStartTime": "2024-01-24T03:35:52.000Z",
+        "procInstCurNodes": [
             {
-                "currentNode": "主管审批",
-                "currentAssignees": [
-                    "主管A"
-                ]
-            }
-        ]
-    },
-    {
-        "taskId": "ac3809cb-ba69-11ee-bb3f-fa9450476323",
-        "processTitle": "张三申请事假1天",
-        "processType": "请假流程",
-        "startBy": "张三",
-        "processStartTime": "2024-01-24T03:35:52.000Z",
-        "currentNodeList": [
-            {
-                "currentNode": "主管审批",
-                "currentAssignees": [
-                    "主管A"
-                ]
-            }
-        ]
-    },
-    {
-        "taskId": "ac3809cb-ba69-11ee-bb3f-fa9450476323",
-        "processTitle": "张三申请事假1天",
-        "processType": "请假流程",
-        "startBy": "张三",
-        "processStartTime": "2024-01-24T03:35:52.000Z",
-        "currentNodeList": [
-            {
-                "currentNode": "主管审批",
-                "currentAssignees": [
-                    "主管A"
-                ]
-            }
-        ]
-    },
-    {
-        "taskId": "ac3809cb-ba69-11ee-bb3f-fa9450476323",
-        "processTitle": "张三申请事假1天",
-        "processType": "请假流程",
-        "startBy": "张三",
-        "processStartTime": "2024-01-24T03:35:52.000Z",
-        "currentNodeList": [
-            {
-                "currentNode": "主管审批",
-                "currentAssignees": [
+                "curNodeTitle": "主管审批",
+                "curNodeParticipants": [
                     "主管A"
                 ]
             }
@@ -97,67 +52,28 @@
   "myLaunchList": [],
 
   "allProcess": [
-    {
-      "processDefUniqueKey": "process1",
-      "title": "流程1",
-      "description": "流程1描述"
-    },
-    {
-      "processDefUniqueKey": "process2",
-      "title": "流程2",
-      "description": "流程2描述"
-    },
-    {
-      "processDefUniqueKey": "process3",
-      "title": "流程3",
-      "description": "流程3描述"
-    },
-    {
-      "processDefUniqueKey": "process4",
-      "title": "流程4",
-      "description": "流程4描述"
-    },
-    {
-      "processDefUniqueKey": "process5",
-      "title": "流程5",
-      "description": "流程5描述"
-    },
-    {
-      "processDefUniqueKey": "process6",
-      "title": "流程6",
-      "description": "流程6描述"
-    },
-    {
-      "processDefUniqueKey": "process7",
-      "title": "流程7",
-      "description": "流程7描述"
-    },
-    {
-      "processDefUniqueKey": "process8",
-      "title": "流程8",
-      "description": "流程8描述"
-    },
-    {
-      "processDefUniqueKey": "process9",
-      "title": "流程9",
-      "description": "流程9描述"
-    },
-    {
-      "processDefUniqueKey": "process10",
-      "title": "流程10",
-      "description": "流程10描述"
-    }
+      {
+          "procDefKey":"Process1_dswe23f1",
+          "procDefTitle": "流程1",
+          "procDefDescription": null
+      },
+      {
+          "procDefKey":"Process1_dswe23f2",
+          "procDefTitle": "流程2",
+          "procDefDescription": null
+      }
   ],
 
   "allInitiator": [
       {
-            "userName": "张三"
+          "userId": "xxxxxxxxx1",
+          "userName": "张三" ,
+          "extensionInfos":null
       },
       {
-            "userName": "李四"
-      },
-      {
-            "userName": "王五"
+          "userId": "xxxxxxxxx2",
+          "userName": "李四" ,
+          "extensionInfos":null
       }
   ]
 }

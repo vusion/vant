@@ -5,10 +5,61 @@ import Popover from '../popover';
 import Dialog from '../dialog/Dialog';
 import Form from '../form';
 import Field from '../field';
-import Input from '../fieldinput';
+import TextArea from '../fieldtextarea';
 import Picker from '../pickerson';
 
 const [createComponent, bem, t] = createNamespace('process-button');
+
+const mockData = {
+  permissionDetails: [
+    {
+      name: 'submit',
+      operateEnable: true, // 操作权限开关
+      showText: '提交', // 操作按钮文本
+      opinionsEnable: false, // 意见开关
+    },
+    {
+      name: 'approve',
+      operateEnable: true, // 操作权限开关
+      showText: '同意', // 操作按钮文本
+      opinionsEnable: true, // 意见开关
+    },
+    {
+      name: 'reject',
+      operateEnable: true, // 操作权限开关
+      showText: '拒绝', // 操作按钮文本
+      opinionsEnable: true, // 意见开关
+    },
+    {
+      name: 'revert',
+      operateEnable: true, // 操作权限开关
+      showText: '回退', // 操作按钮文本
+      opinionsEnable: true, // 意见开关
+    },
+    {
+      name: 'transfer',
+      operateEnable: true, // 操作权限开关
+      showText: '转交', // 操作按钮文本
+      opinionsEnable: true, // 意见开关
+    },
+    {
+      name: 'withdraw',
+      operateEnable: true, // 操作权限开关
+      showText: '撤回', // 操作按钮文本
+      opinionsEnable: true, // 意见开关
+    },
+  ],
+  allTransferUserList: [{
+    userName: '张三',
+    userId: '1',
+  }, {
+    userName: '李四',
+    userId: '2',
+  }, {
+    userName: '王五',
+    userId: '3',
+  }]
+} ;
 
 export default createComponent({
   props: {
@@ -27,10 +78,8 @@ export default createComponent({
 
       dialog: {
         item: null,
-        message: '',
-
-        value: '',
-        usePicker: false,
+        opinions: '',
+        transfer: '',
       },
     };
   },
@@ -51,76 +100,98 @@ export default createComponent({
       });
 
     if (this.taskId) {
-      this.getOperationPermissionDetail();
-    }
-  },
-
-  mounted() {
-    if (this.inDesigner()) {
-      this.permissionDetails = [
-        // {
-        //   name: 'submit',
-        //   operateEnable: true, // 操作权限开关
-        //   showText: '提交', // 操作按钮文本
-        //   opinionsEnable: true, // 意见开关
-        // },
-        {
-          name: 'consent',
-          operateEnable: true, // 操作权限开关
-          showText: '同意', // 操作按钮文本
-          opinionsEnable: true, // 意见开关
-        },
-        {
-          name: 'reject',
-          operateEnable: true, // 操作权限开关
-          showText: '拒绝', // 操作按钮文本
-          opinionsEnable: true, // 意见开关
-        },
-        {
-          name: 'revert',
-          operateEnable: true, // 操作权限开关
-          showText: '回退', // 操作按钮文本
-          opinionsEnable: true, // 意见开关
-        },
-        {
-          name: 'transfer',
-          operateEnable: true, // 操作权限开关
-          showText: '转交', // 操作按钮文本
-          opinionsEnable: true, // 意见开关
-        },
-      ]
+      this.getOperationPermissionDetail(this.taskId);
     }
   },
 
   methods: {
-    async getOperationPermissionDetail() {
-      const res = await this.$processV2.operationPermissionDetail({
-        body: {
-          taskId: this.taskId,
-        },
-      });
+    async getOperationPermissionDetail(taskId) {
+      if (this.inDesigner() || this.isDev()) {
+        this.permissionDetails = mockData.permissionDetails;
+        return;
+      }
 
-      this.permissionDetails = res.data;
+      try {
+        const res = await this.$processV2.operationPermissionDetail({
+          body: {
+            taskId,
+          },
+        });
+
+        this.permissionDetails = res.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async getTransferUserList(taskId) {
+      if (this.inDesigner() || this.isDev()) {
+        return mockData.allTransferUserList;
+      }
+
+      try {
+        const res = await this.$processV2.getTransferTargetUserList({
+          body: {
+            taskId,
+          },
+        });
+
+        return res.data;
+      } catch (error) {
+        console.log(error);
+        return [];
+      }
+
     },
 
     async submit(item) {
-      const operate = `${item.name}TaskInstance`;
       const body = {
         taskId: this.taskId,
       };
-      if (item.name === 'transfer') {
-        body.userName = this.dialog.value;
-      } else {
-        body.comment = this.dialog.value;
+
+      // 意见
+      if (item.operateEnable) {
+        body.comment = this.dialog.opinions;
       }
 
-      if (this.$processV2) {
+      // formdata
+      const dynamicRenderContainer = document.getElementById('dynamicRenderContainer');
+      if (dynamicRenderContainer && dynamicRenderContainer.__vue__) {
+        body.data = dynamicRenderContainer.__vue__.processDetailFormData;
+      }
+
+      // 转交人
+      if (item.name === 'transfer') {
+        body.transferTargetUser = this.dialog.transfer;
+      }
+
+      const operate = `${item.name}Task`;
+
+      try {
         await this.$processV2.setTaskInstance({
           path: {
             operate,
           },
           body,
         });
+
+        this.refresh();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async onClickItem(item) {
+      const { name, opinionsEnable } = item;
+
+      // 需要弹出框的情况opinionsEnable和name是transfer
+      if (opinionsEnable || name === 'transfer') {
+        this.dialog = {
+          item,
+        };
+        this.showDialog = true;
+      } else {
+        await this.submit(item);
       }
     },
 
@@ -133,13 +204,8 @@ export default createComponent({
       }
 
       await this.submit(item);
-      this.showDialog = false;
 
-      if (this.destination || this.link) {
-        this.$refs.link.$el.click();
-      } else {
-        window.location.reload();
-      }
+      this.showDialog = false;
     },
 
     async checkValue() {
@@ -165,10 +231,7 @@ export default createComponent({
       }
     },
 
-    // 提交
-    async onClickSubmit(submit) {
-      await this.submit(submit);
-
+    refresh() {
       if (this.destination || this.link) {
         this.$refs.link.$el.click();
       } else {
@@ -176,142 +239,85 @@ export default createComponent({
       }
     },
 
-    // 同意
-    onClickConsent(consent) {
-      this.dialog = {
-        item: consent,
-        message: '请输入审批意见',
-      };
-      this.showDialog = true;
+    onOpinionsInput(value) {
+      this.dialog.opinions = value;
     },
 
-    // 不同意
-    onClickReject(reject) {
-      this.dialog = {
-        item: reject,
-        message: '请输入审批意见',
-      };
-      this.showDialog = true;
-    },
-
-    // 回退
-    onClickRevert(revert) {
-      this.dialog = {
-        item: revert,
-        message: '请输入审批意见',
-      };
-      this.showDialog = true;
-    },
-
-    // 转交
-    onClickTransfer(transfer) {
-      this.dialog = {
-        item: transfer,
-        message: '请输入转交人',
-        usePicker: true,
-      };
-      this.showDialog = true;
-    },
-
-    onInput(event) {
-      this.dialog.value = event.target.value;
-    },
-
-    onPickerConfirm(value) {
-      this.dialog.value = value;
+    onTransferPickerConfirm(value) {
+      this.dialog.transfer = value;
     },
 
     resetDialog() {
       this.dialog = {
-        item: {},
-        message: '',
-        value: '',
-        usePicker: false,
+        item: null,
+        opinions: '',
+        transfer: '',
       };
     },
   },
 
   render() {
     const { permissionDetails } = this;
-    const hasPermission = permissionDetails?.length > 0;
 
-    // 提交
-    const submit = permissionDetails.find((item) => item.name === 'submit');
-    // 同意
-    const consent = permissionDetails.find((item) => item.name === 'consent');
-    // 不同意
-    const reject = permissionDetails.find((item) => item.name === 'reject');
-    // 回退
-    const revert = permissionDetails.find((item) => item.name === 'revert');
-    // 转交
-    const transfer = permissionDetails.find((item) => item.name === 'transfer');
+    // 有权限的操作
+    const permissions = permissionDetails?.filter((item) => item.operateEnable);
+    const hasPermission = permissions?.length > 0;
 
-    if (submit) {
-      return (
-        <div vShow={hasPermission} class={bem('wrap')}>
-          <Button
-            type="info"
-            size="large"
-            squareroud="round"
-            onClick={() => this.onClickSubmit(submit)}
-          >
-            {submit.showText}
-          </Button>
-        </div>
-      );
+    if (!hasPermission) {
+      return null;
     }
 
-    const hasMore = revert || transfer;
+    let btns = null;
+
+    const hasMore = permissions.length > 2;
+    const [first, second, ...rest] = permissions;
+
+    btns = [
+      hasMore && (
+        <Popover
+          vModel={this.showPopover}
+          trigger="click"
+          placement="top-start"
+          scopedSlots={{
+            reference: () => <div class={bem('more')}>{t('more')}</div>,
+          }}
+        >
+          {rest.map((item) => (
+            <div
+              class={bem('popover-item')}
+              onClick={() => this.onClickItem(item)}
+            >
+              {item.showText}
+            </div>
+          ))}
+        </Popover>
+      ),
+      <div class={bem('operation', { center: !hasMore })}>
+        {second && (
+          <Button
+            type="default"
+            squareroud="round"
+            onClick={() => this.onClickItem(second)}
+          >
+            {second.showText}
+          </Button>
+        )}
+        {first && (
+          <Button
+            type="info"
+            size={second ? 'normal' : 'large'}
+            squareroud="round"
+            onClick={() => this.onClickItem(first)}
+          >
+            {first.showText}
+          </Button>
+        )}
+      </div>,
+    ].filter(Boolean);
 
     return (
-      <div vShow={hasPermission} class={bem('wrap')}>
-        {hasMore ? (
-          <Popover
-            vModel={this.showPopover}
-            trigger="click"
-            placement="top-start"
-            scopedSlots={{
-              reference: () => <div class={bem('more')}>{t('more')}</div>,
-            }}
-          >
-            {revert ? (
-              <div
-                class={bem('popover-item')}
-                onClick={() => this.onClickRevert(revert)}
-              >
-                {revert.showText}
-              </div>
-            ) : null}
-            {transfer ? (
-              <div
-                class={bem('popover-item')}
-                onClick={() => this.onClickTransfer(transfer)}
-              >
-                {transfer.showText}
-              </div>
-            ) : null}
-          </Popover>
-        ) : null}
-        <div class={bem('operation', { center: !hasMore })}>
-          {reject ? (
-            <Button
-              type="default"
-              squareroud="round"
-              onClick={() => this.onClickReject(reject)}
-            >
-              {reject.showText}
-            </Button>
-          ) : null}
-          {consent ? (
-            <Button
-              type="info"
-              squareroud="round"
-              onClick={() => this.onClickConsent(consent)}
-            >
-              {consent.showText}
-            </Button>
-          ) : null}
-        </div>
+      <div class={bem('wrap')}>
+        {btns}
 
         <van-link
           ref="link"
@@ -333,10 +339,10 @@ export default createComponent({
           nomattershowfoot
         >
           <div class={bem('dialog')}>
-            <div class={bem('dialog-message')}>{this.dialog.message}</div>
             <Form ref="form">
-              {this.dialog.usePicker && (
+              {['transfer'].includes(this.dialog.item?.name) && (
                 <Field
+                  border={false}
                   rules={[
                     {
                       validate: 'filled',
@@ -348,11 +354,13 @@ export default createComponent({
                   scopedSlots={{
                     input: () => (
                       <Picker
-                        value={this.dialog.value}
+                        value={this.dialog.transfer}
+                        valueField="userId"
+                        textField="userName"
                         class={bem('dialog-picker')}
-                        dataSource={[1, 2, 3, 4, 5, 6]}
-                        onConfirm={this.onPickerConfirm}
-                        placeholder="请选择"
+                        dataSource={() => this.getTransferUserList(this.taskId)}
+                        onConfirm={this.onTransferPickerConfirm}
+                        placeholder="请选择转交人"
                         title=""
                         showToolbar
                         closeOnClickOverlay
@@ -363,8 +371,9 @@ export default createComponent({
                 />
               )}
 
-              {!this.dialog.usePicker && (
+              {this.dialog.item?.opinionsEnable && (
                 <Field
+                  border={false}
                   rules={[
                     {
                       validate: 'filled',
@@ -375,11 +384,11 @@ export default createComponent({
                   ]}
                   scopedSlots={{
                     input: () => (
-                      <Input
-                        value={this.dialog.value}
-                        onInput={this.onInput}
+                      <TextArea
+                        value={this.dialog.opinions}
+                        onInput={this.onOpinionsInput}
                         class={bem('dialog-input')}
-                        placeholder="请输入"
+                        placeholder="请输入审批意见"
                         inputAlign="left"
                       />
                     ),

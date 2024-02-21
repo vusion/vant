@@ -24,9 +24,8 @@ export default createComponent({
       myPendingTaskListFinished: false,
       myPendingTaskListRefresh: false,
       myPendingTaskListFilter: {
-        processDefUniqueKey: null,
-        startBy: null,
-
+        procDefKey: null,
+        procInstStartBy: null,
         createTimeAfter: null, // 开始时间
         createTimeBefore: null, // 结束时间
 
@@ -38,9 +37,8 @@ export default createComponent({
       myCompletedTaskListTotal: 0,
       myCompletedTaskListFinished: false,
       myCompletedTaskListFilter: {
-        processDefUniqueKey: null,
-        startBy: null,
-
+        procDefKey: null,
+        procInstStartBy: null,
         createTimeAfter: null, // 开始时间
         createTimeBefore: null, // 结束时间
 
@@ -52,8 +50,7 @@ export default createComponent({
       myLaunchListTotal: 0,
       myLaunchListFinished: false,
       myLaunchListFilter: {
-        processDefUniqueKey: null,
-        startBy: null,
+        procDefKey: null,
 
         createTimeAfter: null, // 开始时间
         createTimeBefore: null, // 结束时间
@@ -76,53 +73,53 @@ export default createComponent({
       });
   },
 
-  mounted() {
-    if (this.inDesigner()) {
-      this.myPendingTaskList = mockData.myPendingTaskList;
-    }
-  },
-
   methods: {
     async fetchData(type) {
-      if (this.inDesigner()) return;
+      if (this.inDesigner() || this.isDev()) {
+        return {
+          list: mockData[type],
+          total: mockData[type].length,
+        };
+      };
+
+      const typeMap = {
+        myPendingTaskList: 'getMyPendingTaskList',
+        myCompletedTaskList: 'getMyCompletedTaskList',
+        myLaunchList: 'getMyInitiateTaskList',
+      };
 
       const filter = this[`${type}Filter`];
       const { page, size, ...rest } = filter;
 
-      let result;
-      if (this.$processV2) {
-        const body = {
-          taskId: this.taskId,
-          page,
-          size,
-        };
-        Object.keys(rest).forEach((key) => {
-          if (rest[key]) {
-            body[key] = rest[key];
-          }
-        });
-        const { data } = await this.$processV2.getMyTaskList({
-          path: {
-            taskType: type,
-          },
-          body,
-        });
+      let result = {
+        list: [],
+        total: 0,
+      };
 
-        result = data;
-      } else {
-        result = {
-          list: mockData[type].slice((page - 1) * size, page * size),
-          total: mockData[type].length,
-        };
-      }
+      const body = {
+        taskId: this.taskId,
+        page,
+        size,
+      };
+      Object.keys(rest).forEach((key) => {
+        if (rest[key]) {
+          body[key] = rest[key];
+        }
+      });
+      const { data } = await this.$processV2.getMyTaskList({
+        path: {
+          taskType: typeMap[type],
+        },
+        body,
+      });
+
+      result = data;
 
       return result;
     },
 
     onLoad: _debounce(
       async function (type) {
-        if (this.inDesigner()) return;
-
         if (this[`${type}Refresh`]) return;
 
         const result = await this.fetchData(type);
@@ -176,25 +173,25 @@ export default createComponent({
     cardRender(data) {
       const {
         taskId,
-        processTitle: title,
-        processType: type,
-        currentNodeList,
-        startBy: initiator,
-        processStartTime: startTime,
+        procInstTitle: title,
+        procDefTitle: type,
+        procInstCurNodes: currentNodeList,
+        procInstStartBy: initiator,
+        procInstStartTime: startTime,
       } = data || {};
 
       const nodes = (currentNodeList || [])
-        .map((item) => item.currentNode)
+        .map((item) => item.curNodeTitle)
         .join('，');
       const assignees = (currentNodeList || [])
-        .map((item) => item.currentAssignees.join('，'))
+        .map((item) => (item.curNodeParticipants || []).join('，'))
         .join('，');
 
       return (
         <div class={bem('item-card')} onClick={() => this.onGotoDetail(taskId)}>
           <div class={bem('item-card-title')}>
             {title}
-            <Iconv name="right-arrow" size={12}></Iconv>
+            <Iconv name="right-arrow" size={12} icotype="only"></Iconv>
           </div>
 
           <div class={bem('item-card-line')}>

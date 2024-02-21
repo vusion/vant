@@ -37,47 +37,42 @@ export default createComponent({
 
     showInitiatorPicker() {
       this.getAllInitiator().then((data) => {
-        this.allInitiator = data.map(({ userName }) => ({
-          text: userName,
-          value: userName,
-        }));
+        this.allInitiator = data;
         this.$refs.initiatorPicker.togglePopup();
       });
     },
 
     async getAllProcess() {
-      let result;
-      if (this.$processV2) {
-        const { data } = await this.$processV2.getProcessDefinitionList();
-        result = data;
-      } else {
-        result = mockData.allProcess;
+      if (this.isDev()) {
+        return mockData.allProcess;
       }
+
+      const { data } = await this.$processV2.getProcDefList();
+      const result = data;
 
       return result;
     },
 
     async getAllInitiator() {
-      let result;
-      if (this.$processV2) {
-        const { data } = await this.$processV2.getProcessStartByList();
-        result = data;
-      } else {
-        result = mockData.allInitiator;
+      if (this.isDev()) {
+        return mockData.allInitiator;
       }
+
+      const { data } = await this.$processV2.getProcInstStartByList();
+      const result = data;
 
       return result;
     },
 
     onProcessPickerChange(value) {
       this.$emit('change', {
-        processDefUniqueKey: value,
+        procDefKey: value,
       }, this.tab);
     },
 
     onInitiatorPickerChange(value) {
       this.$emit('change', {
-        startBy: value,
+        procInstStartBy: value,
       }, this.tab);
     },
 
@@ -101,6 +96,7 @@ export default createComponent({
                 class={bem('button-icon')}
                 name="bottom-triangle"
                 size={12}
+                icotype="only"
               ></Iconv>
             </div>
           </Col>
@@ -113,6 +109,7 @@ export default createComponent({
                   class={bem('button-icon')}
                   name="bottom-triangle"
                   size={12}
+                  icotype="only"
                 ></Iconv>
               </div>
             </Col>
@@ -130,6 +127,7 @@ export default createComponent({
                 class={bem('button-icon')}
                 name="bottom-triangle"
                 size={12}
+                icotype="only"
               ></Iconv>
             </div>
           </Col>
@@ -139,11 +137,11 @@ export default createComponent({
           vShow={false}
           ref="processPicker"
           dataSource={[
-            { processDefUniqueKey: null, title: '全部' },
+            { procDefKey: null, procDefTitle: '全部' },
             ...this.allProcess,
           ]}
-          valueField="processDefUniqueKey"
-          textField="title"
+          valueField="procDefKey"
+          textField="procDefTitle"
           onConfirm={this.onProcessPickerChange}
           showToolbar
           title={t('process')}
@@ -153,9 +151,12 @@ export default createComponent({
         <Picker
           vShow={false}
           ref="initiatorPicker"
-          dataSource={[{ text: '全部', value: null }, ...this.allInitiator]}
-          valueField="value"
-          textField="text"
+          dataSource={[
+            { userName: '全部', userId: null },
+            ...this.allInitiator,
+          ]}
+          valueField="userId"
+          textField="userName"
           onConfirm={this.onInitiatorPickerChange}
           showToolbar
           title={t('initiator')}

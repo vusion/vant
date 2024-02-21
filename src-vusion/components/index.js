@@ -118,6 +118,10 @@ export { default as VanCapsules } from '../../src/capsules';
 export { default as VanCapsulesItem } from '../../src/capsules-item';
 export { default as VanCapsulesGroup } from '../../src/capsules-group';
 
+export { default as VanMyProcess } from '../../src/my-process';
+export { default as VanProcessButton } from '../../src/process-button';
+export { default as VanProcessInfo } from '../../src/process-info';
+
 export * from './list-view';
 export * from './grid-view';
 export * from './iframe';
