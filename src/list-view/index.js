@@ -89,6 +89,10 @@ export default createComponent({
         }
       }
 
+      if (!this.pageable) {
+        return;
+      }
+
       if (this.fetchLoading) {
         return this.loadingText;
       }
