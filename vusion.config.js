@@ -146,6 +146,21 @@ module.exports = {
         name: 'toast',
         alias: '轻提示',
       },
+      {
+        group: 'Process',
+        name: 'my-process',
+        alias: '我的流程',
+      },
+      {
+        group: 'Process',
+        name: 'process-button',
+        alias: '流程按钮',
+      },
+      {
+        group: 'Process',
+        name: 'process-info',
+        alias: '流程信息',
+      }
     ],
     blocks: [],
     directives: [
