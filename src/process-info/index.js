@@ -3,6 +3,25 @@ import dayjs from '../utils/dayjs';
 
 const [createComponent, bem, t] = createNamespace('process-info');
 
+const mockData = {
+  detail: {
+    procInstId: 'ac33c3f2-ba69-11ee-bb3f-fa9450476323',
+    procInstStartBy: '张三',
+    procInstStartTime: '2024-01-24T03:35:52.000Z',
+    procInstStatus: 'approved',
+    procInstCurNodes: [
+      {
+        curNodeTitle: '多人审批任务',
+        curNodeParticipants: ['李四', '王五'],
+      },
+      {
+        curNodeTitle: '多人审批任务',
+        curNodeParticipants: ['赵六'],
+      },
+    ],
+  },
+};
+
 export default createComponent({
   props: {},
 
@@ -24,61 +43,45 @@ export default createComponent({
         }
       });
 
-    if (this.taskId) {
-      this.getProcessInfo();
-    }
-  },
-
-  mounted() {
-    if (this.inDesigner()) {
-      this.detail = {
-        processInstanceId: 'ac33c3f2-ba69-11ee-bb3f-fa9450476323',
-        startBy: '张三',
-        processStartTime: '2024-01-24T03:35:52.000Z',
-        status: 'PENDING',
-        currentNodeList: [
-          {
-            currentNode: '多人审批任务',
-            currentAssignees: ['李四', '王五'],
-            taskCreateTime: '2024-01-24T03:35:52.000Z',
-          },
-          {
-            currentNode: '多人审批任务',
-            currentAssignees: ['赵六'],
-            taskCreateTime: '2024-01-24T03:35:52.000Z',
-          },
-        ],
-      };
-    }
+    this.getProcessInfo(this.taskId);
   },
 
   methods: {
-    async getProcessInfo() {
-      if (this.$processV2) {
-        const result = await this.$processV2.getProcessInstanceInfo({
-          body: {
-            taskId: this.taskId,
-          },
-        });
-        this.detail = result.data || {};
+    async getProcessInfo(taskId) {
+      if (this.inDesigner() || this.isDev()) {
+        this.detail = mockData.detail;
+
+        return;
       }
+
+      const result = await this.$processV2.getProcessInstanceInfo({
+        body: {
+          taskId,
+        },
+      });
+      this.detail = result.data || {};
     },
   },
 
   render() {
     const {
-      startBy,
-      processStartTime: startTime,
-      status,
-      currentNodeList,
+      procInstStartBy: startBy,
+      procInstStartTime: startTime,
+      procInstStatus: status,
+      procInstCurNodes: currentNodeList,
     } = this.detail;
 
     const nodes = (currentNodeList || [])
-      .map((item) => item.currentNode)
+      .map((item) => item.curNodeTitle)
       .join('，');
     const assignees = (currentNodeList || [])
-      .map((item) => item.currentAssignees.join('，'))
+      .map((item) => (item.curNodeParticipants || []).join('，'))
       .join('，');
+
+    const statusMap = {
+      approved: '审批通过',
+      approving: '审批中',
+    };
 
     return (
       <div class={bem()}>
@@ -95,7 +98,7 @@ export default createComponent({
           </div>
           <div class={bem('card-line')}>
             <div class={bem('card-label')}>{t('status')}</div>
-            <div class={bem('card-content')}>{status || '-'}</div>
+            <div class={bem('card-content')}>{statusMap[status] || status || '-'}</div>
           </div>
           <div class={bem('card-line')}>
             <div class={bem('card-label')}>{t('node')}</div>

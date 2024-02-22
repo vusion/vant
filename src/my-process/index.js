@@ -75,13 +75,6 @@ export default createComponent({
 
   methods: {
     async fetchData(type) {
-      if (this.inDesigner() || this.isDev()) {
-        return {
-          list: mockData[type],
-          total: mockData[type].length,
-        };
-      };
-
       const typeMap = {
         myPendingTaskList: 'getMyPendingTaskList',
         myCompletedTaskList: 'getMyCompletedTaskList',
@@ -106,6 +99,17 @@ export default createComponent({
           body[key] = rest[key];
         }
       });
+
+      console.log('taskType', typeMap[type]);
+      console.log('body', body);
+
+      if (this.inDesigner() || this.isDev()) {
+        return {
+          list: mockData[type],
+          total: mockData[type].length,
+        };
+      };
+
       const { data } = await this.$processV2.getMyTaskList({
         path: {
           taskType: typeMap[type],
