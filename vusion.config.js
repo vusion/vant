@@ -160,6 +160,11 @@ module.exports = {
         group: 'Process',
         name: 'process-info',
         alias: '流程信息',
+      },
+      {
+        group: 'Process',
+        name: 'process-record',
+        alias: '流程记录',
       }
     ],
     blocks: [],
