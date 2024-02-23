@@ -177,6 +177,7 @@ export default createComponent({
                     '--van-step-line-color': '#337EFF',
                     '--van-step-finish-line-color': '#337EFF',
                     '--van-step-active-color': '#337EFF',
+                    '--van-step-text-color': '#333'
                   }}
                 >
                   <div class={bem('card')}>
