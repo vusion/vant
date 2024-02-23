@@ -61,5 +61,12 @@
   "vanProcessInfo_startTime": "发起时间",
   "vanProcessInfo_status": "当前状态",
   "vanProcessInfo_node": "当前节点",
-  "vanProcessInfo_assignee": "参与人"
+  "vanProcessInfo_assignee": "参与人",
+
+  "vanProcessRecord_node": "流程节点",
+  "vanProcessRecord_assignee": "处理人",
+  "vanProcessRecord_time": "处理时间",
+  "vanProcessRecord_status": "审批结果",
+  "vanProcessRecord_comment": "审批意见",
+  "vanProcessRecord_more": "查看更多"
 }

@@ -105,7 +105,7 @@ export default createComponent({
 
       if (this.inDesigner() || this.isDev()) {
         return {
-          list: mockData[type],
+          list: mockData[type].slice((page - 1) * size, page * size),
           total: mockData[type].length,
         };
       };

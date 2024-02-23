@@ -442,6 +442,10 @@ module.exports = {
                 path: 'process-info',
                 title: 'ProcessInfo 流程信息',
               },
+              {
+                path: 'process-record',
+                title: 'ProcessRecord 流程记录',
+              }
             ],
           },
           {
