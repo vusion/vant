@@ -267,5 +267,6 @@ export default {
   .van-tabs--card .van-tab__pane {
     background-color: transparent;
   }
+
 }
 </style>
