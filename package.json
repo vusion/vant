@@ -23,6 +23,7 @@
     "check": "node bin/ggpull && node bin/check-deps",
     "dev:vusion": "cross-env scene=desktop vue-cli-service doc --port 9100",
     "dev": "cross-env scene=desktop vant-cli dev",
+    "dev:error03000086": "set NODE_OPTIONS=--openssl-legacy-provider && cross-env scene=desktop vant-cli dev",
     "dev:mobile": "cross-env scene=mobile vant-cli dev",
     "lint": "vant-cli lint",
     "test": "vant-cli test",
