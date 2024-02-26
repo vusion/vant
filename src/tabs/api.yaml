@@ -23,12 +23,6 @@
       sync: true
       model: true
       description: 数据源集合的元素，用于标识当前打开的标签项
-    - name: value
-      title: 值
-      type: any
-      sync: true
-      model: true
-      description: 选中标签页的值。
     - name: disabled
       title: 禁用
       type: boolean
