@@ -131,11 +131,11 @@
 
     <!-- dataSource -->
     <demo-block :title="t('dataSourceJson')">
-      <van-tabs :dataSource="tabList" titleField="title2"></van-tabs>
+      <van-tabs :dataSource="tabList" textField="title2"></van-tabs>
     </demo-block>
 
     <demo-block :title="t('dataSourceLoad')">
-      <van-tabs :dataSource="load" titleField="title2"></van-tabs>
+      <van-tabs :dataSource="load" textField="title2"></van-tabs>
     </demo-block>
 
   </demo-section>
@@ -192,19 +192,20 @@ export default {
             title2: 'AAA-',
             value: 1,
             contentUrl: '/components/u-tabs/cases',
-            titleField: 'title2',
+            textField: 'title2',
         },
         {
             title2: 'BBB-',
             value: 2,
             contentUrl: '/components/u-tabs/cases#形态',
-            titleField: 'title2',
+            textField: 'title2',
         },
         {
             title2: '标签页-',
             value: 3,
             contentUrl: '/components/u-tabs/cases#添加',
-            titleField: 'title2',
+            textField: 'title2',
+            // disabled: true,
         }
       ]
 

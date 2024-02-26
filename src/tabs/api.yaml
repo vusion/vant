@@ -11,6 +11,24 @@
       sync: true
       model: true
       description: 选中标签页的值。
+    - name: textField
+      title: 标签项标题
+      type: any
+      sync: true
+      model: true
+      description: 数据源集合的元素，用于显示标签标题的属性
+    - name: urlField
+      title: 标签项内容值字段
+      type: any
+      sync: true
+      model: true
+      description: 数据源集合的元素，用于标识当前打开的标签项
+    - name: value
+      title: 值
+      type: any
+      sync: true
+      model: true
+      description: 选中标签页的值。
     - name: disabled
       title: 禁用
       type: boolean

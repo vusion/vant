@@ -112,6 +112,7 @@ export default createComponent({
       type: Boolean,
       default: false,
     },
+    urlField: { type: String, default: 'url' },
   },
 
   data() {
@@ -160,6 +161,9 @@ export default createComponent({
     },
     tabDataSource() {
       return this.currentDataSource && this.currentDataSource.data || [];
+    },
+    inDesigner() {
+      return this.$env && this.$env.VUE_APP_DESIGNER;
     },
   },
 
@@ -305,9 +309,9 @@ export default createComponent({
         this.$emit('update:active', newName);
 
         if (shouldEmitChange) {
-          this.$emit('update:value', newName, newTab[this.titleField]);
-          this.$emit('update:active', newName, newTab[this.titleField]);
-          this.$emit('change', newName, newTab[this.titleField]);
+          this.$emit('update:value', newName, newTab[this.textField]);
+          this.$emit('update:active', newName, newTab[this.textField]);
+          this.$emit('change', newName, newTab[this.textField]);
         }
       }
     },
@@ -328,7 +332,11 @@ export default createComponent({
     onClick(item, index) {
       const data = this.dataSource === undefined ? this.children[index] : { ...item, computedName: index };
       const { disabled, computedName } = data;
-      const title = data[this.titleField];
+      const title = data[this.textField];
+
+      if (this.inDesigner && index >= 1) {
+        return
+      }
 
       if (disabled) {
         this.$emit('disabled', computedName, title);
@@ -463,16 +471,17 @@ export default createComponent({
     },
     getDataSourceNav(dataSource) {
       return dataSource.map((item, index) => {
+        const inDesigner = this.inDesigner && index >= 1;
         return (
           <Title
             vusion-slot-name="title"
             ref="titles"
             refInFor
             type={this.type}
-            title={item[this.titleField]}
+            title={item[this.textField]}
             color={this.color}
             isActive={index === this.currentIndex}
-            disabled={this.disabled || item.disabled}
+            disabled={this.disabled || item.disabled || inDesigner}
             scrollable={this.scrollable}
             activeColor={this.titleActiveColor}
             inactiveColor={this.titleInactiveColor}
