@@ -11,6 +11,12 @@
       sync: true
       model: true
       description: 选中标签页的值。
+    - name: dataSource
+      title: 数据源
+      type: any
+      sync: true
+      model: true
+      description: 展示数据的输入源，可设置为集合类型变量（List<T>）或输出参数为集合类型的逻辑 。
     - name: textField
       title: 标签项标题
       type: any
