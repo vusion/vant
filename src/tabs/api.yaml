@@ -11,24 +11,27 @@
       sync: true
       model: true
       description: 选中标签页的值。
-    - name: dataSource
+      group: 数据属性
+    - name: data-source
       title: 数据源
-      type: any
-      sync: true
-      model: true
-      description: 展示数据的输入源，可设置为集合类型变量（List<T>）或输出参数为集合类型的逻辑 。
-    - name: textField
+      type: Array<Item> | Function | object
+      designer-value: '[{}, {}, {}]'
+      description: 展示数据的输入源，可设置为集合类型变量（List<T>）或输出参数为集合类型的逻辑
+      group: 数据属性
+    - name: text-field
       title: 标签项标题
-      type: any
-      sync: true
-      model: true
+      type: string
       description: 数据源集合的元素，用于显示标签标题的属性
-    - name: urlField
+      default: text
+      group: 数据属性
+      display: property-select
+    - name: url-field
       title: 标签项内容值字段
-      type: any
-      sync: true
-      model: true
+      type: string
       description: 数据源集合的元素，用于标识当前打开的标签项
+      default: url
+      group: 数据属性
+      display: property-select
     - name: disabled
       title: 禁用
       type: boolean
