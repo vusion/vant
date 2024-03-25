@@ -5,12 +5,39 @@
     - Selector
   description: 选项卡切换组件，常用于平级区域大块内容的收纳和展现
   attrs:
+    - name: data-source
+      title: 数据源
+      type: Array<Item> | Function
+      description: 展示数据的输入源，可设置为集合类型变量（List<T>）或输出参数为集合类型的逻辑
+      designer-value: '[{}, {}, {}]'
+      group: 数据属性
+    - name: data-schema
+      title: 数据类型
+      type: schema
+      description: 集合类型每一元素的数据类型
+      compType: dataTypeSelect
+      group: 数据属性
     - name: value
       title: 值
       type: any
       sync: true
       model: true
       description: 选中标签页的值。
+      group: 数据属性
+    - name: text-field
+      title: 标签项标题
+      type: string
+      description: 数据源集合的元素，用于显示标签标题的属性
+      default: text
+      group: 数据属性
+      display: property-select
+    - name: url-field
+      title: 标签项内容值字段
+      type: string
+      description: 数据源集合的元素，用于标识当前打开的标签项
+      default: url
+      group: 数据属性
+      display: property-select
     - name: disabled
       title: 禁用
       type: boolean

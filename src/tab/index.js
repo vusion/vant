@@ -65,6 +65,7 @@ export default createComponent({
   render(h) {
     const { slots, parent, isActive } = this;
     const slotContent = slots();
+
     let tempContent = slotContent;
     if (process.env.NODE_ENV === 'development' && this.info) {
       console.warn(

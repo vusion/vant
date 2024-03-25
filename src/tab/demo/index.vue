@@ -128,6 +128,16 @@
         </van-tab>
       </van-tabs>
     </demo-block>
+
+    <!-- dataSource -->
+    <demo-block :title="t('dataSourceJson')">
+      <van-tabs :dataSource="tabList" textField="title2"></van-tabs>
+    </demo-block>
+
+    <demo-block :title="t('dataSourceLoad')">
+      <van-tabs :dataSource="load" textField="title2"></van-tabs>
+    </demo-block>
+
   </demo-section>
 </template>
 
@@ -148,6 +158,8 @@ export default {
       disabled: ' 已被禁用',
       matchByName: '通过名称匹配',
       beforeChange: '异步切换',
+      dataSourceJson: '数据源固定',
+      dataSourceLoad: '数据源异步',
     },
     'en-US': {
       tab: 'Tab ',
@@ -164,6 +176,8 @@ export default {
       disabled: ' is disabled',
       matchByName: 'Match By Name',
       beforeChange: 'Before Change',
+      dataSourceJson: 'dataSourceJson',
+      dataSourceLoad: 'dataSourceLoad',
     },
   },
 
@@ -173,6 +187,28 @@ export default {
       active2222: '2',
       activeName: 'b',
       tabs: [1, 2, 3, 4],
+      tabList: [
+        {
+            title2: 'AAA-',
+            value: 1,
+            contentUrl: '/components/u-tabs/cases',
+            textField: 'title2',
+        },
+        {
+            title2: 'BBB-',
+            value: 2,
+            contentUrl: '/components/u-tabs/cases#形态',
+            textField: 'title2',
+        },
+        {
+            title2: '标签页-',
+            value: 3,
+            contentUrl: '/components/u-tabs/cases#添加',
+            textField: 'title2',
+            // disabled: true,
+        }
+      ]
+
     };
   },
 
@@ -194,6 +230,19 @@ export default {
 
       return new Promise((resolve) => {
         resolve(name !== 3);
+      });
+    },
+    load() {
+      // 这里使用 Promise 和 setTimeout 模拟一个异步请求
+      const index = Math.random() * 20 >> 0;
+      return new Promise((resolve, reject) => {
+          setTimeout(() => {
+              resolve(this.tabList.map((item)=>{
+                  const newItem = Object.assign({}, item);
+                  newItem.title2 = `${item.title2}${index}`;
+                  return newItem;
+              }));
+          }, 200);
       });
     },
   },
@@ -219,5 +268,6 @@ export default {
   .van-tabs--card .van-tab__pane {
     background-color: transparent;
   }
+
 }
 </style>
