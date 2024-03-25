@@ -201,8 +201,8 @@ export default createComponent({
     },
 
     getOptionText(option) {
-      if (isObject(option) && isDef(_get(option, this.textField))) {
-        return _get(option, this.textField);
+      if (isObject(option)) {
+        return _get(option, this.textField) || '';
       }
 
       return option;
@@ -308,7 +308,7 @@ export default createComponent({
 
         return (
           <li {...data}>
-            {this.slots('option', option) || <div {...childData} />}
+            {this.slots('option', {...option, item: option}) || <div {...childData} />}
           </li>
         );
       });
