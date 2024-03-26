@@ -82,9 +82,12 @@
         <van-pickerson
         title="标题"
         :show-toolbar="true"
-        :value="1"
+        :value.sync="multipleValue"
         :data-source="[1, 2, 3, 4, 5]"
-        :close-on-click-overlay="true">
+        :close-on-click-overlay="true"
+        :multiple="true"
+        :clearable="true"
+        @confirm="onConfirm">
           <template #title>
                 <van-text :ref="`text10`" text="标题"></van-text>
           </template>
@@ -133,6 +136,9 @@ export default {
       pupupd: true,
       list: data,
       pickerValue: ['32001111100'],
+
+      singleValue: '',
+      multipleValue: [],
     };
   },
 
@@ -163,6 +169,8 @@ export default {
     },
 
     onConfirm(value, index) {
+      console.log('this.singleValue', this.singleValue);
+      console.log('this.multipleValue', this.multipleValue);
       this.$toast(this.t('toastContent', value, index));
     },
 
