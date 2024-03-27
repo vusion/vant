@@ -82,9 +82,12 @@
         <van-pickerson
         title="标题"
         :show-toolbar="true"
-        :value="1"
+        :value.sync="multipleValue"
         :data-source="[1, 2, 3, 4, 5]"
-        :close-on-click-overlay="true">
+        :close-on-click-overlay="true"
+        :multiple="true"
+        :clearable="true"
+        @confirm="onConfirm">
           <template #title>
                 <van-text :ref="`text10`" text="标题"></van-text>
           </template>
@@ -133,6 +136,9 @@ export default {
       pupupd: true,
       list: data,
       pickerValue: ['32001111100'],
+
+      singleValue: '',
+      multipleValue: [],
     };
   },
 
@@ -154,35 +160,11 @@ export default {
   },
 
   methods: {
-    onChange1(picker, value, index) {
-      this.$toast(this.t('toastContent', value, index));
-    },
-
-    onChange2(picker, values) {
-      picker.setColumnValues(1, this.t('column3')[values[0]]);
-    },
-
     onConfirm(value, index) {
-      this.$toast(this.t('toastContent', value, index));
-    },
+      console.log('this.singleValue', this.singleValue);
+      console.log('this.multipleValue', this.multipleValue);
 
-    onCancel() {
-      this.$toast(this.t('cancel'));
-    },
-
-    onClickField() {
-      this.showPicker = true;
-    },
-
-    onConfirm2(value) {
-      this.showPicker = false;
-      this.fieldValue = value;
-    },
-    onConfirm222(value) {
-      console.log(value);
-    },
-    onCancel2() {
-      this.showPicker = false;
+      console.log('value', value);
     },
     confirm111(value, index) {
       console.log('pickerValue', this.pickerValue);

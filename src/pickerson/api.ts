@@ -292,6 +292,16 @@ namespace nasl.ui {
       }
     })
     disabled: nasl.core.Boolean = false;
+    @Prop<VanPickersonOptions<T, V, M, P>, 'clearable'>({
+        group: '交互属性',
+        title: '可清除',
+        description: '可点击清除按钮一键清除所选内容',
+        docDescription: '控制是否显示清除按钮，支持一键清除所选内容',
+        setter: {
+            concept: 'SwitchSetter',
+        },
+    })
+    clearable: nasl.core.Boolean = false;
     @Event({
       title: '点击完成按钮时触发',
       description: '回调参数：选中值，选中值对应的索引'
