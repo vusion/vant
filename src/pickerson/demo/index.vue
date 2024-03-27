@@ -160,37 +160,11 @@ export default {
   },
 
   methods: {
-    onChange1(picker, value, index) {
-      this.$toast(this.t('toastContent', value, index));
-    },
-
-    onChange2(picker, values) {
-      picker.setColumnValues(1, this.t('column3')[values[0]]);
-    },
-
     onConfirm(value, index) {
       console.log('this.singleValue', this.singleValue);
       console.log('this.multipleValue', this.multipleValue);
-      this.$toast(this.t('toastContent', value, index));
-    },
 
-    onCancel() {
-      this.$toast(this.t('cancel'));
-    },
-
-    onClickField() {
-      this.showPicker = true;
-    },
-
-    onConfirm2(value) {
-      this.showPicker = false;
-      this.fieldValue = value;
-    },
-    onConfirm222(value) {
-      console.log(value);
-    },
-    onCancel2() {
-      this.showPicker = false;
+      console.log('value', value);
     },
     confirm111(value, index) {
       console.log('pickerValue', this.pickerValue);
