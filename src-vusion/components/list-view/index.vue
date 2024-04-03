@@ -204,26 +204,30 @@ export default {
 
             this.currentLoading = true;
 
-            await this.currentDataSource.reload();
+            try {
+              await this.currentDataSource.reload();
 
-            this.currentLoading = false;
-            
-            const {
+              const {
                 paging: oldPaging,
-            } = this.currentDataSource;
-            let paging;
+              } = this.currentDataSource;
+              let paging;
 
-            if (oldPaging) {
+              if (oldPaging) {
                 const { size, number } = oldPaging;
                 paging = {
-                    size,
-                    oldSize: size,
-                    number: 1,
-                    oldNumber: number,
+                  size,
+                  oldSize: size,
+                  number: 1,
+                  oldNumber: number,
                 };
+              }
+              this.$emit('page', paging, this);
+              this.$emit('update:page-number', 1, this);
+            } catch (error) {
+              console.log(error);
             }
-            this.$emit('page', paging, this);
-            this.$emit('update:page-number', 1, this);
+
+            this.currentLoading = false;
         },
 
         onScroll(e) {
