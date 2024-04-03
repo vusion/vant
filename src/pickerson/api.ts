@@ -42,6 +42,12 @@ namespace nasl.ui {
       description: '重新加载数据'
     })
     reload(): any {}
+
+    @Method({
+      title: 'undefined',
+      description: '清空选择器的筛选框'
+    })
+    clearFilterText(): any {}
   }
   export class VanPickersonOptions<T, V, M extends nasl.core.Boolean, P extends nasl.core.Boolean> extends ViewComponentOptions {
     @Prop({
@@ -317,6 +323,12 @@ namespace nasl.ui {
       description: '回调参数：Picker 实例，选中值，选中值对应的索引'
     })
     onChange: (event: any) => any ;
+
+    @Event({
+      title: '选择器清空时触发',
+      description: ''
+    })
+    onClear: (event: any) => any;
     // @Slot({
     //   title: 'undefined',
     //   description: '插入`<van-picker-action-slot>`子组件',

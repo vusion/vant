@@ -216,17 +216,21 @@ export default createComponent({
       this.$refs?.picker?.setValue(this.currentValue);
 
       this.$emit('cancel');
-      this.filterText = '';
       this.closePopup();
     },
     onClear() {
       const value = this.formatValue('');
       this.currentValue = value;
       this.$refs?.picker?.setValue(value);
-
+      this.$emit('clear');
       this.$emit('update:value', value);
       this.$emit('update:pvalue', value);
     },
+
+    clearFilterText() {
+      this.filterText = '';
+    },
+
     onScrollToLower() {
       console.log('到底了');
       // 不分页

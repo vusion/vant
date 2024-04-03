@@ -1,30 +1,21 @@
 <template>
   <demo-section>
     <demo-block card :title="t('basicUsage')">
-      <div>pickerValue: {{ pickerValue }}</div>
       <van-pickerson
-        :multiple="true"
-        :enable-select-all="true"
-        :enable-selected-count="false"
-        type="list"
         ref="pickerson1"
-
-        title="标题"
         :show-toolbar="true"
-        :value.sync="pickerValue"
+        :value.sync="singleValue"
         :data-source="load"
         :pageable="true"
         :pageSize="10"
         :filterable="true"
-        @confirm="confirm111"
-        @change="change111">
+        @confirm="onConfirm"
+        :clearable="true"
+        @clear="onClear">
         <template #title>
             <van-text ref="text19" text="标题"></van-text>
         </template>
       </van-pickerson>
-    </demo-block>
-
-      <van-button @click="reload">reload</van-button>
     </demo-block>
 
     <demo-block card title="列表静态数据">
@@ -77,22 +68,6 @@
           </template>
       </van-pickerson>
     </demo-block>
-
-    <demo-block card title="临时测试">
-        <van-pickerson
-        title="标题"
-        :show-toolbar="true"
-        :value.sync="multipleValue"
-        :data-source="[1, 2, 3, 4, 5]"
-        :close-on-click-overlay="true"
-        :multiple="true"
-        :clearable="true"
-        @confirm="onConfirm">
-          <template #title>
-                <van-text :ref="`text10`" text="标题"></van-text>
-          </template>
-      </van-pickerson>
-    </demo-block>
   </demo-section>
 </template>
 
@@ -125,7 +100,7 @@ const data = [
   { 'text': '江苏省134', 'value': '32001100' },
   { 'text': '江苏省144', 'value': '320110010' },
   { 'text': '江苏省154', 'value': '32001111100' },
-]
+];
 
 export default {
   data() {
@@ -166,27 +141,25 @@ export default {
 
       console.log('value', value);
     },
-    confirm111(value, index) {
-      console.log('pickerValue', this.pickerValue);
-      console.log(`confirm 当前值：${value}, 当前索引：${index}`);
-    },
-    change111(picker, value, index) {
-      console.log('pickerValue', this.pickerValue);
-      console.log(`change 当前值：${value}, 当前索引：${index}`);
-    },
     load(params) {
+      console.log('load', params);
       const { page, size, filterText } = params;
 
       let arr = data.filter(item => item.text.includes(filterText))
 
-      return {
+      return Promise.resolve({
         total: arr.length,
         list: arr.slice((page - 1) * size, page * size)
-      }
+      })
     },
     reload() {
       this.$refs.pickerson1.reload()
-    }
+    },
+    onClear() {
+      console.log('onClear');
+      this.$refs.pickerson1.clearFilterText()
+      this.$refs.pickerson1.reload()
+    },
   },
 };
 </script>
