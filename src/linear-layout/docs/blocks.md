@@ -1,7 +1,7 @@
 ### 单行排布
 
 ``` html
-<van-linear-layout direction="horizontal">
+<van-linear-layout direction="horizontal" gap="none">
 </van-linear-layout>
 ```
 
