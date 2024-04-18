@@ -1,6 +1,6 @@
 {
   "name": "@lcap/mobile-ui",
-  "version": "0.18.1",
+  "version": "0.18.2",
   "lcapname": "@lcap/mobile-ui",
   "lcapversion": "0.6.3",
   "description": "Mobile UI Components built on Vue",
@@ -40,7 +40,7 @@
     "screenshot": "node bin/screenshot",
     "genThemeConfig": "node ./scripts/genThemeConfig/index.js",
     "deploy:dev": "node bin/deploy-lcp-tgz --platform=http://defaulttenant.lcap.codewave-dev.163yun.com && lcap deploy dist-theme --platform http://defaulttenant.lcap.codewave-dev.163yun.com && node bin/deploy-lcp-images --platform=http://defaulttenant.lcap.codewave-dev.163yun.com",
-    "deploy:test": "node bin/deploy-lcp-tgz --platform=http://defaulttenant.lcap.ha.test.com && lcap deploy dist-theme --platform http://defaulttenant.lcap.ha.test.com && node bin/deploy-lcp-images --platform=http://defaulttenant.lcap.ha.test.com",
+    "deploy:test": "node bin/deploy-lcp-tgz --platform=http://defaulttenant.lcap.codewave-test.163yun.com && lcap deploy dist-theme --platform http://defaulttenant.lcap.codewave-test.163yun.com && node bin/deploy-lcp-images --platform=http://defaulttenant.lcap.codewave-test.163yun.com",
     "deploy:test-3.4": "node bin/deploy-lcp-tgz --platform=http://defaulttenant.lcap.test33x-lowcode.163yun.com && lcap deploy dist-theme --platform http://defaulttenant.lcap.test33x-lowcode.163yun.com && node bin/deploy-lcp-images --platform=http://defaulttenant.lcap.test33x-lowcode.163yun.com",
     "deploy:pre": "lcap deploy dist-theme --platform https://defaulttenant.lcap.hadri.163yun.com && node bin/deploy-lcp-images --platform=https://defaulttenant.lcap.hadri.163yun.com",
     "deploy:online": "lcap deploy dist-theme --platform http://netease-template.lcap.163yun.com &&  node bin/deploy-lcp-images --platform=http://netease-template.lcap.163yun.com",
