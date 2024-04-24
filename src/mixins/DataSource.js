@@ -53,7 +53,9 @@ export default {
     },
     allRemoteData() {
       if (this.currentDataSource?.remote) {
-        return this.currentDataSource?.allData || this.currentDataSource?.data || [];
+        return (
+          this.currentDataSource?.allData || this.currentDataSource?.data || []
+        );
       }
 
       return this.currentDataSource?.data || [];
@@ -84,10 +86,11 @@ export default {
       if (
         typeof dataSource === 'function' &&
         String(dataSource) === String(old)
-      )
+      ) {
         return;
+      }
 
-      this.handleData();
+      this.onDataSourceChange();
     },
     sorting: {
       deep: true,
@@ -113,25 +116,27 @@ export default {
   },
   created() {
     this.debouncedLoad = _debounce(this.load, 300);
-    this.currentDataSource = this.normalizeDataSource(this.dataSource);
 
-    // 初始加载开启时
-    if (this.currentDataSource && this.initialLoad) {
-      if (this.pageNumber && this.pageable) {
-        this.page(this.pageNumber);
-      } else {
-        this.load();
-      }
-    }
+    this.handleData();
   },
   methods: {
+    onDataSourceChange() {
+      // 重置allRemoteData
+      this.currentDataSource?.clearLocalData();
+
+      this.handleData();
+    },
     handleData() {
+      if (this.$env && this.$env.VUE_APP_DESIGNER) return;
+
       this.currentDataSource = this.normalizeDataSource(this.dataSource);
-
+      // 初始加载开启时
       if (this.currentDataSource && this.initialLoad) {
-        if (this.$env && this.$env.VUE_APP_DESIGNER) return;
-
-        this.load();
+        if (this.pageNumber && this.pageable) {
+          this.page(this.pageNumber);
+        } else {
+          this.load();
+        }
       }
     },
     getExtraParams() {
