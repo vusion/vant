@@ -40,7 +40,6 @@ export default {
         disabled: { type: Boolean, default: false },
         hideDelay: { type: Number, default: 3000 },
         feedback: { type: String, default: 'tooltip' },
-        appendTo: { type: String, default: 'body' },
     },
     data() {
         return {
@@ -52,12 +51,6 @@ export default {
     computed: {
         failTip() {
             return t('fail');
-        },
-        successVisible() {
-            return this.visible && this.success;
-        },
-        failVisible() {
-            return this.visible && !this.success;
         },
     },
     destroyed() {
@@ -76,7 +69,7 @@ export default {
 
             clearTimeout(this.timeoutId);
             this.timeoutId = setTimeout(() => {
-              // this.visible = false;
+              this.visible = false;
             }, this.hideDelay);
 
             this.visible = true;
