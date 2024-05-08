@@ -6,7 +6,7 @@
   }
 
   &-popup {
-    position: fixed !important;
+    position: fixed;
     max-height: 100%;
     overflow-y: auto;
     background-color: @popup-background-color;
@@ -14,9 +14,9 @@
     -webkit-overflow-scrolling: touch;
 
     &--center {
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate3d(-50%, -50%, 0) !important;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
 
       &.van-popup--round {
         border-radius: @popup-round-border-radius;
@@ -24,9 +24,9 @@
     }
 
     &--top {
-      top: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
+      top: 0;
+      left: 0;
+      width: 100%;
 
       &.van-popup--round {
         border-radius: 0 0 @popup-round-border-radius @popup-round-border-radius;
@@ -34,9 +34,9 @@
     }
 
     &--right {
-      top: 50% !important;
-      right: 0 !important;
-      transform: translate3d(0, -50%, 0) !important;
+      top: 50%;
+      right: 0;
+      transform: translate3d(0, -50%, 0);
 
       &.van-popup--round {
         border-radius: @popup-round-border-radius 0 0 @popup-round-border-radius;
@@ -44,9 +44,9 @@
     }
 
     &--bottom {
-      bottom: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
+      bottom: 0;
+      left: 0;
+      width: 100%;
 
       &.van-popup--round {
         border-radius: @popup-round-border-radius @popup-round-border-radius 0 0;
@@ -54,9 +54,9 @@
     }
 
     &--left {
-      top: 50% !important;
-      left: 0 !important;
-      transform: translate3d(0, -50%, 0) !important;
+      top: 50%;
+      left: 0;
+      transform: translate3d(0, -50%, 0);
 
       &.van-popup--round {
         border-radius: 0 @popup-round-border-radius @popup-round-border-radius 0;
@@ -84,22 +84,22 @@
 
     &-slide-top-enter,
     &-slide-top-leave-active {
-      transform: translate3d(0, -100%, 0) !important;
+      transform: translate3d(0, -100%, 0);
     }
 
     &-slide-right-enter,
     &-slide-right-leave-active {
-      transform: translate3d(100%, -50%, 0) !important;
+      transform: translate3d(100%, -50%, 0);
     }
 
     &-slide-bottom-enter,
     &-slide-bottom-leave-active {
-      transform: translate3d(0, 100%, 0) !important;
+      transform: translate3d(0, 100%, 0);
     }
 
     &-slide-left-enter,
     &-slide-left-leave-active {
-      transform: translate3d(-100%, -50%, 0) !important;
+      transform: translate3d(-100%, -50%, 0);
     }
 
     &__close-icon {
