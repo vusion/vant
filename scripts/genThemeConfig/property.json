@@ -356,6 +356,7 @@
     "--van-tabs-bottom-bar-height": "3px",
     "--van-tabs-bottom-bar-color": "var(\n    --van-tabs-default-color\n  )",
     "--van-tabs-bottom-bar-border-radius": "3px",
+    "--van-tabs-card-nav-margin": "0 24px",
     "--van-uploader-size": "80px",
     "--van-uploader-icon-size": "24px",
     "--van-uploader-icon-color": "#dcdee0",

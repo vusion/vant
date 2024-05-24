@@ -774,6 +774,13 @@
                         "excludeTags": [
                             "van-tab"
                         ]
+                    },
+                    "--van-tabs-card-nav-margin": {
+                        "type": "input",
+                        "desc": "card模式 导航外边距",
+                        "excludeTags": [
+                            "van-tab"
+                        ]
                     }
                 },
                 "preview": {
