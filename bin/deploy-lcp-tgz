@@ -21,7 +21,20 @@ if (fs.existsSync('zip.tgz')) {
 // 复制tgz到zip.tgz
 fs.copyFileSync(tgz, 'zip.tgz');
 
-const command = `lcap deploy zip.tgz --platform ${argv.platform}`;
+let command = `lcap deploy zip.tgz`;
+
+if (argv.platform) {
+  command += ` --platform ${argv.platform}`;
+}
+
+if (argv.username) {
+  command += ` --username ${argv.username}`;
+}
+
+if (argv.password) {
+  command += ` --password ${argv.password}`;
+}
+
 console.log(command);
 vusion.cli.execSync(command);
 vusion.cli.done(`${tgz}`);
