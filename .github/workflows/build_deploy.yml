@@ -6,7 +6,7 @@ on:
       - test
       - test/**
       - test-**
- 
+
 jobs:
   call-tyler:
     uses: vusion/wexler/.github/workflows/deploy-vant.yml@master
