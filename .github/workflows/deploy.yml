@@ -1,0 +1,15 @@
+name: Deploy dev & test
+
+on:
+  push:
+    branches:
+      - test
+      - test/**
+      - test-**
+  # 支持手动触发
+  workflow_dispatch:
+
+jobs:
+  call-tyler:
+    uses: vusion/wexler/.github/workflows/deploy-vant.yml@master
+    secrets: inherit
