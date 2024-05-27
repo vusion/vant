@@ -34,7 +34,7 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: yarn build:vusion
+        run: yarn build
 
       # 创建一个临时目录
       - name: Create temp dir

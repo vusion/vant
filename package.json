@@ -5,7 +5,6 @@
   "lcapversion": "0.6.3",
   "description": "Mobile UI Components built on Vue",
   "main": "dist-theme/index.js",
-  "module22": "es/index.js",
   "style": "dist-theme/index.css",
   "typings": "types/index.d.ts",
   "files": [
@@ -27,11 +26,8 @@
     "lint": "vant-cli lint",
     "test": "vant-cli test",
     "copyimg": "node bin/copy-lcp-images ",
-    "build:vusion": "npm run check && npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap",
-    "build:theme": "npm run check && npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap",
-    "build:theme-local": "npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap",
-    "build2": "vant-cli build",
-    "build": "cross-env scene=desktop vant-cli build",
+    "build": "npm run genThemeConfig && vue-cli-service library-build --dest dist-theme && npm run copyimg && node ./scripts/lcap",
+    "build:cli": "cross-env scene=desktop vant-cli build",
     "release": "vant-cli release",
     "test:watch": "vant-cli test --watch",
     "release:site": "sh docs/site/release.sh",
@@ -40,13 +36,9 @@
     "move-docs": "node bin/move-docs",
     "screenshot": "node bin/screenshot",
     "genThemeConfig": "node ./scripts/genThemeConfig/index.js",
-    "deploy:dev": "lcap deploy dist-theme --platform http://defaulttenant.lcap.dev.env.com && node bin/deploy-lcp-images --platform=http://defaulttenant.lcap.dev.env.com",
-    "deploy:test": "lcap deploy dist-theme --platform http://test.lcap.codewave-test.163yun.com && node bin/deploy-lcp-images --platform=http://test.lcap.codewave-test.163yun.com",
-    "deploy:test-ga": "lcap deploy dist-theme --platform http://defaulttenant.lcap.codewave-test.163yun.com && node bin/deploy-lcp-images --platform=http://defaulttenant.lcap.codewave-test.163yun.com",
-    "deploy:pre": "lcap deploy dist-theme --platform https://defaulttenant.lcap.hadri.163yun.com && node bin/deploy-lcp-images --platform=https://defaulttenant.lcap.hadri.163yun.com",
-    "deploy:online": "lcap deploy dist-theme --platform http://netease-template.lcap.163yun.com &&  node bin/deploy-lcp-images --platform=http://netease-template.lcap.163yun.com",
-    "prepublishOnly": "npm run build:theme && git add .",
-    "deploy:qz": "lcap deploy dist-theme --platform=https://defaulttenant.lcap.qz.163yun.com && node bin/deploy-lcp-images --platform=https://defaulttenant.lcap.qz.163yun.com"
+    "deploy": "lcap deploy dist-theme",
+    "deploy:img": "node bin/deploy-lcp-images",
+    "prepublishOnly": "npm run build && git add ."
   },
   "repository": {
     "type": "git",
