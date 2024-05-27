@@ -1,0 +1,13 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - test
+      - test/**
+      - test-**
+
+jobs:
+  call-tyler:
+    uses: vusion/wexler/.github/workflows/deploy-vant.yml@master
+    secrets: inherit
