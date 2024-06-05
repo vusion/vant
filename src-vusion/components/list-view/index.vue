@@ -198,37 +198,37 @@ export default {
             this.refreshing = false;
         },
 
-        async reload() {
-            // readme: 目前使用场景中存在着用户通过props间接改变组件内部状态后同步调用reload的情况，在这里等待组件内部状态更新完成。
-            await new Promise((res) => { this.$nextTick(() => res()); });
+      async reload() {
+        // readme: 目前使用场景中存在着用户通过props间接改变组件内部状态后同步调用reload的情况，在这里等待组件内部状态更新完成。
+        await new Promise((res) => { this.$nextTick(() => res()); });
 
-            this.currentLoading = true;
+        this.currentLoading = true;
 
-            try {
-              await this.currentDataSource.reload();
+        try {
+          await this.currentDataSource.reload();
 
-              const {
-                paging: oldPaging,
-              } = this.currentDataSource;
-              let paging;
+          const {
+            paging: oldPaging,
+          } = this.currentDataSource;
+          let paging;
 
-              if (oldPaging) {
-                const { size, number } = oldPaging;
-                paging = {
-                  size,
-                  oldSize: size,
-                  number: 1,
-                  oldNumber: number,
-                };
-              }
-              this.$emit('page', paging, this);
-              this.$emit('update:page-number', 1, this);
-            } catch (error) {
-              console.log(error);
-            }
+          if (oldPaging) {
+            const { size, number } = oldPaging;
+            paging = {
+              size,
+              oldSize: size,
+              number: 1,
+              oldNumber: number,
+            };
+          }
+          this.$emit('page', paging, this);
+          this.$emit('update:page-number', 1, this);
+        } catch (error) {
+          console.log(error);
+        }
 
-            this.currentLoading = false;
-        },
+        this.currentLoading = false;
+      },
 
         onScroll(e) {
           if (this?.$env.VUE_APP_DESIGNER) return;
