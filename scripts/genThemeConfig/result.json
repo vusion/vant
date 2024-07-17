@@ -124,6 +124,18 @@
                         "type": "input",
                         "desc": "布局内各元素之间的外间距, 如：1px",
                         "prefix": "van"
+                    },
+                    "--van-space-shrink": {
+                        "type": "input"
+                    },
+                    "--van-space-mini": {
+                        "type": "input"
+                    },
+                    "--van-space-small": {
+                        "type": "input"
+                    },
+                    "--van-space-large": {
+                        "type": "input"
                     }
                 },
                 "preview": {
@@ -771,6 +783,13 @@
                     "--van-tabs-bottom-bar-border-radius": {
                         "type": "input",
                         "desc": "滑动条圆角",
+                        "excludeTags": [
+                            "van-tab"
+                        ]
+                    },
+                    "--van-tabs-card-nav-margin": {
+                        "type": "input",
+                        "desc": "card模式 导航外边距",
                         "excludeTags": [
                             "van-tab"
                         ]

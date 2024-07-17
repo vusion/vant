@@ -83,6 +83,11 @@ export default createComponent({
     getValue() {
       return [this.currentValue];
     },
+
+    // 暴露给上层调用
+    setValue(value) {
+      this.currentValue = _cloneDeep(value);
+    }
   },
   render(h) {
     const isInDesigner = this.$env && this.$env.VUE_APP_DESIGNER;
@@ -119,7 +124,7 @@ export default createComponent({
                 {this.multiple && (
                   <div class="icon">
                     <Checkbox value={checked} shape="square">
-                      {this.slots('option', item) ||
+                      {this.slots('option', {...item, item}) ||
                         (isInDesigner ? (
                           <EmptyCol></EmptyCol>
                         ) : (
@@ -130,7 +135,7 @@ export default createComponent({
                 )}
 
                 {!this.multiple &&
-                  (this.slots('option', item) ||
+                  (this.slots('option', {...item, item}) ||
                     (isInDesigner ? (
                       <EmptyCol></EmptyCol>
                     ) : (
