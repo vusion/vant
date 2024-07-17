@@ -17,9 +17,20 @@ components.forEach((component) => {
       commandDrawings = `lcap deploy src-vusion/components/${component.name}/drawings`;
     }
     if (argv.platform) {
-        command = `${command} --platform ${argv.platform}`;
-        commandDrawings = `${commandDrawings} --platform ${argv.platform}`;
+        command += ` --platform ${argv.platform}`;
+        commandDrawings += ` --platform ${argv.platform}`;
     }
+
+    if (argv.username) {
+        command += ` --username ${argv.username}`;
+        commandDrawings += ` --username ${argv.username}`;
+    }
+
+    if (argv.password) {
+        command += ` --password ${argv.password}`;
+        commandDrawings += ` --password ${argv.password}`;
+    }
+
     console.log(command);
     vusion.cli.execSync(command);
     vusion.cli.execSync(commandDrawings);
